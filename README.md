@@ -1,3 +1,4 @@
+# WorkFlow UI
 # React + Vite + Tailwindcss
 
 Refactor de la interfaz grafica del sistema de flujos.
@@ -13,7 +14,7 @@ Mejoras y actualizaciones:
 
 Pendientes:
 
-- Filtro por Reuqrimiento
+- Filtro por Requerimiento
 - Filtro por pendientes
 - Diseñar mock para la carga de los campos del formulario
 - Renderizar el formulario y mejorar usabilidad respecto a la versión anterior
