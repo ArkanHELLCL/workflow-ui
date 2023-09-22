@@ -10,6 +10,9 @@ import { ClickAway } from "../hooks/ClickAway.jsx";
 function LstFlujos(){
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
+    const chkFlujos = useId();
+    const [openFlujos, setOpenFlujos] = useState(false);
+
     const handleSetFlujos = (flujo) => {         
         setFilters(prevState => ({
             ...prevState, 
@@ -24,21 +27,15 @@ function LstFlujos(){
         }))
     }
 
-    const chkFlujos = useId();
-    const [openFlujos, setOpenFlujos] = useState(false);
     const menuAppear = useSpring({             
         opacity:1,
         height: `${openFlujos ? 115 : 0}` + 'px',        
     });
 
-    const handleClick = () => {
-        setOpenFlujos((cur) => !cur)
-    }
-
-    const { ref } = ClickAway(setOpenFlujos);
+    const { ref } = ClickAway(()=>setOpenFlujos(false));
 
     return (
-            <div className="relative">
+            <div className="relative" ref={ref}>
                 <div className="w-auto flex z-50">
                     <span>Flujo : </span>
                     <label htmlFor={chkFlujos} className='hover:border-sky-600 text-sky-600 border-b-2 ml-2 flex cursor-pointer border-transparent'>{
@@ -48,10 +45,10 @@ function LstFlujos(){
                             <CaretDownIcon />
                         </span>
                     </label>                         
-                    <input type="checkbox" id={chkFlujos} className="hidden" onClick={handleClick} />
+                    <input type="checkbox" id={chkFlujos} className="hidden" onClick={() => setOpenFlujos(!openFlujos)} />
                 </div>
-                <ul className={`${openFlujos ? 'border' : ''} absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[25px] px-[1px] dark:border-[#484644] left-[45px] border-[#e1dfdd] h-fit overflow-hidden`}>
-                    <animated.div style={menuAppear} ref={ref}>
+                <ul className={`${openFlujos ? 'border' : ''} absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[31px] px-[1px] dark:border-[#484644] left-[45px] border-[#e1dfdd] h-fit overflow-hidden`}>
+                    <animated.div style={menuAppear} >
                         <ul className="py-2">                    
                             {
                                 flujos.map((item) =>

@@ -89,7 +89,7 @@ export function MenuFilters({defaultTheme}) {
     const MenuFilter = () => {        
         return (            
             <ul className={`${openFilter ? 'border' : ''} absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[25px] px-[1px] py-0  dark:border-[#484644] right-8 border-[#e1dfdd] w-72 h-fit overflow-hidden`}>                
-                <animated.div style={menuAppear} ref={ref}>
+                <animated.div style={menuAppear}>
                     <ul className="border-b pb-2 dark:border-[#484644] border-[#e1dfdd]">
                         <li className="px-6 py-2 text-xs font-semibold truncate">Flitrar</li>
                             <ul>                                
@@ -124,7 +124,7 @@ export function MenuFilters({defaultTheme}) {
     }
     
     return (
-        <div className="relative flex align-middle justify-end z-50 pb-0">
+        <div className="relative flex align-middle justify-end z-50 pb-0" ref={ref}>
             <div className="hover:bg-[#f0f0f0] dark:hover:bg-[#444444] mb-[4px] px-2 py-1 z-50">
                 <div className="relative w-full flex z-50">
                     <label htmlFor={chkFilter} className={`${defaultTheme.txtc} cursor-pointer text-xs flex`}>

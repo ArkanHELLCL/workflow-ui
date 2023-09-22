@@ -19,9 +19,8 @@ export function ListaRequerimientos({ defaultTheme }){
         acc={id:i, open:true};
         accs.push(acc);
     }    
-    //console.log(filteredRequest, requerimientoAccordion)
+    
     const [isOpen, setIsopen] = useState(accs)
-    //console.log(isOpen)
             
     function handleOpenAccordion(id){        
         const idxArray = isOpen.findIndex(item => item.id===id)
@@ -33,36 +32,35 @@ export function ListaRequerimientos({ defaultTheme }){
     }
 
     function isOpenAccordion(id){
-        //console.log(isOpen)
         const idxArray = isOpen.findIndex(item => item.id===id)
-        //console.log(idxArray)
         if(idxArray>=0){ 
             return isOpen[idxArray].open
         }
         return false
     }
 
-    
     return (                            
-        requerimientoAccordion.map((item) => {            
-            const req = FilteredRequestbyDate(filters.hoy, item.diaDesde, item.diaHasta, filteredRequest)
+        requerimientoAccordion.map((item) => {
+            let req = []
+            if(filters.filter===1) {                
+                req = FilteredRequestbyDate(filters.hoy, item.diaDesde, item.diaHasta, filteredRequest)
+            }
+            if(filters.filter===2) {                
+                req = filteredRequest.filter((req) => req.VRE_Id >= item.diaDesde && req.VRE_Id <= item.diaHasta)
+            }      
             if(req.length > 0){
-                //result.map((req) => {
-                    //if(req.length > 0) {
-                        return(                    
-                            <Accordion open={isOpenAccordion(item.id)} icon={<Icon open={isOpenAccordion(item.id)} pos="top-[8px] left-2" />} className="z-0" key={'acc-'+item.id}>
-                                <AccordionHeader 
-                                    onClick={()=>handleOpenAccordion(item.id)}
-                                    className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate dark:bg-[#444444] bg-[#f0f0f0] py-1 hover:dark:bg-[#666666] hover:bg-[#e6f2fa] overflow-hidden`}>
-                                        {item.title.charAt(0).toUpperCase() + item.title.slice(1) + ' (' + req.length + ')'}
-                                </AccordionHeader>
-                                <AccordionBody className="py-0">                            
-                                    <Requerimiento item={req} showDia={item.title === 'Hoy' ? false : true}/>
-                                </AccordionBody>
-                            </Accordion>                    
-                        )
-                    //}
-                //})
+                return(
+                    <Accordion open={isOpenAccordion(item.id)} icon={<Icon open={isOpenAccordion(item.id)} pos="top-[8px] left-2" />} className="z-0" key={'acc-'+item.id}>
+                        <AccordionHeader 
+                            onClick={()=>handleOpenAccordion(item.id)}
+                            className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate dark:bg-[#444444] bg-[#f0f0f0] py-1 hover:dark:bg-[#666666] hover:bg-[#e6f2fa] overflow-hidden`}>
+                                {item.title.charAt(0).toUpperCase() + item.title.slice(1) + ' (' + req.length + ')'}
+                        </AccordionHeader>
+                        <AccordionBody className="py-0">                            
+                            <Requerimiento item={req} showDia={item.title === 'Hoy' ? false : true}/>
+                        </AccordionBody>
+                    </Accordion>                    
+                )
             }
         })                          
     )  
