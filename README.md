@@ -1,5 +1,4 @@
 # WorkFlow UI
-# React + Vite + Tailwindcss
 
 Refactor de la interfaz grafica del sistema de flujos.
 Versión 1.0.0
