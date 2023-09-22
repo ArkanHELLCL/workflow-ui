@@ -25,6 +25,7 @@ export function useFilters() {
         let requerimientoAccordion = []
         if(filteredRequest.length > 0){            
             if(filters.filter === 1){   //Fecha
+                filters.maxAccordions = 11
                 const resultRequest = filters.orderDes ? filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() > new Date(b.DRE_FechaEdit).getTime()) : filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() < new Date(b.DRE_FechaEdit).getTime())
 
                 requerimientoAccordion = ListRequestByDate(filters.hoy, dias, filters.maxAccordions, resultRequest)

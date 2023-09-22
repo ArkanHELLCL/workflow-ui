@@ -1,8 +1,21 @@
-# React + Vite
+# React + Vite + Tailwindcss
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Refactor de la interfaz grafica del sistema de flujos.
+Versión 1.0.0
 
-Currently, two official plugins are available:
+Mejoras y actualizaciones:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Migración de jQuery a [React](https://react.dev/)
+- Utilización de [Tailwindcss](https://tailwindcss.com/)
+- Rediseño del 100% de la interfáz para mejor uso y entendimiento, asi como también para mostrar más y mejor información
+- Simplicidad de menús, agrupando conceptos y mejorando los filtros
+- SPA
+
+Pendientes:
+
+- Filtro por Reuqrimiento
+- Filtro por pendientes
+- Diseñar mock para la carga de los campos del formulario
+- Renderizar el formulario y mejorar usabilidad respecto a la versión anterior
+- Rediseñar botonera
+- Utilizar JWT para manejo de sesiones
