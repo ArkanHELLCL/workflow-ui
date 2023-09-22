@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { FiltersContext } from '../context/filters.jsx'
 import { ListRequestByDate } from '../components/ListRequestByDate.jsx'
-import { Constants } from "../constants/const.jsx";
 import { ListRequestByNumber } from '../components/LisRequestByNumber.jsx';
+import { Constants } from "../constants/const.jsx";
 
 export function useFilters() {  
     const { filters, setFilters } = useContext(FiltersContext)
@@ -52,7 +52,7 @@ export function useFilters() {
                 requerimientoAccordion.reverse()
             }
         }
-        console.log(filteredRequest, requerimientoAccordion)
+        console.log(filteredRequest, requerimientoAccordion, 'useFilters')
         return {filteredRequest, requerimientoAccordion}
     }
     return {filters, filterRequest, setFilters}

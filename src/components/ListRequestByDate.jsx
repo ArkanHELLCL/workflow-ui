@@ -4,10 +4,9 @@ export function ListRequestByDate(hoy, dias, maxAccordions, filteredRequest){
     let requerimientoAccordion = []
     let title=''
     let anterior    
-    let resultRequerimientos = []
     let diasDesde = 0
     let diasHasta = 0
-
+    console.log(hoy, dias, maxAccordions, filteredRequest, 'bydate')
     //Creamos los accordions para los requerimientos
     for (let index = 1; index <= maxAccordions; index++) {
         if(index===1){
@@ -58,7 +57,7 @@ export function ListRequestByDate(hoy, dias, maxAccordions, filteredRequest){
             diasDesde = 87
             diasHasta = -1
         }
-        requerimientoAccordion.push({id:index, title: title, diaDesde: diasDesde, diaHasta: diasHasta})
+        requerimientoAccordion.push({id:index, title: title, desde: diasDesde, hasta: diasHasta, open: true})
     }    
     return requerimientoAccordion
 }

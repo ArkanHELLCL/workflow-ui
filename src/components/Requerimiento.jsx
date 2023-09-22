@@ -4,7 +4,7 @@ import { ArchiveIcon, EditIcon, UserIcon } from "./icons"
 import { Constants } from "../constants/const.jsx";
 
 export function Requerimiento({item, showDia}){
-    //console.log(item)
+    console.log('Requerimiento', item)
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
 
@@ -16,6 +16,7 @@ export function Requerimiento({item, showDia}){
         const newDate = new Date(fecha)
         return dias[newDate.getDay()]
     }
+    
     return(
         <>
         {item.map((req) => (
