@@ -1,0 +1,90 @@
+{    
+    "Bandejas":[
+        {
+        "id":"be",
+        "name":"De Entrada",
+        "description":"Bandeja de Entrada",
+        "children" : [
+                {
+                    "id": "be1",
+                    "name": "De Entrada 1",
+                    "children": [
+                        {
+                            "id": "be11",
+                            "name": "De Entrada 11"
+                        },
+                        {
+                            "id": "be12",
+                            "name": "De Entrada 12"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id":"bs",
+            "name":"De Salida",
+            "description":"Bandeja de Salida"
+        },
+        {
+            "id":"bf",
+            "name":"De Finalizados",
+            "description":"Bandeja de Finalizados"
+        },
+        {
+            "id":"bo",
+            "name":"De Otros",
+            "description":"Bandeja de Otros"
+        },
+        {
+            "id":"ba",
+            "name":"De Archivados",
+            "description":"Bandeja de Archivados"
+        },
+        {
+            "id":"bn",
+            "name":"De Antiguos",
+            "description":"Bandeja de Antiguos"
+        },
+        {
+            "id":"bp",
+            "name":"De Antiguos Pendientes",
+            "description":"Bandeja de Antiguos Pendientes"
+        }
+    ],
+    "Mantenedores":[
+        {
+            "id":"mu",
+            "name":"Usuarios",
+            "description":"Mantenedor de Usuarios"
+        },
+        {
+            "id":"ml",
+            "name":"Lista Desplegables",
+            "description":"Mantenedor de Lista Desplegables"
+        },
+        {
+            "id":"mi",
+            "name":"Items Lista Desplegables",
+            "description":"Mantenedor de Items Lista Desplegables"
+        }
+     ],
+    "Reportes":[
+        {
+            "id":"ru",
+            "name":"Dias por Usuario",
+            "description":"Reporte de Dias por Usuario"
+        },
+        {
+            "id":"ro",
+            "name":"Ordenes de Compras",
+            "description":"Reporte de Ordenes de Compras"
+        },
+        {
+            "id":"rp",
+            "name":"Seguimiento de Pagos",
+            "description":"Reporte de Seguimiento de Pagos"
+        }
+    ]
+}
+       
