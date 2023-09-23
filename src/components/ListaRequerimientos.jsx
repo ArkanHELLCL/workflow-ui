@@ -3,10 +3,11 @@ import { memo, useMemo, useCallback, useRef, useReducer, useEffect } from "react
 import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 import { Icon } from "./icons.jsx";
 import { Requerimiento } from "./Requerimiento.jsx";
-import { useFilters } from '../hooks/useFilters.jsx'
+import { useFilters } from '../hooks/useFilters.jsx';
 
 import { bandejas } from "../mocks/requerimientos.json";
 import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
+import { Accordions } from '../components/accordions.jsx'
 
 const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggle, showDia, defaultTheme, reqResult }) {
     const req = useMemo(() => reqResult(item), [item, reqResult])
@@ -29,7 +30,8 @@ const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggle, show
 
 export function ListaRequerimientos({ defaultTheme }){
     const { filters, filterRequest } = useFilters()  
-    const {filteredRequest, requerimientoAccordion} = filterRequest(bandejas)
+    const { filteredRequest } = filterRequest(bandejas)
+    const { requerimientoAccordion } = Accordions(filteredRequest, filters)
 
     const [isOpen, dispatch] = useReducer((state, action) => {
         switch (action.type) {

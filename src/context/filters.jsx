@@ -14,7 +14,7 @@ export function FiltersProvider({ children }) {
         totalSintomar: 0,
         totalVencidos: 0,
         totalPorVencer: 0,        
-        maxAccordions: 11,        
+        //maxAccordions: 11,        
         hoy : new Date('2023-08-31 8:0:0'),        
     });
     

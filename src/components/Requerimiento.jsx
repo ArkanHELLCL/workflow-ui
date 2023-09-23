@@ -4,9 +4,10 @@ import { useRequest } from "../hooks/useRequest.jsx";
 import { ArchiveIcon, EditIcon, UserIcon } from "./icons"
 import { Constants } from "../constants/const.jsx";
 
-const RequerimientoItem = ({ req, request, handleRequerimiento, showDia }) => {
+const RequerimientoItem = ({ req, showDia }) => {
     console.log('req')
     const { dias } = Constants()
+    const { request, setRequest } = useRequest()
   
     const diaName = useMemo(() => {
       const newDate = new Date(req.DRE_FechaEdit)
@@ -30,6 +31,10 @@ const RequerimientoItem = ({ req, request, handleRequerimiento, showDia }) => {
       // handle archive click
     }, [])
   
+    const handleRequerimiento = useCallback((req) => { 
+      setRequest(req)
+    }, [setRequest])
+  
     return (
       <article className={`${isReqSelected ? 'reqselected' : 'requnselected'} reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative`} key={req.DRE_Id} onClick={() => handleRequerimiento(req)}>
         <div className="w-3/4">
@@ -52,16 +57,10 @@ const RequerimientoItem = ({ req, request, handleRequerimiento, showDia }) => {
   }
   
   export function Requerimiento({item, showDia}){
-    const { request, setRequest } = useRequest()
-  
-    const handleRequerimiento = useCallback((req) => { 
-      setRequest(req)
-    }, [setRequest])
-  
     return(
       <>
         {item.map((req) => (
-          <RequerimientoItem key={req.DRE_Id} req={req} request={request} handleRequerimiento={handleRequerimiento} showDia={showDia} />
+          <RequerimientoItem key={req.DRE_Id} req={req} showDia={showDia} />
         ))}
       </>
     )
