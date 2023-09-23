@@ -4,7 +4,7 @@ import { Constants } from "../constants/const.jsx";
 
 export function Accordions(filteredRequest, filters){
     const { dias } = Constants()
-
+    console.log('Accordions')
     //Accordion
     let requerimientoAccordion = []
     if(filteredRequest.length > 0){            

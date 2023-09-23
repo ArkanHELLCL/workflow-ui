@@ -2,7 +2,7 @@
 export function ListRequestByNumber(min, max, maxAccordions, orderDes ){    
     const numReqsPerRange = Math.ceil(Math.abs(((max - min) + 1) / maxAccordions))
     const requerimientoAccordion = []
-    console.log(min, max, maxAccordions, orderDes, numReqsPerRange)
+    console.log('ListRequestByNumber',min, max, maxAccordions, orderDes, numReqsPerRange)
     for (let i = 0; i < maxAccordions; i++) {
         const start = min + i * numReqsPerRange
         const end = Math.min(start + numReqsPerRange - 1, max)

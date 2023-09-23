@@ -18,7 +18,7 @@ export function useFilters() {
         filters.totalVencidos = filteredRequest.filter((item) => item.FLD_DiasLimites - item.DRE_DifDias < 0).length
         filters.totalPorVencer = filteredRequest.filter((item) => item.FLD_DiasLimites - item.DRE_DifDias <= 5 && item.FLD_DiasLimites - item.DRE_DifDias >= 0).length
         
-        console.log(filteredRequest, 'useFilters')
+        console.log('useFilters')
         return {filteredRequest}
     }
     return {filters, filterRequest, setFilters}
