@@ -36,7 +36,7 @@ function LstFlujos(){
 
     return (
             <div className="relative" ref={ref}>
-                <div className="w-auto flex z-50">
+                <div className="w-auto flex z-50 truncate">
                     <span>Flujo : </span>
                     <label htmlFor={chkFlujos} className='hover:border-sky-600 text-sky-600 border-b-2 ml-2 flex cursor-pointer border-transparent'>{
                             flujos.filter(item => item.id === filters.flujo)[0].name

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useMemo, useCallback, useRef, useReducer, useEffect } from "react";
+import { useCallback, useRef, useEffect } from "react";
 import { useFilters } from '../hooks/useFilters.jsx';
 
 import { bandejas } from "../mocks/requerimientos.json";
@@ -12,32 +12,6 @@ export function ListaRequerimientos({ defaultTheme }){
     const { filteredRequest } = filterRequest(bandejas)
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)
     console.log('ListaRequerimientos')
-
-    const [isOpen, dispatch] = useReducer((state, action) => {
-        switch (action.type) {
-          case 'toggle':
-            return {
-              ...state,
-              [action.index]: !state[action.index]
-            }
-          default:
-            return state
-        }
-    }, useMemo(() => {
-        const accs = {}
-        requerimientoAccordion.forEach((item, index) => {
-          accs[index] = true
-        })
-        return accs
-    }, [requerimientoAccordion]))
-    
-    const handleToggleAccordion = useCallback((index) => {
-        dispatch({ type: 'toggle', index })
-    }, [])
-    
-    const isOpenAccordion = useCallback((index) => {
-        return isOpen[index]
-    }, [isOpen])
     
     const reqResult = useCallback((item) => {
         let req = []
@@ -59,7 +33,7 @@ export function ListaRequerimientos({ defaultTheme }){
     return (
         <>
           {requerimientoAccordion.map((item, index) => (
-            <AccordionItem key={index} item={item} isOpen={isOpenAccordion(index)} onToggle={() => handleToggleAccordion(index)} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} index={index}/>
+            <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} index={index}/>
           ))}
         </>
       )

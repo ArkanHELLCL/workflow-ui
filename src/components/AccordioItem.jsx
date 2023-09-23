@@ -3,10 +3,13 @@ import { memo, useMemo, useState } from 'react'
 import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 import { Icon } from "./icons.jsx";
 import { Requerimiento } from "./Requerimiento.jsx";
+import { useFilters } from '../hooks/useFilters.jsx';
 
-export const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggle, showDia, defaultTheme, reqResult, index }) {
+export const AccordionItem = memo(function AccordionItem({ item, showDia, defaultTheme, reqResult, index }) {
     const req = useMemo(() => reqResult(item), [item, reqResult])
+    const { filters } = useFilters()
 
+    //ByDate(11)
     const [isOpenbyDate1, setIsOpenbyDate1] = useState(true)
     const [isOpenbyDate2, setIsOpenbyDate2] = useState(true)
     const [isOpenbyDate3, setIsOpenbyDate3] = useState(true)
@@ -19,29 +22,37 @@ export const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggl
     const [isOpenbyDate10, setIsOpenbyDate10] = useState(true)
     const [isOpenbyDate11, setIsOpenbyDate11] = useState(true)
 
+    //ByNumber(5)
     const [isOpenbyNumber1, setIsOpenbyNumber1] = useState(true)
     const [isOpenbyNumber2, setIsOpenbyNumber2] = useState(true)
     const [isOpenbyNumber3, setIsOpenbyNumber3] = useState(true)
     const [isOpenbyNumber4, setIsOpenbyNumber4] = useState(true)
     const [isOpenbyNumber5, setIsOpenbyNumber5] = useState(true)
 
+    //ByPending
+
     function handleToggleAccordion(index){
         console.log('handleToggleAccordion')
         switch (index) {
             case 0:
-                setIsOpenbyDate1(!isOpenbyDate1)
+                if(filters.filter===1) setIsOpenbyDate1(!isOpenbyDate1)
+                if(filters.filter===2) setIsOpenbyNumber1(!isOpenbyNumber1)
                 break;
             case 1:
-                setIsOpenbyDate2(!isOpenbyDate2)
+                if(filters.filter===1) setIsOpenbyDate2(!isOpenbyDate2)
+                if(filters.filter===2) setIsOpenbyNumber2(!isOpenbyNumber2)
                 break;
             case 2:
-                setIsOpenbyDate3(!isOpenbyDate3)
+                if(filters.filter===1) setIsOpenbyDate3(!isOpenbyDate3)
+                if(filters.filter===2) setIsOpenbyNumber3(!isOpenbyNumber3)
                 break;
             case 3:
-                setIsOpenbyDate4(!isOpenbyDate4)
+                if(filters.filter===1) setIsOpenbyDate4(!isOpenbyDate4)
+                if(filters.filter===2) setIsOpenbyNumber4(!isOpenbyNumber4)
                 break;
             case 4:
-                setIsOpenbyDate5(!isOpenbyDate5)
+                if(filters.filter===1) setIsOpenbyDate5(!isOpenbyDate5)
+                if(filters.filter===2) setIsOpenbyNumber5(!isOpenbyNumber5)
                 break;
             case 5:
                 setIsOpenbyDate6(!isOpenbyDate6)
@@ -68,15 +79,25 @@ export const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggl
         console.log('isOpenAccordion')
         switch (index) {
             case 0:
-                return isOpenbyDate1
+                if(filters.filter===1) return isOpenbyDate1
+                if(filters.filter===2) return isOpenbyNumber1
+                break;
             case 1:
-                return isOpenbyDate2
+                if(filters.filter===1) return isOpenbyDate2
+                if(filters.filter===2) return isOpenbyNumber2
+                break;
             case 2:
-                return isOpenbyDate3
+                if(filters.filter===1) return isOpenbyDate3
+                if(filters.filter===2) return isOpenbyNumber3
+                break;
             case 3:
-                return isOpenbyDate4
+                if(filters.filter===1) return isOpenbyDate4
+                if(filters.filter===2) return isOpenbyNumber4
+                break;
             case 4:
-                return isOpenbyDate5
+                if(filters.filter===1) return isOpenbyDate5
+                if(filters.filter===2) return isOpenbyNumber5
+                break;
             case 5:
                 return isOpenbyDate6
             case 6:
