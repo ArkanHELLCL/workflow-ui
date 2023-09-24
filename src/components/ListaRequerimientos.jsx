@@ -16,22 +16,13 @@ export function ListaRequerimientos({ defaultTheme }){
     const reqResult = useCallback((item) => {
         let req = []
         if (filters.filter === 1) {
-          req = FilteredRequestbyDate(filters.hoy, item.desde, item.hasta, filteredRequest)
+            req = FilteredRequestbyDate(filters.hoy, item.desde, item.hasta, filteredRequest)
         }
         if(filters.filter===2) {
             req = filteredRequest.filter((req) => req.VRE_Id >= item.desde && req.VRE_Id <= item.hasta)
         }
         if(filters.filter===3) {
-            item.pend ? req = filteredRequest.filter((req) => req.IdEditor === undefined) : req = filteredRequest.filter((req) => req.IdEditor !== undefined)            
-            
-            /*.sort((a,b) => {
-                if (a.NombreEditor !== undefined) {
-                  return -1;
-                }
-                if (a.NombreEditor === undefined) {
-                  return 1;
-                }
-              }) */
+            item.pend ? req = filteredRequest.filter((req) => req.IdEditor === undefined) : req = filteredRequest.filter((req) => req.IdEditor !== undefined)
         }
         return req
     }, [filters.filter, filters.hoy, filteredRequest])

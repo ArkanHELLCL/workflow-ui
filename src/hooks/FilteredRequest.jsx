@@ -10,7 +10,7 @@ export function FilteredRequestbyDate(dateFrom, daysTo, daysMax, filteredRequest
     }else{
         resultRequest = filteredRequest?.filter((item) => item.DRE_FechaEdit?.slice(0,10) <= anterior.toISOString().slice(0,10) && item.DRE_FechaEdit?.slice(0,10) >= maxdias.toISOString().slice(0,10))    
     }        
-    console.log('filteredRequest')    
+    console.log('FilteredRequestbyDate')    
     return resultRequest
     
 }
