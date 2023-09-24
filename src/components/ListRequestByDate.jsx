@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-
-export function ListRequestByDate(hoy, dias, maxAccordions, filteredRequest){    
+export function ListRequestByDate(hoy, dias, maxAccordions){    
     let requerimientoAccordion = []
     let title=''
     let anterior    

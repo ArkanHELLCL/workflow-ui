@@ -8,7 +8,7 @@ import { useRequest } from "../hooks/useRequest.jsx";
 export function DetalleRequerimiento({defaultTheme}){   
     const { meses } = Constants()
     const { request } = useRequest()
-    const [isOpen, setisOpoen ] = useState(false)
+    const [ isOpen, setisOpoen ] = useState(false)
     const handleOpenDetail = () => {         
         setisOpoen(!isOpen)        
     }

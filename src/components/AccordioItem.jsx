@@ -30,6 +30,8 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
     const [isOpenbyNumber5, setIsOpenbyNumber5] = useState(true)
 
     //ByPending
+    const [isOpenbyPending1, setIsOpenbyPending1] = useState(true)
+    const [isOpenbyPending2, setIsOpenbyPending2] = useState(true)
 
     function handleToggleAccordion(index){
         console.log('handleToggleAccordion')
@@ -37,10 +39,12 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
             case 0:
                 if(filters.filter===1) setIsOpenbyDate1(!isOpenbyDate1)
                 if(filters.filter===2) setIsOpenbyNumber1(!isOpenbyNumber1)
+                if(filters.filter===3) setIsOpenbyPending1(!isOpenbyPending1)
                 break;
             case 1:
                 if(filters.filter===1) setIsOpenbyDate2(!isOpenbyDate2)
                 if(filters.filter===2) setIsOpenbyNumber2(!isOpenbyNumber2)
+                if(filters.filter===3) setIsOpenbyPending2(!isOpenbyPending2)
                 break;
             case 2:
                 if(filters.filter===1) setIsOpenbyDate3(!isOpenbyDate3)
@@ -81,10 +85,12 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
             case 0:
                 if(filters.filter===1) return isOpenbyDate1
                 if(filters.filter===2) return isOpenbyNumber1
+                if(filters.filter===3) return isOpenbyPending1
                 break;
             case 1:
                 if(filters.filter===1) return isOpenbyDate2
                 if(filters.filter===2) return isOpenbyNumber2
+                if(filters.filter===3) return isOpenbyPending2
                 break;
             case 2:
                 if(filters.filter===1) return isOpenbyDate3
