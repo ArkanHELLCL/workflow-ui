@@ -17,6 +17,8 @@ export function FiltersProvider({ children }) {
         hoy : new Date('2023-08-31 8:0:0'),
         minReq : null,
         maxReq : null,
+        maxStep : null,
+        minStep : null
     });
     
     return (

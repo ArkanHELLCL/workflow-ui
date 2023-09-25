@@ -33,6 +33,14 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
     const [isOpenbyPending1, setIsOpenbyPending1] = useState(true)
     const [isOpenbyPending2, setIsOpenbyPending2] = useState(true)
 
+    //ByStep(5)
+    const [isOpenbyStep1, setIsOpenbyStep1] = useState(true)
+    const [isOpenbyStep2, setIsOpenbyStep2] = useState(true)
+    const [isOpenbyStep3, setIsOpenbyStep3] = useState(true)
+    const [isOpenbyStep4, setIsOpenbyStep4] = useState(true)
+    const [isOpenbyStep5, setIsOpenbyStep5] = useState(true)
+
+
     function handleToggleAccordion(index){
         console.log('handleToggleAccordion')
         switch (index) {
@@ -40,23 +48,28 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
                 if(filters.filter===1) setIsOpenbyDate1(!isOpenbyDate1)
                 if(filters.filter===2) setIsOpenbyNumber1(!isOpenbyNumber1)
                 if(filters.filter===3) setIsOpenbyPending1(!isOpenbyPending1)
+                if(filters.filter===4) setIsOpenbyStep1(!isOpenbyStep1)
                 break;
             case 1:
                 if(filters.filter===1) setIsOpenbyDate2(!isOpenbyDate2)
                 if(filters.filter===2) setIsOpenbyNumber2(!isOpenbyNumber2)
                 if(filters.filter===3) setIsOpenbyPending2(!isOpenbyPending2)
+                if(filters.filter===4) setIsOpenbyStep2(!isOpenbyStep2)
                 break;
             case 2:
                 if(filters.filter===1) setIsOpenbyDate3(!isOpenbyDate3)
                 if(filters.filter===2) setIsOpenbyNumber3(!isOpenbyNumber3)
+                if(filters.filter===4) setIsOpenbyStep3(!isOpenbyStep3)
                 break;
             case 3:
                 if(filters.filter===1) setIsOpenbyDate4(!isOpenbyDate4)
                 if(filters.filter===2) setIsOpenbyNumber4(!isOpenbyNumber4)
+                if(filters.filter===4) setIsOpenbyStep4(!isOpenbyStep4)
                 break;
             case 4:
                 if(filters.filter===1) setIsOpenbyDate5(!isOpenbyDate5)
                 if(filters.filter===2) setIsOpenbyNumber5(!isOpenbyNumber5)
+                if(filters.filter===4) setIsOpenbyStep5(!isOpenbyStep5)
                 break;
             case 5:
                 setIsOpenbyDate6(!isOpenbyDate6)
@@ -86,23 +99,28 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
                 if(filters.filter===1) return isOpenbyDate1
                 if(filters.filter===2) return isOpenbyNumber1
                 if(filters.filter===3) return isOpenbyPending1
+                if(filters.filter===4) return isOpenbyStep1
                 break;
             case 1:
                 if(filters.filter===1) return isOpenbyDate2
                 if(filters.filter===2) return isOpenbyNumber2
                 if(filters.filter===3) return isOpenbyPending2
+                if(filters.filter===4) return isOpenbyStep2
                 break;
             case 2:
                 if(filters.filter===1) return isOpenbyDate3
                 if(filters.filter===2) return isOpenbyNumber3
+                if(filters.filter===4) return isOpenbyStep3
                 break;
             case 3:
                 if(filters.filter===1) return isOpenbyDate4
                 if(filters.filter===2) return isOpenbyNumber4
+                if(filters.filter===4) return isOpenbyStep4
                 break;
             case 4:
                 if(filters.filter===1) return isOpenbyDate5
                 if(filters.filter===2) return isOpenbyNumber5
+                if(filters.filter===4) return isOpenbyStep5
                 break;
             case 5:
                 return isOpenbyDate6

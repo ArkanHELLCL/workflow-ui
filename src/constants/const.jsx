@@ -5,6 +5,7 @@ export function Constants(){
     const mesesAbrev = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
     const maxAccByDate = 11
     const maxAccByNumber = 5
+    const maxAccByStep = 5
 
-    return {meses, dias, diasAbrev, mesesAbrev, maxAccByDate, maxAccByNumber}
+    return {meses, dias, diasAbrev, mesesAbrev, maxAccByDate, maxAccByNumber, maxAccByStep}
 }

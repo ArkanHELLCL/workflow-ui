@@ -24,6 +24,9 @@ export function ListaRequerimientos({ defaultTheme }){
         if(filters.filter===3) {
             item.pend ? req = filteredRequest.filter((req) => req.IdEditor === undefined) : req = filteredRequest.filter((req) => req.IdEditor !== undefined)
         }
+        if(filters.filter===4) {
+            req = filteredRequest.filter((req) => req.FLD_CodigoPaso >= item.desde && req.FLD_CodigoPaso <= item.hasta)
+        }
         return req
     }, [filters.filter, filters.hoy, filteredRequest])
 

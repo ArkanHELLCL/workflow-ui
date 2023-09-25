@@ -6,7 +6,7 @@ import { MenuFilters } from "./components/menuFilters.jsx";
 import { Flujos } from "./components/flujos.jsx";
 import { Footer } from "./components/footer.jsx";
 import { Menu } from "./components/Menu.jsx";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 function App() {    
   const defaultTheme = {
@@ -17,18 +17,28 @@ function App() {
 
   const [initialPos,   setInitialPos] = useState(null);
   const [initialSize, setInitialSize] = useState(null);
+
+  const [initialPos2,   setInitialPos2] = useState(null);
+  const [initialSize2, setInitialSize2] = useState(null);
   
-  const initial = (e) => {        
+  const initial = useCallback((e) => {        
         let resizable = document.getElementById('Resizable');
+        let resizable2 = document.getElementById('Resizable2');
         
         setInitialPos(e.clientX);
         setInitialSize(resizable.offsetWidth);
-  }
+
+        setInitialPos2(e.clientX);
+        setInitialSize2(resizable2.offsetWidth);
+  },[])
     
-  const resize = (e) => {
+  const resize = useCallback((e) => {
         let resizable = document.getElementById('Resizable');
         resizable.style.width = `${parseInt(initialSize) + parseInt(e.clientX - initialPos)}px`;
-  }
+
+        let resizable2 = document.getElementById('Resizable2');
+        resizable2.style.width = `${parseInt(initialSize2) + parseInt(e.clientX - initialPos2)}px`;
+  },[initialPos, initialSize, initialPos2, initialSize2])
 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden">
@@ -54,12 +64,12 @@ function App() {
                 </div>                
             </aside>                      
           </section>
-          <div className="w-2 h-screen hover:cursor-col-resize" 
+          <div className="w-2 lstreq hover:cursor-col-resize -ml-2 z-50" 
                   draggable   = 'true'
                   onDragStart = {initial} 
                   onDrag      = {resize}
                 ></div> 
-          <section>
+          <section id="Resizable2">
             <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full flex flex-columns overflow-auto pr-10 mt-[10px] transition-all`}>
                 {'No hay requerimiento seleccionado'}            
             </aside>          

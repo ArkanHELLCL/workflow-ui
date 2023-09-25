@@ -2,8 +2,7 @@ import { useContext } from 'react'
 import { FiltersContext } from '../context/filters.jsx'
 
 export function useFilters() {  
-    const { filters, setFilters } = useContext(FiltersContext)
-    //const { dias } = Constants()
+    const { filters, setFilters } = useContext(FiltersContext)    
 
     const filterRequest = (request) => {
         let filteredRequest = []
@@ -25,7 +24,6 @@ export function useFilters() {
         }
         if(filters.filter === 2){   //Numero del requerimiento
             filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.VRE_Id > b.VRE_Id ? -1 : 1) : filteredRequest.sort((a, b) => a.VRE_Id < b.VRE_Id ? -1 : 1)
-            //console.log('resultRequest', resultRequest)
             
             if(filters.orderDes){
                 filters.maxReq = filteredRequest[0].VRE_Id
@@ -35,8 +33,19 @@ export function useFilters() {
                 filters.maxReq = filteredRequest[filteredRequest.length - 1].VRE_Id
             }
         }
-        if(filters.filter === 3){   //Requerimientos atrazados            
+        if(filters.filter === 3){   //Requerimientos atrazados
             filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() > new Date(b.DRE_FechaEdit).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() < new Date(b.DRE_FechaEdit).getTime() ? -1 : 1)
+        }
+        if(filters.filter === 4){   //Paso actual
+            filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.FLD_CodigoPaso > b.FLD_CodigoPaso ? -1 : 1) : filteredRequest.sort((a, b) => a.FLD_CodigoPaso < b.FLD_CodigoPaso ? -1 : 1)            
+            
+            if(filters.orderDes){
+                filters.maxStep = filteredRequest[0].FLD_CodigoPaso
+                filters.minStep = filteredRequest[filteredRequest.length - 1].FLD_CodigoPaso
+            }else{
+                filters.minStep = filteredRequest[0].FLD_CodigoPaso
+                filters.maxStep = filteredRequest[filteredRequest.length - 1].FLD_CodigoPaso
+            }
         }
         
         console.log('useFilters')
