@@ -58,13 +58,17 @@
 }
 
 .lstreq{
-  height: calc(100vh - 115px);
-}
-
-.lstscroll{
   height: calc(100vh - 145px);
 }
 
+.lstscroll{
+  height: calc(100vh - 175px);
+}
+
 .lstmnu{
-  height: calc(100vh - 115px);;
+  height: calc(100vh - 145px);;
+}
+
+.lstlat{
+  height: calc(100vh - 53px);;
 }

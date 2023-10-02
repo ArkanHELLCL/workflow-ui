@@ -16,7 +16,7 @@ export const Container = styled('div')`
 
   justify-content: left;
   valign-items: flex-start; 
-  border-bottom: 1px solid #d4d4d4; 
+  border-bottom: 2px solid #d4d4d4; 
 `
 
 export const Frame = styled('div')`
