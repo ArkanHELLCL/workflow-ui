@@ -1,12 +1,20 @@
-import { Header } from "./components/Header.jsx"
+import { lazy, Suspense } from "react";
+//import { Header } from "./components/Header.jsx"
+const Header = lazy(() => import('./components/Header.jsx'))
 import { DetalleRequerimiento } from "./components/DetalleRequerimiento.jsx";
-import { ListaRequerimientos } from "./components/ListaRequerimientos.jsx";
+//import { ListaRequerimientos } from "./components/ListaRequerimientos.jsx";
+const ListaRequerimientos = lazy(() => import('./components/ListaRequerimientos.jsx'))
 import { MenuFilters } from "./components/menuFilters.jsx";
 import { Flujos } from "./components/flujos.jsx";
-import { Footer } from "./components/footer.jsx";
-import { Menu } from "./components/Menu.jsx";
-import { HeaderBar } from "./components/HeaderBar.jsx";
-import { SideBar } from "./components/SideBar.jsx";
+//import { Footer } from "./components/footer.jsx";
+//import { Menu } from "./components/Menu.jsx";
+const Footer = lazy(() => import('./components/footer.jsx'))
+const Menu = lazy(() => import('./components/Menu.jsx'))
+//import { HeaderBar } from "./components/HeaderBar.jsx";
+//import { SideBar } from "./components/SideBar.jsx";
+const HeaderBar = lazy(() => import('./components/HeaderBar.jsx'))
+const SideBar = lazy(() => import('./components/SideBar.jsx'))
+import Loading from "./components/Loading.jsx";
 
 function App() {    
   const defaultTheme = {
@@ -18,16 +26,24 @@ function App() {
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">
         <section className="lstlat w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644]">
-          <SideBar />
+          <Suspense fallback={<Loading />}>
+            <SideBar />
+          </Suspense>
         </section>
         <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0">
-          <HeaderBar />
-        </section>        
-        <Header />            
+          <Suspense fallback={<Loading />}>
+            <HeaderBar />
+          </Suspense>
+        </section>
+        <Suspense fallback={<Loading />}>
+          <Header />
+        </Suspense>
         <main className='w-full flex overflow-hidden ml-14'>
           <section className={`${defaultTheme.txtc} ' w-[650px] min-w-[400px] h-full flex flex-columns z-0 bg-[#faf9f8] dark:bg-transparent`} id="Resizable">
-            <aside className={`${defaultTheme.txtc} ' w-[250px] min-w-[150px] border-r overflow-auto  mt-3 z-0`}>              
+            <aside className={`${defaultTheme.txtc} ' w-[250px] min-w-[150px] border-r overflow-auto  mt-3 z-0`}> 
+              <Suspense fallback={<Loading />}>             
                 <Menu />  
+              </Suspense>
             </aside>
             <aside className={`${defaultTheme.txtc} ' w-[400px] min-w-[250px] max-w-[600px] lstreq border-r pb-6 flex flex-column flex-wrap mt-[10px] transition-all z-50 bg-[#ffffff] dark:bg-transparent`}>
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
@@ -40,7 +56,9 @@ function App() {
                 </div>
                 <div className="overflow-auto lstscroll">              
                   <DetalleRequerimiento defaultTheme={defaultTheme} />
-                  <ListaRequerimientos defaultTheme={defaultTheme} />
+                  <Suspense fallback={<Loading />}>
+                    <ListaRequerimientos defaultTheme={defaultTheme} />
+                  </Suspense>
                 </div>
             </aside>                      
           </section>          
@@ -50,7 +68,9 @@ function App() {
             </aside>          
           </section>
         </main>
-        <Footer />
+        <Suspense fallback={<Loading />}>
+          <Footer />
+        </Suspense>
       </div>    
   )
 }

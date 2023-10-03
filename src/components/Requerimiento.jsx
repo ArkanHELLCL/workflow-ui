@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { RequerimientoItem } from "./RequerimientoItem.jsx";
 
-export function Requerimiento({item, showDia}){
+export default function Requerimiento({item, showDia}){
     console.log('Requerimiento')
     return(
       <>

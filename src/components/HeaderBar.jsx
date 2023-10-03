@@ -15,7 +15,7 @@ function SearchBar() {
     )
 }
 
-export function HeaderBar() {
+export default function HeaderBar() {
     return(
         <div className="flex items-center h-full px-4 text-white">
             <ReloadIcon />

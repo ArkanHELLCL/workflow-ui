@@ -5,7 +5,7 @@ import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
 import * as menu from "../mocks/menu.json"
 
-export function Footer() {
+export default function Footer() {
     const [clickPorVencer, setClickPorVencer] = useState(false);
     const [clickVencidos, setClickVencidos] = useState(false);
     const [clickSinTomar, setClickSinTomar] = useState(false);

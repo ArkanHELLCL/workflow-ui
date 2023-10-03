@@ -5,7 +5,7 @@ import { useRequest } from '../hooks/useRequest.jsx';
 import { useSpring, animated } from "@react-spring/web";
 import { DocIcon, InBoxIcon, TableIcon } from "./icons";
 
-export function SideBar(){
+export default function SideBar(){
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
     const [postitionTo, setPositionTo] = useState(0)

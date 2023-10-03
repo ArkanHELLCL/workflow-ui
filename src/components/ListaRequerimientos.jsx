@@ -7,7 +7,7 @@ import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
 import { Accordions } from '../components/accordions.jsx'
 import { AccordionItem } from "../components/AccordioItem.jsx";
 
-export function ListaRequerimientos({ defaultTheme }){
+export default function ListaRequerimientos({ defaultTheme }){
     const { filters, filterRequest } = useFilters()  
     const { filteredRequest } = filterRequest(bandejas)
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)

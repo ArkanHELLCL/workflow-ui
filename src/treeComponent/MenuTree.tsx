@@ -4,8 +4,7 @@ import { useRequest } from '../hooks/useRequest.jsx';
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
 import { Container, Title, Frame, Content, toggle } from './styles'
-import * as Icons from './icons'
-import { colorStyle } from 'styled-system';
+import { Icon } from '../components/icons.jsx'
 
 function usePrevious<T>(value: T) {
   const ref = useRef<T>()
@@ -36,7 +35,7 @@ const Tree = React.memo<
     },
   })
 
-  function handleOnClickIcon() {    
+  const handleOnClickIcon = () => {    
     setOpen((prev) => !prev)   
   }
 
@@ -44,16 +43,18 @@ const Tree = React.memo<
     setFilters(prevState => ({
         ...prevState,         
         itemIdSelected: id        
-    }))
-    setOpen((prev) => !prev)
+    }))    
     setRequest(null)
   }
 
   // @ts-ignore
-  const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
+  //const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
   return (
-    <Frame className={`dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100`}>
-        <Icon  onClick={() => handleOnClickIcon()}/>
+    <Frame className={`dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100`}>{
+      children ? 
+          <span onClick={(handleOnClickIcon)}><Icon open={isOpen} pos="relative inline top-[2px]" /></span>
+        : null
+      }        
         <Title style={style} className={`${children ? 'cursor-pointer':'cursor-pointer'} ${filters.itemIdSelected===id ? 'text-sky-600 hover:!text-sky-600 font-semibold' : 'hover:!text-sky-400'}`} onClick={()=>handleClickItem(id)} key={id} id={id}>{name}</Title>      
       <Content
         style={{
