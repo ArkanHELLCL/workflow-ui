@@ -142,7 +142,7 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
     }
   
     return (
-      <Accordion open={isOpenAccordion(index)} icon={<Icon open={isOpenAccordion(index)} pos="top-[8px] left-2" />} className="z-0">
+      <Accordion open={isOpenAccordion(index)} icon={<Icon open={isOpenAccordion(index)} pos="absolute top-[8px] left-2" />} className="z-0">
         <AccordionHeader onClick={()=>handleToggleAccordion(index)} className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate dark:bg-[#444444] bg-[#f0f0f0] py-1 hover:dark:bg-[#666666] hover:bg-[#e6f2fa] overflow-hidden`}>
           {item.title.charAt(0).toUpperCase() + item.title.slice(1) + ' (' + req.length + ')'}
         </AccordionHeader>

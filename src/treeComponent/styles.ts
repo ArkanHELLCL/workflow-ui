@@ -21,7 +21,7 @@ export const Container = styled('div')`
 
 export const Frame = styled('div')`
   position: relative;
-  padding: 4px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow-x: hidden;

@@ -29,8 +29,8 @@ function asignarIconoPorTipo(tipo) {
             tipo.includes('Compras') ? <BagIcon />  :
             tipo.includes('Pagos') ? <BillIcon />  :
             tipo.includes('Boletas') ? <PayIcon />  :
-            tipo.includes('Bandejas') ? <InBoxIcon /> : 
-        <InBoxIcon />    
+            tipo.includes('Bandejas') ? <InBoxIcon styles="w-4 h-4 mr-2.5" strokeWidth="1.5"/> : 
+        <InBoxIcon styles="w-4 h-4 mr-2.5"  strokeWidth="1.5" />
     
 }
 

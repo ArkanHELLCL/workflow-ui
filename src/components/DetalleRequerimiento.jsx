@@ -14,7 +14,7 @@ export function DetalleRequerimiento({defaultTheme}){
     }
 
     return(        
-        <Accordion open={isOpen} icon={<Icon open={isOpen} pos="top-[8px] left-2" />} className="sticky top-0 z-10 dark:bg-[#323130] bg-stone-100 border-b dark:border-[#353535] border-stone-300 max-h-[40vh] overflow-auto">
+        <Accordion open={isOpen} icon={<Icon open={isOpen} pos="absolute top-[8px] left-2" />} className="sticky top-0 z-10 dark:bg-[#323130] bg-stone-100 border-b dark:border-[#353535] border-stone-300 max-h-[40vh] overflow-auto">
             <AccordionHeader
             onClick={handleOpenDetail} 
             className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate py-1 dark:bg-[#444444] hover:dark:bg-[#666666] hover:bg-[#e6f2fa] bg-[#f0f0f0] overflow-hidden`}>
