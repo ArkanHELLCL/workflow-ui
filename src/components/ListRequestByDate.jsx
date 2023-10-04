@@ -4,8 +4,7 @@ export function ListRequestByDate(hoy, dias, maxAccordions){
     let title=''
     let anterior    
     let diasDesde = 0
-    let diasHasta = 0
-    console.log('bydListRequestByDateate')
+    let diasHasta = 0    
     //Creamos los accordions para los requerimientos
     for (let index = 1; index <= maxAccordions; index++) {
         if(index===1){

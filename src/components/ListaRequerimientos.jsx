@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback, useRef, useEffect, Suspense } from "react";
 import { useFilters } from '../hooks/useFilters.jsx';
 
 import { bandejas } from "../mocks/requerimientos.json";
 import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
 import { Accordions } from '../components/accordions.jsx'
 import { AccordionItem } from "../components/AccordioItem.jsx";
+import Loading from "./Loading.jsx";
 
 export default function ListaRequerimientos({ defaultTheme }){
     const { filters, filterRequest } = useFilters()  
@@ -39,7 +40,9 @@ export default function ListaRequerimientos({ defaultTheme }){
     return (
         <>
           {requerimientoAccordion.map((item, index) => (
-            <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} index={index}/>
+            <Suspense key={index} fallback={<Loading />}>
+                <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} index={index}/>
+            </Suspense>
           ))}
         </>
       )

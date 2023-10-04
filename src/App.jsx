@@ -1,17 +1,11 @@
 import { lazy, Suspense } from "react";
-//import { Header } from "./components/Header.jsx"
 const Header = lazy(() => import('./components/Header.jsx'))
 import { DetalleRequerimiento } from "./components/DetalleRequerimiento.jsx";
-//import { ListaRequerimientos } from "./components/ListaRequerimientos.jsx";
-const ListaRequerimientos = lazy(() => import('./components/ListaRequerimientos.jsx'))
+import  ListaRequerimientos  from "./components/ListaRequerimientos.jsx";
 import { MenuFilters } from "./components/menuFilters.jsx";
 import { Flujos } from "./components/flujos.jsx";
-//import { Footer } from "./components/footer.jsx";
-//import { Menu } from "./components/Menu.jsx";
 const Footer = lazy(() => import('./components/footer.jsx'))
 const Menu = lazy(() => import('./components/Menu.jsx'))
-//import { HeaderBar } from "./components/HeaderBar.jsx";
-//import { SideBar } from "./components/SideBar.jsx";
 const HeaderBar = lazy(() => import('./components/HeaderBar.jsx'))
 const SideBar = lazy(() => import('./components/SideBar.jsx'))
 import Loading from "./components/Loading.jsx";

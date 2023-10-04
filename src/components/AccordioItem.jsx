@@ -5,6 +5,7 @@ import { Icon } from "./icons.jsx";
 //import { Requerimiento } from "./Requerimiento.jsx";
 const Requerimiento = lazy(() => import('./Requerimiento.jsx'))
 import { useFilters } from '../hooks/useFilters.jsx';
+import Loading from './Loading.jsx';
 
 export const AccordionItem = memo(function AccordionItem({ item, showDia, defaultTheme, reqResult, index }) {
     const req = useMemo(() => reqResult(item), [item, reqResult])
@@ -42,8 +43,7 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
     const [isOpenbyStep5, setIsOpenbyStep5] = useState(true)
 
 
-    function handleToggleAccordion(index){
-        console.log('handleToggleAccordion')
+    function handleToggleAccordion(index){        
         switch (index) {
             case 0:
                 if(filters.filter===1) setIsOpenbyDate1(!isOpenbyDate1)
@@ -93,8 +93,7 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
         }
     }
 
-    function isOpenAccordion(index){
-        console.log('isOpenAccordion')
+    function isOpenAccordion(index){        
         switch (index) {
             case 0:
                 if(filters.filter===1) return isOpenbyDate1
@@ -142,18 +141,16 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
       return null
     }
   
-    return (
-        <Suspense fallback={<div>Loading...</div>}>
-      <Accordion open={isOpenAccordion(index)} icon={<Icon open={isOpenAccordion(index)} pos="absolute top-[8px] left-2" />} className="z-0">
-        <AccordionHeader onClick={()=>handleToggleAccordion(index)} className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate dark:bg-[#444444] bg-[#f0f0f0] py-1 hover:dark:bg-[#666666] hover:bg-[#e6f2fa] overflow-hidden`}>
-          {item.title.charAt(0).toUpperCase() + item.title.slice(1) + ' (' + req.length + ')'}
-        </AccordionHeader>
-        <AccordionBody className="py-0">
-            {
-                isOpenAccordion(index) ? <Requerimiento item={req} showDia={showDia} /> : <span>Sin Informacion</span>
-            }
-        </AccordionBody>
-      </Accordion>        
-      </Suspense>
+    return (        
+        <Accordion open={isOpenAccordion(index)} icon={<Icon open={isOpenAccordion(index)} pos="absolute top-[8px] left-2" />} className="z-0">
+            <AccordionHeader onClick={()=>handleToggleAccordion(index)} className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate dark:bg-[#444444] bg-[#f0f0f0] py-1 hover:dark:bg-[#666666] hover:bg-[#e6f2fa] overflow-hidden`}>
+                {item.title.charAt(0).toUpperCase() + item.title.slice(1) + ' (' + req.length + ')'}
+            </AccordionHeader>
+            <AccordionBody className="py-0">
+                {
+                    isOpenAccordion(index) ? <Suspense fallback={<Loading />}><Requerimiento item={req} showDia={showDia} /></Suspense> : <span>Sin Informacion</span>
+                }
+            </AccordionBody>
+        </Accordion>         
     )
 })

@@ -9,7 +9,9 @@ export const RequerimientoItem = ({ req, showDia }) => {
     console.log('RequerimientoItem')
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
-  
+
+    const memoizedReq = useMemo(() => req, [req])
+    
     const diaName = useMemo(() => {
       const newDate = new Date(req.DRE_FechaEdit)
       return dias[newDate.getDay()]
@@ -32,12 +34,16 @@ export const RequerimientoItem = ({ req, showDia }) => {
       // handle archive click
     }, [])
   
-    const handleRequerimiento = useCallback((req) => {
+    /*const handleRequerimiento = useCallback((req) => {
       setRequest(req)
-    }, [req])
+    }, [req])*/
+
+    const handleRequerimiento = useCallback(() => {
+      setRequest(memoizedReq)
+    }, [memoizedReq, setRequest])
   
     return (
-      <article className={`${isReqSelected ? 'reqselected' : 'requnselected'} reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative`} key={req.DRE_Id} onClick={() => handleRequerimiento(req)}>
+      <article className={`${isReqSelected ? 'reqselected' : 'requnselected'} reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative`} key={req.DRE_Id} onClick={() => handleRequerimiento()}>
         <div className="w-3/4">
           <p className="dark:text-stone-200 text-stone-500 truncate text-lg font-normal">{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
           <p className={`${req.IdEditor ? 'dark:text-stone-200 text-stone-500' : 'text-sky-600 font-bold'} truncate text-xs font-normal`}>{req.REQ_Descripcion}</p>

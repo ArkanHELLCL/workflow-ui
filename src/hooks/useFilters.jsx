@@ -46,9 +46,7 @@ export function useFilters() {
                 filters.minStep = filteredRequest[0].FLD_CodigoPaso
                 filters.maxStep = filteredRequest[filteredRequest.length - 1].FLD_CodigoPaso
             }
-        }
-        
-        console.log('useFilters')
+        }            
         return {filteredRequest}
     }
     return {filters, filterRequest, setFilters}

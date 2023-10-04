@@ -82,9 +82,8 @@ export function MenuFilters({defaultTheme}) {
             return 'Paso más alto en la parte inferior'
         }
         return 'Sin orden'
-    }    
-
-    //console.log(filters.flujo, flujos.filter((item) => item.id === filters.flujo)[0].orderby)
+    }
+        
     const { ref } = ClickAway(sectionFilter);
     const MenuFilter = () => {        
         return (            
