@@ -21,15 +21,15 @@ function SearchBar() {
     )
 }
 
-function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
+function UserBar({menuAppear, reference, chkUser, setOpen, open}) {
     return(       
-        <div className={`${openUser ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `}>
+        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `} ref={reference}>
             <label htmlFor={chkUser}>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
                 <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></div>
             </label>                              
-            <input type="checkbox" id={chkUser} className="hidden" onClick={() => setUser(!openUser)} />
-            <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`} ref={reference}>                
+            <input type="checkbox" id={chkUser} className="hidden" onClick={() => setOpen(!open)} />
+            <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`}>                
                 <div className="h-full w-full dark:bg-[#262626] bg-[#ffffff] dark:border-[#737373] border-[#949494] border">
                     <div className="w-full flex justify-end">
                         <span className="flex border-[2px] dark:border-white border-black p-4 w-fit dark:text-white text-black text-xs hover:cursor-pointer dark:hover:bg-[#363636] hover:bg-[#d2d2d2]">Cerrar sesión</span>
@@ -38,7 +38,7 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
                         <div className={`rounded-full w-[100px] h-[100px]`}>
                             <img src={user.USR_Photo} className={`rounded-full h-full w-full`} />
                         </div>
-                        <div className="flex flex-col h-fit">
+                        <div className="flex flex-col h-fit max-w-[260px]">
                             <span className="text-xl font-semibold truncate dark:text-white text-[#262626]">{user.USR_Nombre}</span>
                             <span className="text-xs truncate pb-2 dark:text-white text-[#262626]">{user.USR_Mail}</span>
                             <span className="text-xs truncate text-sky-600">{user.PER_Nombre}</span>
@@ -61,15 +61,19 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
 }
 
 export default function HeaderBar() {
-    const [openUser, setUser] = useState(false);
+    const [open, setOpen] = useState(false);
     let width = 260;
     const menuAppear = useSpring({        
         opacity:1,
-        height: `${openUser ? width : 0}` + 'px'        
+        height: `${open ? width : 0}` + 'px'        
     });        
-    const chkUser = useId();
-    const { ref } = ClickAway(setUser);
+    const chkUser = useId();    
 
+    const HandleOpenUser = () => {
+        setOpen(!open);        
+    }
+
+    const { ref } = ClickAway(setOpen);
     return(
         <div className="flex items-center h-full px-4 text-white relative">
             <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
@@ -79,7 +83,7 @@ export default function HeaderBar() {
                 <HelpIcon />
             </span>
             <SearchBar />
-            <UserBar menuAppear={menuAppear} reference={ref} chkUser={chkUser} setUser={setUser} openUser={openUser}/>
+            <UserBar menuAppear={menuAppear} reference={ref} chkUser={chkUser} setOpen={HandleOpenUser} open={open}/>
         </div>
     )
 }

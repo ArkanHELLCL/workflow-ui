@@ -17,9 +17,7 @@ export function MenuFilters({defaultTheme}) {
 
     filters.flujo === 0 ?  width =  340: width = 365;
 
-    const menuAppear = useSpring({
-        //transform: openFilter ? "translate3D(0,0,0)" : "translate3D(0,-40px,0)",
-        //opacity: openFilter ? 1 : 0,        
+    const menuAppear = useSpring({        
         opacity:1,
         height: `${openFilter ? width : 0}` + 'px',        
     });
