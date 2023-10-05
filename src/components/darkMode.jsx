@@ -2,8 +2,7 @@ import { useState } from 'react';
 
 function storageEvent(setIsOn){
   window.addEventListener('storage', (event) => {
-      if (event.key === 'DarkMode') {            
-          //return renderReadingList(JSON.parse(event.newValue))
+      if (event.key === 'DarkMode') {          
           setIsOn(event.newValue)
           event.newValue ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
       }
