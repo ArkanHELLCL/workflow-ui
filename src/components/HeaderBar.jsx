@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { HelpIcon, InBoxIcon, ReloadIcon, SearcIcon } from "./icons";
+import { HelpIcon, MailIcon, ReloadIcon, SearcIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from "../hooks/ClickAway.jsx";
@@ -26,7 +26,7 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
         <div className={`${openUser ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `}>
             <label htmlFor={chkUser}>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
-                <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-sky-600 bg-sky-300 rounded-full top-[1px] right-1"></div>
+                <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></div>
             </label>                              
             <input type="checkbox" id={chkUser} className="hidden" onClick={() => setUser(!openUser)} />
             <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`} ref={reference}>                
@@ -48,8 +48,8 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
                     <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] hover:bg-[#d2d2d2] bg-[#f3f3f3] border-t border-[#d9d9d9] hover:dark:bg-[#505050] hover:cursor-pointer">
                         <div className="flex items-center gap-3">
                             <span className="relative text-[#313131] dark:text-white">
-                                <InBoxIcon styles="w-10 h-10" strokeWidth=".75"/>                                
-                                <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-sky-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</div>                               
+                                <MailIcon />
+                                <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</div>                               
                             </span>                            
                             <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
                         </div>                        
@@ -62,7 +62,7 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
 
 export default function HeaderBar() {
     const [openUser, setUser] = useState(false);
-    let width = 259;
+    let width = 260;
     const menuAppear = useSpring({        
         opacity:1,
         height: `${openUser ? width : 0}` + 'px'        
