@@ -1,8 +1,9 @@
-import { ReloadIcon, SearcIcon } from "./icons";
+import { HelpIcon, PowerIcon, ReloadIcon, SearcIcon } from "./icons";
+import { user } from '../mocks/usuario.json'
 
 function SearchBar() {
     return(
-        <div className="h-[24px] flex ml-[270px]">
+        <div className="h-[24px] flex absolute left-[305px]">
             <form className="flex relative">
                 <span className="absolute top-1 left-4 dark:text-white text-sky-600">
                     <SearcIcon />
@@ -15,11 +16,30 @@ function SearchBar() {
     )
 }
 
+function UserBar() {
+    return(
+        <div className="h-full absolute right-5 flex flex-row align-middle">            
+            <div className="flex items-center dark:hover:bg-[#363636] p-3 hover:bg-[#005a9e]">
+                <span><img src={user.USR_Photo} className=" rounded-full w-[25px] h-[25px]"/></span>            
+            </div>
+        </div>
+    )
+}
+
 export default function HeaderBar() {
     return(
-        <div className="flex items-center h-full px-4 text-white">
-            <ReloadIcon />
+        <div className="flex items-center h-full px-4 text-white relative">
+            <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e]">
+                <ReloadIcon />
+                </span>
+            <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e]">
+                <HelpIcon />
+            </span>
+            <span className="dark:text-red-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e]">
+                <PowerIcon />
+            </span>
             <SearchBar />
+            <UserBar />
         </div>
     )
 }

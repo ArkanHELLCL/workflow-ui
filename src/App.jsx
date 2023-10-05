@@ -10,12 +10,12 @@ const HeaderBar = lazy(() => import('./components/HeaderBar.jsx'))
 const SideBar = lazy(() => import('./components/SideBar.jsx'))
 import Loading from "./components/Loading.jsx";
 
-function App() {    
+function App() {
   const defaultTheme = {
     bgcp : "dark:bg-stone-800 bg-stone-100",
     txtc : "dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4]",
     bgct : "dark:bg-stone-600 bg-stone-300"
-  }  
+  }
 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">

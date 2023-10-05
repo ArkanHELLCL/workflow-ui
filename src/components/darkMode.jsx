@@ -1,11 +1,29 @@
 import { useState } from 'react';
 
+function storageEvent(setIsOn){
+  window.addEventListener('storage', (event) => {
+      if (event.key === 'DarkMode') {            
+          //return renderReadingList(JSON.parse(event.newValue))
+          setIsOn(event.newValue)
+          event.newValue ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
+      }
+  })
+}
+function initialState(darkModeStorage){
+  darkModeStorage ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
+}
+const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;
+
+initialState(darkModeStorage)
+
 export function DarkModeToggle() {
-    const [isOn, setIsOn] = useState(true);
-  
+    const [isOn, setIsOn] = useState(darkModeStorage);
+    storageEvent(setIsOn)
+
     function toggle() {
       setIsOn(!isOn);
       document.getElementsByTagName('html')[0].classList.toggle('dark')
+      window.localStorage.setItem('DarkMode', !isOn);
     }
   
     function handleClick() {      
