@@ -26,12 +26,13 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
         <div className={`${openUser ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `}>
             <label htmlFor={chkUser}>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
+                <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white bg-sky-600 rounded-full top-0 right-1"></div>
             </label>                              
             <input type="checkbox" id={chkUser} className="hidden" onClick={() => setUser(!openUser)} />
             <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`} ref={reference}>                
                 <div className="h-full w-full dark:bg-[#262626] bg-[#ffffff] dark:border-[#737373] border-[#949494] border">
                     <div className="w-full flex justify-end">
-                        <span className="flex border-[2px] dark:border-white border-black p-4 w-fit dark:text-white text-black text-xs">Cerrar sesión</span>
+                        <span className="flex border-[2px] dark:border-white border-black p-4 w-fit dark:text-white text-black text-xs hover:cursor-pointer dark:hover:bg-[#363636] hover:bg-[#d2d2d2]">Cerrar sesión</span>
                     </div>
                     <div className="flex justify-center items-center gap-5 h-fit p-4">
                         <div className={`rounded-full w-[100px] h-[100px]`}>
@@ -44,11 +45,11 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
                             <span className="text-xs truncate text-sky-600">{user.DEP_Descripcion}</span>
                         </div>
                     </div>
-                    <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] bg-[#f3f3f3] border-t">
+                    <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] hover:bg-[#d2d2d2] bg-[#f3f3f3] border-t border-[#d9d9d9] hover:dark:bg-[#505050] hover:cursor-pointer">
                         <div className="flex items-center gap-3">
                             <span className="relative text-[#313131] dark:text-white">
                                 <InBoxIcon styles="w-10 h-10" strokeWidth=".75"/>                                
-                                <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-1.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 absolute top-[-10px] right-[-20px]">5</span>                                
+                                <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-1.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 absolute top-[-10px] right-[-20px]">{user.USR_MsgSinLeer}</span>                                
                             </span>                            
                             <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
                         </div>                        
@@ -61,7 +62,7 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
 
 export default function HeaderBar() {
     const [openUser, setUser] = useState(false);
-    let width = 260;
+    let width = 259;
     const menuAppear = useSpring({        
         opacity:1,
         height: `${openUser ? width : 0}` + 'px'        
