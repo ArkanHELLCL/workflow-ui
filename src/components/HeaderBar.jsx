@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { HelpIcon, InBoxIcon, PowerIcon, ReloadIcon, SearcIcon } from "./icons";
+import { HelpIcon, InBoxIcon, ReloadIcon, SearcIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from "../hooks/ClickAway.jsx";
@@ -44,7 +44,7 @@ function UserBar({menuAppear, reference, chkUser, setUser, openUser}) {
                             <span className="text-xs truncate text-sky-600">{user.DEP_Descripcion}</span>
                         </div>
                     </div>
-                    <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] bg-[#f3f3f3] usrmsg">
+                    <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] bg-[#f3f3f3] border-t">
                         <div className="flex items-center gap-3">
                             <span className="relative text-[#313131] dark:text-white">
                                 <InBoxIcon styles="w-10 h-10" strokeWidth=".75"/>                                
@@ -64,8 +64,7 @@ export default function HeaderBar() {
     let width = 260;
     const menuAppear = useSpring({        
         opacity:1,
-        height: `${openUser ? width : 0}` + 'px', 
-        //border: `${openUser ? '1px solid inherit' : '0px solid'}`
+        height: `${openUser ? width : 0}` + 'px'        
     });        
     const chkUser = useId();
     const { ref } = ClickAway(setUser);
@@ -77,9 +76,6 @@ export default function HeaderBar() {
                 </span>
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
                 <HelpIcon />
-            </span>
-            <span className="dark:text-red-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
-                <PowerIcon />
             </span>
             <SearchBar />
             <UserBar menuAppear={menuAppear} reference={ref} chkUser={chkUser} setUser={setUser} openUser={openUser}/>

@@ -29,8 +29,7 @@ function LstFlujos(){
 
     const menuAppear = useSpring({             
         opacity:1,
-        height: `${openFlujos ? 115 : 0}` + 'px',
-        //border: `${openFlujos ? '1px solid #737373' : '0px solid #737373'}`,
+        height: `${openFlujos ? 115 : 0}` + 'px'        
     });
 
     const { ref } = ClickAway(()=>setOpenFlujos(false));
@@ -47,18 +46,16 @@ function LstFlujos(){
                         </span>
                     </label>                         
                     <input type="checkbox" id={chkFlujos} className="hidden" onClick={() => setOpenFlujos(!openFlujos)} />
-                </div>
-                <ul className={`${openFlujos ? 'border' : ''} absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[31px] px-[1px] dark:border-[#484644] left-[45px] border-[#e1dfdd] h-fit overflow-hidden`}>
-                    <animated.div style={menuAppear} >
-                        <ul className="py-2">                    
-                            {
-                                flujos.map((item) =>
-                                    <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} onClick={() => handleSetFlujos(item.id)}><span className={`${filters.flujo===item.id ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{item.description}</li>
-                                )
-                            }                        
-                        </ul>
-                    </animated.div>
-                </ul>
+                </div>                
+                <animated.div style={menuAppear} className={`absolute z-40 top-[31px] px-[1px]  left-[45px]  h-fit overflow-hidden`}>
+                    <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                    
+                        {
+                            flujos.map((item) =>
+                                <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} onClick={() => handleSetFlujos(item.id)}><span className={`${filters.flujo===item.id ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{item.description}</li>
+                            )
+                        }                        
+                    </ul>
+                </animated.div>                
             </div>
             )
 }

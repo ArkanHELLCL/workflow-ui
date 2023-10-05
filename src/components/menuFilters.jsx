@@ -86,11 +86,11 @@ export function MenuFilters({defaultTheme}) {
         
     const { ref } = ClickAway(sectionFilter);
     const MenuFilter = () => {        
-        return (            
-            <ul className={`${openFilter ? 'border' : ''} absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[25px] px-[1px] py-0  dark:border-[#484644] right-8 border-[#e1dfdd] w-72 h-fit overflow-hidden`}>                
-                <animated.div style={menuAppear}>
+        return (                   
+            <animated.div style={menuAppear} className={` absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 right-8 w-72 h-fit overflow-hidden`}>
+                <div className="h-full border dark:border-[#8a8886] border-[#e1dfdd]">
                     <ul className="border-b pb-2 dark:border-[#484644] border-[#e1dfdd]">
-                        <li className="px-6 py-2 text-xs font-semibold truncate">Flitrar</li>
+                        <li className="px-6 py-2 text-xs font-semibold truncate">Filtrar</li>
                             <ul>                                
                                 {
                                     flujos.map((item) =>
@@ -117,8 +117,8 @@ export function MenuFilters({defaultTheme}) {
                                 <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={'o2'} onClick={() => handleSetOrder(false)}><span className={`${!filters.orderDes ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{desOrder(false)}</li>                                
                             </ul>
                     </ul>
-                </animated.div>                
-            </ul>            
+                </div>
+            </animated.div>         
         )
     }
     
