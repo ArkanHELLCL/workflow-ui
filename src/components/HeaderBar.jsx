@@ -10,11 +10,11 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     const menuSearch = useId();
     const [openMenuSearch, setopenMenuSearch] = useState(false);
     const HandleOnBlur = (e) => {
-        e.target.placeholder = "Buscar"        
-        setopenMenuSearch(false)
-        //setOpenSearch(false)
+        e.target.placeholder = "Buscar"
+        e.target.value=""
+        setopenMenuSearch(false)        
     }
-
+    const inputId = useId();
     let widthMenuSearch=0;
     let nameItemSelected = null;
 
@@ -57,6 +57,20 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
             setopenMenuSearch(false)
         }
     }, [openSearch])
+
+    function QuitarFoco(e){
+        if (e.key === "Escape") {
+            const elemento = document.getElementById(inputId);
+            elemento.blur();
+        }        
+    }
+
+    useEffect(() => {
+        document.addEventListener("keydown", QuitarFoco, true);
+        return () => {
+            document.removeEventListener("keydown", QuitarFoco, true);            
+        };
+    });  
     
     return(
         <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
@@ -89,7 +103,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
                 onFocus={(e) => e.target.placeholder = ""}
                 onBlur={(e) => HandleOnBlur(e)} 
                 onClick={() => setOpenSearch(true)}
-                />
+                id={inputId}/>
             </form>
         </div>
     )
