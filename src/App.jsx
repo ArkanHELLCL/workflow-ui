@@ -16,7 +16,7 @@ function App() {
     txtc : "dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4]",
     bgct : "dark:bg-stone-600 bg-stone-300"
   }
-
+  //HeaderBar blur 252423 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">
         <section className="lstlat w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644]">
@@ -24,7 +24,7 @@ function App() {
             <SideBar />
           </Suspense>
         </section>
-        <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0">
+        <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0 z-50">
           <Suspense fallback={<Loading />}>
             <HeaderBar />
           </Suspense>

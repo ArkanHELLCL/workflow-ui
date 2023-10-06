@@ -1,27 +1,101 @@
 /* eslint-disable react/prop-types */
-import { HelpIcon, MailIcon, ReloadIcon, SearcIcon } from "./icons";
+import { CheckIcon, HelpIcon, Icon, MailIcon, ReloadIcon, SearchIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from "../hooks/ClickAway.jsx";
-import { useState } from "react";
-import { useId } from "react";
+import { useEffect, useId, useState } from "react";
+import { useFilters } from "../hooks/useFilters.jsx";
 
-function SearchBar() {
+function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {    
+    const menuSearch = useId();
+    const [openMenuSearch, setopenMenuSearch] = useState(false);
+    const HandleOnBlur = (e) => {
+        e.target.placeholder = "Buscar"        
+        setopenMenuSearch(false)
+        //setOpenSearch(false)
+    }
+
+    let widthMenuSearch=0;
+    let nameItemSelected = null;
+
+    //const { ref:refMenuSearch } = ClickAway(setopenMenuSearch);
+    const { ref:refSearch } = ClickAway(setOpenSearch);
+
+    if(filterSearch === 1){
+        widthMenuSearch = 68;
+        nameItemSelected = "Buzón actual"
+    }
+    if(filterSearch === 2){
+        widthMenuSearch = 96;
+        nameItemSelected = "Todos los buzones"
+    }
+
+    const HandleFilterSearch = (id) => {
+        setFilters(prevState => ({
+            ...prevState,                     
+            filterSearch: id
+        }))
+        setopenMenuSearch(false)
+    }
+    const referenceWidth = (widthMenuSearch + 12 + 20) - 1; //+ pl + pr
+    const searchAnimation = useSpring({
+        transform: `translateX(-${referenceWidth}px)`,
+        from: { transform: "translateX(0px)" },
+        config: { duration: 200 },
+        reverse: !openSearch,
+        reset: !openSearch,
+    });
+    const width = 70;
+
+    const menuAppear = useSpring({        
+        opacity:1,
+        height: `${openMenuSearch ? width : 0}` + 'px',        
+    });
+
+    useEffect(() => {        
+        if(!openSearch) {
+            setopenMenuSearch(false)
+        }
+    }, [openSearch])
+    
     return(
-        <div className="h-[24px] flex absolute left-[305px]">
+        <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
+            openSearch &&            
+                <animated.div
+                    className={`bg-[#363636] h-full absolute w-[${widthMenuSearch}px]`}
+                    style={searchAnimation} 
+                    >
+                        <span className={`pl-3 pr-5 relative text-xs w-[${widthMenuSearch}px]`}>
+                            {nameItemSelected}
+                            <span  onClick={() => setopenMenuSearch(!openMenuSearch)}>
+                            <Icon open={true} pos="absolute top-[3px] right-1"/>
+                            </span>
+                        </span>
+                </animated.div>
+            }
+            <animated.div style={menuAppear} className={`absolute dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 w-50 h-fit overflow-hidden z-50 ${filterSearch === 1 ? '-left-[100px]' : '-left-[128px]'}`}>
+                <div className="h-full border dark:border-[#8a8886] border-[#e1dfdd]">
+                    <ul className="py-2" >
+                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-1" onClick={() => HandleFilterSearch(2)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 2 ? <CheckIcon /> : null}</span>Todos los buzones</li>
+                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-2" onClick={() => HandleFilterSearch(1)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 1 ? <CheckIcon /> : null}</span>Buzón actual</li>
+                    </ul>
+                </div>
+            </animated.div> 
             <form className="flex relative">
-                <span className="absolute top-1 left-4 dark:text-white text-sky-600">
-                    <SearcIcon />
+                <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
+                    <SearchIcon />
                 </span>
                 <input type="text" className="w-[400px] h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" placeholder="Buscar" 
-                onFocus={(e) => e.target.placeholder = ""} 
-                onBlur={(e) => e.target.placeholder = "Buscar"} />                
+                onFocus={(e) => e.target.placeholder = ""}
+                onBlur={(e) => HandleOnBlur(e)} 
+                onClick={() => setOpenSearch(true)}
+                />
             </form>
         </div>
     )
 }
 
-function UserBar({menuAppear, reference, chkUser, setOpen, open}) {
+function UserBar({menuAppear, reference, chkUser, setOpen, open}) {    
     return(       
         <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `} ref={reference}>
             <label htmlFor={chkUser}>
@@ -62,6 +136,9 @@ function UserBar({menuAppear, reference, chkUser, setOpen, open}) {
 
 export default function HeaderBar() {
     const [open, setOpen] = useState(false);
+    const [openSearch, setOpenSearch] = useState(false);
+    const { filters, setFilters } = useFilters();
+
     let width = 260;
     const menuAppear = useSpring({        
         opacity:1,
@@ -73,7 +150,7 @@ export default function HeaderBar() {
         setOpen(!open);        
     }
 
-    const { ref } = ClickAway(setOpen);
+    const { ref:refUser } = ClickAway(setOpen);
     return(
         <div className="flex items-center h-full px-4 text-white relative">
             <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
@@ -82,8 +159,8 @@ export default function HeaderBar() {
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
                 <HelpIcon />
             </span>
-            <SearchBar />
-            <UserBar menuAppear={menuAppear} reference={ref} chkUser={chkUser} setOpen={HandleOpenUser} open={open}/>
+            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>
+            <UserBar menuAppear={menuAppear} reference={refUser} chkUser={chkUser} setOpen={HandleOpenUser} open={open}/>
         </div>
     )
 }

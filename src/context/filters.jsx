@@ -18,7 +18,8 @@ export function FiltersProvider({ children }) {
         minReq : null,
         maxReq : null,
         maxStep : null,
-        minStep : null
+        minStep : null,
+        filterSearch: 1
     });
     
     return (

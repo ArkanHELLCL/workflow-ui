@@ -61,10 +61,7 @@ function LstFlujos(){
 }
 
 export function Flujos(){
-    return (
-        <>
-            <LstFlujos />
-        </>
-    )
-            
+    return (        
+        <LstFlujos />        
+    )     
 }

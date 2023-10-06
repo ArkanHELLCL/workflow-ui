@@ -42,7 +42,8 @@ const Tree = React.memo<
   function handleClickItem(id: string) {
     setFilters(prevState => ({
         ...prevState,         
-        itemIdSelected: id        
+        itemIdSelected: id,
+        filterSearch: id === 'Bandejas' ? filters.filterSearch = 2 : filters.filterSearch = 1
     }))    
     setRequest(null)
   }
