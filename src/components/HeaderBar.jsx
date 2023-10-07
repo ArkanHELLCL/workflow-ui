@@ -5,8 +5,9 @@ import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from "../hooks/ClickAway.jsx";
 import { useEffect, useId, useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
+import { InputDebounce } from "./InputDebounce";
 
-function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {    
+function SearchBar({openSearch, setOpenSearch, filterSearch, stringSearch, setFilters}) {    
     const menuSearch = useId();
     const [openMenuSearch, setopenMenuSearch] = useState(false);
     const HandleOnBlur = (e) => {
@@ -18,7 +19,6 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     let widthMenuSearch=0;
     let nameItemSelected = null;
 
-    //const { ref:refMenuSearch } = ClickAway(setopenMenuSearch);
     const { ref:refSearch } = ClickAway(setOpenSearch);
 
     if(filterSearch === 1){
@@ -70,7 +70,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         return () => {
             document.removeEventListener("keydown", QuitarFoco, true);            
         };
-    });  
+    });
     
     return(
         <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
@@ -95,15 +95,21 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
                     </ul>
                 </div>
             </animated.div> 
-            <form className="flex relative">
+            <form className="flex relative" >
                 <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
                     <SearchIcon />
-                </span>
-                <input type="text" className="w-[400px] h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" placeholder="Buscar" 
-                onFocus={(e) => e.target.placeholder = ""}
-                onBlur={(e) => HandleOnBlur(e)} 
-                onClick={() => setOpenSearch(true)}
-                id={inputId}/>
+                </span>                
+                <InputDebounce 
+                    type="text" 
+                    name="search" 
+                    classname="w-[400px] h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
+                    placehold="Buscar"
+                    onfocus={(e) => e.target.placeholder = ""}
+                    onblur={(e) => HandleOnBlur(e)} 
+                    onclick={() => setOpenSearch(true)}
+                    _id={inputId}
+                    setFilters={setFilters}
+                />
             </form>
         </div>
     )
@@ -173,7 +179,7 @@ export default function HeaderBar() {
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
                 <HelpIcon />
             </span>
-            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>
+            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} stringSearch={filters.stringSearch} setFilters={setFilters}/>
             <UserBar menuAppear={menuAppear} reference={refUser} chkUser={chkUser} setOpen={HandleOpenUser} open={open}/>
         </div>
     )
