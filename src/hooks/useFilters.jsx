@@ -8,9 +8,26 @@ export function useFilters() {
         let filteredRequest = []
         const bandeja = request.filter(item => item?.bandeja === filters.itemIdSelected)
         const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []
+        //Input search
+        //req.NombreEditor 
+        //req.ApellidoEditor 
+        //req.NombreCreador 
+        //req.ApellidoCreador         
+        //{req.REQ_Descripcion}
+        //req.DFO_Descripcion 
+
+        filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   
+            item.DRE_UsuarioEditAnt?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
+            item.NombreEditor?.toUpperCase().includes(filters.stringSearch.toUpperCase()) || 
+            item.ApellidoEditor?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
+            item.NombreCreador?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
+            item.ApellidoCreador?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
+            item.REQ_Descripcion?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
+            item.DFO_Descripcion?.toUpperCase().includes(filters.stringSearch.toUpperCase())
+        ))
         
         //Por Flujo seleccionado
-        filteredRequest = requerimientos?.filter((item) => filters.flujo === 0 ? item : item.FLU_Id === filters.flujo)
+        filteredRequest = filteredRequest?.filter((item) => filters.flujo === 0 ? item : item.FLU_Id === filters.flujo)
 
         //Estadisticas        
         filters.totalRequerimientos = filteredRequest?.length ? filteredRequest?.length : 0
