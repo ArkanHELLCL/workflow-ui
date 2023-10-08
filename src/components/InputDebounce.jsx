@@ -8,10 +8,10 @@ export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur
       // send request to the backend
       // access to latest state here
         setFilters(prevState => ({
-            ...prevState,                     
+            ...prevState,
             stringSearch: value
         }))
-        console.log(value);
+        //console.log(value);
     });
   
     const onChange = (e) => {

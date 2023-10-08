@@ -7,13 +7,17 @@ import { useEffect, useId, useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { InputDebounce } from "./InputDebounce";
 
-function SearchBar({openSearch, setOpenSearch, filterSearch, stringSearch, setFilters}) {    
+function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {    
     const menuSearch = useId();
     const [openMenuSearch, setopenMenuSearch] = useState(false);
     const HandleOnBlur = (e) => {
         e.target.placeholder = "Buscar"
         e.target.value=""
-        setopenMenuSearch(false)        
+        setopenMenuSearch(false)
+        setFilters(prevState => ({
+            ...prevState,                     
+            stringSearch: ""
+        }))
     }
     const inputId = useId();
     let widthMenuSearch=0;
@@ -179,7 +183,7 @@ export default function HeaderBar() {
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
                 <HelpIcon />
             </span>
-            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} stringSearch={filters.stringSearch} setFilters={setFilters}/>
+            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>
             <UserBar menuAppear={menuAppear} reference={refUser} chkUser={chkUser} setOpen={HandleOpenUser} open={open}/>
         </div>
     )
