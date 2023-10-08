@@ -1,6 +1,25 @@
 # WorkFlow UI
 
 Refactor de la interfaz grafica del sistema de flujos.
+
+Versión 1.0.10
+
+Mejoras y actualizaciones:
+
+- Optimazaci[on de lectura de requerimientos
+- Creacion de vista de datos de usuario
+- Creacion de cuadro de busqueda y su menu de filtros
+- Creacion de filtro por busqueda de cadena en input search
+- Persistencia de datos, localstorage para dark theme
+
+Pendientes:
+
+- Diseñar mock para la carga de los campos del formulario
+- Renderizar el formulario y mejorar usabilidad respecto a la versión anterior
+- Rediseñar botonera
+- Utilizar JWT para manejo de sesiones
+
+
 Versión 1.0.0
 
 Mejoras y actualizaciones:
