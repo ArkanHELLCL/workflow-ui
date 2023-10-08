@@ -6,7 +6,7 @@ Versión 1.0.10
 
 Mejoras y actualizaciones:
 
-- Optimazaci[on de lectura de requerimientos
+- Optimazacion de lectura de requerimientos
 - Creacion de vista de datos de usuario
 - Creacion de cuadro de busqueda y su menu de filtros
 - Creacion de filtro por busqueda de cadena en input search
