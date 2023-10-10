@@ -10,14 +10,12 @@ import { InputDebounce } from "./InputDebounce";
 function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {    
     const menuSearch = useId();
     const [openMenuSearch, setopenMenuSearch] = useState(false);
+    const [value, setValue] = useState();
+
     const HandleOnBlur = (e) => {
         e.target.placeholder = "Buscar"
         e.target.value=""
-        setopenMenuSearch(false)
-        setFilters(prevState => ({
-            ...prevState,                     
-            stringSearch: ""
-        }))
+        setopenMenuSearch(false)        
     }
     const inputId = useId();
     let widthMenuSearch=0;
@@ -66,6 +64,11 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         if (e.key === "Escape") {
             const elemento = document.getElementById(inputId);
             elemento.blur();
+            setFilters(prevState => ({
+                ...prevState,                     
+                stringSearch: ""
+            }))
+            setValue("")
         }        
     }
 
@@ -113,6 +116,8 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
                     onclick={() => setOpenSearch(true)}
                     _id={inputId}
                     setFilters={setFilters}
+                    value={value}
+                    setValue={setValue}
                 />
             </form>
         </div>

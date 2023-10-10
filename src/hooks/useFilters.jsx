@@ -17,13 +17,13 @@ export function useFilters() {
         //req.DFO_Descripcion 
 
         filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   
-            item.DRE_UsuarioEditAnt?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
-            item.NombreEditor?.toUpperCase().includes(filters.stringSearch.toUpperCase()) || 
-            item.ApellidoEditor?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
-            item.NombreCreador?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
-            item.ApellidoCreador?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
-            item.REQ_Descripcion?.toUpperCase().includes(filters.stringSearch.toUpperCase()) ||
-            item.DFO_Descripcion?.toUpperCase().includes(filters.stringSearch.toUpperCase())
+            item.DRE_UsuarioEditAnt?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+            item.NombreEditor?.toUpperCase().match(filters.stringSearch.toUpperCase()) || 
+            item.ApellidoEditor?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+            item.NombreCreador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+            item.ApellidoCreador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+            item.REQ_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+            item.DFO_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase())
         ))
         
         //Por Flujo seleccionado

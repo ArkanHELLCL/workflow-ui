@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 
-export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur, onclick, _id, setFilters}) => {
-    const [value, setValue] = useState();
+export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur, onclick, _id, setFilters, value, setValue}) => {    
     const debouncedRequest = useDebounce(() => {
       // send request to the backend
       // access to latest state here
