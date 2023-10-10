@@ -77,7 +77,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         return () => {
             document.removeEventListener("keydown", QuitarFoco, true);            
         };
-    });
+    },[value]);
     
     return(
         <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
