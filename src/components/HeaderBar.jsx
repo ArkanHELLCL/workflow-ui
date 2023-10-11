@@ -22,7 +22,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     let nameItemSelected = null;
 
     const { ref:refSearch } = ClickAway(setOpenSearch);
-
+    
     if(filterSearch === 1){
         widthMenuSearch = 68;
         nameItemSelected = "Buzón actual"
@@ -60,7 +60,11 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         }
     }, [openSearch])
 
-    function QuitarFoco(e){
+    const HandleSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    /*function QuitarFoco(e){
         if (e.key === "Escape") {
             const elemento = document.getElementById(inputId);
             elemento.blur();
@@ -70,14 +74,14 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
             }))
             setValue("")
         }        
-    }
-
-    useEffect(() => {
+    }*/
+    
+    /*useEffect(() => {
         document.addEventListener("keydown", QuitarFoco, true);
         return () => {
             document.removeEventListener("keydown", QuitarFoco, true);            
         };
-    },[value]);
+    },[value]);*/
     
     return(
         <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
@@ -102,7 +106,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
                     </ul>
                 </div>
             </animated.div> 
-            <form className="flex relative" >
+            <form className="flex relative" onSubmit={HandleSubmit}>
                 <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
                     <SearchIcon />
                 </span>                
@@ -179,10 +183,18 @@ export default function HeaderBar() {
         setOpen(!open);        
     }
 
+    const HandleReload = () =>{
+        /*setFilters(prevState => ({
+            ...prevState,                     
+            reload: !filters.reload
+        }))
+        console.log("si")*/ 
+    }
+
     const { ref:refUser } = ClickAway(setOpen);
     return(
         <div className="flex items-center h-full px-4 text-white relative">
-            <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
+            <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload}>
                 <ReloadIcon />
                 </span>
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">

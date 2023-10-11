@@ -8,7 +8,7 @@ export function FiltersProvider({ children }) {
         flujo: 0,
         orderDes: true,
         filter: 1,
-        requerimiento: null,
+        //requerimiento: null,
         itemIdSelected: 'be',        
         totalRequerimientos: 0,
         totalSintomar: 0,
@@ -20,7 +20,8 @@ export function FiltersProvider({ children }) {
         maxStep : null,
         minStep : null,
         filterSearch: 1,
-        stringSearch: ''
+        stringSearch: '',
+        //reload: false
     });
     
     return (
