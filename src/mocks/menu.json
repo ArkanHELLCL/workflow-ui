@@ -1,25 +1,9 @@
 {    
     "Bandejas":[
         {
-        "id":"be",
-        "name":"De Entrada",
-        "description":"Bandeja de Entrada",
-        "children" : [
-                {
-                    "id": "be1",
-                    "name": "De Entrada 1",
-                    "children": [
-                        {
-                            "id": "be11",
-                            "name": "De Entrada 11"
-                        },
-                        {
-                            "id": "be12",
-                            "name": "De Entrada 12"
-                        }
-                    ]
-                }
-            ]
+            "id":"be",
+            "name":"De Entrada",
+            "description":"Bandeja de Entrada"
         },
         {
             "id":"bs",
@@ -44,7 +28,31 @@
         {
             "id":"bn",
             "name":"De Antiguos",
-            "description":"Bandeja de Antiguos"
+            "description":"Bandeja de Antiguos",
+            "children" : [
+                    {
+                        "id": "bnc",
+                        "name": "Sistema de Compras",
+                        "description": "Requerimientos Sistema de Compras"
+                    },
+                    {
+                        "id": "bnw",
+                        "name": "Sistema WorkFlow v1",
+                        "description": "Requerimientos Sistema WorkFlow v1",
+                        "children":[
+                            {
+                                "id": "bnwc",
+                                "name": "Flujo Compras",
+                                "description": "WorkFlow v1 Flujo de Compras"
+                            },
+                            {
+                                "id": "bnwb",
+                                "name": "Flujo Boletas",
+                                "description": "WorkFlow v1 Flujo Boletas de Garantías"
+                            }
+                        ]
+                    }
+                ]
         },
         {
             "id":"bp",
