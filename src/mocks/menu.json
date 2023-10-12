@@ -4,7 +4,7 @@
     "flujo":"Todos los Flujos",
     "bandejas":[
        {
-          "bandeja":"be",
+          "id":"be",
           "nombre":"De Entrada",
           "descripcion":"Bandeja de Entrada",
           "children":[
@@ -18,7 +18,7 @@
           ]
        },
        {
-          "bandeja":"bs",
+          "id":"bs",
           "nombre":"De Salida",
           "descripcion":"Bandeja de Salida",
           "children":[
@@ -32,7 +32,7 @@
           ]
        },
        {
-          "bandeja":"bf",
+          "id":"bf",
           "nombre":"De Finalizados",
           "descripcion":"Bandeja de Finalizados",
           "children":[
@@ -46,7 +46,7 @@
           ]
        },
        {
-          "bandeja":"bo",
+          "id":"bo",
           "nombre":"De Otros",
           "descripcion":"Bandeja de Otros",
           "children":[
@@ -60,7 +60,7 @@
           ]
        },
        {
-          "bandeja":"ba",
+          "id":"ba",
           "nombre":"De Archivados",
           "descripcion":"Bandeja de Archivados",
           "children":[
@@ -74,12 +74,12 @@
           ]
        },
        {
-          "bandeja":"bn",
+          "id":"bn",
           "nombre":"De Antiguos",
           "descripcion":"Bandeja de Antiguos",
           "children":[
              {
-                "bandeja":"bnc",
+                "id":"bnc",
                 "nombre":"Sistema de Compras",
                 "descripcion":"Requerimientos Sistema de Compras",
                 "grandson":[
@@ -89,17 +89,17 @@
                 ]
              },
              {
-                "bandeja":"bnw",
+                "id":"bnw",
                 "nombre":"Sistema WorkFlow v1",
                 "descripcion":"Requerimientos Sistema WorkFlow v1",
                 "grandson":[
                    {
-                      "bandeja":"bnwc",
+                      "id":"bnwc",
                       "nombre":"Flujo Compras",
                       "descripcion":"WorkFlow v1 Flujo de Compras"
                    },
                    {
-                      "bandeja":"bnwb",
+                      "id":"bnwb",
                       "nombre":"Flujo Boletas",
                       "descripcion":"WorkFlow v1 Flujo Boletas de Garantías"
                    }
@@ -108,7 +108,7 @@
           ]
        },
        {
-          "bandeja":"bp",
+          "id":"bp",
           "nombre":"De Antiguos Pen.",
           "descripcion":"Bandeja de Antiguos Pendientes",
           "children":[
@@ -125,35 +125,35 @@
     "Mantenedores":[
         {
             "id":"mu",
-            "name":"Usuarios",
-            "description":"Mantenedor de Usuarios"
+            "nombre":"Usuarios",
+            "descripcion":"Mantenedor de Usuarios"
         },
         {
             "id":"ml",
-            "name":"Lista Desplegables",
-            "description":"Mantenedor de Lista Desplegables"
+            "nombre":"Lista Desplegables",
+            "descripcion":"Mantenedor de Lista Desplegables"
         },
         {
             "id":"mi",
-            "name":"Items Lista Desplegables",
-            "description":"Mantenedor de Items Lista Desplegables"
+            "nombre":"Items Lista Desplegables",
+            "descripcion":"Mantenedor de Items Lista Desplegables"
         }
      ],
     "Reportes":[
         {
             "id":"ru",
-            "name":"Dias por Usuario",
-            "description":"Reporte de Dias por Usuario"
+            "nombre":"Dias por Usuario",
+            "descripcion":"Reporte de Dias por Usuario"
         },
         {
             "id":"ro",
-            "name":"Ordenes de Compras",
-            "description":"Reporte de Ordenes de Compras"
+            "nombre":"Ordenes de Compras",
+            "descripcion":"Reporte de Ordenes de Compras"
         },
         {
             "id":"rp",
-            "name":"Seguimiento de Pagos",
-            "description":"Reporte de Seguimiento de Pagos"
+            "nombre":"Seguimiento de Pagos",
+            "descripcion":"Reporte de Seguimiento de Pagos"
         }
     ]
 }
