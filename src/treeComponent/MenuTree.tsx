@@ -70,9 +70,7 @@ const Tree = React.memo<
 })
 
 function isChildren(setFilters: Function, filters: any, setRequest: Function, children: any) {
-  //console.log('children', children.length)
   return children.map((item: { id: any ; nombre: string | JSX.Element ; grandson: any} , index: any) => {
-    //console.log('item', item, item.grandson.bandeja)
     return(
     <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
     {
@@ -94,18 +92,15 @@ export function MenuTree({menu, title }) {
         menu.length > 0 ? 
           <Tree name={title} defaultOpen={true} key={title} id={title} setFilters={setFilters} filters={filters} setRequest={setRequest}>
             {              
-              menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => { 
-                console.log('item', item)               
-                return (
-                  <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
-                  {                      
-                      item.children?.length > 0 && item.children[0].id != undefined ?
-                        isChildren(setFilters, filters, setRequest, item.children)
-                      : null
-                  }  
-                  </Tree>
-                )
-              })
+              menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => 
+                <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+                {                      
+                    item.children?.length > 0 && item.children[0].id != undefined ?
+                      isChildren(setFilters, filters, setRequest, item.children)
+                    : null
+                }  
+                </Tree>
+              )
             }
           </Tree> 
         : 
