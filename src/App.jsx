@@ -19,12 +19,12 @@ function App() {
   //HeaderBar blur 252423 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">
-        <nav className="lstlat w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644]">
+        <nav className="lstlat w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75">
           <Suspense fallback={<Loading />}>
             <SideBar />
           </Suspense>
         </nav>
-        <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0 z-50">
+        <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0 z-50 transition-color delay-75">
           <Suspense fallback={<Loading />}>
             <HeaderBar />
           </Suspense>
@@ -34,17 +34,17 @@ function App() {
         </Suspense>
         <main className='w-full flex overflow-hidden ml-14'>
           <section className={`${defaultTheme.txtc} ' w-[650px] min-w-[400px] h-full flex flex-columns z-0 bg-[#faf9f8] dark:bg-transparent`} id="Resizable">
-            <aside className={`${defaultTheme.txtc} ' w-[250px] min-w-[150px] border-r overflow-auto  mt-3 z-0`}> 
+            <aside className={`${defaultTheme.txtc} ' w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-3 z-0`}> 
               <Suspense fallback={<Loading />}>             
                 <Menu />  
               </Suspense>
             </aside>
-            <aside className={`${defaultTheme.txtc} ' w-[400px] min-w-[250px] max-w-[600px] lstreq border-r pb-6 flex flex-column flex-wrap mt-[10px] transition-all z-50 bg-[#ffffff] dark:bg-transparent`}>
+            <aside className={`${defaultTheme.txtc} ' w-[400px] min-w-[250px] max-w-[600px] lstreq border-r pb-6 flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent`}>
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
-                  <div className="flex gap-2 font-semibold z-50">
+                  <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                     <Flujos />                          
                   </div>
-                  <div className="flex justify-end align-bottom pr-6 z-50">
+                  <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
                     <MenuFilters defaultTheme={defaultTheme} />                  
                   </div>
                 </div>
@@ -57,7 +57,7 @@ function App() {
             </aside>                      
           </section>          
           <section id="Resizable2">
-            <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full flex flex-columns overflow-auto pr-10 mt-[10px] transition-all`}>
+            <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full flex flex-columns overflow-auto pr-10 mt-[10px]`}>
                 {'No hay requerimiento seleccionado'}            
             </aside>          
           </section>

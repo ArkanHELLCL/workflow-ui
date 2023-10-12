@@ -62,7 +62,7 @@ export default function Footer() {
     const descripcion = buscarDescripcionPorId(tipoABuscar, filters.itemIdSelected);
         
     return (
-        <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-screen h-[25px] transition-all flex items-center p-3 space-x-2 text-xs'>
+        <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-screen h-[25px] transition-color delay-75 flex items-center p-3 space-x-2 text-xs'>
             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">{descripcion !== null ? descripcion : 'Sin menú'}</span>
             {
                 tipoABuscar === "Bandejas" ? 
