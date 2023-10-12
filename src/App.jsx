@@ -58,7 +58,9 @@ function App() {
           </section>          
           <section id="Resizable2">
             <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full flex flex-columns overflow-auto pr-10 mt-[10px]`}>
-                {'No hay requerimiento seleccionado'}            
+              <Suspense fallback={<Loading />}>  
+                {'No hay requerimiento seleccionado'}
+              </Suspense>
             </aside>          
           </section>
         </main>
