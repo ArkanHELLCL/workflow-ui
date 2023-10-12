@@ -3,7 +3,7 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
-import { Container, Title, Frame, Content, toggle } from './styles'
+import { Container, Title, Frame, Content } from './styles'
 import { Icon } from '../components/icons.jsx'
 
 function usePrevious<T>(value: T) {
@@ -69,15 +69,19 @@ const Tree = React.memo<
   )
 })
 
-function isChildren(setFilters: Function, filters: any, setRequest: Function, children: any) {  
-  return children.map((item: { id: any ; name: string | JSX.Element ; children: any} , index: any) => 
-          <Tree name={item.name} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
-          {
-                item.children?.length > 0 ? 
-                  isChildren(setFilters, filters, setRequest, item.children)
-                : null
-            }   
-          </Tree>
+function isChildren(setFilters: Function, filters: any, setRequest: Function, children: any) {
+  //console.log('children', children.length)
+  return children.map((item: { id: any ; nombre: string | JSX.Element ; grandson: any} , index: any) => {
+    console.log('item', item)
+    return(
+    <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+    {
+          item.grandson?.length > 0 ? 
+            isChildren(setFilters, filters, setRequest, item.grandson)
+          : null
+      }   
+    </Tree>)
+  }
   )
 }
 
@@ -90,14 +94,14 @@ export function MenuTree({menu, title }) {
         menu.length > 0 ? 
           <Tree name={title} defaultOpen={true} key={title} id={title} setFilters={setFilters} filters={filters} setRequest={setRequest}>
             {              
-              menu.map((item: { id: any ; name: string | JSX.Element ; children : any} , index: any) => {
+              menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => {                
                 return (
-                  <Tree name={item.name} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
-                  {
-                      item.children?.length > 0 ?
+                  <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+                  {                      
+                      item.children?.length > 1 ?
                         isChildren(setFilters, filters, setRequest, item.children)
                       : null
-                  }                  
+                  }  
                   </Tree>
                 )
               })
