@@ -72,3 +72,7 @@
 .lstlat{
   height: calc(100vh - 53px);;
 }
+
+.overlay{
+  width: calc(100% - 32px);
+}

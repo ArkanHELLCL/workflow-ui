@@ -56,12 +56,11 @@ const Tree = React.memo<
           <span onClick={(handleOnClickIcon)}><Icon open={isOpen} pos="relative inline top-[2px]" /></span>
         : null
       }        
-        <Title style={style} className={`${children ? 'cursor-pointer':'cursor-pointer'} ${filters.itemIdSelected===id ? 'text-sky-600 hover:!text-sky-600 font-semibold' : 'hover:!text-sky-400'}`} onClick={()=>handleClickItem(id)} key={id} id={id}>{name}</Title>      
+        <Title style={style} className={`${children ? 'cursor-pointer':'cursor-pointer'} ${filters.itemIdSelected===id ? 'font-bold' : 'overlayHover'}`} onClick={()=>handleClickItem(id)} key={id} id={id}>{name}</Title>      
       <Content
         style={{
           opacity,
-          height: isOpen && previous === isOpen ? 'auto' : height,
-          //width: isOpen ? 'min-content' : width          
+          height: isOpen && previous === isOpen ? 'auto' : height          
         }}>
         <a.div ref={ref} style={{ y }} children={children} />
       </Content>
@@ -87,10 +86,10 @@ export function MenuTree({menu, title }) {
   const { filters, setFilters } = useFilters()
   const { setRequest } = useRequest()
   return (
-    <Container className='dark:border-[#353535]'>      
+    <Container className='dark:border-[#353535] px-1'>      
       {
         menu.length > 0 ? 
-          <Tree name={title} defaultOpen={true} key={title} id={title.toLowerCase().charAt(0)} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+          <Tree name={title} defaultOpen={true} key={title} id={title.toLowerCase().charAt(0)} setFilters={setFilters} filters={filters} setRequest={setRequest} style={{'fontSize':'16px','fontWeight': 'lighter'}}>
             {              
               menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => 
                 <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>

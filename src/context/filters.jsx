@@ -7,8 +7,7 @@ export function FiltersProvider({ children }) {
     const [filters, setFilters] = useState({
         flujo: 0,
         orderDes: true,
-        filter: 1,
-        //requerimiento: null,
+        filter: 1,        
         itemIdSelected: 'be',        
         totalRequerimientos: 0,
         totalSintomar: 0,
@@ -20,8 +19,7 @@ export function FiltersProvider({ children }) {
         maxStep : null,
         minStep : null,
         filterSearch: 1,
-        stringSearch: '',
-        //reload: false
+        stringSearch: ''
     });
     
     return (
