@@ -11,8 +11,7 @@ import Loading from "./Loading.jsx";
 export default function ListaRequerimientos({ defaultTheme }){
     const { filters, filterRequest } = useFilters()  
     const { filteredRequest } = filterRequest(bandejas)
-    const { requerimientoAccordion } = Accordions(filteredRequest, filters)
-    console.log('ListaRequerimientos')
+    const { requerimientoAccordion } = Accordions(filteredRequest, filters)    
     
     const reqResult = useCallback((item) => {
         let req = []
