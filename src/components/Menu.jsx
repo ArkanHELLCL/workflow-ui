@@ -24,7 +24,7 @@ export default function Menu(){
     useEffect(() => {        
         const overlayElement = document.getElementById(filters.itemIdSelected);
         const rect = overlayElement?.getBoundingClientRect()
-        setPositionTo(rect?.top - (30+80+12+2))
+        setPositionTo(rect?.top - (30+80+12+2))     //Barra superior + header + padding + border
     }, [filters.itemIdSelected])
 
     const menuOverlay = useSpring({
