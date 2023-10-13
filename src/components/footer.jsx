@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
-import { flujos } from "../mocks/menu.json"
+//import { flujos } from "../mocks/menu.json"
+import * as menu from "../mocks/menu.json"
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);
@@ -48,25 +49,32 @@ export default function Footer() {
     }
 
     // Función para buscar la descripción a partir del id
-    function buscarDescripcionPorId(tipo, idBuscar) {
-        const bandejas = flujos.filter(item => item.id === filters.flujo)[0].bandejas
-        const elementos = bandejas[tipo] || [];
+    let elementos = []
+    function buscarDescripcionPorId(tipo, idBuscar) {        
+        if(tipo==='bandejas'){            
+            elementos = menu.flujos.filter(item => item.id === filters.flujo)[0].bandejas
+        }else{
+            elementos = menu[tipo] || [];
+        }
+        if(idBuscar.length===1) return tipo[0].toUpperCase() + tipo.slice(1);
+
+        
         const elementoEncontrado = elementos.find((elemento) => elemento.id === idBuscar);
-        return elementoEncontrado ? elementoEncontrado.description : null;
+        return elementoEncontrado ? elementoEncontrado.descripcion : null;
     }
         
     let tipoABuscar = ''
     filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "bandejas" :
     filters.itemIdSelected.charAt(0) === "m" ? tipoABuscar = "mantenedores" :
-    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas"
+    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas"    
         
-    const descripcion = buscarDescripcionPorId(tipoABuscar, filters.itemIdSelected);
+    const descripcion = buscarDescripcionPorId(tipoABuscar, filters.itemIdSelected);    
         
     return (
         <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-screen h-[25px] transition-color delay-75 flex items-center p-3 space-x-2 text-xs'>
             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">{descripcion !== null ? descripcion : 'Sin menú'}</span>
             {
-                tipoABuscar === "Bandejas" ? 
+                tipoABuscar === "bandejas" && filters.itemIdSelected.length > 1 ? 
                     <>
                         <div className="dark:text-orange-300 text-orange-400 flex z-20">
                             <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
@@ -101,7 +109,10 @@ export default function Footer() {
                             <span className="text-green-500">{filters.totalRequerimientos}</span>                
                         </div> 
                     </>
-                    : null
+                    : <div>
+                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                        <span className="text-green-500">{elementos.length}</span>                
+                    </div>
                 }
         </footer>
     )

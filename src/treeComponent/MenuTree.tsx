@@ -90,7 +90,7 @@ export function MenuTree({menu, title }) {
     <Container className='dark:border-[#353535]'>      
       {
         menu.length > 0 ? 
-          <Tree name={title} defaultOpen={true} key={title} id={title} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+          <Tree name={title} defaultOpen={true} key={title} id={title.toLowerCase().charAt(0)} setFilters={setFilters} filters={filters} setRequest={setRequest}>
             {              
               menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => 
                 <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
