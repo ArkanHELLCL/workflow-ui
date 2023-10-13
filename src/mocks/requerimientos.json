@@ -1,9 +1,7 @@
-{
-   "usuario": "lcastillo",
-   "perfil" : "Super Administrador",
+{   
    "bandejas" : 
       [{
-         "bandeja" : "be",
+         "id" : "be",
          "requerimientos" :
          [
             {

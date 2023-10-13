@@ -1,128 +1,146 @@
-{
-    "usuario":"lcastillo",
-    "perfil":"Super Administrador",
-    "flujo":"Todos los Flujos",
-    "bandejas":[
-       {
-          "id":"be",
-          "nombre":"De Entrada",
-          "descripcion":"Bandeja de Entrada",
-          "children":[
-             {
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             }
-          ]
-       },
-       {
-          "id":"bs",
-          "nombre":"De Salida",
-          "descripcion":"Bandeja de Salida",
-          "children":[
-             {
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             }
-          ]
-       },
-       {
-          "id":"bf",
-          "nombre":"De Finalizados",
-          "descripcion":"Bandeja de Finalizados",
-          "children":[
-             {
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             }
-          ]
-       },
-       {
-          "id":"bo",
-          "nombre":"De Otros",
-          "descripcion":"Bandeja de Otros",
-          "children":[
-             {
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             }
-          ]
-       },
-       {
-          "id":"ba",
-          "nombre":"De Archivados",
-          "descripcion":"Bandeja de Archivados",
-          "children":[
-             {
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             }
-          ]
-       },
-       {
-          "id":"bn",
-          "nombre":"De Antiguos",
-          "descripcion":"Bandeja de Antiguos",
-          "children":[
-             {
-                "id":"bnc",
-                "nombre":"Sistema de Compras",
-                "descripcion":"Requerimientos Sistema de Compras",
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             },
-             {
-                "id":"bnw",
-                "nombre":"Sistema WorkFlow v1",
-                "descripcion":"Requerimientos Sistema WorkFlow v1",
-                "grandson":[
-                   {
-                      "id":"bnwc",
-                      "nombre":"Flujo Compras",
-                      "descripcion":"WorkFlow v1 Flujo de Compras"
-                   },
-                   {
-                      "id":"bnwb",
-                      "nombre":"Flujo Boletas",
-                      "descripcion":"WorkFlow v1 Flujo Boletas de Garantías"
-                   }
-                ]
-             }
-          ]
-       },
-       {
-          "id":"bp",
-          "nombre":"De Antiguos Pen.",
-          "descripcion":"Bandeja de Antiguos Pendientes",
-          "children":[
-             {
-                "grandson":[
-                   {
-                      
-                   }
-                ]
-             }
-          ]
-       }
-    ],
-    "Mantenedores":[
+{   
+    "flujos": [
+      {
+         "id":0,
+         "nombre":"Todos los Flujos",
+         "bandejas":[
+            {
+               "id":"be",
+               "nombre":"De Entrada",
+               "descripcion":"Bandeja de Entrada",
+               "children":[
+                  {
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bs",
+               "nombre":"De Salida",
+               "descripcion":"Bandeja de Salida",
+               "children":[
+                  {
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bf",
+               "nombre":"De Finalizados",
+               "descripcion":"Bandeja de Finalizados",
+               "children":[
+                  {
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bo",
+               "nombre":"De Otros",
+               "descripcion":"Bandeja de Otros",
+               "children":[
+                  {
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"ba",
+               "nombre":"De Archivados",
+               "descripcion":"Bandeja de Archivados",
+               "children":[
+                  {
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bn",
+               "nombre":"De Antiguos",
+               "descripcion":"Bandeja de Antiguos",
+               "children":[
+                  {
+                     "id":"bnc",
+                     "nombre":"Sistema de Compras",
+                     "descripcion":"Requerimientos Sistema de Compras",
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  },
+                  {
+                     "id":"bnw",
+                     "nombre":"Sistema WorkFlow v1",
+                     "descripcion":"Requerimientos Sistema WorkFlow v1",
+                     "grandson":[
+                        {
+                           "id":"bnwc",
+                           "nombre":"Flujo Compras",
+                           "descripcion":"WorkFlow v1 Flujo de Compras"
+                        },
+                        {
+                           "id":"bnwb",
+                           "nombre":"Flujo Boletas",
+                           "descripcion":"WorkFlow v1 Flujo Boletas de Garantías"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bp",
+               "nombre":"De Antiguos Pen.",
+               "descripcion":"Bandeja de Antiguos Pendientes",
+               "children":[
+                  {
+                     "grandson":[
+                        {
+                           
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "id":1,
+         "nombre":"Flujo de Compras",
+         "bandejas":[]
+      },
+      {
+         "id":2,
+         "nombre":"Flujo de Boletas",
+         "bandejas":[]
+      },
+      {
+         "id": 4,
+         "nombre": "Flujo de Pagos",
+         "bandejas": []
+      }
+    ],    
+    "mantenedores":[
         {
             "id":"mu",
             "nombre":"Usuarios",
@@ -139,7 +157,7 @@
             "descripcion":"Mantenedor de Items Lista Desplegables"
         }
      ],
-    "Reportes":[
+    "reportes":[
         {
             "id":"ru",
             "nombre":"Dias por Usuario",

@@ -2,19 +2,12 @@ import { useContext } from 'react'
 import { FiltersContext } from '../context/filters.jsx'
 
 export function useFilters() {  
-    const { filters, setFilters } = useContext(FiltersContext)    
+    const { filters, setFilters } = useContext(FiltersContext)
 
     const filterRequest = (request) => {
         let filteredRequest = []
-        const bandeja = request.filter(item => item?.bandeja === filters.itemIdSelected)
-        const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []
-        //Input search
-        //req.NombreEditor 
-        //req.ApellidoEditor 
-        //req.NombreCreador 
-        //req.ApellidoCreador         
-        //{req.REQ_Descripcion}
-        //req.DFO_Descripcion 
+        const bandeja = request.filter(item => item?.id === filters.itemIdSelected)
+        const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []        
 
         filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   
             item.DRE_UsuarioEditAnt?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||

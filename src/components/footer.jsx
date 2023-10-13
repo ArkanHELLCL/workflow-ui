@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
-import * as menu from "../mocks/menu.json"
+import { flujos } from "../mocks/menu.json"
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);
@@ -49,15 +49,16 @@ export default function Footer() {
 
     // Función para buscar la descripción a partir del id
     function buscarDescripcionPorId(tipo, idBuscar) {
-        const elementos = menu[tipo] || [];
+        const bandejas = flujos.filter(item => item.id === filters.flujo)[0].bandejas
+        const elementos = bandejas[tipo] || [];
         const elementoEncontrado = elementos.find((elemento) => elemento.id === idBuscar);
         return elementoEncontrado ? elementoEncontrado.description : null;
     }
         
     let tipoABuscar = ''
-    filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "Bandejas" :
-    filters.itemIdSelected.charAt(0) === "m" ? tipoABuscar = "Mantenedores" :
-    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "Reportes" : tipoABuscar = "Bandejas"
+    filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "bandejas" :
+    filters.itemIdSelected.charAt(0) === "m" ? tipoABuscar = "mantenedores" :
+    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas"
         
     const descripcion = buscarDescripcionPorId(tipoABuscar, filters.itemIdSelected);
         
