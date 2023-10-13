@@ -19,18 +19,15 @@ export default function SideBar(){
         }
         if(filters.itemIdSelected.charAt(0).toLowerCase()==='r'){
             setPositionTo(96)
-        }        
+        }
+        setRequest(null)
     }, [filters.itemIdSelected])
-
     
-
     function handleClickItem(id) {
         setFilters(prevState => ({
             ...prevState,         
             itemIdSelected: id        
         }))        
-        setRequest(null)
-        //moveMenu(id)
     }
 
     const menuSelected = useSpring({
