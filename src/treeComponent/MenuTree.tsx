@@ -21,7 +21,7 @@ const Tree = React.memo<
     filters: any,
     setRequest: Function
   }
->(({ children, name, style, defaultOpen = false ,id, setFilters, filters, setRequest }) => {
+>(({ children, name, style, defaultOpen = false ,id, setFilters, filters, setRequest}) => {
   const [isOpen, setOpen] = useState(defaultOpen)
   const previous = usePrevious(isOpen)
   const [ref, { width: viewWidth, height: viewHeight }] = useMeasure()
@@ -33,30 +33,48 @@ const Tree = React.memo<
       opacity: isOpen ? 1 : 0,
       y: isOpen ? 0 : 20
     },
+    //onChange: () => setClkOpen(clkOpen+1)
   })
 
   const handleOnClickIcon = () => {    
-    setOpen((prev) => !prev)   
+    setOpen((prev) => !prev)    
   }
 
   function handleClickItem(id: string) {
     setFilters(prevState => ({
         ...prevState,         
         itemIdSelected: id,
-        filterSearch: id === 'Bandejas' ? filters.filterSearch = 2 : filters.filterSearch = 1
+        filterSearch: id === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1
     }))    
     setRequest(null)
   }
-
+  let style2;
+  console.log(style)
+  children && style?.paddingLeft === '0px' ? style2 = {paddingLeft: '0px'} : style2 = {paddingLeft: '0px'}
+  children && style?.paddingLeft === '12px' ? style2 = {paddingLeft: '6px'} : style2 = {paddingLeft: '0px'}
+  children && style?.paddingLeft === '24px' ? style2 = {paddingLeft: '21px'} : style2 = {paddingLeft: '6px'}
+  
+  children ? style = {...style, paddingLeft: '0px'} : style
   // @ts-ignore
-  //const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
   return (
-    <Frame className={`dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100`}>{
-      children ? 
-          <span onClick={(handleOnClickIcon)}><Icon open={isOpen} pos="relative inline top-[2px]" /></span>
+    <Frame className={`dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100`}>
+      <div className={`${filters.itemIdSelected===id ? 'dark:bg-[#444444]' : 'bg-tranasparent'}`}>
+      {
+        children ? 
+            <span onClick={(handleOnClickIcon)} style={style2}>
+              <Icon open={isOpen} pos="relative inline top-[2px] z-10" />
+            </span>
         : null
       }        
-        <Title style={style} className={`${children ? 'cursor-pointer':'cursor-pointer'} ${filters.itemIdSelected===id ? 'font-bold' : 'overlayHover'}`} onClick={()=>handleClickItem(id)} key={id} id={id}>{name}</Title>      
+        <Title 
+          style={style} 
+          className={`${children ? 'cursor-pointer':'cursor-pointer'} ${filters.itemIdSelected===id ? 'font-bold' : ''} z-10 relative`} 
+          onClick={()=>handleClickItem(id)} 
+          key={id} 
+          id={id}>
+            {name}
+        </Title>
+      </div>
       <Content
         style={{
           opacity,
@@ -68,13 +86,23 @@ const Tree = React.memo<
   )
 })
 
-function isChildren(setFilters: Function, filters: any, setRequest: Function, children: any) {
+function isChildren(setFilters: Function, filters: any, setRequest: Function, children: any, paddingLeft: any = 0) {
+  paddingLeft = paddingLeft + 12
+  const style = {'fontSize':'14px','fontWeight': 'lighter','paddingLeft':`${paddingLeft}px`}
   return children.map((item: { id: any ; nombre: string | JSX.Element ; grandson: any} , index: any) => {
     return(
-    <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+    <Tree 
+      name={item.nombre} 
+      key={`${item.id}`} 
+      id={`${item.id}`} 
+      setFilters={setFilters} 
+      filters={filters} 
+      setRequest={setRequest}
+      style={style}
+      >
     {
         item.grandson?.length > 0 && item.grandson[0].id != undefined ?
-          isChildren(setFilters, filters, setRequest, item.grandson)
+          isChildren(setFilters, filters, setRequest, item.grandson, paddingLeft)
         : null
     }   
     </Tree>)
@@ -89,13 +117,28 @@ export function MenuTree({menu, title }) {
     <Container className='dark:border-[#353535] px-1'>      
       {
         menu.length > 0 ? 
-          <Tree name={title} defaultOpen={true} key={title} id={title.toLowerCase().charAt(0)} setFilters={setFilters} filters={filters} setRequest={setRequest} style={{'fontSize':'16px','fontWeight': 'lighter'}}>
+          <Tree 
+            name={title} 
+            defaultOpen={true} 
+            key={title} id={title.toLowerCase().charAt(0)} 
+            setFilters={setFilters} 
+            filters={filters} 
+            setRequest={setRequest} 
+            style={{'fontSize':'16px','fontWeight': 'lighter','paddingLeft':'0px'}}>
             {              
               menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => 
-                <Tree name={item.nombre} key={`${item.id}`} id={`${item.id}`} setFilters={setFilters} filters={filters} setRequest={setRequest}>
+                <Tree 
+                  name={item.nombre} 
+                  key={`${item.id}`} 
+                  id={`${item.id}`} 
+                  setFilters={setFilters} 
+                  filters={filters} 
+                  setRequest={setRequest}
+                  style={{'fontSize':'14px','fontWeight': 'lighter','paddingLeft':'12px'}}
+                  >
                 {                      
                     item.children?.length > 0 && item.children[0].id != undefined ?
-                      isChildren(setFilters, filters, setRequest, item.children)
+                      isChildren(setFilters, filters, setRequest, item.children, 12)
                     : null
                 }  
                 </Tree>

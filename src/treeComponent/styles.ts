@@ -12,10 +12,8 @@ export const Container = styled('div')`
   line-height: 21px;
   --webkit-user-select: none;
   user-select: none;
-  display: flex;
-
-  justify-content: left;
-  valign-items: flex-start; 
+  display: block;
+  
   border-bottom: 2px solid #d4d4d4; 
 `
 
@@ -36,16 +34,8 @@ export const Title = styled('span')`
 
 export const Content = styled(animated.div)`
   will-change: transform, opacity, height, width;
-  margin-left: 6px;
-  padding: 0px 0px 0px 5px;
+  margin-left: 0px;
+  padding: 0px 0px 0px 0px;
   border-left: 0px dashed;
   overflow: hidden;  
 `
-
-export const toggle = {
-  width: '1em',
-  height: '1em',
-  marginRight: 10,
-  cursor: 'pointer',
-  verticalAlign: 'middle',
-}
