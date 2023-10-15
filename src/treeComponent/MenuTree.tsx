@@ -49,7 +49,6 @@ const Tree = React.memo<
     setRequest(null)
   }
   let style2;
-  console.log(style)
   children && style?.paddingLeft === '0px' ? style2 = {paddingLeft: '0px'} : style2 = {paddingLeft: '0px'}
   children && style?.paddingLeft === '12px' ? style2 = {paddingLeft: '6px'} : style2 = {paddingLeft: '0px'}
   children && style?.paddingLeft === '24px' ? style2 = {paddingLeft: '21px'} : style2 = {paddingLeft: '6px'}
