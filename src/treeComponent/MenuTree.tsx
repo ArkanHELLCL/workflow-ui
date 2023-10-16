@@ -41,14 +41,14 @@ const Tree = React.memo<
   }
 
   function handleClickItem(id: string) {
-    setFilters(prevState => ({
+    setFilters((prevState: any) => ({
         ...prevState,         
         itemIdSelected: id,
         filterSearch: id === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1
     }))    
     setRequest(null)
   }
-  let style2;
+  let style2: React.CSSProperties | undefined;
   children && style?.paddingLeft === '0px' ? style2 = {paddingLeft: '0px'} : style2 = {paddingLeft: '0px'}
   children && style?.paddingLeft === '12px' ? style2 = {paddingLeft: '6px'} : style2 = {paddingLeft: '0px'}
   children && style?.paddingLeft === '24px' ? style2 = {paddingLeft: '21px'} : style2 = {paddingLeft: '6px'}

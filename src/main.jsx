@@ -4,10 +4,10 @@ import './index.css'
 import { FiltersProvider } from './context/filters.jsx'
 import { RequestProvider } from './context/request.jsx'
 
-createRoot(document.getElementById('root')).render(  
-  <FiltersProvider>    
+createRoot(document.getElementById('root')).render(
+  <FiltersProvider>
     <RequestProvider>
-      <App />    
+      <App />
     </RequestProvider>
-  </FiltersProvider>    
+  </FiltersProvider>
 )

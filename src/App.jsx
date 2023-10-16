@@ -18,7 +18,7 @@ function App() {
   }
   //HeaderBar blur 252423 
   return (    
-      <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">
+      <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">        
         <nav className="lstlat w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75">
           <Suspense fallback={<Loading />}>
             <SideBar />
@@ -46,10 +46,10 @@ function App() {
                     <MenuFilters defaultTheme={defaultTheme} />                  
                   </div>
                 </div>
-                <div className="overflow-auto lstscroll">              
-                  <DetalleRequerimiento defaultTheme={defaultTheme} />
-                  <Suspense fallback={<Loading />}>
-                    <ListaRequerimientos defaultTheme={defaultTheme} />
+                <div className="overflow-auto lstscroll relative">              
+                  <DetalleRequerimiento defaultTheme={defaultTheme} />                  
+                  <Suspense fallback={<Loading />}>{}
+                    <ListaRequerimientos defaultTheme={defaultTheme}/>
                   </Suspense>
                 </div>
             </aside>                      

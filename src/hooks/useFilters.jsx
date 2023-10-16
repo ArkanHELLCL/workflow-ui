@@ -4,7 +4,7 @@ import { FiltersContext } from '../context/filters.jsx'
 export function useFilters() {  
     const { filters, setFilters } = useContext(FiltersContext)
 
-    const filterRequest = (request) => {
+    const filterRequest = (request) => {        
         let filteredRequest = []
         const bandeja = request.filter(item => item?.id === filters.itemIdSelected)
         const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []        
