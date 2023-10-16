@@ -40,7 +40,7 @@ export default function ListaRequerimientos({ defaultTheme }){
         <>
           {requerimientoAccordion.map((item, index) => (
             <Suspense key={index} fallback={<Loading />}>
-                <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} index={index}/>
+                <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} />
             </Suspense>
           ))}
         </>

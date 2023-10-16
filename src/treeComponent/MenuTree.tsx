@@ -133,7 +133,7 @@ export function MenuTree({menu, title }) {
                   setFilters={setFilters} 
                   filters={filters} 
                   setRequest={setRequest}
-                  style={{'fontSize':'14px','fontWeight': 'lighter','paddingLeft':'12px'}}
+                  style={{'fontSize':'12px','paddingLeft':'18px'}}
                   >
                 {                      
                     item.children?.length > 0 && item.children[0].id != undefined ?
