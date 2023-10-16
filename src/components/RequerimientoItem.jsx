@@ -6,7 +6,7 @@ import { ArchiveIcon, EditIcon, UserIcon } from "./icons"
 import { Constants } from "../constants/const.jsx";
 
 export const RequerimientoItem = ({ req, showDia }) => {
-    console.log('RequerimientoItem')
+    //console.log('RequerimientoItem')
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
 

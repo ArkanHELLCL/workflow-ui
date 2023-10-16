@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { memo, useMemo, useState, lazy, Suspense } from 'react'
+import { memo, useMemo, useState, Suspense } from 'react'
 import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 import { Icon } from "./icons.jsx";
-const Requerimiento = lazy(() => import('./Requerimiento.jsx'))
+import Requerimiento from './Requerimiento.jsx'
 import Loading from './Loading.jsx';
 
 export const AccordionItem = memo(function AccordionItem({ item, showDia, defaultTheme, reqResult }) {
@@ -24,7 +24,9 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia, defaul
             </AccordionHeader>
             <AccordionBody className="py-0">
                 {
-                   <Suspense fallback={<Loading />}><Requerimiento item={req} showDia={showDia} /></Suspense>
+                   <Suspense fallback={<Loading />}>
+                        <Requerimiento item={req} showDia={showDia} />
+                    </Suspense>
                 }
             </AccordionBody>
         </Accordion>         
