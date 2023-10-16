@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { MenuTree } from "../treeComponent/MenuTree.tsx"
 import { flujos, mantenedores, reportes } from "../mocks/menu.json";
