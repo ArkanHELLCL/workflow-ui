@@ -3,8 +3,7 @@ import { Suspense } from "react";
 import { RequerimientoItem } from "./RequerimientoItem.jsx";
 import Loading from "./Loading.jsx";
 
-export default function Requerimiento({item, showDia}){
-    //console.log('Requerimiento')
+export default function Requerimiento({item, showDia}){    
     return(
       <>
         {item.map((req) => (

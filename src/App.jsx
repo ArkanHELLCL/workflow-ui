@@ -24,10 +24,8 @@ function App() {
             <SideBar />
           </Suspense>
         </nav>
-        <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0 z-50 transition-color delay-75">
-          <Suspense fallback={<Loading />}>
-            <HeaderBar />
-          </Suspense>
+        <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] absolute top-0 z-50 transition-color delay-75">          
+          <HeaderBar />          
         </section>
         <Suspense fallback={<Loading />}>
           <Header />
