@@ -7,7 +7,19 @@ import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
 import { Accordions } from '../components/accordions.jsx'
 import { AccordionItem } from "../components/AccordioItem.jsx";
 import Loading from "./Loading.jsx";
-import { Spinner } from "@material-tailwind/react";
+import { Spinner } from "./Spinner.jsx";
+
+const Accordion = ({defaultTheme, acc, showDiaRef, reqResult}) => {
+    return(
+    <>        
+        {acc.map((item, index) => (
+            <Suspense key={index} fallback={<Loading />}>
+                <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} />
+            </Suspense>
+        ))}
+    </>
+    )
+}
 
 export default function ListaRequerimientos({ defaultTheme }){
     const { filters, filterRequest } = useFilters()  
@@ -48,19 +60,15 @@ export default function ListaRequerimientos({ defaultTheme }){
     
     return (
         <>
-    {loading ? (
-        <span className="absolute left-[50%] top-[50%]">
-            <Spinner />
-        </span>
-    ) : (
-        <>        
-          {acc.map((item, index) => (
-            <Suspense key={index} fallback={<Loading />}>
-                <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} />
-            </Suspense>
-          ))}
+            {loading ? (
+                <span className="absolute left-[50%] top-[50%]">
+                    <Spinner />
+                </span>
+            ) : (
+                <Suspense fallback={<Loading />}>
+                    <Accordion acc={acc} showDiaRef={showDiaRef} defaultTheme={defaultTheme} reqResult={reqResult} />
+                </Suspense>
+            )}
         </>
-      )}
-      </>
     )
 }
