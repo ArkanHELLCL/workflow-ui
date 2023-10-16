@@ -64,24 +64,24 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         e.preventDefault();
     }
 
-    /*function QuitarFoco(e){
+    function QuitarFoco(e){
         if (e.key === "Escape") {
             const elemento = document.getElementById(inputId);
             elemento.blur();
+            setValue("")
             setFilters(prevState => ({
                 ...prevState,                     
                 stringSearch: ""
-            }))
-            setValue("")
+            }))            
         }        
-    }*/
+    }
     
-    /*useEffect(() => {
-        document.addEventListener("keydown", QuitarFoco, true);
+    useEffect(() => {
+        document.addEventListener("keyup", QuitarFoco, true);
         return () => {
-            document.removeEventListener("keydown", QuitarFoco, true);            
+            document.removeEventListener("keyup", QuitarFoco, true);            
         };
-    },[value]);*/
+    },[value]);
     
     return(
         <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
