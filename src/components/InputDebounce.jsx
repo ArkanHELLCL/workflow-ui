@@ -7,9 +7,9 @@ export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur
       // access to latest state here
         setFilters(prevState => ({
             ...prevState,
-            stringSearch: value
-        }))
-        //console.log(value);
+            stringSearch: value,
+            loading: true
+        }))        
     });
   
     const onChange = (e) => {

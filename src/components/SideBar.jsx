@@ -26,7 +26,8 @@ export default function SideBar(){
     function handleClickItem(id) {
         setFilters(prevState => ({
             ...prevState,         
-            itemIdSelected: id        
+            itemIdSelected: id,
+            loading: true
         }))        
     }
 

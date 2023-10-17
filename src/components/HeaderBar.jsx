@@ -35,7 +35,8 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     const HandleFilterSearch = (id) => {
         setFilters(prevState => ({
             ...prevState,                     
-            filterSearch: id
+            filterSearch: id,
+            loading: true
         }))
         setopenMenuSearch(false)
     }
@@ -71,7 +72,8 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
             setValue("")
             setFilters(prevState => ({
                 ...prevState,                     
-                stringSearch: ""
+                stringSearch: "",
+                loading: true
             }))            
         }        
     }

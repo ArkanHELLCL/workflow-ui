@@ -44,7 +44,8 @@ const Tree = React.memo<
     setFilters((prevState: any) => ({
         ...prevState,         
         itemIdSelected: id,
-        filterSearch: id === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1
+        filterSearch: id === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
+        loading: true
     }))    
     setRequest(null)
   }

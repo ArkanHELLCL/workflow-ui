@@ -26,27 +26,31 @@ export function MenuFilters({defaultTheme}) {
     const handleSetFlujos = (flujo) => {         
         setFilters(prevState => ({
             ...prevState, 
-            flujo: flujo,            
+            flujo: flujo,
+            loading: true
         }))
         setRequest(null)
         if(flujo === 0 && filters.filter===4)
             setFilters(prevState => ({
                 ...prevState, 
-                filter: 1
+                filter: 1,
+                loading: true
         }))        
         sectionFilter(false)
     }
     const handleSetFiltros = (filtro) => {         
         setFilters(prevState => ({
             ...prevState, 
-            filter: filtro
+            filter: filtro,
+            loading: true
         }))
         sectionFilter(false)
     }
     const handleSetOrder = (orderDes) => {         
         setFilters(prevState => ({
             ...prevState, 
-            orderDes: orderDes
+            orderDes: orderDes,
+            loading: true
         }))
         sectionFilter(false)
     }

@@ -22,19 +22,21 @@ const Accordion = ({defaultTheme, acc, showDiaRef, reqResult}) => {
 }
 
 export default function ListaRequerimientos({ defaultTheme }){
-    const { filters, filterRequest } = useFilters()  
+    const { filters, filterRequest, setFilters } = useFilters()  
     const { filteredRequest } = filterRequest(bandejas)
-    const { requerimientoAccordion } = Accordions(filteredRequest, filters)
+    const { requerimientoAccordion } = Accordions(filteredRequest, filters)    
 
     const [req, setReq] = useState([])
-    const [acc, setAcc] = useState([])
-    const [loading, setLoading] = useState(true);
+    const [acc, setAcc] = useState([])    
     
     useEffect(() => {
         setReq(filteredRequest)
         setAcc(requerimientoAccordion)
-        setLoading(false);        
-    }, [filters])
+        setFilters({
+            ...filters,
+            loading: false
+        });        
+    }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
     
     const reqResult = useCallback((item) => {
         let req2 = []
@@ -60,7 +62,7 @@ export default function ListaRequerimientos({ defaultTheme }){
     
     return (
         <>
-            {loading ? (
+            {filters.loading ? (
                 <span className="absolute left-[50%] top-[50%]">
                     <Spinner />
                 </span>
