@@ -21,16 +21,44 @@
       ],
       "FOR_Botones":[
         {
-          "id":"btn_Tomar",
+          "id":"btn_frm10s1",
+          "descripcion":"Enviar"
+        },
+        {
+          "id":"btn_frm10s2",
           "descripcion":"Tomar"
         },
         {
-          "id":"btn_Enviar",
-          "descripcion":"Jefatura TIC"
+          "id":"btn_frm10s5",
+          "descripcion":"Finalizar"
         },
         {
-          "id":"btn_Rechazar",
+          "id":"btn_frm10s6",
+          "descripcion":"Enviar"
+        },        
+        {
+          "id":"btn_frm10s3",
           "descripcion":"Rechazar"
+        },
+        {
+          "id":"btn_frm10s4",
+          "descripcion":"Devolver"
+        },
+        {
+          "id":"btn_frm10s9",
+          "descripcion":"Liberar"
+        },        
+        {
+          "id":"btn_frm10s7",
+          "descripcion":"Retroceder"
+        },
+        {
+          "id":"btn_frm10s8",
+          "descripcion":"Devolver"
+        },
+        {
+          "id":"btn_frm10s10",
+          "descripcion":"Abrir"
         }
       ],
       "FOR_Campos":[
