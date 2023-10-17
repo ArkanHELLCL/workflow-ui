@@ -57,7 +57,9 @@ const Tree = React.memo<
   // @ts-ignore
   return (
     <Frame className={`dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100`}>
-      <div className={`${filters.itemIdSelected===id ? 'dark:bg-[#444444] bg-[#e1e1e1] font-extrabold' : 'bg-tranasparent hover:dark:bg-[#505050] hover:bg-[#e6f2fa]'}`}>
+      <div 
+        className={`${filters.itemIdSelected===id ? 'dark:bg-[#444444] bg-[#e1e1e1] font-extrabold' : 'bg-tranasparent hover:dark:bg-[#505050] hover:bg-[#e6f2fa]'} cursor-pointer`} 
+        onClick={()=>handleClickItem(id)} >
       {
         children ? 
             <span onClick={(handleOnClickIcon)} style={style2}>
@@ -68,7 +70,7 @@ const Tree = React.memo<
         <Title 
           style={style} 
           className={`${children ? 'cursor-pointer':'cursor-pointer'} ${filters.itemIdSelected===id ? 'font-bold' : ''} z-10 relative`} 
-          onClick={()=>handleClickItem(id)} 
+          
           key={id} 
           id={id}>
             {name}
