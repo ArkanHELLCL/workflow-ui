@@ -22,9 +22,25 @@ export function Formulario(){
         {request &&
             <div className='pl-4'>
                 <header className='w-full h-16'>
-                    <h1 className='text-lg'>{request?.REQ_Descripcion}</h1>
-                    <h2 className='text-base font-light leading-tight'>Acción requerida: <strong>{request?.ESR_AccionFlujoDatos}</strong></h2>
-                    <div className='py-2 flex justify-between'>
+                    <div className='flex justify-between relative'>
+                        <div>
+                            <h1 className='text-lg'>{request?.REQ_Descripcion}</h1>
+                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong>{request?.ESR_AccionFlujoDatos}</strong></h2>
+                        </div>
+                        <div className='grid text-right leading-tight absolute right-2 top-8'>
+                            <div className='flex items-center gap-0'>
+                                {
+                                    FOR_Botones.map((boton, index) => 
+                                        <button key={boton.id} className='h-7 w-auto dark:bg-[#444444] border border-[#666666]' title={boton.descripcion}>   
+                                            <span className='text-[11px] font-light leading-tight w-fit px-2'>{boton.descripcion}</span>
+                                        </button>
+                                    )
+                                }
+                            </div>
+                            <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit)}</span>
+                        </div>
+                    </div>
+                    <div className='flex justify-between'>
                         <div className='flex items-center gap-3'>
                             <div className='pt-3 pl-2'>
                                 <img
@@ -35,19 +51,7 @@ export function Formulario(){
                                 <span className='text-base font-light leading-tight'>{request?.DRE_UsuarioEditAnt}</span>
                                 <span className='text-sm font-light leading-tight'>Acción realizada: {request?.ESRAnterior_Descripcion}</span>                                
                             </div>
-                        </div>
-                        <div className='grid text-right leading-tight'>
-                            <div className='flex items-center gap-3'>
-                                {
-                                    FOR_Botones.map((boton, index) => 
-                                        <button key={boton.id} className='h-3 w-auto' title={boton.descripcion}>   
-                                            <span className='text-xs font-light leading-tight w-fit px-2'>{boton.descripcion}</span>
-                                        </button>
-                                    )
-                                }
-                            </div>
-                            <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit)}</span>
-                        </div>
+                        </div>                        
                     </div>
                 </header>
             </div>
