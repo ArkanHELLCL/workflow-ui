@@ -28,7 +28,7 @@ export function Formulario(){
                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong>{request?.ESR_AccionFlujoDatos}</strong></h2>
                         </div>
                         <div className='grid text-right leading-tight absolute right-2 top-8'>
-                            <div className='flex items-center gap-0'>
+                            <div className='flex items-center gap-0 pb-2'>
                                 {
                                     FOR_Botones.map((boton, index) => 
                                         <button key={boton.id} className='h-7 w-auto dark:bg-[#444444] border border-[#666666]' title={boton.descripcion}>   
