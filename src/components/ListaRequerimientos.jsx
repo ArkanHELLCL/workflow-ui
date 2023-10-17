@@ -29,7 +29,7 @@ export default function ListaRequerimientos({ defaultTheme }){
     const [req, setReq] = useState([])
     const [acc, setAcc] = useState([])
     const [loading, setLoading] = useState(true);
-
+    
     useEffect(() => {
         setReq(filteredRequest)
         setAcc(requerimientoAccordion)
