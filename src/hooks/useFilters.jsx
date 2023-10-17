@@ -16,7 +16,8 @@ export function useFilters() {
             item.NombreCreador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             item.ApellidoCreador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             item.REQ_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
-            item.DFO_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase())
+            item.DFO_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+            Number(item.VRE_Id) === Number(filters.stringSearch)
         ))
         
         //Por Flujo seleccionado

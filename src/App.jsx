@@ -9,6 +9,7 @@ import Menu from './components/Menu.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
+import { Formulario } from "./components/Formulario.jsx";
 
 function App() {
   const defaultTheme = {
@@ -57,7 +58,7 @@ function App() {
           <section id="Resizable2">
             <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full flex flex-columns overflow-auto pr-10 mt-[10px]`}>
               <Suspense fallback={<Loading />}>  
-                {'No hay requerimiento seleccionado'}
+                <Formulario />
               </Suspense>
             </aside>          
           </section>

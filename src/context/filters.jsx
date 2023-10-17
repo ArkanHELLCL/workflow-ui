@@ -13,7 +13,7 @@ export function FiltersProvider({ children }) {
         totalSintomar: 0,
         totalVencidos: 0,
         totalPorVencer: 0,        
-        hoy : new Date('2023-10-13 8:0:0'),
+        hoy : new Date('2023-10-17 8:0:0'),
         minReq : null,
         maxReq : null,
         maxStep : null,

@@ -34,6 +34,7 @@ export function DetalleRequerimiento({defaultTheme}){
                                         <li>Dep. creación: <strong>{request?.DepDescripcionOrigen}</strong></li>
                                         <li>Creación: <strong>{request?.REQ_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.REQ_FechaEdit.slice(5,7))] + ' de ' + request?.REQ_FechaEdit.slice(0,4)}</strong></li>
                                         <li>Modificacón: <strong>{request?.DRE_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.DRE_FechaEdit.slice(5,7))] + ' de ' + request?.DRE_FechaEdit.slice(0,4)}</strong></li>
+                                        <li>Acción realizada: <strong>{request?.ESRAnterior_Descripcion}</strong></li>
                                     </ul>
                                 </div>
                                 <div className="mb-3 text-stone-500 dark:text-stone-400">
@@ -44,7 +45,7 @@ export function DetalleRequerimiento({defaultTheme}){
                                         <li>Paso actual: <strong>{request?.FLD_CodigoPaso}</strong></li>
                                         <li>Editor actual: <strong>{request?.NombreEditor ? request?.NombreEditor + ' ' + request?.ApellidoEditor : 'Esperando a ser tomado'}</strong></li>                            
                                         <li>Dep. actual: <strong>{request?.DepDescripcionActual}</strong></li>
-                                        <li>Estado actual: <strong>{request?.ESR_DescripcionFlujoDatos}</strong></li>
+                                        <li>Acción a realizar: <strong>{request?.ESR_AccionFlujoDatos}</strong></li>
                                     </ul>
                                 </div>
                             </>
