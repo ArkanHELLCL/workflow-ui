@@ -22,7 +22,7 @@ const Accordion = ({defaultTheme, acc, showDiaRef, reqResult}) => {
 }
 
 export default function ListaRequerimientos({ defaultTheme }){
-    const { filters, filterRequest, setFilters } = useFilters()  
+    const { filters, filterRequest, setFilters } = useFilters() 
     const { filteredRequest } = filterRequest(bandejas)
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)    
 
