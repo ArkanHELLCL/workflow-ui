@@ -56,7 +56,7 @@ function App() {
             </aside>                      
           </section>          
           <section id="Resizable2" className="flex-1">
-            <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full overflow-auto pr-20 mt-[10px]`}>
+            <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] h-full overflow-x-hidden pr-20 mt-[10px]`}>
               <Suspense fallback={<Loading />}>  
                 <Formulario />
               </Suspense>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
-//import { flujos } from "../mocks/menu.json"
 import * as menu from "../mocks/menu.json"
 
 export default function Footer() {    
