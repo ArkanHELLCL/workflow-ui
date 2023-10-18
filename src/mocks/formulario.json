@@ -21,53 +21,58 @@
       ],
       "FOR_Botones":[
         {
-          "id":"btn_frm10s1",
-          "nombre":"Enviar",
-          "descripcion":"Enviar"
-        },
-        {
-          "id":"btn_frm10s2",
+          "id":"btn_tomar",
           "nombre":"Tomar",
           "descripcion":"Tomar"
         },
         {
-          "id":"btn_frm10s5",
-          "nombre":"Finalizar",
-          "descripcion":"Finalizar"
+          "id":"btn_liberar",
+          "nombre":"Liberar",
+          "descripcion":"Liberar"
+        },  
+        {
+          "id":"btn_enviar",
+          "nombre":"Enviar",
+          "descripcion":"Enviar"
         },
         {
-          "id":"btn_frm10s6",
+          "id":"btn_enviarDes",
           "nombre":"Cancelar",
           "descripcion":"Destinatario"
-        },        
+        }, 
         {
-          "id":"btn_frm10s3",
-          "nombre":"Rechazar",
-          "descripcion":"Rechazar"
-        },
-        {
-          "id":"btn_frm10s4",
+          "id":"btn_devolver",
           "nombre":"Devolver",
           "descripcion":"Devolver"
         },
         {
-          "id":"btn_frm10s9",
-          "nombre":"Liberar",
-          "descripcion":"Liberar"
-        },                
+          "id":"btn_rechazar",
+          "nombre":"Rechazar",
+          "descripcion":"Rechazar"
+        }, 
         {
-          "id":"btn_frm10s10",
+          "id":"btn_finalizar",
+          "nombre":"Finalizar",
+          "descripcion":"Finalizar"
+        },                      
+        {
+          "id":"btn_abrir",
           "nombre":"Abrir",
           "descripcion":"Abrir"
         },
         {
-          "id":"btn_frm10s7",
+          "id":"btn_retroceder",
           "nombre":"Retroceder",
           "descripcion":""
         },
         {
-          "id":"btn_frm10s8",
+          "id":"btn_avanzar",
           "nombre":"Avanzar",
+          "descripcion":""
+        },
+        {
+          "id":"btn_observaciones",
+          "nombre":"Observaciones",
           "descripcion":""
         }
       ],

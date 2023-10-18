@@ -1,8 +1,8 @@
 import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
-import { Button } from '@material-tailwind/react';
 import { ButtonIcon } from './icons';
+import { useEffect, useId } from 'react';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -11,6 +11,7 @@ const { FOR_Campos } = formulario;
 export function Formulario(){
     const { request } = useRequest()
     const { dias } = Constants()
+    const idForm = useId()
 
     const fecha = (date) => {
         const newDate = new Date(date)
@@ -20,17 +21,17 @@ export function Formulario(){
     return(
         <>
         {request &&
-            <div className='pl-4'>
-                <header className='w-full h-16'>
+            <div className='pl-4' id={idForm}>
+                <header className='w-full h-auto'>
                     <div className='flex justify-between relative'>
                         <div>
-                            <h1 className='text-lg max-w-[1100px] truncate'>{request?.REQ_Descripcion}</h1>
+                            <h1 className='text-lg truncate max-w-[1189px]'>{request?.REQ_Descripcion}</h1>
                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>
                         </div>
                         <div className='grid text-right leading-tight absolute right-2 top-8'>
                             <div className='flex items-center gap-0 pb-2'>
                                 {
-                                    FOR_Botones.map((boton, index) => 
+                                    FOR_Botones.map((boton) => 
                                         <button key={boton.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={boton.nombre}>
                                             <ButtonIcon typeButton={boton.id} styles='w-5 h-5'strokeWidth='1.3'/>{
                                                 boton.descripcion &&
