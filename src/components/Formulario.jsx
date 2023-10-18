@@ -8,6 +8,27 @@ const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
 const { FOR_Campos } = formulario;
 
+const Buttons = (grupos) => {
+    for (const [key, value] of Object.entries(grupos)){        
+        console.log(value)
+        const grps = value.map(grp => grp)
+        const botones = grps.map(btns => btns[0])        
+        return (
+            botones.map((btns) => 
+            <button key={btns.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={btns.nombre}>
+                <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3'/>{
+                    btns.descripcion &&
+                    <span className='text-xs font-normal leading-tight w-fit px-2'>{btns.descripcion}</span>
+                }                                            
+            </button>
+            )
+        )
+        //console.log(value.map(btns => btns.map(btn => btn.id)))
+      }    
+}
+
+const grupos = FOR_Botones.map(grupo => grupo)
+
 export function Formulario(){
     const { request } = useRequest()
     const { dias } = Constants()
@@ -16,8 +37,8 @@ export function Formulario(){
     const fecha = (date) => {
         const newDate = new Date(date)
         return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()        
-      }
-    
+    }
+    let corr = 0;
     return(
         <>
         {request &&
@@ -25,21 +46,31 @@ export function Formulario(){
                 <header className='w-full h-auto'>
                     <div className='flex justify-between relative'>
                         <div>
-                            <h1 className='text-lg truncate max-w-[1189px]'>{request?.REQ_Descripcion}</h1>
+                            <h1 className='text-lg truncate max-w-[1170px]'>{request?.REQ_Descripcion}</h1>
                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>
                         </div>
                         <div className='grid text-right leading-tight absolute right-2 top-8'>
-                            <div className='flex items-center gap-0 pb-2'>
-                                {
-                                    FOR_Botones.map((boton) => 
-                                        <button key={boton.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={boton.nombre}>
-                                            <ButtonIcon typeButton={boton.id} styles='w-5 h-5'strokeWidth='1.3'/>{
-                                                boton.descripcion &&
-                                                <span className='text-xs font-normal leading-tight w-fit px-2'>{boton.descripcion}</span>
-                                            }                                            
-                                        </button>
+                            <div className='flex items-center gap-3 pb-2'> 
+                            {                               
+                                grupos.map(grp => {
+                                    corr = corr+1;
+                                    return (
+                                        <div key={corr} className='flex'>
+                                        {
+                                            grp.map(btns =>
+                                                <button key={btns[0].id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={btns[0].nombre}>
+                                                    <ButtonIcon typeButton={btns[0].id} styles='w-5 h-5'strokeWidth='1.3'/>{
+                                                        btns[0].descripcion &&
+                                                        <span className='text-xs font-normal leading-tight w-fit px-2'>{btns[0].descripcion}</span>
+                                                    }                                            
+                                                </button>
+                                            )
+                                        }
+                                        </div>
                                     )
-                                }
+                                })
+                                    
+                            }
                             </div>
                             <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit)}</span>
                         </div>
