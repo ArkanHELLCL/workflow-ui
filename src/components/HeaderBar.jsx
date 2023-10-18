@@ -132,7 +132,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
 
 function UserBar({menuAppear, reference, chkUser, setOpen, open}) {    
     return(       
-        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `} ref={reference}>
+        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `} ref={reference} title="Datos del perfil">
             <label htmlFor={chkUser}>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
                 <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></div>
@@ -157,7 +157,7 @@ function UserBar({menuAppear, reference, chkUser, setOpen, open}) {
                     <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] hover:bg-[#d2d2d2] bg-[#f3f3f3] border-t border-[#d9d9d9] hover:dark:bg-[#505050] hover:cursor-pointer">
                         <div className="flex items-center gap-3">
                             <span className="relative text-[#313131] dark:text-white">
-                                <MailIcon />
+                                <MailIcon strokeWidth=".75" styles="w-10 h-10" /> 
                                 <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</div>                               
                             </span>                            
                             <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
@@ -196,10 +196,10 @@ export default function HeaderBar() {
     const { ref:refUser } = ClickAway(setOpen);
     return(
         <div className="flex items-center h-full px-4 text-white relative">
-            <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload}>
+            <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload} title="Recargar">
                 <ReloadIcon />
-                </span>
-            <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer">
+            </span>
+            <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" title="Ayuda">
                 <HelpIcon />
             </span>
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>

@@ -43,8 +43,9 @@ export function DarkModeToggle() {
         type="button" 
         tabIndex="0" 
         aria-checked="false" 
-        data-headlessui-state={`${isOn ? `checked` : ``}`}>
-        <span className="sr-only">{`${isOn ? `Disable dark mode` : `Enable dark mode`}`}</span>
+        data-headlessui-state={`${isOn ? `checked` : ``}`}
+        title={`${isOn ? `Desactivar modo orcuro` : `Activar modo oscuro`}`}>
+        <span className="sr-only">{`${isOn ? `Desactivar modo orcuro` : `Activar modo oscuro`}`}</span>
         <svg 
             width="24" 
             height="24" 

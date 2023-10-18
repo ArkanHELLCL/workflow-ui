@@ -1,6 +1,8 @@
 import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
+import { Button } from '@material-tailwind/react';
+import { ButtonIcon } from './icons';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -23,14 +25,17 @@ export function Formulario(){
                     <div className='flex justify-between relative'>
                         <div>
                             <h1 className='text-lg max-w-[1100px] truncate'>{request?.REQ_Descripcion}</h1>
-                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong>{request?.ESR_AccionFlujoDatos}</strong></h2>
+                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>
                         </div>
                         <div className='grid text-right leading-tight absolute right-2 top-8'>
                             <div className='flex items-center gap-0 pb-2'>
                                 {
                                     FOR_Botones.map((boton, index) => 
-                                        <button key={boton.id} className='h-7 w-auto dark:bg-[#444444] border border-[#666666]' title={boton.descripcion}>   
-                                            <span className='text-[11px] font-light leading-tight w-fit px-2'>{boton.descripcion}</span>
+                                        <button key={boton.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={boton.nombre}>
+                                            <ButtonIcon typeButton={boton.id} styles='w-5 h-5'strokeWidth='1.3'/>{
+                                                boton.descripcion &&
+                                                <span className='text-xs font-normal leading-tight w-fit px-2'>{boton.descripcion}</span>
+                                            }                                            
                                         </button>
                                     )
                                 }
@@ -47,7 +52,7 @@ export function Formulario(){
                             </div>
                             <div className='grid'>
                                 <span className='text-base font-light leading-tight'>{request?.DRE_UsuarioEditAnt}</span>
-                                <span className='text-sm font-light leading-tight'>Acción realizada: {request?.ESRAnterior_Descripcion}</span>                                
+                                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
                             </div>
                         </div>                        
                     </div>

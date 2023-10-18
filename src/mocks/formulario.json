@@ -22,43 +22,53 @@
       "FOR_Botones":[
         {
           "id":"btn_frm10s1",
+          "nombre":"Enviar",
           "descripcion":"Enviar"
         },
         {
           "id":"btn_frm10s2",
+          "nombre":"Tomar",
           "descripcion":"Tomar"
         },
         {
           "id":"btn_frm10s5",
+          "nombre":"Finalizar",
           "descripcion":"Finalizar"
         },
         {
           "id":"btn_frm10s6",
-          "descripcion":"Enviar"
+          "nombre":"Cancelar",
+          "descripcion":"Destinatario"
         },        
         {
           "id":"btn_frm10s3",
+          "nombre":"Rechazar",
           "descripcion":"Rechazar"
         },
         {
           "id":"btn_frm10s4",
+          "nombre":"Devolver",
           "descripcion":"Devolver"
         },
         {
           "id":"btn_frm10s9",
+          "nombre":"Liberar",
           "descripcion":"Liberar"
-        },        
+        },                
+        {
+          "id":"btn_frm10s10",
+          "nombre":"Abrir",
+          "descripcion":"Abrir"
+        },
         {
           "id":"btn_frm10s7",
-          "descripcion":"Retroceder"
+          "nombre":"Retroceder",
+          "descripcion":""
         },
         {
           "id":"btn_frm10s8",
-          "descripcion":"Devolver"
-        },
-        {
-          "id":"btn_frm10s10",
-          "descripcion":"Abrir"
+          "nombre":"Avanzar",
+          "descripcion":""
         }
       ],
       "FOR_Campos":[
