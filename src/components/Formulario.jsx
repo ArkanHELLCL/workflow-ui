@@ -39,6 +39,7 @@ export function Formulario(){
         return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()        
     }
     let corr = 0;
+    let keygrp = '';
     return(
         <>
         {request &&
@@ -54,8 +55,9 @@ export function Formulario(){
                             {                               
                                 grupos.map(grp => {
                                     corr = corr+1;
+                                    keygrp = 'btnGrp-' + corr;
                                     return (
-                                        <div key={corr} className='flex'>
+                                        <div key={keygrp} className='flex'>
                                         {
                                             grp.map(btns =>
                                                 <button key={btns[0].id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={btns[0].nombre}>
