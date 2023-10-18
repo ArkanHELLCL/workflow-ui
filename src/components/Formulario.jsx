@@ -12,9 +12,7 @@ export function Formulario(){
 
     const fecha = (date) => {
         const newDate = new Date(date)
-
-        return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()
-        
+        return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()        
       }
     
     return(
@@ -24,7 +22,7 @@ export function Formulario(){
                 <header className='w-full h-16'>
                     <div className='flex justify-between relative'>
                         <div>
-                            <h1 className='text-lg'>{request?.REQ_Descripcion}</h1>
+                            <h1 className='text-lg max-w-[1100px] truncate'>{request?.REQ_Descripcion}</h1>
                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong>{request?.ESR_AccionFlujoDatos}</strong></h2>
                         </div>
                         <div className='grid text-right leading-tight absolute right-2 top-8'>
