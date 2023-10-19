@@ -74,10 +74,8 @@ const Adjuntos = () => {
     return(
         REQ_Adjuntos.map(file => 
             (
-                <div key={file[0].id} className='flex items-center border dark:border-[#474747] px-2 py-1 dark:bg-[#363636] relative dark:hover:bg-[#666666] hover:cursor-pointer border-r-0 z-0'>
-                    <div className='absolute h-full w-5 right-0 dark:bg-[#363636] border dark:border-[#474747] dark:hover:bg-[#4a4a4a] z-10 border-l-0 border-t-0 border-b-0 items-center align-middle justify-center flex'>
-                        <CloseIcon />
-                    </div>
+                <div key={file[0].id} className='flex items-center relative'>
+                    <div className='dark:border-[#474747] px-2 py-1 dark:bg-[#363636] dark:hover:bg-[#666666] hover:cursor-pointer border-r-0 z-0 w-full flex border'>
                     {
                         file[0].thumbail ?
                             <span>
@@ -89,8 +87,12 @@ const Adjuntos = () => {
                         </span>
                     }
                     <div className='grid'>
-                        <span className='text-sm font-normal leading-tight w-fit px-2 truncate'>{file[0].nombre}.{file[0].extension}</span>
-                        <span className='text-sm font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
+                        <span className='text-xs font-normal leading-tight w-fit px-2 truncate'>{file[0].nombre}.{file[0].extension}</span>
+                        <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
+                    </div>
+                    </div>
+                    <div className='absolute h-full w-5 right-0 dark:bg-[#363636] border dark:border-[#474747] dark:hover:bg-[#4a4a4a] z-10 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer'>
+                        <CloseIcon />
                     </div>
                 </div>
             )
@@ -133,7 +135,7 @@ export function Formulario(){
                             </div>
                         </div>                        
                     </div>
-                    <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 relative'>
+                    <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative'>
                         <Adjuntos />
                     </div>
                 </header>
