@@ -84,7 +84,8 @@ export function Formulario(){
                     <div className='flex justify-between relative'>
                         <div>
                             <h1 className='text-lg truncate max-w-[1170px]'>{request?.REQ_Descripcion}</h1>
-                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>
+                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
+                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
                         </div>
                         <div className='grid text-right leading-tight absolute right-2 top-8'>
                             <Buttons idGroups={idGroups}/>
@@ -99,6 +100,7 @@ export function Formulario(){
                                     src = {formulario.IdEditor_Foto} />
                             </div>
                             <div className='grid'>
+                                <span className='text-sm font-light leading-tight'>Solicitado por:</span>
                                 <span className='text-base font-light leading-tight'>{request?.DRE_UsuarioEditAnt}</span>
                                 <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
                             </div>
