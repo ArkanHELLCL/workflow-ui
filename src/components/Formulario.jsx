@@ -5,6 +5,7 @@ import { Constants } from "../constants/const.jsx";
 import { ButtonIcon, CloseIcon, TypeDoc } from './icons';
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
+import { ClickAway } from '../hooks/ClickAway';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -23,7 +24,7 @@ const Buttons = ({idGroups}) => {
 
     
     const buttonsAnimation = useSpring({
-        delay: 100,
+        delay: 10,
         opacity: 0,
         position: 'absolute',        
         from: {
@@ -70,12 +71,15 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const Adjuntos = ({file}) => {
-    const [selected, setSelected] = useState(false)
+const MenuAdjuntos = () => {
     const [open, setOpen] = useState(false)
+}
+
+const Adjuntos = ({file, selected, setSelected}) => {
+    //const [selected, setSelected] = useState(false)
     return(        
-        <div key={file[0].id} className='flex items-center relative' onClick={() => setSelected(!selected)}>
-            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] dark:hover:bg-[#666666] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected ? 'bg-[#cde6f7] dark:bg-[#666666]':''}`}>
+        <div key={file[0].id} className='flex items-center relative' onClick={() => setSelected(file[0].nombre)}>
+            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666]':'dark:hover:bg-[#4a4a4a]'}`}>
             {
                 file[0].thumbail ?
                     <span>
@@ -91,7 +95,7 @@ const Adjuntos = ({file}) => {
                 <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
             </div>
             </div>
-            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7]  z-10 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666]':'dark:hover:bg-[#4a4a4a]'}`} onClick={() => setSelected(true)}>
+            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7]  z-10 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666]':'dark:hover:bg-[#4a4a4a]'}`} onClick={() => setSelected(file[0].nombre)}>
                 <CloseIcon />
             </div>
         </div>          
@@ -102,7 +106,9 @@ export function Formulario(){
     const { request } = useRequest()
     const { dias } = Constants()
     const idForm = useId()
-    const idGroups = useId()   
+    const idGroups = useId()
+
+    const [selected, setSelected] = useState(null)
        
     return(
         <>
@@ -137,7 +143,7 @@ export function Formulario(){
                     {
                         REQ_Adjuntos.map(file => {
                             return (                        
-                                <Adjuntos file={file} key={file.id}/>
+                                <Adjuntos file={file} key={file.id} selected={selected} setSelected={setSelected}/>
                             )}
                         )
                     }                        
