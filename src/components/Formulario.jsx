@@ -15,18 +15,24 @@ const Buttons = ({idGroups}) => {
     let corr = 0;
     let keygrp = '';
 
-    useEffect(()=>{        
-        setPositionTo(document.getElementById(idGroups)?.offsetWidth)
-    },[grupos])
+    useEffect(()=>{
+        const buttons = document.getElementById(idGroups)        
+        const posButtons = buttons?.getBoundingClientRect()
+        setPositionTo(posButtons?.x)        
+    })
 
     
     const buttonsAnimation = useSpring({
         delay: 100,
-        opacity: 1,
-        position: 'absolute',
-        //transform: `${postitionTo}px)`,        
+        opacity: 0,
+        position: 'absolute',        
+        from: {
+            transform: `translateX(${postitionTo*2}px)`,
+            opacity: 0,
+        },
         to: {
-            transform: `translateX(${880-postitionTo}px)`,
+            transform: `translateX(0px)`,            
+            opacity: 1,
         }
     });
     
