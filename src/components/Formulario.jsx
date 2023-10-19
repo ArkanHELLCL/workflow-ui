@@ -75,7 +75,7 @@ const Adjuntos = () => {
         REQ_Adjuntos.map(file => 
             (
                 <div key={file[0].id} className='flex items-center relative'>
-                    <div className='dark:border-[#474747] px-2 py-1 dark:bg-[#363636] dark:hover:bg-[#666666] hover:cursor-pointer border-r-0 z-0 w-full flex border'>
+                    <div className='dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] dark:hover:bg-[#666666] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border'>
                     {
                         file[0].thumbail ?
                             <span>
@@ -91,7 +91,7 @@ const Adjuntos = () => {
                         <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
                     </div>
                     </div>
-                    <div className='absolute h-full w-5 right-0 dark:bg-[#363636] border dark:border-[#474747] dark:hover:bg-[#4a4a4a] z-10 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer'>
+                    <div className='absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] dark:hover:bg-[#4a4a4a] z-10 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd]'>
                         <CloseIcon />
                     </div>
                 </div>
