@@ -2,7 +2,7 @@
 import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
-import { ButtonIcon } from './icons';
+import { ButtonIcon, CloseIcon, TypeDoc } from './icons';
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 
@@ -19,7 +19,7 @@ const Buttons = ({idGroups}) => {
         const buttons = document.getElementById(idGroups)        
         const posButtons = buttons?.getBoundingClientRect()
         setPositionTo(posButtons?.x)        
-    })
+    },[idGroups])
 
     
     const buttonsAnimation = useSpring({
@@ -70,6 +70,34 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
+const Adjuntos = () => {
+    return(
+        REQ_Adjuntos.map(file => 
+            (
+                <div key={file[0].id} className='flex items-center border dark:border-[#474747] px-2 py-1 dark:bg-[#363636] relative dark:hover:bg-[#666666] hover:cursor-pointer border-r-0 z-0'>
+                    <div className='absolute h-full w-5 right-0 dark:bg-[#363636] border dark:border-[#474747] dark:hover:bg-[#4a4a4a] z-10 border-l-0 border-t-0 border-b-0 items-center align-middle justify-center flex'>
+                        <CloseIcon />
+                    </div>
+                    {
+                        file[0].thumbail ?
+                            <span>
+                                <img src={file[0].thumbail} className='w-9 h-9' />
+                            </span>
+                        :   
+                        <span className='w-9 h-9'>
+                            <TypeDoc typeDoc={file[0].extension} />
+                        </span>
+                    }
+                    <div className='grid'>
+                        <span className='text-sm font-normal leading-tight w-fit px-2 truncate'>{file[0].nombre}.{file[0].extension}</span>
+                        <span className='text-sm font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
+                    </div>
+                </div>
+            )
+        )      
+    )
+}
+
 export function Formulario(){
     const { request } = useRequest()
     const { dias } = Constants()
@@ -104,6 +132,9 @@ export function Formulario(){
                                 <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
                             </div>
                         </div>                        
+                    </div>
+                    <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 relative'>
+                        <Adjuntos />
                     </div>
                 </header>
             </div>
