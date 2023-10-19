@@ -72,14 +72,21 @@ const fecha = (date, dias) => {
 const grupos = FOR_Botones.map(grupo => grupo)
 
 const MenuAdjuntos = () => {
-    const [open, setOpen] = useState(false)
+    return(
+        <div className='absolute w-fit py-1 pl-8 -bottom-14 z-40 right-0 border'>
+            <ul>
+                <li className='border border-t-0 border-l-0 border-r-0 pr-0'>Vista previa</li>                
+                <li>Abrir</li>
+            </ul>
+        </div>
+    )
 }
 
 const Adjuntos = ({file, selected, setSelected}) => {
     //const [selected, setSelected] = useState(false)
     return(        
-        <div key={file[0].id} className='flex items-center relative' onClick={() => setSelected(file[0].nombre)}>
-            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666]':'dark:hover:bg-[#4a4a4a]'}`}>
+        <div key={file[0].id} className='flex items-center relative' onClick={() => setSelected(file[0])}>
+            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}>
             {
                 file[0].thumbail ?
                     <span>
@@ -95,9 +102,10 @@ const Adjuntos = ({file, selected, setSelected}) => {
                 <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
             </div>
             </div>
-            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7]  z-10 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666]':'dark:hover:bg-[#4a4a4a]'}`} onClick={() => setSelected(file[0].nombre)}>
+            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`} onClick={() => setSelected(file[0])}>
                 <CloseIcon />
             </div>
+            <MenuAdjuntos />
         </div>          
     )
 }
@@ -139,7 +147,7 @@ export function Formulario(){
                             </div>
                         </div>                        
                     </div>
-                    <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative'>
+                    <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
                     {
                         REQ_Adjuntos.map(file => {
                             return (                        

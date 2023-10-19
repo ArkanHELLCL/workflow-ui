@@ -330,8 +330,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth}){
     return null
 }
 
-export function TypeDoc({typeDoc}){
-    console.log(typeDoc)
+export function TypeDoc({typeDoc}){    
     if(typeDoc==='pdf'){
         return(
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
