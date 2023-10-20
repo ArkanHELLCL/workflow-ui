@@ -90,30 +90,30 @@ const MenuAdjuntos = ({open, setOpen}) => {
     },[open])
         
     return(
-        <div className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] dark:border-[#8a8886] overflow-hidden`} style={pos} id={IdMenu}>
+        <div className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} style={pos} id={IdMenu}>
             <ul className='text-[11px]'>
-                <li className='dark:hover:bg-[#484644]'>
-                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644]'>Vista previa</span>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce]'>
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold'>Vista previa</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] flex relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative'>
                     <span className="w-5 h-5 absolute top-2 left-2"><OpenFolderIcon /></span>                    
-                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644]'>Abrir</span>                    
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Abrir</span>                    
                 </li>
-                <li className='dark:hover:bg-[#484644] relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
                     <span className="w-5 h-5 absolute top-2 left-2"><PrinterIcon /></span>
-                    <span className='ml-9 block w-full py-2 pr-4'>Impresion rápida</span>
+                    <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Impresion rápida</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] flex relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative'>
                     <span className="w-5 h-5 absolute top-2 left-2"><SaveAsIcon /></span>
-                    <span className='ml-9 block w-full py-2 pr-4'>Guardar como</span>
+                    <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Guardar como</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
                     <span className="w-5 h-5 absolute top-2 left-2"><SaveAllIcon /></span>
-                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644]'>Guardar todos los adjuntos...</span>                    
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Guardar todos los adjuntos...</span>                    
                 </li>
-                <li className='dark:hover:bg-[#484644] relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
                     <span className="w-5 h-5 absolute top-2 left-2"><DeleteFileIcon /></span>
-                    <span className='ml-9 block w-full py-2 pr-4'>Quitar datos adjuntos</span>
+                    <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
                 </li>                
             </ul>
         </div>
