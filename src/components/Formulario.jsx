@@ -17,7 +17,7 @@ const Buttons = ({idGroups}) => {
     let keygrp = '';
 
     useEffect(()=>{
-        const buttons = document.getElementById(idGroups)        
+        const buttons = document.getElementById(idGroups)
         const posButtons = buttons?.getBoundingClientRect()
         setPositionTo(posButtons?.x)        
     },[idGroups])
@@ -71,22 +71,43 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const MenuAdjuntos = () => {
+const MenuAdjuntos = ({open, setOpen}) => {
+    const adjunto = document.getElementById(open.id)
+    const posadjunto = adjunto?.getBoundingClientRect()
+    const posX = posadjunto?.left + 20
+    const posT = posadjunto?.top + posadjunto?.height
+    const pos = {
+        "left": posX + "px",
+        "top": posT + "px"
+    }
     return(
-        <div className='absolute w-fit py-1 pl-8 -bottom-14 z-40 right-0 border'>
+        <div className='fixed w-fit h-fit py-1 pl-8 border z-40' style={pos}>
             <ul>
-                <li className='border border-t-0 border-l-0 border-r-0 pr-0'>Vista previa</li>                
+                <li className='border border-t-0 border-l-0 border-r-0 pr-0'>{open.id} - Vista previa</li>                
                 <li>Abrir</li>
+                <li>Descargar, menu mas largo para calcular la diferencia</li>
             </ul>
         </div>
     )
 }
 
-const Adjuntos = ({file, selected, setSelected}) => {
-    //const [selected, setSelected] = useState(false)
+const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
+    const adjId = useId()
+
+    const HandleClickMenu = (file, id) => {
+        setSelected(file)
+        if(open.open && open.id === id) return setOpen({open: false, id: ''})
+        setOpen({open: true, id: id})
+    }
+    
+    const HandleClickFile = (file, id) =>{
+        setSelected(file)        
+        setOpen({open: false, id: ''})
+    }
     return(        
-        <div key={file[0].id} className='flex items-center relative' onClick={() => setSelected(file[0])}>
-            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}>
+        <div key={file[0].id} className='flex items-center relative' id={adjId}>
+            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}
+                onClick={() => HandleClickFile(file[0],adjId)}>
             {
                 file[0].thumbail ?
                     <span>
@@ -102,10 +123,10 @@ const Adjuntos = ({file, selected, setSelected}) => {
                 <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
             </div>
             </div>
-            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`} onClick={() => setSelected(file[0])}>
+            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`} 
+                onClick={() => HandleClickMenu(file[0], adjId)}>
                 <CloseIcon />
-            </div>
-            <MenuAdjuntos />
+            </div>           
         </div>          
     )
 }
@@ -117,12 +138,13 @@ export function Formulario(){
     const idGroups = useId()
 
     const [selected, setSelected] = useState(null)
+    const [open, setOpen] = useState({open: false, id: ''})
        
     return(
         <>
         {request &&
             <div className='pl-4' id={idForm}>
-                <header className='w-full h-auto'>
+                <header className='w-full h-auto relative'>
                     <div className='flex justify-between relative'>
                         <div>
                             <h1 className='text-lg truncate max-w-[1170px]'>{request?.REQ_Descripcion}</h1>
@@ -149,13 +171,16 @@ export function Formulario(){
                     </div>
                     <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
                     {
-                        REQ_Adjuntos.map(file => {
+                        REQ_Adjuntos.map((file, index) => {
                             return (                        
-                                <Adjuntos file={file} key={file.id} selected={selected} setSelected={setSelected}/>
+                                <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen}/>
                             )}
                         )
                     }                        
-                    </div>
+                    </div>{
+                        open.open &&
+                        <MenuAdjuntos open={open} setOpen={setOpen}/>
+                    }                    
                 </header>
             </div>
         }
