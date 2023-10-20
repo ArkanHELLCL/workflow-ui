@@ -2,7 +2,7 @@
 import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
-import { ButtonIcon, CloseIcon, TypeDoc } from './icons';
+import { ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
@@ -72,20 +72,49 @@ const fecha = (date, dias) => {
 const grupos = FOR_Botones.map(grupo => grupo)
 
 const MenuAdjuntos = ({open, setOpen}) => {
-    const adjunto = document.getElementById(open.id)
-    const posadjunto = adjunto?.getBoundingClientRect()
-    const posX = posadjunto?.left + 20
-    const posT = posadjunto?.top + posadjunto?.height
-    const pos = {
-        "left": posX + "px",
-        "top": posT + "px"
-    }
+    const IdMenu = useId()
+    const [pos, setPos] = useState(null)
+    
+    useEffect(() => {
+        const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
+    
+        const adjunto = document.getElementById(open.id)
+        const posadjunto = adjunto?.getBoundingClientRect()
+        const posX = posadjunto?.left + posadjunto?.width - posMenu?.width
+        const posT = posadjunto?.top + posadjunto?.height    
+
+        setPos({
+            "left": posX + "px",
+            "top": posT + "px"
+        })
+    },[open])
+        
     return(
-        <div className='fixed w-fit h-fit py-1 pl-8 border z-40' style={pos}>
-            <ul>
-                <li className='border border-t-0 border-l-0 border-r-0 pr-0'>{open.id} - Vista previa</li>                
-                <li>Abrir</li>
-                <li>Descargar, menu mas largo para calcular la diferencia</li>
+        <div className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] dark:border-[#8a8886] overflow-hidden`} style={pos} id={IdMenu}>
+            <ul className='text-[11px]'>
+                <li className='dark:hover:bg-[#484644]'>
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644]'>Vista previa</span>
+                </li>
+                <li className='dark:hover:bg-[#484644] flex relative'>
+                    <span className="w-5 h-5 absolute top-2 left-2"><OpenFolderIcon /></span>                    
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644]'>Abrir</span>                    
+                </li>
+                <li className='dark:hover:bg-[#484644] relative'>
+                    <span className="w-5 h-5 absolute top-2 left-2"><PrinterIcon /></span>
+                    <span className='ml-9 block w-full py-2 pr-4'>Impresion rápida</span>
+                </li>
+                <li className='dark:hover:bg-[#484644] flex relative'>
+                    <span className="w-5 h-5 absolute top-2 left-2"><SaveAsIcon /></span>
+                    <span className='ml-9 block w-full py-2 pr-4'>Guardar como</span>
+                </li>
+                <li className='dark:hover:bg-[#484644] relative'>
+                    <span className="w-5 h-5 absolute top-2 left-2"><SaveAllIcon /></span>
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644]'>Guardar todos los adjuntos...</span>                    
+                </li>
+                <li className='dark:hover:bg-[#484644] relative'>
+                    <span className="w-5 h-5 absolute top-2 left-2"><DeleteFileIcon /></span>
+                    <span className='ml-9 block w-full py-2 pr-4'>Quitar datos adjuntos</span>
+                </li>                
             </ul>
         </div>
     )
@@ -139,7 +168,7 @@ export function Formulario(){
 
     const [selected, setSelected] = useState(null)
     const [open, setOpen] = useState({open: false, id: ''})
-       
+    
     return(
         <>
         {request &&
@@ -178,9 +207,8 @@ export function Formulario(){
                         )
                     }                        
                     </div>{
-                        open.open &&
-                        <MenuAdjuntos open={open} setOpen={setOpen}/>
-                    }                    
+                        open.open && <MenuAdjuntos open={open} setOpen={setOpen}/>
+                    }                                                       
                 </header>
             </div>
         }
