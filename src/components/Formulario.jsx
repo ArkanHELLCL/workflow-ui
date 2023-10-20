@@ -84,12 +84,24 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
 
         setPos({
             "left": posX + "px",
-            "top": posT + "px"
+            "top": posT + "px",
+            "height": posMenu?.height,
         })
     },[open])
+
+    const menuAppear = useSpring({
+        ...pos,  
+        opacity:1,
+        height: `${open.open ? pos?.height : 0}` + 'px'        
+    }); 
         
     return(
-        <div className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} style={pos} id={IdMenu} ref={refMenu}>
+        <animated.div 
+            className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} 
+            style={menuAppear} 
+            id={IdMenu} 
+            ref={refMenu}
+            >
             <ul className='text-[11px]'>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce]'>
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold'>Vista previa</span>
@@ -115,7 +127,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
                 </li>                
             </ul>
-        </div>
+        </animated.div>
     )
 }
 
@@ -170,7 +182,7 @@ export function Formulario(){
     const [open, setOpen] = useState({open: false, id: ''})
 
     const { ref:refMenu } = ClickAway(setOpen);
-    
+        
     return(
         <>
         {request &&

@@ -44,7 +44,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     const searchAnimation = useSpring({
         transform: `translateX(-${referenceWidth}px)`,
         from: { transform: "translateX(0px)" },
-        config: { duration: 200 },
+        config: { duration: 100 },
         reverse: !openSearch,
         reset: !openSearch,
     });
@@ -174,10 +174,10 @@ export default function HeaderBar() {
     const [openSearch, setOpenSearch] = useState(false);
     const { filters, setFilters } = useFilters();
 
-    let width = 260;
+    let height = 260;
     const menuAppear = useSpring({        
         opacity:1,
-        height: `${open ? width : 0}` + 'px'        
+        height: `${open ? height : 0}` + 'px'        
     });        
     const chkUser = useId();    
 
