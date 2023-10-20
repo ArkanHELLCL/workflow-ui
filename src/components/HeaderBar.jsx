@@ -66,8 +66,8 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     }
 
     function QuitarFoco(e){
-        if (e.key === "Escape") {
-            const elemento = document.getElementById(inputId);
+        const elemento = document.getElementById(inputId);        
+        if (e.key === "Escape" && elemento.value !== "") {            
             elemento.blur();
             setValue("")
             setFilters(prevState => ({
