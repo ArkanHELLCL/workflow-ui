@@ -71,8 +71,7 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const MenuAdjuntos = ({open, setOpen}) => {
-    const IdMenu = useId()
+const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
     const [pos, setPos] = useState(null)
     
     useEffect(() => {
@@ -90,7 +89,7 @@ const MenuAdjuntos = ({open, setOpen}) => {
     },[open])
         
     return(
-        <div className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} style={pos} id={IdMenu}>
+        <div className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} style={pos} id={IdMenu} ref={refMenu}>
             <ul className='text-[11px]'>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce]'>
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold'>Vista previa</span>
@@ -100,19 +99,19 @@ const MenuAdjuntos = ({open, setOpen}) => {
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Abrir</span>                    
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><PrinterIcon /></span>
+                    <span className="w-5 h-5 absolute top-2 left-2 "><PrinterIcon /></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Impresion rápida</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><SaveAsIcon /></span>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#5f564c] flex relative'>
+                    <span className="w-5 h-5 absolute top-2 left-2 text-sky-600"><SaveAsIcon /></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Guardar como</span>
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><SaveAllIcon /></span>
+                    <span className="w-5 h-5 absolute top-2 left-2 text-purple-600 dark:text-purple-700"><SaveAllIcon /></span>
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Guardar todos los adjuntos...</span>                    
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><DeleteFileIcon /></span>
+                    <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon /></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
                 </li>                
             </ul>
@@ -165,9 +164,12 @@ export function Formulario(){
     const { dias } = Constants()
     const idForm = useId()
     const idGroups = useId()
+    const IdMenu = useId()
 
     const [selected, setSelected] = useState(null)
     const [open, setOpen] = useState({open: false, id: ''})
+
+    const { ref:refMenu } = ClickAway(setOpen);
     
     return(
         <>
@@ -207,7 +209,7 @@ export function Formulario(){
                         )
                     }                        
                     </div>{
-                        open.open && <MenuAdjuntos open={open} setOpen={setOpen}/>
+                        open.open && <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu}/>
                     }                                                       
                 </header>
             </div>
