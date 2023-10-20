@@ -89,16 +89,17 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
         })
     },[open])
 
-    const menuAppear = useSpring({
-        ...pos,  
+    /*const menuAppear = useSpring({        
         opacity:1,
-        height: `${open.open ? pos?.height : 0}` + 'px'        
+        height: `${open.open ? 221 : 0}` + 'px'        
     }); 
-        
-    return(
-        <animated.div 
+    
+    console.log(menuAppear)*/
+
+    return(        
+        <div 
             className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} 
-            style={menuAppear} 
+            style={pos}
             id={IdMenu} 
             ref={refMenu}
             >
@@ -127,7 +128,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
                 </li>                
             </ul>
-        </animated.div>
+        </div>        
     )
 }
 
