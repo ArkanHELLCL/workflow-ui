@@ -58,21 +58,25 @@
 }
 
 .lstreq{
-  height: calc(100vh - 145px);
+  height: calc(100vh - 161px);
 }
 
 .lstscroll{
-  height: calc(100vh - 175px);
+  height: calc(100vh - 181px);
 }
 
 .lstmnu{
-  height: calc(100vh - 145px);;
+  height: calc(100vh - 161px);;
 }
 
 .lstlat{
-  height: calc(100vh - 53px);;
+  height: calc(100vh - 69px);;
 }
 
 .overlay{
-  width: calc(100% - 32px);
+  width: calc(100% - 23px);
+}
+
+.formHeight{
+  height: calc(100vh - 161px);
 }

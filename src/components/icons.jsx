@@ -331,7 +331,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth}){
 }
 
 export function TypeDoc({typeDoc}){    
-    if(typeDoc==='pdf'){
+    if(typeDoc==='pdf' || typeDoc==="application/pdf"){
         return(
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
                 <path fill="#fff" d="M3.5 15h9c.275 0 .5-.225.5-.5V5h-1.5c-.827 0-1.5-.673-1.5-1.5V1H3.5c-.275 0-.5.225-.5.5v13c0 .275.225.5.5.5z"/>

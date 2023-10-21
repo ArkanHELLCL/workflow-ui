@@ -81,24 +81,19 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
         const posadjunto = adjunto?.getBoundingClientRect()
         const posX = posadjunto?.left + posadjunto?.width - posMenu?.width
         const posT = posadjunto?.top + posadjunto?.height    
-
+        
+        posX && !isNaN(posX) ?
         setPos({
             "left": posX + "px",
             "top": posT + "px",
-            "height": posMenu?.height,
-        })
-    },[open])
+            "opacity": "1",
+            "zIndex": "50"
+        }) : setPos(null)
+    },[open, IdMenu])
 
-    /*const menuAppear = useSpring({        
-        opacity:1,
-        height: `${open.open ? 221 : 0}` + 'px'        
-    }); 
-    
-    console.log(menuAppear)*/
-
-    return(        
+    return( 
         <div 
-            className={`fixed w-fit h-fit border z-40 dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow`} 
+            className={`fixed w-fit h-fit border dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow opacity-0 -z-10 ${open.open ? '' : ''}`} 
             style={pos}
             id={IdMenu} 
             ref={refMenu}
@@ -130,6 +125,9 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu}) => {
             </ul>
         </div>        
     )
+    //}else{
+    //    return null
+    //}
 }
 
 const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
@@ -164,7 +162,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
                 <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file[0].tamano}</span>
             </div>
             </div>
-            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer bg-[#fdfdfd] ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`} 
+            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer ${selected?.nombre === file[0].nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a] bg-[#fdfdfd]'}`} 
                 onClick={() => HandleClickMenu(file[0], adjId)}>
                 <CloseIcon />
             </div>           
@@ -188,6 +186,9 @@ export function Formulario(){
         event.preventDefault();        
         const files = Array.from(event.dataTransfer.files);
         setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
+        const numAdjuntos = REQ_Adjuntos.length
+        //console.log(numAdjuntos)
+        //REQ_Adjuntos.push(...files)
         setDropEnter(false);
     };
 
@@ -215,7 +216,7 @@ export function Formulario(){
         const files = Array.from(event.target.files);
         setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
     };
-    console.log(adjuntos)
+    //console.log(adjuntos)
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>
@@ -269,9 +270,7 @@ export function Formulario(){
                             )}
                         )
                     }                        
-                    </div>{
-                        open.open && <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu}/>
-                    }                                                       
+                    </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu}/>                                                                   
                 </header>
                 <input
                     id="adjuntos-input"
