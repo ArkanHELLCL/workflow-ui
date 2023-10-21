@@ -178,16 +178,64 @@ export function Formulario(){
     const idForm = useId()
     const idGroups = useId()
     const IdMenu = useId()
-
     const [selected, setSelected] = useState(null)
     const [open, setOpen] = useState({open: false, id: ''})
 
+    const [adjuntos, setAdjuntos] = useState([]);
+    const [dropEnter, setDropEnter] = useState(false);
+
+    const handleDrop = (event) => {
+        event.preventDefault();        
+        const files = Array.from(event.dataTransfer.files);
+        setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
+        setDropEnter(false);
+    };
+
+    const handleDragOver = (event) => {
+        event.preventDefault();
+    };
+
+    /*const handleAdjuntarClick = () => {
+        document.getElementById("adjuntos-input").click();
+    };*/
+
+    const handleDragEnter = (event) => {
+        event.preventDefault();
+        setDropEnter(true);        
+    };
+
+    const handleDragLeave = (event) => {
+        event.preventDefault();
+        setDropEnter(false);
+        //console.log('leave')
+    };
+
+
+    const handleAdjuntosChange = (event) => {
+        const files = Array.from(event.target.files);
+        setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
+    };
+    console.log(adjuntos)
     const { ref:refMenu } = ClickAway(setOpen);
-        
     return(
         <>
         {request &&
-            <div className='pl-4' id={idForm}>
+        <>
+            {dropEnter &&
+            <div className='absolute w-full h-full bg-stone-600 hover:pointer-events-auto z-50 flex justify-center align-middle items-center'
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                
+                onDragLeave={handleDragLeave}
+                >
+               <span className='ml-[50%] mr-[50%]'> Agregar adjuntos</span>
+            </div>
+            }
+            <div 
+                className='pl-4 h-full' 
+                id={idForm}
+                onDragEnter={handleDragEnter}
+                >
                 <header className='w-full h-auto relative'>
                     <div className='flex justify-between relative'>
                         <div>
@@ -225,7 +273,15 @@ export function Formulario(){
                         open.open && <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu}/>
                     }                                                       
                 </header>
+                <input
+                    id="adjuntos-input"
+                    type="file"
+                    multiple
+                    onChange={handleAdjuntosChange}
+                    className='hidden'
+                />
             </div>
+            </>
         }
         </>
     )
