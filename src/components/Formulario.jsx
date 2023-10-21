@@ -233,7 +233,7 @@ export function Formulario(){
             </div>
             }
             <div 
-                className='pl-4 h-full' 
+                className='pl-4 h-full pt-[10px]' 
                 id={idForm}
                 onDragEnter={handleDragEnter}
                 >

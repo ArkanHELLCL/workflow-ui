@@ -56,27 +56,3 @@
   border-left: 4px solid rgb(2, 132, 199,1) !important;
   padding-left: 20px !important;
 }
-
-.lstreq{
-  height: calc(100vh - 161px);
-}
-
-.lstscroll{
-  height: calc(100vh - 190px);
-}
-
-.lstmnu{
-  height: calc(100vh - 161px);;
-}
-
-.lstlat{
-  height: calc(100vh - 69px);;
-}
-
-.overlay{
-  width: calc(100% - 23px);
-}
-
-.formHeight{
-  height: calc(100vh - 161px);
-}

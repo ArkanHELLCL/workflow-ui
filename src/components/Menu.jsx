@@ -43,7 +43,7 @@ export default function Menu(){
     },[])            
     
     return (
-        <div className="px-4 lstmnu relative">            
+        <div className="px-4 h-full relative">            
             {loading ? (
                 <span className="absolute left-[50%] top-[50%]">
                     <Spinner />

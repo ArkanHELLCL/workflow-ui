@@ -20,7 +20,7 @@ function App() {
   //HeaderBar blur 252423 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pt-[30px]">        
-        <nav className="lstlat w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75">
+        <nav className="h-full w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75">
           <Suspense fallback={<Loading />}>
             <SideBar />
           </Suspense>
@@ -31,14 +31,14 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Header />
         </Suspense>
-        <main className='w-full flex overflow-hidden ml-14'>
+        <main className='w-full flex overflow-hidden pl-14 h-full pb-[110px]'>
           <section className={`${defaultTheme.txtc} ' w-[650px] min-w-[400px] h-full flex flex-columns z-0 bg-[#faf9f8] dark:bg-transparent`} id="Resizable">
             <aside className={`${defaultTheme.txtc} ' w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-3 z-0`}> 
               <Suspense fallback={<Loading />}>             
                 <Menu />  
               </Suspense>
             </aside>
-            <aside className={`${defaultTheme.txtc} ' w-[400px] min-w-[250px] max-w-[600px] lstreq border-r pb-6 flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent`}>
+            <aside className={`${defaultTheme.txtc} ' w-[400px] min-w-[250px] max-w-[600px] h-full border-r pb-6 flex flex-column flex-wrap pt-[10px] z-50 bg-[#ffffff] dark:bg-transparent`}>
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
                   <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                     <Flujos />                          
@@ -47,7 +47,7 @@ function App() {
                     <MenuFilters defaultTheme={defaultTheme} />                  
                   </div>
                 </div>
-                <div className="overflow-auto lstscroll relative">              
+                <div className="overflow-auto h-full relative">              
                   <DetalleRequerimiento defaultTheme={defaultTheme} />                  
                   <Suspense fallback={<Loading />}>{}
                     <ListaRequerimientos defaultTheme={defaultTheme}/>
@@ -56,7 +56,7 @@ function App() {
             </aside>                      
           </section>          
           <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent">
-            <aside className={`${defaultTheme.txtc} ' w-full border-r min-w-[300px] formHeight overflow-x-hidden pr-20 mt-[10px]`}>
+            <aside className={`${defaultTheme.txtc} 'w-full border-r min-w-[300px] h-full overflow-x-hidden`}>
               <Suspense fallback={<Loading />}>  
                 <Formulario />
               </Suspense>
