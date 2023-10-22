@@ -47,10 +47,10 @@ const Buttons = ({idGroups}) => {
                     <animated.div key={keygrp} className='flex' style={buttonsAnimation} id={keygrp}>
                     {
                         grp.map(btns =>
-                            <button key={btns[0].id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={btns[0].nombre}>
-                                <ButtonIcon typeButton={btns[0].id} styles='w-5 h-5'strokeWidth='1.3'/>{
-                                    btns[0].descripcion &&
-                                    <span className='text-xs font-normal leading-tight w-fit px-2'>{btns[0].descripcion}</span>
+                            <button key={btns.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] bordfer-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r' title={btns.nombre}>
+                                <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3'/>{
+                                    btns.descripcion &&
+                                    <span className='text-xs font-normal leading-tight w-fit px-2'>{btns.descripcion}</span>
                                 }                                            
                             </button>
                         )
