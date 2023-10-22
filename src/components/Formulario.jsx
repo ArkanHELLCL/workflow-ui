@@ -6,7 +6,6 @@ import { ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, Sav
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
-import { set } from 'lodash';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -146,7 +145,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
         setOpen({open: true, id: id})
     }
     
-    const HandleClickFile = (file, id) =>{
+    const HandleClickFile = (file) =>{
         setSelected(file)        
         setOpen({open: false, id: ''})
     }
