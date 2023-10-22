@@ -6,6 +6,7 @@ import { ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, Sav
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
+import { set } from 'lodash';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -181,14 +182,23 @@ export function Formulario(){
 
     const [adjuntos, setAdjuntos] = useState([]);
     const [dropEnter, setDropEnter] = useState(false);
+    //const [adjuntosData, setAdjuntosData] = useState(null);
 
     const handleDrop = (event) => {
-        event.preventDefault();        
-        const files = Array.from(event.dataTransfer.files);
-        setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
+        event.preventDefault();
         setDropEnter(false);
+        const files = Array.from(event.dataTransfer.files);
+        const validFiles = files.filter((file) => {
+            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt",".zip",".rar"];
+            const isValidExtension = validExtensions.some((ext) =>
+            file.name.toLowerCase().endsWith(ext)
+            );
+            const isValidSize = file.size <= 10485760; // 10 MB
+            return isValidExtension && isValidSize;
+        });
+        setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...validFiles]);        
 
-        files.map(adjunto => {
+        validFiles.map(adjunto => {
             const data = {
                 id: adjunto?.name,
                 nombre: adjunto?.name,
@@ -211,7 +221,7 @@ export function Formulario(){
 
     const handleDragEnter = (event) => {
         event.preventDefault();
-        setDropEnter(true);        
+        setDropEnter(true);
     };
 
     const handleDragLeave = (event) => {
@@ -229,19 +239,9 @@ export function Formulario(){
     return(
         <>
         {request &&
-        <>
-            {dropEnter &&
-            <div className='absolute w-full h-full bg-stone-600 hover:pointer-events-auto z-50 flex justify-center align-middle items-center'
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}
-                
-                onDragLeave={handleDragLeave}
-                >
-               <span className='ml-[50%] mr-[50%]'> Agregar adjuntos</span>
-            </div>
-            }
+        <>            
             <div 
-                className='pl-4 h-full pt-[10px]' 
+                className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col' 
                 id={idForm}
                 onDragEnter={handleDragEnter}
                 >
@@ -280,6 +280,22 @@ export function Formulario(){
                     }                        
                     </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected}/>                                                                   
                 </header>
+                <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`}>
+                {
+                    dropEnter ?
+                    <div className=' dark:bg-[#071725] bg-stone-400 opacity-80 border border-dashed border-[#1f4568] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}                        
+                        onDragLeave={handleDragLeave}
+                        >
+                        <div>
+                            <span className='dark:text-[#2c87d2]'> Agregar adjuntos</span>
+                        </div>
+                    </div> :
+                    <div>Campos</div>
+                }
+                    
+                </div>
                 <input
                     id="adjuntos-input"
                     type="file"
