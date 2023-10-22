@@ -72,7 +72,7 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected}) => {
+const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarClick}) => {
     const [pos, setPos] = useState(null)
     
     useEffect(() => {
@@ -92,6 +92,13 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected}) => {
         }) : setPos(null)
     },[open, IdMenu])
 
+    const handleDeleteFile = (file) => {
+        handleEliminarClick(file)
+        setOpen({open: false, id: ''})
+
+        //mensaje de eliminacion de adjunto
+    }
+
     return( 
         <div 
             className={`fixed w-fit h-fit border dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow opacity-0 -z-10 ${open.open ? '' : ''}`} 
@@ -100,32 +107,31 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected}) => {
             ref={refMenu}
             >
             <ul className='text-[11px]'>
-                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce]'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] cursor-pointer'>
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold'>Vista previa</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative cursor-pointer'>
                     <span className="w-5 h-5 absolute top-2 left-2"><OpenFolderIcon /></span>                    
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Abrir</span>                    
                 </li>
-                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer'>
                     <span className="w-5 h-5 absolute top-2 left-2 "><PrinterIcon /></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Impresion rápida</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] hover:bg-[#5f564c] flex relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#5f564c] flex relative cursor-pointer'>
                     <span className="w-5 h-5 absolute top-2 left-2 text-sky-600"><SaveAsIcon /></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Guardar como</span>
                 </li>
-                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
+                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer'>
                     <span className="w-5 h-5 absolute top-2 left-2 text-purple-600 dark:text-purple-700"><SaveAllIcon /></span>
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Guardar todos los adjuntos...</span>                    
                 </li>{
                     selected?.upload  &&
-                        <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative'>
+                        <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer' onClick={()=>handleDeleteFile(selected)}>
                         <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon /></span>
                         <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
                     </li>
                 }
-                                
             </ul>
         </div>        
     )
@@ -241,11 +247,17 @@ export function Formulario(){
         //console.log('leave')
     };
 
-
     const handleAdjuntosChange = (event) => {
         //const files = Array.from(event.target.files);
         //setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
     };
+
+    const handleEliminarClick = (adjunto) => {
+        setAdjuntos((prevAdjuntos) =>
+          prevAdjuntos.filter((a) => a !== adjunto)
+        );
+    };
+
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>
@@ -290,7 +302,7 @@ export function Formulario(){
                             )}
                         )
                     }                        
-                    </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected}/>                                                                   
+                    </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick}/>                                                                   
                 </header>
                 <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`}>
                 {
