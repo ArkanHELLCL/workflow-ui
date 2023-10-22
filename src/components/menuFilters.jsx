@@ -27,14 +27,14 @@ export function MenuFilters({defaultTheme}) {
         setFilters(prevState => ({
             ...prevState, 
             flujo: flujo,
-            loading: true
+            loading: flujo !== filters.flujo ? true : false
         }))
         setRequest(null)
         if(flujo === 0 && filters.filter===4)
             setFilters(prevState => ({
                 ...prevState, 
                 filter: 1,
-                loading: true
+                loading: filters.filter !== 1 ? true : false
         }))        
         sectionFilter(false)
     }
@@ -42,7 +42,7 @@ export function MenuFilters({defaultTheme}) {
         setFilters(prevState => ({
             ...prevState, 
             filter: filtro,
-            loading: true
+            loading: filtro !== filters.filter ? true : false
         }))
         sectionFilter(false)
     }
@@ -50,7 +50,7 @@ export function MenuFilters({defaultTheme}) {
         setFilters(prevState => ({
             ...prevState, 
             orderDes: orderDes,
-            loading: true
+            loading: orderDes !== filters.orderDes ? true : false
         }))
         sectionFilter(false)
     }

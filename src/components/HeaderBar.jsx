@@ -36,7 +36,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         setFilters(prevState => ({
             ...prevState,                     
             filterSearch: id,
-            loading: true
+            loading: id !== filterSearch ? true : false
         }))
         setopenMenuSearch(false)
     }

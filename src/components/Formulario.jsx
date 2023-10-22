@@ -199,8 +199,9 @@ export function Formulario(){
         event.preventDefault();
         setDropEnter(false);
         const files = Array.from(event.dataTransfer.files);
+        console.log(files)   
         const validFiles = files.filter((file) => {
-            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt"];
+            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
             const isValidExtension = validExtensions.some((ext) =>
                 file.name.toLowerCase().endsWith(ext)
             );
@@ -208,13 +209,13 @@ export function Formulario(){
             return isValidExtension && isValidSize;
         });
 
-        const remapValidFiles = validFiles.map(adjunto => {
+        const remapValidFiles = validFiles.map((adjunto, index) => {            
             const data = {
                 id: adjunto?.name,
                 nombre: adjunto?.name,
                 extension: adjunto?.name?.split('.').pop(),
                 tamano: adjunto?.size,
-                thumbail: null,               
+                thumbail:  event.dataTransfer.files[index].type.includes('image') ? URL.createObjectURL(event.dataTransfer.files[index]) : null,               
                 upload: true
             }
             return data
@@ -256,6 +257,11 @@ export function Formulario(){
         setAdjuntos((prevAdjuntos) =>
           prevAdjuntos.filter((a) => a !== adjunto)
         );
+    };
+
+    const handleDragEnd = (event) => {
+        // Eliminar el adjunto del dataTransfer
+        //event.dataTransfer.clearData();
     };
 
     const { ref:refMenu } = ClickAway(setOpen);
@@ -311,6 +317,7 @@ export function Formulario(){
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}                        
                         onDragLeave={handleDragLeave}
+                        onDragEnd={handleDragEnd}
                         >
                         <div>
                             <span className='dark:text-[#2c87d2]'> Agregar adjuntos</span>
@@ -318,15 +325,7 @@ export function Formulario(){
                     </div> :
                     <div>Campos</div>
                 }
-                    
                 </div>
-                <input
-                    id="adjuntos-input"
-                    type="file"
-                    multiple
-                    onChange={handleAdjuntosChange}
-                    className='hidden'
-                />
             </div>
             </>
         }

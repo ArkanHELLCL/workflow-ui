@@ -45,7 +45,7 @@ const Tree = React.memo<
         ...prevState,         
         itemIdSelected: id,
         filterSearch: id === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
-        loading: true
+        loading: id !== filters.itemIdSelected ? true : false
     }))    
     setRequest(null)
   }

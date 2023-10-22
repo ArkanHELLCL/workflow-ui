@@ -33,7 +33,7 @@ export default function SideBar(){
         setFilters(prevState => ({
             ...prevState,         
             itemIdSelected: id,
-            loading: true
+            loading: id !== filters.itemIdSelected ? true : false
         }))        
     }
 
