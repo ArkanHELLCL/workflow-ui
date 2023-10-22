@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState, useId } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";

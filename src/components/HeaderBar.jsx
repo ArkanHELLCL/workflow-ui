@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { CheckIcon, HelpIcon, Icon, MailIcon, ReloadIcon, SearchIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
