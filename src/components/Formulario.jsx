@@ -180,35 +180,46 @@ export function Formulario(){
     const [selected, setSelected] = useState(null)
     const [open, setOpen] = useState({open: false, id: ''})
 
+    //const [reqAdjuntos, setReqAdjuntos] = useState([])
     const [adjuntos, setAdjuntos] = useState([]);
     const [dropEnter, setDropEnter] = useState(false);
     //const [adjuntosData, setAdjuntosData] = useState(null);
+
+    useEffect(() => {
+        setAdjuntos(REQ_Adjuntos)
+    },[REQ_Adjuntos])
 
     const handleDrop = (event) => {
         event.preventDefault();
         setDropEnter(false);
         const files = Array.from(event.dataTransfer.files);
         const validFiles = files.filter((file) => {
-            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt",".zip",".rar"];
+            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt"];
             const isValidExtension = validExtensions.some((ext) =>
-            file.name.toLowerCase().endsWith(ext)
+                file.name.toLowerCase().endsWith(ext)
             );
             const isValidSize = file.size <= 10485760; // 10 MB
             return isValidExtension && isValidSize;
         });
-        setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...validFiles]);        
 
-        validFiles.map(adjunto => {
+        const remapValidFiles = validFiles.map(adjunto => {
             const data = {
                 id: adjunto?.name,
                 nombre: adjunto?.name,
-                extension: adjunto?.name.split('.').pop(),
+                extension: adjunto?.name?.split('.').pop(),
                 tamano: adjunto?.size,
                 thumbail: null,               
                 upload: true
             }
-            REQ_Adjuntos.push(data)
+            return data
         })
+
+        setAdjuntos((prevAdjuntos) => {
+            const newAdjuntos = [...prevAdjuntos, ...remapValidFiles];
+            const finalAdjuntos = Array.from(new Set(newAdjuntos)); // Eliminar duplicados        
+            return finalAdjuntos
+        });
+
     };
 
     const handleDragOver = (event) => {
@@ -232,8 +243,8 @@ export function Formulario(){
 
 
     const handleAdjuntosChange = (event) => {
-        const files = Array.from(event.target.files);
-        setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
+        //const files = Array.from(event.target.files);
+        //setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
     };
     const { ref:refMenu } = ClickAway(setOpen);
     return(
@@ -272,7 +283,8 @@ export function Formulario(){
                     </div>
                     <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
                     {
-                        REQ_Adjuntos.map((file, index) => {
+                        //reqAdjuntos.map((file, index) => {
+                        adjuntos.map((file, index) => {
                             return (                        
                                 <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen}/>
                             )}
