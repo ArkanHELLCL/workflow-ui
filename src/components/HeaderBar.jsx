@@ -85,9 +85,15 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
             document.removeEventListener("keyup", QuitarFoco, true);            
         };
     },[value]);
+
+    const handleNotDragOver = (event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "none";
+        return false;
+    }
     
     return(
-        <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch}>{
+        <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch} onDragOver={handleNotDragOver}>{
             openSearch &&            
                 <animated.div
                     className={`bg-[#363636] h-full absolute w-[${widthMenuSearch}px]`}

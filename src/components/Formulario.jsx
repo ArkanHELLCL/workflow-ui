@@ -198,7 +198,6 @@ export function Formulario(){
         event.preventDefault();
         setDropEnter(false);
         const files = Array.from(event.dataTransfer.files);
-        console.log(files)   
         const validFiles = files.filter((file) => {
             const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
             const isValidExtension = validExtensions.some((ext) =>
@@ -263,17 +262,24 @@ export function Formulario(){
         //event.dataTransfer.clearData();
     };
 
+    const handleNotDragOver = (event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "none";
+        return false;
+    }
+
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>
         {request &&
         <>            
             <div 
-                className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col' 
+                className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' 
                 id={idForm}
                 onDragEnter={handleDragEnter}
                 >
-                <header className='w-full h-auto relative'>
+                <header className='w-full h-auto relative' 
+                    onDragOver = {handleNotDragOver}>
                     <div className='flex justify-between relative'>
                         <div>
                             <h1 className='text-lg truncate max-w-[1170px]'>{request?.REQ_Descripcion}</h1>
@@ -309,7 +315,7 @@ export function Formulario(){
                     }                        
                     </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick}/>                                                                   
                 </header>
-                <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`}>
+                <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 z-50`}>
                 {
                     dropEnter ?
                     <div className=' dark:bg-[#071725] bg-stone-400 opacity-80 border border-dashed border-[#1f4568] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
@@ -324,6 +330,12 @@ export function Formulario(){
                     </div> :
                     <div>Campos</div>
                 }
+                <input
+                    type="file"
+                    multiple
+                    onChange={handleAdjuntosChange}
+                    className='hidden'
+                />                    
                 </div>
             </div>
             </>
