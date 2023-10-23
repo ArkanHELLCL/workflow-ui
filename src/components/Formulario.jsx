@@ -156,7 +156,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
             {
                 file.thumbail ?
                     <span className='min-w-[2.25rem] min-h-[2.25rem] flex items-center'>
-                        <img src={file.thumbail} className='h-auto w-auto' />
+                        <img src={file.thumbail} className='h-9 w-9' />
                     </span>
                 :   
                 <span className='w-9 h-9'>
