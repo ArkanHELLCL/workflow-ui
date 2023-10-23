@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cyntler/react-doc-viewer": "1.14.0",
     "@material-tailwind/react": "2.1.0",
     "@react-spring/web": "9.7.3",
     "lodash": "4.17.21",
