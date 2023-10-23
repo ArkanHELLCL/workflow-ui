@@ -8,6 +8,8 @@
     }
     body {
       overflow: hidden;
+      margin: 0;
+      box-sizing: content-box;
     }
     .dark{
       color-scheme: dark;
