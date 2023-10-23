@@ -6,6 +6,7 @@ import { ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, Sav
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
+import { DocPreview } from './DocPreview.jsx';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -188,6 +189,8 @@ export function Formulario(){
     const [adjuntos, setAdjuntos] = useState([]);
     const [dropEnter, setDropEnter] = useState(false);
 
+    const [preview, setPreview] = useState(true)
+
     useEffect(() => {
         setAdjuntos(REQ_Adjuntos)
     },[REQ_Adjuntos])
@@ -268,76 +271,84 @@ export function Formulario(){
 
     const { ref:refMenu } = ClickAway(setOpen);
     return(
-        <>
-        {request &&
-        <>            
-            <div 
-                className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' 
-                id={idForm}
-                onDragEnter={handleDragEnter}
-                >
-                <header className='w-full h-auto relative' 
-                    onDragOver = {handleNotDragOver}>
-                    <div className='flex justify-between relative w-full'>
-                        <div className='w-full h-full grid'>
-                            <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
-                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
-                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
-                        </div>
-                        <div className='grid text-right leading-tight absolute right-2 top-8'>
-                            <Buttons idGroups={idGroups}/>
-                            <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit, dias)}</span>
-                        </div>
-                    </div>
-                    <div className='flex justify-between'>
-                        <div className='flex items-center gap-3'>
-                            <div className='pt-3 pl-2'>
-                                <img
-                                    className='w-14 h-14 rounded-full' 
-                                    src = {formulario.IdEditor_Foto} />
-                            </div>
-                            <div className='grid'>                                
-                                <span className='text-base font-light leading-tight'>De : {request?.DRE_UsuarioEditAnt}</span>
-                                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
-                    {
-                        //reqAdjuntos.map((file, index) => {
-                        adjuntos.map((file, index) => {
-                            return (                        
-                                <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen}/>
-                            )}
-                        )
-                    }                        
-                    </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick}/>                                                                   
-                </header>
-                <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 z-50`}>
-                {
-                    dropEnter ?
-                    <div className=' dark:bg-[#071725] bg-stone-400 opacity-80 border border-dashed border-[#1f4568] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
-                        onDrop={handleDrop}
-                        onDragOver={handleDragOver}                        
-                        onDragLeave={handleDragLeave}
-                        onDragEnd={handleDragEnd}
+        <>{
+            request && !preview ? (
+                <>
+                    <div 
+                        className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' 
+                        id={idForm}
+                        onDragEnter={handleDragEnter}
                         >
-                        <div>
-                            <span className='dark:text-[#2c87d2]'> Agregar adjuntos</span>
+                        <header className='w-full h-auto relative' 
+                            onDragOver = {handleNotDragOver}>
+                            <div className='flex justify-between relative w-full'>
+                                <div className='w-full h-full grid'>
+                                    <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
+                                    <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
+                                    <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
+                                </div>
+                                <div className='grid text-right leading-tight absolute right-2 top-8'>
+                                    <Buttons idGroups={idGroups}/>
+                                    <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit, dias)}</span>
+                                </div>
+                            </div>
+                            <div className='flex justify-between'>
+                                <div className='flex items-center gap-3'>
+                                    <div className='pt-3 pl-2'>
+                                        <img
+                                            className='w-14 h-14 rounded-full' 
+                                            src = {formulario.IdEditor_Foto} />
+                                    </div>
+                                    <div className='grid'>                                
+                                        <span className='text-base font-light leading-tight'>De : {request?.DRE_UsuarioEditAnt}</span>
+                                        <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
+                                    </div>
+                                </div>                        
+                            </div>
+                            <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
+                            {
+                                //reqAdjuntos.map((file, index) => {
+                                adjuntos.map((file, index) => {
+                                    return (                        
+                                        <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen}/>
+                                    )}
+                                )
+                            }                        
+                            </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick}/>                                                                   
+                        </header>
+                        <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 z-50`}>
+                        {
+                            dropEnter ?
+                            <div className=' dark:bg-[#071725] bg-stone-400 opacity-80 border border-dashed border-[#1f4568] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
+                                onDrop={handleDrop}
+                                onDragOver={handleDragOver}                        
+                                onDragLeave={handleDragLeave}
+                                onDragEnd={handleDragEnd}
+                                >
+                                <div>
+                                    <span className='dark:text-[#2c87d2]'> Agregar adjuntos</span>
+                                </div>
+                            </div> :
+                            <div>Campos</div>
+                        }
+                        <input
+                            type="file"
+                            multiple
+                            onChange={handleAdjuntosChange}
+                            className='hidden'
+                        />                    
                         </div>
-                    </div> :
-                    <div>Campos</div>
-                }
-                <input
-                    type="file"
-                    multiple
-                    onChange={handleAdjuntosChange}
-                    className='hidden'
-                />                    
-                </div>
-            </div>
-            </>
-        }
+                    </div>
+                </>
+            ):
+                preview ?                     
+                    <DocPreview />
+                : (
+                    <div className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' onDragOver={handleNotDragOver}>
+                        sin datos
+                    </div>
+                )
+            }
         </>
     )
 }
