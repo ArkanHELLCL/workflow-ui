@@ -150,13 +150,13 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
         setOpen({open: false, id: ''})
     }
     return(        
-        <div key={file.id} className='flex items-center relative' id={adjId}>
-            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full flex border ${selected?.nombre === file.nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}
+        <div key={file.id} className='flex items-center relative overflow-hidden' id={adjId}>
+            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border ${selected?.nombre === file.nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}
                 onClick={() => HandleClickFile(file,adjId)}>
             {
                 file.thumbail ?
-                    <span>
-                        <img src={file.thumbail} className='w-9 h-9' />
+                    <span className='min-w-[2.25rem] min-h-[2.25rem] flex items-center'>
+                        <img src={file.thumbail} className='h-auto w-auto' />
                     </span>
                 :   
                 <span className='w-9 h-9'>
@@ -164,7 +164,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
                 </span>
             }
             <div className='grid'>
-                <span className='text-xs font-normal leading-tight w-fit px-2 truncate'>{file.nombre}.{file.extension}</span>
+                <span className='text-xs font-normal leading-tight w-auto px-2 truncate'>{file.nombre}.{file.extension}</span>
                 <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file.tamano}</span>
             </div>
             </div>
@@ -185,10 +185,8 @@ export function Formulario(){
     const [selected, setSelected] = useState(null)
     const [open, setOpen] = useState({open: false, id: ''})
 
-    //const [reqAdjuntos, setReqAdjuntos] = useState([])
     const [adjuntos, setAdjuntos] = useState([]);
     const [dropEnter, setDropEnter] = useState(false);
-    //const [adjuntosData, setAdjuntosData] = useState(null);
 
     useEffect(() => {
         setAdjuntos(REQ_Adjuntos)
@@ -280,9 +278,9 @@ export function Formulario(){
                 >
                 <header className='w-full h-auto relative' 
                     onDragOver = {handleNotDragOver}>
-                    <div className='flex justify-between relative'>
-                        <div>
-                            <h1 className='text-lg truncate max-w-[1170px]'>{request?.REQ_Descripcion}</h1>
+                    <div className='flex justify-between relative w-full'>
+                        <div className='w-full h-full grid'>
+                            <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
                             <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
                         </div>
