@@ -189,7 +189,7 @@ export function Formulario(){
     const [adjuntos, setAdjuntos] = useState([]);
     const [dropEnter, setDropEnter] = useState(false);
 
-    const [preview, setPreview] = useState(true)
+    const [preview, setPreview] = useState(false)
 
     useEffect(() => {
         setAdjuntos(REQ_Adjuntos)
