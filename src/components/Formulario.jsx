@@ -7,6 +7,7 @@ import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
 import { DocPreview } from './DocPreview.jsx';
+import { set } from 'lodash';
 
 const { REQ_Adjuntos } = formulario;
 const { FOR_Botones } = formulario;
@@ -72,7 +73,7 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarClick}) => {
+const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarClick, setPreview}) => {
     const [pos, setPos] = useState(null)
     
     useEffect(() => {
@@ -99,6 +100,12 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarC
         //mensaje de eliminacion de adjunto
     }
 
+    const handlePreview = () => {
+        //setSelected(selected)
+        console.log(selected)
+        setPreview(true)
+    }
+
     return( 
         <div 
             className={`fixed w-fit h-fit border dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow opacity-0 -z-10 ${open.open ? '' : ''}`} 
@@ -108,7 +115,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarC
             >
             <ul className='text-[11px]'>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] cursor-pointer'>
-                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold'>Vista previa</span>
+                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' onClick={()=>handlePreview()}>Vista previa</span>
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative cursor-pointer'>
                     <span className="w-5 h-5 absolute top-2 left-2"><OpenFolderIcon /></span>                    
@@ -137,7 +144,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarC
     )
 }
 
-const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
+const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview}) => {
     const adjId = useId()
 
     const HandleClickMenu = (file, id) => {
@@ -149,11 +156,12 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
     const HandleClickFile = (file) =>{
         setSelected(file)        
         setOpen({open: false, id: ''})
+        setPreview(true)        
     }
     return(        
         <div key={file.id} className='flex items-center relative overflow-hidden' id={adjId}>
             <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border ${selected?.nombre === file.nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}
-                onClick={() => HandleClickFile(file,adjId)}>
+                onClick={() => HandleClickFile(file)}>
             {
                 file.thumbail ?
                     <span className='min-w-[2.25rem] min-h-[2.25rem] flex items-center'>
@@ -165,7 +173,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen}) => {
                 </span>
             }
             <div className='grid'>
-                <span className='text-xs font-normal leading-tight w-auto px-2 truncate'>{file.nombre}.{file.extension}</span>
+                <span className='text-xs font-normal leading-tight w-auto px-2 truncate'>{file.nombre}</span>
                 <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file.tamano}</span>
             </div>
             </div>
@@ -189,7 +197,7 @@ export function Formulario(){
     const [adjuntos, setAdjuntos] = useState([]);
     const [dropEnter, setDropEnter] = useState(false);
 
-    const [preview, setPreview] = useState(true)
+    const [preview, setPreview] = useState(false)
 
     useEffect(() => {
         setAdjuntos(REQ_Adjuntos)
@@ -214,7 +222,8 @@ export function Formulario(){
                 nombre: adjunto?.name,
                 extension: adjunto?.name?.split('.').pop(),
                 tamano: adjunto?.size,
-                thumbail:  event.dataTransfer.files[index].type.includes('image') ? URL.createObjectURL(event.dataTransfer.files[index]) : null,               
+                thumbail:  event.dataTransfer.files[index].type.includes('image') ? URL.createObjectURL(event.dataTransfer.files[index]) : null,
+                url: URL.createObjectURL(event.dataTransfer.files[index]),
                 upload: true
             }
             return data
@@ -225,7 +234,7 @@ export function Formulario(){
             const finalAdjuntos = Array.from(new Set(newAdjuntos)); // Eliminar duplicados        
             return finalAdjuntos
         });
-
+        //console.log(event.dataTransfer.files)
     };
 
     const handleDragOver = (event) => {
@@ -268,17 +277,16 @@ export function Formulario(){
         event.dataTransfer.dropEffect = "none";
         return false;
     }
-
+    //console.log(adjuntos)
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>{
             request && !preview ? (
                 <>
                     <div 
-                        className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' 
-                        id={idForm}
-                        onDragEnter={handleDragEnter}
-                        >
+                        className={`pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}
+                        id={idForm}>
+                            
                         <header className='w-full h-auto relative' 
                             onDragOver = {handleNotDragOver}>
                             <div className='flex justify-between relative w-full'>
@@ -310,13 +318,13 @@ export function Formulario(){
                                 //reqAdjuntos.map((file, index) => {
                                 adjuntos.map((file, index) => {
                                     return (                        
-                                        <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen}/>
+                                        <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen} setPreview={setPreview}/>
                                     )}
                                 )
                             }                        
-                            </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick}/>                                                                   
+                            </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview}/>                                                                   
                         </header>
-                        <div className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 z-50`}>
+                        <section className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`} onDragEnter={handleDragEnter}>
                         {
                             dropEnter ?
                             <div className=' dark:bg-[#071725] bg-stone-400 opacity-80 border border-dashed border-[#1f4568] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
@@ -337,12 +345,12 @@ export function Formulario(){
                             onChange={handleAdjuntosChange}
                             className='hidden'
                         />                    
-                        </div>
+                        </section>
                     </div>
                 </>
             ):
                 preview ?                     
-                    <DocPreview />
+                    <DocPreview selected={selected} setPreview={setPreview}/>
                 : (
                     <div className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' onDragOver={handleNotDragOver}>
                         sin datos

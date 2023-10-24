@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 //import prueba from '../../public/download/prueba.docx'
 //const imgUrl = new URL('../../public/download/prueba.docx', import.meta.url).href
 
-export function DocPreview() {
-    
+export function DocPreview({selected, setPreview}) {
+    //console.log(selected)
     const handleNotDragOver = (event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
@@ -24,14 +25,26 @@ export function DocPreview() {
        //{ uri: imgUrl}
       //{ uri: 'http://localhost:5173/download/prueba.docx'},
       //{ uri: './download/especificacion_tecnica.docx'}
-      { uri: 'http://localhost:5173/download/prueba.pdf'}
+      //{ uri: 'http://localhost:5173/download/prueba.pptx', fileType: "pptx"}
+      {uri: selected.url, fileType: selected.extension}
     ];
   return (
     <div className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' onDragOver={handleNotDragOver}>              
-        
-
-          <DocViewer prefetchMethod="GET" pluginRenderers={DocViewerRenderers} documents={docs} />
-        
+      <span className='absolute top-3 right-0 text-sky-600 font-bold z-[60] cursor-pointer' onClick={() => setPreview(false)}>Volver al formulario</span>        
+        <DocViewer 
+            prefetchMethod="GET" 
+            pluginRenderers={DocViewerRenderers} 
+            documents={docs} 
+            config={{
+                header: { disableHeader: false },
+                pdfZoom: {
+                  defaultZoom: 0.7,
+                },
+            }}
+            theme={{
+              textPrimary: '#000000',
+            }}
+        />        
     </div>
   )
 }
