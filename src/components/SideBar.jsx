@@ -22,9 +22,7 @@ export default function SideBar(){
         if(filters.itemIdSelected.charAt(0).toLowerCase()==='r'){
             overlayElement = document.getElementById(reporteId);            
         }
-        if(filters.itemIdSelected.charAt(0).toLowerCase()==='s'){
-            overlayElement = document.getElementById(mensajesId);            
-        }
+        
         setRequest(null)        
         const rect = overlayElement?.getBoundingClientRect()
         setPositionTo(rect?.top - (30+2))
@@ -51,7 +49,6 @@ export default function SideBar(){
     const bandejaId = useId()
     const mantenedorId = useId()
     const reporteId = useId()
-    const mensajesId = useId()
 
     const handleNotDragOver = (event) => {
         event.preventDefault();
@@ -71,10 +68,6 @@ export default function SideBar(){
                 </li>
                 <li className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "r" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2`} onClick={()=>handleClickItem("r")} id={reporteId} title="Reportes">
                     <DocIcon styles="w-6 h-6" strokeWidth=""/>
-                </li>
-                <li className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "s" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2 relative`} onClick={()=>handleClickItem("s")} id={mensajesId} title="Mensajes">
-                    <div className="absolute inline-flex items-center justify-center w-2 h-2 text-[10px] font-bold text-white bg-red-600 rounded-full top-1 right-1"></div>
-                    <MailIcon styles="w-6 h-6" strokeWidth=""/>
                 </li>
             </ul>
         </section>
