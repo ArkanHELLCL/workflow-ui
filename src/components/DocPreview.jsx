@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
-//import prueba from '../../public/download/prueba.docx'
-//const imgUrl = new URL('../../public/download/prueba.docx', import.meta.url).href
 
-export function DocPreview({selected, setPreview}) {
+export function DocPreview({selected}) {
     //console.log(selected)
     const handleNotDragOver = (event) => {
         event.preventDefault();
@@ -29,8 +27,7 @@ export function DocPreview({selected, setPreview}) {
       {uri: selected.url, fileType: selected.extension}
     ];
   return (
-    <div className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' onDragOver={handleNotDragOver}>              
-      <span className='absolute top-3 right-0 text-sky-600 font-bold z-[60] cursor-pointer' onClick={() => setPreview(false)}>Volver al formulario</span>        
+    <div className='h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-10 pr-2 text-black' onDragOver={handleNotDragOver}>
         <DocViewer 
             prefetchMethod="GET" 
             pluginRenderers={DocViewerRenderers} 

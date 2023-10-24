@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
-import { ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
+import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
 import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
@@ -73,7 +74,7 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarClick, setPreview}) => {
+const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
     const [pos, setPos] = useState(null)
     
     useEffect(() => {
@@ -101,9 +102,10 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarC
     }
 
     const handlePreview = () => {
-        //setSelected(selected)
-        console.log(selected)
+        setSelected(selectedMenu)
+        //console.log(selected)
         setPreview(true)
+        setOpen({open: false, id: ''})
     }
 
     return( 
@@ -144,22 +146,23 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarC
     )
 }
 
-const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview}) => {
+const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSelectedMenu}) => {
     const adjId = useId()
 
     const HandleClickMenu = (file, id) => {
-        setSelected(file)
+        setSelectedMenu(file)
         if(open.open && open.id === id) return setOpen({open: false, id: ''})
         setOpen({open: true, id: id})
     }
     
     const HandleClickFile = (file) =>{
-        setSelected(file)        
+        setSelected(file)
+        setSelectedMenu(file)
         setOpen({open: false, id: ''})
         setPreview(true)        
     }
     return(        
-        <div key={file.id} className='flex items-center relative overflow-hidden' id={adjId}>
+        <div key={file.id} className='flex items-center relative overflow-hidden z-50' id={adjId}>
             <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border ${selected?.nombre === file.nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}
                 onClick={() => HandleClickFile(file)}>
             {
@@ -192,6 +195,8 @@ export function Formulario(){
     const idGroups = useId()
     const IdMenu = useId()
     const [selected, setSelected] = useState(null)
+    const [selectedMenu, setSelectedMenu] = useState(null)
+
     const [open, setOpen] = useState({open: false, id: ''})
 
     const [adjuntos, setAdjuntos] = useState([]);
@@ -281,81 +286,88 @@ export function Formulario(){
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>{
-            request && !preview ? (
+            request && 
                 <>
                     <div 
                         className={`pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}
-                        id={idForm}>
-                            
+                        id={idForm}>                            
                         <header className='w-full h-auto relative' 
-                            onDragOver = {handleNotDragOver}>
-                            <div className='flex justify-between relative w-full'>
-                                <div className='w-full h-full grid'>
-                                    <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
-                                    <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
-                                    <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
-                                </div>
-                                <div className='grid text-right leading-tight absolute right-2 top-8'>
-                                    <Buttons idGroups={idGroups}/>
-                                    <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit, dias)}</span>
-                                </div>
-                            </div>
-                            <div className='flex justify-between'>
-                                <div className='flex items-center gap-3'>
-                                    <div className='pt-3 pl-2'>
-                                        <img
-                                            className='w-14 h-14 rounded-full' 
-                                            src = {formulario.IdEditor_Foto} />
+                            onDragOver = {handleNotDragOver}>{
+                                !preview &&
+                                <>
+                                    <div className='flex justify-between relative w-full'>
+                                        <div className='w-full h-full grid'>
+                                            <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
+                                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
+                                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
+                                        </div>
+                                        <div className='grid text-right leading-tight absolute right-2 top-8'>
+                                            <Buttons idGroups={idGroups}/>
+                                            <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit, dias)}</span>
+                                        </div>
                                     </div>
-                                    <div className='grid'>                                
-                                        <span className='text-base font-light leading-tight'>De : {request?.DRE_UsuarioEditAnt}</span>
-                                        <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
+                                    <div className='flex justify-between'>
+                                        <div className='flex items-center gap-3'>
+                                            <div className='pt-3 pl-2'>
+                                                <img
+                                                    className='w-14 h-14 rounded-full' 
+                                                    src = {formulario.IdEditor_Foto} />
+                                            </div>
+                                            <div className='grid'>                                
+                                                <span className='text-base font-light leading-tight'>De : {request?.DRE_UsuarioEditAnt}</span>
+                                                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
+                                            </div>
+                                        </div>                        
                                     </div>
-                                </div>                        
-                            </div>
+                                </>
+                            }{
+                                preview &&
+                                    <div className='h-9 border border-t-0 border-l-0 border-r-0 border-[#383838] mb-1 flex gap-1 items-center cursor-pointer' onClick={() => setPreview(false)}>
+                                        <ArrowLeftIcon />
+                                        <span className=''>Volver al formulario</span>        
+                                    </div>
+                            }
                             <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
                             {
                                 //reqAdjuntos.map((file, index) => {
                                 adjuntos.map((file, index) => {
                                     return (                        
-                                        <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen} setPreview={setPreview}/>
+                                        <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen} setPreview={setPreview} setSelectedMenu={setSelectedMenu}/>
                                     )}
                                 )
                             }                        
-                            </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview}/>                                                                   
-                        </header>
-                        <section className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`} onDragEnter={handleDragEnter}>
-                        {
-                            dropEnter ?
-                            <div className=' dark:bg-[#071725] bg-stone-400 opacity-80 border border-dashed border-[#1f4568] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
-                                onDrop={handleDrop}
-                                onDragOver={handleDragOver}                        
-                                onDragLeave={handleDragLeave}
-                                onDragEnd={handleDragEnd}
-                                >
-                                <div>
-                                    <span className='dark:text-[#2c87d2]'> Agregar adjuntos</span>
-                                </div>
-                            </div> :
-                            <div>Campos</div>
+                            </div><MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>                                                                   
+                        </header>{
+                            !preview &&
+                        
+                            <section className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`} onDragEnter={handleDragEnter}>
+                            {
+                                dropEnter ?
+                                <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
+                                    onDrop={handleDrop}
+                                    onDragOver={handleDragOver}                        
+                                    onDragLeave={handleDragLeave}
+                                    onDragEnd={handleDragEnd}
+                                    >
+                                    <div>
+                                        <span className='text-[#2c87d2]'> Agregar adjuntos</span>
+                                    </div>
+                                </div> :
+                                <div>Campos</div>
+                            }
+                            <input
+                                type="file"
+                                multiple
+                                onChange={handleAdjuntosChange}
+                                className='hidden'
+                            />                    
+                            </section>
+                        }{
+                            preview && selected!==null &&
+                                    <DocPreview selected={selected} />
                         }
-                        <input
-                            type="file"
-                            multiple
-                            onChange={handleAdjuntosChange}
-                            className='hidden'
-                        />                    
-                        </section>
-                    </div>
-                </>
-            ):
-                preview ?                     
-                    <DocPreview selected={selected} setPreview={setPreview}/>
-                : (
-                    <div className='pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50' onDragOver={handleNotDragOver}>
-                        sin datos
-                    </div>
-                )
+                    </div>                    
+                </>            
             }
         </>
     )
