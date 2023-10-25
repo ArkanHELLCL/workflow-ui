@@ -42,6 +42,15 @@ export default function Header(){
                         <SaveAllIconBig />
                     </div>
                     <div className="flex flex-col leading-tight text-xs items-center">
+                        <span>Descargar</span>
+                        <span>informe</span>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center gap-0">
+                    <div className="h-11 w-11 flex items-center justify-center">
+                        <SaveAllIconBig />
+                    </div>
+                    <div className="flex flex-col leading-tight text-xs items-center">
                         <span>Mensajes</span>                        
                     </div>
                 </div>
@@ -111,6 +120,52 @@ export default function Header(){
                     <span>Guardar en el equipo</span>
                 </div>
             </section>                   
+            <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
+                <div className="flex flex-col items-center gap-0">
+                    <div className="h-11 w-11 flex items-center justify-center">
+                        <SaveAsIconBig />
+                    </div>
+                    <div className="flex flex-col leading-tight text-xs items-center">
+                        <span>Crear nuevo</span>
+                        <span>registro</span>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center gap-0">
+                    <div className="h-11 w-11 flex items-center justify-center">
+                        <SaveAllIconBig />
+                    </div>
+                    <div className="flex flex-col leading-tight text-xs items-center">
+                        <span>Descargar</span>
+                        <span>informe resultado</span>
+                    </div>
+                </div>                
+                <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center">
+                    <span>Mantenedor del sistema</span>
+                </div>
+            </section>
+            <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
+                <div className="flex flex-col items-center gap-0">
+                    <div className="h-11 w-11 flex items-center justify-center">
+                        <SaveAsIconBig />
+                    </div>
+                    <div className="flex flex-col leading-tight text-xs items-center">
+                        <span>Generar</span>
+                        <span>informe</span>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center gap-0">
+                    <div className="h-11 w-11 flex items-center justify-center">
+                        <SaveAllIconBig />
+                    </div>
+                    <div className="flex flex-col leading-tight text-xs items-center">
+                        <span>Descarcar</span>
+                        <span>informe resultado</span>
+                    </div>
+                </div>                
+                <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center">
+                    <span>Informe del sistema</span>
+                </div>
+            </section>
             <Suspense fallback={<Loading />}>
                 <DarkModeToggle />            
             </Suspense>
