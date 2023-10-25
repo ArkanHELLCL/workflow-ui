@@ -4,7 +4,7 @@ import { useEffect, useState, useId } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { useSpring, animated } from "@react-spring/web";
-import { DocIcon, InBoxIcon, MailIcon, TableIcon } from "./icons";
+import { InBoxIcon, ReportIcon, TableIcon } from "./icons";
 
 export default function SideBar(){
     const { filters, setFilters } = useFilters()
@@ -67,7 +67,7 @@ export default function SideBar(){
                     <TableIcon styles="w-6 h-6" strokeWidth=""/>
                 </li>
                 <li className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "r" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2`} onClick={()=>handleClickItem("r")} id={reporteId} title="Reportes">
-                    <DocIcon styles="w-6 h-6" strokeWidth=""/>
+                    <ReportIcon styles="w-7 h-7" strokeWidth={2}/>
                 </li>
             </ul>
         </section>

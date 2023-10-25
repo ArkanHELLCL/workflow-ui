@@ -91,9 +91,10 @@ const Tree = React.memo<
 function isChildren(setFilters: Function, filters: any, setRequest: Function, children: any, paddingLeft: any = 0) {
   paddingLeft = paddingLeft + 12
   const style = {'fontSize':'14px','fontWeight': 'lighter','paddingLeft':`${paddingLeft}px`}
+  const TreeComponent = Tree.type
   return children.map((item: { id: any ; nombre: string | JSX.Element ; grandson: any} , index: any) => {
     return(
-    <Tree 
+    <TreeComponent 
       name={item.nombre} 
       key={`${item.id}`} 
       id={`${item.id}`} 
@@ -107,7 +108,7 @@ function isChildren(setFilters: Function, filters: any, setRequest: Function, ch
           isChildren(setFilters, filters, setRequest, item.grandson, paddingLeft)
         : null
     }   
-    </Tree>)
+    </TreeComponent>)
   }
   )
 }
@@ -115,11 +116,12 @@ function isChildren(setFilters: Function, filters: any, setRequest: Function, ch
 export function MenuTree({menu, title }) {
   const { filters, setFilters } = useFilters()
   const { setRequest } = useRequest()
+  const TreeComponent = Tree.type
   return (
     <Container className='dark:border-[#353535] px-1'>      
       {
         menu.length > 0 ? 
-          <Tree 
+          <TreeComponent 
             name={title} 
             defaultOpen={true} 
             key={title} id={title.toLowerCase().charAt(0)} 
@@ -129,7 +131,7 @@ export function MenuTree({menu, title }) {
             style={{'fontSize':'16px','fontWeight': 'lighter','paddingLeft':'0px'}}>
             {              
               menu.map((item: { id: any ; nombre: string | JSX.Element ; children : any} , index: any) => 
-                <Tree 
+                <TreeComponent 
                   name={item.nombre} 
                   key={`${item.id}`} 
                   id={`${item.id}`} 
@@ -143,12 +145,12 @@ export function MenuTree({menu, title }) {
                       isChildren(setFilters, filters, setRequest, item.children, 12)
                     : null
                 }  
-                </Tree>
+                </TreeComponent>
               )
             }
-          </Tree> 
+          </TreeComponent> 
         : 
-          <Tree name="No existe Menú" id="0" setFilters={setFilters} filters={filters} setRequest={setRequest}/>        
+          <TreeComponent name="No existe Menú" id="0" setFilters={setFilters} filters={filters} setRequest={setRequest}/>        
       }
       </Container>    
   )
