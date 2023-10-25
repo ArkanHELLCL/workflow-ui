@@ -453,30 +453,79 @@ export function TypeDoc({typeDoc}){
 
 export function SaveAsIcon(){
     return(
-        <svg viewBox="0 0 24 24">
+        <div className="relative">
+            <span>
+                <svg fill="currentColor" viewBox="0 0 208 208" className="w-4 h-4">
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M168,0.013V0h-0.246H36H4v208h24h152h24V36.244C204,16.343,187.87,0.147,168,0.013z M44,8h116v48H44V8z M172,200H36v-80     h136V200z M196,200h-16v-88H28v88H12V8h24v56h132V8.013c15.46,0.134,28,12.74,28,28.232V200z"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span className="absolute -bottom-1 -right-1">
+                <svg viewBox="0 0 24 24" fill="#1c7bc2" className="w-4 h-4">                    
+                    <path d="M15.6287 5.12132L4.31497 16.435M15.6287 5.12132L19.1642 8.65685M15.6287 5.12132L17.0429 3.70711C17.4334 3.31658 18.0666 3.31658 18.4571 3.70711L20.5784 5.82843C20.969 6.21895 20.969 6.85212 20.5784 7.24264L19.1642 8.65685M7.85051 19.9706L4.31497 16.435M7.85051 19.9706L19.1642 8.65685M7.85051 19.9706L3.25431 21.0312L4.31497 16.435" stroke="#1c7bc2" strokeLinecap="round" strokeLinejoin="round" fill="#1c7bc2" strokeWidth={2}/>
+                </svg>
+            </span>
+        </div>
+    )
+}
 
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
+export function SaveAsIconBig(){
+    return(
+        <div className="relative">
+            <span>
+                <svg fill="currentColor" viewBox="0 0 208 208" className="w-8 h-8">
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M168,0.013V0h-0.246H36H4v208h24h152h24V36.244C204,16.343,187.87,0.147,168,0.013z M44,8h116v48H44V8z M172,200H36v-80     h136V200z M196,200h-16v-88H28v88H12V8h24v56h132V8.013c15.46,0.134,28,12.74,28,28.232V200z"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span className="absolute -bottom-2 -right-2">
+                <svg viewBox="0 0 24 24" fill="#1c7bc2" className="w-8 h-8">                    
+                    <path d="M15.6287 5.12132L4.31497 16.435M15.6287 5.12132L19.1642 8.65685M15.6287 5.12132L17.0429 3.70711C17.4334 3.31658 18.0666 3.31658 18.4571 3.70711L20.5784 5.82843C20.969 6.21895 20.969 6.85212 20.5784 7.24264L19.1642 8.65685M7.85051 19.9706L4.31497 16.435M7.85051 19.9706L19.1642 8.65685M7.85051 19.9706L3.25431 21.0312L4.31497 16.435" stroke="#1c7bc2" strokeLinecap="round" strokeLinejoin="round" fill="#1c7bc2" strokeWidth={2}/>
+                </svg>
+            </span>
+        </div>
+    )
+}
 
+export function OpenFolderIcon({styles}){
+    return(
+        <svg fill="currentColor" viewBox="0 0 300.872 300.872" className={styles}>
+            <g>
+                <path d="M299.916,123.326c-1.025-1.504-2.728-2.404-4.548-2.404h-46.747V81.481c0-3.039-2.465-5.504-5.504-5.504H124.84V41.59
+                    c0-3.039-2.464-5.502-5.503-5.502H5.502C2.463,36.088,0,38.551,0,41.59V259.28c0,0.201,0.012,0.398,0.033,0.594
+                    c0.004,0.039,0.012,0.074,0.017,0.113c0.022,0.168,0.05,0.336,0.087,0.504c0.013,0.055,0.028,0.107,0.042,0.162
+                    c0.039,0.148,0.083,0.297,0.134,0.443c0.019,0.055,0.039,0.109,0.059,0.162c0.059,0.152,0.124,0.301,0.196,0.447
+                    c0.021,0.041,0.039,0.084,0.061,0.125c0.097,0.186,0.203,0.367,0.322,0.543c0.002,0.002,0.002,0.004,0.004,0.004
+                    c0.007,0.012,0.016,0.02,0.023,0.031c0.108,0.156,0.226,0.305,0.349,0.447c0.043,0.051,0.088,0.1,0.133,0.148
+                    c0.096,0.103,0.195,0.203,0.298,0.299c0.051,0.047,0.101,0.094,0.153,0.139c0.119,0.103,0.242,0.201,0.369,0.293
+                    c0.037,0.025,0.072,0.055,0.109,0.08c0.17,0.117,0.347,0.225,0.529,0.322c0.023,0.012,0.047,0.022,0.069,0.033
+                    c0.16,0.082,0.323,0.156,0.491,0.223c0.05,0.02,0.101,0.037,0.151,0.057c0.145,0.053,0.292,0.098,0.441,0.139
+                    c0.059,0.016,0.116,0.031,0.176,0.045c0.15,0.035,0.304,0.063,0.457,0.086c0.056,0.008,0.11,0.018,0.167,0.025
+                    c0.209,0.023,0.419,0.039,0.631,0.039h237.615c2.262,0,4.294-1.385,5.121-3.49l52.251-132.854
+                    C301.156,126.744,300.941,124.83,299.916,123.326z M11.006,47.094h102.828v34.387c0,3.039,2.464,5.502,5.503,5.502h118.278v33.939
+                    H57.753c-2.262,0-4.294,1.385-5.121,3.488L11.006,230.252V47.094z M239.369,253.778H13.58l47.922-121.85h181.615h44.174
+                    L239.369,253.778z"/>
+            </g>
+        </svg>
+    )
+}
+
+export function PrinterIcon({styles, strokeWidth}){
+    return(
+        <svg viewBox="-3.2 -3.2 38.40 38.40" fill="currentColor" className={styles}>
+            <g id="SVGRepo_bgCarrier" strokeWidth={strokeWidth}/>
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
-
-            <g id="SVGRepo_iconCarrier"> <path fill="currentColor" d="M5.75 3C4.23122 3 3 4.23122 3 5.75V18.25C3 19.7688 4.23122 21 5.75 21H9.99852C9.99129 20.8075 10.011 20.6088 10.0613 20.4075L10.2882 19.5H7.5V14.25C7.5 13.8358 7.83579 13.5 8.25 13.5H14.8531L16.2883 12.0648C16.1158 12.0225 15.9355 12 15.75 12H8.25C7.00736 12 6 13.0074 6 14.25V19.5H5.75C5.05964 19.5 4.5 18.9404 4.5 18.25V5.75C4.5 5.05964 5.05964 4.5 5.75 4.5H7V7.25C7 8.49264 8.00736 9.5 9.25 9.5H13.75C14.9926 9.5 16 8.49264 16 7.25V4.52344C16.3582 4.58269 16.6918 4.75246 16.9519 5.01256L18.9874 7.0481C19.3156 7.37629 19.5 7.8214 19.5 8.28553V10.007C19.5709 10.0024 19.642 10 19.713 10H19.7151C20.1521 10.0002 20.59 10.0874 21 10.2615V8.28553C21 7.42358 20.6576 6.59693 20.0481 5.98744L18.0126 3.9519C17.4031 3.34241 16.5764 3 15.7145 3H5.75ZM8.5 7.25V4.5H14.5V7.25C14.5 7.66421 14.1642 8 13.75 8H9.25C8.83579 8 8.5 7.66421 8.5 7.25Z" /> <path d="M19.7152 11H19.7131C19.1285 11.0003 18.5439 11.2234 18.0979 11.6695L12.1955 17.5719C11.8513 17.916 11.6072 18.3472 11.4892 18.8194L11.0315 20.6501C10.8325 21.4462 11.5536 22.1674 12.3497 21.9683L14.1804 21.5106C14.6526 21.3926 15.0838 21.1485 15.4279 20.8043L21.3303 14.9019C22.223 14.0093 22.223 12.5621 21.3303 11.6695C20.8843 11.2234 20.2998 11.0003 19.7152 11Z" fill="#1c7bc2"/> </g>
-
-        </svg>
-    )
-}
-
-export function OpenFolderIcon(){
-    return(
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
-        </svg>
-    )
-}
-
-export function PrinterIcon(){
-    return(
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />            
+            <g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M7.47 12.268c-0.589 0-1.066 0.477-1.066 1.066s0.477 1.066 1.066 1.066c0.588 0 1.066-0.477 1.066-1.066s-0.478-1.066-1.066-1.066z" fill="#000000"> </path> <path d="M10.669 12.268c-0.589 0-1.066 0.477-1.066 1.066s0.477 1.066 1.066 1.066c0.588 0 1.066-0.477 1.066-1.066s-0.478-1.066-1.066-1.066z" fill="currentColor"> </path> <path d="M29.328 8.003h-5.864v-5.331h-14.928v5.331h-5.864c-0.295 0-0.533 0.238-0.533 0.533v15.994c0 0.295 0.238 0.533 0.533 0.533h5.864v4.265h14.928v-4.265h5.864c0.295 0 0.533-0.238 0.533-0.533v-15.994c0-0.295-0.238-0.533-0.533-0.533zM9.602 3.738h12.795v4.265h-12.795v-4.265zM22.398 28.262h-12.795v-9.596h12.795v9.596zM28.795 23.997h-5.331v-6.398h-14.928v6.398h-5.331v-14.928h25.59v14.928z" fill="currentColor"> </path> </g>
         </svg>
     )
 }
@@ -485,7 +534,7 @@ export function SaveAllIcon(){
     return(
         <div className="relative">
             <span>
-                <svg fill="currentColor" viewBox="0 0 512 512" className="h-4 w-4">
+                <svg fill="currentColor" viewBox="0 0 512 512" className="h-[19px] w-[19px]" strokeWidth="1.7">
                     <g>
                         <g>
                             <path d="M447.168,134.56c-0.535-1.288-1.318-2.459-2.304-3.445l-128-128c-2.003-1.988-4.709-3.107-7.531-3.115H138.667
@@ -498,20 +547,50 @@ export function SaveAllIcon(){
                     </g>
                 </svg>
             </span>
-            <span className="absolute -bottom-[6px] -right-[4px]">
-                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none">
-                    <path d="M7.76471 4H5C4.44771 4 4 4.44772 4 5V16.5376C4 16.8309 4.12882 17.1095 4.35235 17.2995L8.42581 20.7619C8.60661 20.9156 8.83617 21 9.07346 21H19C19.5523 21 20 20.5523 20 20V5C20 4.44772 19.5523 4 19 4H16.2353M7.76471 4V9C7.76471 9.55228 8.21242 10 8.76471 10H15.2353C15.7876 10 16.2353 9.55228 16.2353 9V4M7.76471 4H16.2353" stroke="#c36ac6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 21V16C9 15.4477 9.44772 15 10 15H14C14.5523 15 15 15.4477 15 16V21" stroke="#c36ac6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+            <span className="absolute -bottom-1 right-0">
+                <svg viewBox="0 0 24 24" className="w-3 h-3" >
+                    <path fill="none" stroke="#c36ac6" strokeMiterlimit="10" strokeWidth="1.91px" d="M22.5,22.5H1.5V1.5H18.68L22.5,5.32Z"/>
+                    <path fill="none" stroke="#c36ac6" strokeMiterlimit="10" strokeWidth="1.91px" d="M7.23,1.5h9.55a0,0,0,0,1,0,0V6.27a1,1,0,0,1-1,1H8.18a1,1,0,0,1-1-1V1.5A0,0,0,0,1,7.23,1.5Z"/><rect fill="none" stroke="#c36ac6" strokeMiterlimit="10" strokeWidth="1.91px" x="6.27" y="14.86" width="11.45" height="7.64"/>
+                </svg>                
             </span>
         </div>
     )
 }
 
-export function DeleteFileIcon(){
+export function SaveAllIconBig(){
+    return(
+        <div className="relative">
+            <span>
+                <svg fill="currentColor" viewBox="0 0 512 512" className="h-8 w-8" strokeWidth="1.7">
+                    <g>
+                        <g>
+                            <path d="M447.168,134.56c-0.535-1.288-1.318-2.459-2.304-3.445l-128-128c-2.003-1.988-4.709-3.107-7.531-3.115H138.667
+                                C132.776,0,128,4.776,128,10.667V64H74.667C68.776,64,64,68.776,64,74.667v426.667C64,507.224,68.776,512,74.667,512h298.667
+                                c5.891,0,10.667-4.776,10.667-10.667V448h53.333c5.891,0,10.667-4.776,10.667-10.667V138.667
+                                C447.997,137.256,447.714,135.86,447.168,134.56z M320,36.416L411.584,128H320V36.416z M362.667,490.667H85.333V85.333H128v352
+                                c0,5.891,4.776,10.667,10.667,10.667h224V490.667z M426.667,426.667H149.333V21.333h149.333v117.333
+                                c0,5.891,4.776,10.667,10.667,10.667h117.333V426.667z"/>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span className="absolute -bottom-1 -right-1">
+                <svg viewBox="0 0 24 24" className="w-5 h-5" >
+                    <path fill="none" stroke="#c36ac6" strokeMiterlimit="10" strokeWidth="1.91px" d="M22.5,22.5H1.5V1.5H18.68L22.5,5.32Z"/>
+                    <path fill="none" stroke="#c36ac6" strokeMiterlimit="10" strokeWidth="1.91px" d="M7.23,1.5h9.55a0,0,0,0,1,0,0V6.27a1,1,0,0,1-1,1H8.18a1,1,0,0,1-1-1V1.5A0,0,0,0,1,7.23,1.5Z"/><rect fill="none" stroke="#c36ac6" strokeMiterlimit="10" strokeWidth="1.91px" x="6.27" y="14.86" width="11.45" height="7.64"/>
+                </svg>                
+            </span>
+        </div>
+    )
+}
+
+export function DeleteFileIcon({styles, strokeWidth}){
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+        <svg viewBox="0 0 32 32" className={styles} strokeWidth={strokeWidth}>
+            <g id="cross">
+                <line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={strokeWidth} x1="7" x2="25" y1="7" y2="25"/>
+                <line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={strokeWidth} x1="7" x2="25" y1="25" y2="7"/>
+            </g>
         </svg>
     )
 }

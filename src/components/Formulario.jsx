@@ -119,24 +119,24 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarC
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' onClick={()=>handlePreview()}>Vista previa</span>
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative cursor-pointer'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><OpenFolderIcon /></span>                    
+                    <span className="absolute top-2 left-3"><OpenFolderIcon styles='w-[18px] h-[18px]'/></span>                    
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Abrir</span>                    
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer'>
-                    <span className="w-5 h-5 absolute top-2 left-2 "><PrinterIcon /></span>
+                    <span className="absolute top-2 left-2"><PrinterIcon styles="w-[24px] h-[24px]" strokeWidth='2.75'/></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Impresion rápida</span>
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#5f564c] flex relative cursor-pointer'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><SaveAsIcon /></span>
+                    <span className="absolute top-2 left-3"><SaveAsIcon /></span>
                     <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Guardar como</span>
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer'>
-                    <span className="w-5 h-5 absolute top-2 left-2"><SaveAllIcon /></span>
+                    <span className="w-6 h-6 absolute top-2 left-2"><SaveAllIcon styles='h-4 w-4' strokeWidth={1.75}/></span>
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Guardar todos los adjuntos...</span>                    
                 </li>{
                     selectedMenu?.upload  &&
                         <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer' onClick={()=>handleDeleteFile(selectedMenu)}>
-                        <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon /></span>
+                        <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon styles='h-5 w-5' strokeWidth={2} /></span>
                         <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
                     </li>
                 }
