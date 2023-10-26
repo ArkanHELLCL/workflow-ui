@@ -85,7 +85,7 @@ export function CloseIcon(){
 
 export function OpenIcon(){
     return(
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 mr-2.5 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-3 h-3">
             <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>      
     )
@@ -94,7 +94,6 @@ export function OpenIcon(){
 export function Icon({ open, pos }) {
     return (
       <svg
-        xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={3}
@@ -110,7 +109,7 @@ export function Icon({ open, pos }) {
 
 export function MinusIcon(){
     return(
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 mr-2.5">
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 mr-2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
         </svg>
     )

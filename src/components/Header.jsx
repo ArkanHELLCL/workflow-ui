@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { DarkModeToggle } from "./darkMode.jsx";
 import Loading from "./Loading.jsx";
 import { 
+    CloseIcon,
         DeleteFileIcon, 
         DownReportIcon, 
         FlowPlusIcon, 
@@ -27,9 +28,9 @@ const ContentMenu = ({children, title}) => {
     )
 }
 
-const IconMenu = ({children, title}) => {
+const IconMenu = ({children, title, submneu}) => {
     return (
-        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
+        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-0 relative">
             <div className="h-11 w-11 flex items-center justify-center">
                 {children}
             </div>
@@ -38,6 +39,7 @@ const IconMenu = ({children, title}) => {
                     <span key={index}>{item}</span>
                     ))
                 }
+                {submneu && <CloseIcon styles='w-4 h-4' />}
             </div>
         </div>
     )
@@ -46,8 +48,8 @@ const IconMenu = ({children, title}) => {
 const CrearMenu = () => {
     return (
         <ContentMenu title={'Crear'}>
-            <IconMenu title={['Crear nuevo','requerimiento']}>                
-                <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                                
+            <IconMenu title={['Crear nuevo','requerimiento']} submneu={true}>                
+                <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                      
             </IconMenu>            
         </ContentMenu>
     )    
@@ -56,16 +58,18 @@ const CrearMenu = () => {
 const Requerimiento = () => {
     return (
         <ContentMenu title={'Requerimiento'}>
-            <IconMenu title={['Generar','informe']}>
+            <IconMenu title={['Generar','informe']} submneu={true}>
                 <GenReportIcon styles='w-8 h-8'/>
+                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
             </IconMenu>
-            <IconMenu title={['Descargar','informe']}>
+            <IconMenu title={['Descargar','informe']} submneu={true}>
                 <DownReportIcon styles='w-8 h-8' />
             </IconMenu>
-            <IconMenu title={['Mensaje']}>
+            <IconMenu title={['Mensaje']} submneu={true}>
                 <MessagesIcon styles='w-8 h-8'/>
+                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
             </IconMenu>
-            <IconMenu title={['Pasos del','flujo']}>
+            <IconMenu title={['Pasos del','flujo']} submneu={true}>
                 <FlowStepIcon styles='w-10 h-10' />
             </IconMenu>
         </ContentMenu>
