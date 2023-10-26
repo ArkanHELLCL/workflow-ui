@@ -25,7 +25,7 @@ import { ClickAway } from "../hooks/ClickAway.jsx";
 
 const ContentMenu = ({children, title}) => {
     return (
-        <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
+        <section className="flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
             {children}
             <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center">
                 <span>{title}</span>
@@ -39,7 +39,7 @@ const IconMenu = ({children, title, submneu, id}) => {
     const { ref } = ClickAway(setOpen);
 
     return (
-        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-0 relative" onClick={() => setOpen(!open)}>
+        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] px-1 relative" onClick={() => setOpen(!open)}>
             <div className="h-11 w-11 flex items-center justify-center">
                 {children}
             </div>
@@ -123,7 +123,7 @@ const SubMenu = ({id, open}) => {
                     ): id===5 ? 
                         (
                             <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
-                                <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                                
+                                <ul className="py-2 border-[#92908f] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                                
                                 {
                                     pasos.map((item) =>
                                         <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >
@@ -232,7 +232,7 @@ export default function Header(){
     }    
 
     return (
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-center justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
         onDragOver={handleNotDragOver}>
             <Suspense fallback={<Loading />}>
                 <CrearMenu />
