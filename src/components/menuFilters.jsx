@@ -19,7 +19,8 @@ export function MenuFilters({defaultTheme}) {
 
     const menuAppear = useSpring({        
         opacity:1,
-        height: `${openFilter ? width : 0}` + 'px',        
+        height: `${openFilter ? width : 0}` + 'px',
+        config: { duration: 100 }
     });
     
     

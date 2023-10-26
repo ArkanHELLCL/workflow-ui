@@ -31,7 +31,8 @@ function LstFlujos(){
 
     const menuAppear = useSpring({             
         opacity:1,
-        height: `${openFlujos ? 115 : 0}` + 'px'        
+        height: `${openFlujos ? 115 : 0}` + 'px',
+        config: { duration: 100 }
     });
 
     const { ref } = ClickAway(()=>setOpenFlujos(false));
