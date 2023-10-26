@@ -6,6 +6,7 @@ import {
     CloseIcon,
         DeleteFileIcon, 
         DownReportIcon, 
+        FlowIcon, 
         FlowPlusIcon, 
         FlowStepIcon, 
         GenReportIcon, 
@@ -33,13 +34,14 @@ const ContentMenu = ({children, title}) => {
 
 const IconMenu = ({children, title, submneu, id}) => {
     const [open, setOpen] = useState(false);    
+    const { ref } = ClickAway(setOpen);
 
     return (
         <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-0 relative" onClick={() => setOpen(!open)}>
             <div className="h-11 w-11 flex items-center justify-center">
                 {children}
             </div>
-            <div className="flex flex-col leading-tight text-xs items-center relative">
+            <div className="flex flex-col leading-tight text-xs items-center relative" ref={ref}>
                 {title.map((item, index) => (
                     <span key={index}>{item}</span>
                     ))
@@ -57,7 +59,7 @@ const IconMenu = ({children, title, submneu, id}) => {
 const SubMenu = ({id, open}) => {    
     const menuAppear = useSpring({             
         opacity:1,        
-        height: `${open ? 115 : 0}` + 'px',
+        height: `${open ? 95 : 0}` + 'px',
         config: { duration: 100 }
     });
     
@@ -67,7 +69,10 @@ const SubMenu = ({id, open}) => {
             <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                    
                 {
                     flujos.filter(fls => fls.id>0).map((item) =>
-                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >{item.description}</li>
+                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >
+                            <span className="absolute left-3 top-1"><FlowIcon id={item.id} /></span>
+                            {item.description}
+                        </li>
                     )
                 }
             </ul>
