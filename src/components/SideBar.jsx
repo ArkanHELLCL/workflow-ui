@@ -57,7 +57,7 @@ export default function SideBar(){
     }
 
     return(
-        <section className="flex flex-col items-start gap-3 h-full pt-1 px-1 relative" onDragOver={handleNotDragOver}>                            
+        <section className="flex flex-col items-start gap-3 h-full pt-1 px-1 relative dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100" onDragOver={handleNotDragOver}>                            
             <animated.span className="w-[2px] h-[36px] absolute left-[6px] bg-[#58b8fe] mt-[2px]" style={menuSelected}></animated.span>
             <ul className="flex flex-col w-full h-full gap-2">
                 <li className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "b" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2`} onClick={()=>handleClickItem("b")} id={bandejaId} title="Bandejas">
