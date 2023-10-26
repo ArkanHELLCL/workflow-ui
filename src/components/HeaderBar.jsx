@@ -142,7 +142,7 @@ function UserBar({menuAppear, reference, chkUser, setOpen, open}) {
         <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `} ref={reference} title="Datos del perfil">
             <label htmlFor={chkUser}>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
-                <div className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></div>
+                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
             </label>                              
             <input type="checkbox" id={chkUser} className="hidden" onClick={() => setOpen(!open)} />
             <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`}>                
@@ -165,7 +165,7 @@ function UserBar({menuAppear, reference, chkUser, setOpen, open}) {
                         <div className="flex items-center gap-3">
                             <span className="relative text-[#313131] dark:text-white">
                                 <MailIcon strokeWidth=".75" styles="w-10 h-10" /> 
-                                <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</div>                               
+                                <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</span>                               
                             </span>                            
                             <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
                         </div>                        
