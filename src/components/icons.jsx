@@ -234,7 +234,7 @@ export function SearchIcon(){
     )
 }
 
-export function TableIcon({styles, strokeWidth}){
+export function TableIcon({styles}){
     return(
         <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
             <g>
@@ -246,7 +246,7 @@ export function TableIcon({styles, strokeWidth}){
     )
 }
 
-export function TableIconPlus({styles, strokeWidth}){
+export function TableIconPlus({styles}){
     return(
         <div className="relative">
             <span>

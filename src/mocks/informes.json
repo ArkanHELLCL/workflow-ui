@@ -1,0 +1,16 @@
+{
+    "informes": [
+        {
+            "id": 0,
+            "name": "Memorandum",
+            "description": "Memorandum de compras",
+            "obligatorio" : false
+        },
+        {
+            "id": 1,
+            "name": "Certificado de disponiblididad",
+            "description": "Certificado de disponiblididad presupuestaria",
+            "obligatorio" : true
+        }
+    ]
+}

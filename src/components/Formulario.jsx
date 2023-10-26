@@ -297,7 +297,7 @@ export function Formulario(){
                                     <div className='flex justify-between relative w-full'>
                                         <div className='w-full h-full grid'>
                                             <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
-                                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong></h2>
+                                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong> / Paso : <strong>{request?.FLD_CodigoPaso}</strong></h2>
                                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
                                         </div>
                                         <div className='grid text-right leading-tight absolute right-2 top-8'>

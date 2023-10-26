@@ -1,0 +1,84 @@
+{
+    "pasos": [
+        {
+            "id": 1,
+            "name": "Factura",
+            "accion": "Creado",
+            "usuario": "Pedro Sepúlveda Saavedra",
+            "fecha":"02-10-2023 17:32:39",
+            "DRE_Id": null
+        },
+        {
+            "id": 2,
+            "name": "Jefatura Factura",
+            "accion": "Visado",
+            "usuario": "Pamela del Rosario Godoy Pereira",
+            "fecha":"02-10-2023 17:33:27",
+            "DRE_Id": null
+        },
+        {
+            "id": 3,
+            "name": "Dep. Tic",
+            "accion": "Conforme",
+            "usuario": "Camilo Enrique Araya Morales",
+            "fecha":"02-10-2023 17:34:52",
+            "DRE_Id": null
+        },
+        {
+            "id": 4,
+            "name": "Jefatura Dep. Tic",
+            "accion": "Aceptada",
+            "usuario": "José Vicente Elgueta Alonso",
+            "fecha":"02-10-2023 17:37:31",
+            "DRE_Id": null
+        },
+        {
+            "id": 5,
+            "name": "Factura",
+            "accion": "Revisada",
+            "usuario": "Pamela del Rosario Godoy Pereira",
+            "fecha":"02-10-2023 17:45:09",
+            "DRE_Id": null
+        },
+        {
+            "id": 6,
+            "name": "Dep. SS.GG",
+            "accion": "Pre-Visada",
+            "usuario": "Karina Alvarez Gutiérrez",
+            "fecha":"02-10-2023 17:45:42",
+            "DRE_Id": null
+        },
+        {
+            "id": 7,
+            "name": "Jefatura Dep. SS.GG",
+            "accion": "Visada",
+            "usuario": "Maria Cristina Ramirez Merizalde",
+            "fecha":"02-10-2023 17:47:08",
+            "DRE_Id": null
+        },
+        {
+            "id": 8,
+            "name": "Contabilidad",
+            "accion": "Revisada",
+            "usuario": "Ivan Ceferino Morales Chuquihuanca",
+            "fecha":"02-10-2023 17:48:38",
+            "DRE_Id": null
+        },
+        {
+            "id": 9,
+            "name": "Tesorería",
+            "accion": "Pagada",
+            "usuario": "Marcelo Duarte Devia",
+            "fecha":"02-10-2023 17:51:19",
+            "DRE_Id": null
+        },
+        {
+            "id": 10,
+            "name": "Jefatura Finanazas",
+            "accion": "Cerrado",
+            "usuario": "Chrystian Urzúa Bilbao",
+            "fecha":"02-10-2023 18:00:00",
+            "DRE_Id": null
+        }
+    ]
+}
