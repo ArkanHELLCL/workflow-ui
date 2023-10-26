@@ -56,9 +56,9 @@ function LstFlujos(){
                             flujos.map((item) =>
                                 <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} onClick={() => handleSetFlujos(item.id)}><span className={`${filters.flujo===item.id ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{item.description}</li>
                             )
-                        }                        
+                        }
                     </ul>
-                </animated.div>                
+                </animated.div>
             </div>
             )
 }

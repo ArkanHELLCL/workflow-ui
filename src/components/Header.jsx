@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { DarkModeToggle } from "./darkMode.jsx";
 import Loading from "./Loading.jsx";
 import { 
@@ -16,6 +16,9 @@ import {
         SaveAsIconBig, 
         TableIconPlus 
     } from "./icons.jsx";
+import { useSpring, animated } from "@react-spring/web";
+import { flujos } from "../mocks/flujos.json";
+import { ClickAway } from "../hooks/ClickAway.jsx";    
 
 const ContentMenu = ({children, title}) => {
     return (
@@ -28,27 +31,55 @@ const ContentMenu = ({children, title}) => {
     )
 }
 
-const IconMenu = ({children, title, submneu}) => {
+const IconMenu = ({children, title, submneu, id}) => {
+    const [open, setOpen] = useState(false);    
+
     return (
-        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-0 relative">
+        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-0 relative" onClick={() => setOpen(!open)}>
             <div className="h-11 w-11 flex items-center justify-center">
                 {children}
             </div>
-            <div className="flex flex-col leading-tight text-xs items-center">
+            <div className="flex flex-col leading-tight text-xs items-center relative">
                 {title.map((item, index) => (
                     <span key={index}>{item}</span>
                     ))
                 }
-                {submneu && <CloseIcon styles='w-4 h-4' />}
-            </div>
+                {submneu && 
+                <>
+                    <CloseIcon styles='w-4 h-4' />
+                    <SubMenu id={id} open={open}/>
+                </>}
+            </div>            
         </div>
     )
+}
+
+const SubMenu = ({id, open}) => {    
+    const menuAppear = useSpring({             
+        opacity:1,        
+        height: `${open ? 115 : 0}` + 'px',
+        config: { duration: 100 }
+    });
+    
+     return (
+        id===1 &&     
+        <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
+            <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                    
+                {
+                    flujos.filter(fls => fls.id>0).map((item) =>
+                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >{item.description}</li>
+                    )
+                }
+            </ul>
+        </animated.div>        
+    ) 
+     
 }
 
 const CrearMenu = () => {
     return (
         <ContentMenu title={'Crear'}>
-            <IconMenu title={['Crear nuevo','requerimiento']} submneu={true}>                
+            <IconMenu title={['Crear nuevo','requerimiento']} submneu={true} id={1}>                
                 <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                      
             </IconMenu>            
         </ContentMenu>
@@ -136,9 +167,10 @@ export default function Header(){
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
         return false;
-    }
+    }    
+
     return (
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-center justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-0 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-center justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
         onDragOver={handleNotDragOver}>
             <Suspense fallback={<Loading />}>
                 <CrearMenu />
