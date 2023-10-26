@@ -26,7 +26,7 @@ export default function Header(){
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-center justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-16 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-0 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
         onDragOver={handleNotDragOver}>
             <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />
                     </div>
@@ -40,7 +40,7 @@ export default function Header(){
                 </div>
             </section>
             <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <GenReportIcon styles='w-8 h-8'/>
                     </div>
@@ -49,7 +49,7 @@ export default function Header(){
                         <span>informe</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <DownReportIcon styles='w-8 h-8' />
                     </div>
@@ -58,7 +58,7 @@ export default function Header(){
                         <span>informe</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <MessagesIcon styles='w-8 h-8' strokeWidth={2}/>
                     </div>
@@ -66,7 +66,7 @@ export default function Header(){
                         <span>Mensajes</span>                        
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <FlowStepIcon styles='w-10 h-10' />
                     </div>
@@ -80,7 +80,7 @@ export default function Header(){
                 </div>
             </section>
             <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <OpenFolderIcon styles='h-8 w-8'/>
                     </div>
@@ -88,7 +88,7 @@ export default function Header(){
                         <span>Abrir</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <PrinterIcon styles='h-11 w-11' strokeWidth="2"/>
                     </div>
@@ -97,7 +97,7 @@ export default function Header(){
                         <span>rápida</span>
                     </div>
                 </div>
-                <div className="flex flex-col gap-0 pr-2 items-center cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="text-red-500 h-11 w-11 flex items-center justify-center">
                         <DeleteFileIcon styles='h-10 w-10' strokeWidth={1} /> 
                     </div>
@@ -111,7 +111,7 @@ export default function Header(){
                 </div>
             </section>
             <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <SaveAsIconBig styles='h-7 w-7'/>
                     </div>
@@ -120,7 +120,7 @@ export default function Header(){
                         <span>como</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <SaveAllIconBig styles='h-8 w-8'/>
                     </div>
@@ -134,7 +134,7 @@ export default function Header(){
                 </div>
             </section>                   
             <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <TableIconPlus styles='w-8 h-8' />
                     </div>
@@ -143,7 +143,7 @@ export default function Header(){
                         <span>registro</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <DownReportIcon styles='w-8 h-8' />
                     </div>
@@ -157,7 +157,7 @@ export default function Header(){
                 </div>
             </section>
             <section className="flex content-start gap-3 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <GenReportIcon styles='w-8 h-8'/>
                     </div>
@@ -166,7 +166,7 @@ export default function Header(){
                         <span>informe</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-0 cursor-pointer">
+                <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] p-1">
                     <div className="h-11 w-11 flex items-center justify-center">
                         <DownReportIcon styles='w-8 h-8' />
                     </div>
