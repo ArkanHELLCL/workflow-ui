@@ -23,7 +23,7 @@ import { informes } from "../mocks/informes.json";
 import { pasos } from "../mocks/pasos.json";
 import { ClickAway } from "../hooks/ClickAway.jsx";    
 
-const ContentMenu = ({children, title}) => {
+const ContentMenu = ({children, title}) => {    
     return (
         <section className="flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
             {children}
@@ -138,13 +138,13 @@ const SubMenu = ({id, open}) => {
     )
 }
 
-const CrearMenu = () => {
-    return (
+const CrearMenu = () => {    
+    return (        
         <ContentMenu title={'Crear'}>
             <IconMenu title={['Crear nuevo','requerimiento']} submneu={true} id={1}>                
                 <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                      
             </IconMenu>            
-        </ContentMenu>
+        </ContentMenu>        
     )    
 }
 
@@ -229,11 +229,25 @@ export default function Header(){
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
         return false;
-    }    
+    }
 
-    return (
+    /*const  menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 200
+    });*/
+
+    return (        
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
         onDragOver={handleNotDragOver}>
+            
             <Suspense fallback={<Loading />}>
                 <CrearMenu />
                 <Requerimiento />
