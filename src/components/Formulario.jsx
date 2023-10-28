@@ -326,9 +326,8 @@ export function Formulario(){
                                         <span className=''>Volver al formulario</span>        
                                     </div>
                             }
-                            <div className='grid grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
+                            <div className='grid md:grid-cols-1 lg:grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
                             {
-                                //reqAdjuntos.map((file, index) => {
                                 adjuntos.map((file, index) => {
                                     return (                        
                                         <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen} setPreview={setPreview} setSelectedMenu={setSelectedMenu}/>

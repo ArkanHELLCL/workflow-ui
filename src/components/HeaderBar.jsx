@@ -139,7 +139,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
 
 function UserBar({menuAppear, reference, chkUser, setOpen, open}) {    
     return(       
-        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center `} ref={reference} title="Datos del perfil">
+        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center z-20`} ref={reference} title="Datos del perfil">
             <label htmlFor={chkUser}>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
                 <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
@@ -202,7 +202,7 @@ export default function HeaderBar() {
 
     const { ref:refUser } = ClickAway(setOpen);
     return(
-        <div className="flex items-center h-full px-4 text-white relative">
+        <div className="flex items-center h-full px-4 text-white relative z-50">
             <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload} title="Recargar">
                 <ReloadIcon />
             </span>
