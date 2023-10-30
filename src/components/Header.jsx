@@ -50,11 +50,13 @@ const IconMenu = ({children, title, submneu, id}) => {
                     <span key={index}>{item}</span>
                     ))
                 }
-                {submneu && 
+                {submneu ? 
                 <>
                     <CloseIcon styles='w-4 h-4' />
                     <SubMenu id={id} open={open}/>
-                </>}
+                </>:
+                    <span className="h-3">&nbsp;</span>
+                }
             </div>            
         </div>
     )
@@ -151,7 +153,7 @@ const CrearMenu = () => {
 }
 
 const Requerimiento = () => {
-    const  menuAppear = useSpring({        
+    const  menuAppear = useSpring({
         to:{
             transform:'translate(0)',
             opacity:1,
@@ -227,7 +229,7 @@ const GuardarEquipo = () => {
             transform:'translate(150px)',
         },
         config: { duration: 150 },
-        delay: 200
+        delay: 250
     });
 
     return (

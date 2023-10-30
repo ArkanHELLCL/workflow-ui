@@ -79,7 +79,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
     useEffect(() => {
         const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
     
-        const adjunto = document.getElementById(open.id)
+        const adjunto = open?.id ? document.getElementById(open.id) : null
         const posadjunto = adjunto?.getBoundingClientRect()
         const posX = posadjunto?.left + posadjunto?.width - posMenu?.width
         const posT = posadjunto?.top + posadjunto?.height    
