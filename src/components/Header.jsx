@@ -21,7 +21,9 @@ import { useSpring, animated } from "@react-spring/web";
 import { flujos } from "../mocks/flujos.json";
 import { informes } from "../mocks/informes.json";
 import { pasos } from "../mocks/pasos.json";
-import { ClickAway } from "../hooks/ClickAway.jsx";    
+import { ClickAway } from "../hooks/ClickAway.jsx"; 
+import { useRequest } from "../hooks/useRequest.jsx";
+import { useFilters } from "../hooks/useFilters.jsx";
 
 const ContentMenu = ({children, title}) => {    
     return (
@@ -149,89 +151,7 @@ const CrearMenu = () => {
 }
 
 const Requerimiento = () => {
-    return (
-        <ContentMenu title={'Requerimiento'}>
-            <IconMenu title={['Generar','informe']} submneu={true} id={2}>
-                <GenReportIcon styles='w-8 h-8'/>
-                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-            </IconMenu>
-            <IconMenu title={['Descargar','informe']} submneu={true} id={3}>
-                <DownReportIcon styles='w-8 h-8' />
-            </IconMenu>
-            <IconMenu title={['Mensaje']} submneu={true} id={4}>
-                <MessagesIcon styles='w-8 h-8'/>
-                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-            </IconMenu>
-            <IconMenu title={['Pasos del','flujo']} submneu={true} id={5}>
-                <FlowStepIcon styles='w-10 h-10' />
-            </IconMenu>
-        </ContentMenu>
-    )    
-}
-
-const Acciones = () => {
-    return (
-        <ContentMenu title={'Acciones'}>
-            <IconMenu title={['Abrir']}>
-                <OpenFolderIcon styles='h-8 w-8'/>
-            </IconMenu>
-            <IconMenu title={['Impresión','rápida']}>
-                <PrinterIcon styles='h-11 w-11' strokeWidth="2"/>
-            </IconMenu>
-            <IconMenu title={['Quitar datos','adjuntos']}>
-                <DeleteFileIcon styles='text-red-500 h-10 w-10' strokeWidth={1} />
-            </IconMenu>            
-        </ContentMenu>
-    )    
-}
-
-const GuardarEquipo = () => {
-    return (
-        <ContentMenu title={'Guardar en el equipo'}>
-            <IconMenu title={['Guardar','como']}>
-                <SaveAsIconBig styles='h-7 w-7'/>
-            </IconMenu>
-            <IconMenu title={['Guardar todos los','datos adjuntos']}>
-                <SaveAllIconBig styles='h-8 w-8'/>
-            </IconMenu>            
-        </ContentMenu>
-    )    
-}
-
-const Mantenedores = () => {
-    return (
-        <ContentMenu title={'Mantenedor del sistema'}>
-            <IconMenu title={['Crear nuevo','registro']}>
-                <TableIconPlus styles='w-8 h-8' />
-            </IconMenu>
-            <IconMenu title={['Descargar','informe resultado']}>
-                <DownReportIcon styles='w-8 h-8' />
-            </IconMenu>            
-        </ContentMenu>
-    )    
-}
-
-const Informes = () => {
-    return (
-        <ContentMenu title={'Informe del sistema'}>
-            <IconMenu title={['Generar','informe']}>
-                <GenReportIcon styles='w-8 h-8'/>
-            </IconMenu>
-            <IconMenu title={['Descargar','informe resultado']}>
-                <DownReportIcon styles='w-8 h-8' />
-            </IconMenu>            
-        </ContentMenu>
-    )    
-}
-
-export default function Header(){
-    const handleNotDragOver = (event) => {
-        event.preventDefault();
-        event.dataTransfer.dropEffect = "none";
-        return false;
-    }
-
-    /*const  menuAppear = useSpring({        
+    const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
             opacity:1,
@@ -242,19 +162,179 @@ export default function Header(){
         },
         config: { duration: 150 },
         delay: 200
-    });*/
+    });
+    return (
+        <animated.div style={menuAppear}>
+            <ContentMenu title={'Requerimiento'}>
+                <IconMenu title={['Generar','informe']} submneu={true} id={2}>
+                    <GenReportIcon styles='w-8 h-8'/>
+                    <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
+                </IconMenu>
+                <IconMenu title={['Descargar','informe']} submneu={true} id={3}>
+                    <DownReportIcon styles='w-8 h-8' />
+                </IconMenu>
+                <IconMenu title={['Mensaje']} submneu={true} id={4}>
+                    <MessagesIcon styles='w-8 h-8'/>
+                    <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
+                </IconMenu>
+                <IconMenu title={['Pasos del','flujo']} submneu={true} id={5}>
+                    <FlowStepIcon styles='w-10 h-10' />
+                </IconMenu>
+            </ContentMenu>
+        </animated.div>
+    )    
+}
 
+const Acciones = () => {
+    const  menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 200
+    });
+
+    return (
+        <animated.div style={menuAppear}>
+            <ContentMenu title={'Acciones'}>
+                <IconMenu title={['Abrir']}>
+                    <OpenFolderIcon styles='h-8 w-8'/>
+                </IconMenu>
+                <IconMenu title={['Impresión','rápida']}>
+                    <PrinterIcon styles='h-11 w-11' strokeWidth="2"/>
+                </IconMenu>
+                <IconMenu title={['Quitar datos','adjuntos']}>
+                    <DeleteFileIcon styles='text-red-500 h-10 w-10' strokeWidth={1} />
+                </IconMenu>
+            </ContentMenu>
+        </animated.div>
+    )    
+}
+
+const GuardarEquipo = () => {
+    const  menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 200
+    });
+
+    return (
+        <animated.div style={menuAppear}>
+            <ContentMenu title={'Guardar en el equipo'}>
+                <IconMenu title={['Guardar','como']}>
+                    <SaveAsIconBig styles='h-7 w-7'/>
+                </IconMenu>
+                <IconMenu title={['Guardar todos los','datos adjuntos']}>
+                    <SaveAllIconBig styles='h-8 w-8'/>
+                </IconMenu>            
+            </ContentMenu>
+        </animated.div>
+    )    
+}
+
+const Mantenedores = () => {
+    const  menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 200
+    });
+    return (
+        <animated.div style={menuAppear}>
+            <ContentMenu title={'Mantenedor del sistema'}>
+                <IconMenu title={['Crear nuevo','registro']}>
+                    <TableIconPlus styles='w-8 h-8' />
+                </IconMenu>
+                <IconMenu title={['Descargar','informe resultado']}>
+                    <DownReportIcon styles='w-8 h-8' />
+                </IconMenu>            
+            </ContentMenu>
+        </animated.div>
+    )    
+}
+
+const Informes = () => {
+    const  menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 200
+    });
+    return (
+        <animated.div style={menuAppear}>
+            <ContentMenu title={'Informe del sistema'}>
+                <IconMenu title={['Generar','informe']}>
+                    <GenReportIcon styles='w-8 h-8'/>
+                </IconMenu>
+                <IconMenu title={['Descargar','informe resultado']}>
+                    <DownReportIcon styles='w-8 h-8' />
+                </IconMenu>            
+            </ContentMenu>
+        </animated.div>
+    )    
+}
+
+export default function Header(){
+    const { request } = useRequest()
+    const { filters } = useFilters()
+    const handleNotDragOver = (event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "none";
+        return false;
+    }    
+    //console.log(filters)
+    const mantSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "m")
+    const repoSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "r")
+    
     return (        
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
-        onDragOver={handleNotDragOver}>
-            
+        onDragOver={handleNotDragOver}>            
             <Suspense fallback={<Loading />}>
-                <CrearMenu />
-                <Requerimiento />
-                <Acciones />
-                <GuardarEquipo />                 
-                <Mantenedores />
-                <Informes />            
+                <CrearMenu />{
+                    request && 
+                    <>
+                        <Requerimiento />
+                        {
+                            request?.selected &&
+                            <>
+                                <Acciones />
+                                <GuardarEquipo />
+                            </>
+                        }                        
+                    </>
+                }
+                {
+                    mantSelected &&                     
+                        <Mantenedores />
+                }
+                {
+                    repoSelected &&                        
+                        <Informes />                    
+                }
                 <DarkModeToggle />            
             </Suspense>
         </header>

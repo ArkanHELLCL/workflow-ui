@@ -16,7 +16,7 @@ export const RequerimientoItem = ({ req, showDia }) => {
       return dias[newDate.getDay()]
     }, [dias, req.DRE_FechaEdit])
   
-    const isReqSelected = useMemo(() => request?.DRE_Id === req.DRE_Id, [request, req.DRE_Id])
+    const isReqSelected = useMemo(() => request?.request?.DRE_Id === req.DRE_Id, [request, req.DRE_Id])
   
     const handleEditClick = useCallback((e) => {
       e.stopPropagation()
@@ -38,7 +38,11 @@ export const RequerimientoItem = ({ req, showDia }) => {
     }, [req])*/
 
     const handleRequerimiento = useCallback(() => {
-      setRequest(memoizedReq)
+      //setRequest(memoizedReq)
+      setRequest({
+        "request": memoizedReq,
+        "adjuntos": null,
+      })
     }, [memoizedReq, setRequest])
   
     return (

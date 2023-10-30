@@ -73,7 +73,7 @@ const fecha = (date, dias) => {
 
 const grupos = FOR_Botones.map(grupo => grupo)
 
-const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, selected, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
+const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
     const [pos, setPos] = useState(null)
     
     useEffect(() => {
@@ -188,7 +188,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSe
 }
 
 export function Formulario(){
-    const { request } = useRequest()
+    const { request, setRequest } = useRequest()
     const { dias } = Constants()
     const idForm = useId()
     const idGroups = useId()
@@ -206,6 +206,14 @@ export function Formulario(){
     useEffect(() => {
         setAdjuntos(REQ_Adjuntos)
     },[REQ_Adjuntos])
+
+    useEffect(() => {
+        setRequest({
+            ...request,
+            "adjuntos": adjuntos,
+            "selected": selected,
+        })
+    },[selected])
 
     const handleDrop = (event) => {
         event.preventDefault();
@@ -296,13 +304,13 @@ export function Formulario(){
                                 <>
                                     <div className='flex justify-between relative w-full'>
                                         <div className='w-full h-full grid'>
-                                            <h1 className='text-lg truncate w-auto pr-2'>{request?.REQ_Descripcion}</h1>
-                                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.FLU_Descripcion}</strong> / Paso : <strong>{request?.FLD_CodigoPaso}</strong></h2>
-                                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.ESR_AccionFlujoDatos}</strong></h2>                            
+                                            <h1 className='text-lg truncate w-auto pr-2'>{request?.request?.REQ_Descripcion}</h1>
+                                            <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.request?.FLU_Descripcion}</strong> / Paso : <strong>{request?.request?.FLD_CodigoPaso}</strong></h2>
+                                            <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.request?.ESR_AccionFlujoDatos}</strong></h2>                            
                                         </div>
                                         <div className='grid text-right leading-tight absolute right-2 top-8'>
                                             <Buttons idGroups={idGroups}/>
-                                            <span className='text-[11px] leading-tight'>{fecha(request?.DRE_FechaEdit, dias)}</span>
+                                            <span className='text-[11px] leading-tight'>{fecha(request?.request?.DRE_FechaEdit, dias)}</span>
                                         </div>
                                     </div>
                                     <div className='flex justify-between'>
@@ -313,8 +321,8 @@ export function Formulario(){
                                                     src = {formulario.IdEditor_Foto} />
                                             </div>
                                             <div className='grid'>                                
-                                                <span className='text-base font-light leading-tight'>De : {request?.DRE_UsuarioEditAnt}</span>
-                                                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.ESRAnterior_Descripcion}</strong></span>
+                                                <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt}</span>
+                                                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.request?.ESRAnterior_Descripcion}</strong></span>
                                             </div>
                                         </div>                        
                                     </div>
