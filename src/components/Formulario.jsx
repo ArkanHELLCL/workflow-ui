@@ -9,11 +9,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
 import { DocPreview } from './DocPreview.jsx';
 
-const { REQ_Adjuntos } = formulario;
-const { FOR_Botones } = formulario;
-const { FOR_Campos } = formulario;
-
-const Buttons = ({idGroups}) => {
+const Buttons = ({grupos, idGroups}) => {
     const [postitionTo, setPositionTo] = useState(0)
     let corr = 0;
     let keygrp = '';
@@ -42,7 +38,7 @@ const Buttons = ({idGroups}) => {
     return(
         <div className='flex items-center gap-3 pb-2' id={idGroups}>
         {
-            grupos.map(grp => {
+            grupos?.map(grp => {
                 corr = corr+1;
                 keygrp = 'btnGrp-' + corr;
                 return (
@@ -70,8 +66,6 @@ const fecha = (date, dias) => {
     const newDate = new Date(date)
     return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()        
 } 
-
-const grupos = FOR_Botones.map(grupo => grupo)
 
 const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
     const [pos, setPos] = useState(null)
@@ -198,22 +192,37 @@ export function Formulario(){
 
     const [open, setOpen] = useState({open: false, id: ''})
 
+    const [form, setForm] = useState(formulario)
     const [adjuntos, setAdjuntos] = useState([]);
+    //const [botones, setBotones] = useState(null);
+    const [campos, setCampos] = useState(null);
+    const [grupos, setGrupos] = useState(null);
+
     const [dropEnter, setDropEnter] = useState(false);
 
-    const [preview, setPreview] = useState(false)
+    const [preview, setPreview] = useState(false)    
 
     useEffect(() => {
+        const { REQ_Adjuntos } = formulario;
+        const { FOR_Botones } = formulario;
+        const { FOR_Campos } = formulario;
+
+        setForm(formulario)
         setAdjuntos(REQ_Adjuntos)
-    },[REQ_Adjuntos])
+        //setBotones(FOR_Botones)
+        setCampos(FOR_Campos)
+        setGrupos(FOR_Botones.map(grupo => grupo))        
+    },[formulario,request])
 
     useEffect(() => {
-        setRequest({
-            ...request,
-            "adjuntos": adjuntos,
-            "selected": selected,
-        })
-    },[selected])
+        selected ?
+            setRequest({
+                ...request,
+                "adjuntos": adjuntos,
+                "selected": selected,
+            }) :
+        setRequest(null)
+    },[selected])    
 
     const handleDrop = (event) => {
         event.preventDefault();
@@ -289,11 +298,11 @@ export function Formulario(){
         event.dataTransfer.dropEffect = "none";
         return false;
     }
-    //console.log(adjuntos)
+    console.log(request)
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>{
-            request && 
+            request?.request?.VFO_Id === form?.VFO_Id && 
                 <>
                     <div 
                         className={`pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}
@@ -309,7 +318,7 @@ export function Formulario(){
                                             <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.request?.ESR_AccionFlujoDatos}</strong></h2>                            
                                         </div>
                                         <div className='grid text-right leading-tight absolute right-2 top-8'>
-                                            <Buttons idGroups={idGroups}/>
+                                            <Buttons idGroups={idGroups} grupos={grupos}/>
                                             <span className='text-[11px] leading-tight'>{fecha(request?.request?.DRE_FechaEdit, dias)}</span>
                                         </div>
                                     </div>
