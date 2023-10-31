@@ -37,7 +37,7 @@ const ContentMenu = ({children, title}) => {
     )
 }
 
-const IconMenu = ({children, title, submneu, id}) => {
+const IconMenu = ({children, title, submneu, id, request}) => {
     const [open, setOpen] = useState(false);    
     const { ref } = ClickAway(setOpen);
 
@@ -54,7 +54,7 @@ const IconMenu = ({children, title, submneu, id}) => {
                 {submneu ? 
                 <>
                     <CloseIcon styles='w-4 h-4' />
-                    <SubMenu id={id} open={open}/>
+                    <SubMenu id={id} open={open} request={request}/>
                 </>:
                     <span className="h-3">&nbsp;</span>
                 }
@@ -63,13 +63,13 @@ const IconMenu = ({children, title, submneu, id}) => {
     )
 }
 
-const SubMenu = ({id, open}) => {    
+const SubMenu = ({id, open, request}) => {    
     const menuAppear = useSpring({             
         opacity:1,        
         height: `${open && id===1 ? 95 : open && id===2 ? 75 : open && id===3 ? 75 : open && id===4 ? 75 : open && id===5 ? 300 : 0}` + 'px',
         config: { duration: 100 }
     });
-    
+    console.log(request)
     return (
         id===1 ? 
         (
@@ -131,8 +131,8 @@ const SubMenu = ({id, open}) => {
                                 <ul className="py-2 border-[#92908f] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                                
                                 {
                                     pasos.map((item) =>
-                                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >
-                                            <span className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-sky-600 rounded-full top-1 left-3">{item.id}</span>
+                                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative group/step`} key={item.id} >
+                                            <span className={`absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white  rounded-full top-1 left-3 ${item.id === request?.request?.FLD_CodigoPaso ? 'bg-sky-600': 'dark:bg-stone-700 bg-stone-300 group-hover/step:bg-sky-400'} `}>{item.id}</span>
                                             {item.name} - {item.accion}
                                         </li>
                                     )
@@ -153,7 +153,7 @@ const CrearMenu = () => {
     )    
 }
 
-const Requerimiento = ({styles}) => {
+const Requerimiento = ({styles, request}) => {
     const  menuAppear = useSpring({
         to:{
             transform:'translate(0)',
@@ -180,7 +180,7 @@ const Requerimiento = ({styles}) => {
                     <MessagesIcon styles='w-8 h-8'/>
                     <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
                 </IconMenu>
-                <IconMenu title={['Pasos del','flujo']} submneu={true} id={5}>
+                <IconMenu title={['Pasos del','flujo']} submneu={true} id={5} request={request}>
                     <FlowStepIcon styles='w-10 h-10' />
                 </IconMenu>
             </ContentMenu>
@@ -346,7 +346,7 @@ export default function Header(){
                 {
                     request && 
                     <>
-                        <Requerimiento styles={'z-40'} />
+                        <Requerimiento styles={'z-40'} request={request}/>
                         {
                             request?.selected &&
                             <>
