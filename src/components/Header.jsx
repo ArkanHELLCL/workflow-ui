@@ -68,8 +68,7 @@ const SubMenu = ({id, open, request}) => {
         opacity:1,        
         height: `${open && id===1 ? 95 : open && id===2 ? 75 : open && id===3 ? 75 : open && id===4 ? 75 : open && id===5 ? 300 : 0}` + 'px',
         config: { duration: 100 }
-    });
-    console.log(request)
+    });    
     return (
         id===1 ? 
         (
@@ -202,8 +201,17 @@ const Ajuntar = ({styles}) => {
         delay: 250
     });
 
+    const handleAdjunto = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const input = document.getElementById('adjuntos-input')
+        input.click()
+        //console.log('adjuntar')
+    }
+
     return (
-        <animated.div style={menuAppear} className={styles}>
+        <animated.div style={menuAppear} className={styles} onClick={handleAdjunto}>
             <ContentMenu title={'Incluir'}>
                 <IconMenu title={['Adjuntar','documento']}>
                     <AttachIcon styles='w-8 h-8'/>

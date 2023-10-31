@@ -354,32 +354,33 @@ export function Formulario(){
                             <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>                                                                   
                         </header>{
                             !preview &&
-                        
-                            <section className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`} onDragEnter={handleDragEnter}>
-                            {
-                                dropEnter ?
-                                <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
-                                    onDrop={handleDrop}
-                                    onDragOver={handleDragOver}                        
-                                    onDragLeave={handleDragLeave}
-                                    onDragEnd={handleDragEnd}
-                                    >
-                                    <div>
-                                        <span className='text-[#2c87d2]'> Agregar adjuntos</span>
-                                    </div>
-                                </div> :
-                                <div>Campos</div>
-                            }
-                            <input
-                                type="file"
-                                multiple
-                                onChange={handleAdjuntosChange}
-                                className='hidden'
-                            />                    
-                            </section>
+                                <section className={`flex-1 overflow-y-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3`} onDragEnter={handleDragEnter}>
+                                {
+                                    dropEnter ?
+                                    <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
+                                        onDrop={handleDrop}
+                                        onDragOver={handleDragOver}                        
+                                        onDragLeave={handleDragLeave}
+                                        onDragEnd={handleDragEnd}
+                                        >
+                                        <div>
+                                            <span className='text-[#2c87d2]'> Agregar adjuntos</span>
+                                        </div>
+                                    </div> :
+                                    <div>Campos</div>
+                                }
+                                    <input
+                                        type="file"
+                                        multiple
+                                        onChange={handleAdjuntosChange}
+                                        className='hidden'
+                                        id='adjuntos-input'
+                                        accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,	application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf, application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
+                                    />                    
+                                </section>
                         }{
                             preview && selected!==null &&
-                                    <DocPreview selected={selected} />
+                                <DocPreview selected={selected} />
                         }
                     </div>                    
                 </>            
