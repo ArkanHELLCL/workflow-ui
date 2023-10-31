@@ -353,7 +353,8 @@ export default function Header(){
                                 <Acciones />
                                 <GuardarEquipo />                                
                             </>
-                        }                        
+                        }
+                        <Ajuntar />
                     </>
                 }
                 {
@@ -363,8 +364,7 @@ export default function Header(){
                 {
                     repoSelected &&                        
                         <Informes />                    
-                }
-                <Ajuntar />
+                }                
                 <DarkModeToggle />            
             </Suspense>
         </header>
