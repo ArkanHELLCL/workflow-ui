@@ -3,6 +3,7 @@ import { Suspense, useState } from "react";
 import { DarkModeToggle } from "./darkMode.jsx";
 import Loading from "./Loading.jsx";
 import { 
+    AttachIcon,
     CloseIcon,
         DeleteFileIcon, 
         DownReportIcon, 
@@ -187,6 +188,31 @@ const Requerimiento = () => {
     )    
 }
 
+const Ajuntar = () => {
+    const  menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 240
+    });
+
+    return (
+        <animated.div style={menuAppear}>
+            <ContentMenu title={'Incluir'}>
+                <IconMenu title={['Adjuntar','documento']}>
+                    <AttachIcon styles='w-8 h-8'/>
+                </IconMenu>
+            </ContentMenu>
+        </animated.div>
+    )
+}
+
 const Acciones = () => {
     const  menuAppear = useSpring({        
         to:{
@@ -316,7 +342,8 @@ export default function Header(){
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
         onDragOver={handleNotDragOver}>            
             <Suspense fallback={<Loading />}>
-                <CrearMenu />{
+                <CrearMenu />
+                {
                     request && 
                     <>
                         <Requerimiento />
@@ -324,7 +351,7 @@ export default function Header(){
                             request?.selected &&
                             <>
                                 <Acciones />
-                                <GuardarEquipo />
+                                <GuardarEquipo />                                
                             </>
                         }                        
                     </>
@@ -337,6 +364,7 @@ export default function Header(){
                     repoSelected &&                        
                         <Informes />                    
                 }
+                <Ajuntar />
                 <DarkModeToggle />            
             </Suspense>
         </header>
