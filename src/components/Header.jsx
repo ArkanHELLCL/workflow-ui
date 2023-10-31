@@ -153,7 +153,7 @@ const CrearMenu = () => {
     )    
 }
 
-const Requerimiento = () => {
+const Requerimiento = ({styles}) => {
     const  menuAppear = useSpring({
         to:{
             transform:'translate(0)',
@@ -167,7 +167,7 @@ const Requerimiento = () => {
         delay: 200
     });
     return (
-        <animated.div style={menuAppear}>
+        <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Requerimiento'}>
                 <IconMenu title={['Generar','informe']} submneu={true} id={2}>
                     <GenReportIcon styles='w-8 h-8'/>
@@ -188,7 +188,7 @@ const Requerimiento = () => {
     )    
 }
 
-const Ajuntar = () => {
+const Ajuntar = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -199,11 +199,11 @@ const Ajuntar = () => {
             transform:'translate(150px)',
         },
         config: { duration: 150 },
-        delay: 240
+        delay: 250
     });
 
     return (
-        <animated.div style={menuAppear}>
+        <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Incluir'}>
                 <IconMenu title={['Adjuntar','documento']}>
                     <AttachIcon styles='w-8 h-8'/>
@@ -213,7 +213,7 @@ const Ajuntar = () => {
     )
 }
 
-const Acciones = () => {
+const Acciones = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -228,7 +228,7 @@ const Acciones = () => {
     });
 
     return (
-        <animated.div style={menuAppear}>
+        <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Acciones'}>
                 <IconMenu title={['Abrir']}>
                     <OpenFolderIcon styles='h-8 w-8'/>
@@ -244,7 +244,7 @@ const Acciones = () => {
     )    
 }
 
-const GuardarEquipo = () => {
+const GuardarEquipo = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -259,7 +259,7 @@ const GuardarEquipo = () => {
     });
 
     return (
-        <animated.div style={menuAppear}>
+        <animated.div style={menuAppear} styles={styles}>
             <ContentMenu title={'Guardar en el equipo'}>
                 <IconMenu title={['Guardar','como']}>
                     <SaveAsIconBig styles='h-7 w-7'/>
@@ -272,7 +272,7 @@ const GuardarEquipo = () => {
     )    
 }
 
-const Mantenedores = () => {
+const Mantenedores = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -286,7 +286,7 @@ const Mantenedores = () => {
         delay: 200
     });
     return (
-        <animated.div style={menuAppear}>
+        <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Mantenedor del sistema'}>
                 <IconMenu title={['Crear nuevo','registro']}>
                     <TableIconPlus styles='w-8 h-8' />
@@ -299,7 +299,7 @@ const Mantenedores = () => {
     )    
 }
 
-const Informes = () => {
+const Informes = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -313,7 +313,7 @@ const Informes = () => {
         delay: 200
     });
     return (
-        <animated.div style={menuAppear}>
+        <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Informe del sistema'}>
                 <IconMenu title={['Generar','informe']}>
                     <GenReportIcon styles='w-8 h-8'/>
@@ -342,28 +342,28 @@ export default function Header(){
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
         onDragOver={handleNotDragOver}>            
             <Suspense fallback={<Loading />}>
-                <CrearMenu />
+                <CrearMenu styles={'z-50'}/>
                 {
                     request && 
                     <>
-                        <Requerimiento />
+                        <Requerimiento styles={'z-40'} />
                         {
                             request?.selected &&
                             <>
-                                <Acciones />
-                                <GuardarEquipo />                                
+                                <Acciones  styles={'z-30'}/>
+                                <GuardarEquipo  styles={'z-20'}/>
                             </>
                         }
-                        <Ajuntar />
+                        <Ajuntar styles={'z-10'}/>
                     </>
                 }
                 {
                     mantSelected &&                     
-                        <Mantenedores />
+                        <Mantenedores styles={'z-40'}/>
                 }
                 {
-                    repoSelected &&                        
-                        <Informes />                    
+                    repoSelected &&         
+                        <Informes styles={'z-40'} />                    
                 }                
                 <DarkModeToggle />            
             </Suspense>

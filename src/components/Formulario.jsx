@@ -297,8 +297,7 @@ export function Formulario(){
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
         return false;
-    }
-    console.log(request)
+    }    
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>{
