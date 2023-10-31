@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Suspense, useState } from "react";
+import { Suspense, useId, useState } from "react";
 import { DarkModeToggle } from "./darkMode.jsx";
 import Loading from "./Loading.jsx";
 import { 
@@ -210,13 +210,26 @@ const Ajuntar = ({styles}) => {
         //console.log('adjuntar')
     }
 
+    const idInput = useId()
+
     return (
-        <animated.div style={menuAppear} className={styles} onClick={handleAdjunto}>
+        <animated.div style={menuAppear} className={styles}>
+            <label htmlFor={idInput}>
             <ContentMenu title={'Incluir'}>
                 <IconMenu title={['Adjuntar','documento']}>
                     <AttachIcon styles='w-8 h-8'/>
+                    <input
+                        type="file"
+                        multiple
+                        onChange=''
+                        className='hidden'
+                        id={idInput}
+                        accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,	application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf, application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
+                        onClick=''                                                
+                    />
                 </IconMenu>
             </ContentMenu>
+            </label>
         </animated.div>
     )
 }

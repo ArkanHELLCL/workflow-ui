@@ -297,7 +297,12 @@ export function Formulario(){
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
         return false;
-    }    
+    }
+
+    const handleClickInput = (event) => {
+        console.log("si",event.files)
+    }
+
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>{
@@ -368,15 +373,7 @@ export function Formulario(){
                                         </div>
                                     </div> :
                                     <div>Campos</div>
-                                }
-                                    <input
-                                        type="file"
-                                        multiple
-                                        onChange={handleAdjuntosChange}
-                                        className='hidden'
-                                        id='adjuntos-input'
-                                        accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,	application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf, application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
-                                    />                    
+                                }                                                        
                                 </section>
                         }{
                             preview && selected!==null &&
