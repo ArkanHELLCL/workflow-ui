@@ -44,7 +44,7 @@ function App() {
                 <Menu />  
               </Suspense>
             </aside>
-            <aside className={`${defaultTheme.txtc} w-[400px] min-w-[250px] max-w-[600px] h-full border-r pb-6 flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1`}>
+            <aside className={`${defaultTheme.txtc} w-[400px] min-w-[250px] max-w-[600px] h-full border-r pb-6 flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1 pb-10`}>
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
                   <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                     <Flujos />                          
