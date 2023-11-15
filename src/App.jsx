@@ -37,14 +37,14 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Header />
         </Suspense>
-        <main className='w-full flex overflow-hidden pl-14 h-full'>
-          <section className={`${defaultTheme.txtc} w-[650px] min-w-[400px] h-full flex flex-columns z-0 bg-[#faf9f8] dark:bg-transparent`} id="Resizable" onDragOver={handleNotDragOver}>
-            <aside className={`${defaultTheme.txtc} w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-3 z-0`}> 
+        <main className='w-full flex overflow-hidden pl-14 h-full bg-[#faf9f8] dark:bg-transparent'>
+          <section className={`${defaultTheme.txtc} w-[650px] min-w-[400px] h-full flex flex-columns z-0`} id="Resizable" onDragOver={handleNotDragOver}>
+            <aside className={`${defaultTheme.txtc} w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0`}> 
               <Suspense fallback={<Loading />}>             
                 <Menu />  
               </Suspense>
             </aside>
-            <aside className={`${defaultTheme.txtc} w-[400px] min-w-[250px] max-w-[600px] h-full border-r pb-6 flex flex-column flex-wrap pt-[10px] z-50 bg-[#ffffff] dark:bg-transparent`}>
+            <aside className={`${defaultTheme.txtc} w-[400px] min-w-[250px] max-w-[600px] h-full border-r pb-6 flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1`}>
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
                   <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                     <Flujos />                          
@@ -53,7 +53,7 @@ function App() {
                     <MenuFilters defaultTheme={defaultTheme} />                  
                   </div>
                 </div>
-                <div className="overflow-auto h-full relative">              
+                <div className="overflow-auto h-full relative pr-2">              
                   <DetalleRequerimiento defaultTheme={defaultTheme} />                  
                   <Suspense fallback={<Loading />}>{}
                     <ListaRequerimientos defaultTheme={defaultTheme}/>
@@ -61,7 +61,7 @@ function App() {
                 </div>
             </aside>                      
           </section>          
-          <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent">
+          <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
             <aside className={`${defaultTheme.txtc} w-full border-r min-w-[300px] h-full overflow-x-hidden relative`}>
               <Suspense fallback={<Loading />}>  
                 <Formulario />
