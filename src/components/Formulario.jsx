@@ -372,7 +372,18 @@ export function Formulario(){
                                             <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                                         </div>
                                     </div> :
-                                    <div>Campos</div>
+                                    <form>{
+                                        campos?.map((campo, index) => {
+                                            //let requiredVal = campo.FDI_CampoObligatorio === 1 ? 'required' : ''
+                                            return (
+                                                <div key={campo.FDI_NombreHTML} className='flex items-center gap-2'>
+                                                    <label htmlFor={campo.FDI_NombreHTML} className='text-xs font-semibold leading-tight w-fit'>{campo.FDI_Descripcion}</label>
+                                                    <input type={campo.tipo} className='border border-[#b9b9b9] dark:border-[#474747] dark:bg-[#363636] bg-[#ffffff] dark:text-[#ffffff] text-[#000000] w-[300px] h-[30px]' id={campo.FDI_NombreHTML} value={campo.DFO_Dato}/>
+                                                </div>
+                                            )
+                                        })
+                                       
+                                    }</form>
                                 }                                                        
                                 </section>
                         }{
