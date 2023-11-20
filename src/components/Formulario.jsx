@@ -375,7 +375,7 @@ export function Formulario(){
                                     <form className='w-full pr-2'>
                                         <div className='grid grid-cols-12 gap-1'>{
                                         campos?.map((campo, index) => {
-                                            //let requiredVal = campo.FDI_CampoObligatorio === 1 ? 'required' : ''
+                                            let requiredVal = campo.FDI_CampoObligatorio === 1 ? 'required' : ''
                                             let colwidth = campo.FDI_TamanoDiseno === 12 ? 'col-span-12' : campo.FDI_TamanoDiseno === 11 ? 'col-span-11' : campo.FDI_TamanoDiseno === 10 ? 'col-span-10' : campo.FDI_TamanoDiseno === 9 ? 'col-span-9' : campo.FDI_TamanoDiseno === 8 ? 'col-span-8' : campo.FDI_TamanoDiseno === 7 ? 'col-span-7' : campo.FDI_TamanoDiseno === 6 ? 'col-span-6' : campo.FDI_TamanoDiseno === 5 ? 'col-span-5' : campo.FDI_TamanoDiseno === 4 ? 'col-span-4' : campo.FDI_TamanoDiseno === 3 ? 'col-span-3' : campo.FDI_TamanoDiseno === 2 ? 'col-span-2' : 'col-span-1'
                                             return (
                                                 <div key={campo.FDI_NombreHTML} className={colwidth}>
@@ -387,7 +387,7 @@ export function Formulario(){
                                                             <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
                                                             </svg>
                                                         </span>
-                                                        <input type="text" id={campo.FDI_NombreHTML} className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie Green" />
+                                                        <input type="text" id={campo.FDI_NombreHTML} className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-[#deecf9] focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#deecf9] dark:focus:border-[#deecf9]" placeholder="Bonnie Green" />
                                                     </div>
                                                 </div>
                                             )
