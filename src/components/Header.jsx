@@ -26,9 +26,9 @@ import { ClickAway } from "../hooks/ClickAway.jsx";
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 
-const ContentMenu = ({children, title}) => {    
+const ContentMenu = ({children, title, styles}) => {    
     return (
-        <section className="flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59]">
+        <section className={`flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59] ${styles}`}>
             {children}
             <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center">
                 <span>{title}</span>
@@ -142,9 +142,9 @@ const SubMenu = ({id, open, request}) => {
     )
 }
 
-const CrearMenu = () => {    
+const CrearMenu = ({styles}) => {    
     return (        
-        <ContentMenu title={'Crear'}>
+        <ContentMenu title={'Crear'} styles={styles}>
             <IconMenu title={['Crear nuevo','requerimiento']} submneu={true} id={1}>                
                 <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                      
             </IconMenu>            
