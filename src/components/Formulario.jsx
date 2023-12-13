@@ -274,10 +274,10 @@ export function Formulario(){
         //console.log('leave')
     };
 
-    const handleAdjuntosChange = (event) => {
+    /*const handleAdjuntosChange = (event) => {
         //const files = Array.from(event.target.files);
         //setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
-    };
+    };*/
 
     const handleEliminarClick = (adjunto) => {
         setAdjuntos((prevAdjuntos) =>
@@ -285,10 +285,10 @@ export function Formulario(){
         );
     };
 
-    const handleDragEnd = (event) => {
+    /*const handleDragEnd = (event) => {
         // Eliminar el adjunto del dataTransfer
         //event.dataTransfer.clearData();
-    };
+    };*/
 
     const handleNotDragOver = (event) => {
         event.preventDefault();
@@ -296,9 +296,9 @@ export function Formulario(){
         return false;
     }
 
-    const handleClickInput = (event) => {
+    /*const handleClickInput = (event) => {
         console.log("si",event.files)
-    }
+    }*/
 
     const { ref:refMenu } = ClickAway(setOpen);
     return(
@@ -363,7 +363,7 @@ export function Formulario(){
                                         onDrop={handleDrop}
                                         onDragOver={handleDragOver}                        
                                         onDragLeave={handleDragLeave}
-                                        onDragEnd={handleDragEnd}
+                                        //onDragEnd={handleDragEnd}
                                         >
                                         <div>
                                             <span className='text-[#2c87d2]'> Agregar adjuntos</span>
@@ -371,8 +371,8 @@ export function Formulario(){
                                     </div> :
                                     <form className='w-full pr-2'>
                                         <div className='grid grid-cols-12 gap-1'>{
-                                        campos?.map((campo, index) => {
-                                            let requiredVal = campo.FDI_CampoObligatorio === 1 ? 'required' : ''
+                                        campos?.map((campo) => {
+                                            //let requiredVal = campo.FDI_CampoObligatorio === 1 ? 'required' : ''
                                             let colwidth = campo.FDI_TamanoDiseno === 12 ? 'col-span-12' : campo.FDI_TamanoDiseno === 11 ? 'col-span-11' : campo.FDI_TamanoDiseno === 10 ? 'col-span-10' : campo.FDI_TamanoDiseno === 9 ? 'col-span-9' : campo.FDI_TamanoDiseno === 8 ? 'col-span-8' : campo.FDI_TamanoDiseno === 7 ? 'col-span-7' : campo.FDI_TamanoDiseno === 6 ? 'col-span-6' : campo.FDI_TamanoDiseno === 5 ? 'col-span-5' : campo.FDI_TamanoDiseno === 4 ? 'col-span-4' : campo.FDI_TamanoDiseno === 3 ? 'col-span-3' : campo.FDI_TamanoDiseno === 2 ? 'col-span-2' : 'col-span-1'
                                             return (
                                                 <div key={campo.FDI_NombreHTML} className={colwidth}>
