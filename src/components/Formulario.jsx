@@ -45,7 +45,7 @@ const Buttons = ({grupos, idGroups}) => {
                     <animated.div key={keygrp} className='flex' style={buttonsAnimation} id={keygrp}>
                     {
                         grp.map(btns =>
-                            <button key={btns.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] border-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r hover:bg-[#e1dfdd] dark:hover:bg-[#363636]' title={btns.nombre}>
+                            <button key={btns.id} className='h-9 w-auto dark:bg-[#444444] border dark:border-[#666666] border-[#b8b5b2] flex items-center pr-1 pl-2 border-r-0 last:border-r hover:bg-[#cde6f7] hover:cursor-pointer dark:hover:bg-[#666666]' title={btns.nombre}>
                                 <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3'/>{
                                     btns.descripcion &&
                                     <span className='text-xs font-normal leading-tight w-fit px-2'>{btns.descripcion}</span>
