@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, useId, useState } from "react";
+import { Suspense, useEffect, useId, useState } from "react";
 import { DarkModeToggle } from "./darkMode.jsx";
 import Loading from "./Loading.jsx";
 import { 
     AttachIcon,
+    ButtonIcon,
     CloseIcon,
         DeleteFileIcon, 
         DownReportIcon, 
@@ -25,6 +27,7 @@ import { pasos } from "../mocks/pasos.json";
 import { ClickAway } from "../hooks/ClickAway.jsx"; 
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
+import { formulario } from '../mocks/Formulario.json'
 
 const ContentMenu = ({children, title, styles}) => {    
     return (
@@ -201,14 +204,14 @@ const Ajuntar = ({styles}) => {
         delay: 250
     });
 
-    const handleAdjunto = (event) => {
+    /*const handleAdjunto = (event) => {
         event.preventDefault();
         event.stopPropagation();
 
         const input = document.getElementById('adjuntos-input')
         input.click()
         //console.log('adjuntar')
-    }
+    }*/
 
     const idInput = useId()
 
@@ -263,6 +266,42 @@ const Acciones = ({styles}) => {
             </ContentMenu>
         </animated.div>
     )    
+}
+
+const Formulario = ({styles, grupos}) => {
+    return(
+        grupos?.map((grp, index) => 
+            (
+                <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} keybtn={'btn-' + index} delay={200 + (index*10)} grp={grp} key={index}/>
+            )
+        )
+    )
+}
+
+const BtsFormulario = ({styles, keygrp, keybtn, delay, grp}) => {
+    const menuAppear = useSpring({        
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: delay
+    });
+    return (
+        <animated.div key={keygrp} style={menuAppear} className={styles} id={keygrp}>
+            <ContentMenu title={grp[0].descripcion}>{
+                grp[0].botones.map(btns =>
+                    <IconMenu title={[btns.descripcion[0],btns.descripcion[1]]} key={keybtn}>
+                        <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3'/>
+                    </IconMenu>                    
+                )}
+            </ContentMenu>
+        </animated.div>
+    )
 }
 
 const GuardarEquipo = ({styles}) => {
@@ -350,6 +389,15 @@ const Informes = ({styles}) => {
 export default function Header(){
     const { request } = useRequest()
     const { filters } = useFilters()
+    
+    const [grupos, setGrupos] = useState(null);
+
+
+   useEffect(() => {
+        const { FOR_Botones } = formulario;
+        setGrupos(FOR_Botones.map(grupo => grupo))
+    },[formulario])
+
     const handleNotDragOver = (event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
@@ -367,15 +415,17 @@ export default function Header(){
                 {
                     request && 
                     <>
-                        <Requerimiento styles={'z-40'} request={request}/>
+                        <Requerimiento styles={'z-40'} request={request}/>                        
                         {
+                            
                             request?.selected &&
                             <>
                                 <Acciones  styles={'z-30'}/>
-                                <GuardarEquipo  styles={'z-20'}/>
+                                <GuardarEquipo  styles={'z-20'}/>                                
                             </>
                         }
                         <Ajuntar styles={'z-10'}/>
+                        <Formulario styles={'z-10'} grupos={grupos}/>
                     </>
                 }
                 {

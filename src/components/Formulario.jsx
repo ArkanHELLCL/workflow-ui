@@ -44,7 +44,7 @@ const Buttons = ({grupos, idGroups}) => {
                 return (
                     <animated.div key={keygrp} className='flex' style={buttonsAnimation} id={keygrp}>
                     {
-                        grp.map(btns =>
+                        grp[0].botones.map(btns =>
                             <button key={btns.id} className='h-9 w-auto border border-transparent flex items-center pr-1 pl-2 border-r-0 last:border-r hover:bg-[#cde6f7] hover:cursor-pointer dark:hover:bg-[#484644]' title={btns.nombre}>
                                 <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3'/>
                             </button>
@@ -208,7 +208,7 @@ export function Formulario(){
         setAdjuntos(REQ_Adjuntos)
         //setBotones(FOR_Botones)
         setCampos(FOR_Campos)
-        setGrupos(FOR_Botones.map(grupo => grupo))        
+        setGrupos(FOR_Botones.map(grupo => grupo))
     },[formulario,request])
 
     useEffect(() => {

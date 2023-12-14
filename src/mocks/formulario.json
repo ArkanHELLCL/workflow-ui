@@ -80,93 +80,113 @@
       ],
       "FOR_Botones":[
         [
-           
-              {
-                 "id":"btn_tomar",
-                 "nombre":"Tomar",
-                 "descripcion":"Tomar"
-              }
-           ,
-           
-              {
-                 "id":"btn_liberar",
-                 "nombre":"Liberar",
-                 "descripcion":"Liberar"
-              }
-           
+            {
+                  "id" : "grp_1",
+                  "nombre" : "Tomar/Liberar",
+                  "descripcion" : "Tomar/liberar",
+                  "botones" : [
+                     {
+                        "id" : "btn_tomar",
+                        "nombre" : "Tomar",
+                        "descripcion" : ["Tomar","Requerimiento"]
+                     },
+                     {
+                        "id" : "btn_liberar",
+                        "nombre" : "Liberar",
+                        "descripcion" : ["Liberar","Requerimiento"]
+                     }
+                  ]
+            }
         ],
         [
-           
-              {
-                 "id":"btn_enviar",
-                 "nombre":"Enviar",
-                 "descripcion":"Enviar"
-              }
-           ,
-           
-              {
-                 "id":"btn_enviarDes",
-                 "nombre":"Cancelar",
-                 "descripcion":"Destinatario"
-              }
-           ,
-           
-              {
-                 "id":"btn_devolver",
-                 "nombre":"Devolver",
-                 "descripcion":"Devolver"
-              }
-           ,
-           
-              {
-                 "id":"btn_rechazar",
-                 "nombre":"Rechazar",
-                 "descripcion":"Rechazar"
-              }
-           
+           {
+               "id" : "grp_2",
+               "nombre" : "Responder",
+               "descripcion" : "Responder",
+               "botones" : [
+                  {
+                     "id":"btn_enviar",
+                     "nombre":"Enviar",
+                     "descripcion":["Enviar al","Siguiente Paso"]
+                  },               
+                  {
+                     "id":"btn_enviarDes",
+                     "nombre":"Enviar",
+                     "descripcion":["Enviar a","Destinatario"]
+                  },               
+                  {
+                     "id":"btn_devolver",
+                     "nombre":"Devolver",
+                     "descripcion":["Devolver","Requerimiento"]
+                  }
+               ]
+           }           
         ],
         [
-           
-              {
-                 "id":"btn_finalizar",
-                 "nombre":"Finalizar",
-                 "descripcion":"Finalizar"
-              }
-           
+            {
+               "id": "grp_3",
+               "nombre": "Terminar",
+               "descripcion": "Terminar",
+               "botones": [
+                  {
+                     "id": "btn_finalizar",
+                     "nombre": "Finalizar",
+                     "descripcion": ["Finalizar","Requerimiento"]
+                  },               
+                  {
+                     "id":"btn_rechazar",
+                     "nombre":"Rechazar",
+                     "descripcion":["Rechazar","Requerimiento"]
+                  }
+               ]
+            }           
         ],
         [
-           
-              {
-                 "id":"btn_abrir",
-                 "nombre":"Abrir",
-                 "descripcion":"Abrir"
-              }
-           
+           {
+               "id" : "grp_4",
+               "nombre" : "Abrir",
+               "descripcion" : "Abrir",
+               "botones" : [
+                  {
+                     "id":"btn_abrir",
+                     "nombre":"Abrir",
+                     "descripcion":["Abrir","Requerimiento"]
+                  }
+               ]
+           }           
         ],
         [
-           
-              {
-                 "id":"btn_retroceder",
-                 "nombre":"Retroceder",
-                 "descripcion":""
-              }
-           ,
-           
-              {
-                 "id":"btn_avanzar",
-                 "nombre":"Avanzar",
-                 "descripcion":""
-              }
-           
+           {
+               "id" : "grp_5",
+               "nombre" :"Revisar",
+               "descripcion" : "Revisar",
+               "botones" : [
+                  {
+                     "id":"btn_retroceder",
+                     "nombre":"Retroceder",
+                     "descripcion":["Ir a Paso","Anterior"]
+                  },               
+                  {
+                     "id":"btn_avanzar",
+                     "nombre":"Avanzar",
+                     "descripcion":["Ir a Paso","Siguiete"]
+                  }
+               ]
+           }           
         ],
         [
-           
-              {
-                 "id":"btn_observaciones",
-                 "nombre":"Observaciones",
-                 "descripcion":""
-              }
-           
+           {
+               "id" : "grp_6",
+               "nombre" : "Observaciones",
+               "descripcion" : "Observaciones",
+               "botones" : [
+                  {
+                     "id":"btn_observaciones",
+                     "nombre":"Observaciones",
+                     "descripcion":["Ver","Observaciones"]
+                  }
+               ]
+           }           
         ]
       ],
       "FOR_Campos":[
