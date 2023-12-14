@@ -262,9 +262,9 @@ export function Formulario(){
         event.preventDefault();
     };
 
-    /*const handleAdjuntarClick = () => {
+    const handleAdjuntarClick = () => {
         document.getElementById("adjuntos-input").click();
-    };*/
+    };
 
     const handleDragEnter = (event) => {
         event.preventDefault();
@@ -277,10 +277,10 @@ export function Formulario(){
         //console.log('leave')
     };
 
-    /*const handleAdjuntosChange = (event) => {
+    const handleAdjuntosChange = (event) => {
         //const files = Array.from(event.target.files);
         //setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
-    };*/
+    };
 
     const handleEliminarClick = (adjunto) => {
         setAdjuntos((prevAdjuntos) =>
@@ -288,10 +288,10 @@ export function Formulario(){
         );
     };
 
-    /*const handleDragEnd = (event) => {
+    const handleDragEnd = (event) => {
         // Eliminar el adjunto del dataTransfer
         //event.dataTransfer.clearData();
-    };*/
+    };
 
     const handleNotDragOver = (event) => {
         event.preventDefault();

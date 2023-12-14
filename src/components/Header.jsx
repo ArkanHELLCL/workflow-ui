@@ -223,12 +223,10 @@ const Ajuntar = ({styles}) => {
                     <AttachIcon styles='w-8 h-8'/>
                     <input
                         type="file"
-                        multiple
-                        onChange=''
+                        multiple                        
                         className='hidden'
                         id={idInput}
-                        accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
-                        onClick=''                                                
+                        accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"                        
                     />
                 </IconMenu>
             </ContentMenu>
@@ -272,13 +270,13 @@ const Formulario = ({styles, grupos}) => {
     return(
         grupos?.map((grp, index) => 
             (
-                <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} keybtn={'btn-' + index} delay={200 + (index*10)} grp={grp} key={index}/>
+                <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (index*30)} grp={grp} key={index}/>
             )
         )
     )
 }
 
-const BtsFormulario = ({styles, keygrp, keybtn, delay, grp}) => {
+const BtsFormulario = ({styles, keygrp, delay, grp}) => {
     const menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -295,7 +293,7 @@ const BtsFormulario = ({styles, keygrp, keybtn, delay, grp}) => {
         <animated.div key={keygrp} style={menuAppear} className={styles} id={keygrp}>
             <ContentMenu title={grp[0].descripcion}>{
                 grp[0].botones.map(btns =>
-                    <IconMenu title={[btns.descripcion[0],btns.descripcion[1]]} key={keybtn}>
+                    <IconMenu title={[btns.descripcion[0],btns.descripcion[1]]} key={btns.id}>
                         <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={2}/>
                     </IconMenu>                    
                 )}
