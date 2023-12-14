@@ -106,18 +106,28 @@
                "botones" : [
                   {
                      "id":"btn_enviar",
-                     "nombre":"Enviar",
+                     "nombre":"Siguiente",
                      "descripcion":["Enviar al","Siguiente Paso"]
                   },               
                   {
                      "id":"btn_enviarDes",
-                     "nombre":"Enviar",
+                     "nombre":"Usuario",
                      "descripcion":["Enviar a","Destinatario"]
-                  },               
+                  },
                   {
                      "id":"btn_devolver",
                      "nombre":"Devolver",
                      "descripcion":["Devolver","Requerimiento"]
+                  },
+                  {
+                     "id":"btn_conforme",
+                     "nombre":"Conforme",
+                     "descripcion":["Requerimiento","Conforme"]
+                  },
+                  {
+                     "id":"btn_disconforme",
+                     "nombre":"Disconforme",
+                     "descripcion":["Requerimiento","Disconforme"]
                   }
                ]
            }           
@@ -163,12 +173,12 @@
                "botones" : [
                   {
                      "id":"btn_retroceder",
-                     "nombre":"Retroceder",
+                     "nombre":"",
                      "descripcion":["Ir a Paso","Anterior"]
                   },               
                   {
                      "id":"btn_avanzar",
-                     "nombre":"Avanzar",
+                     "nombre":"",
                      "descripcion":["Ir a Paso","Siguiete"]
                   }
                ]
@@ -182,7 +192,7 @@
                "botones" : [
                   {
                      "id":"btn_observaciones",
-                     "nombre":"Observaciones",
+                     "nombre":"",
                      "descripcion":["Ver","Observaciones"]
                   }
                ]

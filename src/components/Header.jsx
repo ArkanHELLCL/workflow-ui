@@ -296,7 +296,7 @@ const BtsFormulario = ({styles, keygrp, keybtn, delay, grp}) => {
             <ContentMenu title={grp[0].descripcion}>{
                 grp[0].botones.map(btns =>
                     <IconMenu title={[btns.descripcion[0],btns.descripcion[1]]} key={keybtn}>
-                        <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3'/>
+                        <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={2}/>
                     </IconMenu>                    
                 )}
             </ContentMenu>

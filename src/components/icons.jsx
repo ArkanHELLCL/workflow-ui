@@ -315,73 +315,193 @@ export function MailIcon({styles, strokeWidth}){
     )
 }
 
-export function ButtonIcon({typeButton, styles, strokeWidth}){
-    if(typeButton==='btn_abrir')
-    return(
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-lime-600'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-        </svg>
-    )
-    if(typeButton==='btn_devolver')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-        </svg>
-    )
-    if(typeButton==='btn_avanzar')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-    )
-    if(typeButton==='btn_retroceder')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-    )
-    if(typeButton==='btn_enviarDes')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-green-600'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
-        </svg>
-    )
-    if(typeButton==='btn_tomar')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-sky-600'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3" />
-        </svg>
-    )
-    if(typeButton==='btn_finalizar')
-    return (        
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={styles + ' text-green-700'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-        </svg>        
-    )
-    if(typeButton==='btn_enviar')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-green-600'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
-        </svg>
-    )
-    if(typeButton==='btn_rechazar')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-red-600'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-    )
-    if(typeButton==='btn_liberar')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-sky-600'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l6-6m0 0l6 6m-6-6v12a6 6 0 01-12 0v-3" />
-        </svg>
-    )
-    if(typeButton==='btn_observaciones')
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-blue-400'}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-        </svg>     
-    )
+export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
+    if(typeIcon===1){
+        if(typeButton==='btn_abrir')
+        return(
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-lime-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+        )
+        if(typeButton==='btn_devolver')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+            </svg>
+        )
+        if(typeButton==='btn_avanzar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+        )
+        if(typeButton==='btn_retroceder')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+        )
+        if(typeButton==='btn_enviarDes')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-green-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
+            </svg>
+        )
+        if(typeButton==='btn_tomar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-sky-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3" />
+            </svg>
+        )
+        if(typeButton==='btn_finalizar')
+        return (        
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={styles + ' text-green-700'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>        
+        )
+        if(typeButton==='btn_enviar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-green-600'}>
+                <g transform="rotate(180 11 11) translate(20 -2) scale(-1 1)">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
+                </g>
+            </svg>
+        )
+        if(typeButton==='btn_rechazar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-red-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        )
+        if(typeButton==='btn_liberar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-sky-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l6-6m0 0l6 6m-6-6v12a6 6 0 01-12 0v-3" />
+            </svg>
+        )
+        if(typeButton==='btn_observaciones')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-blue-400'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+            </svg>     
+        )
+    }
+    if(typeIcon===2){
+        if(typeButton==='btn_abrir')            
+        return(
+            <div className="relative">
+                <span>
+                    <svg viewBox="0 0 32 32" className={'h-10 w-10'} strokeWidth={1}>
+                        <path fill="currentColor" d="M29,21h-3v-3.427c0-0.827-0.673-1.5-1.5-1.5h-0.839c-0.089-0.19-0.234-0.359-0.45-0.467l-5.87-2.935  c-0.268-0.134-0.553-0.21-0.842-0.259V11H20c1.657,0,3-1.343,3-3V7c0-1.657-1.343-3-3-3h-8c-1.657,0-3,1.343-3,3v1  c0,1.657,1.343,3,3,3h3.5v1.412c-0.289,0.049-0.573,0.125-0.842,0.259l-5.87,2.935c-0.216,0.108-0.36,0.277-0.45,0.467H7.5  c-0.827,0-1.5,0.673-1.5,1.5V21H3c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1c0-1.657-1.343-3-3-3H7  v-3.427c0-0.276,0.225-0.5,0.5-0.5h0.924c0.09,0.128,0.207,0.243,0.365,0.322l5.87,2.935c0.422,0.211,0.882,0.317,1.342,0.317  c0.46,0,0.919-0.106,1.342-0.317l5.87-2.935c0.158-0.079,0.275-0.193,0.365-0.322H24.5c0.275,0,0.5,0.224,0.5,0.5V21h-3  c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1C32,22.343,30.657,21,29,21z M10,8V7c0-1.103,0.897-2,2-2h8  c1.103,0,2,0.897,2,2v1c0,1.103-0.897,2-2,2h-8C10.897,10,10,9.103,10,8z M12,24v1c0,1.103-0.897,2-2,2H3c-1.103,0-2-0.897-2-2v-1  c0-1.103,0.897-2,2-2h7C11.103,22,12,22.897,12,24z M16.894,19.435c-0.276,0.138-0.586,0.211-0.894,0.211  c-0.309,0-0.618-0.073-0.894-0.211L9.236,16.5l5.87-2.935c0.276-0.138,0.586-0.211,0.894-0.211s0.618,0.073,0.894,0.211l5.87,2.935  L16.894,19.435z M31,25c0,1.103-0.897,2-2,2h-7c-1.103,0-2-0.897-2-2v-1c0-1.103,0.897-2,2-2h7c1.103,0,2,0.897,2,2V25z"/>
+                    </svg>
+                </span>            
+                <span className="absolute -top-1 -left-5">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className='h-7 w-7 text-lime-600'>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                </span>
+            </div>
+        )
+        if(typeButton==='btn_devolver')
+        return (
+            <div className="relative">
+                <span>
+                    <svg viewBox="0 0 32 32" className={'h-10 w-10'} strokeWidth={1}>
+                        <path fill="currentColor" d="M29,21h-3v-3.427c0-0.827-0.673-1.5-1.5-1.5h-0.839c-0.089-0.19-0.234-0.359-0.45-0.467l-5.87-2.935  c-0.268-0.134-0.553-0.21-0.842-0.259V11H20c1.657,0,3-1.343,3-3V7c0-1.657-1.343-3-3-3h-8c-1.657,0-3,1.343-3,3v1  c0,1.657,1.343,3,3,3h3.5v1.412c-0.289,0.049-0.573,0.125-0.842,0.259l-5.87,2.935c-0.216,0.108-0.36,0.277-0.45,0.467H7.5  c-0.827,0-1.5,0.673-1.5,1.5V21H3c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1c0-1.657-1.343-3-3-3H7  v-3.427c0-0.276,0.225-0.5,0.5-0.5h0.924c0.09,0.128,0.207,0.243,0.365,0.322l5.87,2.935c0.422,0.211,0.882,0.317,1.342,0.317  c0.46,0,0.919-0.106,1.342-0.317l5.87-2.935c0.158-0.079,0.275-0.193,0.365-0.322H24.5c0.275,0,0.5,0.224,0.5,0.5V21h-3  c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1C32,22.343,30.657,21,29,21z M10,8V7c0-1.103,0.897-2,2-2h8  c1.103,0,2,0.897,2,2v1c0,1.103-0.897,2-2,2h-8C10.897,10,10,9.103,10,8z M12,24v1c0,1.103-0.897,2-2,2H3c-1.103,0-2-0.897-2-2v-1  c0-1.103,0.897-2,2-2h7C11.103,22,12,22.897,12,24z M16.894,19.435c-0.276,0.138-0.586,0.211-0.894,0.211  c-0.309,0-0.618-0.073-0.894-0.211L9.236,16.5l5.87-2.935c0.276-0.138,0.586-0.211,0.894-0.211s0.618,0.073,0.894,0.211l5.87,2.935  L16.894,19.435z M31,25c0,1.103-0.897,2-2,2h-7c-1.103,0-2-0.897-2-2v-1c0-1.103,0.897-2,2-2h7c1.103,0,2,0.897,2,2V25z"/>
+                    </svg>
+                </span>            
+                <span className="absolute -top-1 -left-5">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className={'h-7 w-7 text-[#bf6ac3]'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                    </svg>
+                </span>
+            </div>
+        )
+        if(typeButton==='btn_avanzar')
+        return (
+            <div className="relative">
+                <span>
+                    <svg viewBox="0 0 32 32" className={'h-10 w-10'} strokeWidth={1}>
+                        <path fill="currentColor" d="M29,21h-3v-3.427c0-0.827-0.673-1.5-1.5-1.5h-0.839c-0.089-0.19-0.234-0.359-0.45-0.467l-5.87-2.935  c-0.268-0.134-0.553-0.21-0.842-0.259V11H20c1.657,0,3-1.343,3-3V7c0-1.657-1.343-3-3-3h-8c-1.657,0-3,1.343-3,3v1  c0,1.657,1.343,3,3,3h3.5v1.412c-0.289,0.049-0.573,0.125-0.842,0.259l-5.87,2.935c-0.216,0.108-0.36,0.277-0.45,0.467H7.5  c-0.827,0-1.5,0.673-1.5,1.5V21H3c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1c0-1.657-1.343-3-3-3H7  v-3.427c0-0.276,0.225-0.5,0.5-0.5h0.924c0.09,0.128,0.207,0.243,0.365,0.322l5.87,2.935c0.422,0.211,0.882,0.317,1.342,0.317  c0.46,0,0.919-0.106,1.342-0.317l5.87-2.935c0.158-0.079,0.275-0.193,0.365-0.322H24.5c0.275,0,0.5,0.224,0.5,0.5V21h-3  c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1C32,22.343,30.657,21,29,21z M10,8V7c0-1.103,0.897-2,2-2h8  c1.103,0,2,0.897,2,2v1c0,1.103-0.897,2-2,2h-8C10.897,10,10,9.103,10,8z M12,24v1c0,1.103-0.897,2-2,2H3c-1.103,0-2-0.897-2-2v-1  c0-1.103,0.897-2,2-2h7C11.103,22,12,22.897,12,24z M16.894,19.435c-0.276,0.138-0.586,0.211-0.894,0.211  c-0.309,0-0.618-0.073-0.894-0.211L9.236,16.5l5.87-2.935c0.276-0.138,0.586-0.211,0.894-0.211s0.618,0.073,0.894,0.211l5.87,2.935  L16.894,19.435z M31,25c0,1.103-0.897,2-2,2h-7c-1.103,0-2-0.897-2-2v-1c0-1.103,0.897-2,2-2h7c1.103,0,2,0.897,2,2V25z"/>
+                    </svg>
+                </span>            
+                <span className="absolute -top-1 left-7">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className={'h7 w-7 text-[#bf6ac3]'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </span>
+            </div>            
+        )
+        if(typeButton==='btn_retroceder')
+        return (
+            <div className="relative">
+                <span>
+                    <svg viewBox="0 0 32 32" className={'h-10 w-10'} strokeWidth={1}>
+                        <path fill="currentColor" d="M29,21h-3v-3.427c0-0.827-0.673-1.5-1.5-1.5h-0.839c-0.089-0.19-0.234-0.359-0.45-0.467l-5.87-2.935  c-0.268-0.134-0.553-0.21-0.842-0.259V11H20c1.657,0,3-1.343,3-3V7c0-1.657-1.343-3-3-3h-8c-1.657,0-3,1.343-3,3v1  c0,1.657,1.343,3,3,3h3.5v1.412c-0.289,0.049-0.573,0.125-0.842,0.259l-5.87,2.935c-0.216,0.108-0.36,0.277-0.45,0.467H7.5  c-0.827,0-1.5,0.673-1.5,1.5V21H3c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1c0-1.657-1.343-3-3-3H7  v-3.427c0-0.276,0.225-0.5,0.5-0.5h0.924c0.09,0.128,0.207,0.243,0.365,0.322l5.87,2.935c0.422,0.211,0.882,0.317,1.342,0.317  c0.46,0,0.919-0.106,1.342-0.317l5.87-2.935c0.158-0.079,0.275-0.193,0.365-0.322H24.5c0.275,0,0.5,0.224,0.5,0.5V21h-3  c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1C32,22.343,30.657,21,29,21z M10,8V7c0-1.103,0.897-2,2-2h8  c1.103,0,2,0.897,2,2v1c0,1.103-0.897,2-2,2h-8C10.897,10,10,9.103,10,8z M12,24v1c0,1.103-0.897,2-2,2H3c-1.103,0-2-0.897-2-2v-1  c0-1.103,0.897-2,2-2h7C11.103,22,12,22.897,12,24z M16.894,19.435c-0.276,0.138-0.586,0.211-0.894,0.211  c-0.309,0-0.618-0.073-0.894-0.211L9.236,16.5l5.87-2.935c0.276-0.138,0.586-0.211,0.894-0.211s0.618,0.073,0.894,0.211l5.87,2.935  L16.894,19.435z M31,25c0,1.103-0.897,2-2,2h-7c-1.103,0-2-0.897-2-2v-1c0-1.103,0.897-2,2-2h7c1.103,0,2,0.897,2,2V25z"/>
+                    </svg>
+                </span>            
+                <span className="absolute -top-1 -left-4">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className={'h7 w-7 text-[#bf6ac3]'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </span>
+            </div>
+            
+        )
+        if(typeButton==='btn_enviarDes')
+        return (
+            <div className="relative">
+                <span>
+                    <svg viewBox="0 0 32 32" className={'h-10 w-10'} strokeWidth={1}>
+                        <path fill="currentColor" d="M29,21h-3v-3.427c0-0.827-0.673-1.5-1.5-1.5h-0.839c-0.089-0.19-0.234-0.359-0.45-0.467l-5.87-2.935  c-0.268-0.134-0.553-0.21-0.842-0.259V11H20c1.657,0,3-1.343,3-3V7c0-1.657-1.343-3-3-3h-8c-1.657,0-3,1.343-3,3v1  c0,1.657,1.343,3,3,3h3.5v1.412c-0.289,0.049-0.573,0.125-0.842,0.259l-5.87,2.935c-0.216,0.108-0.36,0.277-0.45,0.467H7.5  c-0.827,0-1.5,0.673-1.5,1.5V21H3c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1c0-1.657-1.343-3-3-3H7  v-3.427c0-0.276,0.225-0.5,0.5-0.5h0.924c0.09,0.128,0.207,0.243,0.365,0.322l5.87,2.935c0.422,0.211,0.882,0.317,1.342,0.317  c0.46,0,0.919-0.106,1.342-0.317l5.87-2.935c0.158-0.079,0.275-0.193,0.365-0.322H24.5c0.275,0,0.5,0.224,0.5,0.5V21h-3  c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1C32,22.343,30.657,21,29,21z M10,8V7c0-1.103,0.897-2,2-2h8  c1.103,0,2,0.897,2,2v1c0,1.103-0.897,2-2,2h-8C10.897,10,10,9.103,10,8z M12,24v1c0,1.103-0.897,2-2,2H3c-1.103,0-2-0.897-2-2v-1  c0-1.103,0.897-2,2-2h7C11.103,22,12,22.897,12,24z M16.894,19.435c-0.276,0.138-0.586,0.211-0.894,0.211  c-0.309,0-0.618-0.073-0.894-0.211L9.236,16.5l5.87-2.935c0.276-0.138,0.586-0.211,0.894-0.211s0.618,0.073,0.894,0.211l5.87,2.935  L16.894,19.435z M31,25c0,1.103-0.897,2-2,2h-7c-1.103,0-2-0.897-2-2v-1c0-1.103,0.897-2,2-2h7c1.103,0,2,0.897,2,2V25z"/>
+                    </svg>
+                </span>            
+                <span className="absolute -top-1 -left-5">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={'h-7 w-7 text-green-600'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
+                    </svg>
+                </span>
+            </div>            
+        )
+        if(typeButton==='btn_tomar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-sky-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3" />
+            </svg>
+        )
+        if(typeButton==='btn_finalizar')
+        return (        
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={styles + ' text-green-700'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>        
+        )
+        if(typeButton==='btn_enviar')
+        return (            
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-green-600'}>
+                <g transform="rotate(180 13 13)">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
+                </g>
+            </svg>            
+        )
+        if(typeButton==='btn_rechazar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-red-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        )
+        if(typeButton==='btn_liberar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-sky-600'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l6-6m0 0l6 6m-6-6v12a6 6 0 01-12 0v-3" />
+            </svg>
+        )
+        if(typeButton==='btn_observaciones')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-blue-400'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+            </svg>     
+        )
+    }
   
     return null
 }

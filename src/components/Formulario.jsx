@@ -45,8 +45,11 @@ const Buttons = ({grupos, idGroups}) => {
                     <animated.div key={keygrp} className='flex' style={buttonsAnimation} id={keygrp}>
                     {
                         grp[0].botones.map(btns =>
-                            <button key={btns.id} className='h-9 w-auto border border-transparent flex items-center pr-1 pl-2 border-r-0 last:border-r hover:bg-[#cde6f7] hover:cursor-pointer dark:hover:bg-[#484644]' title={btns.nombre}>
-                                <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3'/>
+                            <button key={btns.id} className='h-9 w-auto dark:bg-[#444444] outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' title={btns.nombre}>
+                                <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{
+                                    btns.nombre &&
+                                    <span className='text-xs font-normal leading-tight w-fit px-2'>{btns.nombre}</span>
+                                }
                             </button>
                         )
                     }
@@ -153,24 +156,24 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSe
     }
     return(        
         <div key={file.id} className='flex items-center relative overflow-hidden z-50' id={adjId}>
-            <div className={`dark:border-[#474747] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border ${selected?.nombre === file.nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a]'}`}
-                onClick={() => HandleClickFile(file)}>
-            {
-                file.thumbail ?
-                    <span className='min-w-[2.25rem] min-h-[2.25rem] flex items-center'>
-                        <img src={file.thumbail} className='h-9 w-9' />
+            <div className={`dark:border-[#5f5f5f] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border hover:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#4a4a4a] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a]'} peer/adjunto`}
+            onClick={() => HandleClickFile(file)}>
+                {
+                    file.thumbail ?
+                        <span className='min-w-[2.25rem] min-h-[2.25rem] flex items-center'>
+                            <img src={file.thumbail} className='h-9 w-9' />
+                        </span>
+                    :   
+                    <span className='w-9 h-9'>
+                        <TypeDoc typeDoc={file.extension} />
                     </span>
-                :   
-                <span className='w-9 h-9'>
-                    <TypeDoc typeDoc={file.extension} />
-                </span>
-            }
-            <div className='grid'>
-                <span className='text-xs font-normal leading-tight w-auto px-2 truncate'>{file.nombre}</span>
-                <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file.tamano}</span>
+                }
+                <div className='grid'>
+                    <span className='text-xs font-normal leading-tight w-auto px-2 truncate'>{file.nombre}</span>
+                    <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file.tamano}</span>
+                </div>
             </div>
-            </div>
-            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#474747] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer ${selected?.nombre === file.nombre ? 'bg-[#cde6f7] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#787878]':'dark:hover:bg-[#4a4a4a] bg-[#fdfdfd]'}`} 
+            <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#5f5f5f] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer peer-hover/adjunto:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a] bg-[#fdfdfd]'}`} 
                 onClick={() => HandleClickMenu(file, adjId)}>
                 <CloseIcon />
             </div>           
@@ -306,7 +309,7 @@ export function Formulario(){
             request?.request?.VFO_Id === form?.VFO_Id && 
                 <>
                     <div 
-                        className={`pl-4 h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}
+                        className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}
                         id={idForm}>                            
                         <header className='w-full h-auto relative' 
                             onDragOver = {handleNotDragOver}>{
@@ -339,9 +342,9 @@ export function Formulario(){
                                 </>
                             }{
                                 preview &&
-                                    <div className='h-9 border border-t-0 border-l-0 border-r-0 border-[#383838] mb-1 flex gap-1 items-center cursor-pointer' onClick={() => setPreview(false)}>
+                                    <div className='py-1 px-2 w-[150px] mb-1 flex gap-1 items-center cursor-pointer hover:dark:bg-[#505050] hover:bg-[#e6f2fa]' onClick={() => setPreview(false)}>
                                         <ArrowLeftIcon />
-                                        <span className=''>Volver al formulario</span>        
+                                        <span className='text-[0.775rem]'>Volver al formulario</span>        
                                     </div>
                             }
                             <div className='grid md:grid-cols-1 lg:grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
