@@ -383,7 +383,7 @@ export function Formulario(){
     const { ref:refMenu } = ClickAway(setOpen);
     return(
         <>{
-            request?.request?.VFO_Id === form?.VFO_Id &&                 
+            request?.request?.VFO_Id === form?.VFO_Id &&
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
                     <HeaderForm request={request} />{
                         !preview &&

@@ -7,18 +7,18 @@ import {
     AttachIcon,
     ButtonIcon,
     CloseIcon,
-        DeleteFileIcon, 
-        DownReportIcon, 
-        FlowIcon, 
-        FlowPlusIcon, 
-        FlowStepIcon, 
-        GenReportIcon, 
-        MessagesIcon, 
-        OpenFolderIcon, 
-        PrinterIcon, 
-        SaveAllIconBig, 
-        SaveAsIconBig, 
-        TableIconPlus 
+    DeleteFileIcon, 
+    DownReportIcon, 
+    FlowIcon, 
+    FlowPlusIcon, 
+    FlowStepIcon, 
+    GenReportIcon, 
+    MessagesIcon, 
+    OpenFolderIcon, 
+    PrinterIcon, 
+    SaveAllIconBig, 
+    SaveAsIconBig, 
+    TableIconPlus 
     } from "./icons.jsx";
 import { useSpring, animated } from "@react-spring/web";
 import { flujos } from "../mocks/flujos.json";
@@ -385,16 +385,17 @@ const Informes = ({styles}) => {
 }
 
 export default function Header(){
-    const { request } = useRequest()
-    const { filters } = useFilters()
+   const { request } = useRequest()
+   const { filters } = useFilters()
     
-    const [grupos, setGrupos] = useState(null);
-
-
+   const [grupos, setGrupos] = useState(null);
+    
    useEffect(() => {
-        const { FOR_Botones } = formulario;
-        setGrupos(FOR_Botones.map(grupo => grupo))
-    },[formulario])
+        //const { FOR_Botones } = formulario.VFO_Id === request?.request?.VFO_Id;
+        let FOR_Botones
+        formulario.VFO_Id === request?.request?.VFO_Id ? FOR_Botones = formulario.FOR_Botones : FOR_Botones = null        
+        setGrupos(FOR_Botones?.map(grupo => grupo))
+    },[formulario,request])
 
     const handleNotDragOver = (event) => {
         event.preventDefault();
