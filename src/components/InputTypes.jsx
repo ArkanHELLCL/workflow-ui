@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { IconForm } from "./icons"
 
 const InputType = ({campo}) => {    
-    const classInput = "rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:ring-[#deecf9] focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-[#deecf9] dark:focus:border-[#deecf9]"    
+    const classInput = "rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400"    
 
     switch (campo.FDI_TipoCampo) {
         case 'C':
