@@ -25,16 +25,15 @@ const InputType = ({campo}) => {
 export function InputTypes({campos}){
     return(
         campos?.map((campo) => 
-                <div key={campo.FDI_NombreHTML} className={campo.FDI_TamanoDiseno}>
-                    <label htmlFor={campo.FDI_NombreHTML} className="block mb-2 text-sm font-medium dark:text-stone-100 text-stone-500">{campo.FDI_Descripcion}</label>
-                    <div className="flex">
-                        <span className="inline-flex items-center px-3 text-sm dark:text-stone-100 text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600">
-                            <IconForm typeIcon={campo.FDI_IconoDiseno} />
-                        </span>
-                        <InputType campo={campo} />
-                    </div>
+            <div key={campo.FDI_NombreHTML} className={campo.FDI_TamanoDiseno}>
+                <label htmlFor={campo.FDI_NombreHTML} className="block mb-2 text-sm font-medium dark:text-stone-100 text-stone-500">{campo.FDI_Descripcion}</label>
+                <div className="flex">
+                    <span className="inline-flex items-center px-3 text-sm dark:text-stone-100 text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600">
+                        <IconForm typeIcon={campo.FDI_IconoDiseno} />
+                    </span>
+                    <InputType campo={campo} />
                 </div>
-            
+            </div>
         )
     )
 }
