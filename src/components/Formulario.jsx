@@ -371,7 +371,7 @@ export function Formulario(){
                     </div>
                 </div> :
                 <form className='w-full pr-2'>
-                    <div className='grid grid-cols-12 gap-1'>
+                    <div className='grid grid-cols-12 gap-2'>
                         <InputTypes campos={campos} />
                     </div>
                 </form>
