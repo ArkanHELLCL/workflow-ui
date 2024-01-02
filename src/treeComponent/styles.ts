@@ -13,8 +13,6 @@ export const Container = styled('div')`
   --webkit-user-select: none;
   user-select: none;
   display: block;
-  
-  border-bottom: 2px solid #d4d4d4; 
 `
 
 export const Frame = styled('div')`
@@ -24,8 +22,7 @@ export const Frame = styled('div')`
   white-space: nowrap;
   overflow-x: hidden;
   vertical-align: middle;
-  color: rgb(120, 113, 108, 1);
-  fill: #24292e;
+  
 `
 
 export const Title = styled('span')`

@@ -117,8 +117,8 @@ export function MenuTree({menu, title }) {
   const { filters, setFilters } = useFilters()
   const { setRequest } = useRequest()
   const TreeComponent = Tree.type
-  return (
-    <Container className='dark:border-[#353535] px-1'>      
+  return (    
+    <Container className='dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2'>
       {
         menu.length > 0 ? 
           <TreeComponent 
@@ -152,6 +152,6 @@ export function MenuTree({menu, title }) {
         : 
           <TreeComponent name="No existe Menú" id="0" setFilters={setFilters} filters={filters} setRequest={setRequest}/>        
       }
-      </Container>    
+    </Container>
   )
 }
