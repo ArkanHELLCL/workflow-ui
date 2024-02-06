@@ -262,7 +262,7 @@ export function Formulario(){
         event.preventDefault();
     };
 
-    const handleAdjuntarClick = () => {
+    const handleAdjuntarClick = () => 
         document.getElementById("adjuntos-input").click();
     };
 
