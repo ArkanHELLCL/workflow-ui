@@ -305,7 +305,8 @@ export function Formulario(){
     const HeaderForm = ({request}) => {
         return (
             <header className='w-full h-auto relative' 
-                onDragOver = {handleNotDragOver}>{
+                onDragOver = {handleNotDragOver}>
+                {
                     !preview &&
                     <>
                         <div className='flex justify-between relative w-full'>
@@ -347,9 +348,10 @@ export function Formulario(){
                             <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen} setPreview={setPreview} setSelectedMenu={setSelectedMenu}/>
                         )}
                     )
-                }                        
+                }                                      
                 </div>
-                <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>                                                                   
+                open.open &&  
+                    <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>
             </header>            
         )
     }
