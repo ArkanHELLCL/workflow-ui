@@ -4,13 +4,14 @@ import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
 import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway';
 import { DocPreview } from './DocPreview.jsx';
 import { InputTypes } from './InputTypes.jsx';
 
 const Buttons = ({grupos, idGroups}) => {
+    console.log("btns")
     const [postitionTo, setPositionTo] = useState(0)
     let corr = 0;
     let keygrp = '';
@@ -70,15 +71,13 @@ const fecha = (date, dias) => {
 
 const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
     const [pos, setPos] = useState(null)
-    
+    console.log("mnuadj")
     useEffect(() => {
         const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
-    
         const adjunto = open?.id ? document.getElementById(open.id) : null
         const posadjunto = adjunto?.getBoundingClientRect()
         const posX = posadjunto?.left + posadjunto?.width - posMenu?.width
         const posT = posadjunto?.top + posadjunto?.height    
-        
         posX && !isNaN(posX) ?
         setPos({
             "left": posX + "px",
@@ -97,14 +96,13 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
 
     const handlePreview = () => {
         setSelected(selectedMenu)
-        //console.log(selected)
         setPreview(true)
         setOpen({open: false, id: ''})
     }
 
     return( 
         <div 
-            className={`fixed w-fit h-fit border dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow opacity-0 -z-10 ${open.open ? '' : ''}`} 
+            className={`fixed w-fit h-fit border dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow opacity-0 -z-10 mnuadj ${open.open ? '' : ''}`} 
             style={pos}
             id={IdMenu} 
             ref={refMenu}
@@ -141,12 +139,13 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
 }
 
 const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSelectedMenu}) => {
-    const adjId = useId()
-
+    //const adjId = useId()
+    console.log("adj")
     const HandleClickMenu = (file, id) => {
+        console.log('mnu',file, id)
         setSelectedMenu(file)
         if(open.open && open.id === id) return setOpen({open: false, id: ''})
-        setOpen({open: true, id: id})
+        setOpen({open: true, id: id})        
     }
     
     const HandleClickFile = (file) =>{
@@ -156,7 +155,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSe
         setPreview(true)        
     }
     return(        
-        <div key={file.id} className='flex items-center relative overflow-hidden z-50' id={adjId}>
+        <div key={file.id} className='flex items-center relative overflow-hidden z-50 elmadj' id={file.id}>
             <div className={`dark:border-[#5f5f5f] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border hover:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#4a4a4a] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a]'} peer/adjunto`}
             onClick={() => HandleClickFile(file)}>
                 {
@@ -175,7 +174,7 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSe
                 </div>
             </div>
             <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#5f5f5f] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer peer-hover/adjunto:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a] bg-[#fdfdfd]'}`} 
-                onClick={() => HandleClickMenu(file, adjId)}>
+                onClick={() => HandleClickMenu(file, file.id)}>
                 <CloseIcon />
             </div>           
         </div>          
@@ -380,7 +379,8 @@ export function Formulario(){
         )
     }
 
-    const { ref:refMenu } = ClickAway(setOpen);
+    //const { ref:refMenu } = ClickAway(setOpen);
+    const refMenu = useRef(null);
     return(
         <>{
             request?.request?.VFO_Id === form?.VFO_Id &&
