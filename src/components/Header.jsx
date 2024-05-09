@@ -33,7 +33,7 @@ const ContentMenu = ({children, title, styles}) => {
     return (
         <section className={`flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59] ${styles}`}>
             {children}
-            <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center">
+            <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center text-nowrap">
                 <span>{title}</span>
             </div>
         </section>
@@ -49,7 +49,7 @@ const IconMenu = ({children, title, submneu, id, request}) => {
             <div className="h-11 w-11 flex items-center justify-center">
                 {children}
             </div>
-            <div className="flex flex-col leading-tight text-xs items-center relative" ref={ref}>
+            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap" ref={ref}>
                 {title.map((item, index) => (
                     <span key={index}>{item}</span>
                     ))
