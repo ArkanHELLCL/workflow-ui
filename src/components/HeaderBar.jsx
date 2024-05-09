@@ -197,7 +197,7 @@ export default function HeaderBar() {
             ...prevState,                     
             reload: !filters.reload
         }))
-        console.log("si")*/ 
+        //console.log("si")*/ 
     }
 
     const { ref:refUser } = ClickAway(setOpen);

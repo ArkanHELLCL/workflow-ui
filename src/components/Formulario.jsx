@@ -11,7 +11,7 @@ import { DocPreview } from './DocPreview.jsx';
 import { InputTypes } from './InputTypes.jsx';
 
 const Buttons = ({grupos, idGroups}) => {
-    console.log("btns")
+    //console.log("btns")
     const [postitionTo, setPositionTo] = useState(0)
     let corr = 0;
     let keygrp = '';
@@ -71,7 +71,7 @@ const fecha = (date, dias) => {
 
 const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
     const [pos, setPos] = useState(null)
-    console.log("mnuadj")
+    //console.log("mnuadj")
     useEffect(() => {
         const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
         const adjunto = open?.id ? document.getElementById(open.id) : null
@@ -140,9 +140,9 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
 
 const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSelectedMenu}) => {
     //const adjId = useId()
-    console.log("adj")
+    //console.log("adj")
     const HandleClickMenu = (file, id) => {
-        console.log('mnu',file, id)
+        //console.log('mnu',file, id)
         setSelectedMenu(file)
         if(open.open && open.id === id) return setOpen({open: false, id: ''})
         setOpen({open: true, id: id})        
