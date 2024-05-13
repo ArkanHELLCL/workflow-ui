@@ -30,6 +30,7 @@ export default function ListaRequerimientos({ defaultTheme }){
     const [acc, setAcc] = useState([])    
     
     useEffect(() => {
+        //setReq(filteredRequest.slice(0, 100))
         setReq(filteredRequest)
         setAcc(requerimientoAccordion)
         setFilters({
