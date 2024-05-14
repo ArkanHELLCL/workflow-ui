@@ -385,8 +385,8 @@ export function Formulario(){
     //const { ref:refMenu } = ClickAway(setOpen);
     const refMenu = useRef(null);
     return(
-        <>{
-            request?.request?.VFO_Id === form?.VFO_Id &&
+        <>
+            {request?.request?.VFO_Id === form?.VFO_Id &&
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
                     <HeaderForm request={request} />{
                         !preview &&
@@ -395,6 +395,13 @@ export function Formulario(){
                         preview && selected!==null &&
                             <DocPreview selected={selected} />
                     }
+                </div>
+            }
+            {request?.request?.VFO_Id !== form?.VFO_Id &&
+                <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
+                    <div className='w-full h-full flex justify-center align-middle items-center'>
+                        <span className='text-[#2c87d2] text-2xl'>No hay datos para mostrar{`${request?.request?.VRE_Id ? ' - R: ' + request?.request?.VRE_Id : ''}`}</span>
+                    </div>
                 </div>
             }
         </>

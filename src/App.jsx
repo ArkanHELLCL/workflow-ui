@@ -58,9 +58,8 @@ function App() {
                 
                   <DetalleRequerimiento defaultTheme={defaultTheme} />              
                   <Suspense fallback={<Loading />}>
-                    <ListaRequerimientos/>                   
-                  </Suspense>
-                  
+                    <ListaRequerimientos/>
+                  </Suspense>                  
                 </div>
             </aside>                      
           </section>          
