@@ -37,11 +37,11 @@ export function useFilters() {
             filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.VRE_Id > b.VRE_Id ? -1 : 1) : filteredRequest.sort((a, b) => a.VRE_Id < b.VRE_Id ? -1 : 1)
             
             if(filters.orderDes){
-                filters.maxReq = filteredRequest[0].VRE_Id
-                filters.minReq = filteredRequest[filteredRequest.length - 1].VRE_Id
+                filters.maxReq = filteredRequest[0]?.VRE_Id
+                filters.minReq = filteredRequest[filteredRequest.length - 1]?.VRE_Id
             }else{
-                filters.minReq = filteredRequest[0].VRE_Id
-                filters.maxReq = filteredRequest[filteredRequest.length - 1].VRE_Id
+                filters.minReq = filteredRequest[0]?.VRE_Id
+                filters.maxReq = filteredRequest[filteredRequest.length - 1]?.VRE_Id
             }
         }
         if(filters.filter === 3){   //Requerimientos atrazados
@@ -51,11 +51,11 @@ export function useFilters() {
             filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.FLD_CodigoPaso > b.FLD_CodigoPaso ? -1 : 1) : filteredRequest.sort((a, b) => a.FLD_CodigoPaso < b.FLD_CodigoPaso ? -1 : 1)            
             
             if(filters.orderDes){
-                filters.maxStep = filteredRequest[0].FLD_CodigoPaso
-                filters.minStep = filteredRequest[filteredRequest.length - 1].FLD_CodigoPaso
+                filters.maxStep = filteredRequest[0]?.FLD_CodigoPaso
+                filters.minStep = filteredRequest[filteredRequest.length - 1]?.FLD_CodigoPaso
             }else{
-                filters.minStep = filteredRequest[0].FLD_CodigoPaso
-                filters.maxStep = filteredRequest[filteredRequest.length - 1].FLD_CodigoPaso
+                filters.minStep = filteredRequest[0]?.FLD_CodigoPaso
+                filters.maxStep = filteredRequest[filteredRequest.length - 1]?.FLD_CodigoPaso
             }
         }            
         return {filteredRequest}
