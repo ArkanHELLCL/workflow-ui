@@ -10,7 +10,7 @@ export function Accordions(filteredRequest, filters){
     let requerimientoAccordion = []
     if(filteredRequest.length > 0){            
         if(filters.filter === 1){   //Fecha
-            requerimientoAccordion = ListRequestByDate(filters.hoy, dias, maxAccByDate)
+            requerimientoAccordion = ListRequestByDate(filters.hoy, dias, maxAccByDate, filteredRequest)
         }
         if(filters.filter === 2){   //Numero del requerimiento            
             requerimientoAccordion = ListRequestByNumber(filters.minReq, filters.maxReq, maxAccByNumber, filters.orderDes)

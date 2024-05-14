@@ -1,9 +1,11 @@
+//Ya no lo estoy usando
+
 export function FilteredRequestbyDate(dateFrom, daysTo, daysMax, filteredRequest){    
     const anterior = new Date(dateFrom);
     const maxdias = new Date(dateFrom);
     anterior.setDate(anterior.getDate() - daysTo);
     maxdias.setDate(maxdias.getDate() - daysMax);
-    
+    console.log('FilteredRequestbyDate',filteredRequest)
     let resultRequest =[]
     if(daysMax===-1){
         resultRequest = filteredRequest?.filter((item) => item.DRE_FechaEdit?.slice(0,10) <= anterior.toISOString().slice(0,10))    

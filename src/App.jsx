@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useRef, useState } from "react";
 import Header from './components/Header.jsx'
 import { DetalleRequerimiento } from "./components/DetalleRequerimiento.jsx";
 import ListaRequerimientos  from "./components/ListaRequerimientos.jsx";
@@ -11,6 +11,9 @@ import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
 import { Formulario } from "./components/Formulario.jsx";
 
+import useIsScrollComplete from "./hooks/useIsScrollComplete";
+
+
 function App() {
   const defaultTheme = {
     bgcp : "dark:bg-stone-800 bg-stone-100",
@@ -22,6 +25,21 @@ function App() {
     event.dataTransfer.dropEffect = "none";
     return false;
 }
+
+  const containerRef = useRef(null);
+  const [loadReq, setLoadReq] = useState({load:true, pageSize:100, page:1});
+
+  const { isScrollComplete } = useIsScrollComplete({
+      ref: containerRef,
+      markAsComplete: false,
+  });
+
+  const handleLoadMore = () => {
+    console.log("Load More");
+    setLoadReq({ ...loadReq, page: loadReq.page + 1 });
+  }
+
+
   //HeaderBar blur 252423 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
@@ -53,11 +71,18 @@ function App() {
                     <MenuFilters defaultTheme={defaultTheme} />                  
                   </div>
                 </div>
-                <div className="overflow-auto h-full relative pr-2">              
+                <div className="overflow-auto h-full relative pr-2" ref={containerRef} id="containerRef">
+                
                   <DetalleRequerimiento defaultTheme={defaultTheme} />                  
-                  <Suspense fallback={<Loading />}>{}
-                    <ListaRequerimientos defaultTheme={defaultTheme}/>
+                  <Suspense fallback={<Loading />}>
+                    <ListaRequerimientos defaultTheme={defaultTheme} loadReq={loadReq}/>                   
                   </Suspense>
+                  {isScrollComplete && (
+                            <>
+                             <br />
+                            <p style={{ textAlign: "center" }} onClick={handleLoadMore}>Scroll is Complete ✅</p>
+                            </>
+                        )}
                 </div>
             </aside>                      
           </section>          

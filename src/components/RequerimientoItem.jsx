@@ -15,7 +15,7 @@ export const RequerimientoItem = ({ req, showDia }) => {
       const newDate = new Date(req.DRE_FechaEdit)
       return dias[newDate.getDay()]
     }, [dias, req.DRE_FechaEdit])
-  
+
     const isReqSelected = useMemo(() => request?.request?.DRE_Id === req.DRE_Id, [request, req.DRE_Id])
   
     const handleEditClick = useCallback((e) => {

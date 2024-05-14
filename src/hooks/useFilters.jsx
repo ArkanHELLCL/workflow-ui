@@ -1,7 +1,8 @@
 import { useContext } from 'react'
 import { FiltersContext } from '../context/filters.jsx'
 
-export function useFilters() {  
+export function useFilters() {
+    //console.log('useFilters')
     const { filters, setFilters } = useContext(FiltersContext)
 
     const filterRequest = (request) => {        

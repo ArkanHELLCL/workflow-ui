@@ -1,60 +1,58 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useCallback, useRef, Suspense, useEffect, useState } from "react";
+import { useRef, Suspense, useEffect, useState } from "react";
 import { useFilters } from '../hooks/useFilters.jsx';
 import { bandejas } from "../mocks/requerimientos.json";
-import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
+//import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
 import { Accordions } from '../components/accordions.jsx'
 import { AccordionItem } from "../components/AccordioItem.jsx";
 import Loading from "./Loading.jsx";
 import { Spinner } from "./Spinner.jsx";
 
-const Accordion = ({defaultTheme, acc, showDiaRef, reqResult}) => {
+const Accordion = ({defaultTheme, acc, showDiaRef}) => {
+    //const reqs = reqResult.slice(0,50)
+    //console.log(acc)
     return(
-    <>        
-        {acc.map((item, index) => (
-            <Suspense key={index} fallback={<Loading />}>
-                <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} reqResult={reqResult} />
-            </Suspense>
-        ))}
-    </>
+        <>
+            {acc.map((item, index) => (
+                <Suspense key={index} fallback={<Loading />}>
+                    <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} />
+                </Suspense>
+            ))}            
+        </>
     )
 }
 
-export default function ListaRequerimientos({ defaultTheme }){
+export default function ListaRequerimientos({ defaultTheme, loadReq}){
     const { filters, filterRequest, setFilters } = useFilters() 
     const { filteredRequest } = filterRequest(bandejas)
-    const { requerimientoAccordion } = Accordions(filteredRequest, filters)    
+    let firstReq
+    let lastReq
 
-    const [req, setReq] = useState([])
-    const [acc, setAcc] = useState([])    
-    
+    loadReq.page === 1 ? firstReq = 0 : firstReq = (loadReq.page * loadReq.pageSize) - loadReq.pageSize + 1
+    loadReq.page === 1 ? lastReq = loadReq.pageSize : lastReq = (loadReq.page * loadReq.pageSize)
+
+    //console.log('ListaRequerimientos',firstReq, lastReq, loadReq.page, loadReq.pageSize)
+    const extractReq = filteredRequest.slice(firstReq, lastReq)
+
+    const { requerimientoAccordion } = Accordions(extractReq, filters)    
+
+    //const [req, setReq] = useState([])
+    const [acc, setAcc] = useState([])
+
     useEffect(() => {
         //setReq(filteredRequest.slice(0, 100))
-        setReq(filteredRequest)
+        //setReq(filteredRequest)
+        const acumulate = structuredClone(acc)
+        acumulate.push(requerimientoAccordion)
+        //setAcc(acumulate)
         setAcc(requerimientoAccordion)
         setFilters({
             ...filters,
             loading: false
         });        
     }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
-    
-    const reqResult = useCallback((item) => {
-        let req2 = []
-        if (filters.filter === 1) {
-            req2= FilteredRequestbyDate(filters.hoy, item.desde, item.hasta, req)
-        }
-        if(filters.filter===2) {
-            req2 = req.filter((req) => req.VRE_Id >= item.desde && req.VRE_Id <= item.hasta)
-        }
-        if(filters.filter===3) {
-            item.pend ? req2 = req.filter((req) => req.IdEditor === undefined) : req2 = req.filter((req) => req.IdEditor !== undefined)
-        }
-        if(filters.filter===4) {
-            req2 = req.filter((req) => req.FLD_CodigoPaso >= item.desde && req.FLD_CodigoPaso <= item.hasta)
-        }
-        return req2
-    }, [filters.filter, filters.hoy, req])
+
 
     const showDiaRef = useRef(acc.map((item) => item.title !== 'Hoy'))
     useEffect(() => {
@@ -68,10 +66,10 @@ export default function ListaRequerimientos({ defaultTheme }){
                     <Spinner />
                 </span>
             ) : (
-                <Suspense fallback={<Loading />}>
-                    <Accordion acc={acc} showDiaRef={showDiaRef} defaultTheme={defaultTheme} reqResult={reqResult} />
+                <Suspense fallback={<Loading />}>                           
+                    <Accordion acc={acc} showDiaRef={showDiaRef} defaultTheme={defaultTheme} />                     
                 </Suspense>
             )}
-        </>
+        </> 
     )
 }
