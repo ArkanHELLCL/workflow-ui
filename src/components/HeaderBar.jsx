@@ -137,14 +137,15 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     )
 }
 
-function UserBar({menuAppear, reference, chkUser, setOpen, open}) {    
+function UserBar({menuAppear, reference, setOpen, open}) {    
     return(       
-        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center z-20`} ref={reference} title="Datos del perfil">
-            <label htmlFor={chkUser}>
-                <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
-                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-            </label>                              
-            <input type="checkbox" id={chkUser} className="hidden" onClick={() => setOpen(!open)} />
+        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center z-20 hover:cursor-pointer`} ref={reference} onClick={() => setOpen(!open)} title="Datos del perfil">
+            
+               
+                    <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
+                    <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
+               
+                       
             <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`}>                
                 <div className="h-full w-full dark:bg-[#262626] bg-[#ffffff] dark:border-[#737373] border-[#949494] border">
                     <div className="w-full flex justify-end">
@@ -186,7 +187,6 @@ export default function HeaderBar() {
         opacity:1,
         height: `${open ? height : 0}` + 'px'        
     });        
-    const chkUser = useId();    
 
     const HandleOpenUser = () => {
         setOpen(!open);        
@@ -210,7 +210,7 @@ export default function HeaderBar() {
                 <HelpIcon />
             </span>
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>
-            <UserBar menuAppear={menuAppear} reference={refUser} chkUser={chkUser} setOpen={HandleOpenUser} open={open}/>
+            <UserBar menuAppear={menuAppear} reference={refUser} setOpen={HandleOpenUser} open={open}/>
         </div>
     )
 }

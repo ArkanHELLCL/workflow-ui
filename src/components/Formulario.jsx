@@ -349,9 +349,10 @@ export function Formulario(){
                         )}
                     )
                 }                                      
-                </div>
-                open.open &&  
+                </div>{
+                open.open && (
                     <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>
+                )}
             </header>            
         )
     }
