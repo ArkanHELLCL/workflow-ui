@@ -9,7 +9,6 @@ import { Constants } from "../constants/const.jsx";
 export const AccordionItem = memo(function AccordionItem({ item, showDia }) {
     const { dias } = Constants()
     const [open, setOpen] = useState(true)
-    //console.log("AcordionItem",item)
     const handleToggleAccordion = () => {
         setOpen(!open)
     }

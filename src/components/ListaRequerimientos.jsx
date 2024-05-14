@@ -27,15 +27,14 @@ export default function ListaRequerimientos(){
     const [acc, setAcc] = useState([])
 
     useEffect(() => {
-        const acumulate = structuredClone(acc)
-        acumulate.push(requerimientoAccordion)
+        //const acumulate = structuredClone(acc)
+        //acumulate.push(requerimientoAccordion)
         setAcc(requerimientoAccordion)
         setFilters({
             ...filters,
             loading: false
         });        
     }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
-
 
     const showDiaRef = useRef(acc.map((item) => item.title !== 'Hoy'))
     useEffect(() => {
@@ -50,7 +49,7 @@ export default function ListaRequerimientos(){
                 </span>
             ) : (
                 <Suspense fallback={<Loading />}>                           
-                    <Accordion acc={acc} showDiaRef={showDiaRef} />                     
+                    <Accordion acc={acc} showDiaRef={showDiaRef}  />                     
                 </Suspense>
             )}
         </> 

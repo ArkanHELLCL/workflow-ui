@@ -37,7 +37,7 @@ function useIsScrollComplete<TElement extends HTMLElement>({
       if (scrollHeight === clientHeight) {
         // set scroll is complete if there is no scroll
         setIsScrollComplete(true);
-        console.log("scroll is complete");
+        //console.log("scroll is complete");
       }
 
       targetElement.addEventListener("scroll", onScroll);
