@@ -3,49 +3,32 @@
 import { useRef, Suspense, useEffect, useState } from "react";
 import { useFilters } from '../hooks/useFilters.jsx';
 import { bandejas } from "../mocks/requerimientos.json";
-//import { FilteredRequestbyDate } from "../hooks/FilteredRequest.jsx";
 import { Accordions } from '../components/accordions.jsx'
 import { AccordionItem } from "../components/AccordioItem.jsx";
 import Loading from "./Loading.jsx";
 import { Spinner } from "./Spinner.jsx";
 
-const Accordion = ({defaultTheme, acc, showDiaRef}) => {
-    //const reqs = reqResult.slice(0,50)
-    //console.log(acc)
+const Accordion = ({acc, showDiaRef}) => {
     return(
         <>
             {acc.map((item, index) => (
                 <Suspense key={index} fallback={<Loading />}>
-                    <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} defaultTheme={defaultTheme} />
+                    <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} />
                 </Suspense>
             ))}            
         </>
     )
 }
 
-export default function ListaRequerimientos({ defaultTheme, loadReq}){
+export default function ListaRequerimientos(){
     const { filters, filterRequest, setFilters } = useFilters() 
     const { filteredRequest } = filterRequest(bandejas)
-    let firstReq
-    let lastReq
-
-    loadReq.page === 1 ? firstReq = 0 : firstReq = (loadReq.page * loadReq.pageSize) - loadReq.pageSize + 1
-    loadReq.page === 1 ? lastReq = loadReq.pageSize : lastReq = (loadReq.page * loadReq.pageSize)
-
-    //console.log('ListaRequerimientos',firstReq, lastReq, loadReq.page, loadReq.pageSize)
-    const extractReq = filteredRequest.slice(firstReq, lastReq)
-
-    const { requerimientoAccordion } = Accordions(extractReq, filters)    
-
-    //const [req, setReq] = useState([])
+    const { requerimientoAccordion } = Accordions(filteredRequest, filters)    
     const [acc, setAcc] = useState([])
 
     useEffect(() => {
-        //setReq(filteredRequest.slice(0, 100))
-        //setReq(filteredRequest)
         const acumulate = structuredClone(acc)
         acumulate.push(requerimientoAccordion)
-        //setAcc(acumulate)
         setAcc(requerimientoAccordion)
         setFilters({
             ...filters,
@@ -67,7 +50,7 @@ export default function ListaRequerimientos({ defaultTheme, loadReq}){
                 </span>
             ) : (
                 <Suspense fallback={<Loading />}>                           
-                    <Accordion acc={acc} showDiaRef={showDiaRef} defaultTheme={defaultTheme} />                     
+                    <Accordion acc={acc} showDiaRef={showDiaRef} />                     
                 </Suspense>
             )}
         </> 

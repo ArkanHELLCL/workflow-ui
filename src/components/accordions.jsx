@@ -5,12 +5,12 @@ import { ListRequestByPending } from './LisRequestByPending.jsx';
 import { ListRequestByStep } from './LisRequestByStep.jsx';
 
 export function Accordions(filteredRequest, filters){
-    const { dias, maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()    
+    const { maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()    
     //Accordion
     let requerimientoAccordion = []
     if(filteredRequest.length > 0){            
         if(filters.filter === 1){   //Fecha
-            requerimientoAccordion = ListRequestByDate(filters.hoy, dias, maxAccByDate, filteredRequest)
+            requerimientoAccordion = ListRequestByDate(filters.hoy, maxAccByDate, filteredRequest)
         }
         if(filters.filter === 2){   //Numero del requerimiento            
             requerimientoAccordion = ListRequestByNumber(filters.minReq, filters.maxReq, maxAccByNumber, filters.orderDes)
