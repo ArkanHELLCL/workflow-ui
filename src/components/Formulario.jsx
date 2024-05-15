@@ -12,7 +12,7 @@ import { InputTypes } from './InputTypes.jsx';
 import { useForm } from 'react-hook-form';
 
 
-const Buttons = ({grupos, idGroups}) => {
+const Buttons = ({grupos, idGroups, frmname}) => {
     //console.log("btns")
     const [postitionTo, setPositionTo] = useState(0)
     let corr = 0;
@@ -49,11 +49,16 @@ const Buttons = ({grupos, idGroups}) => {
                     <animated.div key={keygrp} className='flex' style={buttonsAnimation} id={keygrp}>
                     {
                         grp[0].botones.map(btns =>
-                            <button key={btns.id} className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' title={btns.nombre}>
-                                <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{
-                                    btns.nombre &&
-                                    <span className='text-xs font-normal leading-tight w-fit px-2'>{btns.nombre}</span>
-                                }
+                            <button 
+                                key={btns.id} 
+                                className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                                title={btns.nombre}
+                                type={btns.type}
+                                form={frmname}>
+                                    <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{
+                                        btns.nombre &&
+                                        <span className='text-xs font-normal leading-tight w-fit px-2'>{btns.nombre}</span>
+                                    }
                             </button>
                         )
                     }
@@ -205,8 +210,13 @@ export function Formulario(){
     const [preview, setPreview] = useState(false)
 
     const {        
-        handleSubmit
+        handleSubmit,
+        register,
+        formState: { errors }
       } = useForm();
+    
+    const onSubmit = (data) => console.log(data)
+
 
     useEffect(() => {
         const { REQ_Adjuntos } = formulario;
@@ -322,7 +332,7 @@ export function Formulario(){
                                 <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.request?.ESR_AccionFlujoDatos}</strong></h2>                            
                             </div>
                             <div className='grid text-right leading-tight absolute right-2 top-8'>
-                                <Buttons idGroups={idGroups} grupos={grupos}/>
+                                <Buttons idGroups={idGroups} grupos={grupos} frmname={formulario.name}/>
                                 <span className='text-[11px] leading-tight'>{fecha(request?.request?.DRE_FechaEdit, dias)}</span>
                             </div>
                         </div>
@@ -380,10 +390,12 @@ export function Formulario(){
                 </div> :
                 <form 
                     className='w-full pr-2'
-                    onSubmit={handleSubmit((data) => console.log(data))}>
+                    onSubmit={handleSubmit(onSubmit)}
+                    name={formulario.name}
+                    id={formulario.name}>
                     <div className='grid grid-cols-12 gap-2'>
-                        <InputTypes campos={campos} />
-                    </div>
+                        <InputTypes campos={campos} register={register} errors={errors} />
+                    </div>                    
                 </form>
             }                                                        
             </section>
