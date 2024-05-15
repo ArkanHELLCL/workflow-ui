@@ -6,9 +6,11 @@ import { Constants } from "../constants/const.jsx";
 import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
 import { useEffect, useId, useRef, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
-import { ClickAway } from '../hooks/ClickAway';
+//import { ClickAway } from '../hooks/ClickAway';
 import { DocPreview } from './DocPreview.jsx';
 import { InputTypes } from './InputTypes.jsx';
+import { useForm } from 'react-hook-form';
+
 
 const Buttons = ({grupos, idGroups}) => {
     //console.log("btns")
@@ -200,7 +202,11 @@ export function Formulario(){
 
     const [dropEnter, setDropEnter] = useState(false);
 
-    const [preview, setPreview] = useState(false)    
+    const [preview, setPreview] = useState(false)
+
+    const {        
+        handleSubmit
+      } = useForm();
 
     useEffect(() => {
         const { REQ_Adjuntos } = formulario;
@@ -260,11 +266,11 @@ export function Formulario(){
     const handleDragOver = (event) => {
         event.preventDefault();
     };
-
+/*
     const handleAdjuntarClick = () => {
         document.getElementById("adjuntos-input").click();
     };
-
+*/
     const handleDragEnter = (event) => {
         event.preventDefault();
         setDropEnter(true);
@@ -275,23 +281,23 @@ export function Formulario(){
         setDropEnter(false);
         //console.log('leave')
     };
-
+/*
     const handleAdjuntosChange = (event) => {
         //const files = Array.from(event.target.files);
         //setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
     };
-
+*/
     const handleEliminarClick = (adjunto) => {
         setAdjuntos((prevAdjuntos) =>
           prevAdjuntos.filter((a) => a !== adjunto)
         );
     };
-
+/*
     const handleDragEnd = (event) => {
         // Eliminar el adjunto del dataTransfer
         //event.dataTransfer.clearData();
     };
-
+*/
     const handleNotDragOver = (event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
@@ -372,7 +378,9 @@ export function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                <form className='w-full pr-2'>
+                <form 
+                    className='w-full pr-2'
+                    onSubmit={handleSubmit((data) => console.log(data))}>
                     <div className='grid grid-cols-12 gap-2'>
                         <InputTypes campos={campos} />
                     </div>
