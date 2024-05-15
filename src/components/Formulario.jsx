@@ -9,8 +9,6 @@ import { useSpring, animated } from "@react-spring/web";
 //import { ClickAway } from '../hooks/ClickAway';
 import { DocPreview } from './DocPreview.jsx';
 import { InputTypes } from './InputTypes.jsx';
-import { useForm } from 'react-hook-form';
-
 
 const Buttons = ({grupos, idGroups, frmname}) => {
     //console.log("btns")
@@ -207,15 +205,7 @@ export function Formulario(){
 
     const [dropEnter, setDropEnter] = useState(false);
 
-    const [preview, setPreview] = useState(false)
-
-    const {        
-        handleSubmit,
-        register,
-        formState: { errors }
-      } = useForm();
-    
-    const onSubmit = (data) => console.log(data)
+    const [preview, setPreview] = useState(false)    
 
 
     useEffect(() => {
@@ -388,15 +378,7 @@ export function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                <form 
-                    className='w-full pr-2'
-                    onSubmit={handleSubmit(onSubmit)}
-                    name={formulario.name}
-                    id={formulario.name}>
-                    <div className='grid grid-cols-12 gap-2'>
-                        <InputTypes campos={campos} register={register} errors={errors} />
-                    </div>                    
-                </form>
+                    <InputTypes name={formulario.name} campos={campos} />
             }                                                        
             </section>
         )
@@ -410,7 +392,7 @@ export function Formulario(){
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
                     <HeaderForm request={request} />{
                         !preview &&
-                            <DataForm campos={campos} />
+                            <DataForm campos={campos}/>
                     }{
                         preview && selected!==null &&
                             <DocPreview selected={selected} />
