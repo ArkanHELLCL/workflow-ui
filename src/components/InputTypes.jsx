@@ -39,7 +39,7 @@ const InputType = ({campo, classInput, register, errors}) => {
             return (
                 <>
                     <input {...register(campo.FDI_NombreHTML, {required : `{${required}}`})} type="text" id={campo.FDI_NombreHTML} className={classInput} placeholder={campo.FDI_Descripcion} defaultValue={campo.DFO_Dato}/>
-                    {errors[campo?.FDI_NombreHTML] && <span className="absolute left-0 bottom-0 text-red-500">{campo?.FDI_Descripcion} is required</span>}
+                    {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
     }
@@ -54,10 +54,10 @@ export function InputTypes({campos, register, errors}){
             colwidth = colwidth + ' relative'
             return(
                 <div key={campo.FDI_NombreHTML} className={colwidth}>
-                    <label htmlFor={campo.FDI_NombreHTML} className="block mb-2 text-sm font-medium dark:text-stone-100 text-stone-500">{campo.FDI_Descripcion}</label>
+                    <label htmlFor={campo.FDI_NombreHTML} className={`${errors[campo?.FDI_NombreHTML] ? ' !text-red-500' : ''} block mb-2 text-sm font-medium dark:text-stone-100 text-stone-500`}>{campo.FDI_Descripcion}</label>
                     <div className="flex">
                         <span className={`inline-flex items-center px-3 text-sm dark:text-stone-100 text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600`}>
-                            <IconForm typeIcon={campo.FDI_IconoDiseno} styles={`${errors[campo?.FDI_NombreHTML] ? ' fill-red-500' : ''}`}/>
+                            <IconForm typeIcon={campo.FDI_IconoDiseno} styles={`${errors[campo?.FDI_NombreHTML] ? ' !fill-red-500 !text-red-500' : ''}`}/>
                         </span>
                         <InputType campo={campo} register={register} errors={errors} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400`}/>                        
                     </div>
