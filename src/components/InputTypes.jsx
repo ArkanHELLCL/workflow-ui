@@ -2,49 +2,142 @@
 import { IconForm } from "./icons"
 import { useForm, Controller } from 'react-hook-form';
 //import Select from 'react-select'
-//import { NumericFormat } from "react-number-format";
+import { NumericFormat } from "react-number-format";
 
 const InputType = ({campo, classInput, register, errors, control}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
     //console.log(campo,required)
     switch (campo.FDI_TipoCampo) {
-        case 'C':
+        case 'C':   //Texto tamaño mediano
             return (
                 <>
                     <input {...register(campo.FDI_NombreHTML, {required : `{${required}}`})} type="text" id={campo.FDI_NombreHTML} className={classInput} placeholder={campo.FDI_Descripcion} defaultValue={campo.DFO_Dato}/>
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'N':
+        case 'N':   //Numerico con puntos sin decimal
             return (
                 <>                    
                     <Controller
                         control={control}
                         name={campo.FDI_NombreHTML}
                         value={campo.DFO_Dato}
-                        render={({ field: { onChange, onBlur, value, ref } }) => (
-                            <input {...register(campo.FDI_NombreHTML, {required : `{${required}}`})} type="number" id={campo.FDI_NombreHTML} className={classInput} placeholder={campo.FDI_Descripcion} defaultValue={campo.DFO_Dato} onChange={onChange} // send value to hook form
-                            onBlur={onBlur}/>
+                        defaultValue={campo.DFO_Dato}
+                        rules={required ? { required: true } : {}}
+                        render={({ field: { onChange, onBlur} }) => (
+                            <NumericFormat                                
+                                thousandSeparator = "."
+                                decimalScale={0}
+                                decimalSeparator=","
+                                //prefix={"$ "}
+                                type="text" id={campo.FDI_NombreHTML} 
+                                className={classInput} 
+                                placeholder={campo.FDI_Descripcion} 
+                                defaultValue={campo.DFO_Dato} 
+                                onChange={onChange} // send value to hook form                                
+                                onBlur={onBlur}
+                            />
                         )}
                     />
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'F':
+        case 'D':   //Numerico con puntos y dos decimales
+            return (
+                <>                    
+                    <Controller
+                        control={control}
+                        name={campo.FDI_NombreHTML}
+                        value={campo.DFO_Dato}
+                        defaultValue={campo.DFO_Dato}
+                        rules={required ? { required: true } : {}}
+                        render={({ field: { onChange, onBlur} }) => (
+                            <NumericFormat                                
+                                thousandSeparator = "."
+                                decimalScale={2}
+                                decimalSeparator=","
+                                //prefix={"$ "}
+                                type="text" id={campo.FDI_NombreHTML} 
+                                className={classInput} 
+                                placeholder={campo.FDI_Descripcion} 
+                                defaultValue={campo.DFO_Dato} 
+                                onChange={onChange} // send value to hook form                                
+                                onBlur={onBlur}
+                            />
+                        )}
+                    />
+                    {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
+                </>
+            )
+        case 'E':   //Monto con puntos y sin decimales
+            return (
+                <>                    
+                    <Controller
+                        control={control}
+                        name={campo.FDI_NombreHTML}
+                        value={campo.DFO_Dato}
+                        defaultValue={campo.DFO_Dato}
+                        rules={required ? { required: true } : {}}
+                        render={({ field: { onChange, onBlur} }) => (
+                            <NumericFormat                                
+                                thousandSeparator = "."
+                                decimalScale={0}
+                                decimalSeparator=","
+                                prefix={"$ "}
+                                type="text" id={campo.FDI_NombreHTML} 
+                                className={classInput} 
+                                placeholder={campo.FDI_Descripcion} 
+                                defaultValue={campo.DFO_Dato} 
+                                onChange={onChange} // send value to hook form                                
+                                onBlur={onBlur}
+                            />
+                        )}
+                    />
+                    {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
+                </>
+            )
+        case 'G':   //Monto con puntos y dos decimales
+            return (
+                <>                    
+                    <Controller
+                        control={control}
+                        name={campo.FDI_NombreHTML}
+                        value={campo.DFO_Dato}
+                        defaultValue={campo.DFO_Dato}
+                        rules={required ? { required: true } : {}}
+                        render={({ field: { onChange, onBlur} }) => (
+                            <NumericFormat                                
+                                thousandSeparator = "."
+                                decimalScale={2}
+                                decimalSeparator=","
+                                prefix={"$ "}
+                                type="text" id={campo.FDI_NombreHTML} 
+                                className={classInput} 
+                                placeholder={campo.FDI_Descripcion} 
+                                defaultValue={campo.DFO_Dato} 
+                                onChange={onChange} // send value to hook form                                
+                                onBlur={onBlur}
+                            />
+                        )}
+                    />
+                    {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
+                </>
+            )    
+        case 'F':   //Fecha
             return (
                 <>
                     <input {...register(campo.FDI_NombreHTML, {required : `{${required}}`})} type="date" id={campo.FDI_NombreHTML} className={classInput} placeholder={campo.FDI_Descripcion} defaultValue={campo.DFO_Dato}/>
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'V':
+        case 'V':   //Fecha con alarma
             return (
                 <>
                     <input {...register(campo.FDI_NombreHTML, {required : `{${required}}`})} type="date" id={campo.FDI_NombreHTML} className={classInput} placeholder={campo.FDI_Descripcion} defaultValue={campo.DFO_Dato}/>
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'T':
+        case 'T':   //Texto tamaño grande
             return (
                 <>
                     <textarea {...register(campo.FDI_NombreHTML, {required : `{${required}}`})} id={campo.FDI_NombreHTML} className={classInput} placeholder={campo.FDI_Descripcion} defaultValue={campo.DFO_Dato}/>
