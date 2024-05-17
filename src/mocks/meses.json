@@ -1,15 +1,15 @@
 {"meses" : [
-    { "value": 1, "label": "Enero", "color": "#00B8D9", "isFixed": true },
-    { "value": 2, "label": "Febrero", "color": "#0052CC", "isDisabled": true },
-    { "value": 3, "label": "Marzo", "color": "#5243AA" },
-    { "value": 4, "label": "Abril", "color": "#FF5630", "isFixed": true },
-    { "value": 5, "label": "Mayo", "color": "#FF8B00" },
-    { "value": 6, "label": "Junio", "color": "#FFC400" },
-    { "value": 7, "label": "Julio", "color": "#36B37E" },
-    { "value": 8, "label": "Agosto", "color": "#00875A" },
-    { "value": 9, "label": "Septiembre", "color": "#253858" },
-    { "value": 10, "label": "Octubre", "color": "#666666" },
-    { "value": 11, "label": "Noviembre", "color": "#666666" },
-    { "value": 12, "label": "Diciembre", "color": "#666666" }
+    { "value": "1", "label": "Enero", "color": "#00B8D9", "isFixed": true },
+    { "value": "2", "label": "Febrero", "color": "#0052CC", "isDisabled": true },
+    { "value": "3", "label": "Marzo", "color": "#5243AA" },
+    { "value": "4", "label": "Abril", "color": "#FF5630", "isFixed": true },
+    { "value": "5", "label": "Mayo", "color": "#FF8B00" },
+    { "value": "6", "label": "Junio", "color": "#FFC400" },
+    { "value": "7", "label": "Julio", "color": "#36B37E" },
+    { "value": "8", "label": "Agosto", "color": "#00875A" },
+    { "value": "9", "label": "Septiembre", "color": "#253858" },
+    { "value": "10", "label": "Octubre", "color": "#666666" },
+    { "value": "11", "label": "Noviembre", "color": "#666666" },
+    { "value": "12", "label": "Diciembre", "color": "#666666" }
   ]
 }

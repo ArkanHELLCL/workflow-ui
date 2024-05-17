@@ -157,7 +157,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                             defaultValue={campo.DFO_Dato}
                             rules={required ? { required: true } : {}}
                             render={({ field: { onChange, onBlur} }) => (
-                                <ListaDesplegables LID_Id={campo?.LID_Id} styles={classInput + ' p-[3px]'} idhtml={campo.FDI_NombreHTML}/>
+                                <ListaDesplegables LID_Id={campo?.LID_Id} DFO_Dato={campo.DFO_Dato} styles={classInput + ' p-[3px] !p-0'} idhtml={campo.FDI_NombreHTML} onChange={onChange}/>
                             )}
                     />
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
@@ -173,7 +173,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
     }
 }
 
-function ListaDesplegables({LID_Id, styles, idhtml}){
+function ListaDesplegables({LID_Id, DFO_Dato, styles, idhtml, onChange}){    
     const filterMeses = (inputValue) => {
         return meses.filter((i) =>
           i.label.toLowerCase().includes(inputValue.toLowerCase())
@@ -186,11 +186,36 @@ function ListaDesplegables({LID_Id, styles, idhtml}){
         }, 1000);
       };
     return(
-        <AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions className={styles} id={idhtml} name={idhtml} styles={{
-            control: (baseStyles, state) => ({
-              ...baseStyles,
-              borderColor: state.isFocused ? 'grey' : 'red',
-            }),
+        <AsyncSelect 
+            cacheOptions 
+            loadOptions={loadOptions}             
+            defaultOptions 
+            className={styles} 
+            id={idhtml} 
+            name={idhtml} 
+            defaultValue={{ value: DFO_Dato }}
+            onInputChange={onChange}            
+            styles={{
+                control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? '#0284c7' : 'transparent',
+                    backgroundColor : 'transparent',
+                    borderWidth :'0px',
+                    borderRadius:'0px 8px 8px 0px',
+                }),
+                singleValue:(baseStyles) => ({
+                    ...baseStyles,
+                    color:'inherit'
+                }),
+                menu:(baseStyles) => ({
+                    ...baseStyles,
+                    backgroundColor: 'inherit',
+                    color:'inherit'
+                }),
+                option:(baseStyles, state) => ({
+                    ...baseStyles,
+                    color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
+                })
           }}/>
     )
 }
