@@ -2,6 +2,8 @@
 import { IconForm } from "./icons"
 import { useForm, Controller } from 'react-hook-form';
 //import Select from 'react-select'
+import AsyncSelect, { useAsync } from 'react-select/async';
+import { meses } from '../mocks/meses.json';
 import { NumericFormat } from "react-number-format";
 
 const InputType = ({campo, classInput, register, errors, control}) => {    
@@ -69,7 +71,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'E':   //Monto con puntos y sin decimales
+        case 'G':   //Monto con puntos y sin decimales
             return (
                 <>                    
                     <Controller
@@ -96,7 +98,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'G':   //Monto con puntos y dos decimales
+        case 'H':   //Monto con puntos y dos decimales
             return (
                 <>                    
                     <Controller
@@ -111,7 +113,8 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                 decimalScale={2}
                                 decimalSeparator=","
                                 prefix={"$ "}
-                                type="text" id={campo.FDI_NombreHTML} 
+                                type="text" 
+                                id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
                                 defaultValue={campo.DFO_Dato} 
@@ -144,8 +147,22 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'LM':
-            return null
+        case 'L':
+            return (
+                <>
+                    <Controller
+                            control={control}
+                            name={campo.FDI_NombreHTML}
+                            value={campo.DFO_Dato}
+                            defaultValue={campo.DFO_Dato}
+                            rules={required ? { required: true } : {}}
+                            render={({ field: { onChange, onBlur} }) => (
+                                <ListaDesplegables LID_Id={campo?.LID_Id} styles={classInput + ' p-[3px]'} idhtml={campo.FDI_NombreHTML}/>
+                            )}
+                    />
+                    {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
+                </>
+            )
         default:
             return (
                 <>
@@ -156,6 +173,27 @@ const InputType = ({campo, classInput, register, errors, control}) => {
     }
 }
 
+function ListaDesplegables({LID_Id, styles, idhtml}){
+    const filterMeses = (inputValue) => {
+        return meses.filter((i) =>
+          i.label.toLowerCase().includes(inputValue.toLowerCase())
+        );
+      };
+      
+      const loadOptions = (inputValue, callback) => {
+        setTimeout(() => {
+          callback(filterMeses(inputValue));
+        }, 1000);
+      };
+    return(
+        <AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions className={styles} id={idhtml} name={idhtml} styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: state.isFocused ? 'grey' : 'red',
+            }),
+          }}/>
+    )
+}
 
 export function InputTypes({name, campos}){
     const {        
@@ -165,7 +203,7 @@ export function InputTypes({name, campos}){
         formState: { errors }
       } = useForm();
     
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => console.log(data)    
 
     return(
         <form 
@@ -179,17 +217,18 @@ export function InputTypes({name, campos}){
                     colwidth = colwidth + ' relative'
                     return(
                         <div key={campo.FDI_NombreHTML} className={colwidth}>
-                            <label htmlFor={campo.FDI_NombreHTML} className={`${errors[campo?.FDI_NombreHTML] ? ' !text-red-500' : ''} block mb-2 text-sm font-medium dark:text-stone-100 text-stone-500`}>{campo.FDI_Descripcion}</label>
+                            <label htmlFor={campo.FDI_NombreHTML} className={`${errors[campo?.FDI_NombreHTML] ? ' !text-red-500' : ''} block mb-2 text-sm font-medium dark:text-stone-400 text-stone-500`}>{campo.FDI_Descripcion}</label>
                             <div className="flex">
-                                <span className={`inline-flex items-center px-3 text-sm dark:text-stone-100 text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600`}>
+                                <span className={`inline-flex items-center px-3 text-sm dark:text-stone-100 !text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600`}>
                                     <IconForm typeIcon={campo.FDI_IconoDiseno} styles={`${errors[campo?.FDI_NombreHTML] ? ' !fill-red-500 !text-red-500' : ''}`}/>
                                 </span>
-                                <InputType campo={campo} register={register} errors={errors} control={control} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400`}/>                        
+                                <InputType campo={campo} register={register} errors={errors} control={control} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 focus:ring-[#0284c7] focus:border-[#0284c7] dark:focus:ring-[#0284c7] dark:focus:border-[#0284c7] outline-none`}/>                        
                             </div>
                         </div>
                     )}
                 )
-            }</div>
-    </form>
+            }            
+            </div>
+        </form>
     )
 }

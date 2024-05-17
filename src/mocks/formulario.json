@@ -222,7 +222,7 @@
         },
         {
           "FDI_Id":74,
-          "FDI_TipoCampo":"LM",
+          "FDI_TipoCampo":"L",
           "FDI_Descripcion":"Mes",
           "FDI_CampoObligatorio":1,
           "FDI_Priorirdad":20,
