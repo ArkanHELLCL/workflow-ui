@@ -1,14 +1,36 @@
 /* eslint-disable react/prop-types */
 import { IconForm } from "./icons"
 import { useForm, Controller } from 'react-hook-form';
-//import Select from 'react-select'
-import AsyncSelect, { useAsync } from 'react-select/async';
-import { meses } from '../mocks/meses.json';
+import AsyncSelect from 'react-select/async';
+import { name, records } from '../mocks/meses.json';
 import { NumericFormat } from "react-number-format";
 
 const InputType = ({campo, classInput, register, errors, control}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
-    //console.log(campo,required)
+    const selectList = (LID_Id) => {
+        //Aqui hay que codificar la llamada al backend para obtener los datos de la lista de seleccion dada por el campo LID_Id        
+        let placeholder
+        LID_Id === 16 ? placeholder = 'Selecciona un ' + name.toLowerCase() : 'Selecciona una opción'
+
+        const filterMeses = (inputValue) => {
+        return records.filter((i) =>
+            i.label.toLowerCase().includes(inputValue.toLowerCase())
+            );
+        };
+        
+        const loadOptions = (inputValue, callback) => {
+            setTimeout(() => {
+            callback(filterMeses(inputValue));
+            }, 1000);
+        };
+
+        return {"name" : placeholder, "records" : loadOptions}
+    }
+
+    const recordsList = selectList(campo.LID_Id).records
+    const nameList = selectList(campo.LID_Id).name
+
+
     switch (campo.FDI_TipoCampo) {
         case 'C':   //Texto tamaño mediano
             return (
@@ -152,12 +174,44 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                 <>
                     <Controller
                             control={control}
-                            name={campo.FDI_NombreHTML}
-                            value={campo.DFO_Dato}
-                            defaultValue={campo.DFO_Dato}
+                            name={campo.FDI_NombreHTML}                            
                             rules={required ? { required: true } : {}}
-                            render={({ field: { onChange, onBlur} }) => (
-                                <ListaDesplegables LID_Id={campo?.LID_Id} DFO_Dato={campo.DFO_Dato} styles={classInput + ' p-[3px] !p-0'} idhtml={campo.FDI_NombreHTML} onChange={onChange}/>
+                            defaultValue={{value:"10", label:"Octubre"}}
+                            render={({ field, onChange}) => (                                
+                                <AsyncSelect 
+                                    {...field}
+                                    isClearable
+                                    cacheOptions 
+                                    loadOptions={recordsList}
+                                    defaultOptions 
+                                    className={classInput + ' !p-0'}
+                                    id={campo.FDI_NombreHTML} 
+                                    name={campo.FDI_NombreHTML}                                     
+                                    onInputChange={onChange}
+                                    placeholder={nameList}
+                                    styles={{
+                                        control: (baseStyles, state) => ({
+                                            ...baseStyles,
+                                            borderColor: state.isFocused ? '#0284c7' : 'transparent',
+                                            backgroundColor : 'transparent',
+                                            borderWidth :'0px',
+                                            borderRadius:'0px 8px 8px 0px',
+                                            minHeight:'36px'
+                                        }),
+                                        singleValue:(baseStyles) => ({
+                                            ...baseStyles,
+                                            color:'inherit'
+                                        }),
+                                        menu:(baseStyles) => ({
+                                            ...baseStyles,
+                                            backgroundColor: 'inherit',
+                                            color:'inherit'
+                                        }),
+                                        option:(baseStyles, state) => ({
+                                            ...baseStyles,
+                                            color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
+                                        })
+                                }}/>
                             )}
                     />
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
@@ -171,53 +225,6 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                 </>
             )
     }
-}
-
-function ListaDesplegables({LID_Id, DFO_Dato, styles, idhtml, onChange}){    
-    const filterMeses = (inputValue) => {
-        return meses.filter((i) =>
-          i.label.toLowerCase().includes(inputValue.toLowerCase())
-        );
-      };
-      
-      const loadOptions = (inputValue, callback) => {
-        setTimeout(() => {
-          callback(filterMeses(inputValue));
-        }, 1000);
-      };
-    return(
-        <AsyncSelect 
-            cacheOptions 
-            loadOptions={loadOptions}             
-            defaultOptions 
-            className={styles} 
-            id={idhtml} 
-            name={idhtml} 
-            defaultValue={{ value: DFO_Dato }}
-            onInputChange={onChange}            
-            styles={{
-                control: (baseStyles, state) => ({
-                    ...baseStyles,
-                    borderColor: state.isFocused ? '#0284c7' : 'transparent',
-                    backgroundColor : 'transparent',
-                    borderWidth :'0px',
-                    borderRadius:'0px 8px 8px 0px',
-                }),
-                singleValue:(baseStyles) => ({
-                    ...baseStyles,
-                    color:'inherit'
-                }),
-                menu:(baseStyles) => ({
-                    ...baseStyles,
-                    backgroundColor: 'inherit',
-                    color:'inherit'
-                }),
-                option:(baseStyles, state) => ({
-                    ...baseStyles,
-                    color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
-                })
-          }}/>
-    )
 }
 
 export function InputTypes({name, campos}){
