@@ -196,7 +196,8 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                             backgroundColor : 'transparent',
                                             borderWidth :'0px',
                                             borderRadius:'0px 8px 8px 0px',
-                                            minHeight:'36px'
+                                            minHeight:'36px',
+                                            color:"inherit"
                                         }),
                                         singleValue:(baseStyles) => ({
                                             ...baseStyles,
@@ -210,6 +211,10 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                         option:(baseStyles, state) => ({
                                             ...baseStyles,
                                             color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
+                                        }),
+                                        input:(baseStyles) => ({
+                                            ...baseStyles,
+                                            color:'inherit'
                                         })
                                 }}/>
                             )}
