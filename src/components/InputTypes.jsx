@@ -2,7 +2,7 @@
 import { IconForm } from "./icons"
 import { useForm, Controller } from 'react-hook-form';
 import AsyncSelect from 'react-select/async';
-import { name, records } from '../mocks/meses.json';
+import { name, records, selected } from '../mocks/meses.json';
 import { NumericFormat } from "react-number-format";
 
 const InputType = ({campo, classInput, register, errors, control}) => {    
@@ -176,7 +176,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                             control={control}
                             name={campo.FDI_NombreHTML}                            
                             rules={required ? { required: true } : {}}
-                            defaultValue={{value:"10", label:"Octubre"}}
+                            defaultValue={selected}
                             render={({ field, onChange}) => (                                
                                 <AsyncSelect 
                                     {...field}
