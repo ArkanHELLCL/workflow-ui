@@ -4,9 +4,9 @@ import { formulario } from '../mocks/Formulario.json'
 import { useRequest } from '../hooks/useRequest';
 import { Constants } from "../constants/const.jsx";
 import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { useSpring, animated } from "@react-spring/web";
-//import { ClickAway } from '../hooks/ClickAway';
+import { ClickAway } from '../hooks/ClickAway';
 import { DocPreview } from './DocPreview.jsx';
 import { InputTypes } from './InputTypes.jsx';
 
@@ -76,7 +76,6 @@ const fecha = (date, dias) => {
 
 const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
     const [pos, setPos] = useState(null)
-    //console.log("mnuadj")
     useEffect(() => {
         const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
         const adjunto = open?.id ? document.getElementById(open.id) : null
@@ -88,7 +87,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
             "left": posX + "px",
             "top": posT + "px",
             "opacity": "1",
-            "zIndex": "50"
+            "zIndex": "100"
         }) : setPos(null)
     },[open, IdMenu])
 
@@ -100,6 +99,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
     }
 
     const handlePreview = () => {
+        console.log("handlePreview")
         setSelected(selectedMenu)
         setPreview(true)
         setOpen({open: false, id: ''})
@@ -143,11 +143,14 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
     )
 }
 
-const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSelectedMenu}) => {
-    //const adjId = useId()
-    //console.log("adj")
+const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, setOpen}) => {
+    
+    const IdMenu = useId()
+    const [selectedMenu, setSelectedMenu] = useState(null)
+    const { ref:refMenu } = ClickAway(setOpen);
+    //const refMenu = useRef(null);    
+
     const HandleClickMenu = (file, id) => {
-        //console.log('mnu',file, id)
         setSelectedMenu(file)
         if(open.open && open.id === id) return setOpen({open: false, id: ''})
         setOpen({open: true, id: id})        
@@ -159,7 +162,14 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSe
         setOpen({open: false, id: ''})
         setPreview(true)        
     }
-    return(        
+
+    const handleEliminarClick = (adjunto) => {
+        setAdjuntos((prevAdjuntos) =>
+          prevAdjuntos.filter((a) => a !== adjunto)
+        );
+    };
+    return(
+        <>
         <div key={file.id} className='flex items-center relative overflow-hidden z-50 elmadj' id={file.id}>
             <div className={`dark:border-[#5f5f5f] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border hover:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#4a4a4a] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a]'} peer/adjunto`}
             onClick={() => HandleClickFile(file)}>
@@ -182,7 +192,11 @@ const Adjuntos = ({file, selected, setSelected, open, setOpen, setPreview, setSe
                 onClick={() => HandleClickMenu(file, file.id)}>
                 <CloseIcon />
             </div>           
-        </div>          
+        </div>{
+                open.open && (
+                    <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>
+                )}
+        </>
     )
 }
 
@@ -191,11 +205,8 @@ export function Formulario(){
     const { dias } = Constants()
     const idForm = useId()
     const idGroups = useId()
-    const IdMenu = useId()
-    const [selected, setSelected] = useState(null)
-    const [selectedMenu, setSelectedMenu] = useState(null)
-
-    const [open, setOpen] = useState({open: false, id: ''})
+    
+    const [selected, setSelected] = useState(null)    
 
     const [form, setForm] = useState(formulario)
     const [adjuntos, setAdjuntos] = useState([]);
@@ -206,6 +217,7 @@ export function Formulario(){
     const [dropEnter, setDropEnter] = useState(false);
 
     const [preview, setPreview] = useState(false)    
+    
 
 
     useEffect(() => {
@@ -286,12 +298,7 @@ export function Formulario(){
         //const files = Array.from(event.target.files);
         //setAdjuntos((prevAdjuntos) => [...prevAdjuntos, ...files]);
     };
-*/
-    const handleEliminarClick = (adjunto) => {
-        setAdjuntos((prevAdjuntos) =>
-          prevAdjuntos.filter((a) => a !== adjunto)
-        );
-    };
+*/    
 /*
     const handleDragEnd = (event) => {
         // Eliminar el adjunto del dataTransfer
@@ -309,8 +316,9 @@ export function Formulario(){
     }*/
 
     const HeaderForm = ({request}) => {
+        const [open, setOpen] = useState({open: false, id: ''})
         return (
-            <header className='w-full h-auto relative' 
+            <header className='w-full h-auto relative z-20' 
                 onDragOver = {handleNotDragOver}>
                 {
                     !preview &&
@@ -351,14 +359,11 @@ export function Formulario(){
                 {
                     adjuntos.map((file, index) => {
                         return (                        
-                            <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} open={open} setOpen={setOpen} setPreview={setPreview} setSelectedMenu={setSelectedMenu}/>
+                            <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} setPreview={setPreview} setAdjuntos={setAdjuntos} open={open} setOpen={setOpen}/>
                         )}
                     )
                 }                                      
-                </div>{
-                open.open && (
-                    <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>
-                )}
+                </div>
             </header>            
         )
     }
@@ -383,14 +388,12 @@ export function Formulario(){
             </section>
         )
     }
-
-    //const { ref:refMenu } = ClickAway(setOpen);
-    const refMenu = useRef(null);
+    
     return(
         <>
             {request?.request?.VFO_Id === form?.VFO_Id &&
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
-                    <HeaderForm request={request} />{
+                    <HeaderForm request={request}/>{
                         !preview &&
                             <DataForm campos={campos}/>
                     }{
