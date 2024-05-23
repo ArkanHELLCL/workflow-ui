@@ -3,6 +3,7 @@ import { IconForm } from "./icons"
 import { useForm, Controller } from 'react-hook-form';
 import AsyncSelect from 'react-select/async';
 import { name, records, selected } from '../mocks/meses.json';
+import { tableName, tableRecords, tableSelected } from '../mocks/proveedores.json';
 import { NumericFormat } from "react-number-format";
 
 const InputType = ({campo, classInput, register, errors, control}) => {    
@@ -25,11 +26,27 @@ const InputType = ({campo, classInput, register, errors, control}) => {
         };
 
         return {"name" : placeholder, "records" : loadOptions}
-    }
+    }    
 
-    const recordsList = selectList(campo.LID_Id).records
-    const nameList = selectList(campo.LID_Id).name
+    //Tablas externas
+    const tableList = () => {
+        //Incluir parametro para identificar la tabla a leer
+        let placeholder = 'Selecciona un ' + tableName.toLowerCase()        
 
+        const filterRecords = (inputValue) => {
+        return tableRecords.filter((i) =>
+            i.label.toLowerCase().includes(inputValue.toLowerCase())
+            );
+        };
+        
+        const loadOptions = (inputValue, callback) => {
+            setTimeout(() => {
+            callback(filterRecords(inputValue));
+            }, 1000);
+        };
+
+        return {"name" : placeholder, "records" : loadOptions}
+    }    
 
     switch (campo.FDI_TipoCampo) {
         case 'C':   //Texto tamaño mediano
@@ -169,7 +186,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'L':
+        case 'L':       //Listas de selección
             return (
                 <>
                     <Controller
@@ -182,13 +199,13 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                     {...field}
                                     isClearable
                                     cacheOptions 
-                                    loadOptions={recordsList}
+                                    loadOptions={selectList(campo.LID_Id).records}
                                     defaultOptions 
                                     className={classInput + ' !p-0'}
                                     id={campo.FDI_NombreHTML} 
                                     name={campo.FDI_NombreHTML}                                     
                                     onInputChange={onChange}
-                                    placeholder={nameList}
+                                    placeholder={selectList(campo.LID_Id).name}
                                     styles={{
                                         control: (baseStyles, state) => ({
                                             ...baseStyles,
@@ -222,6 +239,59 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
+            case 'X1':  //Tablas externas
+                return (
+                    <>
+                        <Controller
+                                control={control}
+                                name={campo.FDI_NombreHTML}                            
+                                rules={required ? { required: true } : {}}
+                                defaultValue={tableSelected}
+                                render={({ field, onChange}) => (                                
+                                    <AsyncSelect 
+                                        {...field}
+                                        isClearable
+                                        cacheOptions 
+                                        loadOptions={tableList().records}
+                                        defaultOptions 
+                                        className={classInput + ' !p-0'}
+                                        id={campo.FDI_NombreHTML} 
+                                        name={campo.FDI_NombreHTML}                                     
+                                        onInputChange={onChange}
+                                        placeholder={tableList().name}
+                                        styles={{
+                                            control: (baseStyles, state) => ({
+                                                ...baseStyles,
+                                                borderColor: state.isFocused ? '#0284c7' : 'transparent',
+                                                backgroundColor : 'transparent',
+                                                borderWidth :'0px',
+                                                borderRadius:'0px 8px 8px 0px',
+                                                minHeight:'36px',
+                                                color:"inherit"
+                                            }),
+                                            singleValue:(baseStyles) => ({
+                                                ...baseStyles,
+                                                color:'inherit'
+                                            }),
+                                            menu:(baseStyles) => ({
+                                                ...baseStyles,
+                                                backgroundColor: 'inherit',
+                                                color:'inherit'
+                                            }),
+                                            option:(baseStyles, state) => ({
+                                                ...baseStyles,
+                                                color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
+                                            }),
+                                            input:(baseStyles) => ({
+                                                ...baseStyles,
+                                                color:'inherit'
+                                            })
+                                    }}/>
+                                )}
+                        />
+                        {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
+                    </>
+                )
         default:
             return (
                 <>

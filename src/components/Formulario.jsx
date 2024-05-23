@@ -136,9 +136,9 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
                 </li>{
                     selectedMenu?.upload  &&
                         <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer' onClick={()=>handleDeleteFile(selectedMenu)}>
-                        <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon styles='h-5 w-5' strokeWidth={2} /></span>
-                        <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
-                    </li>
+                            <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon styles='h-5 w-5' strokeWidth={2} /></span>
+                            <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
+                        </li>
                 }
             </ul>
         </div>        
