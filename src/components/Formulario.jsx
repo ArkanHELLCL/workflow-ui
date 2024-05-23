@@ -75,6 +75,7 @@ const fecha = (date, dias) => {
 } 
 
 const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
+    //console.log("MenuAdjuntos",selectedMenu)
     const [pos, setPos] = useState(null)
     useEffect(() => {
         const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
@@ -89,7 +90,7 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
             "opacity": "1",
             "zIndex": "100"
         }) : setPos(null)
-    },[open, IdMenu])
+    },[])
 
     const handleDeleteFile = (file) => {        
         handleEliminarClick(file)
@@ -98,9 +99,8 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
         //mensaje de eliminacion de adjunto
     }
 
-    const handlePreview = () => {
-        console.log("handlePreview")
-        setSelected(selectedMenu)
+    const handlePreview = () => {        
+        setSelected(selectedMenu)        
         setPreview(true)
         setOpen({open: false, id: ''})
     }
@@ -112,9 +112,11 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
             id={IdMenu} 
             ref={refMenu}
             >
-            <ul className='text-[11px]'>
+            <ul className='text-[11px]' id="mnuAdjunto">
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] cursor-pointer'>
-                    <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' onClick={()=>handlePreview()}>Vista previa</span>
+                    <div onClick={() => handlePreview()}>
+                        <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' >Vista previa</span>
+                    </div>
                 </li>
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative cursor-pointer'>
                     <span className="absolute top-2 left-3"><OpenFolderIcon styles='w-[18px] h-[18px]'/></span>                    
@@ -148,11 +150,10 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
     const IdMenu = useId()
     const [selectedMenu, setSelectedMenu] = useState(null)
     const { ref:refMenu } = ClickAway(setOpen);
-    //const refMenu = useRef(null);    
 
     const HandleClickMenu = (file, id) => {
-        setSelectedMenu(file)
-        if(open.open && open.id === id) return setOpen({open: false, id: ''})
+        setSelectedMenu(file)        
+        //if(open.open && open.id === id) return setOpen({open: false, id: ''})
         setOpen({open: true, id: id})        
     }
     
@@ -168,6 +169,7 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
           prevAdjuntos.filter((a) => a !== adjunto)
         );
     };
+    //console.log(open)
     return(
         <>
         <div key={file.id} className='flex items-center relative overflow-hidden z-50 elmadj' id={file.id}>
@@ -193,7 +195,7 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
                 <CloseIcon />
             </div>           
         </div>{
-                open.open && (
+                open.open && file.id === open.id && (
                     <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} refMenu={refMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>
                 )}
         </>
