@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { IconForm } from "./icons"
 import { useForm, Controller } from 'react-hook-form';
+import useFormPersist from 'react-hook-form-persist'
 import AsyncSelect from 'react-select/async';
 import { name, records, selected } from '../mocks/meses.json';
 import { tableName, tableRecords, tableSelected } from '../mocks/proveedores.json';
 import { NumericFormat } from "react-number-format";
+import { useEffect } from "react";
 
 const InputType = ({campo, classInput, register, errors, control}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
@@ -62,7 +65,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     <Controller
                         control={control}
                         name={campo.FDI_NombreHTML}
-                        value={campo.DFO_Dato}
+                        //value={campo.DFO_Dato}
                         defaultValue={campo.DFO_Dato}
                         rules={required ? { required: true } : {}}
                         render={({ field: { onChange, onBlur} }) => (
@@ -239,59 +242,59 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-            case 'X1':  //Tablas externas
-                return (
-                    <>
-                        <Controller
-                                control={control}
-                                name={campo.FDI_NombreHTML}                            
-                                rules={required ? { required: true } : {}}
-                                defaultValue={tableSelected}
-                                render={({ field, onChange}) => (                                
-                                    <AsyncSelect 
-                                        {...field}
-                                        isClearable
-                                        cacheOptions 
-                                        loadOptions={tableList().records}
-                                        defaultOptions 
-                                        className={classInput + ' !p-0'}
-                                        id={campo.FDI_NombreHTML} 
-                                        name={campo.FDI_NombreHTML}                                     
-                                        onInputChange={onChange}
-                                        placeholder={tableList().name}
-                                        styles={{
-                                            control: (baseStyles, state) => ({
-                                                ...baseStyles,
-                                                borderColor: state.isFocused ? '#0284c7' : 'transparent',
-                                                backgroundColor : 'transparent',
-                                                borderWidth :'0px',
-                                                borderRadius:'0px 8px 8px 0px',
-                                                minHeight:'36px',
-                                                color:"inherit"
-                                            }),
-                                            singleValue:(baseStyles) => ({
-                                                ...baseStyles,
-                                                color:'inherit'
-                                            }),
-                                            menu:(baseStyles) => ({
-                                                ...baseStyles,
-                                                backgroundColor: 'inherit',
-                                                color:'inherit'
-                                            }),
-                                            option:(baseStyles, state) => ({
-                                                ...baseStyles,
-                                                color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
-                                            }),
-                                            input:(baseStyles) => ({
-                                                ...baseStyles,
-                                                color:'inherit'
-                                            })
-                                    }}/>
-                                )}
-                        />
-                        {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
-                    </>
-                )
+        case 'X1':  //Tablas externas
+            return (
+                <>
+                    <Controller
+                            control={control}
+                            name={campo.FDI_NombreHTML}                            
+                            rules={required ? { required: true } : {}}
+                            defaultValue={tableSelected}
+                            render={({ field, onChange}) => (                                
+                                <AsyncSelect 
+                                    {...field}
+                                    isClearable
+                                    cacheOptions 
+                                    loadOptions={tableList().records}
+                                    defaultOptions 
+                                    className={classInput + ' !p-0'}
+                                    id={campo.FDI_NombreHTML} 
+                                    name={campo.FDI_NombreHTML}                                     
+                                    onInputChange={onChange}
+                                    placeholder={tableList().name}
+                                    styles={{
+                                        control: (baseStyles, state) => ({
+                                            ...baseStyles,
+                                            borderColor: state.isFocused ? '#0284c7' : 'transparent',
+                                            backgroundColor : 'transparent',
+                                            borderWidth :'0px',
+                                            borderRadius:'0px 8px 8px 0px',
+                                            minHeight:'36px',
+                                            color:"inherit"
+                                        }),
+                                        singleValue:(baseStyles) => ({
+                                            ...baseStyles,
+                                            color:'inherit'
+                                        }),
+                                        menu:(baseStyles) => ({
+                                            ...baseStyles,
+                                            backgroundColor: 'inherit',
+                                            color:'inherit'
+                                        }),
+                                        option:(baseStyles, state) => ({
+                                            ...baseStyles,
+                                            color: state.isFocused && state.isSelected ? 'white' : state.isFocused && !state.isSelected ? 'black' : !state.isFocused && state.isSelected ? 'white' : 'inherit',                    
+                                        }),
+                                        input:(baseStyles) => ({
+                                            ...baseStyles,
+                                            color:'inherit'
+                                        })
+                                }}/>
+                            )}
+                    />
+                    {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
+                </>
+            )
         default:
             return (
                 <>
@@ -301,16 +304,38 @@ const InputType = ({campo, classInput, register, errors, control}) => {
             )
     }
 }
+/*function storageEvent(formWKv2){
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'readingList') {            
+            return renderReadingList(JSON.parse(event.newValue))
+        }
+    })
+}*/
 
-export function InputTypes({name, campos}){
+export function InputTypes({name, campos, formWFv3}){    
     const {        
         handleSubmit,
         register,
         control,
-        formState: { errors }
+        formState: { errors },
+        setValue,
+        watch,
+        reset
       } = useForm();
+
+    useFormPersist("formWFv3", {
+        watch, 
+        setValue,
+        storage: window.localStorage//, // default window.sessionStorage
+        //exclude: ['baz']
+      });        
     
-    const onSubmit = (data) => console.log(data)    
+    const onSubmit = (data) => console.log(data)   
+    //console.log(formWFv3) 
+    
+    useEffect(()=>{
+        reset({...formWFv3});
+      }, [formWFv3])
 
     return(
         <form 

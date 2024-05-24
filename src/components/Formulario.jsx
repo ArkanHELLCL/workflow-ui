@@ -220,7 +220,7 @@ export function Formulario(){
 
     const [preview, setPreview] = useState(false)    
     
-
+    const formWFv3 = JSON.parse(window.localStorage.getItem('formWFv3')) || []    
 
     useEffect(() => {
         const { REQ_Adjuntos } = formulario;
@@ -385,7 +385,7 @@ export function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                    <InputTypes name={formulario.name} campos={campos} />
+                    <InputTypes name={formulario.name} campos={campos} formWFv3={formWFv3}/>
             }                                                        
             </section>
         )
