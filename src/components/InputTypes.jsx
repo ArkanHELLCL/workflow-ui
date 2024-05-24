@@ -9,7 +9,7 @@ import { tableName, tableRecords, tableSelected } from '../mocks/proveedores.jso
 import { NumericFormat } from "react-number-format";
 import { useEffect } from "react";
 
-const InputType = ({campo, classInput, register, errors, control}) => {    
+const InputType = ({campo, classInput, register, errors, control,formWFv3}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
     const selectList = (LID_Id) => {
         //Aqui hay que codificar la llamada al backend para obtener los datos de la lista de seleccion dada por el campo LID_Id        
@@ -66,7 +66,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                         control={control}
                         name={campo.FDI_NombreHTML}
                         //value={campo.DFO_Dato}
-                        defaultValue={campo.DFO_Dato}
+                        defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                         rules={required ? { required: true } : {}}
                         render={({ field: { onChange, onBlur} }) => (
                             <NumericFormat                                
@@ -74,10 +74,11 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                 decimalScale={0}
                                 decimalSeparator=","
                                 //prefix={"$ "}
-                                type="text" id={campo.FDI_NombreHTML} 
+                                type="text" 
+                                id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
-                                defaultValue={campo.DFO_Dato} 
+                                defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                                 onChange={onChange} // send value to hook form                                
                                 onBlur={onBlur}
                             />
@@ -92,8 +93,8 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     <Controller
                         control={control}
                         name={campo.FDI_NombreHTML}
-                        value={campo.DFO_Dato}
-                        defaultValue={campo.DFO_Dato}
+                        //value={campo.DFO_Dato}
+                        defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                         rules={required ? { required: true } : {}}
                         render={({ field: { onChange, onBlur} }) => (
                             <NumericFormat                                
@@ -101,10 +102,11 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                 decimalScale={2}
                                 decimalSeparator=","
                                 //prefix={"$ "}
-                                type="text" id={campo.FDI_NombreHTML} 
+                                type="text" 
+                                id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
-                                defaultValue={campo.DFO_Dato} 
+                                defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                                 onChange={onChange} // send value to hook form                                
                                 onBlur={onBlur}
                             />
@@ -119,8 +121,8 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     <Controller
                         control={control}
                         name={campo.FDI_NombreHTML}
-                        value={campo.DFO_Dato}
-                        defaultValue={campo.DFO_Dato}
+                        //value={campo.DFO_Dato}
+                        defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                         rules={required ? { required: true } : {}}
                         render={({ field: { onChange, onBlur} }) => (
                             <NumericFormat                                
@@ -131,7 +133,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                 type="text" id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
-                                defaultValue={campo.DFO_Dato} 
+                                defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                                 onChange={onChange} // send value to hook form                                
                                 onBlur={onBlur}
                             />
@@ -146,8 +148,8 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                     <Controller
                         control={control}
                         name={campo.FDI_NombreHTML}
-                        value={campo.DFO_Dato}
-                        defaultValue={campo.DFO_Dato}
+                        //value={campo.DFO_Dato}
+                        defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                         rules={required ? { required: true } : {}}
                         render={({ field: { onChange, onBlur} }) => (
                             <NumericFormat                                
@@ -159,7 +161,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                                 id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
-                                defaultValue={campo.DFO_Dato} 
+                                defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                                 onChange={onChange} // send value to hook form                                
                                 onBlur={onBlur}
                             />
@@ -250,7 +252,7 @@ const InputType = ({campo, classInput, register, errors, control}) => {
                             name={campo.FDI_NombreHTML}                            
                             rules={required ? { required: true } : {}}
                             defaultValue={tableSelected}
-                            render={({ field, onChange}) => (                                
+                            render={({ field, onChange}) => (
                                 <AsyncSelect 
                                     {...field}
                                     isClearable
@@ -358,7 +360,7 @@ export function InputTypes({name, campos, formWFv3}){
                                 <span className={`inline-flex items-center px-3 text-sm dark:text-stone-100 !text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600`}>
                                     <IconForm typeIcon={campo.FDI_IconoDiseno} styles={`${errors[campo?.FDI_NombreHTML] ? ' !fill-red-500 !text-red-500' : dirtyFields[campo?.FDI_NombreHTML] ? '!fill-green-500 !text-green-500' : ''}`}/>
                                 </span>
-                                <InputType campo={campo} register={register} errors={errors} control={control} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : dirtyFields[campo?.FDI_NombreHTML] ? '!border-green-500 modfield' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-1.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 focus:ring-[#0284c7] focus:border-[#0284c7] dark:focus:ring-[#0284c7] dark:focus:border-[#0284c7] outline-none `}/>                        
+                                <InputType campo={campo} register={register} errors={errors} control={control} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : dirtyFields[campo?.FDI_NombreHTML] ? '!border-green-500 modfield' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-1.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 focus:ring-[#0284c7] focus:border-[#0284c7] dark:focus:ring-[#0284c7] dark:focus:border-[#0284c7] outline-none `} formWFv3={formWFv3}/>                        
                             </div>
                         </div>
                     )}
