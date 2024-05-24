@@ -1,25 +1,68 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import { styled } from '@mui/material/styles';
 import { Icon } from "./icons.jsx";
 import { Constants } from "../constants/const.jsx";
 import { useRequest } from "../hooks/useRequest.jsx";
 
-export function DetalleRequerimiento({defaultTheme}){   
+const Accordion = styled((props) => (
+    <MuiAccordion disableGutters elevation={0} square {...props} />
+  ))(() => ({
+    //borderBottom: `1px solid ${theme.palette.divider}`,
+    /*borderBottom: `1px solid inherit`,
+    '&:not(:last-child)': {
+      borderTop: 0,
+    },
+    '&::before': {
+      display: 'none',
+    },*/
+}));
+  
+const AccordionSummary = styled((props) => (
+    <MuiAccordionSummary
+      expandIcon={<Icon />}
+      {...props}
+    />
+  ))(({ theme }) => ({
+    borderBottom: `1px solid transparent`,
+    '&:not(:last-child)': {
+      borderTop: 0,
+    },
+    '&::before': {
+      display: 'none',
+    },
+    flexDirection: 'row-reverse',
+    '& .MuiAccordionSummary-expandIconWrapper': {
+      transform: 'rotate(90deg)',
+      color:'inherit'
+    },
+    '& .MuiAccordionSummary-content': {
+        margin:'0px',
+        marginLeft: theme.spacing(1),      
+    },    
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+    padding: theme.spacing(0),
+    backgroundColor:'transparent',
+    '& .Mui-expanded' : {
+        backgroundColor:'transparent'
+    }
+}));
+
+export function DetalleRequerimiento(){   
     const { meses } = Constants()
-    const { request } = useRequest()
-    const [ isOpen, setisOpoen ] = useState(false)
-    const handleOpenDetail = () => {         
-        setisOpoen(!isOpen)        
-    }    
+    const { request } = useRequest()    
+    
     return(        
-        <Accordion open={isOpen} icon={<Icon open={isOpen} pos="absolute top-[8px] left-2" />} className="sticky top-0 z-10 dark:bg-[#323130] bg-stone-100 border-b dark:border-[#353535] border-stone-300 max-h-[40vh] overflow-auto">
-            <AccordionHeader
-            onClick={handleOpenDetail} 
-            className={`${defaultTheme.txtc + ' ' + defaultTheme.bgct} ' text-[.7rem] font-bold px-7 truncate py-1 dark:bg-[#444444] hover:dark:bg-[#666666] hover:bg-[#e6f2fa] bg-[#f0f0f0] overflow-hidden`}>
-                Detalle
-            </AccordionHeader>
-            <AccordionBody className="py-0">
+        <Accordion className="z-0 !bg-transparent" slotProps={{ transition: { timeout: 350 } }}>
+            <AccordionSummary                 
+                className={`${'dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4] dark:!bg-stone-600 !bg-stone-300'} ' !text-[.7rem] !font-bold  truncate dark:!bg-[#444444] !bg-[#f0f0f0] !py-1 hover:!dark:bg-[#666666] hover:!bg-[#e6f2fa] overflow-hidden !px-2 !h-7 !min-h-7 !m-0 !border-b`}
+                >Detalle
+            </AccordionSummary>
+            <AccordionDetails className="py-0">
                 <article className="p-3">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         {request === null ? 
@@ -51,7 +94,7 @@ export function DetalleRequerimiento({defaultTheme}){
                         }
                     </div>
                 </article> 
-            </AccordionBody>
+            </AccordionDetails>
         </Accordion>         
     )
 }

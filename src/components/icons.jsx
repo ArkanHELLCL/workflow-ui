@@ -104,7 +104,7 @@ export function Icon({ open, pos }) {
         viewBox="0 0 24 24"
         strokeWidth={3}
         stroke="currentColor"
-        className={`${open ? "" : "-rotate-90"} w-[.8rem] h-[.8rem] transition-transform ${pos} hover:cursor-pointer`}
+        className={`${open ? "" : "rotate-90"} w-[.8rem] h-[.8rem] transition-transform ${pos} hover:cursor-pointer`}
       >
         <g>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />

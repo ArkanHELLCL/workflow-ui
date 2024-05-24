@@ -27,7 +27,7 @@ import { pasos } from "../mocks/pasos.json";
 import { ClickAway } from "../hooks/ClickAway.jsx"; 
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { formulario } from '../mocks/Formulario.json'
+import { formulario } from '../mocks/formulario.json'
 
 const ContentMenu = ({children, title, styles}) => {    
     return (

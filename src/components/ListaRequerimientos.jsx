@@ -10,12 +10,12 @@ import { Spinner } from "./Spinner.jsx";
 
 const Accordion = ({acc, showDiaRef}) => {
     return(
-        <>  {acc.length===0 && (
+        <>  
+            {acc.length===0 && (
                 <div className="text-center flex justify-center h-full align-middle items-center">
                     <span className='text-[#2c87d2] text-xl'>No se encontraron registros</span>
-                </div>
-            
-        )}
+                </div>            
+            )}
             {acc.map((item, index) => (
                 <Suspense key={index} fallback={<Loading />}>
                     <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} />
@@ -28,7 +28,8 @@ const Accordion = ({acc, showDiaRef}) => {
 export default function ListaRequerimientos(){
     const { filters, filterRequest, setFilters } = useFilters() 
     const { filteredRequest } = filterRequest(bandejas)
-    const { requerimientoAccordion } = Accordions(filteredRequest.slice(0,100), filters)    
+    //const { requerimientoAccordion } = Accordions(filteredRequest.slice(0,100), filters)
+    const { requerimientoAccordion } = Accordions(filteredRequest, filters)
     const [acc, setAcc] = useState([])
 
     useEffect(() => {

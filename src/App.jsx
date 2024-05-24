@@ -56,7 +56,7 @@ function App() {
                 </div>
                 <div className="overflow-auto h-full relative pr-2" id="containerRef">
                 
-                  <DetalleRequerimiento defaultTheme={defaultTheme} />              
+                  <DetalleRequerimiento />              
                   <Suspense fallback={<Loading />}>
                     <ListaRequerimientos/>
                   </Suspense>                  
