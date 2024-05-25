@@ -97,14 +97,30 @@ export function OpenIcon(){
     )
 }
 
-export function Icon({ open, pos }) {
+export function Icon() {
     return (
       <svg
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={3}
         stroke="currentColor"
-        className={`${open ? "" : "rotate-90"} w-[.8rem] h-[.8rem] transition-transform ${pos} hover:cursor-pointer`}
+        className={`rotate-180 w-[.8rem] h-[.8rem] transition-transform hover:cursor-pointer`}
+      >
+        <g>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </g>
+      </svg>
+    );
+}
+
+export function IconOpen({ open, pos }) {
+    return (
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={3}
+        stroke="currentColor"
+        className={`${open ? "" : "-rotate-90"} w-[.8rem] h-[.8rem] transition-transform ${pos} hover:cursor-pointer`}
       >
         <g>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />

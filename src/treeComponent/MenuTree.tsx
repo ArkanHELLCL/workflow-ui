@@ -4,7 +4,7 @@ import { useRequest } from '../hooks/useRequest.jsx';
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
 import { Container, Title, Frame, Content } from './styles'
-import { Icon } from '../components/icons.jsx'
+import { IconOpen } from '../components/icons.jsx'
 
 function usePrevious<T>(value: T) {
   const ref = useRef<T>()
@@ -64,7 +64,7 @@ const Tree = React.memo<
       {
         children ? 
             <span onClick={(handleOnClickIcon)} style={style2}>
-              <Icon open={isOpen} pos="relative inline top-[2px] z-10" />
+              <IconOpen open={isOpen} pos="relative inline top-0 z-10" />
             </span>
         : null
       }        
