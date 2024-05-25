@@ -99,7 +99,8 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
         //mensaje de eliminacion de adjunto
     }
 
-    const handlePreview = () => {        
+    const handlePreview = () => {
+        if(selectedMenu.extension === 'docx' || selectedMenu.extension === 'pptx' ||  selectedMenu.extension === 'xlsx') return
         setSelected(selectedMenu)        
         setPreview(true)
         setOpen({open: false, id: ''})
@@ -112,12 +113,14 @@ const MenuAdjuntos = ({open, setOpen, IdMenu, refMenu, handleEliminarClick, setP
             id={IdMenu} 
             ref={refMenu}
             >
-            <ul className='text-[11px]' id="mnuAdjunto">
-                <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] cursor-pointer'>
-                    <div onClick={() => handlePreview()}>
-                        <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' >Vista previa</span>
-                    </div>
-                </li>
+            <ul className='text-[11px]' id="mnuAdjunto">{
+                (selectedMenu.extension !== 'docx' && selectedMenu.extension !== 'pptx' &&  selectedMenu.extension !== 'xlsx') &&            
+                    <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] cursor-pointer'>
+                        <div onClick={() => handlePreview()}>
+                            <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' >Vista previa</span>
+                        </div>
+                    </li>
+                }
                 <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative cursor-pointer'>
                     <span className="absolute top-2 left-3"><OpenFolderIcon styles='w-[18px] h-[18px]'/></span>                    
                     <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Abrir</span>                    
@@ -161,6 +164,7 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
         setSelected(file)
         setSelectedMenu(file)
         setOpen({open: false, id: ''})
+        if(file.extension === 'docx' || file.extension === 'pptx' ||  file.extension === 'xlsx') return
         setPreview(true)        
     }
 
