@@ -12,8 +12,8 @@ const Accordion = ({acc, showDiaRef}) => {
     return(
         <>  
             {acc.length===0 && (
-                <div className="text-center flex justify-center h-full align-middle items-center">
-                    <span className='text-[#2c87d2] text-xl'>No se encontraron registros</span>
+                <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-full w-full">
+                    <span className='text-[#2c87d2] text-xl w-full'>No se encontraron registros</span>
                 </div>            
             )}
             {acc.map((item, index) => (
@@ -33,8 +33,6 @@ export default function ListaRequerimientos(){
     const [acc, setAcc] = useState([])
 
     useEffect(() => {
-        //const acumulate = structuredClone(acc)
-        //acumulate.push(requerimientoAccordion)
         setAcc(requerimientoAccordion)
         setFilters({
             ...filters,

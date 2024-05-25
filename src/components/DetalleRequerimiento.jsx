@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { Icon } from "./icons.jsx";
 import { Constants } from "../constants/const.jsx";
 import { useRequest } from "../hooks/useRequest.jsx";
+import { useFilters } from "../hooks/useFilters.jsx";
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -54,9 +55,11 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export function DetalleRequerimiento(){   
     const { meses } = Constants()
-    const { request } = useRequest()    
+    const { request } = useRequest()
+    const { filters } = useFilters()
     
-    return(        
+    return(
+        filters.totalRequerimientos > 0 &&
         <Accordion className="z-0 !bg-transparent" slotProps={{ transition: { timeout: 350 } }}>
             <AccordionSummary                 
                 className='dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4] !text-[.7rem] !font-bold truncate dark:!bg-[#444444] !bg-[#f0f0f0] !py-1 hover:!dark:bg-[#666666] hover:!bg-[#e6f2fa] overflow-hidden !px-2 !h-7 !min-h-7 !m-0 !border-b'

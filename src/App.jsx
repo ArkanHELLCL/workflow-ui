@@ -23,7 +23,6 @@ function App() {
     return false;
 }
 
-  //HeaderBar blur 252423 
   return (    
       <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
         <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] z-[60] transition-color delay-75" onDragOver={handleNotDragOver}>          
@@ -54,8 +53,7 @@ function App() {
                     <MenuFilters defaultTheme={defaultTheme} />                  
                   </div>
                 </div>
-                <div className="overflow-auto h-full relative pr-2" id="containerRef">
-                
+                <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">
                   <DetalleRequerimiento />              
                   <Suspense fallback={<Loading />}>
                     <ListaRequerimientos/>
