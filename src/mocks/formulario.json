@@ -49,10 +49,10 @@
                "updload":false
             },
             {
-               "id":"prueba.docx",
-               "nombre":"presentacion.docx",
+               "id":"prueba.pptx",
+               "nombre":"presentacion.pptx",
                "extension":"pptx",
-               "url":"./download/prueba.docx",
+               "url":"./download/prueba.pptx",
                "tamano":"21kb",
                "updload":false
             },
@@ -62,6 +62,14 @@
                "extension":"txt",
                "url":"./download/varios.txt",
                "tamano":"6kb",
+               "updload":false
+            },
+            {
+               "id":"prueba.pdf",
+               "nombre":"prueba.pdf",
+               "extension":"pdf",
+               "url":"./download/prueba.pdf",
+               "tamano":"14kb",
                "updload":false
             }
          
