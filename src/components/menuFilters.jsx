@@ -8,7 +8,7 @@ import { flujos } from "../mocks/flujos.json";
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from "../hooks/ClickAway.jsx";
 
-export function MenuFilters({defaultTheme}) {
+export function MenuFilters() {
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
     const [openFilter, sectionFilter] = useState(false);
@@ -129,7 +129,7 @@ export function MenuFilters({defaultTheme}) {
         <div className="relative flex align-middle justify-end z-50 pb-0" ref={ref}>
             <div className="hover:bg-[#f0f0f0] dark:hover:bg-[#444444] mb-[4px] px-2 py-1 z-50">
                 <div className="relative w-full flex z-50">
-                    <label htmlFor={chkFilter} className={`${defaultTheme.txtc} cursor-pointer text-xs flex truncate`}>
+                    <label htmlFor={chkFilter} className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] cursor-pointer text-xs flex truncate'>
                         {
                             flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
                         }
