@@ -4,7 +4,7 @@ import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import { styled } from '@mui/material/styles';
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
@@ -56,7 +56,7 @@ export function MenuTree({ menu, Link}) {
                 items={menu} 
                 defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}
                 slots={{ item: CustomTreeItem }}
-                className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-3'}
+                className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1'}
                 onItemExpansionToggle={handleItemExpansionToggle}
                 onItemFocus={handleItemExpansionToggle}
                 defaultSelectedItems={defaultValue.current}
