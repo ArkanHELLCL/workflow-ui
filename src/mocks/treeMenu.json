@@ -1,0 +1,279 @@
+{
+   "usuario":"lcastillo",
+   "flujos":[
+      {
+         "id":"0",
+         "label":"Bandejas",
+         "description":"Todos los Flujos",
+         "children":[
+            {
+               "id":"be",
+               "label":"De Entrada",
+               "description":"Bandeja de Entrada"              
+            },
+            {
+               "id":"bs",
+               "label":"De Salida",
+               "description":"Bandeja de Salida"            
+            },
+            {
+               "id":"bf",
+               "label":"De Finalizados",
+               "description":"Bandeja de Finalizados"         
+            },
+            {
+               "id":"bo",
+               "label":"De Otros",
+               "description":"Bandeja de Otros"
+            },
+            {
+               "id":"ba",
+               "label":"De Archivados",
+               "description":"Bandeja de Archivados"
+            },
+            {
+               "id":"bn",
+               "label":"De Antiguos",
+               "description":"Bandeja de Antiguos",
+               "children":[
+                  {
+                     "id":"bnc",
+                     "label":"Sistema de Compras",
+                     "description":"Requerimientos Sistema de Compras" 
+                  },
+                  {
+                     "id":"bnw",
+                     "label":"Sistema WorkFlow v1",
+                     "description":"Requerimientos Sistema WorkFlow v1",
+                     "children":[
+                        {
+                           "id":"bnwc",
+                           "label":"Flujo Compras",
+                           "description":"WorkFlow v1 Flujo de Compras"
+                        },
+                        {
+                           "id":"bnwb",
+                           "label":"Flujo Boletas",
+                           "description":"WorkFlow v1 Flujo Boletas de Garantías"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bp",
+               "label":"De Antiguos Pen.",
+               "description":"Bandeja de Antiguos Pendientes"
+            }
+         ]
+      },
+      {
+         "id":"1",
+         "label":"Bandejas",
+         "description":"Compras",
+         "children":[
+            {
+               "id":"be",
+               "label":"De Entrada",
+               "description":"Bandeja de Entrada"              
+            },
+            {
+               "id":"bs",
+               "label":"De Salida",
+               "description":"Bandeja de Salida"               
+            },
+            {
+               "id":"bf",
+               "label":"De Finalizados",
+               "description":"Bandeja de Finalizados"            
+            },
+            {
+               "id":"bo",
+               "label":"De Otros",
+               "description":"Bandeja de Otros"               
+            },
+            {
+               "id":"ba",
+               "label":"De Archivados",
+               "description":"Bandeja de Archivados"               
+            },
+            {
+               "id":"bn",
+               "label":"De Antiguos",
+               "description":"Bandeja de Antiguos",
+               "children":[
+                  {
+                     "id":"bnc",
+                     "label":"Sistema de Compras",
+                     "description":"Requerimientos Sistema de Compras"                
+                  },
+                  {
+                     "id":"bnw",
+                     "label":"Sistema WorkFlow v1",
+                     "description":"Requerimientos Sistema WorkFlow v1",
+                     "children":[
+                        {
+                           "id":"bnwc",
+                           "label":"Flujo Compras",
+                           "description":"WorkFlow v1 Flujo de Compras"
+                        },
+                        {
+                           "id":"bnwb",
+                           "label":"Flujo Boletas",
+                           "description":"WorkFlow v1 Flujo Boletas de Garantías"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "id":"2",
+         "label":"Bandejas",
+         "description":"Boletas de Garantía",
+         "children":[
+            {
+               "id":"be",
+               "label":"De Entrada",
+               "description":"Bandeja de Entrada"
+            },
+            {
+               "id":"bs",
+               "label":"De Salida",
+               "description":"Bandeja de Salida"       
+            },
+            {
+               "id":"bf",
+               "label":"De Finalizados",
+               "description":"Bandeja de Finalizados"               
+            },
+            {
+               "id":"bo",
+               "label":"De Otros",
+               "description":"Bandeja de Otros"               
+            },
+            {
+               "id":"ba",
+               "label":"De Archivados",
+               "description":"Bandeja de Archivados"
+            },
+            {
+               "id":"bn",
+               "label":"De Antiguos",
+               "description":"Bandeja de Antiguos",
+               "children":[
+                  {
+                     "id":"bnc",
+                     "label":"Sistema de Compras",
+                     "description":"Requerimientos Sistema de Compras"                     
+                  },
+                  {
+                     "id":"bnw",
+                     "label":"Sistema WorkFlow v1",
+                     "description":"Requerimientos Sistema WorkFlow v1",
+                     "children":[
+                        {
+                           "id":"bnwc",
+                           "label":"Flujo Compras",
+                           "description":"WorkFlow v1 Flujo de Compras"
+                        },
+                        {
+                           "id":"bnwb",
+                           "label":"Flujo Boletas",
+                           "description":"WorkFlow v1 Flujo Boletas de Garantías"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id":"bp",
+               "label":"De Antiguos Pen.",
+               "description":"Bandeja de Antiguos Pendientes"               
+            }
+         ]
+      },
+      {
+         "id":"4",
+         "label":"Bandejas",
+         "description":"Pagos",
+         "children":[
+            {
+               "id":"be",
+               "label":"De Entrada",
+               "description":"Bandeja de Entrada"               
+            },
+            {
+               "id":"bs",
+               "label":"De Salida",
+               "description":"Bandeja de Salida"           
+            },
+            {
+               "id":"bf",
+               "label":"De Finalizados",
+               "description":"Bandeja de Finalizados"           
+            },
+            {
+               "id":"bo",
+               "label":"De Otros",
+               "description":"Bandeja de Otros"    
+            },
+            {
+               "id":"ba",
+               "label":"De Archivados",
+               "description":"Bandeja de Archivados"
+            }
+         ]
+      }
+   ],    
+    "mantenedores":[
+        {
+            "id":"m",
+            "label":"Mantenedores",
+            "description":"Mantenedor del Sistema",
+            "children":[
+                {
+                    "id":"mu",
+                    "label":"Usuarios",
+                    "description":"Mantenedor de Usuarios"
+                },
+                {
+                    "id":"ml",
+                    "label":"Lista Desplegables",
+                    "description":"Mantenedor de Lista Desplegables"
+                },
+                {
+                    "id":"mi",
+                    "label":"Items Lista Desplegables",
+                    "description":"Mantenedor de Items Lista Desplegables"
+                }
+            ]
+        }
+     ],
+    "reportes":[
+        {
+            "id":"r",
+            "label":"Reportes",
+            "description":"Reporte del Sistema",
+            "children": [
+                {
+                    "id":"ru",
+                    "label":"Dias por Usuario",
+                    "description":"Reporte de Dias por Usuario"
+                },
+                {
+                    "id":"ro",
+                    "label":"Ordenes de Compras",
+                    "description":"Reporte de Ordenes de Compras"
+                },
+                {
+                    "id":"rp",
+                    "label":"Seguimiento de Pagos",
+                    "description":"Reporte de Seguimiento de Pagos"
+                }
+            ]
+        }
+    ]
+}
+       
