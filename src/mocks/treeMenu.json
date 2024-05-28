@@ -5,56 +5,67 @@
          "id":"0",
          "label":"Bandejas",
          "description":"Todos los Flujos",
+         "url":"/bandejas",
          "children":[
             {
                "id":"be",
                "label":"De Entrada",
-               "description":"Bandeja de Entrada"              
+               "description":"Bandeja de Entrada",
+               "url":"/bandejas/entrada"
             },
             {
                "id":"bs",
                "label":"De Salida",
-               "description":"Bandeja de Salida"            
+               "description":"Bandeja de Salida",
+               "url":"/bandejas/salida"
             },
             {
                "id":"bf",
                "label":"De Finalizados",
-               "description":"Bandeja de Finalizados"         
+               "description":"Bandeja de Finalizados",
+               "url":"/bandejas/finalizados"        
             },
             {
                "id":"bo",
                "label":"De Otros",
-               "description":"Bandeja de Otros"
+               "description":"Bandeja de Otros",
+               "url":"/bandejas/otros"
             },
             {
                "id":"ba",
                "label":"De Archivados",
-               "description":"Bandeja de Archivados"
+               "description":"Bandeja de Archivados",
+               "url":"/bandejas/archivados"
             },
             {
                "id":"bn",
                "label":"De Antiguos",
                "description":"Bandeja de Antiguos",
+               "url":"/bandejas/antiguos",
                "children":[
                   {
                      "id":"bnc",
                      "label":"Sistema de Compras",
-                     "description":"Requerimientos Sistema de Compras" 
+                     "description":"Requerimientos Sistema de Compras",
+                     "url":"/bandejas/antiguos/compras"
                   },
                   {
                      "id":"bnw",
                      "label":"Sistema WorkFlow v1",
                      "description":"Requerimientos Sistema WorkFlow v1",
+                     "url":"/bandejas/antiguos/workflowv1",
                      "children":[
                         {
                            "id":"bnwc",
                            "label":"Flujo Compras",
-                           "description":"WorkFlow v1 Flujo de Compras"
+                           "description":"WorkFlow v1 Flujo de Compras",
+                           "url":"/bandejas/antiguos/workflowv1/compras"
                         },
                         {
                            "id":"bnwb",
                            "label":"Flujo Boletas",
-                           "description":"WorkFlow v1 Flujo Boletas de Garantías"
+                           "description":"WorkFlow v1 Flujo Boletas de Garantías",
+                           "url":"/bandejas/antiguos/workflowv1/boletas"
                         }
                      ]
                   }
@@ -63,7 +74,8 @@
             {
                "id":"bp",
                "label":"De Antiguos Pen.",
-               "description":"Bandeja de Antiguos Pendientes"
+               "description":"Bandeja de Antiguos Pendientes",
+               "url":"/bandejas/antiguos-pendientes"
             }
          ]
       },

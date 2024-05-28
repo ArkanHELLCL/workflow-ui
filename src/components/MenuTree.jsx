@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import { styled } from '@mui/material/styles';
+
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { useRef } from 'react';
@@ -14,7 +16,6 @@ const getAllItemsWithChildrenItemIds = (menu) => {
         //item.children.forEach(registerItemId);            //Para mas de un nivel
       }
     };
-  
     menu.forEach(registerItemId);
   
     return itemIds;
@@ -44,22 +45,24 @@ export function MenuTree({ menu, Link}) {
         setFilters((prevState) => ({
             ...prevState,         
             itemIdSelected: itemId,
+            //pathItemSelected: path,
             filterSearch: itemId === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
             loading: itemId !== filters.itemIdSelected ? true : false
         }))    
-        setRequest(null)    
+        setRequest(null)                
     };
+
     const defaultValue=useRef(filters.itemIdSelected)
     
     return (
-            <RichTreeView 
-                items={menu} 
-                defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}
-                slots={{ item: CustomTreeItem }}
-                className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1'}
-                onItemExpansionToggle={handleItemExpansionToggle}
-                onItemFocus={handleItemExpansionToggle}
-                defaultSelectedItems={defaultValue.current}
-              />
+        <RichTreeView 
+            items={menu} 
+            defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}
+            slots={{ item: CustomTreeItem }}
+            className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1'}
+            onItemExpansionToggle={handleItemExpansionToggle}
+            onItemFocus={handleItemExpansionToggle}
+            defaultSelectedItems={defaultValue.current}
+        />              
     );
 }

@@ -8,7 +8,7 @@ export function FiltersProvider({ children }) {
         flujo: 0,
         orderDes: true,
         filter: 1,        
-        itemIdSelected: 'be',        
+        itemIdSelected: 'be',
         totalRequerimientos: 0,
         totalSintomar: 0,
         totalVencidos: 0,
@@ -20,7 +20,8 @@ export function FiltersProvider({ children }) {
         minStep : null,
         filterSearch: 1,
         stringSearch: '',
-        loading: true        
+        loading: true,
+        pathItemSelected: '/bandejas/entrada'
     });
     
     return (

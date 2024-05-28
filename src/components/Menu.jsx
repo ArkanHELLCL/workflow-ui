@@ -6,8 +6,15 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./Loading.jsx";
 import { Spinner } from "./Spinner.jsx";
+import { pathItemSelected } from "../hooks/PathSelectedItem.jsx";
 
-const MenuArbol = ({menuBandejas, mnuMantenedores, mnuReportes, Link}) => {
+
+const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes, Link}) => {
+    let result
+    pathItemSelected(menuBandejas,itemIdSelected) ? result = pathItemSelected(menuBandejas,itemIdSelected) : pathItemSelected(mnuMantenedores,itemIdSelected) ? result = pathItemSelected(mnuMantenedores,itemIdSelected) : pathItemSelected(mnuReportes,itemIdSelected) ? result = pathItemSelected(mnuReportes,itemIdSelected) : result = null
+
+    window.history.pushState({},'',result)    
+    
     return(
         <>
             <MenuTree menu={menuBandejas} Link={Link}/>
@@ -39,7 +46,7 @@ export default function Menu({Link}){
         setmnuMantenedores(mantenedores)
         setmnuReportes(reportes)
         setLoading(false);
-    },[filters.flujo])            
+    },[filters.flujo])
     
     return (
         <div className="px-4 h-full relative">            
@@ -49,7 +56,7 @@ export default function Menu({Link}){
                 </span>
             ) : (
                 <Suspense fallback={<Loading />}>
-                    <MenuArbol menuBandejas={menuBandejas} mnuMantenedores={mnuMantenedores} mnuReportes={mnuReportes} Link={Link}/>
+                    <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={menuBandejas} mnuMantenedores={mnuMantenedores} mnuReportes={mnuReportes} Link={Link}/>
                 </Suspense>
             )}                            
         </div>
