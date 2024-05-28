@@ -9,7 +9,7 @@ import { Spinner } from "./Spinner.jsx";
 import { pathItemSelected } from "../hooks/PathSelectedItem.jsx";
 
 
-const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes, Link}) => {
+const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes}) => {
     let result
     pathItemSelected(menuBandejas,itemIdSelected) ? result = pathItemSelected(menuBandejas,itemIdSelected) : pathItemSelected(mnuMantenedores,itemIdSelected) ? result = pathItemSelected(mnuMantenedores,itemIdSelected) : pathItemSelected(mnuReportes,itemIdSelected) ? result = pathItemSelected(mnuReportes,itemIdSelected) : result = null
 
@@ -17,15 +17,15 @@ const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes, 
     
     return(
         <>
-            <MenuTree menu={menuBandejas} Link={Link}/>
+            <MenuTree menu={menuBandejas}/>
             {
             mantenedores.length > 0 ?
-                <MenuTree menu={mnuMantenedores} Link={Link}/>
+                <MenuTree menu={mnuMantenedores}/>
             : null
             }
             {
             reportes.length > 0 ?
-                <MenuTree menu={mnuReportes} Link={Link}/>
+                <MenuTree menu={mnuReportes}/>
             : null
             }
         </>
@@ -56,7 +56,7 @@ export default function Menu({Link}){
                 </span>
             ) : (
                 <Suspense fallback={<Loading />}>
-                    <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={menuBandejas} mnuMantenedores={mnuMantenedores} mnuReportes={mnuReportes} Link={Link}/>
+                    <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={menuBandejas} mnuMantenedores={mnuMantenedores} mnuReportes={mnuReportes}/>
                 </Suspense>
             )}                            
         </div>

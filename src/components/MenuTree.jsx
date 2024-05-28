@@ -37,7 +37,7 @@ const CustomTreeItem = styled(TreeItem)({
     }
 });
 
-export function MenuTree({ menu, Link}) { 
+export function MenuTree({ menu}) { 
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
 
