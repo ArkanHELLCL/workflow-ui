@@ -6,13 +6,23 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./Loading.jsx";
 import { Spinner } from "./Spinner.jsx";
+import { EncontrarDescripcionPorId } from "./EncontrarDescripcionPorId.jsx";
 
 const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes}) => {
-    let result = menuBandejas.find((item) => item === itemIdSelected)
+    /*let result = menuBandejas.find((item) => item === itemIdSelected)
+    console.log(itemIdSelected, menuBandejas,result)
     if(!result) result = mnuMantenedores.find((item) => item === itemIdSelected)
-    if(!result) result = mnuReportes.find((item) => item === itemIdSelected)
+    if(!result) result = mnuReportes.find((item) => item === itemIdSelected)*/
 
-    window.history.pushState({},'',result)    
+    let url = ''
+    itemIdSelected.charAt(0) === "b" ? url = EncontrarDescripcionPorId(itemIdSelected, menuBandejas[0]).url :
+    itemIdSelected.charAt(0) === "m" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuMantenedores[0]).url :
+    itemIdSelected.charAt(0) === "r" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuReportes[0]).url : url = EncontrarDescripcionPorId('be', menuBandejas[0]).url 
+        
+    //const obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
+    
+
+    window.history.pushState({},'',url)    
     
     return(
         <>

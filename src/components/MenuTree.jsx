@@ -42,7 +42,6 @@ export function MenuTree({ menu}) {
 
     //const handleItemExpansionToggle = (event, itemId, isExpanded) => {
     const handleItemExpansionToggle = (event, itemId) => {
-        //if(parseInt(itemId)>=0) itemId = 'b'
         setFilters((prevState) => ({
             ...prevState,         
             itemIdSelected: itemId,

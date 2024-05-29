@@ -4,6 +4,7 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
 import * as menu from "../mocks/treeMenu.json"
+import { EncontrarDescripcionPorId } from "./EncontrarDescripcionPorId.jsx";
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);
@@ -45,32 +46,7 @@ export default function Footer() {
 
         setClickVencidos(false)
         setClickPorVencer(false)
-    }
-    
-    //
-    function encontrarDescripcionPorId(id, objeto) {        
-        // Verificar si el objeto tiene el atributo "id" y si coincide con el ID buscado
-        if (objeto.id === id) {
-            return objeto.description;
-        }
-        
-        // Verificar si el objeto tiene hijos
-        if (objeto.children) {
-            // Iterar sobre los hijos
-            for (let hijo of objeto.children) {
-                // Llamar recursivamente a la función para cada hijo
-                let descripcion = encontrarDescripcionPorId(id, hijo);
-                // Si se encuentra la descripción, retornarla
-                if (descripcion) {
-                    return descripcion;
-                }
-            }
-        }
-        
-        // Si no se encuentra el ID, retornar null
-        return null;
-    }    
-    //
+    }        
 
     let tipoABuscar = ''
     filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "bandejas" :
@@ -78,12 +54,7 @@ export default function Footer() {
     filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas"    
         
     const obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
-    console.log(obj)
-
-    let descripcion = null
-    if(filters.itemIdSelected.length===1) descripcion = obj.description;
-
-    if(!descripcion) descripcion = encontrarDescripcionPorId(filters.itemIdSelected, obj); 
+    const descripcion = EncontrarDescripcionPorId(filters.itemIdSelected, obj).description;
 
     const handleNotDragOver = (event) => {
         event.preventDefault();
