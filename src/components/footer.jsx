@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
-import * as menu from "../mocks/menu.json"
+import * as menu from "../mocks/treeMenu.json"
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);
@@ -46,28 +46,45 @@ export default function Footer() {
         setClickVencidos(false)
         setClickPorVencer(false)
     }
-
-    // Función para buscar la descripción a partir del id
-    let elementos = []
-    function buscarDescripcionPorId(tipo, idBuscar) {        
-        if(tipo==='bandejas'){            
-            elementos = menu.flujos.filter(item => item.id === filters.flujo)[0].bandejas
-        }else{
-            elementos = menu[tipo] || [];
+    
+    //
+    function encontrarDescripcionPorId(id, objeto) {        
+        // Verificar si el objeto tiene el atributo "id" y si coincide con el ID buscado
+        if (objeto.id === id) {
+            return objeto.description;
         }
-        if(idBuscar.length===1) return tipo[0].toUpperCase() + tipo.slice(1);
+        
+        // Verificar si el objeto tiene hijos
+        if (objeto.children) {
+            // Iterar sobre los hijos
+            for (let hijo of objeto.children) {
+                // Llamar recursivamente a la función para cada hijo
+                let descripcion = encontrarDescripcionPorId(id, hijo);
+                // Si se encuentra la descripción, retornarla
+                if (descripcion) {
+                    return descripcion;
+                }
+            }
+        }
+        
+        // Si no se encuentra el ID, retornar null
+        return null;
+    }    
+    //
 
-        
-        const elementoEncontrado = elementos.find((elemento) => elemento.id === idBuscar);
-        return elementoEncontrado ? elementoEncontrado.descripcion : null;
-    }
-        
     let tipoABuscar = ''
     filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "bandejas" :
     filters.itemIdSelected.charAt(0) === "m" ? tipoABuscar = "mantenedores" :
     filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas"    
         
-    const descripcion = buscarDescripcionPorId(tipoABuscar, filters.itemIdSelected); 
+    const obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
+    console.log(obj)
+
+    let descripcion = null
+    if(filters.itemIdSelected.length===1) descripcion = obj.description;
+
+    if(!descripcion) descripcion = encontrarDescripcionPorId(filters.itemIdSelected, obj); 
+
     const handleNotDragOver = (event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
@@ -115,7 +132,7 @@ export default function Footer() {
                     </>
                     : <div>
                         <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                        <span className="text-green-500">{elementos.length}</span>                
+                        <span className="text-green-500">{obj.children.length}</span>                
                     </div>
                 }
         </footer>

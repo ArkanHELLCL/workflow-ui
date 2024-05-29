@@ -14,7 +14,7 @@ import { InBoxIcon, ReportIcon, TableIcon } from "./icons";
     window.dispatchEvent(navigationEvent)
 }*/
 
-export default function SideBar({Link}){
+export default function SideBar(){
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
     const [postitionTo, setPositionTo] = useState(0)
@@ -86,19 +86,19 @@ export default function SideBar({Link}){
             <animated.span className="w-[2px] h-[36px] absolute left-[6px] bg-[#58b8fe] mt-[2px]" style={menuSelected}></animated.span>
                 <ul className="flex flex-col w-full h-full gap-2">
                     <li>
-                        <Link to="/bandejas"  className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "b" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2`} onClick={()=>handleClickItem("b")} id={bandejaId} title="Bandejas"> 
+                        <div className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "b" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2 cursor-pointer`} onClick={()=>handleClickItem("b")} id={bandejaId} title="Bandejas"> 
                             <InBoxIcon styles="w-6 h-6" strokeWidth=""/>   
-                        </Link>             
+                        </div>             
                     </li>
                     <li>
-                        <Link to="/mantenedores" className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "m" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2`} onClick={()=>handleClickItem("m")} id={mantenedorId} title="Mantenedores">
+                        <div className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "m" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2 cursor-pointer`} onClick={()=>handleClickItem("m")} id={mantenedorId} title="Mantenedores">
                             <TableIcon styles="w-6 h-6" strokeWidth=""/>
-                        </Link>
+                        </div>
                     </li>                        
                     <li>
-                        <Link to="/reportes" className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "r" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2`} onClick={()=>handleClickItem("r")} id={reporteId} title="Reportes">
+                        <div className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "r" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2 cursor-pointer`} onClick={()=>handleClickItem("r")} id={reporteId} title="Reportes">
                             <ReportIcon styles="w-7 h-7" strokeWidth={2}/>
-                        </Link>                        
+                        </div>                        
                     </li>
                 </ul>
         </section>

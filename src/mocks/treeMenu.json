@@ -1,328 +1,524 @@
 {
    "usuario":"lcastillo",
+   "sistema":"WorkFlow",
+   "version":"4.0.0",
+   "servicio":"Subsecretaría del Trabajo",
+   "anio":"2024",
+   "modulo":"Menu TreeView",
    "flujos":[
       {
-         "id":"0",
-         "label":"Bandejas",
-         "description":"Todos los Flujos",
-         "url":"/bandejas",
-         "children":[
+         "id":"0",         
+         "description":"Todos los Flujos",      
+         "bandejas":[
             {
-               "id":"be",
-               "label":"De Entrada",
-               "description":"Bandeja de Entrada",
-               "url":"/bandejas/entrada"
-            },
-            {
-               "id":"bs",
-               "label":"De Salida",
-               "description":"Bandeja de Salida",
-               "url":"/bandejas/salida"
-            },
-            {
-               "id":"bf",
-               "label":"De Finalizados",
-               "description":"Bandeja de Finalizados",
-               "url":"/bandejas/finalizados"        
-            },
-            {
-               "id":"bo",
-               "label":"De Otros",
-               "description":"Bandeja de Otros",
-               "url":"/bandejas/otros"
-            },
-            {
-               "id":"ba",
-               "label":"De Archivados",
-               "description":"Bandeja de Archivados",
-               "url":"/bandejas/archivados"
-            },
-            {
-               "id":"bn",
-               "label":"De Antiguos",
-               "description":"Bandeja de Antiguos",
-               "url":"/bandejas/antiguos",
+               "id":"b",
+               "label":"Bandejas",
+               "description":"Bandejas de todos los flujos",
+               "url":"/bandejas",
                "children":[
-                  {
-                     "id":"bnc",
-                     "label":"Sistema de Compras",
-                     "description":"Requerimientos Sistema de Compras",
-                     "url":"/bandejas/antiguos/compras"
-                  },
-                  {
-                     "id":"bnw",
-                     "label":"Sistema WorkFlow v1",
-                     "description":"Requerimientos Sistema WorkFlow v1",
-                     "url":"/bandejas/antiguos/workflowv1",
-                     "children":[
-                        {
-                           "id":"bnwc",
-                           "label":"Flujo Compras",
-                           "description":"WorkFlow v1 Flujo de Compras",
-                           "url":"/bandejas/antiguos/workflowv1/compras"
-                        },
-                        {
-                           "id":"bnwb",
-                           "label":"Flujo Boletas",
-                           "description":"WorkFlow v1 Flujo Boletas de Garantías",
-                           "url":"/bandejas/antiguos/workflowv1/boletas"
-                        }
-                     ]
-                  }
-               ]
-            },
-            {
-               "id":"bp",
-               "label":"De Antiguos Pen.",
-               "description":"Bandeja de Antiguos Pendientes",
-               "url":"/bandejas/antiguos-pendientes"
+                     {
+                        "id":"be",
+                        "label":"De Entrada",
+                        "description":"Bandeja de Entrada",
+                        "url":"/bandejas/entrada"
+                     },
+                     {
+                        "id":"bs",
+                        "label":"De Salida",
+                        "description":"Bandeja de Salida",
+                        "url":"/bandejas/salida"
+                     },
+                     {
+                        "id":"bf",
+                        "label":"De Finalizados",
+                        "description":"Bandeja de Finalizados",
+                        "url":"/bandejas/finalizados"        
+                     },
+                     {
+                        "id":"bo",
+                        "label":"De Otros",
+                        "description":"Bandeja de Otros",
+                        "url":"/bandejas/otros"
+                     },
+                     {
+                        "id":"ba",
+                        "label":"De Archivados",
+                        "description":"Bandeja de Archivados",
+                        "url":"/bandejas/archivados"
+                     },
+                     {
+                        "id":"bn",
+                        "label":"De Antiguos",
+                        "description":"Bandeja de Antiguos",
+                        "url":"/bandejas/antiguos",
+                        "children":[
+                           {
+                              "id":"bnc",
+                              "label":"Sistema de Compras",
+                              "description":"Requerimientos Sistema de Compras",
+                              "url":"/bandejas/antiguos/compras"
+                           },
+                           {
+                              "id":"bnw",
+                              "label":"Sistema WorkFlow v1",
+                              "description":"Requerimientos Sistema WorkFlow v1",
+                              "url":"/bandejas/antiguos/workflowv1",
+                              "children":[
+                                 {
+                                    "id":"bnwc",
+                                    "label":"Flujo Compras",
+                                    "description":"WorkFlow v1 Flujo de Compras",
+                                    "url":"/bandejas/antiguos/workflowv1/compras"
+                                 },
+                                 {
+                                    "id":"bnwb",
+                                    "label":"Flujo Boletas",
+                                    "description":"WorkFlow v1 Flujo Boletas de Garantías",
+                                    "url":"/bandejas/antiguos/workflowv1/boletas"
+                                 }
+                              ]
+                           }
+                        ]
+                     },
+                     {
+                        "id":"bp",
+                        "label":"De Antiguos Pen.",
+                        "description":"Bandeja de Antiguos Pendientes",
+                        "url":"/bandejas/antiguos-pendientes"
+                     }
+                  ]
             }
-         ]
-      },
-      {
-         "id":"1",
-         "label":"Bandejas",
-         "description":"Compras",
-         "url":"/bandejas",
-         "children":[
+         ],
+         "mantenedores":[
             {
-               "id":"be",
-               "label":"De Entrada",
-               "description":"Bandeja de Entrada",
-               "url":"/bandejas/entrada"              
-            },
-            {
-               "id":"bs",
-               "label":"De Salida",
-               "description":"Bandeja de Salida",
-               "url":"/bandejas/salida"               
-            },
-            {
-               "id":"bf",
-               "label":"De Finalizados",
-               "description":"Bandeja de Finalizados",
-               "url":"/bandejas/finalizados"            
-            },
-            {
-               "id":"bo",
-               "label":"De Otros",
-               "description":"Bandeja de Otros",
-               "url":"/bandejas/otros"              
-            },
-            {
-               "id":"ba",
-               "label":"De Archivados",
-               "description":"Bandeja de Archivados",
-               "url":"/bandejas/archivados"               
-            },
-            {
-               "id":"bn",
-               "label":"De Antiguos",
-               "description":"Bandeja de Antiguos",
-               "url":"/bandejas/antiguos",
+               "id":"m",
+               "label":"Mantenedores",
+               "description":"Mantenedores de todos los flujos",
+               "url":"/mantenedores",
                "children":[
-                  {
-                     "id":"bnc",
-                     "label":"Sistema de Compras",
-                     "description":"Requerimientos Sistema de Compras",
-                     "url":"/bandejas/antiguos/compras"                
-                  },
-                  {
-                     "id":"bnw",
-                     "label":"Sistema WorkFlow v1",
-                     "description":"Requerimientos Sistema WorkFlow v1",
-                     "url":"/bandejas/workflowv1",
-                     "children":[
-                        {
-                           "id":"bnwc",
-                           "label":"Flujo Compras",
-                           "description":"WorkFlow v1 Flujo de Compras",
-                           "url":"/bandejas/workflowv1/compras"
-                        },
-                        {
-                           "id":"bnwb",
-                           "label":"Flujo Boletas",
-                           "description":"WorkFlow v1 Flujo Boletas de Garantías",
-                           "url":"/bandejas/workflowv1/boletas"
-                        }
-                     ]
-                  }
+                     {
+                        "id":"mu",
+                        "label":"Usuarios",
+                        "description":"Mantenedor de Usuarios",
+                        "url":"/mantenedores/usuarios"
+                     },
+                     {
+                        "id":"ml",
+                        "label":"Lista Desplegables",
+                        "description":"Mantenedor de Lista Desplegables",
+                        "url":"/mantenedores/lista-desplegable"
+                     },
+                     {
+                        "id":"mi",
+                        "label":"Items Lista Desplegables",
+                        "description":"Mantenedor de Items Lista Desplegables",
+                        "url":"/mantenedores/item-lista-desplegable"
+                     }
+               ]
+            }
+         ],
+         "reportes":[
+            {
+               "id":"r",
+               "label":"Reportes",
+               "description":"Reportes de todos los flujos",
+               "url":"/reportes",
+               "children": [
+                     {
+                        "id":"ru",
+                        "label":"Dias por Usuario",
+                        "description":"Reporte de Dias por Usuario",
+                        "url":"/reportes/dias-por-usuario"
+                     },
+                     {
+                        "id":"ro",
+                        "label":"Ordenes de Compras",
+                        "description":"Reporte de Ordenes de Compras",
+                        "url":"/reportes/ordenes-de-compras"
+                     },
+                     {
+                        "id":"rp",
+                        "label":"Seguimiento de Pagos",
+                        "description":"Reporte de Seguimiento de Pagos",
+                        "url":"/reportes/seguimiento-de-pagos"
+                     }
                ]
             }
          ]
       },
       {
-         "id":"2",
-         "label":"Bandejas",
-         "description":"Boletas de Garantía",
-         "url":"/bandejas",
-         "children":[
+         "id":"1",         
+         "description":"Flujo de Compras",         
+         "bandejas":[
             {
-               "id":"be",
-               "label":"De Entrada",
-               "description":"Bandeja de Entrada",
-               "url":"/bandejas/entrada"
-            },
-            {
-               "id":"bs",
-               "label":"De Salida",
-               "description":"Bandeja de Salida" ,
-               "url":"/bandejas/salida"      
-            },
-            {
-               "id":"bf",
-               "label":"De Finalizados",
-               "description":"Bandeja de Finalizados",
-               "url":"/bandejas/finalizados"              
-            },
-            {
-               "id":"bo",
-               "label":"De Otros",
-               "description":"Bandeja de Otros",
-               "url":"/bandejas/otros"               
-            },
-            {
-               "id":"ba",
-               "label":"De Archivados",
-               "description":"Bandeja de Archivados",
-               "url":"/bandejas/archivados"
-            },
-            {
-               "id":"bn",
-               "label":"De Antiguos",
-               "description":"Bandeja de Antiguos",
-               "url":"/bandejas/antiguos",
+               "id":"b",
+               "label":"Bandejas",
+               "description":"Bandejas de Compras",
+               "url":"/bandejas",
                "children":[
-                  {
-                     "id":"bnc",
-                     "label":"Sistema de Compras",
-                     "description":"Requerimientos Sistema de Compras",
-                     "url":"/bandejas/antiguos/compras"                     
-                  },
-                  {
-                     "id":"bnw",
-                     "label":"Sistema WorkFlow v1",
-                     "description":"Requerimientos Sistema WorkFlow v1",
-                     "url":"/bandejas/antiguos/workflowv1",
-                     "children":[
-                        {
-                           "id":"bnwc",
-                           "label":"Flujo Compras",
-                           "description":"WorkFlow v1 Flujo de Compras",
-                           "url":"/bandejas/antiguos/workflowv1/compras"
-                        },
-                        {
-                           "id":"bnwb",
-                           "label":"Flujo Boletas",
-                           "description":"WorkFlow v1 Flujo Boletas de Garantías",
-                           "url":"/bandejas/antiguos/workflowv1/boletas"
-                        }
-                     ]
-                  }
-               ]
-            },
+                     {
+                        "id":"be",
+                        "label":"De Entrada",
+                        "description":"Bandeja de Entrada",
+                        "url":"/bandejas/entrada"              
+                     },
+                     {
+                        "id":"bs",
+                        "label":"De Salida",
+                        "description":"Bandeja de Salida",
+                        "url":"/bandejas/salida"               
+                     },
+                     {
+                        "id":"bf",
+                        "label":"De Finalizados",
+                        "description":"Bandeja de Finalizados",
+                        "url":"/bandejas/finalizados"            
+                     },
+                     {
+                        "id":"bo",
+                        "label":"De Otros",
+                        "description":"Bandeja de Otros",
+                        "url":"/bandejas/otros"              
+                     },
+                     {
+                        "id":"ba",
+                        "label":"De Archivados",
+                        "description":"Bandeja de Archivados",
+                        "url":"/bandejas/archivados"               
+                     },
+                     {
+                        "id":"bn",
+                        "label":"De Antiguos",
+                        "description":"Bandeja de Antiguos",
+                        "url":"/bandejas/antiguos",
+                        "children":[
+                           {
+                              "id":"bnc",
+                              "label":"Sistema de Compras",
+                              "description":"Requerimientos Sistema de Compras",
+                              "url":"/bandejas/antiguos/compras"                
+                           },
+                           {
+                              "id":"bnw",
+                              "label":"Sistema WorkFlow v1",
+                              "description":"Requerimientos Sistema WorkFlow v1",
+                              "url":"/bandejas/workflowv1",
+                              "children":[
+                                 {
+                                    "id":"bnwc",
+                                    "label":"Flujo Compras",
+                                    "description":"WorkFlow v1 Flujo de Compras",
+                                    "url":"/bandejas/workflowv1/compras"
+                                 },
+                                 {
+                                    "id":"bnwb",
+                                    "label":"Flujo Boletas",
+                                    "description":"WorkFlow v1 Flujo Boletas de Garantías",
+                                    "url":"/bandejas/workflowv1/boletas"
+                                 }
+                              ]
+                           }
+                        ]
+                     }
+                  ]               
+            }
+         ],
+         "mantenedores":[
             {
-               "id":"bp",
-               "label":"De Antiguos Pen.",
-               "description":"Bandeja de Antiguos Pendientes",
-               "url":"/bandejas/antiguos-pendientes"               
+               "id":"m",
+               "label":"Mantenedores",
+               "description":"Mantenedores de Compras",
+               "url":"/mantenedores",
+               "children":[
+                     {
+                        "id":"mu",
+                        "label":"Usuarios",
+                        "description":"Mantenedor de Usuarios",
+                        "url":"/mantenedores/usuarios"
+                     },
+                     {
+                        "id":"ml",
+                        "label":"Lista Desplegables",
+                        "description":"Mantenedor de Lista Desplegables",
+                        "url":"/mantenedores/lista-desplegable"
+                     },
+                     {
+                        "id":"mi",
+                        "label":"Items Lista Desplegables",
+                        "description":"Mantenedor de Items Lista Desplegables",
+                        "url":"/mantenedores/item-lista-desplegable"
+                     }
+               ]
+            }
+         ],
+         "reportes":[
+            {
+               "id":"r",
+               "label":"Reportes",
+               "description":"Reportes de Compras",
+               "url":"/reportes",
+               "children": [
+                     {
+                        "id":"ru",
+                        "label":"Dias por Usuario",
+                        "description":"Reporte de Dias por Usuario",
+                        "url":"/reportes/dias-por-usuario"
+                     },
+                     {
+                        "id":"ro",
+                        "label":"Ordenes de Compras",
+                        "description":"Reporte de Ordenes de Compras",
+                        "url":"/reportes/ordenes-de-compras"
+                     },
+                     {
+                        "id":"rp",
+                        "label":"Seguimiento de Pagos",
+                        "description":"Reporte de Seguimiento de Pagos",
+                        "url":"/reportes/seguimiento-de-pagos"
+                     }
+               ]
             }
          ]
       },
       {
-         "id":"4",
-         "label":"Bandejas",
-         "description":"Pagos",
-         "url":"/bandejas",
-         "children":[
+         "id":"2",         
+         "description":"Flujo Boletas de Garantía",         
+         "bandejas":[
             {
-               "id":"be",
-               "label":"De Entrada",
-               "description":"Bandeja de Entrada",
-               "url":"/bandejas/entrada"               
-            },
+               "id":"b",
+               "label":"Bandejas",
+               "description":"Bandejas de Boletas de Garantía",
+               "url":"/bandejas",
+               "children":[
+                     {
+                        "id":"be",
+                        "label":"De Entrada",
+                        "description":"Bandeja de Entrada",
+                        "url":"/bandejas/entrada"
+                     },
+                     {
+                        "id":"bs",
+                        "label":"De Salida",
+                        "description":"Bandeja de Salida" ,
+                        "url":"/bandejas/salida"      
+                     },
+                     {
+                        "id":"bf",
+                        "label":"De Finalizados",
+                        "description":"Bandeja de Finalizados",
+                        "url":"/bandejas/finalizados"              
+                     },
+                     {
+                        "id":"bo",
+                        "label":"De Otros",
+                        "description":"Bandeja de Otros",
+                        "url":"/bandejas/otros"               
+                     },
+                     {
+                        "id":"ba",
+                        "label":"De Archivados",
+                        "description":"Bandeja de Archivados",
+                        "url":"/bandejas/archivados"
+                     },
+                     {
+                        "id":"bn",
+                        "label":"De Antiguos",
+                        "description":"Bandeja de Antiguos",
+                        "url":"/bandejas/antiguos",
+                        "children":[
+                           {
+                              "id":"bnc",
+                              "label":"Sistema de Compras",
+                              "description":"Requerimientos Sistema de Compras",
+                              "url":"/bandejas/antiguos/compras"                     
+                           },
+                           {
+                              "id":"bnw",
+                              "label":"Sistema WorkFlow v1",
+                              "description":"Requerimientos Sistema WorkFlow v1",
+                              "url":"/bandejas/antiguos/workflowv1",
+                              "children":[
+                                 {
+                                    "id":"bnwc",
+                                    "label":"Flujo Compras",
+                                    "description":"WorkFlow v1 Flujo de Compras",
+                                    "url":"/bandejas/antiguos/workflowv1/compras"
+                                 },
+                                 {
+                                    "id":"bnwb",
+                                    "label":"Flujo Boletas",
+                                    "description":"WorkFlow v1 Flujo Boletas de Garantías",
+                                    "url":"/bandejas/antiguos/workflowv1/boletas"
+                                 }
+                              ]
+                           }
+                        ]
+                     },
+                     {
+                        "id":"bp",
+                        "label":"De Antiguos Pen.",
+                        "description":"Bandeja de Antiguos Pendientes",
+                        "url":"/bandejas/antiguos-pendientes"               
+                     }
+                  ]
+            }
+         ],
+         "mantenedores":[
             {
-               "id":"bs",
-               "label":"De Salida",
-               "description":"Bandeja de Salida",
-               "url":"/bandejas/salida"           
-            },
+               "id":"m",
+               "label":"Mantenedores",
+               "description":"Mantenedores de Boletas de Garantías",
+               "url":"/mantenedores",
+               "children":[
+                     {
+                        "id":"mu",
+                        "label":"Usuarios",
+                        "description":"Mantenedor de Usuarios",
+                        "url":"/mantenedores/usuarios"
+                     },
+                     {
+                        "id":"ml",
+                        "label":"Lista Desplegables",
+                        "description":"Mantenedor de Lista Desplegables",
+                        "url":"/mantenedores/lista-desplegable"
+                     },
+                     {
+                        "id":"mi",
+                        "label":"Items Lista Desplegables",
+                        "description":"Mantenedor de Items Lista Desplegables",
+                        "url":"/mantenedores/item-lista-desplegable"
+                     }
+               ]
+            }
+         ],
+         "reportes":[
             {
-               "id":"bf",
-               "label":"De Finalizados",
-               "description":"Bandeja de Finalizados",
-               "url":"/bandejas/finalizados"           
-            },
+               "id":"r",
+               "label":"Reportes",
+               "description":"Reportes de Boletas de Garantías",
+               "url":"/reportes",
+               "children": [
+                     {
+                        "id":"ru",
+                        "label":"Dias por Usuario",
+                        "description":"Reporte de Dias por Usuario",
+                        "url":"/reportes/dias-por-usuario"
+                     },
+                     {
+                        "id":"ro",
+                        "label":"Ordenes de Compras",
+                        "description":"Reporte de Ordenes de Compras",
+                        "url":"/reportes/ordenes-de-compras"
+                     },
+                     {
+                        "id":"rp",
+                        "label":"Seguimiento de Pagos",
+                        "description":"Reporte de Seguimiento de Pagos",
+                        "url":"/reportes/seguimiento-de-pagos"
+                     }
+               ]
+            }
+         ]
+      },
+      {
+         "id":"4",         
+         "description":"Flujo de Pagos",
+         "bandejas":[
             {
-               "id":"bo",
-               "label":"De Otros",
-               "description":"Bandeja de Otros",
-               "url":"/bandejas/otros"    
-            },
+               "id":"b",
+               "label":"Bandejas",
+               "description":"Bandejas de Pagos",
+               "url":"/bandejas",
+               "children":[
+                  {
+                     "id":"be",
+                     "label":"De Entrada",
+                     "description":"Bandeja de Entrada",
+                     "url":"/bandejas/entrada"               
+                  },
+                  {
+                     "id":"bs",
+                     "label":"De Salida",
+                     "description":"Bandeja de Salida",
+                     "url":"/bandejas/salida"           
+                  },
+                  {
+                     "id":"bf",
+                     "label":"De Finalizados",
+                     "description":"Bandeja de Finalizados",
+                     "url":"/bandejas/finalizados"           
+                  },
+                  {
+                     "id":"bo",
+                     "label":"De Otros",
+                     "description":"Bandeja de Otros",
+                     "url":"/bandejas/otros"    
+                  },
+                  {
+                     "id":"ba",
+                     "label":"De Archivados",
+                     "description":"Bandeja de Archivados",
+                     "url":"/bandejas/archivados"
+                  }
+               ]
+            }
+         ],
+         "mantenedores":[
             {
-               "id":"ba",
-               "label":"De Archivados",
-               "description":"Bandeja de Archivados",
-               "url":"/bandejas/archivados"
+               "id":"m",
+               "label":"Mantenedores",
+               "description":"Mantenedores de Pagos",
+               "url":"/mantenedores",
+               "children":[
+                     {
+                        "id":"mu",
+                        "label":"Usuarios",
+                        "description":"Mantenedor de Usuarios",
+                        "url":"/mantenedores/usuarios"
+                     },
+                     {
+                        "id":"ml",
+                        "label":"Lista Desplegables",
+                        "description":"Mantenedor de Lista Desplegables",
+                        "url":"/mantenedores/lista-desplegable"
+                     },
+                     {
+                        "id":"mi",
+                        "label":"Items Lista Desplegables",
+                        "description":"Mantenedor de Items Lista Desplegables",
+                        "url":"/mantenedores/item-lista-desplegable"
+                     }
+               ]
+            }
+         ],
+         "reportes":[
+            {
+               "id":"r",
+               "label":"Reportes",
+               "description":"Reportes de Pagos",
+               "url":"/reportes",
+               "children": [
+                     {
+                        "id":"ru",
+                        "label":"Dias por Usuario",
+                        "description":"Reporte de Dias por Usuario",
+                        "url":"/reportes/dias-por-usuario"
+                     },
+                     {
+                        "id":"ro",
+                        "label":"Ordenes de Compras",
+                        "description":"Reporte de Ordenes de Compras",
+                        "url":"/reportes/ordenes-de-compras"
+                     },
+                     {
+                        "id":"rp",
+                        "label":"Seguimiento de Pagos",
+                        "description":"Reporte de Seguimiento de Pagos",
+                        "url":"/reportes/seguimiento-de-pagos"
+                     }
+               ]
             }
          ]
       }
-   ],    
-    "mantenedores":[
-        {
-            "id":"m",
-            "label":"Mantenedores",
-            "description":"Mantenedor del Sistema",
-            "url":"/mantenedores",
-            "children":[
-                {
-                    "id":"mu",
-                    "label":"Usuarios",
-                    "description":"Mantenedor de Usuarios",
-                    "url":"/mantenedores/usuarios"
-                },
-                {
-                    "id":"ml",
-                    "label":"Lista Desplegables",
-                    "description":"Mantenedor de Lista Desplegables",
-                    "url":"/mantenedores/lista-desplegable"
-                },
-                {
-                    "id":"mi",
-                    "label":"Items Lista Desplegables",
-                    "description":"Mantenedor de Items Lista Desplegables",
-                    "url":"/mantenedores/item-lista-desplegable"
-                }
-            ]
-        }
-     ],
-    "reportes":[
-        {
-            "id":"r",
-            "label":"Reportes",
-            "description":"Reporte del Sistema",
-            "url":"/reportes",
-            "children": [
-                {
-                    "id":"ru",
-                    "label":"Dias por Usuario",
-                    "description":"Reporte de Dias por Usuario",
-                    "url":"/reportes/dias-por-usuario"
-                },
-                {
-                    "id":"ro",
-                    "label":"Ordenes de Compras",
-                    "description":"Reporte de Ordenes de Compras",
-                    "url":"/reportes/ordenes-de-compras"
-                },
-                {
-                    "id":"rp",
-                    "label":"Seguimiento de Pagos",
-                    "description":"Reporte de Seguimiento de Pagos",
-                    "url":"/reportes/seguimiento-de-pagos"
-                }
-            ]
-        }
-    ]
+   ]      
 }
-       

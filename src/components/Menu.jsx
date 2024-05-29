@@ -1,17 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { MenuTree } from "./MenuTree.jsx"
-import { flujos, mantenedores, reportes } from "../mocks/treeMenu.json";
+import { flujos } from "../mocks/treeMenu.json";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./Loading.jsx";
 import { Spinner } from "./Spinner.jsx";
-import { pathItemSelected } from "../hooks/PathSelectedItem.jsx";
-
 
 const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes}) => {
-    let result
-    pathItemSelected(menuBandejas,itemIdSelected) ? result = pathItemSelected(menuBandejas,itemIdSelected) : pathItemSelected(mnuMantenedores,itemIdSelected) ? result = pathItemSelected(mnuMantenedores,itemIdSelected) : pathItemSelected(mnuReportes,itemIdSelected) ? result = pathItemSelected(mnuReportes,itemIdSelected) : result = null
+    let result = menuBandejas.find((item) => item === itemIdSelected)
+    if(!result) result = mnuMantenedores.find((item) => item === itemIdSelected)
+    if(!result) result = mnuReportes.find((item) => item === itemIdSelected)
 
     window.history.pushState({},'',result)    
     
@@ -19,12 +18,12 @@ const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes})
         <>
             <MenuTree menu={menuBandejas}/>
             {
-            mantenedores.length > 0 ?
+            menuBandejas.length > 0 ?
                 <MenuTree menu={mnuMantenedores}/>
             : null
             }
             {
-            reportes.length > 0 ?
+            mnuReportes.length > 0 ?
                 <MenuTree menu={mnuReportes}/>
             : null
             }
@@ -32,16 +31,17 @@ const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes})
     )
 }
 
-export default function Menu({Link}){    
-    const { filters } = useFilters()    
-
+export default function Menu(){    
+    const { filters } = useFilters()
     const [loading, setLoading] = useState(true);
     const [menuBandejas, setMenuBandejas] = useState([])
     const [mnuMantenedores, setmnuMantenedores] = useState([])
     const [mnuReportes, setmnuReportes] = useState([])
 
-    useEffect(() => {
-        const bandejas = flujos.filter(item => parseInt(item.id) === filters.flujo)
+    useEffect(() => {        
+        const bandejas = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas
+        const mantenedores = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].mantenedores
+        const reportes = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].reportes
         setMenuBandejas(bandejas)
         setmnuMantenedores(mantenedores)
         setmnuReportes(reportes)

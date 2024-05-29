@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useFilters } from "../hooks/useFilters.jsx";
 import { BagIcon, BillIcon, HomeIcon, InBoxIcon, PayIcon } from "./icons";
-import * as menu from "../mocks/menu.json"
+import * as menu from "../mocks/treeMenu.json"
 
 function encontrarNombresPadres(idObjeto, objetivoId) {
     if(objetivoId === "m" || objetivoId === 'undefined' || objetivoId === null) return ["Inicio"]

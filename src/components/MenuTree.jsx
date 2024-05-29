@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
-import { useRef } from 'react';
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
@@ -41,7 +40,9 @@ export function MenuTree({ menu}) {
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
 
-    const handleItemExpansionToggle = (event, itemId, isExpanded) => {
+    //const handleItemExpansionToggle = (event, itemId, isExpanded) => {
+    const handleItemExpansionToggle = (event, itemId) => {
+        //if(parseInt(itemId)>=0) itemId = 'b'
         setFilters((prevState) => ({
             ...prevState,         
             itemIdSelected: itemId,
@@ -51,8 +52,6 @@ export function MenuTree({ menu}) {
         }))    
         setRequest(null)                
     };
-
-    const defaultValue=useRef(filters.itemIdSelected)
     
     return (
         <RichTreeView 
@@ -62,7 +61,7 @@ export function MenuTree({ menu}) {
             className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1'}
             onItemExpansionToggle={handleItemExpansionToggle}
             onItemFocus={handleItemExpansionToggle}
-            defaultSelectedItems={defaultValue.current}
+            selectedItems={filters.itemIdSelected}            
         />              
     );
 }

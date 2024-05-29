@@ -7,6 +7,7 @@ export function useFilters() {
     const filterRequest = (request) => {
         let filteredRequest = []
         const bandeja = request.filter(item => item?.id === filters.itemIdSelected)
+        console.log(request,bandeja)
         const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []        
 
         filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   

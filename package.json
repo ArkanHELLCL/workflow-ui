@@ -24,7 +24,6 @@
     "react-hook-form": "7.51.5",
     "react-hook-form-persist": "3.0.0",
     "react-number-format": "5.3.4",
-    "react-router-dom": "6.23.1",
     "react-select": "5.8.0"
   },
   "devDependencies": {
