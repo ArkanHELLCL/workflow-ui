@@ -20,8 +20,7 @@ export function FiltersProvider({ children }) {
         minStep : null,
         filterSearch: 1,
         stringSearch: '',
-        loading: true,
-        pathItemSelected: '/bandejas/entrada'
+        loading: true        
     });
     
     return (
