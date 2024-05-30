@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, lazy } from "react";
+import { Suspense, lazy} from "react";
 import Header from './components/Header.jsx'
 import MenuFilters from "./components/menuFilters.jsx";
 import Flujos from "./components/flujos.jsx";
@@ -50,7 +51,7 @@ const Main = ({handleNotDragOver}) =>{
   )
 }
 
-function App() {
+function App() { 
   const handleNotDragOver = (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "none";

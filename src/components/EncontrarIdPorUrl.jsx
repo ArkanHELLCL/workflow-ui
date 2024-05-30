@@ -1,7 +1,7 @@
-function encontrarDescripcionPorId(id, objeto) {        
+function encontrarIdPorUrl(url, objeto) {
     // Verificar si el objeto tiene el atributo "id" y si coincide con el ID buscado
-    if (objeto.id === id) {
-        return {"description": objeto.description, "url": objeto.url};
+    if (objeto.url === url) {
+        return {"description": objeto.description, "id": objeto.id};
     }
     
     // Verificar si el objeto tiene hijos
@@ -9,7 +9,7 @@ function encontrarDescripcionPorId(id, objeto) {
         // Iterar sobre los hijos
         for (let hijo of objeto.children) {
             // Llamar recursivamente a la función para cada hijo
-            let result = encontrarDescripcionPorId(id, hijo);
+            let result = encontrarIdPorUrl(url, hijo);
             // Si se encuentra la descripción, retornarla
             if (result) {
                 return result
@@ -22,7 +22,6 @@ function encontrarDescripcionPorId(id, objeto) {
 }    
 //
 
-export default function EncontrarDescripcionPorId(id, objeto){    
-    if(id.length===1) return {"description": objeto.description, "url": objeto.url};
-    return encontrarDescripcionPorId(id, objeto)
+export default function EncontrarIdPorUrl(url, objeto){    
+    return encontrarIdPorUrl(url, objeto)
 }

@@ -4,7 +4,7 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { QuestionIcon, WarningIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
 import * as menu from "../mocks/treeMenu.json"
-import { EncontrarDescripcionPorId } from "./EncontrarDescripcionPorId.jsx";
+import EncontrarDescripcionPorId from "./EncontrarDescripcionPorId.jsx";
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);

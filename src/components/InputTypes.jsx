@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { IconForm } from "./icons"
+import { IconForm } from "./icons.jsx"
 import { useForm, Controller } from 'react-hook-form';
 import useFormPersist from 'react-hook-form-persist'
 import AsyncSelect from 'react-select/async';
