@@ -53,7 +53,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     }
 }));
 
-export function DetalleRequerimiento(){   
+export default function DetalleRequerimiento(){   
     const { meses } = Constants()
     const { request } = useRequest()
     const { filters } = useFilters()

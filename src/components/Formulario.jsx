@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { formulario } from '../mocks/formulario.json'
-import { useRequest } from '../hooks/useRequest';
+import { Suspense, lazy, useEffect, useId, useState } from "react";
+import { useRequest } from '../hooks/useRequest.jsx';
 import { Constants } from "../constants/const.jsx";
-import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons';
-import { useEffect, useId, useState } from 'react';
+import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons.jsx';
 import { useSpring, animated } from "@react-spring/web";
-import { ClickAway } from '../hooks/ClickAway';
-import { DocPreview } from './DocPreview.jsx';
+import { ClickAway } from '../hooks/ClickAway.jsx';
 import { InputTypes } from './InputTypes.jsx';
+import Loading from "./Loading.jsx";
+
+const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
 
 const Buttons = ({grupos, idGroups, frmname}) => {
     //console.log("btns")
@@ -206,7 +207,7 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
     )
 }
 
-export function Formulario(){
+export default function Formulario(){
     const { request, setRequest } = useRequest()
     const { dias } = Constants()
     const idForm = useId()
@@ -214,7 +215,22 @@ export function Formulario(){
     
     const [selected, setSelected] = useState(null)    
 
-    const [form, setForm] = useState(formulario)
+    const [form, setForm] = useState({})
+    useEffect(() => {        
+        import('../mocks/formulario.json').then(data => {            
+            const formulario = data.formulario
+            setForm(formulario)
+            const { REQ_Adjuntos } = formulario;
+            const { FOR_Botones } = formulario;
+            const { FOR_Campos } = formulario;
+            
+            setAdjuntos(REQ_Adjuntos)
+            //setBotones(FOR_Botones)
+            setCampos(FOR_Campos)
+            setGrupos(FOR_Botones.map(grupo => grupo))
+        })
+    },[request])
+    
     const [adjuntos, setAdjuntos] = useState([]);
     //const [botones, setBotones] = useState(null);
     const [campos, setCampos] = useState(null);
@@ -226,17 +242,17 @@ export function Formulario(){
     
     const formWFv3 = JSON.parse(window.localStorage.getItem('formWFv3')) || []    
 
-    useEffect(() => {
-        const { REQ_Adjuntos } = formulario;
-        const { FOR_Botones } = formulario;
-        const { FOR_Campos } = formulario;
+    /*useEffect(() => {
+        const { REQ_Adjuntos } = form;
+        const { FOR_Botones } = form;
+        const { FOR_Campos } = form;
 
-        setForm(formulario)
+        setForm(form)
         setAdjuntos(REQ_Adjuntos)
         //setBotones(FOR_Botones)
         setCampos(FOR_Campos)
         setGrupos(FOR_Botones.map(grupo => grupo))
-    },[formulario,request])
+    },[form,request])*/
 
     useEffect(() => {
         selected ?
@@ -336,7 +352,7 @@ export function Formulario(){
                                 <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.request?.ESR_AccionFlujoDatos}</strong></h2>                            
                             </div>
                             <div className='grid text-right leading-tight absolute right-2 top-8'>
-                                <Buttons idGroups={idGroups} grupos={grupos} frmname={formulario.name}/>
+                                <Buttons idGroups={idGroups} grupos={grupos} frmname={form.name}/>
                                 <span className='text-[11px] leading-tight'>{fecha(request?.request?.DRE_FechaEdit, dias)}</span>
                             </div>
                         </div>
@@ -345,7 +361,7 @@ export function Formulario(){
                                 <div className='pt-3 pl-2'>
                                     <img
                                         className='w-14 h-14 rounded-full' 
-                                        src = {formulario.IdEditor_Foto} />
+                                        src = {form.IdEditor_Foto} />
                                 </div>
                                 <div className='grid'>                                
                                     <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt}</span>
@@ -389,7 +405,7 @@ export function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                    <InputTypes name={formulario.name} campos={campos} formWFv3={formWFv3}/>
+                    <InputTypes name={form.name} campos={campos} formWFv3={formWFv3}/>
             }                                                        
             </section>
         )
@@ -404,7 +420,9 @@ export function Formulario(){
                             <DataForm campos={campos}/>
                     }{
                         preview && selected!==null &&
-                            <DocPreview selected={selected} />
+                            <Suspense fallback={<Loading />}>
+                                <LazyDocPreview selected={selected} />
+                            </Suspense>
                     }
                 </div>
             }

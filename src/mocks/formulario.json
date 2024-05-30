@@ -10,7 +10,7 @@
                "nombre":"foto1.jpeg",
                "extension":"jpeg",
                "thumbail":" data:image/jpeg;base64,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",
-               "url":"./download/foto1.jpeg",
+               "url":"http://localhost:5173/download/",
                "tamano":"30kb",
                "updload":false
             },
@@ -19,7 +19,7 @@
                "nombre":"foto2.png",
                "extension":"png",
                "thumbail":" data:image/png;base64,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",
-               "url":"./download/foto2.png",
+               "url":"http://localhost:5173/download/",
                "tamano":"37kb",
                "updload":false
             },
@@ -28,7 +28,7 @@
                "nombre":"foto3.jpg",
                "extension":"jpg",
                "thumbail":" data:image/jpeg;base64,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",
-               "url":"./download/foto3.jpg",
+               "url":"http://localhost:5173/download/",
                "tamano":"2M",
                "updload":false
             },
@@ -36,7 +36,7 @@
                "id":"factura.xlsx",
                "nombre":"factura.xlsx",
                "extension":"xlsx",
-               "url":"./download/factura.xlsx",
+               "url":"http://localhost:5173/download/",
                "tamano":"15kb",
                "updload":false
             },
@@ -44,7 +44,7 @@
                "id":"especificacion_tecnica.docx",
                "nombre":"especificacion_tecnica.docx",
                "extension":"docx",
-               "url":"./download/especificacion_tecnica.docx",
+               "url":"http://localhost:5173/download/",
                "tamano":"23kb",
                "updload":false
             },
@@ -52,7 +52,7 @@
                "id":"prueba.pptx",
                "nombre":"presentacion.pptx",
                "extension":"pptx",
-               "url":"./download/prueba.pptx",
+               "url":"http://localhost:5173/download/",
                "tamano":"21kb",
                "updload":false
             },
@@ -60,7 +60,7 @@
                "id":"varios.txt",
                "nombre":"varios.txt",
                "extension":"txt",
-               "url":"./download/varios.txt",
+               "url":"http://localhost:5173/download/",
                "tamano":"6kb",
                "updload":false
             },
@@ -68,7 +68,7 @@
                "id":"prueba.pdf",
                "nombre":"prueba.pdf",
                "extension":"pdf",
-               "url":"./download/prueba.pdf",
+               "url":"http://localhost:5173/download/",
                "tamano":"14kb",
                "updload":false
             }

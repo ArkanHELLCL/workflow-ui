@@ -8,7 +8,7 @@ import { flujos } from "../mocks/flujos.json";
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from "../hooks/ClickAway.jsx";
 
-export function MenuFilters() {
+export default function MenuFilters() {
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
     const [openFilter, sectionFilter] = useState(false);

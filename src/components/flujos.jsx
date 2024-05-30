@@ -63,7 +63,7 @@ function LstFlujos(){
             )
 }
 
-export function Flujos(){
+export default function Flujos(){
     return (        
         <LstFlujos />        
     )     

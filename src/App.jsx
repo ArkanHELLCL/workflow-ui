@@ -1,23 +1,24 @@
 /* eslint-disable react/prop-types */
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import Header from './components/Header.jsx'
-import { DetalleRequerimiento } from "./components/DetalleRequerimiento.jsx";
-import ListaRequerimientos  from "./components/ListaRequerimientos.jsx";
-import { MenuFilters } from "./components/menuFilters.jsx";
-import { Flujos } from "./components/flujos.jsx";
+import MenuFilters from "./components/menuFilters.jsx";
+import Flujos from "./components/flujos.jsx";
 import Footer from './components/footer.jsx'
 import Menu from './components/Menu.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
-import { Formulario } from "./components/Formulario.jsx";
+
+const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
+const LazyDetalleRequerimiento = lazy(() => import("./components/DetalleRequerimiento.jsx"))
+const LazyListaRequerimientos = lazy(() => import("./components/ListaRequerimientos.jsx"))
 
 const Main = ({handleNotDragOver}) =>{
   return(
     <main className='w-full flex overflow-hidden pl-14 h-full bg-[#faf9f8] dark:bg-transparent'>
       <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[650px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0'>              
-          <Suspense fallback={<Loading />}>            
+          <Suspense fallback={<Loading />}>
             <Menu />
           </Suspense>
         </aside>
@@ -30,10 +31,10 @@ const Main = ({handleNotDragOver}) =>{
                 <MenuFilters />                  
               </div>
             </div>
-            <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">
-              <DetalleRequerimiento />              
+            <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">              
               <Suspense fallback={<Loading />}>
-                <ListaRequerimientos/>
+                <LazyDetalleRequerimiento />
+                <LazyListaRequerimientos/>
               </Suspense>                  
             </div>
         </aside>                      
@@ -41,7 +42,7 @@ const Main = ({handleNotDragOver}) =>{
       <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[300px] h-full overflow-x-hidden relative'>
           <Suspense fallback={<Loading />}>  
-            <Formulario />
+            <LazyFormulario />
           </Suspense>
         </aside>          
       </section>
