@@ -21,7 +21,7 @@ const getAllItemsWithChildrenItemIds = (menu) => {
 
 const CustomTreeItem = styled(TreeItem)({   
     '& .MuiTreeItem-content .MuiTreeItem-label' :{
-        fontSize:'14px',
+        fontSize:'13px',
         fontWeight: 'lighter',
         paddingLeft:'0px',
         lineHeight: '1',
