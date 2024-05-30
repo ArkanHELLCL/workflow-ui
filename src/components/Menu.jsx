@@ -67,7 +67,6 @@ export default function Menu(){
                 ...filters,
                 itemIdSelected:idCurrentPath
             })
-            console.log(filters.itemIdSelected)
         }
     },[])
     
