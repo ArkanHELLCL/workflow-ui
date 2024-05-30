@@ -314,7 +314,7 @@ const InputType = ({campo, classInput, register, errors, control,formWFv3}) => {
     })
 }*/
 
-export function InputTypes({name, campos, formWFv3}){    
+export default function InputTypes({name, campos, formWFv3}){    
     const {        
         handleSubmit,
         register,

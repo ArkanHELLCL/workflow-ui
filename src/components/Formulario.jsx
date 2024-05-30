@@ -6,10 +6,11 @@ import { Constants } from "../constants/const.jsx";
 import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons.jsx';
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAway } from '../hooks/ClickAway.jsx';
-import { InputTypes } from './InputTypes.jsx';
+//import InputTypes from './InputTypes.jsx';
 import Loading from "./Loading.jsx";
 
 const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
+const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
 
 const Buttons = ({grupos, idGroups, frmname}) => {
     //console.log("btns")
@@ -405,11 +406,13 @@ export default function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                    <InputTypes name={form.name} campos={campos} formWFv3={formWFv3}/>
+                    <Suspense fallback={<Loading />}>
+                        <LazyInputTypes name={form.name} campos={campos} formWFv3={formWFv3}/>
+                    </Suspense>
             }                                                        
             </section>
         )
-    }
+    }    
     
     return(
         <>
@@ -417,7 +420,9 @@ export default function Formulario(){
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
                     <HeaderForm request={request}/>{
                         !preview &&
+                        <Suspense fallback={<Loading />}>
                             <DataForm campos={campos}/>
+                        </Suspense>
                     }{
                         preview && selected!==null &&
                             <Suspense fallback={<Loading />}>
