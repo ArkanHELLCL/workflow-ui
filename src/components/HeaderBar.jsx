@@ -3,7 +3,7 @@
 import { CheckIcon, HelpIcon, Icon, MailIcon, ReloadIcon, SearchIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
 import { useSpring, animated } from "@react-spring/web";
-import { ClickAway } from "../hooks/ClickAway.jsx";
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useEffect, useId, useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { InputDebounce } from "./InputDebounce";
@@ -22,7 +22,9 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     let widthMenuSearch=0;
     let nameItemSelected = null;
 
-    const { ref:refSearch } = ClickAway(setOpenSearch);
+    const handleClickAway = () => {
+        setOpenSearch(false);
+    };    
     
     if(filterSearch === 1){
         widthMenuSearch = 68;
@@ -91,89 +93,92 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         event.dataTransfer.dropEffect = "none";
         return false;
     }
-    
+        
     return(
-        <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} ref={refSearch} onDragOver={handleNotDragOver}>{
-            openSearch &&            
-                <animated.div
-                    className={`bg-[#363636] h-full absolute w-[${widthMenuSearch}px]`}
-                    style={searchAnimation} 
-                    >
-                        <span className={`pl-3 pr-5 relative text-xs w-[${widthMenuSearch}px]`}>
-                            {nameItemSelected}
-                            <span  onClick={() => setopenMenuSearch(!openMenuSearch)}>
-                            <Icon open={true} pos="absolute top-[3px] right-1"/>
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} onDragOver={handleNotDragOver}>{
+                openSearch &&            
+                    <animated.div
+                        className={`bg-[#363636] h-full absolute w-[${widthMenuSearch}px]`}
+                        style={searchAnimation} 
+                        >
+                            <span className={`pl-3 pr-5 relative text-xs w-[${widthMenuSearch}px]`}>
+                                {nameItemSelected}
+                                <span  onClick={() => setopenMenuSearch(!openMenuSearch)}>
+                                <Icon open={true} pos="absolute top-[3px] right-1"/>
+                                </span>
                             </span>
-                        </span>
-                </animated.div>
-            }
-            <animated.div style={menuAppear} className={`absolute dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 w-50 h-fit overflow-hidden z-50 ${filterSearch === 1 ? '-left-[100px]' : '-left-[128px]'}`}>
-                <div className="h-full border dark:border-[#8a8886] border-[#e1dfdd]">
-                    <ul className="py-2" >
-                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-1" onClick={() => HandleFilterSearch(2)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 2 ? <CheckIcon /> : null}</span>Todos los buzones</li>
-                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-2" onClick={() => HandleFilterSearch(1)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 1 ? <CheckIcon /> : null}</span>Buzón actual</li>
-                    </ul>
-                </div>
-            </animated.div> 
-            <form className="flex relative" onSubmit={HandleSubmit}>
-                <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
-                    <SearchIcon />
-                </span>                
-                <InputDebounce 
-                    type="text" 
-                    name="search" 
-                    classname="w-[400px] h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
-                    placehold="Buscar"
-                    onfocus={(e) => e.target.placeholder = ""}
-                    onblur={(e) => HandleOnBlur(e)} 
-                    onclick={() => setOpenSearch(true)}
-                    _id={inputId}
-                    setFilters={setFilters}
-                    value={value}
-                    setValue={setValue}
-                />
-            </form>
-        </div>
+                    </animated.div>
+                }
+                <animated.div style={menuAppear} className={`absolute dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 w-50 h-fit overflow-hidden z-50 ${filterSearch === 1 ? '-left-[100px]' : '-left-[128px]'}`}>
+                    <div className="h-full border dark:border-[#8a8886] border-[#e1dfdd]">
+                        <ul className="py-2" >
+                            <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-1" onClick={() => HandleFilterSearch(2)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 2 ? <CheckIcon /> : null}</span>Todos los buzones</li>
+                            <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-2" onClick={() => HandleFilterSearch(1)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 1 ? <CheckIcon /> : null}</span>Buzón actual</li>
+                        </ul>
+                    </div>
+                </animated.div> 
+                <form className="flex relative" onSubmit={HandleSubmit}>
+                    <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
+                        <SearchIcon />
+                    </span>                
+                    <InputDebounce 
+                        type="text" 
+                        name="search" 
+                        classname="w-[400px] h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
+                        placehold="Buscar"
+                        onfocus={(e) => e.target.placeholder = ""}
+                        onblur={(e) => HandleOnBlur(e)} 
+                        onclick={() => setOpenSearch(true)}
+                        _id={inputId}
+                        setFilters={setFilters}
+                        value={value}
+                        setValue={setValue}
+                    />
+                </form>
+            </div>
+        </ClickAwayListener>
     )
 }
 
-function UserBar({menuAppear, reference, setOpen, open}) {    
-    return(       
-        <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center z-20 hover:cursor-pointer`} ref={reference} onClick={() => setOpen(!open)} title="Datos del perfil">
-            
-               
-                    <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
-                    <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-               
-                       
-            <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`}>                
-                <div className="h-full w-full dark:bg-[#262626] bg-[#ffffff] dark:border-[#737373] border-[#949494] border">
-                    <div className="w-full flex justify-end">
-                        <span className="flex border-[2px] dark:border-white border-black p-4 w-fit dark:text-white text-black text-xs hover:cursor-pointer dark:hover:bg-[#363636] hover:bg-[#d2d2d2]">Cerrar sesión</span>
-                    </div>
-                    <div className="flex justify-center items-center gap-5 h-fit p-4">
-                        <div className={`rounded-full w-[100px] h-[100px]`}>
-                            <img src={user.USR_Photo} className={`rounded-full h-full w-full`} />
+function UserBar({menuAppear, setOpen, open}) {    
+    const handleClickAway = () => {
+        setOpen(false);
+    };
+    return(
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 h-full absolute right-5 flex items-center z-20 hover:cursor-pointer`} onClick={() => setOpen(!open)} title="Datos del perfil">                           
+                <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
+                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
+                <animated.div style={menuAppear} className={`flex absolute z-[60] overflow-hidden right-0 top-[30px]`}>                
+                    <div className="h-full w-full dark:bg-[#262626] bg-[#ffffff] dark:border-[#737373] border-[#949494] border">
+                        <div className="w-full flex justify-end">
+                            <span className="flex border-[2px] dark:border-white border-black p-4 w-fit dark:text-white text-black text-xs hover:cursor-pointer dark:hover:bg-[#363636] hover:bg-[#d2d2d2]">Cerrar sesión</span>
                         </div>
-                        <div className="flex flex-col h-fit max-w-[260px]">
-                            <span className="text-xl font-semibold truncate dark:text-white text-[#262626]">{user.USR_Nombre}</span>
-                            <span className="text-xs truncate pb-2 dark:text-white text-[#262626]">{user.USR_Mail}</span>
-                            <span className="text-xs truncate text-sky-600">{user.PER_Nombre}</span>
-                            <span className="text-xs truncate text-sky-600">{user.DEP_Descripcion}</span>
+                        <div className="flex justify-center items-center gap-5 h-fit p-4">
+                            <div className={`rounded-full w-[100px] h-[100px]`}>
+                                <img src={user.USR_Photo} className={`rounded-full h-full w-full`} />
+                            </div>
+                            <div className="flex flex-col h-fit max-w-[260px]">
+                                <span className="text-xl font-semibold truncate dark:text-white text-[#262626]">{user.USR_Nombre}</span>
+                                <span className="text-xs truncate pb-2 dark:text-white text-[#262626]">{user.USR_Mail}</span>
+                                <span className="text-xs truncate text-sky-600">{user.PER_Nombre}</span>
+                                <span className="text-xs truncate text-sky-600">{user.DEP_Descripcion}</span>
+                            </div>
+                        </div>
+                        <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] hover:bg-[#d2d2d2] bg-[#f3f3f3] border-t border-[#d9d9d9] hover:dark:bg-[#505050] hover:cursor-pointer">
+                            <div className="flex items-center gap-3">
+                                <span className="relative text-[#313131] dark:text-white">
+                                    <MailIcon strokeWidth=".75" styles="w-10 h-10" /> 
+                                    <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</span>                               
+                                </span>                            
+                                <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
+                            </div>                        
                         </div>
                     </div>
-                    <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] hover:bg-[#d2d2d2] bg-[#f3f3f3] border-t border-[#d9d9d9] hover:dark:bg-[#505050] hover:cursor-pointer">
-                        <div className="flex items-center gap-3">
-                            <span className="relative text-[#313131] dark:text-white">
-                                <MailIcon strokeWidth=".75" styles="w-10 h-10" /> 
-                                <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</span>                               
-                            </span>                            
-                            <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
-                        </div>                        
-                    </div>
-                </div>
-            </animated.div>
-        </div>       
+                </animated.div>            
+            </div> 
+            </ClickAwayListener>      
     )
 }
 
@@ -188,9 +193,9 @@ export default function HeaderBar() {
         height: `${open ? height : 0}` + 'px'        
     });        
 
-    const HandleOpenUser = () => {
+    /*const HandleOpenUser = () => {
         setOpen(!open);        
-    }
+    }*/
 
     const HandleReload = () =>{
         /*setFilters(prevState => ({
@@ -200,7 +205,7 @@ export default function HeaderBar() {
         //console.log("si")*/ 
     }
 
-    const { ref:refUser } = ClickAway(setOpen);
+    //const { ref:refUser } = ClickAway(setOpen);
     return(
         <div className="flex items-center h-full px-4 text-white relative z-50">
             <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload} title="Recargar">
@@ -210,7 +215,7 @@ export default function HeaderBar() {
                 <HelpIcon />
             </span>
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>
-            <UserBar menuAppear={menuAppear} reference={refUser} setOpen={HandleOpenUser} open={open}/>
+            <UserBar menuAppear={menuAppear} setOpen={setOpen} open={open}/>
         </div>
     )
 }

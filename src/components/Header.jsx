@@ -24,7 +24,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { flujos } from "../mocks/flujos.json";
 import { informes } from "../mocks/informes.json";
 import { pasos } from "../mocks/pasos.json";
-import { ClickAway } from "../hooks/ClickAway.jsx"; 
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
@@ -42,26 +42,30 @@ const ContentMenu = ({children, title, styles}) => {
 
 const IconMenu = ({children, title, submneu, id, request}) => {
     const [open, setOpen] = useState(false);    
-    const { ref } = ClickAway(setOpen);
+    const handleClickAway = () => {
+        setOpen(false);
+    };
 
     return (
         <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] px-1 relative" onClick={() => setOpen(!open)}>
             <div className="h-11 w-11 flex items-center justify-center">
                 {children}
             </div>
-            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap" ref={ref}>
-                {title.map((item, index) => (
-                    <span key={index}>{item}</span>
-                    ))
-                }
-                {submneu ? 
-                <>
-                    <CloseIcon styles='w-4 h-4' />
-                    <SubMenu id={id} open={open} request={request}/>
-                </>:
-                    <span className="h-3">&nbsp;</span>
-                }
-            </div>            
+            <ClickAwayListener onClickAway={handleClickAway}>
+                <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                    {title.map((item, index) => (
+                        <span key={index}>{item}</span>
+                        ))
+                    }
+                    {submneu ? 
+                    <>
+                        <CloseIcon styles='w-4 h-4' />
+                        <SubMenu id={id} open={open} request={request}/>
+                    </>:
+                        <span className="h-3">&nbsp;</span>
+                    }
+                </div>
+            </ClickAwayListener>
         </div>
     )
 }

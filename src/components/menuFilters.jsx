@@ -6,7 +6,7 @@ import { CaretDownIcon, ArrowDownIcon, ArrowUpIcon, CheckIcon, CheckSmallIcon } 
 import { flujos } from "../mocks/flujos.json";
 
 import { useSpring, animated } from "@react-spring/web";
-import { ClickAway } from "../hooks/ClickAway.jsx";
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 export default function MenuFilters() {
     const { filters, setFilters } = useFilters()
@@ -85,9 +85,10 @@ export default function MenuFilters() {
             return 'Paso más alto en la parte inferior'
         }
         return 'Sin orden'
-    }
-        
-    const { ref } = ClickAway(sectionFilter);
+    }    
+    const handleClickAway = () => {
+        sectionFilter(false);
+    };
     const MenuFilter = () => {        
         return (                   
             <animated.div style={menuAppear} className={` absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 right-8 w-72 h-fit overflow-hidden`}>
@@ -126,26 +127,28 @@ export default function MenuFilters() {
     }
     
     return (
-        <div className="relative flex align-middle justify-end z-50 pb-0" ref={ref}>
-            <div className="hover:bg-[#f0f0f0] dark:hover:bg-[#444444] mb-[4px] px-2 py-1 z-50">
-                <div className="relative w-full flex z-50">
-                    <label htmlFor={chkFilter} className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] cursor-pointer text-xs flex truncate'>
-                        {
-                            flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
-                        }
-                        <span className="pl-1 pt-1">
-                            <CaretDownIcon />
-                        </span>                     
-                    </label>                              
-                    <input type="checkbox" id={chkFilter} className="hidden" onClick={() => sectionFilter((cur) => !cur)} />
-                </div>                
-            </div>            
-            <MenuFilter />            
-            <div className="pl-1 flex items-center mb-1">
-                <span className="cursor-pointer dark:hover:bg-[#444444] hover:bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" onClick={() => handleSetOrder(!filters.orderDes)}>
-                    {filters.orderDes ? <ArrowUpIcon /> : <ArrowDownIcon />}
-                </span>
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="relative flex align-middle justify-end z-50 pb-0">
+                <div className="hover:bg-[#f0f0f0] dark:hover:bg-[#444444] mb-[4px] px-2 py-1 z-50">
+                    <div className="relative w-full flex z-50">
+                        <label htmlFor={chkFilter} className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] cursor-pointer text-xs flex truncate'>
+                            {
+                                flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
+                            }
+                            <span className="pl-1 pt-1">
+                                <CaretDownIcon />
+                            </span>                     
+                        </label>                              
+                        <input type="checkbox" id={chkFilter} className="hidden" onClick={() => sectionFilter((cur) => !cur)} />
+                    </div>                
+                </div>            
+                <MenuFilter />            
+                <div className="pl-1 flex items-center mb-1">
+                    <span className="cursor-pointer dark:hover:bg-[#444444] hover:bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" onClick={() => handleSetOrder(!filters.orderDes)}>
+                        {filters.orderDes ? <ArrowUpIcon /> : <ArrowDownIcon />}
+                    </span>
+                </div>
             </div>
-        </div>
+        </ClickAwayListener>
     )
 }

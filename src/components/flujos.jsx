@@ -5,7 +5,7 @@ import { useRequest } from "../hooks/useRequest.jsx";
 import { flujos } from "../mocks/flujos.json";
 import { CaretDownIcon, CheckSmallIcon } from "./icons";
 import { useSpring, animated } from "@react-spring/web";
-import { ClickAway } from "../hooks/ClickAway.jsx";
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 function LstFlujos(){
     const { filters, setFilters } = useFilters()
@@ -35,10 +35,13 @@ function LstFlujos(){
         config: { duration: 100 }
     });
 
-    const { ref } = ClickAway(()=>setOpenFlujos(false));
+    const handleClickAway = () => {
+        setOpenFlujos(false);
+    };
 
     return (
-            <div className="relative" ref={ref}>
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="relative">
                 <div className="w-auto flex z-50 truncate">
                     <span>Flujo : </span>
                     <label htmlFor={chkFlujos} className='hover:border-sky-600 text-sky-600 border-b-2 ml-2 flex cursor-pointer border-transparent'>{
@@ -60,7 +63,8 @@ function LstFlujos(){
                     </ul>
                 </animated.div>
             </div>
-            )
+        </ClickAwayListener>
+    )
 }
 
 export default function Flujos(){
