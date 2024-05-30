@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { CheckIcon, HelpIcon, Icon, MailIcon, ReloadIcon, SearchIcon } from "./icons";
+import { CheckIcon, HelpIcon, IconOpen, MailIcon, ReloadIcon, SearchIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
@@ -55,7 +55,8 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
 
     const menuAppear = useSpring({        
         opacity:1,
-        height: `${openMenuSearch ? width : 0}` + 'px',        
+        height: `${openMenuSearch ? width : 0}` + 'px',
+        config: { duration: 100 }
     });
 
     useEffect(() => {        
@@ -105,7 +106,7 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
                             <span className={`pl-3 pr-5 relative text-xs w-[${widthMenuSearch}px]`}>
                                 {nameItemSelected}
                                 <span  onClick={() => setopenMenuSearch(!openMenuSearch)}>
-                                <Icon open={true} pos="absolute top-[3px] right-1"/>
+                                <IconOpen open={true} pos="absolute top-[3px] right-1"/>
                                 </span>
                             </span>
                     </animated.div>
