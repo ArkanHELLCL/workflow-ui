@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, lazy} from "react";
+import { Suspense, lazy } from "react";
 import Header from './components/Header.jsx'
 import MenuFilters from "./components/menuFilters.jsx";
 import Flujos from "./components/flujos.jsx";
@@ -9,12 +9,19 @@ import Menu from './components/Menu.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
+//import SplitPane, { Pane } from 'split-pane-react';
 
 const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
 const LazyDetalleRequerimiento = lazy(() => import("./components/DetalleRequerimiento.jsx"))
 const LazyListaRequerimientos = lazy(() => import("./components/ListaRequerimientos.jsx"))
 
 const Main = ({handleNotDragOver}) =>{
+  /*const [sizes, setSizes] = useState([
+      100,
+      '30%',
+      'auto',
+  ]);*/
+  
   return(
     <main className='w-full flex overflow-hidden pl-14 h-full bg-[#faf9f8] dark:bg-transparent'>
       <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[650px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>

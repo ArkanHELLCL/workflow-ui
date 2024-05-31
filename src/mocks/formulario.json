@@ -112,7 +112,8 @@
                      "id":"btn_enviarDes",
                      "nombre":"Usuario",
                      "descripcion":["Enviar a","Destinatario"],
-                     "type" : "submit"
+                     "type" : "submit",
+                     "action": "/destibnatario"
                   },
                   {
                      "id":"btn_devolver",
@@ -124,13 +125,15 @@
                      "id":"btn_conforme",
                      "nombre":"Conforme",
                      "descripcion":["Requerimiento","Conforme"],
-                     "type" : "submit"
+                     "type" : "submit",
+                     "action": "/conforme"
                   },
                   {
                      "id":"btn_disconforme",
                      "nombre":"Disconforme",
                      "descripcion":["Requerimiento","Disconforme"],
-                     "type" : "submit"
+                     "type" : "submit",
+                     "action": "/disconforme"
                   }
                ]
            }           
@@ -145,13 +148,15 @@
                      "id": "btn_finalizar",
                      "nombre": "Finalizar",
                      "descripcion": ["Finalizar","Requerimiento"],
-                     "type" : "submit"
+                     "type" : "submit",
+                     "action": "/finalizar"
                   },               
                   {
                      "id":"btn_rechazar",
                      "nombre":"Rechazar",
                      "descripcion":["Rechazar","Requerimiento"],
-                     "type" : "submit"
+                     "type" : "submit",
+                     "action": "/rechazar"
                   }
                ]
             }           
@@ -166,7 +171,8 @@
                      "id":"btn_abrir",
                      "nombre":"Abrir",
                      "descripcion":["Abrir","Requerimiento"],
-                     "type" : "button"
+                     "type" : "submit",
+                     "action": "/abrir"
                   }
                ]
            }           

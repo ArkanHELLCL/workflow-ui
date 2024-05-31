@@ -6,9 +6,28 @@ export function useFilters() {
 
     const filterRequest = (request) => {
         let filteredRequest = []
-        const bandeja = request.filter(item => item?.id === filters.itemIdSelected)
+        
+        //Search request        
+        let bandeja = []
+        if(filters.stringSearch!=='' && filters.filterSearch===1){
+            bandeja = request?.filter(item => item?.id === filters.itemIdSelected)
+        }        
+        if(filters.stringSearch!=='' && filters.filterSearch===2){            
+            console.log("si")
+            //let requerimientosArray = [];            
+            // Recorremos cada elemento en el objeto "bandejas"
+            request?.forEach(item => {                
+                // Recorremos cada requerimiento en la bandeja actual y lo agregamos al array de requerimientos
+                item.requerimientos?.forEach(item => {
+                    filteredRequest.push(item);
+                });
+            });
+        }
+        console.log(filteredRequest)
+        filters.stringSearch==='' ? bandeja = request.filter(item => item?.id === filters.itemIdSelected) : null
+        
         const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []        
-
+        
         filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   
             item.DRE_UsuarioEditAnt?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             item.NombreEditor?.toUpperCase().match(filters.stringSearch.toUpperCase()) || 
@@ -18,8 +37,8 @@ export function useFilters() {
             item.REQ_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             item.DFO_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             Number(item.VRE_Id) === Number(filters.stringSearch)
-        ))
-        
+        ))        
+
         //Por Flujo seleccionado
         filteredRequest = filteredRequest?.filter((item) => filters.flujo === 0 ? item : item.FLU_Id === filters.flujo)
 

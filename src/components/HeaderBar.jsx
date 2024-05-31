@@ -8,15 +8,22 @@ import { useEffect, useId, useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { InputDebounce } from "./InputDebounce";
 
-function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {    
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
+import Dropdown from '@mui/joy/Dropdown';
+
+function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {    
     const menuSearch = useId();
-    const [openMenuSearch, setopenMenuSearch] = useState(false);
     const [value, setValue] = useState();
+
+    useEffect(() => {
+        if(filters.stringSearch==="") setValue('')
+    },[filters.stringSearch])
 
     const HandleOnBlur = (e) => {
         e.target.placeholder = "Buscar"
         e.target.value=""
-        setopenMenuSearch(false)        
     }
     const inputId = useId();
     let widthMenuSearch=0;
@@ -26,11 +33,11 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         setOpenSearch(false);
     };    
     
-    if(filterSearch === 1){
-        widthMenuSearch = 68;
+    if(filters.filterSearch === 1){
+        widthMenuSearch = 64;
         nameItemSelected = "Buzón actual"
     }
-    if(filterSearch === 2){
+    if(filters.filterSearch === 2){
         widthMenuSearch = 96;
         nameItemSelected = "Todos los buzones"
     }
@@ -38,12 +45,11 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
     const HandleFilterSearch = (id) => {
         setFilters(prevState => ({
             ...prevState,                     
-            filterSearch: id,
-            loading: id !== filterSearch ? true : false
+            filterSearch: id            
+            //loading: id !== filterSearch ? true : false
         }))
-        setopenMenuSearch(false)
     }
-    const referenceWidth = (widthMenuSearch + 12 + 20) - 1; //+ pl + pr
+    const referenceWidth = (widthMenuSearch + 12 + 42) 
     const searchAnimation = useSpring({
         transform: `translateX(-${referenceWidth}px)`,
         from: { transform: "translateX(0px)" },
@@ -51,19 +57,6 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
         reverse: !openSearch,
         reset: !openSearch,
     });
-    const width = 70;
-
-    const menuAppear = useSpring({        
-        opacity:1,
-        height: `${openMenuSearch ? width : 0}` + 'px',
-        config: { duration: 100 }
-    });
-
-    useEffect(() => {        
-        if(!openSearch) {
-            setopenMenuSearch(false)
-        }
-    }, [openSearch])
 
     const HandleSubmit = (e) => {
         e.preventDefault();
@@ -77,7 +70,8 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
             setFilters(prevState => ({
                 ...prevState,                     
                 stringSearch: "",
-                loading: true
+                loading: true,
+                filterSearchResult:false
             }))            
         }        
     }
@@ -100,25 +94,18 @@ function SearchBar({openSearch, setOpenSearch, filterSearch, setFilters}) {
             <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} onDragOver={handleNotDragOver}>{
                 openSearch &&            
                     <animated.div
-                        className={`bg-[#363636] h-full absolute w-[${widthMenuSearch}px]`}
-                        style={searchAnimation} 
-                        >
-                            <span className={`pl-3 pr-5 relative text-xs w-[${widthMenuSearch}px]`}>
-                                {nameItemSelected}
-                                <span  onClick={() => setopenMenuSearch(!openMenuSearch)}>
-                                <IconOpen open={true} pos="absolute top-[3px] right-1"/>
-                                </span>
-                            </span>
+                        className={`absolute`}
+                        style={searchAnimation}>                            
+                        <Dropdown>
+                            <MenuButton endDecorator={<IconOpen open={true} />} className={`dark:bg-[#323130] bg-[#ffffff] hover:bg-[#c5c5c5] dark:hover:bg-[#505050] !border-0 !text-inherit !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
+                            <Menu placement="bottom-start" className="dark:bg-[#323130] bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal !text-inherit !py-0">
+                                <MenuItem onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 2 ? <CheckIcon /> : null}</span>Todos los buzones</MenuItem>
+                                <MenuItem onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 1 ? <CheckIcon /> : null}</span>Buzón actual</MenuItem>
+                            </Menu>
+                        </Dropdown>
                     </animated.div>
                 }
-                <animated.div style={menuAppear} className={`absolute dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 w-50 h-fit overflow-hidden z-50 ${filterSearch === 1 ? '-left-[100px]' : '-left-[128px]'}`}>
-                    <div className="h-full border dark:border-[#8a8886] border-[#e1dfdd]">
-                        <ul className="py-2" >
-                            <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-1" onClick={() => HandleFilterSearch(2)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 2 ? <CheckIcon /> : null}</span>Todos los buzones</li>
-                            <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key="is-2" onClick={() => HandleFilterSearch(1)}><span className={`absolute left-5 top-0 text-green-500`}>{filterSearch === 1 ? <CheckIcon /> : null}</span>Buzón actual</li>
-                        </ul>
-                    </div>
-                </animated.div> 
+                
                 <form className="flex relative" onSubmit={HandleSubmit}>
                     <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
                         <SearchIcon />
@@ -215,7 +202,7 @@ export default function HeaderBar() {
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" title="Ayuda">
                 <HelpIcon />
             </span>
-            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filterSearch={filters.filterSearch} setFilters={setFilters}/>
+            <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filters={filters} setFilters={setFilters}/>
             <UserBar menuAppear={menuAppear} setOpen={setOpen} open={open}/>
         </div>
     )

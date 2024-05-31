@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { memo, Suspense } from 'react'
-//import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
@@ -56,11 +55,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export const AccordionItem = memo(function AccordionItem({ item, showDia }) {
-    const { dias } = Constants()
-    //const [open, setOpen] = useState(true)
-    /*const handleToggleAccordion = () => {
-        setOpen(!open)
-    }*/
+    const { dias } = Constants()    
     
     if (item.requerimientos?.length === 0) {
       return null

@@ -49509,7 +49509,12 @@
                "DRE_AccionEdit":"Agregar",
                "DRE_DifDias":329,
                "rn":1
-            },
+            }            
+         ]
+      },
+      {
+         "id" : "bs",
+         "requerimientos" :[
             {
                "DRE_Id":331,
                "VRE_Id":21,
@@ -49617,5 +49622,5 @@
                "rn":1
             }
          ]
-      }]   
+      }]
 }

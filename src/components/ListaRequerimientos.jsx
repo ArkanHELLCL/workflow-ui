@@ -12,7 +12,7 @@ const Accordion = ({acc, showDiaRef}) => {
     return(
         <>  
             {acc.length===0 && (
-                <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-full w-full">
+                <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-full w-full !overflow-hidden">
                     <span className='text-[#2c87d2] text-xl w-full'>No se encontraron registros</span>
                 </div>            
             )}

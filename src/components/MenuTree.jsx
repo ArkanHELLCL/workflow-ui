@@ -43,10 +43,11 @@ export function MenuTree({ menu }) {
     const handleItemExpansionToggle = (event, itemId) => {
         setFilters((prevState) => ({
             ...prevState,         
-            itemIdSelected: itemId,
-            //pathItemSelected: path,
+            itemIdSelected: itemId,            
             filterSearch: itemId === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
-            loading: itemId !== filters.itemIdSelected ? true : false
+            stringSearch:'',
+            filterSearchResult:false
+            //loading: itemId !== filters.itemIdSelected ? true : false
         }))    
         setRequest(null)                
     };

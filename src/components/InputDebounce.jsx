@@ -8,7 +8,8 @@ export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur
         setFilters(prevState => ({
             ...prevState,
             stringSearch: value,
-            loading: true
+            loading: true,
+            filterSearchResult:true
         }))        
     });
   

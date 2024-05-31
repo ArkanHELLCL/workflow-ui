@@ -4,7 +4,6 @@ import { RequerimientoItem } from "./RequerimientoItem.jsx";
 import Loading from "./Loading.jsx";
 
 export default function Requerimiento({item, showDia}){
-  //console.log('Requerimiento',item)
   return(
     <Suspense fallback={<Loading />}>
       {item && item.map((req) => (          
