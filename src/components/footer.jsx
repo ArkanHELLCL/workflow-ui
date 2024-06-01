@@ -47,11 +47,11 @@ export default function Footer() {
         setClickVencidos(false)
         setClickPorVencer(false)
     }        
-
-    let tipoABuscar = ''
+    let tipoABuscar = ''    
+    
     filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "bandejas" :
     filters.itemIdSelected.charAt(0) === "m" ? tipoABuscar = "mantenedores" :
-    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas"    
+    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas" 
         
     const obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
     const descripcion = EncontrarDescripcionPorId(filters.itemIdSelected, obj).description;

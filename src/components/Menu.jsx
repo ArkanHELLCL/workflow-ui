@@ -1,14 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { MenuTree } from "./MenuTree.jsx"
-import { flujos } from "../mocks/treeMenu.json";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Loading from "./Loading.jsx";
 import EncontrarDescripcionPorId from "./EncontrarDescripcionPorId.jsx";
-import EncontrarIdPorUrl from './EncontrarIdPorUrl.jsx'
-
-const currentPath = window.location.pathname
 
 const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes}) => {
     let url = ''
@@ -35,42 +31,17 @@ const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes})
     )
 }
 
-export default function Menu(){    
-    const { filters, setFilters } = useFilters()
-    const [menuBandejas, setMenuBandejas] = useState([])
-    const [mnuMantenedores, setmnuMantenedores] = useState([])
-    const [mnuReportes, setmnuReportes] = useState([])
+export default function Menu({flujos}){    
+    const { filters } = useFilters()
 
-    let idCurrentPath=''//filters.itemIdSelected
-
-    useEffect(() => {        
-        const bandejas = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas
-        const mantenedores = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].mantenedores
-        const reportes = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].reportes
-        setMenuBandejas(bandejas)
-        setmnuMantenedores(mantenedores)
-        setmnuReportes(reportes)
-    },[filters.flujo])
-
-    useEffect(() => {
-        //currentPath!=='/' ? idCurrentPath = filters.itemIdSelected : 
-        !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas[0])?.id :
-        !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].mantenedores[0])?.id :
-        !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].reportes[0])?.id : idCurrentPath = filters.itemIdSelected
-
-        //console.log(currentPath,idCurrentPath)
-        if(idCurrentPath){
-            setFilters({
-                ...filters,
-                itemIdSelected:idCurrentPath
-            })
-        }
-    },[])
+    const bandejas = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas
+    const mantenedores = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].mantenedores
+    const reportes = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].reportes    
     
     return (
         <div className="px-4 h-full relative">            
             <Suspense fallback={<Loading />}>
-                <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={menuBandejas} mnuMantenedores={mnuMantenedores} mnuReportes={mnuReportes}/>
+                <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={bandejas} mnuMantenedores={mantenedores} mnuReportes={reportes}/>
             </Suspense>                   
         </div>
     )

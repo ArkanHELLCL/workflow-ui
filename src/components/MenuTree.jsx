@@ -50,7 +50,7 @@ export function MenuTree({ menu }) {
         setRequest(null)                
     };
     return (
-        menu.length > 0 &&
+        //menu.length > 0 &&
         <RichTreeView 
             items={menu} 
             defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}

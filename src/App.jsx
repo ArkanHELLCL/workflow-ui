@@ -1,19 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import Header from './components/Header.jsx'
 import MenuFilters from "./components/menuFilters.jsx";
 import Flujos from "./components/flujos.jsx";
 import Footer from './components/footer.jsx'
+import ListaRequerimientos from "./components/ListaRequerimientos.jsx"
 import Menu from './components/Menu.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
+import { useFilters } from "./hooks/useFilters.jsx";
+import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
+import { flujos } from "./mocks/treeMenu.json";
 //import SplitPane, { Pane } from 'split-pane-react';
 
+const currentPath = window.location.pathname
 const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
 const LazyDetalleRequerimiento = lazy(() => import("./components/DetalleRequerimiento.jsx"))
-const LazyListaRequerimientos = lazy(() => import("./components/ListaRequerimientos.jsx"))
 
 const Main = ({handleNotDragOver}) =>{
   /*const [sizes, setSizes] = useState([
@@ -27,7 +31,7 @@ const Main = ({handleNotDragOver}) =>{
       <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0'>              
           <Suspense fallback={<Loading />}>
-            <Menu />
+            <Menu flujos={flujos} />
           </Suspense>
         </aside>
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] min-w-[250px] max-w-[600px] h-full border-r flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1 pb-10'>
@@ -42,7 +46,7 @@ const Main = ({handleNotDragOver}) =>{
             <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">              
               <Suspense fallback={<Loading />}>
                 <LazyDetalleRequerimiento />
-                <LazyListaRequerimientos/>
+                <ListaRequerimientos/>
               </Suspense>                  
             </div>
         </aside>                      
@@ -59,6 +63,22 @@ const Main = ({handleNotDragOver}) =>{
 }
 
 function App() { 
+  const { filters, setFilters } = useFilters()
+
+  let idCurrentPath=''
+  useEffect(() => {
+    !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas[0])?.id :
+    !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].mantenedores[0])?.id :
+    !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].reportes[0])?.id : idCurrentPath = filters.itemIdSelected
+
+    if(idCurrentPath){            
+        setFilters((prevState) => ({
+            ...prevState,
+            itemIdSelected:idCurrentPath
+        }))
+    }
+  },[])
+
   const handleNotDragOver = (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "none";

@@ -36,7 +36,6 @@ export function useFilters() {
             item.DFO_Descripcion?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             Number(item.VRE_Id) === Number(filters.stringSearch)
         ))        
-
         //Por Flujo seleccionado
         filteredRequest = filteredRequest?.filter((item) => filters.flujo === 0 ? item : item.FLU_Id === filters.flujo)
 
