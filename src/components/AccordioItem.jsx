@@ -54,7 +54,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     }
 }));
 
-export const AccordionItem = memo(function AccordionItem({ item, showDia }) {
+export const AccordionItem = memo(function AccordionItem({ item }) {
     const { dias } = Constants()    
     
     if (item.requerimientos?.length === 0) {
@@ -75,7 +75,7 @@ export const AccordionItem = memo(function AccordionItem({ item, showDia }) {
             <AccordionDetails className="py-0">
                 {
                     <Suspense fallback={<Loading />}>
-                        <Requerimiento item={item.requerimientos} showDia={showDia} />
+                        <Requerimiento item={item.requerimientos} showDia={item.showdia} />
                     </Suspense>
                 }
             </AccordionDetails>

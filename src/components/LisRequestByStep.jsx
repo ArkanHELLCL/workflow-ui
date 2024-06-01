@@ -7,7 +7,7 @@ export function ListRequestByStep(min, max, maxAccordions, orderDes, filteredReq
         const end = Math.min(start + numReqsPerRange - 1, max)
         let title = ''
         orderDes ? title = `Del ${start} al ${end}` : title = `Del ${end} al ${start}`
-        requerimientoAccordion.push({id:i+1, title: title, desde: start, hasta: end, open:true, requerimientos: filteredRequest.filter((req) => req.FLD_CodigoPaso >= start && req.FLD_CodigoPaso <= end)})
+        requerimientoAccordion.push({id:i+1, title: title, desde: start, hasta: end, open:true, requerimientos: filteredRequest.filter((req) => req.FLD_CodigoPaso >= start && req.FLD_CodigoPaso <= end), showdia:true})
         
     }
     return requerimientoAccordion

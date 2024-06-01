@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useRef, Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useFilters } from '../hooks/useFilters.jsx';
 import { bandejas } from "../mocks/requerimientos.json";
 import { Accordions } from '../components/accordions.jsx'
@@ -8,7 +8,7 @@ import { AccordionItem } from "../components/AccordioItem.jsx";
 import Loading from "./Loading.jsx";
 import { Spinner } from "./Spinner.jsx";
 
-const Accordion = ({acc, showDiaRef}) => {
+const Accordion = ({acc}) => {
     return(
         <>  
             {acc.length===0 && (
@@ -18,7 +18,7 @@ const Accordion = ({acc, showDiaRef}) => {
             )}
             {acc.map((item, index) => (
                 <Suspense key={index} fallback={<Loading />}>
-                    <AccordionItem key={index} item={item} showDia={showDiaRef.current[index]} />
+                    <AccordionItem key={index} item={item} />
                 </Suspense>
             ))}            
         </>
@@ -39,11 +39,6 @@ export default function ListaRequerimientos(){
             loading: false
         });        
     }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
-
-    const showDiaRef = useRef(acc.map((item) => item.title !== 'Hoy'))
-    useEffect(() => {
-        showDiaRef.current = acc.map((item) => item.title !== 'Hoy')
-    }, [acc])
     
     return (
         <>
@@ -53,7 +48,7 @@ export default function ListaRequerimientos(){
                 </span>
             ) : (
                 <Suspense fallback={<Loading />}>                           
-                    <Accordion acc={acc} showDiaRef={showDiaRef}  />                     
+                    <Accordion acc={acc}/>                     
                 </Suspense>
             )}
         </> 

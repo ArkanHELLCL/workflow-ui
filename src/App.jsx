@@ -24,13 +24,13 @@ const Main = ({handleNotDragOver}) =>{
   
   return(
     <main className='w-full flex overflow-hidden pl-14 h-full bg-[#faf9f8] dark:bg-transparent'>
-      <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[650px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
+      <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0'>              
           <Suspense fallback={<Loading />}>
             <Menu />
           </Suspense>
         </aside>
-        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[400px] min-w-[250px] max-w-[600px] h-full border-r flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1 pb-10'>
+        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] min-w-[250px] max-w-[600px] h-full border-r flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1 pb-10'>
             <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
               <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                 <Flujos />                          
