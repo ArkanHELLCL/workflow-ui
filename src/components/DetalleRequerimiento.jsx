@@ -60,7 +60,7 @@ export default function DetalleRequerimiento(){
     return(
         <>
         {filters.filterSearchResult && 
-            <h1>Resultados</h1>}
+            <h2 className='pl-7 text-lg py-2 border-t dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4]'>Resultados</h2>}
         {filters.totalRequerimientos > 0 &&
         <Accordion className="z-0 !bg-transparent" slotProps={{ transition: { timeout: 350 } }}>
             <AccordionSummary                 

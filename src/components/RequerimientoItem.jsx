@@ -48,16 +48,16 @@ export const RequerimientoItem = ({ req, showDia }) => {
     return (
       <article className={`${isReqSelected ? 'reqselected' : 'requnselected'} reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento()}>
         <div className="w-3/4">
-          <p className="dark:text-stone-200 text-stone-500 truncate text-base font-thin">{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
-          <p className={`${req.IdEditor ? 'dark:text-stone-200 text-stone-500' : 'text-sky-600 font-bold'} truncate text-[11px] font-normal`}>{req.REQ_Descripcion}</p>
-          <p className="dark:text-stone-400 text-stone-400 truncate text-[11px] font-medium">{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
+          <p className="dark:text-stone-200 text-stone-500 truncate text-base font-thin capitalize leading-snug">{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
+          <p className={`${req.IdEditor ? 'dark:text-stone-200 text-stone-500' : 'text-sky-600 font-bold'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
+          <p className="text-stone-500 truncate text-[11px] font-medium uppercase leading-snug">{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
         </div>
         <div className="w-1/4">
-          <p className="dark:text-stone-100 text-stone-900 mt-2 flex align-middle justify-end">
-            <span className="text-yellow-600 hover:text-yellow-400" onClick={handleEditClick}><EditIcon/></span>
-            <span className="text-green-600 dark:hover:text-green-800 hover:text-green-400" onClick={handleUserClick}><UserIcon/></span>
-            <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300" onClick={handleArchiveClick}><ArchiveIcon/></span>
-            <span className={`${(req.FLD_DiasLimites - req.DRE_DifDias < 0) ? 'text-red-500 visible' : (req.FLD_DiasLimites - req.DRE_DifDias <= 5) && (req.FLD_DiasLimites - req.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold`}>!</span>
+          <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">
+            <span className="text-yellow-600 hover:text-yellow-400 leading-snug" onClick={handleEditClick}><EditIcon/></span>
+            <span className="text-green-600 dark:hover:text-green-800 hover:text-green-400 leading-snug" onClick={handleUserClick}><UserIcon/></span>
+            <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug" onClick={handleArchiveClick}><ArchiveIcon/></span>
+            <span className={`${(req.FLD_DiasLimites - req.DRE_DifDias < 0) ? 'text-red-500 visible' : (req.FLD_DiasLimites - req.DRE_DifDias <= 5) && (req.FLD_DiasLimites - req.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold `}>!</span>
           </p>
           <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{showDia ? diaName + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : req.DRE_FechaEdit.slice(11,16)}</p>
           <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">N°{req.VRE_Id}</p>

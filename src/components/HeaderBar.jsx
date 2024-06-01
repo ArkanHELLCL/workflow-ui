@@ -53,7 +53,7 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     const searchAnimation = useSpring({
         transform: `translateX(-${referenceWidth}px)`,
         from: { transform: "translateX(0px)" },
-        config: { duration: 100 },
+        config: { duration: 0 },
         reverse: !openSearch,
         reset: !openSearch,
     });
@@ -99,8 +99,8 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
                         <Dropdown>
                             <MenuButton endDecorator={<IconOpen open={true} />} className={`dark:bg-[#323130] bg-[#ffffff] hover:bg-[#c5c5c5] dark:hover:bg-[#505050] !border-0 !text-inherit !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
                             <Menu placement="bottom-start" className="dark:bg-[#323130] bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal !text-inherit !py-0">
-                                <MenuItem onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 2 ? <CheckIcon /> : null}</span>Todas las bandejas</MenuItem>
-                                <MenuItem onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 1 ? <CheckIcon /> : null}</span>Bandeja actual</MenuItem>
+                                <MenuItem onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-1 text-green-500`}>{filters.filterSearch === 2 ? <CheckIcon /> : null}</span>Todas las bandejas</MenuItem>
+                                <MenuItem onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-1 text-green-500`}>{filters.filterSearch === 1 ? <CheckIcon /> : null}</span>Bandeja actual</MenuItem>
                             </Menu>
                         </Dropdown>
                     </animated.div>
