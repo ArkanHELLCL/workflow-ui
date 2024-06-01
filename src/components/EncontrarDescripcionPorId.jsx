@@ -23,7 +23,6 @@ function encontrarDescripcionPorId(id, objeto) {
 //
 
 export default function EncontrarDescripcionPorId(id, objJson){   
-    console.log(id, objJson) 
     if(!objJson || objJson===undefined) return null 
     if(id.length===1) return {"description": objJson.description, "url": objJson.url};
     return encontrarDescripcionPorId(id, objJson)
