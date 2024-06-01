@@ -57,7 +57,6 @@ export default function DetalleRequerimiento(){
     const { meses } = Constants()
     const { request } = useRequest()
     const { filters } = useFilters()
-    console.log(filters.filterSearchResult)
     return(
         <>
         {filters.filterSearchResult && 

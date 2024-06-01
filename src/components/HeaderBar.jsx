@@ -35,11 +35,11 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     
     if(filters.filterSearch === 1){
         widthMenuSearch = 64;
-        nameItemSelected = "Buzón actual"
+        nameItemSelected = "Bandeja actual"
     }
     if(filters.filterSearch === 2){
         widthMenuSearch = 96;
-        nameItemSelected = "Todos los buzones"
+        nameItemSelected = "Todos las bandejas"
     }
 
     const HandleFilterSearch = (id) => {
@@ -99,8 +99,8 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
                         <Dropdown>
                             <MenuButton endDecorator={<IconOpen open={true} />} className={`dark:bg-[#323130] bg-[#ffffff] hover:bg-[#c5c5c5] dark:hover:bg-[#505050] !border-0 !text-inherit !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
                             <Menu placement="bottom-start" className="dark:bg-[#323130] bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal !text-inherit !py-0">
-                                <MenuItem onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 2 ? <CheckIcon /> : null}</span>Todos los buzones</MenuItem>
-                                <MenuItem onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 1 ? <CheckIcon /> : null}</span>Buzón actual</MenuItem>
+                                <MenuItem onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 2 ? <CheckIcon /> : null}</span>Todas las bandejas</MenuItem>
+                                <MenuItem onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-0 text-green-500`}>{filters.filterSearch === 1 ? <CheckIcon /> : null}</span>Bandeja actual</MenuItem>
                             </Menu>
                         </Dropdown>
                     </animated.div>

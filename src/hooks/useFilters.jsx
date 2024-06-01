@@ -13,21 +13,19 @@ export function useFilters() {
             bandeja = request?.filter(item => item?.id === filters.itemIdSelected)
         }        
         if(filters.stringSearch!=='' && filters.filterSearch===2){            
-            console.log("si")
             //let requerimientosArray = [];            
             // Recorremos cada elemento en el objeto "bandejas"
             request?.forEach(item => {                
                 // Recorremos cada requerimiento en la bandeja actual y lo agregamos al array de requerimientos
                 item.requerimientos?.forEach(item => {
-                    filteredRequest.push(item);
+                    bandeja.push(item);
                 });
             });
+            bandeja = bandeja[0].requerimientos = bandeja
         }
-        console.log(filteredRequest)
         filters.stringSearch==='' ? bandeja = request.filter(item => item?.id === filters.itemIdSelected) : null
         
         const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []        
-        
         filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   
             item.DRE_UsuarioEditAnt?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
             item.NombreEditor?.toUpperCase().match(filters.stringSearch.toUpperCase()) || 
