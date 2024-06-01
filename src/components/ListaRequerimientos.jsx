@@ -6,7 +6,6 @@ import { bandejas } from "../mocks/requerimientos.json";
 import { Accordions } from '../components/accordions.jsx'
 import { AccordionItem } from "../components/AccordioItem.jsx";
 import Loading from "./Loading.jsx";
-import { Spinner } from "./Spinner.jsx";
 
 const Accordion = ({acc}) => {
     return(
@@ -26,7 +25,7 @@ const Accordion = ({acc}) => {
 }
 
 export default function ListaRequerimientos(){
-    const { filters, filterRequest, setFilters } = useFilters() 
+    const { filters, filterRequest } = useFilters() 
     const { filteredRequest } = filterRequest(bandejas)
     //const { requerimientoAccordion } = Accordions(filteredRequest.slice(0,100), filters)
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)
@@ -34,23 +33,11 @@ export default function ListaRequerimientos(){
 
     useEffect(() => {
         setAcc(requerimientoAccordion)
-        setFilters({
-            ...filters,
-            loading: false
-        });        
     }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
     
-    return (
-        <>
-            {filters.loading ? (
-                <span className="absolute left-[50%] top-[50%]">
-                    <Spinner />
-                </span>
-            ) : (
-                <Suspense fallback={<Loading />}>                           
-                    <Accordion acc={acc}/>                     
-                </Suspense>
-            )}
-        </> 
+    return (        
+        <Suspense fallback={<Loading />}>                           
+            <Accordion acc={acc}/>                     
+        </Suspense>            
     )
 }

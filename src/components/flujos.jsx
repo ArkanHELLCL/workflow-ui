@@ -17,7 +17,6 @@ function LstFlujos(){
         setFilters(prevState => ({
             ...prevState, 
             flujo: flujo,
-            loading: flujo !== filters.flujo ? true : false
         }))
         setRequest(null)
         setOpenFlujos(false)
@@ -25,7 +24,6 @@ function LstFlujos(){
             setFilters(prevState => ({
                 ...prevState, 
                 filter: 1,
-                loading: filters.filter !== 1 ? true : false
         }))
     }
 

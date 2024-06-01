@@ -28,14 +28,12 @@ export default function MenuFilters() {
         setFilters(prevState => ({
             ...prevState, 
             flujo: flujo,
-            loading: flujo !== filters.flujo ? true : false
         }))
         setRequest(null)
         if(flujo === 0 && filters.filter===4)
             setFilters(prevState => ({
                 ...prevState, 
                 filter: 1,
-                loading: filters.filter !== 1 ? true : false
         }))        
         sectionFilter(false)
     }
@@ -43,7 +41,6 @@ export default function MenuFilters() {
         setFilters(prevState => ({
             ...prevState, 
             filter: filtro,
-            loading: filtro !== filters.filter ? true : false
         }))
         sectionFilter(false)
     }
@@ -51,7 +48,6 @@ export default function MenuFilters() {
         setFilters(prevState => ({
             ...prevState, 
             orderDes: orderDes,
-            loading: orderDes !== filters.orderDes ? true : false
         }))
         sectionFilter(false)
     }

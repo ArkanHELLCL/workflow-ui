@@ -15,7 +15,6 @@ const getAllItemsWithChildrenItemIds = (menu) => {
       }
     };
     menu.forEach(registerItemId);
-  
     return itemIds;
 };
 
@@ -47,12 +46,11 @@ export function MenuTree({ menu }) {
             filterSearch: itemId === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
             stringSearch:'',
             filterSearchResult:false
-            //loading: itemId !== filters.itemIdSelected ? true : false
         }))    
         setRequest(null)                
     };
-    
     return (
+        menu.length > 0 &&
         <RichTreeView 
             items={menu} 
             defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}

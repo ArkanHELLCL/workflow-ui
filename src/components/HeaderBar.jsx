@@ -46,7 +46,6 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
         setFilters(prevState => ({
             ...prevState,                     
             filterSearch: id            
-            //loading: id !== filterSearch ? true : false
         }))
     }
     const referenceWidth = (widthMenuSearch + 12 + 42) 
@@ -70,7 +69,6 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
             setFilters(prevState => ({
                 ...prevState,                     
                 stringSearch: "",
-                loading: true,
                 filterSearchResult:false
             }))            
         }        
