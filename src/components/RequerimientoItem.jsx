@@ -48,9 +48,9 @@ export const RequerimientoItem = ({ req, showDia }) => {
     return (
       <article className={`${isReqSelected ? 'reqselected' : 'requnselected'} reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento()}>
         <div className="w-3/4">
-          <p className="dark:text-stone-200 text-stone-500 truncate text-base font-thin capitalize leading-snug">{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
-          <p className={`${req.IdEditor ? 'dark:text-stone-200 text-stone-500' : 'text-sky-600 font-bold'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
-          <p className="text-stone-500 truncate text-[11px] font-medium uppercase leading-snug">{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
+          <p className={`${isReqSelected ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
+          <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : 'text-sky-600 font-bold'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
+          <p className={`${isReqSelected ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
         </div>
         <div className="w-1/4">
           <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">
