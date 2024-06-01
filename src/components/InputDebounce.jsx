@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useDebounce } from "../hooks/useDebounce";
+import { useRef } from "react"; 
 
 export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur, onclick, _id, setFilters, value, setValue}) => {    
     const debouncedRequest = useDebounce(() => {
@@ -19,6 +20,8 @@ export const InputDebounce = ({type, name, classname, placehold, onfocus, onblur
   
       debouncedRequest();
     };
+
+    const refSearch = useRef()
   
-    return <input onChange={onChange} value={value} type={type} name={name} autoComplete='off' className={classname} placeholder={placehold} onFocus={onfocus} onBlur={onblur} onClick={onclick} id={_id}/>;
+    return <input onChange={onChange} value={value || ''} type={type} name={name} autoComplete='off' className={classname} placeholder={placehold} onFocus={onfocus} onBlur={onblur} onClick={onclick} id={_id} ref={refSearch}/>;
   }
