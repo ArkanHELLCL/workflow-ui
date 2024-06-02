@@ -54,10 +54,16 @@ const Main = ({handleNotDragOver, request}) =>{
       </section>          
       <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[300px] h-full overflow-x-hidden relative'>{
-          request && (
-          <Suspense fallback={<Loading />}>  
-            <LazyFormulario />
-          </Suspense>
+          request ? (
+            <Suspense fallback={<Loading />}>  
+              <LazyFormulario />
+            </Suspense>
+          ): (
+            <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
+                <div className='w-full h-full flex justify-center align-middle items-center'>
+                    <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un requerimiento para ver<br/> los datos del formulario</span>
+                </div>
+            </div>
           )}
         </aside>          
       </section>
@@ -90,7 +96,6 @@ function App() {
     event.dataTransfer.dropEffect = "none";
     return false;
   }
-  console.log('entre app', request)
 
   return (    
     <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
