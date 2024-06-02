@@ -337,7 +337,7 @@ export default function InputTypes({name, campos, formWFv3}){
         const submitter = event?.nativeEvent?.submitter;
         const action = submitter.getAttribute('formaction')
         const title =  submitter.getAttribute('title')        
-        console.log(submitter.getAttribute('formaction'), submitter.getAttribute('title') , data)
+        console.log(action, title , data)
 
         return(            
             <ConfirmationDialog/>
