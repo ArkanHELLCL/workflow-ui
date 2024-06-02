@@ -7,6 +7,7 @@ import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, P
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import Loading from "./Loading.jsx";
+import { formulario } from'../mocks/formulario.json'
 
 const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
 const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
@@ -160,7 +161,6 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
 
     const HandleClickMenu = (file, id) => {
         setSelectedMenu(file)        
-        //if(open.open && open.id === id) return setOpen({open: false, id: ''})
         setOpen({open: true, id: id})        
     }
     
@@ -177,7 +177,6 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
           prevAdjuntos.filter((a) => a !== adjunto)
         );
     };    
-    //console.log(open)
     return(
         <>
             <div key={file.id} className='flex items-center relative overflow-hidden z-50 elmadj' id={file.id}>
@@ -216,30 +215,19 @@ export default function Formulario(){
     const idForm = useId()
     const idGroups = useId()
     
-    const [selected, setSelected] = useState(null)    
+    const [selected, setSelected] = useState(null)
 
-    const [form, setForm] = useState({})
-    useEffect(() => {        
-        import('../mocks/formulario.json').then(data => {            
-            const formulario = data.formulario
-            setForm(formulario)
-            const { REQ_Adjuntos } = formulario;
-            const { FOR_Botones } = formulario;
-            const { FOR_Campos } = formulario;
-            
-            setAdjuntos(REQ_Adjuntos)
-            //setBotones(FOR_Botones)
-            setCampos(FOR_Campos)
-            setGrupos(FOR_Botones.map(grupo => grupo))
-        })
-    },[request])
+    const [ form ] = useState(formulario)
+    const { REQ_Adjuntos } = formulario;
+    const { FOR_Botones } = formulario;
+    const { FOR_Campos } = formulario;   
     
-    const [adjuntos, setAdjuntos] = useState([]);
-    //const [botones, setBotones] = useState(null);
-    const [campos, setCampos] = useState(null);
-    const [grupos, setGrupos] = useState(null);
+    const [adjuntos, setAdjuntos] = useState(REQ_Adjuntos);
+    const [campos] = useState(FOR_Campos);
+    const [grupos] = useState(FOR_Botones.map(grupo => grupo))
     const [dropEnter, setDropEnter] = useState(false);
-    const [preview, setPreview] = useState(false)    
+    const [preview, setPreview] = useState(false)
+
     const formWFv3 = JSON.parse(window.localStorage.getItem('formWFv3')) || []
 
     useEffect(() => {
@@ -249,7 +237,7 @@ export default function Formulario(){
                 "adjuntos": adjuntos,
                 "selected": selected,
             }) :
-        setRequest(null)
+        null
     },[selected])    
 
     const handleDrop = (event) => {

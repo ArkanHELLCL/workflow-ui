@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import Header from './components/Header.jsx'
 import MenuFilters from "./components/menuFilters.jsx";
 import Flujos from "./components/flujos.jsx";
@@ -10,16 +10,17 @@ import Menu from './components/Menu.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
-import { useFilters } from "./hooks/useFilters.jsx";
-import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
+//import { useFilters } from "./hooks/useFilters.jsx";
+import { useRequest } from "./hooks/useRequest.jsx"
+//import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 import { flujos } from "./mocks/treeMenu.json";
 //import SplitPane, { Pane } from 'split-pane-react';
 
-const currentPath = window.location.pathname
+//const currentPath = window.location.pathname
 const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
 const LazyDetalleRequerimiento = lazy(() => import("./components/DetalleRequerimiento.jsx"))
 
-const Main = ({handleNotDragOver}) =>{
+const Main = ({handleNotDragOver, request}) =>{
   /*const [sizes, setSizes] = useState([
       100,
       '30%',
@@ -52,10 +53,12 @@ const Main = ({handleNotDragOver}) =>{
         </aside>                      
       </section>          
       <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
-        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[300px] h-full overflow-x-hidden relative'>
+        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[300px] h-full overflow-x-hidden relative'>{
+          request && (
           <Suspense fallback={<Loading />}>  
             <LazyFormulario />
           </Suspense>
+          )}
         </aside>          
       </section>
     </main>
@@ -63,8 +66,10 @@ const Main = ({handleNotDragOver}) =>{
 }
 
 function App() { 
-  const { filters, setFilters } = useFilters()
+  //const { filters, setFilters } = useFilters()
+  const { request } = useRequest()
 
+  /*
   let idCurrentPath=''
   useEffect(() => {
     !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas[0])?.id :
@@ -78,12 +83,14 @@ function App() {
         }))
     }
   },[])
+  */
 
   const handleNotDragOver = (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "none";
     return false;
   }
+  console.log('entre app', request)
 
   return (    
     <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
@@ -99,7 +106,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Header />
       </Suspense>
-      <Main handleNotDragOver={handleNotDragOver}/>
+      <Main handleNotDragOver={handleNotDragOver} request={request}/>
       <Suspense fallback={<Loading />}>
         <Footer />
       </Suspense>      
