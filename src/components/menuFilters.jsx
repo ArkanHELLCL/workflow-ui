@@ -85,7 +85,7 @@ export default function MenuFilters() {
                                 flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
                             }                
                 </MenuButton>
-                <Menu placement="bottom-end" className="!py-0 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none !text-inherit !m-h-min">
+                <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none !text-inherit !m-h-min">
                     <p className="px-6 py-2 text-xs font-semibold truncate">Filtrar</p>{
                         flujos.map((item) =>
                             <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal !text-inherit !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFlujos(item.id)}>
