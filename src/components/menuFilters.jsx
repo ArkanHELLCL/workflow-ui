@@ -14,8 +14,7 @@ import ListDivider from '@mui/joy/ListDivider';
 
 import List from '@mui/joy/List';
 import ListItemButton from '@mui/joy/ListItemButton';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import StraightIcon from '@mui/icons-material/Straight';
 
 
 export default function MenuFilters() {
@@ -113,7 +112,7 @@ export default function MenuFilters() {
                 </Menu>
             </Dropdown>
             <List className="!py-0">
-                <ListItemButton onClick={() => handleSetOrder(!filters.orderDes)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500">{filters.orderDes ? <ArrowUpwardIcon className="!w-4 !h-4 dark:!text-stone-100 !text-stone-500"/> : <ArrowDownwardIcon className="!w-4 !h-4 dark:!text-stone-100 !text-stone-500"/>}</ListItemButton>
+                <ListItemButton onClick={() => handleSetOrder(!filters.orderDes)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500">{filters.orderDes ? <StraightIcon className="!w-5 !h-5 dark:!text-stone-100 !text-stone-500 transition-all"/> : <StraightIcon className="!rotate-180 !w-5 !h-5 dark:!text-stone-100 !text-stone-500 transitio-all"/>}</ListItemButton>
             </List>
         </>
         )
