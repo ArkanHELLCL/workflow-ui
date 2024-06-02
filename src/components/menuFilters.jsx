@@ -11,11 +11,9 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Check from '@mui/icons-material/Check'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListDivider from '@mui/joy/ListDivider';
-
 import List from '@mui/joy/List';
 import ListItemButton from '@mui/joy/ListItemButton';
 import StraightIcon from '@mui/icons-material/Straight';
-
 
 export default function MenuFilters() {
     const { filters, setFilters } = useFilters()

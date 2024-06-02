@@ -6,7 +6,6 @@ import Loading from "./Loading.jsx";
 import { 
     AttachIcon,
     ButtonIcon,
-    CloseIcon,
     DeleteFileIcon, 
     DownReportIcon, 
     FlowIcon, 
@@ -24,138 +23,51 @@ import { useSpring, animated } from "@react-spring/web";
 import { flujos } from "../mocks/flujos.json";
 import { informes } from "../mocks/informes.json";
 import { pasos } from "../mocks/pasos.json";
-import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
+
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
+import Dropdown from '@mui/joy/Dropdown';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ListItemButton from '@mui/joy/ListItemButton';
 
 const ContentMenu = ({children, title, styles}) => {    
     return (
         <section className={`flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59] ${styles}`}>
             {children}
-            <div className="absolute -bottom-1 leading-tight text-xs w-full text-center -left-1 items-center text-nowrap">
+            <div className="absolute bottom-1 leading-tight text-xs w-full text-center -left-1 items-end text-nowrap">
                 <span>{title}</span>
             </div>
         </section>
     )
 }
 
-const IconMenu = ({children, title, submneu, id, request}) => {
-    const [open, setOpen] = useState(false);    
-    const handleClickAway = () => {
-        setOpen(false);
-    };
-
-    return (
-        <div className="flex flex-col items-center gap-0 cursor-pointer hover:bg-[#e1dfdd] dark:hover:bg-[#484644] px-1 relative" onClick={() => setOpen(!open)}>
-            <div className="h-11 w-11 flex items-center justify-center">
-                {children}
-            </div>
-            <ClickAwayListener onClickAway={handleClickAway}>
-                <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
-                    {title.map((item, index) => (
-                        <span key={index}>{item}</span>
-                        ))
-                    }
-                    {submneu ? 
-                    <>
-                        <CloseIcon styles='w-4 h-4' />
-                        <SubMenu id={id} open={open} request={request}/>
-                    </>:
-                        <span className="h-3">&nbsp;</span>
-                    }
-                </div>
-            </ClickAwayListener>
-        </div>
-    )
-}
-
-const SubMenu = ({id, open, request}) => {    
-    const menuAppear = useSpring({             
-        opacity:1,        
-        height: `${open && id===1 ? 95 : open && id===2 ? 75 : open && id===3 ? 75 : open && id===4 ? 75 : open && id===5 ? 300 : 0}` + 'px',
-        config: { duration: 100 }
-    });    
-    return (
-        id===1 ? 
-        (
-            <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
-                <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                    
-                    {
-                        flujos.filter(fls => fls.id>0).map((item) =>
-                            <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >
-                                <span className="absolute left-3 top-1"><FlowIcon id={item.id} /></span>
-                                {item.description}
-                            </li>
-                        )
-                    }
-                </ul>
-            </animated.div>        
-        ) : id===2 ? 
-            (
-                <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
-                    <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">
-                        {
-                            informes.map((item) =>
-                                <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >
-                                    <span className="absolute left-3 top-1"></span>
-                                    {item.description}
-                                </li>
-                            )
-                        }
-                    </ul>
-                </animated.div>  
-            ) : id===3 ? 
-                (
-                    <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
-                        <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">
-                            {
-                                informes.map((item) =>
-                                    <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} >
-                                        <span className="absolute left-3 top-1"></span>
-                                        {item.description}
-                                    </li>
-                                )
-                            }
-                        </ul>
-                    </animated.div>  
-                ) : id===4 ? 
-                    (
-                        <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
-                            <ul className="py-2 border-[#e1dfdd] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                                
-                                <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={1} >
-                                    <span className="absolute left-3 top-1"></span>Enviar mensaje                                          
-                                </li>
-                                <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={2} >
-                                    <span className="absolute left-3 top-1"></span>Revisar mensajes
-                                </li>
-                            </ul>
-                        </animated.div>  
-                    ): id===5 ? 
-                        (
-                            <animated.div style={menuAppear} className={`absolute left-0 top-11 overflow-hidden z-20`}>
-                                <ul className="py-2 border-[#92908f] dark:border-[#8a8886] bg-[#ffffff] dark:bg-[#323130] border">                                
-                                {
-                                    pasos.map((item) =>
-                                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-10 hover:cursor-pointer truncate text-xs leading-6 font-normal relative group/step`} key={item.id} >
-                                            <span className={`absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white  rounded-full top-1 left-3 ${item.id === request?.request?.FLD_CodigoPaso ? 'bg-sky-600': 'dark:bg-stone-700 bg-stone-300 group-hover/step:bg-sky-400'} `}>{item.id}</span>
-                                            {item.name} - {item.accion}
-                                        </li>
-                                    )
-                                }
-                                </ul>
-                            </animated.div>  
-                        ): null
-    )
-}
-
-const CrearMenu = ({styles}) => {    
+const CrearMenu = ({styles}) => {
     return (        
         <ContentMenu title={'Crear'} styles={styles}>
-            <IconMenu title={['Crear nuevo','requerimiento']} submneu={true} id={1}>                
-                <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                      
-            </IconMenu>            
-        </ContentMenu>        
+            <Dropdown>
+                <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`}>
+                    <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-1">
+                        <FlowPlusIcon styles='w-11 h-11' strokeWidth='2' />                         
+                        <span>Crear nuevo</span>
+                        <span>requerimiento</span>
+                        <KeyboardArrowDownIcon />
+                    </div>
+                </MenuButton>
+                <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                    flujos.filter(fls => fls.id>0).map((item) =>
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => console.log('Crear requerinmiento' + item.description)}>
+                            <ListItemDecorator><FlowIcon id={item.id} /></ListItemDecorator>
+                            {item.description}                            
+                        </MenuItem>
+                    )}      
+                </Menu>
+            </Dropdown>
+        </ContentMenu>
     )    
 }
 
@@ -175,26 +87,86 @@ const Requerimiento = ({styles, request}) => {
     return (
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Requerimiento'}>
-                <IconMenu title={['Generar','informe']} submneu={true} id={2}>
-                    <GenReportIcon styles='w-8 h-8'/>
-                    <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-                </IconMenu>
-                <IconMenu title={['Descargar','informe']} submneu={true} id={3}>
-                    <DownReportIcon styles='w-8 h-8' />
-                </IconMenu>
-                <IconMenu title={['Mensaje']} submneu={true} id={4}>
-                    <MessagesIcon styles='w-8 h-8'/>
-                    <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-                </IconMenu>
-                <IconMenu title={['Pasos del','flujo']} submneu={true} id={5} request={request}>
-                    <FlowStepIcon styles='w-10 h-10' />
-                </IconMenu>
+                <Dropdown>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                            <GenReportIcon styles='w-10 h-10'/>
+                            <span className="!pt-2">Generar</span>                            
+                            <KeyboardArrowDownIcon/>
+                        </div>
+                    </MenuButton>
+                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                        informes.map((item) =>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => console.log('Generar Informe' + item.description)}>                                
+                                {item.description}                            
+                            </MenuItem>
+                        )}      
+                    </Menu>
+                </Dropdown>
+
+                <Dropdown>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                            <DownReportIcon styles='w-10 h-10' />
+                            <span className="pt-2">Descargar</span>   
+                            <span>informes</span>   
+                            <KeyboardArrowDownIcon/>
+                        </div>
+                    </MenuButton>
+                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                        informes.map((item) =>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => console.log('Descarhar informe' + item.description)}>                                
+                                {item.description}                            
+                            </MenuItem>
+                        )}      
+                    </Menu>
+                </Dropdown>
+
+                <Dropdown>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                            <MessagesIcon styles='w-10 h-10'/>
+                            <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full -top-[5px] -right-1"></span>
+                            <span className="pt-2">Mensajes</span>                            
+                            <KeyboardArrowDownIcon/>
+                        </div>
+                    </MenuButton>
+                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  onClick={() => console.log('Enviar mensaje')}>                                
+                            Enviar mensaje                          
+                        </MenuItem> 
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  onClick={() => console.log('Revisar mensajes')}>                                
+                            Revisar mensajes                          
+                        </MenuItem>   
+                    </Menu>
+                </Dropdown>
+
+                <Dropdown>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                            <FlowStepIcon styles='w-11 h-11' />
+                            <span className="pt-0">Pasos</span>   
+                            <span>del flujo</span>   
+                            <KeyboardArrowDownIcon/>
+                        </div>
+                    </MenuButton>
+                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                        pasos.map((item) =>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow peer/steps`}  key={item.id} onClick={() => console.log('Pado del requerimiento' + item.name)}>
+                                 <ListItemDecorator>
+                                    <span className={`inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white  rounded-full top-1 left-3 ${item.id === request?.request?.FLD_CodigoPaso ? 'bg-sky-600': 'dark:bg-stone-700 bg-stone-300 peer-hover/steps:bg-sky-400'}`}>{item.id}</span>
+                                </ListItemDecorator>                                
+                                {item.name} - {item.accion}
+                            </MenuItem>
+                        )}      
+                    </Menu>
+                </Dropdown>
             </ContentMenu>
         </animated.div>
     )    
 }
 
-const Ajuntar = ({styles}) => {
+const Adjuntar = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -218,24 +190,36 @@ const Ajuntar = ({styles}) => {
     }*/
 
     const idInput = useId()
+    const handleClickAdjunto = () =>{
+        const  elemento = document.getElementById(idInput);
+        elemento.click()
+    }
 
     return (
+        <>
         <animated.div style={menuAppear} className={styles}>
-            <label htmlFor={idInput}>
-            <ContentMenu title={'Incluir'}>
-                <IconMenu title={['Adjuntar','documento']}>
-                    <AttachIcon styles='w-8 h-8'/>
-                    <input
-                        type="file"
-                        multiple                        
-                        className='hidden'
-                        id={idInput}
-                        accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"                        
-                    />
-                </IconMenu>
+            <ContentMenu title={'Adjuntar'} styles={styles}>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={handleClickAdjunto}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
+                            <AttachIcon styles='w-10 h-10'/>                       
+                            <span>Adjuntar</span>
+                            <span>documento</span>
+                        </div>
+                    </ListItemButton>
+                </Dropdown>
             </ContentMenu>
-            </label>
         </animated.div>
+        <form>
+            <input
+                type="file"
+                multiple                        
+                className='hidden'
+                id={idInput}
+                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"                        
+            />
+        </form>
+        </>
     )
 }
 
@@ -256,15 +240,32 @@ const Acciones = ({styles}) => {
     return (
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Acciones'}>
-                <IconMenu title={['Abrir']}>
-                    <OpenFolderIcon styles='h-8 w-8'/>
-                </IconMenu>
-                <IconMenu title={['Impresión','rápida']}>
-                    <PrinterIcon styles='h-11 w-11' strokeWidth="2"/>
-                </IconMenu>
-                <IconMenu title={['Quitar datos','adjuntos']}>
-                    <DeleteFileIcon styles='text-red-500 h-10 w-10' strokeWidth={1} />
-                </IconMenu>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('abrir doc')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-11">
+                            <OpenFolderIcon styles='h-11 w-11'/>
+                            <span>Abrir</span>
+                        </div>
+                    </ListItemButton>                    
+                </Dropdown>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('imprimir doc')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
+                            <PrinterIcon styles='h-11 w-11' strokeWidth="2"/>
+                            <span>Impresión</span>
+                            <span>rápida</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('eliminar adj')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
+                            <DeleteFileIcon styles='text-red-500 h-10 w-10' strokeWidth={1} />
+                            <span>Quitar archivo</span>
+                            <span>adjunto</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
             </ContentMenu>
         </animated.div>
     )    
@@ -297,9 +298,15 @@ const BtsFormulario = ({styles, keygrp, delay, grp}) => {
         <animated.div key={keygrp} style={menuAppear} className={styles} id={keygrp}>
             <ContentMenu title={grp[0].descripcion}>{
                 grp[0].botones.map(btns =>
-                    <IconMenu title={[btns.descripcion[0],btns.descripcion[1]]} key={btns.id}>
-                        <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={2}/>
-                    </IconMenu>                    
+                    <Dropdown key={btns.id}>
+                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start ${btns.id==="btn_observaciones" ? '!pb-2' : '!pb-0'}`} onClick={()=> console.log(btns.id)} key={btns.id}>
+                            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
+                                <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={2}/>
+                                <span className="!pt-2">{btns.descripcion[0]}</span>
+                                <span>{btns.descripcion[1]}</span>
+                            </div>
+                        </ListItemButton>                
+                    </Dropdown>
                 )}
             </ContentMenu>
         </animated.div>
@@ -323,12 +330,24 @@ const GuardarEquipo = ({styles}) => {
     return (
         <animated.div style={menuAppear} styles={styles}>
             <ContentMenu title={'Guardar en el equipo'}>
-                <IconMenu title={['Guardar','como']}>
-                    <SaveAsIconBig styles='h-7 w-7'/>
-                </IconMenu>
-                <IconMenu title={['Guardar todos los','datos adjuntos']}>
-                    <SaveAllIconBig styles='h-8 w-8'/>
-                </IconMenu>            
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar adj')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
+                            <SaveAsIconBig styles='h-8 w-8 !mt-2'/>
+                            <span className="!pt-2">Guardar</span>
+                            <span>como</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar todos')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
+                            <SaveAllIconBig styles='h-8 w-8 !mt-2'/>
+                            <span className="!pt-2">Guardar todos los</span>
+                            <span>datos adjuntos</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
             </ContentMenu>
         </animated.div>
     )    
@@ -350,12 +369,24 @@ const Mantenedores = ({styles}) => {
     return (
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Mantenedor del sistema'}>
-                <IconMenu title={['Crear nuevo','registro']}>
-                    <TableIconPlus styles='w-8 h-8' />
-                </IconMenu>
-                <IconMenu title={['Descargar','informe resultado']}>
-                    <DownReportIcon styles='w-8 h-8' />
-                </IconMenu>            
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('crear reg')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-7">
+                            <TableIconPlus styles='w-8 h-8' />
+                            <span className="!pt-2">Crear nuevo</span>
+                            <span>registro</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-6">
+                            <DownReportIcon styles='w-9 h-9' />
+                            <span className="!pt-2">Descargar infrome</span>
+                            <span>resultado</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
             </ContentMenu>
         </animated.div>
     )    
@@ -377,12 +408,24 @@ const Informes = ({styles}) => {
     return (
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Informe del sistema'}>
-                <IconMenu title={['Generar','informe']}>
-                    <GenReportIcon styles='w-8 h-8'/>
-                </IconMenu>
-                <IconMenu title={['Descargar','informe resultado']}>
-                    <DownReportIcon styles='w-8 h-8' />
-                </IconMenu>            
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('generar inf')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-6">
+                            <GenReportIcon styles='w-9 h-9'/>
+                            <span className="!pt-2">Generar</span>
+                            <span>informe</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>
+                <Dropdown>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-6">
+                            <DownReportIcon styles='w-9 h-9' />
+                            <span className="!pt-2">Descargar infrome</span>
+                            <span>resultado</span>
+                        </div>
+                    </ListItemButton>                
+                </Dropdown>   
             </ContentMenu>
         </animated.div>
     )    
@@ -427,7 +470,7 @@ export default function Header(){
                                 <GuardarEquipo  styles={'z-20'}/>                                
                             </>
                         }
-                        <Ajuntar styles={'z-10'}/>
+                        <Adjuntar styles={'z-10'}/>
                         <Formulario styles={'z-10'} grupos={grupos}/>
                     </>
                 }
