@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { CheckIcon, HelpIcon, IconOpen, MailIcon, ReloadIcon, SearchIcon } from "./icons";
 import { user } from '../mocks/usuario.json'
 import { useSpring, animated } from "@react-spring/web";
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
@@ -12,6 +11,13 @@ import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
 import Dropdown from '@mui/joy/Dropdown';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import Check from '@mui/icons-material/Check'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import CachedIcon from '@mui/icons-material/Cached';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import SearchIcon from '@mui/icons-material/Search';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {    
     const menuSearch = useId();
@@ -34,7 +40,7 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     };    
     
     if(filters.filterSearch === 1){
-        widthMenuSearch = 64;
+        widthMenuSearch = 75;
         nameItemSelected = "Bandeja actual"
     }
     if(filters.filterSearch === 2){
@@ -95,10 +101,14 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
                         className={`absolute`}
                         style={searchAnimation}>                            
                         <Dropdown>
-                            <MenuButton endDecorator={<IconOpen open={true} />} className={`dark:bg-[#323130] bg-[#ffffff] hover:bg-[#c5c5c5] dark:hover:bg-[#505050] !border-0 !text-inherit !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
+                            <MenuButton endDecorator={<KeyboardArrowDownIcon className='!w-4 !h-4 !mt-1 !ml-1'/>} className={`dark:bg-[#323130] bg-[#ffffff] hover:bg-[#c5c5c5] dark:hover:bg-[#505050] !border-0 !text-inherit !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
                             <Menu placement="bottom-start" className="dark:bg-[#323130] bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal !text-inherit !py-0">
-                                <MenuItem onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-1 text-green-500`}>{filters.filterSearch === 2 ? <CheckIcon /> : null}</span>Todas las bandejas</MenuItem>
-                                <MenuItem onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-12 !text-inherit`}><span className={`absolute left-5 top-1 text-green-500`}>{filters.filterSearch === 1 ? <CheckIcon /> : null}</span>Bandeja actual</MenuItem>
+                                <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-inherit !pr-12`}>
+                                    <ListItemDecorator className={`text-green-500`}>{filters.filterSearch === 2 ? <Check /> : null}</ListItemDecorator>Todas las bandejas
+                                </MenuItem>
+                                <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-inherit !pr-12`}>
+                                    <ListItemDecorator className={`text-green-500`}>{filters.filterSearch === 1 ? <Check /> : null}</ListItemDecorator>Bandeja actual
+                                </MenuItem>                                                               
                             </Menu>
                         </Dropdown>
                     </animated.div>
@@ -106,7 +116,7 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
                 
                 <form className="flex relative" onSubmit={HandleSubmit}>
                     <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
-                        <SearchIcon />
+                        <SearchIcon className="!w-5 !h-5 !-mt-1"/>
                     </span>                
                     <InputDebounce 
                         type="text" 
@@ -155,7 +165,7 @@ function UserBar({menuAppear, setOpen, open}) {
                         <div className="w-full p-4 dark:bg-[#363636] dark:border-[#737373] hover:bg-[#d2d2d2] bg-[#f3f3f3] border-t border-[#d9d9d9] hover:dark:bg-[#505050] hover:cursor-pointer">
                             <div className="flex items-center gap-3">
                                 <span className="relative text-[#313131] dark:text-white">
-                                    <MailIcon strokeWidth=".75" styles="w-10 h-10" /> 
+                                    <MailOutlineIcon className="!w-10 !h-10" /> 
                                     <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full -top-2 -right-2">{user.USR_MsgSinLeer}</span>                               
                                 </span>                            
                                 <span className="text-[#313131] dark:text-white">Ver mis mensajes privados</span>
@@ -195,10 +205,10 @@ export default function HeaderBar() {
     return(
         <div className="flex items-center h-full px-4 text-white relative z-50">
             <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload} title="Recargar">
-                <ReloadIcon />
+                <CachedIcon />
             </span>
             <span className="dark:text-sky-600 text-white dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" title="Ayuda">
-                <HelpIcon />
+                <HelpOutlineIcon />
             </span>
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filters={filters} setFilters={setFilters}/>
             <UserBar menuAppear={menuAppear} setOpen={setOpen} open={open}/>

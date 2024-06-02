@@ -58,3 +58,7 @@
   border-left: 4px solid rgb(2, 132, 199,1) !important;
   padding-left: 20px !important;
 }
+
+.mnuFlow{
+  min-block-size: 26px !important;
+}

@@ -1,28 +1,26 @@
 /* eslint-disable react/prop-types */
-import { useState, useId } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from "../hooks/useRequest.jsx";
-import { CaretDownIcon, ArrowDownIcon, ArrowUpIcon, CheckIcon, CheckSmallIcon } from "./icons.jsx";
 import { flujos } from "../mocks/flujos.json";
 
-import { useSpring, animated } from "@react-spring/web";
-import { ClickAwayListener } from '@mui/base/ClickAwayListener';
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
+import Dropdown from '@mui/joy/Dropdown';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import Check from '@mui/icons-material/Check'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ListDivider from '@mui/joy/ListDivider';
+
+import List from '@mui/joy/List';
+import ListItemButton from '@mui/joy/ListItemButton';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
 
 export default function MenuFilters() {
     const { filters, setFilters } = useFilters()
-    const { setRequest } = useRequest()
-    const [openFilter, sectionFilter] = useState(false);
-    const chkFilter = useId();
-    let width = 0;
-
-    filters.flujo === 0 ?  width =  340: width = 365;
-
-    const menuAppear = useSpring({        
-        opacity:1,
-        height: `${openFilter ? width : 0}` + 'px',
-        config: { duration: 100 }
-    });
-    
+    const { setRequest } = useRequest()    
     
     const handleSetFlujos = (flujo) => {         
         setFilters(prevState => ({
@@ -35,21 +33,18 @@ export default function MenuFilters() {
                 ...prevState, 
                 filter: 1,
         }))        
-        sectionFilter(false)
     }
     const handleSetFiltros = (filtro) => {         
         setFilters(prevState => ({
             ...prevState, 
             filter: filtro,
         }))
-        sectionFilter(false)
     }
     const handleSetOrder = (orderDes) => {         
         setFilters(prevState => ({
             ...prevState, 
             orderDes: orderDes,
         }))
-        sectionFilter(false)
     }
 
     function desOrder(orderDes){        
@@ -82,69 +77,49 @@ export default function MenuFilters() {
         }
         return 'Sin orden'
     }    
-    const handleClickAway = () => {
-        sectionFilter(false);
-    };
     const MenuFilter = () => {        
-        return (                   
-            <animated.div style={menuAppear} className={` absolute z-40 dark:bg-[#323130] bg-[#ffffff] top-[25px] py-0 right-8 w-72 h-fit overflow-hidden`}>
-                <div className="h-full border dark:border-[#8a8886] border-[#e1dfdd]">
-                    <ul className="border-b pb-2 dark:border-[#484644] border-[#e1dfdd]">
-                        <li className="px-6 py-2 text-xs font-semibold truncate">Filtrar</li>
-                            <ul>                                
-                                {
-                                    flujos.map((item) =>
-                                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} onClick={() => handleSetFlujos(item.id)}><span className={`${filters.flujo===item.id ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{item.description}</li>
-                                    )
-                                }
-                            </ul>
-                    </ul>
-                    <ul className="border-b pb-2 dark:border-[#484644] border-[#e1dfdd]">
-                        <li className="px-6 py-2 text-xs font-semibold truncate">Organizar por</li>
-                            <ul>                            
-                                {
-                                    flujos.filter((item) => item.id === filters.flujo)[0].orderby.map((item) =>
-                                        <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={item.id} onClick={() => handleSetFiltros(item.id)}><span className={`${filters.filter===item.id ? 'visible' : 'hidden'} absolute left-5 top-0 text-green-500`}><CheckIcon /></span>{item.description}</li>
-                                    )
-                                }
-                            </ul>
-                    </ul> 
-                    <ul className="">
-                        <li className="px-6 py-2 text-xs font-semibold truncate">Ordenar</li>
-                            <ul>                                                            
-                                <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={'o1'} onClick={() => handleSetOrder(true)}><span className={`${filters.orderDes ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{desOrder(true)}</li>
-
-                                <li className={`hover:bg-[#c5c5c5] dark:hover:bg-[#505050] px-12 hover:cursor-pointer truncate text-xs leading-6 font-normal relative`} key={'o2'} onClick={() => handleSetOrder(false)}><span className={`${!filters.orderDes ? 'visible' : 'hidden'} absolute left-5 top-1`}><CheckSmallIcon /></span>{desOrder(false)}</li>                                
-                            </ul>
-                    </ul>
-                </div>
-            </animated.div>         
+        return (      
+            <>             
+            <Dropdown>
+                <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none`}>{
+                                flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
+                            }                
+                </MenuButton>
+                <Menu placement="bottom-end" className="!py-0 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none !text-inherit !m-h-min">
+                    <p className="px-6 py-2 text-xs font-semibold truncate">Filtrar</p>{
+                        flujos.map((item) =>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal !text-inherit !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFlujos(item.id)}>
+                                <ListItemDecorator className={``}>{filters.flujo===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                            </MenuItem> 
+                        )
+                    }
+                    <ListDivider/>
+                    <p className="px-6 py-2 text-xs font-semibold truncate">Organizas por</p>{
+                        flujos.filter((item) => item.id === filters.flujo)[0].orderby.map((item) =>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal !text-inherit !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFiltros(item.id)}>
+                                <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                            </MenuItem> 
+                        )
+                    }
+                    <ListDivider/>
+                    <p className="px-6 py-2 text-xs font-semibold truncate">Ordenar</p>
+                    <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal !text-inherit !gap-0 !py-0 mnuFlow`} key={'o1'} onClick={() => handleSetOrder(true)}>
+                        <ListItemDecorator className={``}>{filters.orderDes ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{desOrder(true)}                   
+                    </MenuItem>
+                    <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal !text-inherit !gap-0 !py-0 mnuFlow`} key={'o2'} onClick={() => handleSetOrder(false)}>
+                        <ListItemDecorator className={``}>{!filters.orderDes ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{desOrder(false)}                   
+                    </MenuItem> 
+                        
+                </Menu>
+            </Dropdown>
+            <List className="!py-0">
+                <ListItemButton onClick={() => handleSetOrder(!filters.orderDes)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500">{filters.orderDes ? <ArrowUpwardIcon className="!w-4 !h-4 !text-inherit"/> : <ArrowDownwardIcon className="!w-4 !h-4 !text-inherit"/>}</ListItemButton>
+            </List>
+        </>
         )
     }
     
     return (
-        <ClickAwayListener onClickAway={handleClickAway}>
-            <div className="relative flex align-middle justify-end z-50 pb-0">
-                <div className="hover:bg-[#f0f0f0] dark:hover:bg-[#444444] mb-[4px] px-2 py-1 z-50">
-                    <div className="relative w-full flex z-50">
-                        <label htmlFor={chkFilter} className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] cursor-pointer text-xs flex truncate'>
-                            {
-                                flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
-                            }
-                            <span className="pl-1 pt-1">
-                                <CaretDownIcon />
-                            </span>                     
-                        </label>                              
-                        <input type="checkbox" id={chkFilter} className="hidden" onClick={() => sectionFilter((cur) => !cur)} />
-                    </div>                
-                </div>            
-                <MenuFilter />            
-                <div className="pl-1 flex items-center mb-1">
-                    <span className="cursor-pointer dark:hover:bg-[#444444] hover:bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" onClick={() => handleSetOrder(!filters.orderDes)}>
-                        {filters.orderDes ? <ArrowUpIcon /> : <ArrowDownIcon />}
-                    </span>
-                </div>
-            </div>
-        </ClickAwayListener>
+        <MenuFilter />
     )
 }
