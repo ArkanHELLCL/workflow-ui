@@ -6,7 +6,6 @@ export function useFilters() {
 
     const filterRequest = (request) => {
         let filteredRequest = []
-        
         //Search request        
         let bandeja = []
         if(filters.stringSearch!=='' && filters.filterSearch===1){
@@ -24,7 +23,6 @@ export function useFilters() {
             bandeja = bandeja[0].requerimientos = bandeja
         }
         filters.stringSearch==='' ? bandeja = request.filter(item => item?.id === filters.itemIdSelected) : null
-        
         const requerimientos = bandeja.length > 0 ? bandeja?.map(item => item?.requerimientos != undefined ? item?.requerimientos : [])[0] : []        
         filteredRequest = requerimientos?.filter((item) => filters.stringSearch === "" ? item : (   
             item.DRE_UsuarioEditAnt?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||

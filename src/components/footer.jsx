@@ -61,7 +61,6 @@ export default function Footer() {
         event.dataTransfer.dropEffect = "none";
         return false;
     }   
-        
     return (
         <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-screen h-[25px] transition-color delay-75 flex items-center p-3 space-x-2 text-xs absolute bottom-0 z-20' onDragOver={handleNotDragOver}>
             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">{descripcion !== null ? descripcion : 'Sin menú'}</span>
@@ -103,7 +102,7 @@ export default function Footer() {
                     </>
                     : <div>
                         <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                        <span className="text-green-500">{obj.children.length}</span>                
+                        <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
                     </div>
                 }
         </footer>

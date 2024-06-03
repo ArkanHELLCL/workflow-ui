@@ -113,6 +113,12 @@
                         "label":"Items Lista Desplegables",
                         "description":"Mantenedor de Items Lista Desplegables",
                         "url":"/mantenedores/item-lista-desplegable"
+                     },
+                     {
+                        "id":"mp",
+                        "label":"Proveedores",
+                        "description":"Mantenedor de proveedoress",
+                        "url":"/mantenedores/porveedores"
                      }
                ]
             }
