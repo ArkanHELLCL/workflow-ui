@@ -3,7 +3,7 @@
 import { Suspense, lazy, useEffect, useId, useState } from "react";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { Constants } from "../constants/const.jsx";
-import { ArrowLeftIcon, ButtonIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons.jsx';
+import { ButtonIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons.jsx';
 import { useSpring, animated } from "@react-spring/web";
 import Loading from "./Loading.jsx";
 import { formulario } from'../mocks/formulario.json'
@@ -15,6 +15,7 @@ import Dropdown from '@mui/joy/Dropdown';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListDivider from '@mui/joy/ListDivider';
+import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 
 const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
 const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
@@ -299,11 +300,12 @@ export default function Formulario(){
                         </div>
                     </>
                 }{
-                    preview &&
-                        <div className='py-1 px-2 w-[150px] mb-1 flex gap-1 items-center cursor-pointer hover:dark:bg-[#505050] hover:bg-[#e6f2fa]' onClick={() => setPreview(false)}>
-                            <ArrowLeftIcon />
-                            <span className='text-[0.775rem]'>Volver al formulario</span>        
-                        </div>
+                    preview &&                                            
+                        <Dropdown>
+                            <MenuButton startDecorator={<TrendingFlatIcon className="rotate-180" />} className="hover:dark:!bg-[#505050] hover:!bg-[#e6f2fa] !border-0 dark:!text-stone-100 !text-stone-500 !text-xs !font-base !py-1 !rounded-none !ps-1 !pe-1" onClick={() => setPreview(false)}>
+                            Volver al formulario
+                            </MenuButton>
+                        </Dropdown>                    
                 }
                 <div className='grid md:grid-cols-1 lg:grid-cols-3 gap-1 max-h-28 overflow-y-auto py-0 pr-2 relative z-10'>
                 {
