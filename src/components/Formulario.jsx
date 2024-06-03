@@ -3,11 +3,18 @@
 import { Suspense, lazy, useEffect, useId, useState } from "react";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { Constants } from "../constants/const.jsx";
-import { ArrowLeftIcon, ButtonIcon, CloseIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons.jsx';
+import { ArrowLeftIcon, ButtonIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from './icons.jsx';
 import { useSpring, animated } from "@react-spring/web";
-import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import Loading from "./Loading.jsx";
 import { formulario } from'../mocks/formulario.json'
+
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
+import Dropdown from '@mui/joy/Dropdown';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ListDivider from '@mui/joy/ListDivider';
 
 const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
 const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
@@ -77,106 +84,25 @@ const fecha = (date, dias) => {
     return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()        
 } 
 
-const MenuAdjuntos = ({open, setOpen, IdMenu, handleEliminarClick, setPreview, setSelected, selectedMenu}) => {
-    const [pos, setPos] = useState(null)
-    useEffect(() => {
-        const posMenu = document.getElementById(IdMenu)?.getBoundingClientRect()
-        const adjunto = open?.id ? document.getElementById(open.id) : null
-        const posadjunto = adjunto?.getBoundingClientRect()
-        const posX = posadjunto?.left + posadjunto?.width - posMenu?.width
-        const posT = posadjunto?.top + posadjunto?.height    
-        posX && !isNaN(posX) ?
-        setPos({
-            "left": posX + "px",
-            "top": posT + "px",
-            "opacity": "1",
-            "zIndex": "100"
-        }) : setPos(null)
-    },[])   
-
-    const handleDeleteFile = (file) => {        
-        handleEliminarClick(file)
-        setOpen({open: false, id: ''})
-
-        //mensaje de eliminacion de adjunto
-    }
-
-    const handlePreview = () => {
-        if(selectedMenu.extension === 'docx' || selectedMenu.extension === 'pptx' ||  selectedMenu.extension === 'xlsx') return
-        setSelected(selectedMenu)        
-        setPreview(true)
-        setOpen({open: false, id: ''})
-    }
-
-    const handleClickAway = () => {
-        setOpen(false);
-    };
-
-    return( 
-        <ClickAwayListener onClickAway={handleClickAway}>
-            <div
-                className={`fixed w-fit h-fit border dark:bg-[#323130] bg-[#ffffff] dark:border-[#8a8886] border-[#8a8886] overflow-hidden shadow opacity-0 -z-10 mnuadj ${open.open ? '' : ''}`} 
-                style={pos}
-                id={IdMenu}             
-                >
-                <ul className='text-[11px]' id="mnuAdjunto">{
-                    (selectedMenu.extension !== 'docx' && selectedMenu.extension !== 'pptx' &&  selectedMenu.extension !== 'xlsx') &&            
-                        <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] cursor-pointer'>
-                            <div onClick={() => handlePreview()}>
-                                <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] border-[#e1dfdd] font-semibold' >Vista previa</span>
-                            </div>
-                        </li>
-                    }
-                    <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] flex relative cursor-pointer'>
-                        <span className="absolute top-2 left-3"><OpenFolderIcon styles='w-[18px] h-[18px]'/></span>                    
-                        <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Abrir</span>                    
-                    </li>
-                    <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer'>
-                        <span className="absolute top-2 left-2"><PrinterIcon styles="w-[24px] h-[24px]" strokeWidth='2.75'/></span>
-                        <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Impresion rápida</span>
-                    </li>
-                    <li className='dark:hover:bg-[#484644] hover:bg-[#5f564c] flex relative cursor-pointer'>
-                        <span className="absolute top-2 left-3"><SaveAsIcon /></span>
-                        <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Guardar como</span>
-                    </li>
-                    <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer'>
-                        <span className="w-6 h-6 absolute top-2 left-2"><SaveAllIcon styles='h-4 w-4' strokeWidth={1.75}/></span>
-                        <span className='ml-9 block w-full py-2 border border-t-0 border-l-0 border-r-0 pr-4 dark:border-[#484644] font-semibold'>Guardar todos los adjuntos...</span>                    
-                    </li>{
-                        selectedMenu?.upload  &&
-                            <li className='dark:hover:bg-[#484644] hover:bg-[#d2d0ce] relative cursor-pointer' onClick={()=>handleDeleteFile(selectedMenu)}>
-                                <span className="w-5 h-5 absolute top-2 left-2 text-red-600"><DeleteFileIcon styles='h-5 w-5' strokeWidth={2} /></span>
-                                <span className='ml-9 block w-full py-2 pr-4 font-semibold'>Quitar datos adjuntos</span>
-                            </li>
-                    }
-                </ul>
-            </div>
-        </ClickAwayListener>       
-    )
-}
-
-const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, setOpen}) => {    
-    const IdMenu = useId()
-    const [selectedMenu, setSelectedMenu] = useState(null)
-
-    const HandleClickMenu = (file, id) => {
-        setSelectedMenu(file)        
-        setOpen({open: true, id: id})        
-    }
-    
+const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos}) => {    
     const HandleClickFile = (file) =>{
         setSelected(file)
-        setSelectedMenu(file)
-        setOpen({open: false, id: ''})
         if(file.extension === 'docx' || file.extension === 'pptx' ||  file.extension === 'xlsx') return
         setPreview(true)        
     }
 
-    const handleEliminarClick = (adjunto) => {
+    const handleEliminarClick = (file) => {
         setAdjuntos((prevAdjuntos) =>
-          prevAdjuntos.filter((a) => a !== adjunto)
+          prevAdjuntos.filter((a) => a !== file)
         );
     };    
+
+    const handlePreview = (file) => {
+        if(file.extension === 'docx' || file.extension === 'pptx' ||  file.extension === 'xlsx') return
+        setSelected(file)        
+        setPreview(true)
+    }
+
     return(
         <>
             <div key={file.id} className='flex items-center relative overflow-hidden z-50 elmadj' id={file.id}>
@@ -197,14 +123,41 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, open, s
                         <span className='text-xs font-normal leading-tight w-fit px-2'>Tamaño: {file.tamano}</span>
                     </div>
                 </div>
-                <div className={`absolute h-full w-5 right-0 dark:bg-[#363636] border-[#b9b9b9] border dark:border-[#5f5f5f] hover:bg-[#cde6f7] z-20 border-l-0 items-center align-middle justify-center flex hover:cursor-pointer peer-hover/adjunto:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#666666] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a] bg-[#fdfdfd]'}`} 
-                    onClick={() => HandleClickMenu(file, file.id)}>
-                    <CloseIcon />
-                </div>           
+                <Dropdown>
+                    <MenuButton className={`dark:hover:!bg-[#444444] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin  h-full w-5 right-0 dark:!bg-[#363636] border-[#b9b9b9] !border dark:border-[#5f5f5f] hover:bg-[#cde6f7] z-20 !border-l-0 !items-center !align-middle !justify-center flex peer-hover/adjunto:dark:!border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:!bg-[#666666] dark:hover:bg-[#666666] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a] bg-[#fdfdfd]'}`}>
+                    <KeyboardArrowDownIcon/>
+                    </MenuButton>
+                    <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min"> {
+                        (file.extension !== 'docx' && file.extension !== 'pptx' &&  file.extension !== 'xlsx') &&       
+                            <>                                                    
+                                <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={() => handlePreview(file)} >
+                                    <ListItemDecorator></ListItemDecorator>Vista Previa                   
+                                </MenuItem>
+                                <ListDivider/>
+                            </>
+                        }
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={() => console.log('abrir ' + file.id)} >
+                            <ListItemDecorator><OpenFolderIcon styles='w-[18px] h-[18px] !ml-0'/></ListItemDecorator>Abrir                  
+                        </MenuItem>
+                        <ListDivider className="!pl-2"/>
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={() => console.log('Impresión rápida ' + file.id)} >
+                            <ListItemDecorator><PrinterIcon styles="w-[24px] h-[24px] !-ml-1" strokeWidth='2.75'/></ListItemDecorator>Impresión rápida                  
+                        </MenuItem>
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={() => console.log('Guardar como ' + file.id)} >
+                            <ListItemDecorator><SaveAsIcon styles="!ml-5"/></ListItemDecorator>Guardar como                  
+                        </MenuItem>
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={() => console.log('Guardar como ' + file.id)} >
+                            <ListItemDecorator><SaveAllIcon styles='h-5 w-5 ml-2' strokeWidth={1.75}/></ListItemDecorator>Guardar todos los adjuntos                  
+                        </MenuItem>{
+                        file?.upload  &&
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={()=>handleEliminarClick(file)} >
+                                <ListItemDecorator><DeleteFileIcon styles='h-5 w-5 text-red-600' strokeWidth={2} /></ListItemDecorator>Quitar todos los adjuntos                  
+                            </MenuItem>
+                        }
+                    </Menu>   
+                </Dropdown>
             </div>                
-            {open.open && file.id === open.id && (                
-                <MenuAdjuntos open={open} setOpen={setOpen} IdMenu={IdMenu} selected={selected} handleEliminarClick={handleEliminarClick} setPreview={setPreview} setSelected={setSelected} selectedMenu={selectedMenu}/>
-            )}        
+                  
         </>
     )
 }
@@ -314,7 +267,6 @@ export default function Formulario(){
     }*/
 
     const HeaderForm = ({request}) => {
-        const [open, setOpen] = useState({open: false, id: ''})
         return (
             <header className='w-full h-auto relative z-20' 
                 onDragOver = {handleNotDragOver}>
@@ -357,7 +309,7 @@ export default function Formulario(){
                 {
                     adjuntos.map((file, index) => {
                         return (                        
-                            <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} setPreview={setPreview} setAdjuntos={setAdjuntos} open={open} setOpen={setOpen}/>
+                            <Adjuntos file={file} key={index} selected={selected} setSelected={setSelected} setPreview={setPreview} setAdjuntos={setAdjuntos}/>
                         )}
                     )
                 }                                      
