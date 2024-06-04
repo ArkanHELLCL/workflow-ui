@@ -8,7 +8,6 @@ import { name, records, selected } from '../mocks/meses.json';
 import { tableName, tableRecords, tableSelected } from '../mocks/proveedores.json';
 import { NumericFormat } from "react-number-format";
 import { useEffect } from "react";
-import ConfirmationDialog from "./ConfirmationDialog.jsx";
 
 const InputType = ({campo, classInput, register, errors, control,formWFv3}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
@@ -338,10 +337,6 @@ export default function InputTypes({name, campos, formWFv3}){
         const action = submitter.getAttribute('formaction')
         const title =  submitter.getAttribute('title')        
         console.log(action, title , data)
-
-        return(            
-            <ConfirmationDialog/>
-        )
     }
     
     useEffect(()=>{

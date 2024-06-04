@@ -1,60 +1,68 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Paper from '@mui/material/Paper';
-import Draggable from 'react-draggable';
+import CloseIcon from '@mui/icons-material/Close';
 
-function PaperComponent(props) {
-  return (
-    <Draggable
-      handle="#draggable-dialog-title"
-      cancel={'[class*="MuiDialogContent-root"]'}
-    >
-      <Paper {...props} />
-    </Draggable>
-  );
-}
+import { ButtonIcon } from './icons.jsx';
+import { Divider, IconButton } from '@mui/material';
 
-export default function ConfirmationDialog() {
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
+export default function ConfirmationDialog({openDialog, setOpenDialog}) {
   const handleClose = () => {
-    setOpen(false);
+    setOpenDialog({
+      ...openDialog,
+      open:false
+    })
   };
+
+  const handleOptionClicked = (id) => {
+    id === 1 ? console.log('aceptado') : console.log('cancelado') 
+    setOpenDialog({
+      ...openDialog,
+      open:false
+    })    //hacer submit del formulario    
+  }
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open draggable dialog
-      </Button>
       <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperComponent={PaperComponent}
-        aria-labelledby="draggable-dialog-title"
-      >
-        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-          Subscribe
+        open={openDialog.open}
+        onClose={() => handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          "& .MuiDialog-root" : {
+              bakgroundColor:"red"
+            } 
+        }}>
+        
+        <DialogTitle id="alert-dialog-title" className='flex align-middle gap-2'>
+          <ButtonIcon typeButton={openDialog.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={1}/> {openDialog?.titulo}
         </DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+        <Divider orientation="horizontal" />
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+          <DialogContentText id="alert-dialog-description">
+          {openDialog?.mensaje}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={() => handleOptionClicked(2)}>No</Button>
+          <Button onClick={() => handleOptionClicked(1)} autoFocus>Si</Button>
         </DialogActions>
       </Dialog>
     </>

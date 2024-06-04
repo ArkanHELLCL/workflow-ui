@@ -85,13 +85,19 @@
                         "id" : "btn_tomar",
                         "nombre" : "Tomar",
                         "descripcion" : ["Tomar","Requerimiento"],
-                        "type" : "button"
+                        "type" : "button",
+                        "dialogo":"confirm",
+                        "titulo":"Tomar Requerimiento",
+                        "mensaje":"¿Estas seguro de querer tomar este requerimiento?"
                      },
                      {
                         "id" : "btn_liberar",
                         "nombre" : "Liberar",
                         "descripcion" : ["Liberar","Requerimiento"],
-                        "type" : "button"
+                        "type" : "button",
+                        "dialogo":"confirm",
+                        "titulo":"Liberar Requerimiento",
+                        "mensaje":"¿Estas seguro de querer liberar este requerimiento?"
                      }
                   ]
             }
@@ -106,34 +112,51 @@
                      "id":"btn_enviar",
                      "nombre":"Siguiente",
                      "descripcion":["Enviar al","Siguiente Paso"],
-                     "type" : "button"
+                     "type" : "submit",
+                     "action":"/enviar",
+                     "dialogo":"confirm",
+                     "titulo":"Enviar Requerimiento",
+                     "mensaje":"¿Estas seguro de querer enviar al siguiente paso este requerimiento?"
                   },               
                   {
                      "id":"btn_enviarDes",
                      "nombre":"Usuario",
                      "descripcion":["Enviar a","Destinatario"],
                      "type" : "submit",
-                     "action": "/destibnatario"
+                     "action": "/destinatario",
+                     "dialogo":"confirm",
+                     "titulo":"Enviar a Destinatario",
+                     "mensaje":"¿Estas seguro de querer enviar al Destinatario agregado en este formulario?"
                   },
                   {
                      "id":"btn_devolver",
                      "nombre":"Devolver",
                      "descripcion":["Devolver","Requerimiento"],
-                     "type" : "button"
+                     "type" : "submit",
+                     "action":"/devolver",
+                     "dialogo":"confirm",
+                     "titulo":"Devolver Requerimiento",
+                     "mensaje":"¿Estas seguro de querer devolver este requerimiento?"
                   },
                   {
                      "id":"btn_conforme",
                      "nombre":"Conforme",
                      "descripcion":["Requerimiento","Conforme"],
                      "type" : "submit",
-                     "action": "/conforme"
+                     "action": "/conforme",
+                     "dialogo":"confirm",
+                     "titulo":"Requerimiento Conforme",
+                     "mensaje":"¿Estas seguro de querer dejar conforme este requerimiento?"
                   },
                   {
                      "id":"btn_disconforme",
                      "nombre":"Disconforme",
                      "descripcion":["Requerimiento","Disconforme"],
                      "type" : "submit",
-                     "action": "/disconforme"
+                     "action": "/disconforme",
+                     "dialogo":"confirm",
+                     "titulo":"Requerimiento Disconforme",
+                     "mensaje":"¿Estas seguro de querer dejar disconforme este requerimiento?"
                   }
                ]
            }           
@@ -149,14 +172,20 @@
                      "nombre": "Finalizar",
                      "descripcion": ["Finalizar","Requerimiento"],
                      "type" : "submit",
-                     "action": "/finalizar"
+                     "action": "/finalizar",
+                     "dialogo":"confirm",
+                     "titulo":"Finalizar Requerimiento",
+                     "mensaje":"¿Estas seguro de querer finalizar este requerimiento?"
                   },               
                   {
                      "id":"btn_rechazar",
                      "nombre":"Rechazar",
                      "descripcion":["Rechazar","Requerimiento"],
                      "type" : "submit",
-                     "action": "/rechazar"
+                     "action": "/rechazar",
+                     "dialogo":"confirm",
+                     "titulo":"Rechazar Requerimiento",
+                     "mensaje":"¿Estas seguro de querer rechazar este requerimiento?"
                   }
                ]
             }           
@@ -172,7 +201,10 @@
                      "nombre":"Abrir",
                      "descripcion":["Abrir","Requerimiento"],
                      "type" : "submit",
-                     "action": "/abrir"
+                     "action": "/abrir",
+                     "dialogo":"confirm",
+                     "titulo":"Abrir Requerimiento",
+                     "mensaje":"¿Estas seguro de querer abrir este requerimiento?"
                   }
                ]
            }           
@@ -208,7 +240,9 @@
                      "id":"btn_observaciones",
                      "nombre":"",
                      "descripcion":["Ver","Observaciones"],
-                     "type" : "button"
+                     "type" : "button",
+                     "dialogo":"message",
+                     "titulo":"Ver Observaciones"
                   }
                ]
            }           
