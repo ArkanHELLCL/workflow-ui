@@ -18,6 +18,7 @@ import CachedIcon from '@mui/icons-material/Cached';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import IconButton from '@mui/joy/IconButton';
 import { ListItem } from '@mui/joy';
 import { Divider, ListItemButton } from '@mui/material';
 
@@ -138,24 +139,19 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     )
 }
 
-function UserBar() {
-    const open=false
-    return(
-        <Dropdown>
-            <MenuButton className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 !h-full !absolute right-5 flex items-center z-20 hover:cursor-pointer !border-0 !min-h-fit !rounded-none !border-none`} title="Datos del perfil">
+function UserBar({open, setOpen}) {
+    const ButtonUsrProfile = () => {
+        return (
+            <>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
                 <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
-            </MenuButton>
-            <Menu className='dark:!bg-[#262626] !bg-[#ffffff] dark:!border-[#737373] !border-[#949494] !border !rounded-none !h-auto !py-0'>                
-                <ListItem 
-                    endAction={
-                        <ListItemButton sx={{'border':'2px solid','paddingRight': '0px','marginRight':'-5px','marginTop':'10px'}} className="!border-[2px] !border-t-2 dark:!border-white !border-black !w-fit dark:!text-white !text-black !text-xs dark:hover:!bg-[#363636] hover:!bg-[#d2d2d2] !py-[13px] !px-6" onClick={()=>console.log("cerrar sesión")}>
-                            Cerrar Sesión
-                        </ListItemButton>}
-                    className=''
-                    >                    
-                </ListItem>
-                <div className="flex justify-center items-center gap-5 h-fit p-4">
+            </>
+        )
+    }
+
+    const UserDetail = () => {
+        return (
+            <div className="flex justify-center items-center gap-5 h-fit p-4">
                     <div className={`rounded-full w-[100px] h-[100px]`}>
                         <img src={user.USR_Photo} className={`rounded-full h-full w-full`} />
                     </div>
@@ -166,28 +162,50 @@ function UserBar() {
                         <span className="text-xs truncate text-sky-600">{user.DEP_Descripcion}</span>
                     </div>
                 </div>
-            <Divider orientation="horizontal" />
-            <ListItem className="!px-16 !py-6 dark:!bg-[#363636] dark:!border-[#737373] !bg-[#f3f3f3] !border-t !border-[#d9d9d9] dark:!text-white !text-black" 
-                startAction={
-                    <ListItemButton className="!w-fit dark:!text-white !text-black !text-xs !pl-3 !pr-0 !px-0 !font-thin" 
-                        onClick={()=>console.log("ver mensajes")}>
-                            <MailOutlineIcon className="!w-10 !h-10" />
-                            <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
-                    </ListItemButton>}>
-                Ver mis mensajes privados
-            </ListItem>
+        )
+    }   
+    
+    return(
+        <Dropdown>
+            <MenuButton 
+                className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 !h-full !absolute right-5 flex items-center z-20 !border-0 !min-h-fit !rounded-none !border-none`} 
+                title="Datos del perfil"
+                slots={{ root: IconButton }}
+                onClick={()=>setOpen(!open)}>
+                    <ButtonUsrProfile/>
+            </MenuButton>
+            <Menu className='dark:!bg-[#262626] !bg-[#ffffff] dark:!border-[#737373] !border-[#949494] !border !rounded-none !h-auto !py-0' open={open}>                
+                <ListItem 
+                    endAction={
+                        <ListItemButton sx={{'border':'2px solid','paddingRight': '0px','marginRight':'-5px','marginTop':'10px'}} className="!border-[2px] !border-t-2 dark:!border-white !border-black !w-fit dark:!text-white !text-black !text-xs dark:hover:!bg-[#363636] hover:!bg-[#d2d2d2] !py-[13px] !px-6" onClick={()=>console.log("cerrar sesión")}>
+                            Cerrar Sesión
+                        </ListItemButton>}>                    
+                </ListItem>
+                <UserDetail />
+                <Divider orientation="horizontal" />
+                <ListItem 
+                    className="!px-16 !py-6 dark:!bg-[#363636] dark:!border-[#737373] !bg-[#f3f3f3] !border-t !border-[#d9d9d9] dark:!text-white !text-black" 
+                    startAction={
+                        <ListItemButton className="!w-fit dark:!text-white !text-black !text-xs !pl-3 !pr-0 !px-0 !font-thin" 
+                            onClick={()=>console.log("ver mensajes")}>
+                                <MailOutlineIcon className="!w-10 !h-10" />
+                                <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
+                        </ListItemButton>}>
+                    Ver mis mensajes privados
+                </ListItem>
             </Menu>
-        </Dropdown>
+        </Dropdown>        
     )
 }
 
 export default function HeaderBar() {
     const [openSearch, setOpenSearch] = useState(false);
-    const { filters, setFilters } = useFilters();       
+    const { filters, setFilters } = useFilters(); 
+    const [open, setOpen] = useState(false)      
 
-    /*const HandleOpenUser = () => {
-        setOpen(!open);        
-    }*/
+    const HandleOpenUser = () => {
+        setOpen(false);        
+    }
 
     const HandleReload = () =>{
         /*setFilters(prevState => ({
@@ -207,7 +225,11 @@ export default function HeaderBar() {
                 <HelpOutlineIcon />
             </span>
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filters={filters} setFilters={setFilters}/>
-            <UserBar/>
+            <ClickAwayListener onClickAway={HandleOpenUser}>
+                <div className='absolute h-full right-0'>
+                    <UserBar open={open} setOpen={setOpen}/>
+                </div>
+            </ClickAwayListener>
         </div>
     )
 }
