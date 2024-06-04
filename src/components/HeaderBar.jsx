@@ -138,10 +138,8 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     )
 }
 
-function UserBar({menuAppear, setOpen, open}) {
-    /*const handleClickAway = () => {
-        //setOpen(false);
-    };*/
+function UserBar() {
+    const open=false
     return(
         <Dropdown>
             <MenuButton className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 !h-full !absolute right-5 flex items-center z-20 hover:cursor-pointer !border-0 !min-h-fit !rounded-none !border-none`} title="Datos del perfil">
@@ -184,15 +182,8 @@ function UserBar({menuAppear, setOpen, open}) {
 }
 
 export default function HeaderBar() {
-    const [open, setOpen] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
-    const { filters, setFilters } = useFilters();
-
-    let height = 260;
-    const menuAppear = useSpring({        
-        opacity:1,
-        height: `${open ? height : 0}` + 'px'        
-    });        
+    const { filters, setFilters } = useFilters();       
 
     /*const HandleOpenUser = () => {
         setOpen(!open);        
@@ -216,7 +207,7 @@ export default function HeaderBar() {
                 <HelpOutlineIcon />
             </span>
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filters={filters} setFilters={setFilters}/>
-            <UserBar menuAppear={menuAppear} setOpen={setOpen} open={open}/>
+            <UserBar/>
         </div>
     )
 }
