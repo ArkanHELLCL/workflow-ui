@@ -7,10 +7,15 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 
+import { useSnackbar } from 'notistack';
+
+
 import { ButtonIcon } from './icons.jsx';
 import { Divider, IconButton } from '@mui/material';
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleClose = () => {
     setOpenDialog({
       ...openDialog,
@@ -19,7 +24,7 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
   };
 
   const handleOptionClicked = (id) => {
-    id === 1 ? console.log('aceptado') : console.log('cancelado') 
+    id === 1 ? enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } ) : enqueueSnackbar('Operacion cancelada!', { variant : "warning" })
     setOpenDialog({
       ...openDialog,
       open:false
