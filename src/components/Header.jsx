@@ -34,24 +34,40 @@ import Dropdown from '@mui/joy/Dropdown';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListItemButton from '@mui/joy/ListItemButton';
+import ConfirmationDialog from "./ConfirmationDialog.jsx";
 
 const ContentMenu = ({children, title, styles}) => {    
-    return (
-        <section className={`flex content-start gap-0 shrink px-2 relative pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59] ${styles}`}>
+    return (        
+        <section className={`flex content-start gap-0 shrink px-2 pb-5 pt-1 border border-l-0 border-t-0 border-b-0 border-[#5c5a59] h-full overflow-hidden relative ${styles}`}>
             {children}
-            <div className="absolute bottom-1 leading-tight text-xs w-full text-center -left-1 items-end text-nowrap">
+            <div className="absolute bottom-1 leading-tight text-xs w-full text-center text-nowrap truncate justify-center -left-[1px]  px-2">
                 <span>{title}</span>
             </div>
         </section>
     )
 }
 
-const CrearMenu = ({styles}) => {
+const CrearMenu = ({styles, openDialog, setOpenDialog}) => {
+    function  hanldeOnClick(flujo){
+        if(flujo?.dialogo==='confirm'){
+            setOpenDialog({
+                ...openDialog,
+                titulo:'Creación de un ' + flujo?.description,
+                mensaje:flujo?.mensaje,
+                id:'flu-' + flujo.id,                
+                frmname:flujo.formname,
+                action:flujo.action,
+                open:true,
+            })
+            console.log(openDialog)
+        }
+    }
+
     return (        
         <ContentMenu title={'Crear'} styles={styles}>
             <Dropdown>
                 <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`}>
-                    <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-1">
+                    <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                         <FlowPlusIcon styles='w-11 h-11' strokeWidth='2' />                         
                         <span>Crear nuevo</span>
                         <span>requerimiento</span>
@@ -60,7 +76,7 @@ const CrearMenu = ({styles}) => {
                 </MenuButton>
                 <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
                     flujos.filter(fls => fls.id>0).map((item) =>
-                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => console.log('Crear requerinmiento' + item.description)}>
+                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => hanldeOnClick(item)}>
                             <ListItemDecorator><FlowIcon id={item.id} /></ListItemDecorator>
                             {item.description}                            
                         </MenuItem>
@@ -71,7 +87,21 @@ const CrearMenu = ({styles}) => {
     )    
 }
 
-const Requerimiento = ({styles, request}) => {
+const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
+    function hanldeOnClick(flujo){
+        if(flujo?.dialogo==='confirm'){
+            setOpenDialog({
+                ...openDialog,
+                titulo:flujo?.titulo,
+                mensaje:flujo?.mensaje,
+                id:flujo.id,                
+                frmname:flujo.formname,
+                action:flujo.action,
+                open:true,
+            })
+        }
+    }
+
     const  menuAppear = useSpring({
         to:{
             transform:'translate(0)',
@@ -84,44 +114,49 @@ const Requerimiento = ({styles, request}) => {
         config: { duration: 150 },
         delay: 200
     });
-    return (
+    const gen = informes[0].flujos.filter((item) => item.id===request.request.FLU_Id)[0].tipos.filter((item) => item.tipo === "generacion")[0]?.informes
+    const des = informes[0].flujos.filter((item) => item.id===request.request.FLU_Id)[0].tipos.filter((item) => item.tipo === "descarga")[0]?.informes
+
+    return (        
         <animated.div style={menuAppear} className={styles}>
-            <ContentMenu title={'Requerimiento'}>
-                <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
-                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
-                            <GenReportIcon styles='w-10 h-10'/>
-                            <span className="!pt-2">Generar</span>                            
-                            <KeyboardArrowDownIcon/>
-                        </div>
-                    </MenuButton>
-                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
-                        informes.map((item) =>
-                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => console.log('Generar Informe' + item.description)}>                                
-                                {item.description}                            
-                            </MenuItem>
-                        )}      
-                    </Menu>
-                </Dropdown>
-
-                <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
-                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
-                            <DownReportIcon styles='w-10 h-10' />
-                            <span className="pt-2">Descargar</span>   
-                            <span>informes</span>   
-                            <KeyboardArrowDownIcon/>
-                        </div>
-                    </MenuButton>
-                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
-                        informes.map((item) =>
-                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => console.log('Descarhar informe' + item.description)}>                                
-                                {item.description}                            
-                            </MenuItem>
-                        )}      
-                    </Menu>
-                </Dropdown>
-
+            <ContentMenu title={'Requerimiento'} styles={styles}>{
+                gen &&
+                    <Dropdown>
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                                <GenReportIcon styles='w-10 h-10'/>
+                                <span className="!pt-2">Generar</span>                            
+                                <KeyboardArrowDownIcon/>
+                            </div>
+                        </MenuButton>
+                        <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                            gen.map((item) =>
+                                <MenuItem className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => hanldeOnClick(item)}>                                
+                                    {item.description}                            
+                                </MenuItem>
+                            )}      
+                        </Menu>
+                    </Dropdown>
+                }{
+                des &&
+                    <Dropdown>
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                                <DownReportIcon styles='w-10 h-10' />
+                                <span className="pt-2">Descargar</span>   
+                                <span>informes</span>   
+                                <KeyboardArrowDownIcon/>
+                            </div>
+                        </MenuButton>
+                        <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                            des.map((item) =>
+                                <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => hanldeOnClick(item)}>                                
+                                    {item.description}                            
+                                </MenuItem>
+                            )}      
+                        </Menu>
+                    </Dropdown>
+                }
                 <Dropdown>
                     <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
@@ -299,7 +334,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp}) => {
             <ContentMenu title={grp[0].descripcion}>{
                 grp[0].botones.map(btns =>
                     <Dropdown key={btns.id}>
-                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start ${btns.id==="btn_observaciones" ? '!pb-2' : '!pb-0'}`} onClick={()=> console.log(btns.id)} key={btns.id}>
+                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log(btns.id)} key={btns.id}>
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                                 <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={2}/>
                                 <span className="!pt-2">{btns.descripcion[0]}</span>
@@ -436,6 +471,7 @@ export default function Header(){
    const { filters } = useFilters()
     
    const [grupos, setGrupos] = useState(null);
+   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
     
    useEffect(() => {
         //const { FOR_Botones } = formulario.VFO_Id === request?.request?.VFO_Id;
@@ -451,39 +487,41 @@ export default function Header(){
     }    
     //console.log(filters)
     const mantSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "m")
-    const repoSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "r")
-    
+    const repoSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "r")    
     return (        
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 h-fit drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-[155px]'
         onDragOver={handleNotDragOver}>            
             <Suspense fallback={<Loading />}>
-                <CrearMenu styles={'z-50'}/>
+                <CrearMenu styles={'z-50 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                 {
                     request && 
                     <>
-                        <Requerimiento styles={'z-40'} request={request}/>                        
+                        <Requerimiento styles={'z-40 h-full'} request={request} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                         {
                             
                             request?.selected &&
                             <>
-                                <Acciones  styles={'z-30'}/>
-                                <GuardarEquipo  styles={'z-20'}/>                                
+                                <Acciones  styles={'z-30 h-full'}/>
+                                <GuardarEquipo  styles={'z-20 h-full'}/>                                
                             </>
                         }
-                        <Adjuntar styles={'z-10'}/>
-                        <Formulario styles={'z-10'} grupos={grupos}/>
+                        <Adjuntar styles={'z-10 h-full'}/>
+                        <Formulario styles={'z-10 h-full'} grupos={grupos}/>
                     </>
                 }
                 {
                     mantSelected &&                     
-                        <Mantenedores styles={'z-40'}/>
+                        <Mantenedores styles={'z-40 h-full'}/>
                 }
                 {
                     repoSelected &&         
-                        <Informes styles={'z-40'} />                    
+                        <Informes styles={'z-40 h-full'} />                    
                 }                
                 <DarkModeToggle />            
-            </Suspense>
+            </Suspense>{
+                openDialog.open &&
+                    <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+            }
         </header>
     )
 }

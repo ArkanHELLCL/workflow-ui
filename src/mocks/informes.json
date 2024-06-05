@@ -1,16 +1,119 @@
 {
-    "informes": [
-        {
-            "id": 0,
-            "name": "Memorandum",
-            "description": "Memorandum de compras",
-            "obligatorio" : false
-        },
-        {
-            "id": 1,
-            "name": "Certificado de disponiblididad",
-            "description": "Certificado de disponiblididad presupuestaria",
-            "obligatorio" : true
-        }
-    ]
+    "informes": [{
+        "flujos":[
+            {
+                "id" : 1,
+                "name" : "Flujo de compras",
+                "tipos": [
+                    {
+                        "tipo": "generacion",
+                        "informes" : [
+                            {
+                                "id": "g-memo",
+                                "name": "Memorandum",
+                                "description": "Memorandum de compras",
+                                "obligatorio" : false,
+                                "titulo":"Generar Memorandum de compras",
+                                "action":"/generar-memorandum",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea generar el memorndum de compras?"
+                            },
+                            {
+                                "id": "g-cdp",
+                                "name": "Certificado de disponiblididad",
+                                "description": "Certificado de disponiblididad presupuestaria",
+                                "titulo":"Generar CDP de compras",
+                                "obligatorio" : true,
+                                "action":"/generar-certificado-disponibilidad",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea generar el CDP de compras?"
+                            }
+                        ]
+                    },{
+                        "tipo": "descarga",
+                        "informes" : [
+                            {
+                                "id": "d-memo",
+                                "name": "Memorandum",
+                                "description": "Memorandum de compras",
+                                "obligatorio" : false,
+                                "titulo":"Descargar Memorandum de compras",
+                                "action":"/descargar-memorandum",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea descargar el memorndum de compras?"
+                            },
+                            {
+                                "id": "d-cdp",
+                                "name": "Certificado de disponiblididad",
+                                "description": "Certificado de disponiblididad presupuestaria",
+                                "obligatorio" : true,
+                                "titulo":"Descargar CDP de compras",
+                                "action":"/descargar-certificado-disponibilidad",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea descargar el CDP de compras?"
+                            }
+                        ]
+                    }
+                ]
+            },{
+                "id" : 2,
+                "name" : "Flujo de boletas de garantía",
+                "tipos": []
+            },{
+                "id" : 4,
+                "name" : "Flujo de pagos",
+                "tipos": [
+                    {
+                        "tipo": "generacion",
+                        "informes" : [
+                            {
+                                "id": "g-rc",
+                                "name": "Recepción Conforme",
+                                "description": "Recepción Conforme de bien o servicio adquirido",
+                                "obligatorio" : false,
+                                "titulo":"Generar Recepción Conforme",
+                                "action":"/generar-rc",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea generar la recepción conforme?"
+                            },
+                            {
+                                "id": "g-prv",
+                                "name": "Providencia de solicitud de pago",
+                                "description": "Providencia de solicitud de pago",
+                                "titulo":"Generar Providencia de solicitud de pago",
+                                "obligatorio" : true,
+                                "action":"/generar-providencia",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea generar la Providencia de solicitud de pago?"
+                            }
+                        ]
+                    },{
+                        "tipo": "descarga",
+                        "informes" : [
+                            {
+                                "id": "d-rc",
+                                "name": "Recepción Conforme",
+                                "description": "Recepción Conforme de bien o servicio adquirido",
+                                "obligatorio" : false,
+                                "titulo":"Descargar Recepción Conforme",
+                                "action":"/generar-rc",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea descargar la recepción conforme?"
+                            },
+                            {
+                                "id": "d-prv",
+                                "name": "Providencia de solicitud de pago",
+                                "description": "Providencia de solicitud de pago",
+                                "titulo":"Descargar Providencia de solicitud de pago",
+                                "obligatorio" : true,
+                                "action":"/generar-providencia",
+                                "dialogo":"confirm",
+                                "mensaje":"¿Está seguro que desea descargar la Providencia de solicitud de pago?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }]
 }
