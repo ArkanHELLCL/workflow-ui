@@ -6,12 +6,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
+import { useColorScheme } from '@mui/joy/styles';
 
 import { useSnackbar } from 'notistack';
 
 
 import { ButtonIcon } from './icons.jsx';
 import { Divider, IconButton } from '@mui/material';
+
+const { mode, setMode } = useColorScheme();
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {
   const { enqueueSnackbar } = useSnackbar();
@@ -38,10 +41,11 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
         onClose={() => handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        sx={{
-          "& .MuiDialog-root" : {
-              bakgroundColor:"red"
-            } 
+        PaperProps={{
+          style: {
+            backgroundColor: "#444444",
+            //boxShadow: "none"
+          },
         }}>
         
         <DialogTitle id="alert-dialog-title" className='flex align-middle gap-2'>
