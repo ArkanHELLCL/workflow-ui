@@ -489,7 +489,7 @@ export default function Header(){
     const mantSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "m")
     const repoSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "r")    
     return (        
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-[155px]'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-[180px] overflow-hidden'
         onDragOver={handleNotDragOver}>            
             <Suspense fallback={<Loading />}>
                 <CrearMenu styles={'z-50 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
