@@ -63,27 +63,29 @@ const CrearMenu = ({styles, openDialog, setOpenDialog}) => {
         }
     }
 
-    return (        
-        <ContentMenu title={'Crear'} styles={styles}>
-            <Dropdown>
-                <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`}>
-                    <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
-                        <FlowPlusIcon styles='w-11 h-11' strokeWidth='2' />                         
-                        <span>Crear nuevo</span>
-                        <span>requerimiento</span>
-                        <KeyboardArrowDownIcon />
-                    </div>
-                </MenuButton>
-                <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
-                    flujos.filter(fls => fls.id>0).map((item) =>
-                        <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => hanldeOnClick(item)}>
-                            <ListItemDecorator><FlowIcon id={item.id} /></ListItemDecorator>
-                            {item.description}                            
-                        </MenuItem>
-                    )}      
-                </Menu>
-            </Dropdown>
-        </ContentMenu>
+    return (     
+        <div>
+            <ContentMenu title={'Crear'} styles={styles}>
+                <Dropdown>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`}>
+                        <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
+                            <FlowPlusIcon styles='w-11 h-11' strokeWidth='2' />                         
+                            <span>Crear nuevo</span>
+                            <span>requerimiento</span>
+                            <KeyboardArrowDownIcon />
+                        </div>
+                    </MenuButton>
+                    <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
+                        flujos.filter(fls => fls.id>0).map((item) =>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`}  key={item.id} onClick={() => hanldeOnClick(item)}>
+                                <ListItemDecorator><FlowIcon id={item.id} /></ListItemDecorator>
+                                {item.description}                            
+                            </MenuItem>
+                        )}      
+                    </Menu>
+                </Dropdown>
+            </ContentMenu>
+        </div>   
     )    
 }
 
@@ -489,7 +491,7 @@ export default function Header(){
     const mantSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "m")
     const repoSelected = filters.itemIdSelected.length===2 && (filters.itemIdSelected.charAt(0) === "r")    
     return (        
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] pl-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-[180px] overflow-hidden'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start p-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] ml-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-[180px] overflow-hidden'
         onDragOver={handleNotDragOver}>            
             <Suspense fallback={<Loading />}>
                 <CrearMenu styles={'z-50 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
