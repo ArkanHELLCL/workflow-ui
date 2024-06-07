@@ -64,7 +64,7 @@ export default function DetalleRequerimiento(){
         {filters.totalRequerimientos > 0 &&
             <Accordion className="z-0 !bg-transparent" slotProps={{ transition: { timeout: 350 } }}>
                 <AccordionSummary                 
-                    className='dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4] !text-[.7rem] !font-bold truncate dark:!bg-[#444444] !bg-[#f0f0f0] !py-1 hover:!dark:bg-[#666666] hover:!bg-[#e6f2fa] overflow-hidden !px-2 !h-7 !min-h-7 !m-0 !border-b'
+                    className='dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4] !text-[.7rem] !font-bold truncate dark:!bg-[#444444] !bg-[#f0f0f0] !py-1 hover:!dark:bg-[#666666] hover:!bg-[#e6f2fa] overflow-hidden !px-2 !h-7 !min-h-7 !m-0 !border-b dark:hover:!bg-[#505050]'
                     >Detalle
                 </AccordionSummary>
                 <AccordionDetails className="py-0">

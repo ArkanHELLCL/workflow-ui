@@ -55,7 +55,7 @@ export function MenuTree({ menu }) {
             items={menu} 
             defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}
             slots={{ item: CustomTreeItem }}
-            className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1'}
+            className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1 !text-stone-500 dark:!text-stone-100'}
             onItemExpansionToggle={handleItemExpansionToggle}
             onItemFocus={handleItemExpansionToggle}
             selectedItems={filters.itemIdSelected}            
