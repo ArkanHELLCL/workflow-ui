@@ -72,7 +72,7 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleOptionClicked(2)} className='!text-red-500 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]'>No</Button>
-          <Button onClick={() => handleOptionClicked(1)} className='!text-green-600 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]' autoFocus>Si</Button>
+          <Button onClick={() => handleOptionClicked(1)} className='!text-green-600 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]' autoFocus formAction={openDialog.action} form={openDialog.frmname} type={openDialog.type}>Si</Button>
         </DialogActions>
       </Dialog>
     </>

@@ -9,7 +9,7 @@ import { tableName, tableRecords, tableSelected } from '../mocks/proveedores.jso
 import { NumericFormat } from "react-number-format";
 import { useEffect } from "react";
 
-const InputType = ({campo, classInput, register, errors, control,formWFv3}) => {    
+const InputType = ({campo, classInput, register, errors, control, formWFv3}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
     const selectList = (LID_Id) => {
         //Aqui hay que codificar la llamada al backend para obtener los datos de la lista de seleccion dada por el campo LID_Id        

@@ -57,7 +57,8 @@ const Buttons = ({grupos, idGroups, frmname}) => {
                 id:btns.id,
                 open:true,
                 frmname:frmname,
-                action:btns.action
+                action:btns.action,
+                type:btns.type
             })
         }
     }

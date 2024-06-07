@@ -32,6 +32,7 @@
             "dialogo":"confirm",
             "mensaje":"¿Está seguro que desea crear un nuevo requerimiento de compras?",
             "formname": "frmWorkFlowCreacion",
+            "type": "submit",
             "orderby": [
                 {
                     "id": 1,
@@ -65,6 +66,7 @@
             "dialogo":"confirm",
             "mensaje":"¿Está seguro que desea crear un nuevo requerimiento de boleta de garantía?",
             "formname": "frmWorkFlowCreacion",
+            "type": "submit",
             "orderby": [
                 {
                     "id": 1,
@@ -98,6 +100,7 @@
             "dialogo":"confirm",
             "mensaje":"¿Está seguro que desea crear un nuevo requerimiento de pagos?",
             "formname": "frmWorkFlowCreacion",
+            "type": "submit",
             "orderby": [
                 {
                     "id": 1,

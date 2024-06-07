@@ -16,7 +16,8 @@
                                 "titulo":"Generar Memorandum de compras",
                                 "action":"/generar-memorandum",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea generar el memorndum de compras?"
+                                "mensaje":"¿Está seguro que desea generar el memorndum de compras?",
+                                "type": "button"
                             },
                             {
                                 "id": "g-cdp",
@@ -26,7 +27,8 @@
                                 "obligatorio" : true,
                                 "action":"/generar-certificado-disponibilidad",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea generar el CDP de compras?"
+                                "mensaje":"¿Está seguro que desea generar el CDP de compras?",
+                                "type": "button"
                             }
                         ]
                     },{
@@ -40,7 +42,8 @@
                                 "titulo":"Descargar Memorandum de compras",
                                 "action":"/descargar-memorandum",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea descargar el memorndum de compras?"
+                                "mensaje":"¿Está seguro que desea descargar el memorndum de compras?",
+                                "type": "button"
                             },
                             {
                                 "id": "d-cdp",
@@ -50,7 +53,8 @@
                                 "titulo":"Descargar CDP de compras",
                                 "action":"/descargar-certificado-disponibilidad",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea descargar el CDP de compras?"
+                                "mensaje":"¿Está seguro que desea descargar el CDP de compras?",
+                                "type": "button"
                             }
                         ]
                     }
@@ -84,7 +88,8 @@
                                 "obligatorio" : true,
                                 "action":"/generar-providencia",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea generar la Providencia de solicitud de pago?"
+                                "mensaje":"¿Está seguro que desea generar la Providencia de solicitud de pago?",
+                                "type": "button"
                             }
                         ]
                     },{
@@ -98,7 +103,8 @@
                                 "titulo":"Descargar Recepción Conforme",
                                 "action":"/generar-rc",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea descargar la recepción conforme?"
+                                "mensaje":"¿Está seguro que desea descargar la recepción conforme?",
+                                "type": "button"
                             },
                             {
                                 "id": "d-prv",
@@ -108,7 +114,8 @@
                                 "obligatorio" : true,
                                 "action":"/generar-providencia",
                                 "dialogo":"confirm",
-                                "mensaje":"¿Está seguro que desea descargar la Providencia de solicitud de pago?"
+                                "mensaje":"¿Está seguro que desea descargar la Providencia de solicitud de pago?",
+                                "type": "button"
                             }
                         ]
                     }

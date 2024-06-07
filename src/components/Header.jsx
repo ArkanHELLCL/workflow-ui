@@ -58,6 +58,7 @@ const CrearMenu = ({styles, openDialog, setOpenDialog}) => {
                 frmname:flujo.formname,
                 action:flujo.action,
                 open:true,
+                type:flujo.type
             })
             console.log(openDialog)
         }
@@ -100,6 +101,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
                 frmname:flujo.formname,
                 action:flujo.action,
                 open:true,
+                type: flujo.type,
             })
         }
     }
@@ -329,6 +331,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
                 frmname:btn.formname,
                 action:btn.action,
                 open:true,
+                type: btn.type,
             })
         }
     }
