@@ -7,9 +7,6 @@ import { ButtonIcon, DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, S
 import { useSpring, animated } from "@react-spring/web";
 import Loading from "./Loading.jsx";
 import { formulario } from'../mocks/formulario.json'
-import InputTypes from './InputTypes.jsx'
-import { useForm, Controller } from 'react-hook-form';
-import useFormPersist from 'react-hook-form-persist'
 
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -22,6 +19,7 @@ import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import ConfirmationDialog from './ConfirmationDialog.jsx'
 
 const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
+const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
 
 const Buttons = ({grupos, idGroups, frmname}) => {
     const [postitionTo, setPositionTo] = useState(0)
@@ -206,38 +204,6 @@ export default function Formulario(){
 
     const formWFv3 = JSON.parse(window.localStorage.getItem('formWFv3')) || []
 
-    const {        
-        handleSubmit,
-        register,
-        control,
-        formState: { errors, isDirty, dirtyFields },
-        setValue,
-        watch,
-        reset
-      } = useForm();
-
-    useFormPersist("formWFv3", {
-        watch, 
-        setValue,
-        storage: window.localStorage//, // default window.sessionStorage
-        //exclude: ['baz']
-      });        
-    
-    const onSubmit = (data, event) => {
-        const submitter = event?.nativeEvent?.submitter;
-        const action = submitter.getAttribute('formaction')
-        const title =  submitter.getAttribute('title')        
-        console.log(action, title , data)
-    }
-    
-    /*useEffect(()=>{
-        reset({...formWFv3});
-    }, [formWFv3])*/
-
-    useEffect(()=>{
-        isDirty ? console.log("Formulario Modificado",dirtyFields, dirtyFields['PagMes']) : null
-    })
-
     useEffect(() => {
         selected ?
             setRequest({
@@ -246,7 +212,7 @@ export default function Formulario(){
                 "selected": selected,
             }) :
         null
-    },[selected])
+    },[selected])    
 
     const handleDrop = (event) => {
         event.preventDefault();
@@ -373,8 +339,8 @@ export default function Formulario(){
             </header>            
         )
     }
-    
-    const DataForm = ({campos, errors, dirtyFields, register, control, Controller}) =>{
+
+    const DataForm = ({campos}) =>{
         return(
             <section className={`flex-1 overflow-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 min-w-96`} onDragEnter={handleDragEnter}>
             {
@@ -389,17 +355,9 @@ export default function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                    
-                        <form 
-                            className='w-full pr-2'
-                            onSubmit={handleSubmit(onSubmit)}
-                            name={form.name}
-                            id={form.name}>
-                                <div className='grid grid-cols-12 gap-2'>
-                                    <InputTypes campos={campos} formWFv3={formWFv3} errors={errors} dirtyFields={dirtyFields} register={register} control={control} Controller={Controller}/>
-                                </div>
-                        </form>
-                    
+                    <Suspense fallback={<Loading />}>
+                        <LazyInputTypes name={form.name} campos={campos} formWFv3={formWFv3}/>
+                    </Suspense>
             }
             </section>
         )
@@ -411,9 +369,9 @@ export default function Formulario(){
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
                     <HeaderForm request={request}/>{
                         !preview &&
-                        
-                            <DataForm campos={campos} errors={errors} dirtyFields={dirtyFields} register={register} control={control} Controller={Controller}/>
-                        
+                        <Suspense fallback={<Loading />}>
+                            <DataForm campos={campos}/>
+                        </Suspense>
                     }{
                         preview && selected!==null &&
                             <Suspense fallback={<Loading />}>

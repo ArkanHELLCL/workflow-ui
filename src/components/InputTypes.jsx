@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { IconForm } from "./icons.jsx"
-//import { useForm, Controller } from 'react-hook-form';
-//import useFormPersist from 'react-hook-form-persist'
+import { useForm, Controller } from 'react-hook-form';
+import useFormPersist from 'react-hook-form-persist'
 import AsyncSelect from 'react-select/async';
 import { name, records, selected } from '../mocks/meses.json';
 import { tableName, tableRecords, tableSelected } from '../mocks/proveedores.json';
 import { NumericFormat } from "react-number-format";
-//import { useEffect } from "react";
+import { useEffect } from "react";
 
-const InputType = ({campo, classInput, register, errors, control, Controller, formWFv3}) => {    
+const InputType = ({campo, classInput, register, errors, control, formWFv3}) => {    
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
     const selectList = (LID_Id) => {
         //Aqui hay que codificar la llamada al backend para obtener los datos de la lista de seleccion dada por el campo LID_Id        
@@ -314,9 +314,46 @@ const InputType = ({campo, classInput, register, errors, control, Controller, fo
     })
 }*/
 
-export default function InputTypes({campos, formWFv3, errors, dirtyFields, register, control, Controller}){        
-    return(        
-                    
+export default function InputTypes({name, campos, formWFv3}){    
+    const {        
+        handleSubmit,
+        register,
+        control,
+        formState: { errors, isDirty, dirtyFields },
+        setValue,
+        watch,
+        reset
+      } = useForm();
+
+    useFormPersist("formWFv3", {
+        watch, 
+        setValue,
+        storage: window.localStorage//, // default window.sessionStorage
+        //exclude: ['baz']
+      });        
+    
+    const onSubmit = (data, event) => {
+        const submitter = event?.nativeEvent?.submitter;
+        const action = submitter.getAttribute('formaction')
+        const title =  submitter.getAttribute('title')        
+        console.log(action, title , data)
+    }
+    
+    useEffect(()=>{
+        reset({...formWFv3});
+    }, [formWFv3])
+
+    useEffect(()=>{
+        isDirty ? console.log("Formulario Modificado",dirtyFields, dirtyFields['PagMes']) : null
+    })
+
+    return(
+        <form 
+            className='w-full pr-2'
+            onSubmit={handleSubmit(onSubmit)}
+            name={name}
+            id={name}>
+            <div className='grid grid-cols-12 gap-2'>{        
                 campos?.map((campo) => {
                     let colwidth = campo.FDI_TamanoDiseno === 12 ? 'col-span-12' : campo.FDI_TamanoDiseno === 11 ? 'col-span-11' : campo.FDI_TamanoDiseno === 10 ? 'col-span-10' : campo.FDI_TamanoDiseno === 9 ? 'col-span-9' : campo.FDI_TamanoDiseno === 8 ? 'col-span-8' : campo.FDI_TamanoDiseno === 7 ? 'col-span-7' : campo.FDI_TamanoDiseno === 6 ? 'col-span-6' : campo.FDI_TamanoDiseno === 5 ? 'col-span-5' : campo.FDI_TamanoDiseno === 4 ? 'col-span-4' : campo.FDI_TamanoDiseno === 3 ? 'col-span-3' : campo.FDI_TamanoDiseno === 2 ? 'col-span-2' : 'col-span-1'
                     colwidth = colwidth + ' relative'
@@ -327,11 +364,13 @@ export default function InputTypes({campos, formWFv3, errors, dirtyFields, regis
                                 <span className={`inline-flex items-center px-3 text-sm dark:text-stone-100 !text-stone-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-[#4a4a4a] dark:border-gray-600`}>
                                     <IconForm typeIcon={campo.FDI_IconoDiseno} styles={`${errors[campo?.FDI_NombreHTML] ? ' !fill-red-500 !text-red-500' : dirtyFields[campo?.FDI_NombreHTML] ? '!fill-green-500 !text-green-500' : ''}`}/>
                                 </span>
-                                <InputType campo={campo} register={register} errors={errors} control={control} Controller={Controller} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : dirtyFields[campo?.FDI_NombreHTML] ? '!border-green-500 modfield' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-1.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 focus:ring-[#0284c7] focus:border-[#0284c7] dark:focus:ring-[#0284c7] dark:focus:border-[#0284c7] outline-none `} formWFv3={formWFv3}/>                        
+                                <InputType campo={campo} register={register} errors={errors} control={control} classInput={`${errors[campo?.FDI_NombreHTML] ? ' !border-red-500' : dirtyFields[campo?.FDI_NombreHTML] ? '!border-green-500 modfield' : ''}  rounded-none rounded-e-lg bg-gray-50 border border-gray-300 dark:text-stone-100 text-stone-500 focus:border-[#deecf9] block flex-1 min-w-0 w-full text-sm p-1.5 dark:bg-[#363636] dark:border-gray-600 dark:placeholder-gray-400 focus:ring-[#0284c7] focus:border-[#0284c7] dark:focus:ring-[#0284c7] dark:focus:border-[#0284c7] outline-none `} formWFv3={formWFv3}/>                        
                             </div>
                         </div>
                     )}
                 )
-             
+            }            
+            </div>
+        </form>
     )
 }
