@@ -369,7 +369,7 @@ export default function InputTypes({name, campos, formWFv3}){
                         </div>
                     )}
                 )
-            }            
+            }
             </div>
         </form>
     )

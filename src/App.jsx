@@ -53,7 +53,7 @@ const Main = ({handleNotDragOver, request}) =>{
         </aside>                      
       </section>          
       <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
-        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[300px] h-full overflow-x-hidden relative'>{
+        <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[400px] h-full overflow-auto relative'>{
           request ? (
             <Suspense fallback={<Loading />}>  
               <LazyFormulario />
@@ -65,7 +65,7 @@ const Main = ({handleNotDragOver, request}) =>{
                 </div>
             </div>
           )}
-        </aside>          
+        </div>          
       </section>
     </main>
   )

@@ -342,7 +342,7 @@ export default function Formulario(){
 
     const DataForm = ({campos}) =>{
         return(
-            <section className={`flex-1 overflow-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 min-w-96`} onDragEnter={handleDragEnter}>
+            <div className={`flex-1 overflow-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-3 min-w-96 w-min-[800px]`} onDragEnter={handleDragEnter}>
             {
                 dropEnter ?
                 <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
@@ -359,7 +359,7 @@ export default function Formulario(){
                         <LazyInputTypes name={form.name} campos={campos} formWFv3={formWFv3}/>
                     </Suspense>
             }
-            </section>
+            </div>
         )
     }    
     
