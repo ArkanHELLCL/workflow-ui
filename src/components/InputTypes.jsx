@@ -68,16 +68,17 @@ const InputType = ({campo, classInput, register, errors, control, formWFv3}) => 
                         //defaultValue={formWFv3[campo.FDI_NombreHTML] ? formWFv3[campo.FDI_NombreHTML].replace('.','') : campo.DFO_Dato}
                         rules={required ? { required: true } : {}}
                         render={({ field: { onChange, onBlur, value} }) => (
-                            <NumericFormat                                
-                                thousandSeparator = "."
+                            <NumericFormat
+                                thousandSeparator                            
+                                //thousandSeparator = "."
                                 decimalScale={0}
-                                decimalSeparator=","
+                                //decimalSeparator=","
                                 //prefix={"$ "}
-                                type="text" 
+                                //type="number" 
                                 id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
-                                defaultValue={campo.DFO_Dato}
+                                defaultValue={parseInt(campo.DFO_Dato)}
                                 onChange={onChange} // send value to hook form                                
                                 onBlur={onBlur}
                                 value={value}
@@ -194,7 +195,7 @@ const InputType = ({campo, classInput, register, errors, control, formWFv3}) => 
                     {errors[campo?.FDI_NombreHTML] && <span className="absolute right-0 top-0 text-red-500">es requerido</span>}
                 </>
             )
-        case 'L':       //Listas de selección
+        case 'L':   //Listas de selección
             return (
                 <>
                     <Controller

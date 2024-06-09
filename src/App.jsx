@@ -79,10 +79,11 @@ function App() {
   const methods = useForm({
     //shouldUnregister: true
   })
+  //const { handleSubmit, formState:{errors} } = methods
   const { handleSubmit } = methods
   const onSubmit = (data) => console.log(data)
-
-
+  //isDirty ? console.log("Formulario Modificado",dirtyFields, dirtyFields['PagMes']) : null
+  //console.log(errors)
   //const { filters, setFilters } = useFilters()
 
 
