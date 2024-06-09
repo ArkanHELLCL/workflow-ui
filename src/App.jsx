@@ -10,10 +10,12 @@ import Menu from './components/Menu.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
-//import { useFilters } from "./hooks/useFilters.jsx";
 import { useRequest } from "./hooks/useRequest.jsx"
-//import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 import { flujos } from "./mocks/treeMenu.json";
+import { useForm, FormProvider } from "react-hook-form"
+//import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
+//import { useFilters } from "./hooks/useFilters.jsx";
+
 //import SplitPane, { Pane } from 'split-pane-react';
 
 //const currentPath = window.location.pathname
@@ -28,7 +30,7 @@ const Main = ({handleNotDragOver, request}) =>{
   ]);*/
   
   return(
-    <main className='w-full flex overflow-hidden pl-14 h-full bg-[#faf9f8] dark:bg-transparent'>
+    <main className='w-full flex overflow-hidden pl-14 bg-[#faf9f8] dark:bg-transparent h-full'>
       <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
         <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0'>              
           <Suspense fallback={<Loading />}>
@@ -72,8 +74,17 @@ const Main = ({handleNotDragOver, request}) =>{
 }
 
 function App() { 
-  //const { filters, setFilters } = useFilters()
   const { request } = useRequest()
+
+  const methods = useForm({
+    //shouldUnregister: true
+  })
+  const { handleSubmit } = methods
+  const onSubmit = (data) => console.log(data)
+
+
+  //const { filters, setFilters } = useFilters()
+
 
   /*
   let idCurrentPath=''
@@ -109,9 +120,13 @@ function App() {
         </Suspense>
       </nav>        
       <Suspense fallback={<Loading />}>
-        <Header />
+        <FormProvider {...methods}>
+          <form className="flex flex-col overflow-auto h-screen" onSubmit={handleSubmit(onSubmit)} >
+            <Header/>
+            <Main handleNotDragOver={handleNotDragOver} request={request}/>
+          </form>
+        </FormProvider>
       </Suspense>
-      <Main handleNotDragOver={handleNotDragOver} request={request}/>
       <Suspense fallback={<Loading />}>
         <Footer />
       </Suspense>      

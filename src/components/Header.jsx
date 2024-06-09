@@ -35,6 +35,8 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import ConfirmationDialog from "./ConfirmationDialog.jsx";
+import { useFormContext } from "react-hook-form"
+
 
 const ContentMenu = ({children, title, styles}) => {    
     return (        
@@ -206,6 +208,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
 }
 
 const Adjuntar = ({styles}) => {
+    const { register } = useFormContext()
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -249,15 +252,14 @@ const Adjuntar = ({styles}) => {
                 </Dropdown>
             </ContentMenu>
         </animated.div>
-        <form>
-            <input
-                type="file"
-                multiple                        
-                className='hidden'
-                id={idInput}
-                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"                        
-            />
-        </form>
+        <input {...register(idInput, {required : false})} id={idInput} 
+            type="file"
+            multiple                        
+            className='hidden'
+            
+            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"  />
+    
+        
         </>
     )
 }
@@ -321,19 +323,27 @@ const Formulario = ({styles, grupos, openDialog, setOpenDialog}) => {
 }
 
 const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) => {
-    function hanldeOnClick(btn){
-        if(btn?.dialogo==='confirm'){
-            setOpenDialog({
-                ...openDialog,
-                titulo:btn?.titulo,
-                mensaje:btn?.mensaje,
-                id:btn.id,                
-                frmname:btn.formname,
-                action:btn.action,
-                open:true,
-                type: btn.type,
-            })
+    const { trigger, formState: { errors } } = useFormContext()
+
+    async function hanldeOnClick(btn){
+        const isValid = await trigger()
+        if(isValid){
+            if(btn?.dialogo==='confirm'){
+                setOpenDialog({
+                    ...openDialog,
+                    titulo:btn?.titulo,
+                    mensaje:btn?.mensaje,
+                    id:btn.id,                
+                    frmname:btn.formname,
+                    action:btn.action,
+                    open:true,
+                    type: btn.type,
+                })
+            }
+        }else{
+            console.log('no valido', errors)
         }
+        
     }
 
     const menuAppear = useSpring({        
@@ -488,10 +498,9 @@ const Informes = ({styles}) => {
 export default function Header(){
    const { request } = useRequest()
    const { filters } = useFilters()
-    
    const [grupos, setGrupos] = useState(null);
    const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
-    
+
    useEffect(() => {
         //const { FOR_Botones } = formulario.VFO_Id === request?.request?.VFO_Id;
         let FOR_Botones
