@@ -78,7 +78,7 @@ const InputType = ({campo, classInput, register, errors, control, formWFv3}) => 
                                 id={campo.FDI_NombreHTML} 
                                 className={classInput} 
                                 placeholder={campo.FDI_Descripcion} 
-                                defaultValue={parseInt(campo.DFO_Dato)}
+                                defaultValue={campo.DFO_Dato}
                                 onChange={onChange} // send value to hook form                                
                                 onBlur={onBlur}
                                 value={value}

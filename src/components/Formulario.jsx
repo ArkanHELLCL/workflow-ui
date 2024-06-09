@@ -22,9 +22,8 @@ import { useFormContext } from "react-hook-form"
 const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
 const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
 
-const Buttons = ({grupos, idGroups, frmname}) => {
+const Buttons = ({grupos, idGroups, frmname, setOpenDialog}) => {
     const [postitionTo, setPositionTo] = useState(0)
-    const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
     const {        
         trigger
       } = useFormContext()
@@ -98,10 +97,7 @@ const Buttons = ({grupos, idGroups, frmname}) => {
                     )
                 })
             }
-            </div>{
-                openDialog.open &&
-                    <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
-            }            
+            </div>       
         </>
     )
 }
@@ -208,6 +204,8 @@ export default function Formulario(){
     const [dropEnter, setDropEnter] = useState(false);
     const [preview, setPreview] = useState(false)
 
+    const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
+
     const formWFv3 = JSON.parse(window.localStorage.getItem('formWFv3')) || []
 
     useEffect(() => {
@@ -293,7 +291,7 @@ export default function Formulario(){
         console.log("si",event.files)
     }*/
 
-    const HeaderForm = ({request}) => {
+    const HeaderForm = ({request, setOpenDialog}) => {
         return (
             <header className='w-full h-auto relative z-20' 
                 onDragOver = {handleNotDragOver}>
@@ -307,7 +305,7 @@ export default function Formulario(){
                                 <h2 className='text-base font-light leading-tight'>Acción requerida: <strong className='text-green-600'>{request?.request?.ESR_AccionFlujoDatos}</strong></h2>                            
                             </div>
                             <div className='grid text-right leading-tight absolute right-2 top-8'>
-                                <Buttons idGroups={idGroups} grupos={grupos} frmname={form.name}/>
+                                <Buttons idGroups={idGroups} grupos={grupos} frmname={form.name} setOpenDialog={setOpenDialog}/>
                                 <span className='text-[11px] leading-tight'>{fecha(request?.request?.DRE_FechaEdit, dias)}</span>
                             </div>
                         </div>
@@ -373,7 +371,7 @@ export default function Formulario(){
         <>
             {request && request?.request?.VFO_Id === form?.VFO_Id &&
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`} id={idForm}>
-                    <HeaderForm request={request}/>{
+                    <HeaderForm request={request} setOpenDialog={setOpenDialog}/>{
                         !preview &&
                         <Suspense fallback={<Loading />}>
                             <DataForm campos={campos}/>
@@ -392,7 +390,10 @@ export default function Formulario(){
                         <span className='text-[#2c87d2] text-2xl'>No hay datos para mostrar{`${request?.request?.VRE_Id ? ' - R: ' + request?.request?.VRE_Id : ''}`}</span>
                     </div>
                 </div>
-            }
+            }{
+                openDialog.open &&
+                    <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+            }     
         </>
     )
 }
