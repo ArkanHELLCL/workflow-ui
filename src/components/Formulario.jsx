@@ -17,17 +17,12 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListDivider from '@mui/joy/ListDivider';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import ConfirmationDialog from './ConfirmationDialog.jsx'
-import { useFormContext } from "react-hook-form"
 
-const LazyDocPreview = lazy(() => import('./DocPreview.jsx'))
-const LazyInputTypes = lazy(() => import('./InputTypes.jsx'))
+const LazyDocPreview = lazy(() => import('./formcontent/DocPreview.jsx'))
 
 const Buttons = ({grupos, idGroups, frmname, setOpenDialog}) => {
     const [postitionTo, setPositionTo] = useState(0)
-    const {        
-        trigger
-      } = useFormContext()
-
+    
     let corr = 0;
     let keygrp = '';
 
@@ -53,8 +48,8 @@ const Buttons = ({grupos, idGroups, frmname, setOpenDialog}) => {
     });
 
     async function hanldeOnClick(event,btns){
-        const isValid = await trigger()
-        if(isValid){
+        //const isValid = await trigger()
+        //if(isValid){
             if(btns?.dialogo==='confirm'){
                 setOpenDialog({
                     titulo:btns?.titulo,
@@ -66,9 +61,9 @@ const Buttons = ({grupos, idGroups, frmname, setOpenDialog}) => {
                     type:btns.type
                 })
             }
-        }else{
-            console.log('no valido')
-        }
+        //}else{
+        //    console.log('no valido')
+        //}
     }
     return(
         <> 
@@ -320,7 +315,7 @@ export default function Formulario(){
                                     <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt}</span>
                                     <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.request?.ESRAnterior_Descripcion}</strong></span>
                                 </div>
-                            </div>                        
+                            </div>
                         </div>
                     </>
                 }{
@@ -359,9 +354,7 @@ export default function Formulario(){
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                    <Suspense fallback={<Loading />}>
-                        <LazyInputTypes campos={campos} formWFv3={formWFv3}/>
-                    </Suspense>
+                   <span>formulario</span>
             }
             </section>
         )

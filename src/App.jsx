@@ -12,14 +12,14 @@ import SideBar from './components/SideBar.jsx'
 import Loading from "./components/Loading.jsx";
 import { useRequest } from "./hooks/useRequest.jsx"
 import { flujos } from "./mocks/treeMenu.json";
-import { useForm, FormProvider } from "react-hook-form"
+import { Form } from "./components/formcontent";
 //import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 //import { useFilters } from "./hooks/useFilters.jsx";
 
 //import SplitPane, { Pane } from 'split-pane-react';
 
 //const currentPath = window.location.pathname
-const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
+//const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
 const LazyDetalleRequerimiento = lazy(() => import("./components/DetalleRequerimiento.jsx"))
 
 const Main = ({handleNotDragOver, request}) =>{
@@ -31,13 +31,13 @@ const Main = ({handleNotDragOver, request}) =>{
   
   return(
     <main className='w-full flex overflow-hidden pl-14 bg-[#faf9f8] dark:bg-transparent h-full'>
-      <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] min-w-[400px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
-        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] min-w-[150px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0'>              
+      <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] h-full flex flex-columns z-0' id="Resizable" onDragOver={handleNotDragOver}>
+        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] border-r overflow-auto transition-color delay-75 mt-[10px] z-0'>              
           <Suspense fallback={<Loading />}>
             <Menu flujos={flujos} />
           </Suspense>
         </aside>
-        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] min-w-[250px] max-w-[600px] h-full border-r flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1 pb-10'>
+        <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] h-full border-r flex flex-column flex-wrap mt-[10px] z-50 bg-[#ffffff] dark:bg-transparent pr-1 pb-10'>
             <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">
               <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                 <Flujos />                          
@@ -55,11 +55,9 @@ const Main = ({handleNotDragOver, request}) =>{
         </aside>                      
       </section>          
       <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
-        <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r min-w-[400px] h-full overflow-auto relative'>{
+        <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
           request ? (
-            <Suspense fallback={<Loading />}>  
-              <LazyFormulario />
-            </Suspense>
+            <Form request={request} />
           ): (
             <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                 <div className='w-full h-full flex justify-center align-middle items-center'>
@@ -75,33 +73,6 @@ const Main = ({handleNotDragOver, request}) =>{
 
 function App() { 
   const { request } = useRequest()
-
-  const methods = useForm({
-    //shouldUnregister: true
-  })
-  //const { handleSubmit, formState:{errors} } = methods
-  const { handleSubmit } = methods
-  const onSubmit = (data) => console.log(data)
-  //isDirty ? console.log("Formulario Modificado",dirtyFields, dirtyFields['PagMes']) : null
-  //console.log(errors)
-  //const { filters, setFilters } = useFilters()
-
-
-  /*
-  let idCurrentPath=''
-  useEffect(() => {
-    !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas[0])?.id :
-    !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].mantenedores[0])?.id :
-    !idCurrentPath ? idCurrentPath = EncontrarIdPorUrl(currentPath, flujos.filter(item => parseInt(item.id) === filters.flujo)[0].reportes[0])?.id : idCurrentPath = filters.itemIdSelected
-
-    if(idCurrentPath){            
-        setFilters((prevState) => ({
-            ...prevState,
-            itemIdSelected:idCurrentPath
-        }))
-    }
-  },[])
-  */
 
   const handleNotDragOver = (event) => {
     event.preventDefault();
@@ -121,12 +92,8 @@ function App() {
         </Suspense>
       </nav>        
       <Suspense fallback={<Loading />}>
-        <FormProvider {...methods}>
-          <form className="flex flex-col overflow-auto h-screen" onSubmit={handleSubmit(onSubmit)} >
             <Header/>
             <Main handleNotDragOver={handleNotDragOver} request={request}/>
-          </form>
-        </FormProvider>
       </Suspense>
       <Suspense fallback={<Loading />}>
         <Footer />

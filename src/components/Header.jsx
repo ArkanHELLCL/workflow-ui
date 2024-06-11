@@ -35,7 +35,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import ConfirmationDialog from "./ConfirmationDialog.jsx";
-import { useFormContext } from "react-hook-form"
+//import { useFormContext } from "react-hook-form-mui"
 
 
 const ContentMenu = ({children, title, styles}) => {    
@@ -208,7 +208,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
 }
 
 const Adjuntar = ({styles}) => {
-    const { register } = useFormContext()
+    //const { register } = useFormContext()
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -252,7 +252,7 @@ const Adjuntar = ({styles}) => {
                 </Dropdown>
             </ContentMenu>
         </animated.div>
-        <input {...register(idInput, {required : false})} id={idInput} 
+        <input  id={idInput} 
             type="file"
             multiple                        
             className='hidden'
@@ -323,11 +323,11 @@ const Formulario = ({styles, grupos, openDialog, setOpenDialog}) => {
 }
 
 const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) => {
-    const { trigger, formState: { errors } } = useFormContext()
+    //const { trigger, formState: { errors } } = useFormContext()
 
     async function hanldeOnClick(btn){
-        const isValid = await trigger()
-        if(isValid){
+        //const isValid = await trigger()
+        //if(isValid){
             if(btn?.dialogo==='confirm'){
                 setOpenDialog({
                     ...openDialog,
@@ -340,9 +340,9 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
                     type: btn.type,
                 })
             }
-        }else{
-            console.log('no valido', errors)
-        }
+        //}else{
+        //    console.log('no valido', errors)
+        //}
         
     }
 
