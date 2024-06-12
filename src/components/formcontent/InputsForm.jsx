@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
+import Inputs from './Inputs.jsx';
 
-export default function InputsForm({setAdjuntos, setDropEnter, dropEnter}) {
+export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos}) {
     const handleDragEnter = (event) => {
         event.preventDefault();
         setDropEnter(true);
@@ -40,7 +41,6 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter}) {
         setAdjuntos((prevAdjuntos) => {
             const newAdjuntos = [...prevAdjuntos, ...remapValidFiles];
             const finalAdjuntos = Array.from(new Set(newAdjuntos)); // Eliminar duplicados  
-            console.log(finalAdjuntos)      
             return finalAdjuntos
         });
         
@@ -64,9 +64,7 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter}) {
                         <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                     </div>
                 </div> :
-                <div className="py-3">
-                   <span>Inputs</span>
-                </div>
+                <Inputs campos={campos} />
             }
         </div>
     );
