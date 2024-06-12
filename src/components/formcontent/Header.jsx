@@ -16,7 +16,7 @@ const handleNotDragOver = (event) => {
 
 export default function Header({preview, setPreview, request, formulario, setOpenDialog}) {
     return (
-        <div id="headerForm" className='w-full h-auto relative z-20' onDragOver={handleNotDragOver}>{
+        <div id="headerForm" className='w-full h-auto relative z-20 overflow-hidden' onDragOver={handleNotDragOver}>{
             !preview && (
                 <>
                     <div className='flex justify-between relative w-full'>                        

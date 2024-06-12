@@ -266,7 +266,9 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"PEAJES",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes ingresar una descripción del requerimiento",
+          "FDI_Placeholder":"Pago por peajes de la autopista"
         },
         {
           "FDI_Id":74,
@@ -285,7 +287,9 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"Octubre",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes ingresar el mes del documento",
+          "FDI_Placeholder":"Octubre"
         },
         {
           "FDI_Id":75,
@@ -304,7 +308,9 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"2023-10-13",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes la fecha de descarga del documento",
+          "FDI_Placeholder":"2023-10-13"
         },
         {
           "FDI_Id":76,
@@ -323,13 +329,15 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"2023-10-12",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes ingresar la fecha de publicación del documento",
+          "FDI_Placeholder":"2023-10-12"
         },
         {
           "FDI_Id":77,
           "FDI_TipoCampo":"F",
           "FDI_Descripcion":"Fecha Emisión",
-          "FDI_CampoObligatorio":1,
+          "FDI_CampoObligatorio":0,
           "FDI_Priorirdad":50,
           "LID_Id":null,
           "FDI_NombreHTML":"PagFechaEmision",
@@ -342,7 +350,9 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"2023-10-10",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes ingresar la fecha de emisión del documento",
+          "FDI_Placeholder":"2023-10-10"
         },
         {
           "FDI_Id":78,
@@ -361,7 +371,9 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"462484",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes ingresar el número de documento",
+          "FDI_Placeholder":"462.484"
         },
         {
           "FDI_Id":79,
@@ -380,7 +392,9 @@
           "FDI_IdDepVerDatos":null,
           "FDI_IdFLDVerDatos":null,
           "DFO_Dato":"Operadora de Sistemas Electricos SPA - 77630439",
-          "FDI_Editable":1        
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes ingresar un proveedor",
+          "FDI_Placeholder":"Operadora de Sistemas Electricos SPA - 77630439"
         }
       ]
     }  

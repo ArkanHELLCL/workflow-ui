@@ -52,7 +52,7 @@ const Main = ({handleNotDragOver, request}) =>{
                 <ListaRequerimientos/>
               </Suspense>                  
             </div>
-        </aside>                      
+        </aside>
       </section>          
       <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
         <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{

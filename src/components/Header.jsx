@@ -62,7 +62,6 @@ const CrearMenu = ({styles, openDialog, setOpenDialog}) => {
                 open:true,
                 type:flujo.type
             })
-            console.log(openDialog)
         }
     }
 
