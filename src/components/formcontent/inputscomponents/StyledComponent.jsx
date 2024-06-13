@@ -58,7 +58,7 @@ const StyledInput = styled('input')({
     return (
         <>
         <StyledInput {...props} ref={ref} id={id} />
-        <StyledLabel htmlFor={id}>{props.label}</StyledLabel>
+        <StyledLabel htmlFor={id} className='!font-thin'>{props.label}</StyledLabel>
         </>
     );
   });
