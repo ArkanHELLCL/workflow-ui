@@ -4,8 +4,42 @@ import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
+//import { NumericFormat } from 'react-number-format';
+//import PropTypes from 'prop-types';
 
-export const FormInputText = ({ campo, className }) => {
+
+
+/*const NumericFormatAdapter = forwardRef(
+    function NumericFormatAdapter(props, ref) {
+        const { onChange, ...other } = props;
+    
+        return (
+        <NumericFormat
+            {...other}
+            getInputRef={ref}
+            onValueChange={(values) => {
+            onChange({
+                target: {
+                name: props.name,
+                value: values.value,
+                },
+            });
+            }}
+            decimalScale={0}
+            decimalSeparator=','
+            thousandSeparator='.'
+            valueIsNumericString
+            //prefix="$"
+        />
+        );
+    },
+);
+NumericFormatAdapter.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};*/
+
+export const FormInputNumber = ({ campo, className }) => {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, formState: { errors } } = useFormContext();
   return (
@@ -33,7 +67,7 @@ export const FormInputText = ({ campo, className }) => {
                     onChange={onChange}
                     onBlur={onBlur}                    
                     slotProps={{ 
-                            input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-900 !text-xs !font-xs !font-thin placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
+                            input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-500 !text-xs !font-base'}, 
                             root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
                     sx={{
                         '--Input-minHeight': '56px',

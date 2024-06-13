@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
-//import { useForm } from 'react-hook-form'
-//import { IconForm } from '../icons.jsx'
 import InputsType from './InputsType.jsx'
 
 export default function Inputs({campos}){
-    //const { register, control, formState: { errors } } = useForm()
     return(
         <section id="InputsContent" className="py-3 w-full h-full">
             <div className="w-full pr-2">
