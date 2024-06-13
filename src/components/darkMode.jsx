@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useFilters } from '../hooks/useFilters.jsx';
 
 function storageEvent(setIsOn){
   window.addEventListener('storage', (event) => {
@@ -16,11 +17,16 @@ const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? fa
 initialState(darkModeStorage)
 
 export function DarkModeToggle() {
+    const { setFilters } = useFilters()
     const [isOn, setIsOn] = useState(darkModeStorage);
     storageEvent(setIsOn)
 
     function toggle() {
       setIsOn(!isOn);
+      setFilters((prevState) => ({
+        ...prevState,
+        darkMode: !isOn
+      }))
       document.getElementsByTagName('html')[0].classList.toggle('dark')
       window.localStorage.setItem('DarkMode', !isOn);
     }

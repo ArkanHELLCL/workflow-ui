@@ -33,7 +33,7 @@ export const FormInputText = ({ campo, className }) => {
                     onChange={onChange}
                     onBlur={onBlur}                    
                     slotProps={{ 
-                            input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-normal placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
+                            input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                             root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
                     sx={{
                         '--Input-minHeight': '56px',

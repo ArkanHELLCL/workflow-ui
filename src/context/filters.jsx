@@ -20,7 +20,8 @@ export function FiltersProvider({ children }) {
         minStep : null,
         filterSearch: 1,
         stringSearch: '',
-        filterSearchResult:false
+        filterSearchResult:false,
+        darkMode: true
     });
     
     return (

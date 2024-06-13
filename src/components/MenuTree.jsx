@@ -18,25 +18,30 @@ const getAllItemsWithChildrenItemIds = (menu) => {
     return itemIds;
 };
 
-const CustomTreeItem = styled(TreeItem)({   
-    '& .MuiTreeItem-content .MuiTreeItem-label' :{
-        fontSize:'13px',
-        fontWeight: 'lighter',
-        paddingLeft:'0px',
-        lineHeight: '1',
-        fontFamily: 'inherit'
-    },
-    '& .MuiTreeItem-content:hover' : {
-        //backgroundColor: 'rgba(56, 56, 56, 255)'
-    },
-    '& .MuiTreeItem-content' : {
-        gap:'0px'
-    }
-});
-
 export function MenuTree({ menu }) { 
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
+
+    const CustomTreeItem = styled(TreeItem)({   
+        '& .MuiTreeItem-content .MuiTreeItem-label' :{
+            fontSize:'13px',
+            fontWeight: 'lighter',
+            paddingLeft:'0px',
+            lineHeight: '1',
+            fontFamily: 'inherit'
+        },
+        '& .MuiTreeItem-content:hover' : {
+            backgroundColor: filters.darkMode ? 'rgba(56, 56, 56, 255)!important' : ''
+            //backgroundColor:'rgba(56, 56, 56, 255)!important'
+        },
+        '& .MuiTreeItem-content' : {
+            gap:'0px'
+        },
+        '& .MuiTreeItem-content.Mui-selected' : {
+            backgroundColor: 'rgb(25 118 210 / 26%)!important',
+            //color: 'rgba(56, 56, 56, 255)!important'
+        }
+    });
 
     //const handleItemExpansionToggle = (event, itemId, isExpanded) => {
     const handleItemExpansionToggle = (event, itemId) => {
@@ -55,7 +60,7 @@ export function MenuTree({ menu }) {
             items={menu} 
             defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}
             slots={{ item: CustomTreeItem }}
-            className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1 !text-stone-500 dark:!text-stone-100'}
+            className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1 !text-stone-950 dark:!text-stone-100'}
             onItemExpansionToggle={handleItemExpansionToggle}
             onItemFocus={handleItemExpansionToggle}
             selectedItems={filters.itemIdSelected}            
