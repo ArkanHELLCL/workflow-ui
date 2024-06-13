@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Constants } from "../../constants/const.jsx";
+import { Constants } from "../../../utils/const.jsx";
 
 const fecha = (date, dias) => {
     const newDate = new Date(date)

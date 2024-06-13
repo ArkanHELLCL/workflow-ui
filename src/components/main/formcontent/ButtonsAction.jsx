@@ -2,7 +2,7 @@
 import { useEffect, useId, useState } from 'react'
 import UpdateDate from './UpdateDate.jsx';
 import { useSpring, animated } from "@react-spring/web";
-import { ButtonIcon } from '../icons';
+import { ButtonIcon } from '../../../utils/icons.jsx';
 
 export default function Buttons({request, formulario, setOpenDialog}){
     const { FOR_Botones } = formulario;

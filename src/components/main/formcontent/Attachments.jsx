@@ -7,7 +7,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ListDivider from '@mui/joy/ListDivider';
 
-import { DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from '../icons.jsx';
+import { DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from '../../../utils/icons.jsx';
 
 const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos}) => {    
     const HandleClickFile = (file) =>{

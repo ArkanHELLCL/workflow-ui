@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { Suspense, useEffect, useState } from "react";
-import { useFilters } from '../hooks/useFilters.jsx';
-import { bandejas } from "../mocks/requerimientos.json";
-import { Accordions } from '../components/accordions.jsx'
-import { AccordionItem } from "../components/AccordioItem.jsx";
-import Loading from "./Loading.jsx";
+import { useFilters } from '../../hooks/useFilters.jsx';
+import { bandejas } from "../../mocks/requerimientos.json";
+import { Accordions } from './request/accordions.jsx'
+import { AccordionItem } from "./request/AccordioItem.jsx";
+import Loading from "../../utils/Loading.jsx";
 
 const Accordion = ({acc}) => {
     return(

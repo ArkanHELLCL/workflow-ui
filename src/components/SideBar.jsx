@@ -4,7 +4,7 @@ import { useEffect, useState, useId } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { useSpring, animated } from "@react-spring/web";
-import { InBoxIcon, ReportIcon, TableIcon } from "./icons";
+import { InBoxIcon, ReportIcon, TableIcon } from "../utils/icons.jsx";
 
 //const NAVIGATION_EVENT = 'pushstate'
 

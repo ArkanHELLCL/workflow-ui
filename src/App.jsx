@@ -5,7 +5,7 @@ import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
-import Loading from "./components/Loading.jsx";
+import Loading from "./utils/Loading.jsx";
 import { useRequest } from "./hooks/useRequest.jsx"
 
 import Main from './components/Main.jsx'

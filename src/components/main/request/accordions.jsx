@@ -1,8 +1,8 @@
-import { ListRequestByDate } from '../components/ListRequestByDate.jsx'
-import { ListRequestByNumber } from '../components/LisRequestByNumber.jsx';
-import { Constants } from "../constants/const.jsx";
-import { ListRequestByPending } from './LisRequestByPending.jsx';
-import { ListRequestByStep } from './LisRequestByStep.jsx';
+import { ListRequestByDate } from './accordion/ListRequestByDate.jsx'
+import { ListRequestByNumber } from './accordion/LisRequestByNumber.jsx';
+import { Constants } from "../../../utils/const.jsx";
+import { ListRequestByPending } from './accordion/LisRequestByPending.jsx';
+import { ListRequestByStep } from './accordion/LisRequestByStep.jsx';
 
 export function Accordions(filteredRequest, filters){
     const { maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()    

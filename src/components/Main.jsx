@@ -1,16 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Suspense, lazy } from "react";
-import MenuFilters from "./menuFilters.jsx";
-import Flujos from "./flujos.jsx";
-import ListaRequerimientos from "./ListaRequerimientos.jsx"
-import Menu from './Menu.jsx'
+import MenuFilters from "./main//menuFilters.jsx";
+import Flujos from "./main/flujos.jsx";
+import ListaRequerimientos from "./main/ListaRequerimientos.jsx"
+import Menu from './main//Menu.jsx'
 import { flujos } from "../mocks/treeMenu.json";
-import { Form } from "./formcontent";
-import Loading from "./Loading.jsx";
+import { Form } from "./main/formcontent";
+import Loading from "../utils/Loading.jsx";
 
-
-const LazyDetalleRequerimiento = lazy(() => import("./DetalleRequerimiento.jsx"))
-
+const LazyDetalleRequerimiento = lazy(() => import("./main/DetalleRequerimiento.jsx"))
 
 export default function Main ({handleNotDragOver, request}) {
     /*const [sizes, setSizes] = useState([

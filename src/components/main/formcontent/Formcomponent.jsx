@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { useRequest } from '../../hooks/useRequest.jsx';
+import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useForm, FormProvider } from "react-hook-form"
 
 import FormNoData from './FormNoData.jsx';
@@ -8,9 +8,9 @@ import Header from './Header.jsx';
 import Attachments from './Attachments.jsx';
 import InputsForm from './InputsForm.jsx';
 import DocPreview from './DocPreview.jsx';
-import ConfirmationDialog from '../ConfirmationDialog.jsx';
+import ConfirmationDialog from '../../ConfirmationDialog.jsx';
 
-import { formulario } from'../../mocks/formulario.json'
+import { formulario } from'../../../mocks/formulario.json'
 
 
 export default function Form(){

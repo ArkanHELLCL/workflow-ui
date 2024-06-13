@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useFilters } from "../hooks/useFilters.jsx";
-import { useRequest } from "../hooks/useRequest.jsx";
-import { flujos } from "../mocks/flujos.json";
+import { useFilters } from "../../hooks/useFilters.jsx";
+import { useRequest } from "../../hooks/useRequest.jsx";
+import { flujos } from "../../mocks/flujos.json";
 
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';

@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { Suspense, useEffect, useId, useState } from "react";
 import { DarkModeToggle } from "./darkMode.jsx";
-import Loading from "./Loading.jsx";
+import Loading from "../utils/Loading.jsx";
 import { 
     AttachIcon,
     ButtonIcon,
@@ -18,7 +18,7 @@ import {
     SaveAllIconBig, 
     SaveAsIconBig, 
     TableIconPlus 
-    } from "./icons.jsx";
+    } from "../utils/icons.jsx";
 import { useSpring, animated } from "@react-spring/web";
 import { flujos } from "../mocks/flujos.json";
 import { informes } from "../mocks/informes.json";

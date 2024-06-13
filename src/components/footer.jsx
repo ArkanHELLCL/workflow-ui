@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { QuestionIcon, WarningIcon } from "./icons";
+import { QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import { useSpring, animated } from "@react-spring/web";
 import * as menu from "../mocks/treeMenu.json"
-import EncontrarDescripcionPorId from "./EncontrarDescripcionPorId.jsx";
+import EncontrarDescripcionPorId from "./main/menu/EncontrarDescripcionPorId.jsx";
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);

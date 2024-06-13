@@ -5,7 +5,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useEffect, useId, useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { InputDebounce } from "./InputDebounce";
+import { InputDebounce } from "../utils/InputDebounce.jsx";
 
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';

@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useMemo, useCallback } from "react";
-import { useRequest } from "../hooks/useRequest.jsx";
-import { ArchiveIcon, EditIcon, UserIcon } from "./icons"
-import { Constants } from "../constants/const.jsx";
+import { useRequest } from "../../../hooks/useRequest.jsx";
+import { ArchiveIcon, EditIcon, UserIcon } from "../../../utils/icons.jsx"
+import { Constants } from "../../../utils/const.jsx";
 
 export const RequerimientoItem = ({ req, showDia }) => {    
     const { dias } = Constants()

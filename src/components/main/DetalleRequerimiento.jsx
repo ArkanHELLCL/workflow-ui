@@ -3,10 +3,10 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { styled } from '@mui/material/styles';
-import { Icon } from "./icons.jsx";
-import { Constants } from "../constants/const.jsx";
-import { useRequest } from "../hooks/useRequest.jsx";
-import { useFilters } from "../hooks/useFilters.jsx";
+import { Icon } from "../../utils/icons.jsx";
+import { Constants } from "../../utils/const.jsx";
+import { useRequest } from "../../hooks/useRequest.jsx";
+import { useFilters } from "../../hooks/useFilters.jsx";
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />

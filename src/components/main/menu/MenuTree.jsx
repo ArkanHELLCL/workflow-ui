@@ -3,8 +3,8 @@
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import { styled } from '@mui/material/styles';
-import { useFilters } from "../hooks/useFilters.jsx";
-import { useRequest } from '../hooks/useRequest.jsx';
+import { useFilters } from "../../../hooks/useFilters.jsx";
+import { useRequest } from '../../../hooks/useRequest.jsx';
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
