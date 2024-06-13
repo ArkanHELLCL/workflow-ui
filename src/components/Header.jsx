@@ -69,7 +69,7 @@ const CrearMenu = ({styles, openDialog, setOpenDialog}) => {
         <div className="h-full relative">
             <ContentMenu title={'Crear'} styles={styles}>
                 <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`}>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                             <FlowPlusIcon styles='w-11 h-11' strokeWidth='2' />                         
                             <span>Crear nuevo</span>
@@ -127,7 +127,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
             <ContentMenu title={'Requerimiento'} styles={styles}>{
                 gen &&
                     <Dropdown>
-                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                                 <GenReportIcon styles='w-10 h-10'/>
                                 <span className="!pt-2">Generar</span>                            
@@ -145,7 +145,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
                 }{
                 des &&
                     <Dropdown>
-                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                                 <DownReportIcon styles='w-10 h-10' />
                                 <span className="pt-2">Descargar</span>   
@@ -163,7 +163,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
                     </Dropdown>
                 }
                 <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                             <MessagesIcon styles='w-10 h-10'/>
                             <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full -top-[5px] -right-1"></span>
@@ -182,7 +182,7 @@ const Requerimiento = ({styles, request, openDialog, setOpenDialog}) => {
                 </Dropdown>
 
                 <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                             <FlowStepIcon styles='w-11 h-11' />
                             <span className="pt-0">Pasos</span>   
@@ -241,7 +241,7 @@ const Adjuntar = ({styles}) => {
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Adjuntar'} styles={styles}>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={handleClickAdjunto}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={handleClickAdjunto}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                             <AttachIcon styles='w-10 h-10'/>                       
                             <span>Adjuntar</span>
@@ -281,7 +281,7 @@ const Acciones = ({styles}) => {
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Acciones'}>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('abrir doc')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('abrir doc')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-11">
                             <OpenFolderIcon styles='h-11 w-11'/>
                             <span>Abrir</span>
@@ -289,7 +289,7 @@ const Acciones = ({styles}) => {
                     </ListItemButton>                    
                 </Dropdown>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('imprimir doc')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('imprimir doc')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                             <PrinterIcon styles='h-11 w-11' strokeWidth="2"/>
                             <span>Impresión</span>
@@ -298,7 +298,7 @@ const Acciones = ({styles}) => {
                     </ListItemButton>                
                 </Dropdown>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('eliminar adj')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('eliminar adj')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                             <DeleteFileIcon styles='text-red-500 h-10 w-10' strokeWidth={1} />
                             <span>Quitar archivo</span>
@@ -362,7 +362,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
             <ContentMenu title={grp[0].descripcion}>{
                 grp[0].botones.map(btns =>
                     <Dropdown key={btns.id}>
-                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={() => hanldeOnClick(btns)} key={btns.id} >
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={() => hanldeOnClick(btns)} key={btns.id} >
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                                 <ButtonIcon typeButton={btns.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={2}/>
                                 <span className="!pt-2">{btns.descripcion[0]}</span>
@@ -394,7 +394,7 @@ const GuardarEquipo = ({styles}) => {
         <animated.div style={menuAppear} styles={styles}>
             <ContentMenu title={'Guardar en el equipo'}>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar adj')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar adj')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                             <SaveAsIconBig styles='h-8 w-8 !mt-2'/>
                             <span className="!pt-2">Guardar</span>
@@ -403,7 +403,7 @@ const GuardarEquipo = ({styles}) => {
                     </ListItemButton>                
                 </Dropdown>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar todos')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar todos')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-8">
                             <SaveAllIconBig styles='h-8 w-8 !mt-2'/>
                             <span className="!pt-2">Guardar todos los</span>
@@ -433,7 +433,7 @@ const Mantenedores = ({styles}) => {
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Mantenedor del sistema'}>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('crear reg')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('crear reg')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-7">
                             <TableIconPlus styles='w-8 h-8' />
                             <span className="!pt-2">Crear nuevo</span>
@@ -442,7 +442,7 @@ const Mantenedores = ({styles}) => {
                     </ListItemButton>                
                 </Dropdown>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-6">
                             <DownReportIcon styles='w-9 h-9' />
                             <span className="!pt-2">Descargar infrome</span>
@@ -472,7 +472,7 @@ const Informes = ({styles}) => {
         <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Informe del sistema'}>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('generar inf')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('generar inf')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-6">
                             <GenReportIcon styles='w-9 h-9'/>
                             <span className="!pt-2">Generar</span>
@@ -481,7 +481,7 @@ const Informes = ({styles}) => {
                     </ListItemButton>                
                 </Dropdown>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')}>
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')}>
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-6">
                             <DownReportIcon styles='w-9 h-9' />
                             <span className="!pt-2">Descargar infrome</span>

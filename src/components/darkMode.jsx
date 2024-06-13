@@ -1,4 +1,5 @@
-import { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import { useFilters } from '../hooks/useFilters.jsx';
 
 function storageEvent(setIsOn){
@@ -20,6 +21,13 @@ export function DarkModeToggle() {
     const { setFilters } = useFilters()
     const [isOn, setIsOn] = useState(darkModeStorage);
     storageEvent(setIsOn)
+
+    useEffect(() => {
+      setFilters((prevState) => ({
+        ...prevState,
+        darkMode: darkModeStorage
+      }))
+    }, [])
 
     function toggle() {
       setIsOn(!isOn);
