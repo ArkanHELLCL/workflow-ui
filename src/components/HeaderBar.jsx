@@ -168,7 +168,7 @@ function UserBar({open, setOpen}) {
     return(
         <Dropdown>
             <MenuButton 
-                className={`${open ? 'dark:bg-[#737373] dark:hover:bg-[#737373] bg-[#004578] hover:bg-[#004578]' : 'dark:hover:bg-[#363636] hover:bg-[#005a9e]'} p-3 !h-full !absolute right-5 flex items-center z-20 !border-0 !min-h-fit !rounded-none !border-none`} 
+                className={`${open ? 'dark:!bg-[#737373] dark:hover:!bg-[#737373] !bg-[#004578] hover:!bg-[#004578]' : 'dark:hover:!bg-[#363636] hover:!bg-[#005a9e]'} p-3 !h-full !absolute right-5 flex items-center z-20 !border-0 !min-h-fit !rounded-none !border-none`} 
                 title="Datos del perfil"
                 slots={{ root: IconButton }}
                 onClick={()=>setOpen(!open)}>
