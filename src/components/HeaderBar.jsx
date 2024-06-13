@@ -21,6 +21,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import IconButton from '@mui/joy/IconButton';
 import { ListItem } from '@mui/joy';
 import { Divider, ListItemButton } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
 
 function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {    
     const menuSearch = useId();
@@ -139,7 +142,7 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     )
 }
 
-function UserBar({open, setOpen}) {
+function UserBar({open, setOpen, filters}) {
     const ButtonUsrProfile = () => {
         return (
             <>
@@ -190,7 +193,12 @@ function UserBar({open, setOpen}) {
                             onClick={()=>console.log("ver mensajes")}>
                                 <MailOutlineIcon className="!w-10 !h-10" />
                                 <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
-                        </ListItemButton>}>
+                        </ListItemButton>}
+                    endAction={
+                        <IconButton sx={{ ml: 1 }} onClick={()=>console.log('darkmode')} color="inherit">
+                            {filters.darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+                        </IconButton>
+                    }>
                     Ver mis mensajes privados
                 </ListItem>
             </Menu>
@@ -215,7 +223,6 @@ export default function HeaderBar() {
         //console.log("si")*/ 
     }
 
-    //const { ref:refUser } = ClickAway(setOpen);
     return(
         <div className="flex items-center h-full px-4 text-white relative z-50">
             <span className="dark:hover:bg-[#363636] p-1 hover:bg-[#005a9e] hover:cursor-pointer" onClick={HandleReload} title="Recargar">
@@ -227,7 +234,7 @@ export default function HeaderBar() {
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filters={filters} setFilters={setFilters}/>
             <ClickAwayListener onClickAway={HandleOpenUser}>
                 <div className='absolute h-full right-0'>
-                    <UserBar open={open} setOpen={setOpen}/>
+                    <UserBar open={open} setOpen={setOpen} filters={filters}/>
                 </div>
             </ClickAwayListener>
         </div>

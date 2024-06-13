@@ -32,7 +32,6 @@ export function MenuTree({ menu }) {
         },
         '& .MuiTreeItem-content:hover' : {
             backgroundColor: filters.darkMode ? 'rgba(56, 56, 56, 255)!important' : ''
-            //backgroundColor:'rgba(56, 56, 56, 255)!important'
         },
         '& .MuiTreeItem-content' : {
             gap:'0px'
