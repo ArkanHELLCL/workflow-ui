@@ -46,7 +46,7 @@ const Main = ({handleNotDragOver, request}) =>{
                 <MenuFilters />                  
               </div>
             </div>
-            <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">              
+            <div className="overflow-auto h-full relative pr-2 w-full flex flex-col columns-1" id="containerRef">              
               <Suspense fallback={<Loading />}>
                 <LazyDetalleRequerimiento />
                 <ListaRequerimientos/>
