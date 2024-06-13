@@ -51,7 +51,7 @@ export function DarkModeToggle() {
       <button        
         onKeyDown={handleKeyDown}
         onClick={handleClick} 
-        className={`z-20 absolute top-4 right-5 inline-flex items-center py-1.5 px-2 rounded-full transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:outline-none ${isOn ? `bg-[#262626] text-stone-400 focus-visible:ring-slate-500` : `bg-sky-500 text-sky-200 focus-visible:ring-sky-600`}`} 
+        className={`z-20 top-4 right-5 inline-flex items-center py-1.5 px-2 rounded-full transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:outline-none ${isOn ? `bg-[#262626] text-stone-400 focus-visible:ring-slate-500` : `bg-sky-500 text-sky-200 focus-visible:ring-sky-600`}`} 
         id="headlessui-switch-:rb:" 
         role="switch" 
         type="button" 

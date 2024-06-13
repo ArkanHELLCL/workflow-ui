@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { Suspense, useEffect, useId, useState } from "react";
-import { DarkModeToggle } from "./darkMode.jsx";
 import Loading from "../utils/Loading.jsx";
 import { 
     AttachIcon,
@@ -543,7 +542,6 @@ export default function Header(){
                     repoSelected &&         
                         <Informes styles={'z-40 h-full'} />                    
                 }                
-                <DarkModeToggle />            
             </Suspense>{
                 openDialog.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />

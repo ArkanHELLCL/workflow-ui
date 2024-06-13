@@ -21,8 +21,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import IconButton from '@mui/joy/IconButton';
 import { ListItem } from '@mui/joy';
 import { Divider, ListItemButton } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { DarkModeToggle } from '../utils/DarkMode.jsx';
 
 
 function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {    
@@ -142,7 +141,7 @@ function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {
     )
 }
 
-function UserBar({open, setOpen, filters}) {
+function UserBar({open, setOpen}) {
     const ButtonUsrProfile = () => {
         return (
             <>
@@ -195,9 +194,7 @@ function UserBar({open, setOpen, filters}) {
                                 <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
                         </ListItemButton>}
                     endAction={
-                        <IconButton sx={{ ml: 1 }} onClick={()=>console.log('darkmode')} color="inherit">
-                            {filters.darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-                        </IconButton>
+                        <DarkModeToggle />
                     }>
                     Ver mis mensajes privados
                 </ListItem>
@@ -234,7 +231,7 @@ export default function HeaderBar() {
             <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} filters={filters} setFilters={setFilters}/>
             <ClickAwayListener onClickAway={HandleOpenUser}>
                 <div className='absolute h-full right-0'>
-                    <UserBar open={open} setOpen={setOpen} filters={filters}/>
+                    <UserBar open={open} setOpen={setOpen}/>
                 </div>
             </ClickAwayListener>
         </div>
