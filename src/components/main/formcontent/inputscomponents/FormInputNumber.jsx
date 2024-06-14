@@ -4,14 +4,13 @@ import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
-//import { NumericFormat } from 'react-number-format';
-//import PropTypes from 'prop-types';
+import { NumericFormat } from 'react-number-format';
+import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 
-
-
-/*const NumericFormatAdapter = forwardRef(
+const NumericFormatAdapter = forwardRef(
     function NumericFormatAdapter(props, ref) {
-        const { onChange, ...other } = props;
+        const { onChange, ownerState, ...other } = props;
     
         return (
         <NumericFormat
@@ -20,7 +19,7 @@ import { InnerInput } from './StyledComponent.jsx';
             onValueChange={(values) => {
             onChange({
                 target: {
-                name: props.name,
+                //name: props.name,
                 value: values.value,
                 },
             });
@@ -35,9 +34,9 @@ import { InnerInput } from './StyledComponent.jsx';
     },
 );
 NumericFormatAdapter.propTypes = {
-    name: PropTypes.string.isRequired,
+    //name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-};*/
+};
 
 export const FormInputNumber = ({ campo, className }) => {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
@@ -67,7 +66,7 @@ export const FormInputNumber = ({ campo, className }) => {
                     onChange={onChange}
                     onBlur={onBlur}                    
                     slotProps={{ 
-                        input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
+                        input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300', component:NumericFormatAdapter}, 
                         root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
                     sx={{
                         '--Input-minHeight': '56px',
