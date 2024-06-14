@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useId, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
