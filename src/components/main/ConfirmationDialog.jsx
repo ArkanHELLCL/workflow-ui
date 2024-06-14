@@ -6,12 +6,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
+import { Divider, IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
 //import { useFormContext } from "react-hook-form"
 
-
-import { ButtonIcon } from '../utils/icons.jsx';
-import { Divider, IconButton } from '@mui/material';
+import { ButtonIcon } from '../../utils/icons.jsx';
 
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {

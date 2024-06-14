@@ -7,7 +7,7 @@ import { useRequest } from "../hooks/useRequest.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
 
-import ConfirmationDialog from "./ConfirmationDialog.jsx";
+import ConfirmationDialog from "./main/ConfirmationDialog.jsx";
 import CrearMenu from "./header/crearMenu.jsx";
 import RequerimientoMenu from "./header/requerimientoMenu.jsx";
 import AdjuntarMenu from "./header/adjuntarMenu.jsx";
