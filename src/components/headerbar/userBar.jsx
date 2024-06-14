@@ -15,7 +15,7 @@ export default function UserBar({open, setOpen}) {
         return (
             <>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
-                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
+                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
             </>
         )
     }
@@ -27,10 +27,10 @@ export default function UserBar({open, setOpen}) {
                         <img src={user.USR_Photo} className={`rounded-full h-full w-full`} />
                     </div>
                     <div className="flex flex-col h-fit max-w-[260px]">
-                        <span className="text-xl font-semibold truncate dark:text-white text-[#262626]">{user.USR_Nombre}</span>
-                        <span className="text-xs truncate pb-2 dark:text-white text-[#262626]">{user.USR_Mail}</span>
-                        <span className="text-xs truncate text-sky-600">{user.PER_Nombre}</span>
-                        <span className="text-xs truncate text-sky-600">{user.DEP_Descripcion}</span>
+                        <span className="text-xl font-semibold truncate dark:!text-white !text-[#262626]">{user.USR_Nombre}</span>
+                        <span className="text-xs truncate pb-2 dark:!text-white !text-[#262626]">{user.USR_Mail}</span>
+                        <span className="text-xs truncate !text-sky-600">{user.PER_Nombre}</span>
+                        <span className="text-xs truncate !text-sky-600">{user.DEP_Descripcion}</span>
                     </div>
                 </div>
         )
