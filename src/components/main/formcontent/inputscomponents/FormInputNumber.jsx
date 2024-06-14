@@ -28,7 +28,7 @@ const NumericFormatAdapter = forwardRef(
             decimalSeparator=','
             thousandSeparator='.'
             valueIsNumericString
-            //prefix="$"
+            prefix="#"
         />
         );
     },
@@ -55,7 +55,7 @@ export const FormInputNumber = ({ campo, className }) => {
                 <Input                                
                     placeholder={campo.FDI_Descripcion}
                     name={campo.FDI_NombreHTML}
-                    type='text'
+                    //type='text'
                     autoComplete='on'
                     autoFocus={false}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
