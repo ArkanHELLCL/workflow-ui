@@ -11,9 +11,7 @@ import Main from './components/Main.jsx'
 
 //import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 //import { useFilters } from "./hooks/useFilters.jsx";
-
 //import SplitPane, { Pane } from 'split-pane-react';
-
 //const currentPath = window.location.pathname
 //const LazyFormulario = lazy(() => import("./components/Formulario.jsx"))
 
