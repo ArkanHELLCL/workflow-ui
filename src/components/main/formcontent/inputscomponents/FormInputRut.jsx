@@ -1,15 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/joy/FormControl';
-//import PropTypes from 'prop-types';
-//import { IMaskInput, IMask } from 'react-imask';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { Fn } from '../../../../utils/validaRut.jsx';
-//import { useEffect } from 'react';
-//import { forwardRef } from 'react';
 
 const formatearRut = (rutSinFormato) => {
     const caracteresValidos = rutSinFormato.replace(/[^0-9kK]+/g, '');
@@ -30,7 +26,6 @@ const formatearRut = (rutSinFormato) => {
 };
 
 export const FormInputRut = ({ campo, className }) => {
-  //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, setValue, formState: { errors } } = useFormContext();
 
   return (
