@@ -17,7 +17,6 @@ const formatearRut = (rutSinFormato) => {
     const rutInvertido = caracteresValidos.split('').reverse().join('');
     const rutFormateado = rutInvertido.replace(/^([kK\d])(\d{3})(\d{3})(\d{1,3})/,'$1-$2.$3.$4');
     return rutFormateado.split('').reverse().join('')
-    //return setValue(campo.FDI_NombreHTML, '12776722')
   };
 
 export const FormInputRut = ({ campo, className }) => {
