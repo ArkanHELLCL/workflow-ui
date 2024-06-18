@@ -11,36 +11,19 @@ import { Fn } from '../../../../utils/validaRut.jsx';
 //import { useEffect } from 'react';
 //import { forwardRef } from 'react';
 
+const formatearRut = (rutSinFormato) => {
+    //console.log('entro',rutSinFormato);
+    const caracteresValidos = rutSinFormato.replace(/[^0-9kK]+/g, '');
+    const rutInvertido = caracteresValidos.split('').reverse().join('');
+    const rutFormateado = rutInvertido.replace(/^([kK\d])(\d{3})(\d{3})(\d{1,3})/,'$1-$2.$3.$4');
+    return rutFormateado.split('').reverse().join('')
+    //return setValue(campo.FDI_NombreHTML, '12776722')
+  };
+
 export const FormInputRut = ({ campo, className }) => {
   //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-  const { control, formState: { errors } } = useFormContext();
+  const { control, setValue, formState: { errors } } = useFormContext();
 
-  /*
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) => {
-        console.log(value[campo.FDI_NombreHTML], name, type)
-        const rut = value[campo.FDI_NombreHTML];
-
-        if (rut) {
-            const dv = rut.slice(-1);
-            const rutSinDv = rut.slice(0, -1);
-            const rutCompleto = rutSinDv + '-' + dv;
-
-            setValue(campo.FDI_NombreHTML, rutCompleto, { shouldValidate: true, shouldDirty: true }); 
-            
-            if (!Fn.validaRut(rut)) {
-                console.log(campo.FDI_NombreHTML, 'Rut no válido');
-            
-
-                console.log(dv, rutSinDv);
-                //setValue(campo.FDI_NombreHTML, rutSinDv + '-' + dv, { shouldValidate: true, shouldDirty: true });            
-            }
-        }
-    })
-    return () => subscription.unsubscribe()
-    
-  }, [watch]);
-*/
   return (
     <Controller
         control={control}
@@ -55,8 +38,9 @@ export const FormInputRut = ({ campo, className }) => {
             maxLength: 13
           }}
         defaultValue={campo.DFO_Dato}
-        render={({ field : {onChange, onBlur} }) => (
+        render={({ field }) => (
             <FormControl
+                {...field}
                 id={campo.FDI_NombreHTML}
                 size='sm'
                 className={className}>
@@ -67,12 +51,13 @@ export const FormInputRut = ({ campo, className }) => {
                     autoComplete='on'
                     autoFocus={false}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
-                    defaultValue={campo.DFO_Dato}
+                    //defaultValue={campo.DFO_Dato}
                     variant="outlined"
                     //endDecorator={<CheckCircleOutlined />}
                     slots={{ input: InnerInput }}
-                    onChange={onChange}
-                    onBlur={onBlur}   
+                    onChange={(e) => field.onChange(()=>setValue(campo.FDI_NombreHTML,formatearRut(e.target.value)))}
+                    onBlur={field.onBlur}
+                    value={field.value}
                     slotProps={{ 
                             input: { placeholder: campo.FDI_Placeholder, type: 'text', label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                             root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}

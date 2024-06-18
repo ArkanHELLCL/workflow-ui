@@ -1,15 +1,19 @@
 export const Fn = {
 	// Valida el rut con su cadena completa "XXXXXXXX-X"
-	validaRut : function (rutCompleto) {
-        //console.log(rutCompleto);
-        rutCompleto = rutCompleto.replace('.','');
-		if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
-			return false;
-		var tmp 	= rutCompleto.split('-');
-		var digv	= tmp[1]; 
-		var rut 	= tmp[0];
-		if ( digv == 'K' ) digv = 'k' ;
-		return (Fn.dv(rut) == digv );
+	validaRut : function (rutCompleto) {      
+        console.log(rutCompleto,'antes');
+        if(typeof rutCompleto === 'string' ){ 
+            rutCompleto = rutCompleto?.replace(/[^0-9kK-]+/g, '');
+            console.log(rutCompleto);
+            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                return false;
+            var tmp 	= rutCompleto.split('-');
+            var digv	= tmp[1]; 
+            var rut 	= tmp[0];
+            if ( digv == 'K' ) digv = 'k' ;
+            return (Fn.dv(rut) == digv );
+        }
+            return false;
 	},
 	dv : function(T){
 		var M=0,S=1;
