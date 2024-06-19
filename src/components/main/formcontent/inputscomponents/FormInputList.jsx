@@ -19,7 +19,7 @@ function sleep(duration) {
 
 export const FormInputList = ({ campo, className }) => {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-  const { control, setValue, formState: { errors } } = useFormContext();
+  const { control, setValue, reset, formState: { errors } } = useFormContext();
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
@@ -51,6 +51,12 @@ export const FormInputList = ({ campo, className }) => {
     }
   }, [open]);
 
+  useEffect(() => {
+    reset({
+      PagMes: meses.records.find((option) => option.id == meses.selected.id),
+    })
+  }, [reset])
+
   return (
     <Controller
         control={control}
@@ -58,18 +64,17 @@ export const FormInputList = ({ campo, className }) => {
         rules={required}
         defaultValue={meses.records.find((option) => option.id == meses.selected.id)}        
         render={({ field }) => (
-            <FormControl
-                {...field}
+            <FormControl                
                 id={campo.FDI_NombreHTML}
                 size='sm'
                 className={className}>
                 <Autocomplete                                
-                    //{...field}
+                    {...field}
                     placeholder={campo.FDI_Descripcion}
                     //name={campo.FDI_NombreHTML}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
                     //defaultValue={meses.records.find((option) => option.id == meses.selected.id)}
-                    value={field.value}
+                    //value={meses.records.find((option) => option.id == meses.selected.id)}
                     variant="outlined"
                     slots={{ input: InnerInput }}
                     onChange={(event, newValue) => {
