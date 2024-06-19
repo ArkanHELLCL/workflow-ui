@@ -3,6 +3,8 @@ import { useEffect, useId, useState } from 'react'
 import UpdateDate from './UpdateDate.jsx';
 import { useSpring, animated } from "@react-spring/web";
 import { ButtonIcon } from '../../../utils/icons.jsx';
+import { useFormContext } from 'react-hook-form';
+import { useSnackbar } from 'notistack';
 
 export default function Buttons({request, formulario, setOpenDialog}){
     const { FOR_Botones } = formulario;
@@ -35,10 +37,13 @@ export default function Buttons({request, formulario, setOpenDialog}){
             opacity: 1,
         }
     });
+
+    const { trigger } = useFormContext();    
     
     async function hanldeOnClick(event,btns){
-        //const isValid = await trigger()
-        //if(isValid){
+        event.preventDefault()        
+        const isValid = await trigger()
+        if(isValid){
             if(btns?.dialogo==='confirm'){
                 setOpenDialog({
                     titulo:btns?.titulo,
@@ -50,10 +55,13 @@ export default function Buttons({request, formulario, setOpenDialog}){
                     type:btns.type
                 })
             }
-        //}else{
-        //    console.log('no valido')
-        //}
+        }else{
+            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
+        }
     }
+
+    //enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } ) : enqueueSnackbar('Operacion cancelada!', { variant : "warning" })    
+    const { enqueueSnackbar } = useSnackbar();
     return(
         <div id="buttonsRequest" className='grid text-right leading-tight absolute right-2 top-8'> 
             <div className='flex items-center gap-3 pb-2' id={idGroups}>

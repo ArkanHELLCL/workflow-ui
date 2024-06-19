@@ -40,11 +40,7 @@ export const FormInputList = ({ campo, className }) => {
     (async () => {
       await sleep(1e3); // For demo purposes.
 
-      if (active) {
-        /*if(campo.LID_Id===16 && campo.FDI_TipoCampo==='L') //Meses
-          {setOptions([...meses.records])}
-        if(campo.FDI_TipoCampo==='X1')
-          {setOptions([...proveedores.records])}*/
+      if (active) {        
         setOptions([...dataOptions.records]);
       }
     })();
@@ -59,12 +55,6 @@ export const FormInputList = ({ campo, className }) => {
       setOptions([]);
     }
   }, [open]);
-
-  /*useEffect(() => {
-    reset({
-      PagMes: meses.records.find((option) => option.id == meses.selected.id),
-    })
-  }, [reset])*/
 
   return (
     <Controller

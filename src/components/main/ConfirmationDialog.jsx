@@ -7,17 +7,12 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { Divider, IconButton } from '@mui/material';
-import { useSnackbar } from 'notistack';
-//import { useFormContext } from "react-hook-form"
-
+//import { useSnackbar } from 'notistack';
 import { ButtonIcon } from '../../utils/icons.jsx';
 
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {
-  const { enqueueSnackbar } = useSnackbar();
-  //const { handleSubmit } = useFormContext()
-
-
+  //const { enqueueSnackbar } = useSnackbar();
   const handleClose = () => {
     setOpenDialog({
       ...openDialog,
@@ -26,16 +21,14 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
   };
 
   const handleOptionClicked = (id) => {
-    id === 1 ? enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } ) : enqueueSnackbar('Operacion cancelada!', { variant : "warning" })
-    /*if(id === 1 ){
-      handleSubmit
-      enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
-    }else{
-      enqueueSnackbar('Operacion cancelada!', { variant : "warning" })
-    }*/
+    let option = false
+    if(id === 1)
+      option = true
+  
     setOpenDialog({
       ...openDialog,
-      open:false
+      open:false,
+      option: option
     })    //hacer submit del formulario    
   }
 
@@ -46,11 +39,7 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
         onClose={() => handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        PaperProps={{
-          style: {
-            //backgroundColor: "#444444",
-            //boxShadow: "none"
-          },
+        PaperProps={{          
           className: 'dark:!bg-[#292929] dark:!border-[#3f3e3e] !rounded-none !border !border-[#80bcea] !shadow-[#80bcea] !shadow-inner !shadow dark:!shadow-none'
         }}>
         

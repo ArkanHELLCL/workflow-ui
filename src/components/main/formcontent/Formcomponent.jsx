@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useForm, FormProvider } from "react-hook-form"
 
@@ -9,7 +9,6 @@ import Attachments from './Attachments.jsx';
 import InputsForm from './InputsForm.jsx';
 import DocPreview from './DocPreview.jsx';
 import ConfirmationDialog from '../ConfirmationDialog.jsx';
-
 import { formulario } from'../../../mocks/formulario.json'
 
 
@@ -43,13 +42,20 @@ export default function Form(){
         console.log(data);
     };
 
+    useEffect(() => {
+        openDialog.option ? formRef.current.requestSubmit() : null
+        setOpenDialog({...openDialog, option:false})
+    }
+    ,[openDialog.option])
+
+    const formRef = useRef(null)
     return(
         <>
             {
                 request && request?.request?.VFO_Id === formulario?.VFO_Id &&
                 <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
                     <FormProvider {...methods}>
-                        <form id={formulario.name} noValidate
+                        <form id={formulario.name} noValidate ref={formRef}
                             className="h-full w-full flex flex-col columns-1"
                             onSubmit={methods.handleSubmit(onSubmit)}   
                             >
