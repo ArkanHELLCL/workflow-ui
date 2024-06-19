@@ -25,7 +25,7 @@ export default function InputsType({campo, className}){
             return <FormInputFecha campo={campo} className={className}/>
         case 'T':   //Texto tamaño grande
             return <FormInputTextArea campo={campo} className={className}/>
-        case 'R':   //Texto tamaño grande
+        case 'R':   //Rut
             return <FormInputRut campo={campo} className={className}/>
         case 'L':   //Lista desplegable
             return <FormInputList campo={campo} className={className}/>
