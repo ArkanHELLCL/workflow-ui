@@ -335,7 +335,7 @@
         },
         {
           "FDI_Id":77,
-          "FDI_TipoCampo":"F",
+          "FDI_TipoCampo":"V",
           "FDI_Descripcion":"Fecha Emisión",
           "FDI_CampoObligatorio":0,
           "FDI_Priorirdad":50,

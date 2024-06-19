@@ -10,7 +10,7 @@ import { FormInputRut } from './inputscomponents/FormInputRut.jsx'
 import { FormInputList } from './inputscomponents/FormInputList.jsx'
 
 export default function InputsType({campo, className}){    
-    switch (campo.FDI_TipoCampo) {
+    switch (campo.FDI_TipoCampo.trim().toUpperCase()) {
         case 'C':   //Texto tamaño mediano
             return <FormInputText campo={campo} className={className}/>
         case 'N':   //Número, separador de miles sin decimales
@@ -21,13 +21,17 @@ export default function InputsType({campo, className}){
             return <FormInputMonto campo={campo} className={className}/>
         case 'H':   //Monto, separador de miles con 2 decimales
             return <FormInputMontoD campo={campo} className={className}/>
-        case 'F' || 'V':   //Fecha
+        case 'F':   //Fecha
+            return <FormInputFecha campo={campo} className={className}/>
+        case 'V':   //Fecha Vencimiento
             return <FormInputFecha campo={campo} className={className}/>
         case 'T':   //Texto tamaño grande
             return <FormInputTextArea campo={campo} className={className}/>
         case 'R':   //Rut
             return <FormInputRut campo={campo} className={className}/>
         case 'L':   //Lista desplegable
+            return <FormInputList campo={campo} className={className}/>
+        case 'X1':   //Lista desplegable
             return <FormInputList campo={campo} className={className}/>
         default:
             return <FormInputText campo={campo} className={className}/>

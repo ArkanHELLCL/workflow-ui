@@ -8,6 +8,7 @@ import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { useEffect, useState } from 'react';
 import  meses  from "../../../../mocks/meses.json";
+import  proveedores  from "../../../../mocks/proveedores.json";
 
 function sleep(duration) {
     return new Promise((resolve) => {
@@ -16,15 +17,17 @@ function sleep(duration) {
       }, duration);
     });
   }
-  
 
 export const FormInputList = ({ campo, className }) => {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-  const { control, setValue, reset, formState: { errors } } = useFormContext();
+  const { control, setValue, formState: { errors } } = useFormContext();
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
+
+  let dataOptions = [];
+  campo.FDI_TipoCampo==='X1' ? dataOptions = structuredClone(proveedores) : campo.LID_Id===16 && campo.FDI_TipoCampo==='L' ? dataOptions = structuredClone(meses) : dataOptions = [];
 
   useEffect(() => {
     let active = true;
@@ -37,9 +40,11 @@ export const FormInputList = ({ campo, className }) => {
       await sleep(1e3); // For demo purposes.
 
       if (active) {
-        if(campo.LID_Id===16) //Meses
-          setOptions([...meses.records]);
-        
+        /*if(campo.LID_Id===16 && campo.FDI_TipoCampo==='L') //Meses
+          {setOptions([...meses.records])}
+        if(campo.FDI_TipoCampo==='X1')
+          {setOptions([...proveedores.records])}*/
+        setOptions([...dataOptions.records]);
       }
     })();
 
@@ -54,24 +59,24 @@ export const FormInputList = ({ campo, className }) => {
     }
   }, [open]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     reset({
       PagMes: meses.records.find((option) => option.id == meses.selected.id),
     })
-  }, [reset])
+  }, [reset])*/
 
   return (
     <Controller
         control={control}
         name={campo.FDI_NombreHTML}
         rules={required}
-        defaultValue={meses.records.find((option) => option.id == meses.selected.id)}        
+        defaultValue={dataOptions.records.find((option) => option.id == dataOptions.selected.id)}        
         render={({ field }) => (
             <FormControl                
                 id={campo.FDI_NombreHTML}
                 size='sm'
                 className={className}>
-                <Autocomplete                                
+                <Autocomplete
                     {...field}
                     placeholder={campo.FDI_Descripcion}
                     //name={campo.FDI_NombreHTML}
@@ -110,6 +115,13 @@ export const FormInputList = ({ campo, className }) => {
                             <CircularProgress size="sm" sx={{ bgcolor: 'transparent' }} />
                         ) : null
                     }
+                    renderOption={(props, option) => {
+                      return (
+                        <li {...props} key={option.id}>
+                          {option.label}
+                        </li>
+                      );
+                    }}
                 />
                 <FormHelperText className="!text-red-600">
                     {errors[campo.FDI_NombreHTML]?.message}
