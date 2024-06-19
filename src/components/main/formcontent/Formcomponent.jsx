@@ -9,6 +9,7 @@ import Attachments from './Attachments.jsx';
 import InputsForm from './InputsForm.jsx';
 import DocPreview from './DocPreview.jsx';
 import ConfirmationDialog from '../ConfirmationDialog.jsx';
+import { useSnackbar } from 'notistack';
 import { formulario } from'../../../mocks/formulario.json'
 
 
@@ -42,12 +43,17 @@ export default function Form(){
         console.log(data);
     };
 
-    useEffect(() => {
-        openDialog.option ? formRef.current.requestSubmit() : null
-        setOpenDialog({...openDialog, option:false})
+    useEffect(() => {        
+        if(openDialog.option){
+            formRef.current.requestSubmit()
+            enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
+        }
+        setOpenDialog({...openDialog, option:false})                    
     }
     ,[openDialog.option])
+    
 
+    const { enqueueSnackbar } = useSnackbar();
     const formRef = useRef(null)
     return(
         <>

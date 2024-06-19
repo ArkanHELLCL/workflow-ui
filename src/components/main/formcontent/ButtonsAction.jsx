@@ -60,7 +60,6 @@ export default function Buttons({request, formulario, setOpenDialog}){
         }
     }
 
-    //enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } ) : enqueueSnackbar('Operacion cancelada!', { variant : "warning" })    
     const { enqueueSnackbar } = useSnackbar();
     return(
         <div id="buttonsRequest" className='grid text-right leading-tight absolute right-2 top-8'> 

@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { Divider, IconButton } from '@mui/material';
-//import { useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import { ButtonIcon } from '../../utils/icons.jsx';
 
 
@@ -20,11 +20,15 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
     })
   };
 
+  const { enqueueSnackbar } = useSnackbar();
+  
   const handleOptionClicked = (id) => {
     let option = false
     if(id === 1)
       option = true
-  
+    if(id === 2)
+      enqueueSnackbar('Operacion cancelada!', { variant : "warning" }) 
+
     setOpenDialog({
       ...openDialog,
       open:false,
