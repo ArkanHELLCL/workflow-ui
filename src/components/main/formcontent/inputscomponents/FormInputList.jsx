@@ -97,7 +97,6 @@ export const FormInputList = ({ campo, className }) => {
                             inputRoot: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 dark:!shadow-none" },
                             loadingIndicator: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 !text-white" },
                     }}
-
                     sx={{
                         '--Input-minHeight': '56px',
                         '--Input-radius': '6px',
