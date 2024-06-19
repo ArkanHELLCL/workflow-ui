@@ -19,7 +19,7 @@ function sleep(duration) {
 
 export const FormInputList = ({ campo, className }) => {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-  const { control, formState: { errors } } = useFormContext();
+  const { control, setValue, formState: { errors } } = useFormContext();
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
@@ -51,28 +51,32 @@ export const FormInputList = ({ campo, className }) => {
     }
   }, [open]);
 
-
   return (
     <Controller
         control={control}
         name={campo.FDI_NombreHTML}
         rules={required}
-        defaultValue={meses.records.find((option) => option.id == meses.selected.id)}
-        render={({ field: { onChange, onBlur, value } }) => (
+        defaultValue={meses.records.find((option) => option.id == meses.selected.id)}        
+        render={({ field }) => (
             <FormControl
+                {...field}
                 id={campo.FDI_NombreHTML}
                 size='sm'
                 className={className}>
                 <Autocomplete                                
+                    //{...field}
                     placeholder={campo.FDI_Descripcion}
                     //name={campo.FDI_NombreHTML}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
                     //defaultValue={meses.records.find((option) => option.id == meses.selected.id)}
-                    value={value}
+                    value={field.value}
                     variant="outlined"
                     slots={{ input: InnerInput }}
-                    onChange={onChange}
-                    onBlur={onBlur}                    
+                    onChange={(event, newValue) => {
+                      setValue(campo.FDI_NombreHTML,newValue);
+                    }}
+                    //onChange={field.onChange}
+                    onBlur={field.onBlur}                    
                     slotProps={{ 
                             input: { placeholder: campo.FDI_Placeholder, label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                             root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
@@ -80,7 +84,8 @@ export const FormInputList = ({ campo, className }) => {
                         '--Input-minHeight': '56px',
                         '--Input-radius': '6px',
                     }}
-                    //value={value}
+                    //autoComplete={true}
+                    //autoSelect={true}
                     open={open}
                     onOpen={() => {
                         setOpen(true);
@@ -88,13 +93,13 @@ export const FormInputList = ({ campo, className }) => {
                     onClose={() => {
                         setOpen(false);
                     }}
-                    //isOptionEqualToValue={(option, value) => option.id === value.id}
-                    //getOptionLabel={(option) => option.label}
+                    isOptionEqualToValue={(option, value) => option.value === value.value}
+                    getOptionLabel={(option) => option.label || ''}
                     options={options}
                     loading={loading}
                     endDecorator={
                         loading ? (
-                            <CircularProgress size="sm" sx={{ bgcolor: 'background.surface' }} />
+                            <CircularProgress size="sm" sx={{ bgcolor: 'transparent' }} />
                         ) : null
                     }
                 />
