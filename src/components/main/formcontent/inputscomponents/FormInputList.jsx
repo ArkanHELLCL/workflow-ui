@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/joy/FormControl';
 import Autocomplete from '@mui/joy/Autocomplete';
@@ -36,7 +37,9 @@ export const FormInputList = ({ campo, className }) => {
       await sleep(1e3); // For demo purposes.
 
       if (active) {
-        setOptions([...meses.records]);
+        if(campo.LID_Id===16) //Meses
+          setOptions([...meses.records]);
+        
       }
     })();
 
