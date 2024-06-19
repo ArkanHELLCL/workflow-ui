@@ -4,6 +4,7 @@ import FormControl from '@mui/joy/FormControl';
 import Autocomplete from '@mui/joy/Autocomplete';
 import CircularProgress from '@mui/joy/CircularProgress';
 import FormHelperText from '@mui/joy/FormHelperText';
+import Box from "@mui/material/Paper";
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { useEffect, useState } from 'react';
@@ -79,26 +80,28 @@ export const FormInputList = ({ campo, className }) => {
                 <Autocomplete
                     {...field}
                     placeholder={campo.FDI_Descripcion}
-                    //name={campo.FDI_NombreHTML}
-                    error={!!errors[campo?.FDI_NombreHTML]}                    
-                    //defaultValue={meses.records.find((option) => option.id == meses.selected.id)}
-                    //value={meses.records.find((option) => option.id == meses.selected.id)}
+                    error={!!errors[campo?.FDI_NombreHTML]}  
                     variant="outlined"
                     slots={{ input: InnerInput }}
                     onChange={(event, newValue) => {
                       setValue(campo.FDI_NombreHTML,newValue);
                     }}
-                    //onChange={field.onChange}
                     onBlur={field.onBlur}                    
                     slotProps={{ 
                             input: { placeholder: campo.FDI_Placeholder, label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
-                            root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
+                            root : { className : "dark:!bg-transparent dark:!border-[#575757]"},
+                            popupIndicator: { className: "dark:hover:!bg-[#444444]" },
+                            clearIndicator: { className: "dark:hover:!bg-[#444444]" },
+                            option: { className: "dark:!bg-[#575757] dark:hover:!bg-[#444444] hover:bg-[#cde6f7] dark:!text-stone-100 dark:hover:!text-stone-100 !text-base !font-light !pl-2" },
+                            listbox: { className: "dark:!bg-[#575757] dark:!border-[#575757] dark:!text-stone-100 !text-white"},
+                            inputRoot: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 dark:!shadow-none" },
+                            loadingIndicator: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 !text-white" },
+                    }}
+
                     sx={{
                         '--Input-minHeight': '56px',
                         '--Input-radius': '6px',
                     }}
-                    //autoComplete={true}
-                    //autoSelect={true}
                     open={open}
                     onOpen={() => {
                         setOpen(true);
@@ -115,13 +118,11 @@ export const FormInputList = ({ campo, className }) => {
                             <CircularProgress size="sm" sx={{ bgcolor: 'transparent' }} />
                         ) : null
                     }
-                    renderOption={(props, option) => {
-                      return (
-                        <li {...props} key={option.id}>
+                    renderOption={(props, option) => 
+                      <Box component="li" {...props} key={option.id}>                        
                           {option.label}
-                        </li>
-                      );
-                    }}
+                      </Box>                      
+                    }
                 />
                 <FormHelperText className="!text-red-600">
                     {errors[campo.FDI_NombreHTML]?.message}
