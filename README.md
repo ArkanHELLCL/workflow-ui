@@ -25,7 +25,8 @@ Refactor de la interfaz grafica del sistema de flujos.
 ### **Mayo**
 **Version 1.1.0**
 
-**Primera versión de la UI cin funcionalidad del Formulario**
+**Primera versión de la UI con funcionalidad del Formulario**
+
 **13/05**
 
 1. Refacor menu tree
