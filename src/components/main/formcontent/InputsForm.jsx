@@ -2,6 +2,14 @@
 import Inputs from './Inputs.jsx';
 
 export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos}) {
+    const inputFileElement = document.getElementById('frmWFInputFile');
+
+    function arrayFilesToFileList(filesList) {
+        return filesList.reduce(function (dataTransfer, file) {        
+            dataTransfer.items.add(file);
+            return dataTransfer;
+        }, new DataTransfer()).files;
+    }
     const handleDragEnter = (event) => {
         event.preventDefault();
         setDropEnter(true);
@@ -15,7 +23,8 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos
     const handleDrop = (event) => {
         event.preventDefault();
         setDropEnter(false);
-        const files = Array.from(event.dataTransfer.files);
+        const files = Array.from(event.dataTransfer.files);        
+        
         const validFiles = files.filter((file) => {
             const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
             const isValidExtension = validExtensions.some((ext) =>
@@ -39,10 +48,12 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos
         })
 
         setAdjuntos((prevAdjuntos) => {
-            const newAdjuntos = [...prevAdjuntos, ...remapValidFiles];
-            const finalAdjuntos = Array.from(new Set(newAdjuntos)); // Eliminar duplicados  
+            const newAdjuntos = [...prevAdjuntos, ...remapValidFiles];                        
+            const finalAdjuntos = newAdjuntos.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)            
             return finalAdjuntos
         });
+
+        inputFileElement.files = arrayFilesToFileList(files);
         
     };
 
