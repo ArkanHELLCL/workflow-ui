@@ -1,39 +1,41 @@
 /* eslint-disable react/prop-types */
-import { FormInputText } from './inputscomponents/FormInputText.jsx'
-import { FormInputNumber } from './inputscomponents/FormInputNumber.jsx'
-import { FormInputDecimal } from './inputscomponents/FormInputDecimal.jsx'
-import { FormInputMonto } from './inputscomponents/FormInputMonto.jsx'
-import { FormInputMontoD } from './inputscomponents/FormInputMontoD.jsx'
-import { FormInputFecha } from './inputscomponents/FormInputFecha.jsx'
-import { FormInputTextArea } from './inputscomponents/FormInputTextArea.jsx'
-import { FormInputRut } from './inputscomponents/FormInputRut.jsx'
-import { FormInputList } from './inputscomponents/FormInputList.jsx'
+import {
+    InputText,
+    InputNumber,
+    InputDecimal,
+    InputMonto,
+    InputMontoD,
+    InputFecha,
+    InputTextArea,
+    InputRut,
+    InputList
+} from './inputscomponents'
 
 export default function InputsType({campo, className}){    
     switch (campo.FDI_TipoCampo.trim().toUpperCase()) {
         case 'C':   //Texto tamaño mediano
-            return <FormInputText campo={campo} className={className}/>
+            return <InputText campo={campo} className={className}/>
         case 'N':   //Número, separador de miles sin decimales
-            return <FormInputNumber campo={campo} className={className}/>
+            return <InputNumber campo={campo} className={className}/>
         case 'D':   //Número, separador de miles con 2 decimales
-            return <FormInputDecimal campo={campo} className={className}/>
+            return <InputDecimal campo={campo} className={className}/>
         case 'G':   //Monto, separador de miles sin decimales
-            return <FormInputMonto campo={campo} className={className}/>
+            return <InputMonto campo={campo} className={className}/>
         case 'H':   //Monto, separador de miles con 2 decimales
-            return <FormInputMontoD campo={campo} className={className}/>
+            return <InputMontoD campo={campo} className={className}/>
         case 'F':   //Fecha
-            return <FormInputFecha campo={campo} className={className}/>
+            return <InputFecha campo={campo} className={className}/>
         case 'V':   //Fecha Vencimiento
-            return <FormInputFecha campo={campo} className={className}/>
+            return <InputFecha campo={campo} className={className}/>
         case 'T':   //Texto tamaño grande
-            return <FormInputTextArea campo={campo} className={className}/>
+            return <InputTextArea campo={campo} className={className}/>
         case 'R':   //Rut
-            return <FormInputRut campo={campo} className={className}/>
+            return <InputRut campo={campo} className={className}/>
         case 'L':   //Lista desplegable
-            return <FormInputList campo={campo} className={className}/>
+            return <InputList campo={campo} className={className}/>
         case 'X1':   //Lista desplegable
-            return <FormInputList campo={campo} className={className}/>
+            return <InputList campo={campo} className={className}/>
         default:
-            return <FormInputText campo={campo} className={className}/>
+            return <InputText campo={campo} className={className}/>
     }
 }

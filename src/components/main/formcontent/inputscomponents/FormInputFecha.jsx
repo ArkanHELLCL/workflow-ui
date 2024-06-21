@@ -6,7 +6,7 @@ import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 
-export const FormInputFecha = ({ campo, className }) => {
+export default function FormInputFecha ({ campo, className }) {
   //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, formState: { errors } } = useFormContext();
   return (

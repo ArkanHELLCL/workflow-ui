@@ -19,7 +19,7 @@ function sleep(duration) {
     });
   }
 
-export const FormInputList = ({ campo, className }) => {
+export default function FormInputList ({ campo, className }) {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, setValue, formState: { errors } } = useFormContext();
 

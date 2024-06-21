@@ -71,7 +71,7 @@ const TextArea = forwardRef(function InnerInput(props, ref) {
     );
   });
 
-export const FormInputTextArea = ({ campo, className }) => {
+export default function FormInputTextArea ({ campo, className }) {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, formState: { errors } } = useFormContext();
   return (

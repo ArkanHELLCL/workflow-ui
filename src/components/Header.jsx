@@ -8,14 +8,16 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
 
 import ConfirmationDialog from "./main/ConfirmationDialog.jsx";
-import CrearMenu from "./header/crearMenu.jsx";
-import RequerimientoMenu from "./header/requerimientoMenu.jsx";
-import AdjuntarMenu from "./header/adjuntarMenu.jsx";
-import AccionesMenu from "./header/accionesMenu.jsx";
-import FormularioMenu from "./header/formularioMenu.jsx";
-import GuardarMenu from "./header/guardarMenu.jsx";
-import MantenedoresMenu from "./header/mantenedoresMenu.jsx";
-import InformesMenu from "./header/informesMenu.jsx";
+import {
+    CrearMenu,
+    RequerimientoMenu,
+    AdjuntarMenu,
+    AccionesMenu,
+    FormularioMenu,
+    GuardarMenu,
+    MantenedoresMenu,
+    InformesMenu
+} from "./header/";
 
 export default function Header(){
    const { request } = useRequest()

@@ -25,7 +25,7 @@ const formatearRut = (rutSinFormato) => {
     return rutFormateado?.split('').reverse().join('')
 };
 
-export const FormInputRut = ({ campo, className }) => {
+export default function FormInputRut ({ campo, className }) {
   const { control, setValue, formState: { errors } } = useFormContext();
 
   return (

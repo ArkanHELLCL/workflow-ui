@@ -38,7 +38,7 @@ NumericFormatAdapter.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
-export const FormInputDecimal = ({ campo, className }) => {
+export default function FormInputDecimal ({ campo, className }) {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, formState: { errors } } = useFormContext();
   return (
