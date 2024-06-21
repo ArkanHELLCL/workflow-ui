@@ -5,7 +5,7 @@ import Flujos from "./main/flujos.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx"
 import Menu from './main//Menu.jsx'
 import { flujos } from "../mocks/treeMenu.json";
-import { Form } from "./main/formcontent";
+import Formcomponent from "./main/Formcomponent.jsx";
 import Loading from "../utils/Loading.jsx";
 
 const LazyDetalleRequerimiento = lazy(() => import("./main/DetalleRequerimiento.jsx"))
@@ -45,7 +45,7 @@ export default function Main ({handleNotDragOver, request}) {
         <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
             request ? (
-              <Form request={request} />
+              <Formcomponent request={request} />
             ): (
               <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                   <div className='w-full h-full flex justify-center align-middle items-center'>

@@ -2,12 +2,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { useForm, FormProvider } from "react-hook-form"
-
-import FormNoData from './formcontent/FormNoData.jsx';
-import Header from './formcontent/Header.jsx';
-import Attachments from './formcontent/Attachments.jsx';
-import InputsForm from './formcontent/InputsForm.jsx';
-import DocPreview from './formcontent/DocPreview.jsx';
+import {    NoData, 
+            Header,
+            Files,
+            Inputs,
+            Preview
+        } from './formcontent';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
@@ -66,18 +66,18 @@ export default function Form(){
                             onSubmit={methods.handleSubmit(onSubmit)}   
                             >
                                 <Header preview={preview} request={request} formulario={formulario} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
-                                <Attachments adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview}/>{
+                                <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview}/>{
                                     !preview &&
-                                        <InputsForm setAdjuntos={setAdjuntos} dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos}/>
+                                        <Inputs setAdjuntos={setAdjuntos} dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos}/>
                                     }{
                                         preview && selected!==null &&
-                                            <DocPreview selected={selected} />
+                                            <Preview selected={selected} />
                                     }
                         </form>
                     </FormProvider>
                 </section>
             }{  request?.request?.VFO_Id !== formulario?.VFO_Id &&
-                    <FormNoData request={request}/>
+                    <NoData request={request}/>
             }{
                 openDialog.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
