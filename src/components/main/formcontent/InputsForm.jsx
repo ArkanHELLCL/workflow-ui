@@ -23,7 +23,11 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos
     const handleDrop = (event) => {
         event.preventDefault();
         setDropEnter(false);
-        const files = Array.from(event.dataTransfer.files);        
+        const files = Array.from(event.dataTransfer.files);
+        const filesInput = Array.from(inputFileElement.files);
+        const filesList = [...files, ...filesInput];
+
+        console.log('files',files, filesInput, filesList)
         
         const validFiles = files.filter((file) => {
             const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
@@ -53,7 +57,7 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos
             return finalAdjuntos
         });
 
-        inputFileElement.files = arrayFilesToFileList(files);
+        inputFileElement.files = arrayFilesToFileList(filesList);
         
     };
 
