@@ -3,6 +3,25 @@
 Refactor de la interfaz grafica del sistema de flujos.
 
 ### 2024
+### **Junio**
+**03/06**
+
+1. Eliminación de re-renders en el formulario
+2. Mejoras en estabilidad del sito
+3. Mejoras en el rendimiento de la carga de los requerimientos
+4. incorporación de paquete para formatear números
+5. Mejoras visuales
+6. Mejoras en el rendimiento general del sitio
+7. Mejora en el rendimiento de los filtros de los requerimientos
+
+**04/06**
+
+1. Creación de nuevos tipos de input para reflejar diferentes números y montos
+2. incorporación de modificación de la url para representar el punto en donde esta trabajando el usuario
+3. Detección de modificación de un campo del formulario
+4. Modificación de los estilos de los nuevos componentes para que estén acorde a la línea del sistema
+5. Mejora en el diseño del menu árbol
+
 ### **Mayo**
 **Version 1.1.0**
 
@@ -58,25 +77,7 @@ Refactor de la interfaz grafica del sistema de flujos.
 4. Enlazar select con el hook del form
 5. Detección de modificación del formulario
 
-### **Junio**
-**03/06**
-
-1. Eliminación de re-renders en el formulario
-2. Mejoras en estabilidad del sito
-3. Mejoras en el rendimiento de la carga de los requerimientos
-4. incorporación de paquete para formatear números
-5. Mejoras visuales
-6. Mejoras en el rendimiento general del sitio
-7. Mejora en el rendimiento de los filtros de los requerimientos
-
-**04/06**
-
-1. Creación de nuevos tipos de input para reflejar diferentes números y montos
-2. incorporación de modificación de la url para representar el punto en donde esta trabajando el usuario
-3. Detección de modificación de un campo del formulario
-4. Modificación de los estilos de los nuevos componentes para que estén acorde a la línea del sistema
-5. Mejora en el diseño del menu árbol
-
+### **2023**
 **Versión 1.0.10**
 
 **Mejoras y actualizaciones:**
