@@ -19,11 +19,11 @@ import {
     InformesMenu
 } from "./header/";
 
-export default function Header(){
+export default function Header({openDialog, setOpenDialog}){
    const { request } = useRequest()
    const { filters } = useFilters()
    const [grupos, setGrupos] = useState(null);
-   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
+   //const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
 
    useEffect(() => {
         //const { FOR_Botones } = formulario.VFO_Id === request?.request?.VFO_Id;

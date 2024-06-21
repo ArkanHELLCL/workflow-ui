@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
-import { useForm, FormProvider } from "react-hook-form"
+//import { useForm, FormProvider } from "react-hook-form"
 import {    NoData, 
             Header,
             Files,
@@ -13,7 +14,7 @@ import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
 
-export default function Form(){
+export default function Form({methods, openDialog, setOpenDialog}){
     const { REQ_Adjuntos } = formulario;
     const { FOR_Campos } = formulario; 
 
@@ -23,9 +24,7 @@ export default function Form(){
     const [preview, setPreview] = useState(false)
     const [selected, setSelected] = useState(null)
     const [adjuntos, setAdjuntos] = useState(REQ_Adjuntos);
-
-    const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":""})
-
+    
     useEffect(() => {
         selected ?
             setRequest({
@@ -36,7 +35,7 @@ export default function Form(){
         null
     },[selected, adjuntos])
 
-    const methods = useForm()
+    //const methods = useForm()
 
     const onSubmit = (data) => {
         // Handle form submission with data        
@@ -44,13 +43,13 @@ export default function Form(){
     };
 
     useEffect(() => {        
-        if(openDialog.option){
+        if(openDialog?.option){
             formRef.current.requestSubmit()
             enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
         }
         setOpenDialog({...openDialog, option:false})                    
     }
-    ,[openDialog.option])
+    ,[openDialog?.option])
     
 
     const { enqueueSnackbar } = useSnackbar();
@@ -60,7 +59,7 @@ export default function Form(){
             {
                 request && request?.request?.VFO_Id === formulario?.VFO_Id &&
                 <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
-                    <FormProvider {...methods}>
+                    
                         <form id={formulario.name} noValidate ref={formRef}
                             className="h-full w-full flex flex-col columns-1"
                             onSubmit={methods.handleSubmit(onSubmit)}   
@@ -74,12 +73,12 @@ export default function Form(){
                                             <Preview selected={selected} />
                                     }
                         </form>
-                    </FormProvider>
+                    
                 </section>
             }{  request?.request?.VFO_Id !== formulario?.VFO_Id &&
                     <NoData request={request}/>
             }{
-                openDialog.open &&
+                openDialog?.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
             }  
         </>

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
@@ -8,6 +8,7 @@ import SideBar from './components/SideBar.jsx'
 import Loading from "./utils/Loading.jsx";
 import { useRequest } from "./hooks/useRequest.jsx"
 import Main from './components/Main.jsx'
+import { useForm, FormProvider } from "react-hook-form"
 
 //import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 //import { useFilters } from "./hooks/useFilters.jsx";
@@ -23,7 +24,9 @@ const handleNotDragOver = (event) => {
 
 function App() { 
   const { request } = useRequest()
-  
+  const methods = useForm()
+  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
+
   return (    
     <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
       <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] z-[60] transition-color delay-75" onDragOver={handleNotDragOver}>
@@ -36,8 +39,10 @@ function App() {
         </Suspense>
       </nav>        
       <Suspense fallback={<Loading />}>
-          <Header/>
-          <Main handleNotDragOver={handleNotDragOver} request={request}/>
+        <FormProvider {...methods}>
+          <Header methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+          <Main handleNotDragOver={handleNotDragOver} request={request} methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+        </FormProvider>
       </Suspense>
       <Suspense fallback={<Loading />}>
         <Footer />

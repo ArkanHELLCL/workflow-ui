@@ -10,7 +10,7 @@ import Loading from "../utils/Loading.jsx";
 
 const LazyDetalleRequerimiento = lazy(() => import("./main/DetalleRequerimiento.jsx"))
 
-export default function Main ({handleNotDragOver, request}) {
+export default function Main ({handleNotDragOver, request, methods, openDialog, setOpenDialog}) {
     /*const [sizes, setSizes] = useState([
         100,
         '30%',
@@ -45,7 +45,7 @@ export default function Main ({handleNotDragOver, request}) {
         <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent mt-[10px]">
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
             request ? (
-              <Formcomponent request={request} />
+              <Formcomponent request={request} methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
             ): (
               <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                   <div className='w-full h-full flex justify-center align-middle items-center'>
