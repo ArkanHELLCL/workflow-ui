@@ -15,7 +15,7 @@ export default function UserBar({open, setOpen}) {
         return (
             <>
                 <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
-                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-red-600 bg-red-500 rounded-full top-[1px] right-1"></span>
+                <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-red-600 bg-red-500 rounded-full top-0 right-0"></span>
             </>
         )
     }
