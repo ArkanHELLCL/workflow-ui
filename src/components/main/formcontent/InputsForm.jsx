@@ -1,15 +1,8 @@
 /* eslint-disable react/prop-types */
 import Inputs from './Inputs.jsx';
 
-export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos}) {
-    const inputFileElement = document.getElementById('frmWFInputFile');
-
-    function arrayFilesToFileList(filesList) {
-        return filesList.reduce(function (dataTransfer, file) {        
-            dataTransfer.items.add(file);
-            return dataTransfer;
-        }, new DataTransfer()).files;
-    }
+export default function InputsForm({setDropEnter, dropEnter, campos, onChange}) {
+    
     const handleDragEnter = (event) => {
         event.preventDefault();
         setDropEnter(true);
@@ -23,42 +16,7 @@ export default function InputsForm({setAdjuntos, setDropEnter, dropEnter, campos
     const handleDrop = (event) => {
         event.preventDefault();
         setDropEnter(false);
-        const files = Array.from(event.dataTransfer.files);
-        const filesInput = Array.from(inputFileElement.files);
-        const filesList = [...files, ...filesInput];
-
-        console.log('files',files, filesInput, filesList)
-        
-        const validFiles = files.filter((file) => {
-            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
-            const isValidExtension = validExtensions.some((ext) =>
-                file.name.toLowerCase().endsWith(ext)
-            );
-            const isValidSize = file.size <= 10485760; // 10 MB
-            return isValidExtension && isValidSize;
-        });
-
-        const remapValidFiles = validFiles.map((adjunto, index) => {            
-            const data = {
-                id: adjunto?.name,
-                nombre: adjunto?.name,
-                extension: adjunto?.name?.split('.').pop(),
-                tamano: adjunto?.size,
-                thumbail:  event.dataTransfer.files[index].type.includes('image') ? URL.createObjectURL(event.dataTransfer.files[index]) : null,
-                url: URL.createObjectURL(event.dataTransfer.files[index]),
-                upload: true
-            }
-            return data
-        })
-
-        setAdjuntos((prevAdjuntos) => {
-            const newAdjuntos = [...prevAdjuntos, ...remapValidFiles];                        
-            const finalAdjuntos = newAdjuntos.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)            
-            return finalAdjuntos
-        });
-
-        inputFileElement.files = arrayFilesToFileList(filesList);
-        
+        onChange(event);
     };
 
     const handleDragOver = (event) => {

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useId } from 'react';
+//import { useId } from 'react';
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 
@@ -33,9 +33,9 @@ export default function Adjuntar ({styles}){
         //console.log('adjuntar')
     }*/
 
-    const idInput = useId()
+    //const idInput = useId()
     const handleClickAdjunto = () =>{
-        const  elemento = document.getElementById(idInput);
+        const  elemento = document.getElementById('frmWFInputFile');
         elemento.click()
     }
 
@@ -53,12 +53,7 @@ export default function Adjuntar ({styles}){
                     </ListItemButton>
                 </Dropdown>
             </ContentMenu>
-        </animated.div>
-        <input  id={idInput} 
-            type="file"
-            multiple                        
-            className='hidden'
-            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"  />
+        </animated.div>       
         </>
     )
 }
