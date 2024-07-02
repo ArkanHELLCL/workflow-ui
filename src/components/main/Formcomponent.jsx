@@ -34,6 +34,7 @@ export default function Form({methods, openDialog, setOpenDialog}){
     const onSubmit = (data) => {
         // Handle form submission with data    
         const inputFileElement = document.getElementById('frmWFInputFile');
+        //data.frmWFInputFile.FileList = [...inputFileElement.files];
         console.log('formcomponent',data, inputFileElement.files);
         methods.reset()
         setAdjuntos(REQ_Adjuntos)
@@ -50,21 +51,25 @@ export default function Form({methods, openDialog, setOpenDialog}){
 
     const inputFileElement = document.getElementById('frmWFInputFile');
 
-    /*function arrayFilesToFileList(filesList) {
+    function arrayFilesToFileList(filesList) {
         return filesList.reduce(function (dataTransfer, file) {        
             dataTransfer.items.add(file);
             return dataTransfer;
         }, new DataTransfer()).files;
-    }*/
+    }
     
     const onChange = (event) => {
         let files = [];
-        event.type==='change' ? files = Array.from(event.target.files) : files = Array.from(event.dataTransfer.files)
-        
+        let filesList = [];        
         const filesInput = Array.from(inputFileElement.files);
-        const filesList = [...files, ...filesInput];
 
-        console.log('files',files, filesInput, filesList)
+        if(event.type==='change'){
+            files = Array.from(event.target.files)
+            filesList = [...filesInput];
+        }else{
+            files = Array.from(event.dataTransfer.files)
+            filesList = [...files, ...filesInput];
+        }        
         
         const validFiles = files.filter((file) => {
             const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
@@ -93,8 +98,9 @@ export default function Form({methods, openDialog, setOpenDialog}){
             const finalAdjuntos = newAdjuntos.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)            
             return finalAdjuntos
         });
+        console.log('onChange',filesList)
 
-        //inputFileElement.files = arrayFilesToFileList(filesList);
+        inputFileElement.files = arrayFilesToFileList(filesList);
     }
 
     const { enqueueSnackbar } = useSnackbar();
@@ -120,7 +126,6 @@ export default function Form({methods, openDialog, setOpenDialog}){
                             type="file" 
                             multiple 
                             hidden 
-                            //className="hidden"
                             name="frmWFInputFile" 
                             id="frmWFInputFile" 
                             {...methods.register("frmWFInputFile")}                          

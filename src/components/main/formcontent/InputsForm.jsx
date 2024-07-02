@@ -5,22 +5,26 @@ export default function InputsForm({setDropEnter, dropEnter, campos, onChange}) 
     
     const handleDragEnter = (event) => {
         event.preventDefault();
+        event.stopPropagation();
         setDropEnter(true);
     };
     
     const handleDragLeave = (event) => {
         event.preventDefault();
+        event.stopPropagation();
         setDropEnter(false);
     };
 
     const handleDrop = (event) => {
         event.preventDefault();
+        event.stopPropagation();
         setDropEnter(false);
         onChange(event);
     };
 
     const handleDragOver = (event) => {
         event.preventDefault();
+        event.stopPropagation();
     };
 
     return (
