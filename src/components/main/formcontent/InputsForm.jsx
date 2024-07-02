@@ -2,7 +2,6 @@
 import Inputs from './Inputs.jsx';
 
 export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos}) {
-    
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
