@@ -1,4 +1,4 @@
-
+/* eslint-disable no-extra-boolean-cast */
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/joy/FormControl';
 import Input from '@mui/joy/Input';
@@ -57,4 +57,4 @@ export default function FormInputFecha ({ campo, className }) {
         )}
     />
   );
-};
+}

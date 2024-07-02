@@ -47,61 +47,7 @@ export default function Form({methods, openDialog, setOpenDialog}){
         }
         setOpenDialog({...openDialog, option:false})                    
     }
-    ,[openDialog?.option])
-
-    const inputFileElement = document.getElementById('frmWFInputFile');
-
-    function arrayFilesToFileList(filesList) {
-        return filesList.reduce(function (dataTransfer, file) {        
-            dataTransfer.items.add(file);
-            return dataTransfer;
-        }, new DataTransfer()).files;
-    }
-    
-    const onChange = (event) => {
-        let files = [];
-        let filesList = [];        
-        const filesInput = Array.from(inputFileElement.files);
-
-        if(event.type==='change'){
-            files = Array.from(event.target.files)
-            filesList = [...filesInput];
-        }else{
-            files = Array.from(event.dataTransfer.files)
-            filesList = [...files, ...filesInput];
-        }        
-        
-        const validFiles = files.filter((file) => {
-            const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
-            const isValidExtension = validExtensions.some((ext) =>
-                file.name.toLowerCase().endsWith(ext)
-            );
-            const isValidSize = file.size <= 10485760; // 10 MB
-            return isValidExtension && isValidSize;
-        });
-
-        const remapValidFiles = validFiles.map((adjunto, index) => {            
-            const data = {
-                id: adjunto?.name,
-                nombre: adjunto?.name,
-                extension: adjunto?.name?.split('.').pop(),
-                tamano: adjunto?.size,
-                thumbail:  files[index]?.type.includes('image') ? URL.createObjectURL(files[index]) : null,
-                url: URL.createObjectURL(files[index]),
-                upload: true
-            }
-            return data
-        })
-
-        setAdjuntos((prevAdjuntos) => {
-            const newAdjuntos = [...prevAdjuntos, ...remapValidFiles];                        
-            const finalAdjuntos = newAdjuntos.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)            
-            return finalAdjuntos
-        });
-        console.log('onChange',filesList)
-
-        inputFileElement.files = arrayFilesToFileList(filesList);
-    }
+    ,[openDialog?.option])    
 
     const { enqueueSnackbar } = useSnackbar();
     const formRef = useRef(null)
@@ -117,20 +63,11 @@ export default function Form({methods, openDialog, setOpenDialog}){
                             <Header preview={preview} request={request} formulario={formulario} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
                             <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview}/>{
                                 !preview &&
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} onChange={onChange}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} setAdjuntos={setAdjuntos}/>
                                 }{
                                     preview && selected!==null &&
                                         <Preview selected={selected} />
-                                }
-                        <input 
-                            type="file" 
-                            multiple 
-                            hidden 
-                            name="frmWFInputFile" 
-                            id="frmWFInputFile" 
-                            {...methods.register("frmWFInputFile")}                          
-                            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
-                            onChange={onChange}  />
+                                }                        
                     </form>
                 </section>
             }{  request?.request?.VFO_Id !== formulario?.VFO_Id &&
