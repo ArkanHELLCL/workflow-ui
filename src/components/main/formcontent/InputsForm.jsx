@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 //import { Controller } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Inputs from './Inputs.jsx';
 
-export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, methods}) {
-    const [filesList, setFilesList] = useState([]);
+export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, methods, setFilesList, filesList}) {
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -30,28 +29,20 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         event.stopPropagation();
     };
 
-    //const inputFileElement = document.getElementById('frmWFInputFile');
-
     function arrayFilesToFileList(filesList) {
         return filesList.reduce(function (dataTransfer, file) {        
             dataTransfer.items.add(file);
             return dataTransfer;
         }, new DataTransfer()).files;
     }
-    //let filesList = [];
+    
     const onChange = (event) => {
-        let files = [];
-        
-        //const filesInput = Array.from(inputFileElement.files);
-
+        let files = [];                
         if(event.type==='change'){
-            files = Array.from(event.target.files)
-            //filesList = [...files];
+            files = Array.from(event.target.files)            
         }else{
-            files = Array.from(event.dataTransfer.files)
-            //filesList = [...files, ...filesInput];
-        }        
-        //filesList = [...filesList, ...files];
+            files = Array.from(event.dataTransfer.files)            
+        }                
         setFilesList([...filesList, ...files]);
         const validFiles = files.filter((file) => {
             const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
@@ -80,17 +71,23 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
             const finalAdjuntos = newAdjuntos.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)            
             return finalAdjuntos
         });
-        //console.log('onChange',filesList)
-        //methods.reset({'frmWFInputFile':arrayFilesToFileList(filesList)})
-        //return filesList;
-        //inputFileElement.files = arrayFilesToFileList(filesList);
+        return filesList
     }
 
     useEffect(() => {
-        methods.reset({'frmWFInputFile':arrayFilesToFileList(filesList)})
+        //methods.reset({'frmWFInputFile':arrayFilesToFileList(filesList)})
+        //const inputFileElement = document.getElementById('frmWFInputFile');
+        //inputFileElement.files = arrayFilesToFileList(filesList);
+        methods.setValue('frmWFInputFile',arrayFilesToFileList(filesList))
+        //onChange({type:'change'})
         //console.log('useEffect',filesList)
     },[filesList])
 
+    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;
+    //console.log('required',required)
+    /*useEffect(() => {
+        setFilesList([])
+    },[methods.formState.isSubmitted])*/
 
     return (
         <>
@@ -109,19 +106,19 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
                     </div> :
                     <Inputs campos={campos} />
                 }
-            </div>
-            
-                        <input 
-                            type="file" 
-                            multiple 
-                            hidden 
-                            //value={value}
-                            name="frmWFInputFile" 
-                            id="frmWFInputFile" 
-                            {...methods.register("frmWFInputFile")}                          
-                            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
-                            onChange={onChange}  />
-            
+            </div>            
+            <input 
+                type="file" 
+                multiple 
+                hidden
+                //required={required}
+                //value={filesList}
+                name="frmWFInputFile" 
+                id="frmWFInputFile" 
+                //{...methods.register("frmWFInputFile",{required : required})}
+                {...methods.register("frmWFInputFile")}
+                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
+                onChange={onChange}  />            
         </>
     );
 }

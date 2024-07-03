@@ -13,6 +13,8 @@ import {
 
 export default function InputsType({campo, className}){    
     switch (campo.FDI_TipoCampo.trim().toUpperCase()) {
+        case 'A':   //Archivo
+            return
         case 'C':   //Texto tamaño mediano
             return <InputText campo={campo} className={className}/>
         case 'N':   //Número, separador de miles sin decimales

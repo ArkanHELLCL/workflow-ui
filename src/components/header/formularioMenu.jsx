@@ -16,7 +16,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
     const { trigger } = useFormContext();    
 
     async function hanldeOnClick(event,btns){
-        event.preventDefault()        
+        event.preventDefault()
         const isValid = await trigger()
         if(isValid){
             if(btns?.dialogo==='confirm'){

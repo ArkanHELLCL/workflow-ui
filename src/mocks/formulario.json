@@ -395,6 +395,27 @@
           "FDI_Editable":1,
           "FDI_ErrorMessage":"Debes ingresar un proveedor",
           "FDI_Placeholder":"Operadora de Sistemas Electricos SPA - 77630439"
+        },
+        {
+          "FDI_Id":88,
+          "FDI_TipoCampo":"A",
+          "FDI_Descripcion":"Adjuntos",
+          "FDI_CampoObligatorio":1,
+          "FDI_Priorirdad":230,
+          "LID_Id":null,
+          "FDI_NombreHTML":"PagAdjuntos",
+          "FDI_EditableSiempre":0,
+          "FDI_NuevaLinea":1,
+          "FDI_TamanoDiseno":6,
+          "FDI_IconoDiseno":null,
+          "FDI_EstadoAcepta":null,
+          "FDI_EstadoRechazo":null,
+          "FDI_IdDepVerDatos":null,
+          "FDI_IdFLDVerDatos":null,
+          "DFO_Dato":null,
+          "FDI_Editable":1,
+          "FDI_ErrorMessage":"Debes agregar al menos un adjunto",
+          "FDI_Placeholder":null
         }
       ]
     }  

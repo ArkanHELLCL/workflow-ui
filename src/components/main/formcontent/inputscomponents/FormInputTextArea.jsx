@@ -108,7 +108,7 @@ export default function FormInputTextArea ({ campo, className }) {
                 />
                 <FormHelperText className="!text-red-600">
                     {errors[campo.FDI_NombreHTML]?.message}
-                </FormHelperText>                       
+                </FormHelperText>
             </FormControl>
         )}
     />

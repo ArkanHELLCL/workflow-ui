@@ -20,6 +20,7 @@ export default function Form({methods, openDialog, setOpenDialog}){
     const [preview, setPreview] = useState(false)
     const [selected, setSelected] = useState(null)
     const [adjuntos, setAdjuntos] = useState(REQ_Adjuntos);
+    const [filesList, setFilesList] = useState([]);
     
     useEffect(() => {
         selected ?
@@ -38,7 +39,9 @@ export default function Form({methods, openDialog, setOpenDialog}){
         //console.log('formcomponent',data, inputFileElement.files);
         console.log('formcomponent',data);
         methods.reset()
+        methods.clearErrors()        
         setAdjuntos(REQ_Adjuntos)
+        setFilesList([])
     };
 
     useEffect(() => {        
@@ -62,9 +65,9 @@ export default function Form({methods, openDialog, setOpenDialog}){
                         onSubmit={methods.handleSubmit(onSubmit)}   
                         >
                             <Header preview={preview} request={request} formulario={formulario} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
-                            <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview}/>{
+                            <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
                                 !preview &&
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} setAdjuntos={setAdjuntos} methods={methods}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} setAdjuntos={setAdjuntos} methods={methods} filesList={filesList} setFilesList={setFilesList}/>
                                 }{
                                     preview && selected!==null &&
                                         <Preview selected={selected} />
