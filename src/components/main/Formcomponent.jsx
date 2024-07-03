@@ -32,11 +32,7 @@ export default function Form({methods, openDialog, setOpenDialog}){
         null
     },[selected, adjuntos])
 
-    const onSubmit = (data) => {
-        // Handle form submission with data    
-        //const inputFileElement = document.getElementById('frmWFInputFile');
-        //data.frmWFInputFile.FileList = [...inputFileElement.files];
-        //console.log('formcomponent',data, inputFileElement.files);
+    const onSubmit = (data) => {        
         console.log('formcomponent',data);
         methods.reset()
         methods.clearErrors()        
