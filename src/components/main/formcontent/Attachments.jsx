@@ -34,7 +34,7 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, setFile
     return(
         <>
             <div key={file.id} className='flex items-center relative overflow-hidden z-50 elmadj' id={file.id}>
-                <div className={`dark:border-[#5f5f5f] border-[#b9b9b9] p-1 dark:bg-[#363636] hover:bg-[#cde6f7] hover:cursor-pointer border-r-0 z-0 w-full h-full flex border hover:dark:border-[#a8a8a8] ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#4a4a4a] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a]'} peer/adjunto`}
+                <div className={`${file.upload ? 'dark:border-[#2c87d2] border-[#2c87d2]' :'dark:border-[#5f5f5f] border-[#b9b9b9] hover:dark:border-[#a8a8a8]'} hover:bg-[#cde6f7] p-1 dark:bg-[#363636]  hover:cursor-pointer border-r-0 z-0 w-full h-full flex border ${selected?.nombre === file.nombre ? 'bg-[#b1d6f0] dark:bg-[#666666] dark:hover:bg-[#4a4a4a] dark:border-[#a8a8a8]':'dark:hover:bg-[#4a4a4a]'} peer/adjunto`}
                 onClick={() => HandleClickFile(file)}>
                     {
                         file.thumbail ?
@@ -52,7 +52,7 @@ const Adjuntos = ({file, selected, setSelected, setPreview, setAdjuntos, setFile
                     </div>
                 </div>
                 <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin  h-full w-5 right-0 dark:!bg-[#363636] !border-[#b9b9b9] !border dark:!border-[#5f5f5f] hover:!bg-[#cde6f7] z-20 !border-l-0 !items-center !align-middle !justify-center flex peer-hover/adjunto:dark:!border-[#a8a8a8] ${selected?.nombre === file.nombre ? '!bg-[#b1d6f0] dark:!bg-[#666666] dark:hover:!bg-[#666666] dark:!border-[#a8a8a8]':'dark:hover:!bg-[#4a4a4a] !bg-[#fdfdfd]'}`}>
+                    <MenuButton className={`dark:hover:!bg-[#444444] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin  h-full w-5 right-0 dark:!bg-[#363636] ${file.upload ? 'dark:!border-[#2c87d2] !border-[#2c87d2]' :'dark:!border-[#5f5f5f] !border-[#b9b9b9] peer-hover/adjunto:dark:!border-[#a8a8a8]'} !border hover:!bg-[#cde6f7] z-20 !border-l-0 !items-center !align-middle !justify-center flex  ${selected?.nombre === file.nombre ? '!bg-[#b1d6f0] dark:!bg-[#666666] dark:hover:!bg-[#666666] dark:!border-[#a8a8a8]':'dark:hover:!bg-[#4a4a4a] !bg-[#fdfdfd]'}`}>
                     <KeyboardArrowDownIcon/>
                     </MenuButton>
                     <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min"> {
