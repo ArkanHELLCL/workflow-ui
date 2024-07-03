@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Controller } from 'react-hook-form';
+//import { Controller } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import Inputs from './Inputs.jsx';
 
 export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, methods}) {
+    const [filesList, setFilesList] = useState([]);
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -27,7 +30,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         event.stopPropagation();
     };
 
-    const inputFileElement = document.getElementById('frmWFInputFile');
+    //const inputFileElement = document.getElementById('frmWFInputFile');
 
     function arrayFilesToFileList(filesList) {
         return filesList.reduce(function (dataTransfer, file) {        
@@ -35,20 +38,21 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
             return dataTransfer;
         }, new DataTransfer()).files;
     }
-    
+    //let filesList = [];
     const onChange = (event) => {
         let files = [];
-        let filesList = [];        
-        const filesInput = Array.from(inputFileElement.files);
+        
+        //const filesInput = Array.from(inputFileElement.files);
 
         if(event.type==='change'){
             files = Array.from(event.target.files)
-            filesList = [...filesInput];
+            //filesList = [...files];
         }else{
             files = Array.from(event.dataTransfer.files)
-            filesList = [...files, ...filesInput];
+            //filesList = [...files, ...filesInput];
         }        
-        
+        //filesList = [...filesList, ...files];
+        setFilesList([...filesList, ...files]);
         const validFiles = files.filter((file) => {
             const validExtensions = [".jpg", ".jpeg", ".png", ".gif",".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".txt","webp"];
             const isValidExtension = validExtensions.some((ext) =>
@@ -76,10 +80,17 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
             const finalAdjuntos = newAdjuntos.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)            
             return finalAdjuntos
         });
-        console.log('onChange',filesList)
-
-        inputFileElement.files = arrayFilesToFileList(filesList);
+        //console.log('onChange',filesList)
+        //methods.reset({'frmWFInputFile':arrayFilesToFileList(filesList)})
+        //return filesList;
+        //inputFileElement.files = arrayFilesToFileList(filesList);
     }
+
+    useEffect(() => {
+        methods.reset({'frmWFInputFile':arrayFilesToFileList(filesList)})
+        //console.log('useEffect',filesList)
+    },[filesList])
+
 
     return (
         <>
@@ -99,25 +110,18 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
                     <Inputs campos={campos} />
                 }
             </div>
-            <Controller
-                name="frmWFInputFile"
-                control={methods.control}
-                render={({ field: { value, onChange } }) => {
-                    return (
+            
                         <input 
                             type="file" 
                             multiple 
                             hidden 
-                            value={value}
+                            //value={value}
                             name="frmWFInputFile" 
                             id="frmWFInputFile" 
-                            //{...methods.register("frmWFInputFile")}                          
+                            {...methods.register("frmWFInputFile")}                          
                             accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
                             onChange={onChange}  />
-                    );
-                }
-            }
-            />
+            
         </>
     );
 }
