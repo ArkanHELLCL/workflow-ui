@@ -38,7 +38,7 @@ export default function FormInputList ({ campo, className }) {
     }
 
     (async () => {
-      await sleep(1e3); // For demo purposes.
+      await sleep(1e2); // For demo purposes.
 
       if (active) {        
         setOptions([...dataOptions.records]);

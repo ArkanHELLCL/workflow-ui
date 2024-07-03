@@ -98,10 +98,7 @@ const handleNotDragOver = (event) => {
     return false;
 }
 
-export default function Attachments({adjuntos, setAdjuntos, selected, setSelected, setPreview, setFilesList, filesList}){
-    //const { REQ_Adjuntos } = formulario;
-    //const [adjuntos, setAdjuntos] = useState(REQ_Adjuntos);
-    console.log('Adjuntos',filesList)
+export default function Attachments({adjuntos, setAdjuntos, selected, setSelected, setPreview, setFilesList, filesList}){    
     return(
         <div className=' max-h-28 overflow-y-auto py-0 pr-2 relative z-10' onDragOver = {handleNotDragOver}>
             <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-1">
