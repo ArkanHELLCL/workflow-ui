@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/joy/FormControl';
 import FormHelperText from '@mui/joy/FormHelperText';
@@ -113,4 +112,4 @@ export default function FormInputTextArea ({ campo, className }) {
         )}
     />
   );
-};
+}

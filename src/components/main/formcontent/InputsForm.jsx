@@ -109,7 +109,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
                 name="frmWFInputFile" 
                 id="frmWFInputFile" 
                 //{...methods.register("frmWFInputFile",{required : required})}
-                {...methods.register("frmWFInputFile", {validate: (value) => {
+                {...methods.register("frmWFInputFile", {validate: () => {
                     //value.length > 0
                     if(required && filesList.length === 0) return 'Debes adjuntar al menos un archivo'
                 }})}
