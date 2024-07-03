@@ -75,20 +75,12 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         return filesList
     }
 
-    useEffect(() => {
-        //methods.reset({'frmWFInputFile':arrayFilesToFileList(filesList)})
-        //const inputFileElement = document.getElementById('frmWFInputFile');
-        //inputFileElement.files = arrayFilesToFileList(filesList);
+    useEffect(() => {        
         methods.setValue('frmWFInputFile',arrayFilesToFileList(filesList))
-        //onChange({type:'change'})
-        //console.log('useEffect',filesList)
+        methods.clearErrors('frmWFInputFile')
     },[filesList])
 
-    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;
-    //console.log('required',required)
-    /*useEffect(() => {
-        setFilesList([])
-    },[methods.formState.isSubmitted])*/
+    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;    
 
     return (
         <>
