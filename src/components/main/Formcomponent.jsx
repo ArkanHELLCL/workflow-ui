@@ -63,7 +63,7 @@ export default function Form({methods, openDialog, setOpenDialog}){
                             <Header preview={preview} request={request} formulario={formulario} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
                             <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview}/>{
                                 !preview &&
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} setAdjuntos={setAdjuntos}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} setAdjuntos={setAdjuntos} methods={methods}/>
                                 }{
                                     preview && selected!==null &&
                                         <Preview selected={selected} />

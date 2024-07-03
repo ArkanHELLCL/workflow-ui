@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
+import { Controller } from 'react-hook-form';
 import Inputs from './Inputs.jsx';
 
-export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos}) {
+export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, methods}) {
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -98,15 +99,25 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
                     <Inputs campos={campos} />
                 }
             </div>
-            <input 
-                type="file" 
-                multiple 
-                hidden 
-                name="frmWFInputFile" 
-                id="frmWFInputFile" 
-                //{...methods.register("frmWFInputFile")}                          
-                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
-                onChange={onChange}  />
+            <Controller
+                name="frmWFInputFile"
+                control={methods.control}
+                render={({ field: { value, onChange } }) => {
+                    return (
+                        <input 
+                            type="file" 
+                            multiple 
+                            hidden 
+                            value={value}
+                            name="frmWFInputFile" 
+                            id="frmWFInputFile" 
+                            //{...methods.register("frmWFInputFile")}                          
+                            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
+                            onChange={onChange}  />
+                    );
+                }
+            }
+            />
         </>
     );
 }
