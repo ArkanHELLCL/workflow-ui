@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { useMemo } from "react";
+import { useRecords } from "../../../hooks/useRecords.jsx";
 import { BlockIcon, CheckIcon, DelIcon, EditIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
-
 
 const { dias } = Constants()
 const diaName = (fecha) => {
@@ -10,9 +12,18 @@ const diaName = (fecha) => {
   }
 
 export default function RegistroItem ({registro, ...props}){
-    const isRegSelected = false    
+    const { record, setRecord } = useRecords()
+    const isRegSelected = useMemo(() => parseInt(record?.record?.Id) === parseInt(registro.Id), [record, registro.Id])
+    const memoizedReq = useMemo(() => registro, [registro])
+    
+    const handleRegClick = () => {        
+        setRecord({
+            "record": memoizedReq,            
+          })
+    }
+
     return(
-        <article className={`regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={() => console.log('click reg')} {...props}>
+        <article className={`${isRegSelected ? 'reqselected' : 'requnselected'} regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={handleRegClick} {...props}>
             <div className="w-3/4">
             <p className={`${isRegSelected ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
             <p className={`truncate text-base font-thin uppercase leading-snug`}>{registro.titulo}</p>

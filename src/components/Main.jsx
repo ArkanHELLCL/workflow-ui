@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Suspense } from "react";
+import { RecordsProvider } from '../context/records.jsx'
+import { useRequest } from "../hooks/useRequest.jsx"
+import { useFilters } from "../hooks/useFilters.jsx"
 import MenuFilters from "./main//menuFilters.jsx";
 import Flujos from "./main/flujos.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx"
@@ -10,13 +13,15 @@ import Formcomponent from "./main/Formcomponent.jsx";
 import Loading from "../utils/Loading.jsx";
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 
-export default function Main ({handleNotDragOver, request, methods, openDialog, setOpenDialog, filters}) {
+export default function Main ({handleNotDragOver, methods, openDialog, setOpenDialog}) {
     /*const [sizes, setSizes] = useState([
         100,
         '30%',
         'auto',
     ]);*/
-    
+    const { request } = useRequest()
+    const { filters } = useFilters()
+
     return(
       <main className='w-full flex overflow-hidden pl-14 bg-[#faf9f8] dark:bg-transparent h-full mt-[10px]'>
         <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] h-full flex z-0' id="Resizable" onDragOver={handleNotDragOver}>
@@ -44,7 +49,9 @@ export default function Main ({handleNotDragOver, request, methods, openDialog, 
                         <ListaRequerimientos/>
                       </>
                     ) : (
-                      <ListaRegMantenedores />
+                      <RecordsProvider>
+                        <ListaRegMantenedores />
+                      </RecordsProvider>
                     )
                 }
                 </Suspense>                  
@@ -54,7 +61,7 @@ export default function Main ({handleNotDragOver, request, methods, openDialog, 
         <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent">
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
             request ? (
-              <Formcomponent request={request} methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+              <Formcomponent methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
             ): (
               filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? ( 
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>

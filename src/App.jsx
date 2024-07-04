@@ -5,9 +5,7 @@ import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
-import Loading from "./utils/Loading.jsx";
-import { useRequest } from "./hooks/useRequest.jsx"
-import { useFilters } from "./hooks/useFilters.jsx" 
+import Loading from "./utils/Loading.jsx"; 
 import Main from './components/Main.jsx'
 import { useForm, FormProvider } from "react-hook-form"
 
@@ -23,9 +21,7 @@ const handleNotDragOver = (event) => {
   return false;
 }
 
-function App() { 
-  const { request } = useRequest()
-  const { filters } = useFilters()
+function App() {   
   const methods = useForm()
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
 
@@ -43,7 +39,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <FormProvider {...methods}>
           <Header methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
-          <Main handleNotDragOver={handleNotDragOver} request={request} methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog} filters={filters}/>
+          <Main handleNotDragOver={handleNotDragOver} methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
         </FormProvider>
       </Suspense>
       <Suspense fallback={<Loading />}>
