@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { QuestionIcon, WarningIcon } from "../utils/icons.jsx";
+import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import { useSpring, animated } from "@react-spring/web";
 import * as menu from "../mocks/treeMenu.json"
 import EncontrarDescripcionPorId from "./main/menu/EncontrarDescripcionPorId.jsx";
@@ -16,6 +16,16 @@ export default function Footer() {
     const porVencerApper = useSpring({
         opacity: clickPorVencer ? 1 : 0,
         width: `${clickPorVencer ? 195 : 0}` + 'px',    
+    });
+
+    const regHabilitados = useSpring({
+        opacity: clickPorVencer ? 1 : 0,
+        width: `${clickPorVencer ? 160 : 0}` + 'px',    
+    });
+
+    const regBloqueados = useSpring({
+        opacity: clickVencidos ? 1 : 0,
+        width: `${clickVencidos ? 165 : 0}` + 'px',    
     });
 
     const vencidosApper = useSpring({
@@ -100,10 +110,41 @@ export default function Footer() {
                             <span className="text-green-500">{filters.totalRequerimientos}</span>                
                         </div> 
                     </>
-                    : <div>
-                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                        <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
-                    </div>
+                    : 
+                        filters.itemIdSelected === 'm' ? (
+                            <div>
+                                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
+                            </div>
+                        ) : (                            
+                            <>
+                                <div className="dark:text-green-300 text-green-400 flex z-20">
+                                    <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
+                                        <CheckIcon styles={"w-3 h-3"}/>
+                                    </span>                
+                                    <animated.div style={regHabilitados} className='overflow-hidden pt-[1px]'>
+                                        <span className="z-10 truncate pt-1">Total de registros habilitados:</span> 
+                                    </animated.div>                           
+                                    <span className="pt-[1px]">{filters.totalPorVencer}</span>  
+                                </div>
+
+                                <div className="text-red-500 flex z-20">
+                                    <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
+                                        <BlockIcon styles={"w-3 h-3"} />
+                                    </span>                
+                                    <animated.div style={regBloqueados} className='overflow-hidden pt-[1px]'>
+                                        <span className="z-10 truncate">Total de registros bloqueados:</span> 
+                                    </animated.div>                           
+                                    <span className="pt-[1px]">{filters.totalVencidos}</span>  
+                                </div>
+
+                                <div>
+                                    <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                    <span className="text-blue-500">{filters.totalRequerimientos}</span>                
+                                </div> 
+                            </>
+                        )
+                    
                 }
         </footer>
     )

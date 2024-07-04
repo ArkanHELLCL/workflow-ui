@@ -2,7 +2,7 @@
    "bandejas" : 
       [{
          "id" : "be",
-         "requerimientos" :
+         "registros" :
          [
             {
                "DRE_Id":34684,
@@ -49514,7 +49514,7 @@
       },
       {
          "id" : "bs",
-         "requerimientos" :[
+         "registros" :[
             {
                "DRE_Id":331,
                "VRE_Id":21,

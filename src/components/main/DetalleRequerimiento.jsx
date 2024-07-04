@@ -59,9 +59,8 @@ export default function DetalleRequerimiento(){
     const { filters } = useFilters()
     return(
         <>
-        {filters.filterSearchResult && 
-            <h2 className='pl-7 text-lg py-2 border-t dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4]'>Resultados</h2>}
-        {filters.totalRequerimientos > 0 &&
+        {filters.filterSearchResult ? 
+            <h2 className='pl-7 text-lg py-2 border-t dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4]'>Resultados</h2> :                
             <Accordion className="z-0 !bg-transparent" slotProps={{ transition: { timeout: 350 } }}>
                 <AccordionSummary                 
                     className='dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4] !text-[.7rem] !font-bold truncate dark:!bg-[#444444] !bg-[#f0f0f0] !py-1 hover:!dark:bg-[#666666] hover:!bg-[#e6f2fa] overflow-hidden !px-2 !h-7 !min-h-7 !m-0 !border-b dark:hover:!bg-[#505050]'

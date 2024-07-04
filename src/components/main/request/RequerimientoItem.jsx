@@ -54,9 +54,9 @@ export const RequerimientoItem = ({ req, showDia }) => {
         </div>
         <div className="w-1/4">
           <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">
-            <span className="text-yellow-600 hover:text-yellow-400 leading-snug" onClick={handleEditClick}><EditIcon/></span>
-            <span className="text-green-600 dark:hover:text-green-800 hover:text-green-400 leading-snug" onClick={handleUserClick}><UserIcon/></span>
-            <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug" onClick={handleArchiveClick}><ArchiveIcon/></span>
+            <span className="text-yellow-600 hover:text-yellow-400 leading-snug cursor-pointer" onClick={handleEditClick} title="Cambiar título del Requerimiento"><EditIcon/></span>
+            <span className="text-green-600 dark:hover:text-green-800 hover:text-green-400 leading-snug cursor-pointer" onClick={handleUserClick} title="Cambiar Editor actual"><UserIcon/></span>
+            <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Archivar Requerimiento"><ArchiveIcon/></span>
             <span className={`${(req.FLD_DiasLimites - req.DRE_DifDias < 0) ? 'text-red-500 visible' : (req.FLD_DiasLimites - req.DRE_DifDias <= 5) && (req.FLD_DiasLimites - req.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold `}>!</span>
           </p>
           <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{showDia ? diaName + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : req.DRE_FechaEdit.slice(11,16)}</p>
