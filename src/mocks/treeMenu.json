@@ -118,7 +118,7 @@
                         "id":"mp",
                         "label":"Proveedores",
                         "description":"Mantenedor de proveedoress",
-                        "url":"/mantenedores/porveedores"
+                        "url":"/mantenedores/proveedores"
                      }
                ]
             }
