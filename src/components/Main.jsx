@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Suspense } from "react";
-import { RecordsProvider } from '../context/records.jsx'
+import { useRecords } from "../hooks/useRecords.jsx"
 import { useRequest } from "../hooks/useRequest.jsx"
 import { useFilters } from "../hooks/useFilters.jsx"
 import MenuFilters from "./main//menuFilters.jsx";
@@ -19,6 +19,7 @@ export default function Main ({handleNotDragOver, methods, openDialog, setOpenDi
         '30%',
         'auto',
     ]);*/
+    const { record } = useRecords()
     const { request } = useRequest()
     const { filters } = useFilters()
 
@@ -48,10 +49,8 @@ export default function Main ({handleNotDragOver, methods, openDialog, setOpenDi
                         <DetalleRequerimiento />
                         <ListaRequerimientos/>
                       </>
-                    ) : (
-                      <RecordsProvider>
-                        <ListaRegMantenedores />
-                      </RecordsProvider>
+                    ) : (                      
+                      <ListaRegMantenedores />                      
                     )
                 }
                 </Suspense>                  
