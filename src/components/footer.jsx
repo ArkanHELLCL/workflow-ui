@@ -116,7 +116,8 @@ export default function Footer() {
                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
                                 <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
                             </div>
-                        ) : (                            
+                        ) : 
+                            filters.itemIdSelected.charAt(0) === "m" ? (                            
                             <>
                                 <div className="dark:text-green-300 text-green-400 flex z-20">
                                     <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
@@ -143,6 +144,11 @@ export default function Footer() {
                                     <span className="text-blue-500">{filters.totalRequerimientos}</span>                
                                 </div> 
                             </>
+                        ) : (
+                            <div>
+                                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
+                            </div>
                         )
                     
                 }
