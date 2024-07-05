@@ -12,8 +12,9 @@ import { flujos } from "../mocks/treeMenu.json";
 import Formcomponent from "./main/Formcomponent.jsx";
 import Loading from "../utils/Loading.jsx";
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
+import FormRecord from "./main/FormRecord.jsx";
 
-export default function Main ({handleNotDragOver, methods, openDialog, setOpenDialog}) {
+export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpenDialog, frmRecord}) {
     /*const [sizes, setSizes] = useState([
         100,
         '30%',
@@ -61,7 +62,7 @@ export default function Main ({handleNotDragOver, methods, openDialog, setOpenDi
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
             filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? 
               request ? ( 
-                <Formcomponent methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                <Formcomponent frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
               ) : ( 
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                     <div className='w-full h-full flex justify-center align-middle items-center'>
@@ -72,10 +73,7 @@ export default function Main ({handleNotDragOver, methods, openDialog, setOpenDi
                 filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' ? 
                   record ? (
                     <>
-                      <h2>Mantenedor</h2>
-                      {filters.itemIdSelected}
-                      <h2>id</h2>
-                      {record.record.Id}
+                      <FormRecord frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog}/>                      
                     </>
                   ) : (                
                     <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>

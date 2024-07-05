@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import FormHelperText from '@mui/joy/FormHelperText';
 import Inputs from './Inputs.jsx';
 
-export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, methods, setFilesList, filesList}) {
+export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, frmRequest, setFilesList, filesList}) {
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -75,8 +75,8 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
     }
 
     useEffect(() => {        
-        methods.setValue('frmWFInputFile',arrayFilesToFileList(filesList))
-        methods.clearErrors('frmWFInputFile')
+        frmRequest.setValue('frmWFInputFile',arrayFilesToFileList(filesList))
+        frmRequest.clearErrors('frmWFInputFile')
     },[filesList])
 
     const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;    
@@ -107,15 +107,15 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
                 //value={filesList}
                 name="frmWFInputFile" 
                 id="frmWFInputFile" 
-                //{...methods.register("frmWFInputFile",{required : required})}
-                {...methods.register("frmWFInputFile", {validate: () => {
+                //{...frmRequest.register("frmWFInputFile",{required : required})}
+                {...frmRequest.register("frmWFInputFile", {validate: () => {
                     //value.length > 0
                     if(required && filesList.length === 0) return 'Debes adjuntar al menos un archivo'
                 }})}
                 accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"
                 onChange={onChange}  />
                 <FormHelperText className="!text-red-600">
-                    {methods.formState.errors['frmWFInputFile']?.message}
+                    {frmRequest.formState.errors['frmWFInputFile']?.message}
                 </FormHelperText>
         </>
     );

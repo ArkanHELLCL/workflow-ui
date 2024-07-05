@@ -22,7 +22,12 @@ const handleNotDragOver = (event) => {
 }
 
 function App() {   
-  const methods = useForm()
+  const frmRequest = useForm({
+    mode: "onBlur",
+  })
+  const frmRecord = useForm({
+    mode: "onBlur",
+  })
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
 
   return (    
@@ -37,9 +42,9 @@ function App() {
         </Suspense>
       </nav>        
       <Suspense fallback={<Loading />}>
-        <FormProvider {...methods}>
-          <Header methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
-          <Main handleNotDragOver={handleNotDragOver} methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+        <FormProvider {...frmRequest}>          
+          <Header frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
+          <Main handleNotDragOver={handleNotDragOver} frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
         </FormProvider>
       </Suspense>
       <Suspense fallback={<Loading />}>
