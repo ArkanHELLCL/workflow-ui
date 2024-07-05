@@ -5,15 +5,21 @@ import { useRecords } from '../../hooks/useRecords.jsx';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
 import { useEffect, useRef } from 'react';
+import { registros } from '../../mocks/registrosM.json'
 
-
-function FormMatainer ({frmRecord, record, filters}){    
+function FormMatainer ({frmRecord, record, filters}){   
+    const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields
+    //console.log('fileds',fileds, registros) 
     if(filters.itemIdSelected === 'mp'){        //Mantenedor de Proveedores
-        return (
+        const fieldsMP = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
+        //console.log('fieldsMP',fieldsMP, record)
+        return ( 
+            fieldsMP ?        
             <>
                 <input name="recordText" {...frmRecord.register('recordText')}/>
                 <input type='submit'></input>
-            </>
+            </> :
+            <h2>Registro no encontrado : {record?.record?.Id}</h2>            
         )
     }
     if(filters.itemIdSelected === 'mu'){        //Mantenedor de Usuarios
