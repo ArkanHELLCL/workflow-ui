@@ -88,7 +88,8 @@
                         "type" : "button",
                         "dialogo":"confirm",
                         "titulo":"Tomar Requerimiento",
-                        "mensaje":"¿Estas seguro de querer tomar este requerimiento?"
+                        "mensaje":"¿Estas seguro de querer tomar este requerimiento?",
+                        "tooltiptext":"Tomar Requerimiento para realizar acciones sobre el mismo."
                      },
                      {
                         "id" : "btn_liberar",
@@ -97,7 +98,8 @@
                         "type" : "button",
                         "dialogo":"confirm",
                         "titulo":"Liberar Requerimiento",
-                        "mensaje":"¿Estas seguro de querer liberar este requerimiento?"
+                        "mensaje":"¿Estas seguro de querer liberar este requerimiento?",
+                        "tooltiptext":"Liberar Requerimiento para que otro usuario pueda tomarlo."
                      }
                   ]
             }
@@ -116,7 +118,8 @@
                      "action":"/enviar",
                      "dialogo":"confirm",
                      "titulo":"Enviar Requerimiento",
-                     "mensaje":"¿Estas seguro de querer enviar al siguiente paso este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer enviar al siguiente paso este requerimiento?",
+                     "tooltiptext":"Enviar Requerimiento al siguiente paso."
                   },               
                   {
                      "id":"btn_enviarDes",
@@ -126,7 +129,8 @@
                      "action": "/destinatario",
                      "dialogo":"confirm",
                      "titulo":"Enviar a Destinatario",
-                     "mensaje":"¿Estas seguro de querer enviar al Destinatario agregado en este formulario?"
+                     "mensaje":"¿Estas seguro de querer enviar al Destinatario agregado en este formulario?",
+                     "tooltiptext":"Enviar Requerimiento al destinatario seleccionado."
                   },
                   {
                      "id":"btn_devolver",
@@ -136,7 +140,8 @@
                      "action":"/devolver",
                      "dialogo":"confirm",
                      "titulo":"Devolver Requerimiento",
-                     "mensaje":"¿Estas seguro de querer devolver este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer devolver este requerimiento?",
+                     "tooltiptext":"Devolver Requerimiento al paso anterior."
                   },
                   {
                      "id":"btn_conforme",
@@ -146,7 +151,8 @@
                      "action": "/conforme",
                      "dialogo":"confirm",
                      "titulo":"Requerimiento Conforme",
-                     "mensaje":"¿Estas seguro de querer dejar conforme este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer dejar conforme este requerimiento?",
+                     "tooltiptext":"Dejar Requerimiento en estado Conforme."
                   },
                   {
                      "id":"btn_disconforme",
@@ -156,7 +162,8 @@
                      "action": "/disconforme",
                      "dialogo":"confirm",
                      "titulo":"Requerimiento Disconforme",
-                     "mensaje":"¿Estas seguro de querer dejar disconforme este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer dejar disconforme este requerimiento?",
+                     "tooltiptext":"Dejar Requerimiento en estado Disconforme."
                   }
                ]
            }           
@@ -175,7 +182,8 @@
                      "action": "/finalizar",
                      "dialogo":"confirm",
                      "titulo":"Finalizar Requerimiento",
-                     "mensaje":"¿Estas seguro de querer finalizar este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer finalizar este requerimiento?",
+                     "tooltiptext":"Finalizar Requerimiento para que no se puedan realizar más acciones."
                   },               
                   {
                      "id":"btn_rechazar",
@@ -185,7 +193,8 @@
                      "action": "/rechazar",
                      "dialogo":"confirm",
                      "titulo":"Rechazar Requerimiento",
-                     "mensaje":"¿Estas seguro de querer rechazar este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer rechazar este requerimiento?",
+                     "tooltiptext":"Rechazar Requerimiento para que no se puedan realizar más acciones."
                   }
                ]
             }           
@@ -204,7 +213,8 @@
                      "action": "/abrir",
                      "dialogo":"confirm",
                      "titulo":"Abrir Requerimiento",
-                     "mensaje":"¿Estas seguro de querer abrir este requerimiento?"
+                     "mensaje":"¿Estas seguro de querer abrir este requerimiento?",
+                     "tooltiptext":"Abrir Requerimiento archivado"
                   }
                ]
            }           
@@ -219,13 +229,15 @@
                      "id":"btn_retroceder",
                      "nombre":"",
                      "descripcion":["Ir a Paso","Anterior"],
-                     "type" : "button"
+                     "type" : "button",
+                     "tooltiptext":"Ir al paso anterior"
                   },               
                   {
                      "id":"btn_avanzar",
                      "nombre":"",
                      "descripcion":["Ir a Paso","Siguiete"],
-                     "type" : "button"
+                     "type" : "button",
+                     "tooltiptext":"Ir al paso siguiente"
                   }
                ]
            }           
@@ -242,7 +254,8 @@
                      "descripcion":["Ver","Observaciones"],
                      "type" : "button",
                      "dialogo":"message",
-                     "titulo":"Ver Observaciones"
+                     "titulo":"Ver Observaciones",
+                     "tooltiptext":"Observaciones del Requerimiento"
                   }
                ]
            }           

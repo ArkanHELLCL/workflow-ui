@@ -5,6 +5,7 @@ import Menu from '@mui/joy/Menu';
 import MenuItem from '@mui/joy/MenuItem';
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import { useRequest } from "../../hooks/useRequest.jsx";
 
 import { useSpring, animated } from "@react-spring/web";
 import { informes } from "../../mocks/informes.json";
@@ -18,7 +19,9 @@ import {
     } from "../../utils/icons.jsx";
 
 
-export default function RequerimientoMenu ({styles, request, openDialog, setOpenDialog}){
+export default function RequerimientoMenu ({styles, openDialog, setOpenDialog}){
+    const { request } = useRequest()
+
     function hanldeOnClick(flujo){
         if(flujo?.dialogo==='confirm'){
             setOpenDialog({
@@ -46,18 +49,20 @@ export default function RequerimientoMenu ({styles, request, openDialog, setOpen
         config: { duration: 150 },
         delay: 200
     });
-    const gen = informes[0].flujos.filter((item) => item.id===request.request.FLU_Id)[0].tipos.filter((item) => item.tipo === "generacion")[0]?.informes
-    const des = informes[0].flujos.filter((item) => item.id===request.request.FLU_Id)[0].tipos.filter((item) => item.tipo === "descarga")[0]?.informes
 
-    return (        
-        <animated.div style={menuAppear} className={styles}>
+    const ButtonsRequest = () => {        
+        const gen = informes[0].flujos.filter((item) => item.id===request?.request.FLU_Id)[0].tipos?.filter((item) => item.tipo === "generacion")[0]?.informes
+        const des = informes[0].flujos.filter((item) => item.id===request?.request.FLU_Id)[0].tipos?.filter((item) => item.tipo === "descarga")[0]?.informes
+
+        return(            
             <ContentMenu title={'Requerimiento'} styles={styles}>{
                 gen &&
                     <Dropdown>
-                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`} title="Generar Informe del paso actual del requerimiento">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                                 <GenReportIcon styles='w-10 h-10'/>
-                                <span className="!pt-2">Generar</span>                            
+                                <span className="!pt-2">Generar</span>
+                                <span>informe</span>
                                 <KeyboardArrowDownIcon/>
                             </div>
                         </MenuButton>
@@ -72,11 +77,11 @@ export default function RequerimientoMenu ({styles, request, openDialog, setOpen
                 }{
                 des &&
                     <Dropdown>
-                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                        <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`} title="Descargar informes generados">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                                 <DownReportIcon styles='w-10 h-10' />
                                 <span className="pt-2">Descargar</span>   
-                                <span>informes</span>   
+                                <span>informe</span>   
                                 <KeyboardArrowDownIcon/>
                             </div>
                         </MenuButton>
@@ -90,7 +95,7 @@ export default function RequerimientoMenu ({styles, request, openDialog, setOpen
                     </Dropdown>
                 }
                 <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`} title="Enviar y revisar mensajes del requerimiento">
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                             <MessagesIcon styles='w-10 h-10'/>
                             <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold text-white dark:bg-red-600 bg-red-500 rounded-full -top-[5px] -right-1"></span>
@@ -109,7 +114,7 @@ export default function RequerimientoMenu ({styles, request, openDialog, setOpen
                 </Dropdown>
 
                 <Dropdown>
-                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`}>
+                    <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !my-0 !py-0 !items-start !pt-1`} title="Ver y revisar paso anteriores del requerimiento">
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                             <FlowStepIcon styles='w-11 h-11' />
                             <span className="pt-0">Pasos</span>   
@@ -129,6 +134,13 @@ export default function RequerimientoMenu ({styles, request, openDialog, setOpen
                     </Menu>
                 </Dropdown>
             </ContentMenu>
-        </animated.div>
+        )
+    }
+
+    return (
+        request &&
+            <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
+                <ButtonsRequest />            
+            </animated.div>
     )    
 }

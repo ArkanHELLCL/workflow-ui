@@ -6,3 +6,5 @@ export { default as FormularioMenu } from "./formularioMenu.jsx";
 export { default as GuardarMenu } from "./guardarMenu.jsx";
 export { default as MantenedoresMenu } from "./mantenedoresMenu.jsx";
 export { default as InformesMenu } from "./informesMenu.jsx";
+export { default as BandejaMenu } from "./bandejaMenu.jsx";
+export { default as RegistroMenu } from "./registroMenu.jsx";
