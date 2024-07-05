@@ -5,6 +5,7 @@ import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import { styled } from '@mui/material/styles';
 import { useFilters } from "../../../hooks/useFilters.jsx";
 import { useRequest } from '../../../hooks/useRequest.jsx';
+import { useRecords } from '../../../hooks/useRecords.jsx';
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
@@ -20,6 +21,7 @@ const getAllItemsWithChildrenItemIds = (menu) => {
 
 export function MenuTree({ menu }) { 
     const { filters, setFilters } = useFilters()
+    const { setRecord } = useRecords()
     const { setRequest } = useRequest()
 
     const CustomTreeItem = styled(TreeItem)({   
@@ -51,7 +53,8 @@ export function MenuTree({ menu }) {
             stringSearch:'',
             filterSearchResult:false
         }))    
-        setRequest(null)                
+        setRequest(null)
+        setRecord(null)
     };
     return (
         //menu.length > 0 &&

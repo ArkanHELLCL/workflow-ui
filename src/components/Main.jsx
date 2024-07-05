@@ -59,31 +59,48 @@ export default function Main ({handleNotDragOver, methods, openDialog, setOpenDi
         </section>          
         <section id="Resizable2" className="flex-1 bg-[#ffffff] dark:bg-transparent">
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
-            request ? (
-              <Formcomponent methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
-            ): (
-              filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? ( 
+            filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? 
+              request ? ( 
+                <Formcomponent methods={methods} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+              ) : ( 
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                     <div className='w-full h-full flex justify-center align-middle items-center'>
                         <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un requerimiento para ver<br/> los datos del formulario</span>
                     </div>
                 </div>
-              ) : (
-                filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' ? ( 
-                  <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
-                      <div className='w-full h-full flex justify-center align-middle items-center'>
-                          <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un registro para ver<br/> los datos en el mantenedor</span>
-                      </div>
-                  </div>
-                ) : (
-                  <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
-                      <div className='w-full h-full flex justify-center align-middle items-center'>
-                          <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un informe para ver<br/> los datos resultados</span>
-                      </div>
-                  </div>
-                )
-              )
-            )}
+              ) :
+                filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' ? 
+                  record ? (
+                    <>
+                      <h2>Mantenedor</h2>
+                      {filters.itemIdSelected}
+                      <h2>id</h2>
+                      {record.record.Id}
+                    </>
+                  ) : (                
+                    <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
+                        <div className='w-full h-full flex justify-center align-middle items-center'>
+                            <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un registro para ver<br/> los datos en el mantenedor</span>
+                        </div>
+                    </div>
+                  ) :
+                    filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' ? 
+                      record ? (
+                        <h2>Reporte</h2>
+                      ) : (
+                        <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
+                            <div className='w-full h-full flex justify-center align-middle items-center'>
+                                <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un requerimiento para ver<br/> los datos del reporte</span>
+                            </div>
+                        </div>
+                        ) : (
+                          <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
+                              <div className='w-full h-full flex justify-center align-middle items-center'>
+                                  <span className='text-[#2c87d2] text-2xl text-balance text-center'>Menú no especificado</span>
+                              </div>
+                          </div>
+                        )
+          }
           </div>
         </section>
       </main>
