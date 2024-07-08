@@ -29,7 +29,7 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
         <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] h-full flex z-0' id="Resizable" onDragOver={handleNotDragOver}>
           <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] border-r overflow-auto transition-color delay-75 z-0 flex flex-col columns-1'>              
             <Suspense fallback={<Loading />}>
-              <Menu flujos={flujos} />
+              <Menu flujos={flujos} frmRecord={frmRecord} />
             </Suspense>
           </aside>
           <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] h-full border-r flex flex-col columns-1 z-50 bg-[#ffffff] dark:bg-transparent pr-1'>{

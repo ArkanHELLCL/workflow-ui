@@ -19,8 +19,8 @@ export default function ListaRegMantenedores(){
                     <span className='text-[#2c87d2] text-xl w-full'>No se encontraron registros</span>
                 </div>            
             )}
-            {filteredRequest.map((item) => (
-               <RegistroItem registro={item} key={item.id}/>
+            {filteredRequest.map((item, index) => (
+               <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : index}/>
             ))}        
         </Suspense>            
     )

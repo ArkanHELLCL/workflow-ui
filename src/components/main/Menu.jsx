@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import Loading from "../../utils/Loading.jsx";
 import EncontrarDescripcionPorId from "./menu/EncontrarDescripcionPorId.jsx";
 
-const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes}) => {
+const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes, frmRecord}) => {
     let url = ''
     itemIdSelected.charAt(0) === "b" ? url = EncontrarDescripcionPorId(itemIdSelected, menuBandejas[0])?.url :
     itemIdSelected.charAt(0) === "m" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuMantenedores[0])?.url :
@@ -19,19 +19,19 @@ const MenuArbol = ({itemIdSelected, menuBandejas, mnuMantenedores, mnuReportes})
             <MenuTree menu={menuBandejas}/>
             {
             menuBandejas.length > 0 ?
-                <MenuTree menu={mnuMantenedores}/>
+                <MenuTree menu={mnuMantenedores} frmRecord={frmRecord}/>
             : null
             }
             {
             mnuReportes.length > 0 ?
-                <MenuTree menu={mnuReportes}/>
+                <MenuTree menu={mnuReportes} frmRecord={frmRecord}/>
             : null
             }
         </>
     )
 }
 
-export default function Menu({flujos}){    
+export default function Menu({flujos,frmRecord}){    
     const { filters } = useFilters()
 
     const bandejas = flujos.filter(item => parseInt(item.id) === filters.flujo)[0].bandejas
@@ -41,7 +41,7 @@ export default function Menu({flujos}){
     return (
         <div className="px-4 h-full relative">            
             <Suspense fallback={<Loading />}>
-                <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={bandejas} mnuMantenedores={mantenedores} mnuReportes={reportes}/>
+                <MenuArbol itemIdSelected={filters.itemIdSelected} menuBandejas={bandejas} mnuMantenedores={mantenedores} mnuReportes={reportes} frmRecord={frmRecord}/>
             </Suspense>                   
         </div>
     )
