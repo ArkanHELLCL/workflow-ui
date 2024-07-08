@@ -43,7 +43,7 @@ function App() {
       </nav>        
       <Suspense fallback={<Loading />}>
         <FormProvider {...frmRequest}>          
-          <Header frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
+          <Header openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
           <Main handleNotDragOver={handleNotDragOver} frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
         </FormProvider>
       </Suspense>

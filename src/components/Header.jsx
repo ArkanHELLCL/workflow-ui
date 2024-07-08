@@ -22,7 +22,7 @@ import {
     RegistroMenu
 } from "./header/";
 
-export default function Header({openDialog, setOpenDialog}){
+export default function Header({openDialog, setOpenDialog, frmRecord}){
    const { request } = useRequest()
    const { record } = useRecords()
    const { filters } = useFilters()
@@ -72,7 +72,7 @@ export default function Header({openDialog, setOpenDialog}){
                         <>
                             <MantenedoresMenu styles={'z-40 h-full'}/>{
                             record &&
-                                <RegistroMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                                <RegistroMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
                             }
                         </>
                 }

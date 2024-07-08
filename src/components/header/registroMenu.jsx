@@ -12,8 +12,33 @@ import {
     TableIconNext,
     TableIconPrev
     } from "../../utils/icons.jsx";
+    import { useSnackbar } from 'notistack';
 
-export default function RegistroMenu ({styles}) {
+export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRecord}) {
+
+    async function hanldeOnClick(event){
+        event.preventDefault()
+        const isValid = await frmRecord.trigger()
+        if(isValid){
+            //if(btns?.dialogo==='confirm'){
+                setOpenDialog({
+                    ...openDialog,
+                    titulo:'Guardar modificaciones',
+                    mensaje:'¿Desaea guardar las modificaciones realizadas?',
+                    id:'edit',
+                    open:true,
+                    frmname:'frmRecord',
+                    action:'submit',
+                    type:'button'
+                })
+            //}
+        }else{
+            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
+        }
+    }
+
+    const { enqueueSnackbar } = useSnackbar();
+
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -44,7 +69,7 @@ export default function RegistroMenu ({styles}) {
             <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
                 <ContentMenu title={'Registro'}>                
                     <Dropdown>
-                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Guardar modificaciones realizadas">
+                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={() => hanldeOnClick(event)} title="Guardar modificaciones realizadas">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                                 <TableIconSave styles='w-9 h-9' />
                                 <span className="!pt-2">Guardar</span>
