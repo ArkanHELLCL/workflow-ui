@@ -11,7 +11,7 @@ import Loading from "../../utils/Loading.jsx";
 export default function ListaRegMantenedores(){
     const { filterRequest } = useFilters() 
     const { filteredRequest } = filterRequest(mantenedores)   
-    console.log('ListaRegMantenedores')
+    //console.log('ListaRegMantenedores')
     return (        
         <Suspense fallback={<Loading />}>{
             filteredRequest.length===0 && (
