@@ -20,7 +20,7 @@ export default function ListaRegMantenedores(){
                 </div>            
             )}
             {filteredRequest.map((item, index) => (
-               <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : index}/>
+               <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : 'unde-' + index}/>
             ))}        
         </Suspense>            
     )
