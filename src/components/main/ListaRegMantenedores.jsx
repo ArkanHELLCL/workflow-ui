@@ -6,10 +6,12 @@ import { useFilters } from '../../hooks/useFilters.jsx';
 import { mantenedores } from "../../mocks/mantenedores.json";
 import Loading from "../../utils/Loading.jsx";
 
+//const mantenedores = lazy(() => import('../../mocks/mantenedores.json'));
+
 export default function ListaRegMantenedores(){
     const { filterRequest } = useFilters() 
-    const { filteredRequest } = filterRequest(mantenedores)
-    
+    const { filteredRequest } = filterRequest(mantenedores)   
+    console.log('ListaRegMantenedores')
     return (        
         <Suspense fallback={<Loading />}>{
             filteredRequest.length===0 && (

@@ -15,6 +15,8 @@ export default function RegistroItem ({registro, ...props}){
     const { record, setRecord } = useRecords()
     const isRegSelected = useMemo(() => parseInt(record?.record?.Id) === parseInt(registro.Id), [record, registro.Id])
     const memoizedReq = useMemo(() => registro, [registro])
+
+    console.log('RegistroItem')
     
     const handleRegClick = () => {        
         setRecord({
