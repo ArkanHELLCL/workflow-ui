@@ -16,7 +16,7 @@ function FormMatainer ({frmRecord, record, filters}){
         return ( 
             fieldsMP ?        
             <>
-                <input name="recordText" {...frmRecord.register('recordText')}/>
+                <input name="recordTextProveedor" {...frmRecord.register('recordTextProveedor')}/>
                 <input type='submit'></input>
             </> :
             <h2>Registro no encontrado : {record?.record?.Id}</h2>            
@@ -25,7 +25,7 @@ function FormMatainer ({frmRecord, record, filters}){
     if(filters.itemIdSelected === 'mu'){        //Mantenedor de Usuarios
         return (
             <>
-                <input name="recordText" {...frmRecord.register('recordText')}/>
+                <input name="recordTextUusuario" {...frmRecord.register('recordTextUusuario')}/>
                 <input type='submit'></input>
             </>
         )
