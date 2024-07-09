@@ -13,6 +13,17 @@ import FormHelperText from '@mui/joy/FormHelperText';
 import { InnerInput } from './formcontent/inputscomponents/StyledComponent.jsx';
 import { useSpring, animated } from '@react-spring/web';
 import { ButtonIcon } from '../../utils/icons.jsx';
+import { Fn } from '../../utils/validaRut.jsx';
+import FormatearRut from '../../utils/FormatearRut.jsx';
+/*const fieldData = {
+    name: null,
+    value: null,
+    className: null,
+    isRequired: null,
+    placeholder: null,
+    label: null,
+    errorMessage: null
+}*/
 
 function InputButtons({frmRecord, openDialog, setOpenDialog}) {    
     const buttonsAnimation1 = useSpring({
@@ -92,7 +103,8 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
                             key='btn_crear'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Crear nuevo registro'
-                            onClick={() => hanldeOnClick(event)}>
+                            type='button'
+                            onClick={() => console.log('crear')}>
                                 <ButtonIcon typeButton="btn_crear" styles='w-7 h-7'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Nuevo</span>
                         </button>
@@ -115,7 +127,8 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
                             key='btn_bloquear'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Cambiar el estado del registro a deshabilitado'
-                            onClick={() => hanldeOnClick(event)}>
+                            type='button'
+                            onClick={() => console.log('deshabiloitar')}>
                                 <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Deshabilitar</span>
                         </button>
@@ -123,7 +136,8 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
                             key='btn_habilitar'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Cambiar el estado del registro a habilitado'
-                            onClick={() => hanldeOnClick(event)}>
+                            type='button'
+                            onClick={() => console.log('habilitar')}>
                                 <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Habilitar</span>
                         </button>
@@ -131,7 +145,8 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
                             key='btn_eliminar'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Eliminación del registro'
-                            onClick={() => hanldeOnClick(event)}>
+                            type='button'
+                            onClick={() => console.log('eliminar')}>
                                 <ButtonIcon typeButton="btn_eliminar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Eliminar</span>
                         </button>
@@ -146,14 +161,16 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
                             key='btn_anterior'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Ir al registro anterior'
-                            onClick={() => hanldeOnClick(event)}>
+                            type='button'
+                            onClick={() => console.log('reg. anterior')}>
                                 <ButtonIcon typeButton="btn_retroceder" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>                                
                         </button>
                             <button 
                             key='btn_siguiente'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Ir al registro siguiente'
-                            onClick={() => hanldeOnClick(event)}>
+                            type='button'
+                            onClick={() => console.log('reg. siguiente')}>
                                 <ButtonIcon typeButton="btn_avanzar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>                                
                         </button>
                     </>
@@ -165,12 +182,12 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
     )
 }
 
-function InputText ({frmRecord, name, value, className, isRequired, placeholder, label}) {
+function InputText ({frmRecord, name, value, className, isRequired, placeholder, label, errorMessage}) {
     return(
         <Controller
             control={frmRecord.control}
             name={name}
-            rules={isRequired ? {required : 'Campo requerido'} : {required : false}}
+            rules={isRequired ? {required : errorMessage} : {required : false}}
             defaultValue={value}
             render={({ field: { onChange, onBlur } }) => (
                 <FormControl
@@ -205,55 +222,245 @@ function InputText ({frmRecord, name, value, className, isRequired, placeholder,
     )
 }
 
+function InputRut ({frmRecord, name, value : val, className, isRequired, placeholder, label, errorMessage}) {  
+    return (
+      <Controller
+          control={frmRecord.control}
+          name={name}
+          rules={{
+              validate: {
+                required: (value) => {
+                  if (value && !Fn.validaRut(value)) return 'El RUT ingresado no es válido';
+                  if (!value && isRequired) return errorMessage;
+                }
+              },
+              maxLength: 13
+            }}
+          defaultValue={FormatearRut(val)}
+          render={({ field }) => (
+              <FormControl
+                  {...field}
+                  id={name}
+                  size='sm'
+                  className={className}>
+                  <Input    
+                      placeholder={placeholder}
+                      name={name}
+                      autoComplete='on'
+                      autoFocus={false}
+                      error={!!frmRecord.formState.errors[name]}                    
+                      variant="outlined"
+                      slots={{ input: InnerInput }}
+                      onChange={(e) => field.onChange(()=>frmRecord.setValue(name,FormatearRut(e.target.value)))}
+                      onBlur={field.onBlur}
+                      value={field.value}
+                      slotProps={{ 
+                              input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
+                              root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
+                      sx={{
+                          '--Input-minHeight': '56px',
+                          '--Input-radius': '6px',
+                      }}                                
+                  />
+                  <FormHelperText className="!text-red-600">
+                      {frmRecord.formState.errors[name]?.message}
+                  </FormHelperText>                       
+              </FormControl>
+          )}
+      />
+    );
+}
+
+function InputEmail ({frmRecord, name, value : val, className, isRequired, placeholder, label, errorMessage}) {
+    return(
+        <Controller
+            control={frmRecord.control}
+            name={name}
+            rules={{
+                validate: {
+                  required: (value) => {
+                    if (!value && isRequired) return errorMessage;
+                  },
+                  validEmail: (value) => {
+                    let currentEmails = value
+                    let regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/i;
+                        if (!regex.test(currentEmails.replace(/\s/g, ''))) {
+                            return 'El Email ingresado no es válido';
+                        }
+                    }
+                },
+              }}
+            defaultValue={val}
+            render={({ field: { onChange, onBlur } }) => (
+                <FormControl
+                    id={name}
+                    size='sm'
+                    className={className}>
+                    <Input                                
+                        placeholder={placeholder}
+                        name={name}
+                        autoComplete='on'
+                        autoFocus={false}
+                        error={!!frmRecord.formState.errors[name]}                    
+                        defaultValue={val}
+                        variant="outlined"
+                        slots={{ input: InnerInput }}
+                        onChange={onChange}
+                        onBlur={onBlur}    
+                        slotProps={{ 
+                                input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300' }, 
+                                root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
+                        sx={{
+                            '--Input-minHeight': '56px',
+                            '--Input-radius': '6px',
+                        }}                                
+                    />
+                    <FormHelperText className="!text-red-600">
+                        {frmRecord.formState.errors[name]?.message}
+                    </FormHelperText>                       
+                </FormControl>
+            )}
+        />
+    )
+}
+
+function InputPhone ({frmRecord, name, value : val, className, isRequired, placeholder, label, errorMessage}) {
+    return(
+        <Controller
+            control={frmRecord.control}
+            name={name}
+            rules={{
+                validate: {
+                  required: (value) => {
+                    if (!value && isRequired) return errorMessage;
+                  },
+                  validPhone: (value) => {
+                    if((value.length>=1 && value.length<9) || (value.length>9)){
+                        return 'El télefono ingresado no es válido';
+                    }
+                  },
+                }
+              }}
+            defaultValue={val}
+            render={({ field: { onChange, onBlur } }) => (
+                <FormControl
+                    id={name}
+                    size='sm'
+                    className={className}>
+                    <Input                                
+                        placeholder={placeholder}
+                        name={name}
+                        autoComplete='on'
+                        autoFocus={false}
+                        error={!!frmRecord.formState.errors[name]}                    
+                        defaultValue={val}
+                        variant="outlined"
+                        slots={{ input: InnerInput }}
+                        onChange={onChange}
+                        onBlur={onBlur}    
+                        slotProps={{ 
+                                input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300' }, 
+                                root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
+                        sx={{
+                            '--Input-minHeight': '56px',
+                            '--Input-radius': '6px',
+                        }}                                
+                    />
+                    <FormHelperText className="!text-red-600">
+                        {frmRecord.formState.errors[name]?.message}
+                    </FormHelperText>                       
+                </FormControl>
+            )}
+        />
+    )
+}
+
+function MUMant({field, frmRecord, openDialog, setOpenDialog, mant, record}) {
+    return (
+        field ?
+        <section id="InputsContent" className="py-3 w-full h-full">
+            <h2 className='font-extralight text-lg pb-3 text-[#2c87d2]'>Datos del Proveedor</h2>            
+            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+            <div className="w-full pr-2">
+                <div className='grid grid-cols-12 gap-2 pb-3'>
+                    <input name="MUN_Nombre" {...frmRecord.register('MUN_Nombre')} className='col-span-4' required/>
+                </div>
+            </div>
+        </section>
+        :
+        (
+            <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50`}>
+                <div className='w-full h-full flex justify-center align-middle items-center'>
+                    <div className='flex flex-col items-center gap-0'>
+                        <span className='text-[#2c87d2] text-2xl'>Registro no encontrado</span>
+                        <span className='text-[#2c87d2] text-2xl'>Mantenedor : {mant}</span>
+                        <span className='text-[#2c87d2] text-2xl'>Id : {record?.record?.Id}</span>
+                    </div>
+                </div>
+            </div>
+        )
+    )
+}
+
+function MPMant({field, frmRecord, openDialog, setOpenDialog, mant, record}) {
+    return ( 
+        field ?
+            <section id="InputsContent" className="py-3 w-full h-full">
+                <h2 className='font-extralight text-lg pb-3 text-[#2c87d2]'>Datos del Proveedor</h2>
+                <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+                <div className="w-full pr-2">
+                    <div className='grid grid-cols-12 gap-2 pb-3'>
+                        <InputText frmRecord ={frmRecord} name='PRO_RazonSocial' value={field.PRO_RazonSocial} className='col-span-9' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social' errorMessage='Debes ingresar una razón social'/>
+                        <InputRut frmRecord ={frmRecord} name='PRO_Rut' value={field.PRO_Rut} className='col-span-3' isRequired={true} placeholder='12345678K' label='Rut' errorMessage='Debes ingresar un RUT válido'/>
+                    </div>
+                    <div className='grid grid-cols-12 gap-2 pb-3'>
+                        <InputText frmRecord ={frmRecord} name='PRO_Direccion' value={field.PRO_Direccion} className='col-span-12' isRequired={false} placeholder='Calle 35, Providencia' label='Dirección comercial' errorMessage=''/>
+                    </div>
+                    <div className='grid grid-cols-12 gap-2 pb-3'>
+                        <InputEmail frmRecord ={frmRecord} name='PRO_Mail' value={field.PRO_Mail} className='col-span-8' isRequired={true} placeholder='miempresa@correo.cl' label='Correo electrónico' errorMessage='Debes ingresar el Email del proveedor'/>
+                        <InputPhone frmRecord ={frmRecord} name='PRO_Telefono' value={field.PRO_Telefono} className='col-span-4' isRequired={false} placeholder='912345678' label='Teléfono' errorMessage='Debes ingresar un télefono válido'/>
+                    </div>
+                    <div className='grid grid-cols-12 gap-2 pb-3'>
+                        <input name="PRO_Banco_ILD" {...frmRecord.register('PRO_Banco_ILD')} type="number" className='col-span-4' required/>
+                        <InputText frmRecord ={frmRecord} name='PRO_NumCuentaBancaria' value={field.PRO_NumCuentaBancaria} className='col-span-4' isRequired={true} placeholder='1234567890' label='Número de cuenta bancaria' errorMessage='Debes ingresar el número de cuenta bancaria'/>
+                        <input name="TCU_Id" {...frmRecord.register('TCU_Id')} type="number" className='col-span-4' required/>
+                    </div>
+                    <div className='grid grid-cols-12 gap-2 pb-3'>
+                        <input name="PRO_Estado" {...frmRecord.register('PRO_Estado')} type="number" className='col-span-6'/>
+                    </div>                                                        
+                </div>
+            </section> :
+            (
+                <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50`}>
+                    <div className='w-full h-full flex justify-center align-middle items-center'>
+                        <div className='flex flex-col items-center gap-0'>
+                            <span className='text-[#2c87d2] text-2xl'>Registro no encontrado</span>
+                            <span className='text-[#2c87d2] text-2xl'>Mantenedor : {mant}</span>
+                            <span className='text-[#2c87d2] text-2xl'>Id : {record?.record?.Id}</span>
+                        </div>
+                    </div>
+                </div>
+            )
+    )
+}
+
 function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog}){   
     const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields
-    if(filters.itemIdSelected === 'mp'){        //Mantenedor de Proveedores        
-        const fieldsMP = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
-    
-        return ( 
-            fieldsMP ?
-                <section id="InputsContent" className="py-3 w-full h-full">
-                    <h2 className='font-extralight text-lg pb-3 text-[#2c87d2]'>Datos del Proveedor</h2>
-                    <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
-                    <div className="w-full pr-2">
-                        <div className='grid grid-cols-12 gap-2 pb-3'>
-                            <InputText frmRecord ={frmRecord} name='PRO_RazonSocial' value={fieldsMP.PRO_RazonSocial} className='col-span-12' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social'/>
-                            <input name="PRO_Rut" {...frmRecord.register('PRO_Rut')} className='col-span-4' required/>
-                        </div>
-                        <div className='grid grid-cols-12 gap-2 pb-3'>
-                            <InputText frmRecord ={frmRecord} name='PRO_Direccion' value={fieldsMP.PRO_Direccion} className='col-span-12' isRequired={false} placeholder='Calle 35, Providencia' label='Dirección comercial'/>
-                        </div>
-                        <div className='grid grid-cols-12 gap-2 pb-3'>
-                            <input name="PRO_Telefono" {...frmRecord.register('PRO_Telefono')} type="number" className='col-span-4'/>
-                            <input name="PRO_Email" {...frmRecord.register('PRO_Email')} type="email" className='col-span-5' required/>
-                            <input name="PRO_NumCuentaBancaria" {...frmRecord.register('PRO_NumCuentaBancaria')} className='col-span-3' required/>
-                        </div>
-                        <div className='grid grid-cols-12 gap-2 pb-3'>
-                            <input name="PRO_Banco_ILD" {...frmRecord.register('PRO_Banco_ILD')} type="number" className='col-span-6' required/>
-                            <input name="TCU_Id" {...frmRecord.register('TCU_Id')} type="number" className='col-span-6' required/>
-                        </div>
-                        <div className='grid grid-cols-12 gap-2 pb-3'>
-                            <input name="PRO_Estado" {...frmRecord.register('PRO_Estado')} type="number" className='col-span-6'/>
-                        </div>                                                        
-                    </div>
-                </section> :
-                <h2>Registro no encontrado : {record?.record?.Id}</h2>            
-        )
-    }
-    if(filters.itemIdSelected === 'mu'){        //Mantenedor de Usuarios
-        return (
+    const field = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
+    return(        
+        filters.itemIdSelected === 'mp' ? (
+            <MPMant field={field} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+        ) : (
+            filters.itemIdSelected === 'mu' ? (
+                <MUMant field={field} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+            ) :
             <>
-                <input name="recordTextUusuario" {...frmRecord.register('recordTextUusuario')}/>
-                <input type='submit'></input>
+                <h2>Mantenedor no encontrado</h2>
+                {filters.itemIdSelected}
             </>
         )
-    }
-    return (
-        <>
-            <h2>Mantenedor no encontrado</h2>
-            {filters.itemIdSelected}
-        </>
     )
+       
 }
 
 export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
@@ -264,8 +471,6 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
         console.log('recordcomponent',data);
         frmRecord.reset()
         frmRecord.clearErrors()        
-        //setAdjuntos(REQ_Adjuntos)
-        //setFilesList([])
     };
 
     useEffect(() => {        

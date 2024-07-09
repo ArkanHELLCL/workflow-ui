@@ -6,24 +6,7 @@ import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { Fn } from '../../../../utils/validaRut.jsx';
-
-const formatearRut = (rutSinFormato) => {
-    const caracteresValidos = rutSinFormato.replace(/[^0-9kK]+/g, '');
-    const rutInvertido = caracteresValidos.slice(0,11).split('').reverse().join('');
-    const lenRut = rutInvertido.length
-    let rutFormateado
-    if(lenRut<7) return rutSinFormato
-    if(lenRut===7) {
-      rutFormateado = rutInvertido.replace(/^([kK\d])(\d{3})(\d{1,3})/,'$1-$2.$3');
-    }
-    if(lenRut>7 && lenRut<11) {
-      rutFormateado = rutInvertido.replace(/^([kK\d])(\d{3})(\d{3})(\d{1,3})/,'$1-$2.$3.$4');
-    }
-    if(lenRut>=11) {
-      rutFormateado = rutInvertido.replace(/^([kK\d])(\d{3})(\d{3})(\d{3})(\d{1,3})/,'$1-$2.$3.$4.$5');
-    }    
-    return rutFormateado?.split('').reverse().join('')
-};
+import FormatearRut from '../../../../utils/FormatearRut.jsx';
 
 export default function FormInputRut ({ campo, className }) {
   const { control, setValue, formState: { errors } } = useFormContext();
@@ -41,7 +24,7 @@ export default function FormInputRut ({ campo, className }) {
             },
             maxLength: 13
           }}
-        defaultValue={formatearRut(campo.DFO_Dato)}
+        defaultValue={FormatearRut(campo.DFO_Dato)}
         render={({ field }) => (
             <FormControl
                 {...field}
@@ -59,7 +42,7 @@ export default function FormInputRut ({ campo, className }) {
                     variant="outlined"
                     //endDecorator={<CheckCircleOutlined />}
                     slots={{ input: InnerInput }}
-                    onChange={(e) => field.onChange(()=>setValue(campo.FDI_NombreHTML,formatearRut(e.target.value)))}
+                    onChange={(e) => field.onChange(()=>setValue(campo.FDI_NombreHTML,FormatearRut(e.target.value)))}
                     onBlur={field.onBlur}
                     value={field.value}
                     slotProps={{ 
@@ -77,4 +60,4 @@ export default function FormInputRut ({ campo, className }) {
         )}
     />
   );
-};
+}
