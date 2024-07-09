@@ -11,6 +11,159 @@ import FormControl from '@mui/joy/FormControl';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { InnerInput } from './formcontent/inputscomponents/StyledComponent.jsx';
+import { useSpring, animated } from '@react-spring/web';
+import { ButtonIcon } from '../../utils/icons.jsx';
+
+function InputButtons({frmRecord, openDialog, setOpenDialog}) {    
+    const buttonsAnimation1 = useSpring({
+        delay: 10,
+        opacity: 0,
+        position: 'absolute',
+        //config: { duration: 100 },
+        from: {
+            transform: `translateX(100px)`,
+            opacity: 0,
+        },
+        to: {
+            transform: `translateX(0px)`,            
+            opacity: 1,
+        }
+    });
+
+    const buttonsAnimation2 = useSpring({
+        delay: 10,
+        opacity: 0,
+        position: 'absolute',   
+        //config: { duration: 50 },     
+        from: {
+            transform: `translateX(400px)`,
+            opacity: 0,
+        },
+        to: {
+            transform: `translateX(0px)`,            
+            opacity: 1,
+        }
+    });
+
+    const buttonsAnimation3 = useSpring({
+        delay: 10,
+        opacity: 0,
+        position: 'absolute',  
+        //config: { duration: 10 },      
+        from: {
+            transform: `translateX(450px)`,
+            opacity: 0,
+        },
+        to: {
+            transform: `translateX(0px)`,            
+            opacity: 1,
+        }
+    });
+    
+    async function hanldeOnClick(event){
+        event.preventDefault()
+        const isValid = await frmRecord.trigger()
+        if(isValid){
+            //if(btns?.dialogo==='confirm'){
+                setOpenDialog({
+                    ...openDialog,
+                    titulo:'Guardar modificaciones',
+                    mensaje:'¿Desaea guardar las modificaciones realizadas?',
+                    id:'edit',
+                    open:true,
+                    frmname:'frmWFRecords',
+                    action:'submit',
+                    type:'button'
+                })
+            //}
+        }else{
+            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
+        }
+    }
+
+    const { enqueueSnackbar } = useSnackbar();
+    return(
+        <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-0'> 
+            <div className='flex items-center gap-3 pb-2' id="grpReq">
+                <animated.div key='grpReq-3' className='flex' style={buttonsAnimation3} id='grpReq-3'>
+                {
+                    <>
+                        <button 
+                            key='btn_crear'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Crear nuevo registro'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_crear" styles='w-7 h-7'strokeWidth='1.3' typeIcon={1}/>
+                                <span className='text-xs font-normal leading-tight w-fit px-2'>Nuevo</span>
+                        </button>
+                    </>
+                }
+                </animated.div>
+                
+                <animated.div key='grpReq-2' className='flex' style={buttonsAnimation2} id='grpReq-2'>
+                {
+                    <>
+                        <button 
+                            key='btn_modificar'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Guardar modificaciones realizadas'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_modificar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
+                                <span className='text-xs font-normal leading-tight w-fit px-2'>Guardar</span>
+                        </button>
+                        <button 
+                            key='btn_bloquear'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Cambiar el estado del registro a deshabilitado'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
+                                <span className='text-xs font-normal leading-tight w-fit px-2'>Deshabilitar</span>
+                        </button>
+                        <button 
+                            key='btn_habilitar'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Cambiar el estado del registro a habilitado'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
+                                <span className='text-xs font-normal leading-tight w-fit px-2'>Habilitar</span>
+                        </button>
+                        <button 
+                            key='btn_eliminar'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Eliminación del registro'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_eliminar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
+                                <span className='text-xs font-normal leading-tight w-fit px-2'>Eliminar</span>
+                        </button>
+                    </>
+                }
+                </animated.div>
+
+                <animated.div key='grpReq-1' className='flex' style={buttonsAnimation1} id='grpReq-1'>
+                {
+                    <>
+                        <button 
+                            key='btn_anterior'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Ir al registro anterior'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_retroceder" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>                                
+                        </button>
+                            <button 
+                            key='btn_siguiente'
+                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            title='Ir al registro siguiente'
+                            onClick={() => hanldeOnClick(event)}>
+                                <ButtonIcon typeButton="btn_avanzar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>                                
+                        </button>
+                    </>
+                }
+                </animated.div>
+            </div> 
+        </div>
+        
+    )
+}
 
 function InputText ({frmRecord, name, value, className, isRequired, placeholder, label}) {
     return(
@@ -52,15 +205,16 @@ function InputText ({frmRecord, name, value, className, isRequired, placeholder,
     )
 }
 
-function FormMatainer ({frmRecord, record, filters}){   
+function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog}){   
     const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields
     if(filters.itemIdSelected === 'mp'){        //Mantenedor de Proveedores        
         const fieldsMP = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
     
         return ( 
-            fieldsMP ?            
+            fieldsMP ?
                 <section id="InputsContent" className="py-3 w-full h-full">
                     <h2 className='font-extralight text-lg pb-3 text-[#2c87d2]'>Datos del Proveedor</h2>
+                    <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
                     <div className="w-full pr-2">
                         <div className='grid grid-cols-12 gap-2 pb-3'>
                             <InputText frmRecord ={frmRecord} name='PRO_RazonSocial' value={fieldsMP.PRO_RazonSocial} className='col-span-12' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social'/>
@@ -133,7 +287,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
                     <form id="frmWFRecords" noValidate ref={formRef}
                         className="h-full w-full flex flex-col columns-1"
                         onSubmit={frmRecord.handleSubmit(onSubmit)}>
-                            <FormMatainer frmRecord={frmRecord} record={record} filters={filters} />
+                            <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                     </form>
                 </section>
             }{

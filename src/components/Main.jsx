@@ -73,7 +73,7 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
                 filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' ? 
                   record ? (
                     <>
-                      <FormRecord frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog}/>                      
+                      <FormRecord frmRecord={frmRecord} record={record} openDialog={openDialog} setOpenDialog={setOpenDialog}/>                      
                     </>
                   ) : (                
                     <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
