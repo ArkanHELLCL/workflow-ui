@@ -1,0 +1,9 @@
+{   
+    "name" : "Tipo de cuenta",
+    "records" : [
+      { "id": 1, "label": "Corriente"},
+      { "id": 2, "label": "Vista"},
+      { "id": 3, "label": "Ahorro"}
+    ],
+    "selected":{"id" : 1, "label" : "Corriente"}
+}

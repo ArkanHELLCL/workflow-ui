@@ -1,0 +1,9 @@
+{   
+    "name" : "Banco",
+    "records" : [
+      { "id": 1, "label": "De Chile"},
+      { "id": 2, "label": "Santander"},
+      { "id": 11, "label": "Scothiabank"}
+    ],
+    "selected":{"id" : 11, "label" : "Scothiabank"}
+}

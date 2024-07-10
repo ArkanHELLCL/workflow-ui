@@ -4,10 +4,13 @@ import { useFilters } from '../../hooks/useFilters.jsx';
 import { useRecords } from '../../hooks/useRecords.jsx';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { registros } from '../../mocks/registrosM.json'
 import { Controller } from 'react-hook-form';
 import FormControl from '@mui/joy/FormControl';
+import Autocomplete from '@mui/joy/Autocomplete';
+import CircularProgress from '@mui/joy/CircularProgress';
+import Box from "@mui/material/Paper";
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { InnerInput } from './formcontent/inputscomponents/StyledComponent.jsx';
@@ -15,17 +18,111 @@ import { useSpring, animated } from '@react-spring/web';
 import { ButtonIcon } from '../../utils/icons.jsx';
 import { Fn } from '../../utils/validaRut.jsx';
 import FormatearRut from '../../utils/FormatearRut.jsx';
-/*const fieldData = {
-    name: null,
-    value: null,
-    className: null,
-    isRequired: null,
-    placeholder: null,
-    label: null,
-    errorMessage: null
-}*/
+import  bancos  from "../../mocks/bancos.json";
+import  tiposdecuenta  from "../../mocks/tiposdecuenta.json";
+import  Sleep  from "../../utils/Sleep.jsx";
 
-function InputButtons({frmRecord, openDialog, setOpenDialog}) {    
+function InputList ({frmRecord, name, dataOptions, className, isRequired, placeholder, label, errorMessage}) {
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState([]);
+  const loading = open && options.length === 0;
+
+  //let dataOptions = [];
+  //campo.FDI_TipoCampo==='X1' ? dataOptions = structuredClone(proveedores) : campo.LID_Id===16 && campo.FDI_TipoCampo==='L' ? dataOptions = structuredClone(meses) : dataOptions = [];
+
+  useEffect(() => {
+    let active = true;
+
+    if (!loading) {
+      return undefined;
+    }
+
+    (async () => {
+      await Sleep(1e2); // For demo purposes.
+
+      if (active) {        
+        setOptions([...dataOptions.records]);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [loading]);
+
+  useEffect(() => {
+    if (!open) {
+      setOptions([]);
+    }
+  }, [open]);
+
+  return (
+    <Controller
+        control={frmRecord.control}
+        name={name}
+        rules={isRequired ? {required : errorMessage} : {required : false}}
+        defaultValue={dataOptions.records.find((option) => option.id == dataOptions.selected.id)}        
+        render={({ field }) => (
+            <FormControl                
+                id={name}
+                size='sm'
+                className={className}>
+                <Autocomplete
+                    {...field}
+                    placeholder={placeholder}
+                    error={!!frmRecord.formState.errors[name]}  
+                    variant="outlined"
+                    slots={{ input: InnerInput }}
+                    onChange={(event, newValue) => {
+                        frmRecord.setValue(name,newValue);
+                    }}
+                    onBlur={field.onBlur}                    
+                    slotProps={{ 
+                            input: { placeholder: placeholder, label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
+                            root : { className : "dark:!bg-transparent dark:!border-[#575757]"},
+                            popupIndicator: { className: "dark:hover:!bg-[#444444]" },
+                            clearIndicator: { className: "dark:hover:!bg-[#444444]" },
+                            option: { className: "dark:!bg-[#575757] dark:hover:!bg-[#444444] hover:bg-[#cde6f7] dark:!text-stone-100 dark:hover:!text-stone-100 !text-base !font-light !pl-2" },
+                            listbox: { className: "dark:!bg-[#575757] dark:!border-[#575757] dark:!text-stone-100 !text-white"},
+                            inputRoot: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 dark:!shadow-none" },
+                            loadingIndicator: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 !text-white" },
+                    }}
+                    sx={{
+                        '--Input-minHeight': '56px',
+                        '--Input-radius': '6px',
+                    }}
+                    open={open}
+                    onOpen={() => {
+                        setOpen(true);
+                    }}
+                    onClose={() => {
+                        setOpen(false);
+                    }}
+                    isOptionEqualToValue={(option, value) => option.value === value.value}
+                    getOptionLabel={(option) => option.label || ''}
+                    options={options}
+                    loading={loading}
+                    endDecorator={
+                        loading ? (
+                            <CircularProgress size="sm" sx={{ bgcolor: 'transparent' }} />
+                        ) : null
+                    }
+                    renderOption={(props, option) => 
+                      <Box component="li" {...props} key={option.id}>                        
+                          {option.label}
+                      </Box>                      
+                    }
+                />
+                <FormHelperText className="!text-red-600">
+                    {frmRecord.formState.errors[name]?.message}
+                </FormHelperText>                       
+            </FormControl>
+        )}
+    />
+  );
+}
+
+function InputButtons({frmRecord, openDialog, setOpenDialog, isAllowed}) {    
     const buttonsAnimation1 = useSpring({
         delay: 10,
         opacity: 0,
@@ -94,7 +191,7 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
 
     const { enqueueSnackbar } = useSnackbar();
     return(
-        <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-0'> 
+        <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6'> 
             <div className='flex items-center gap-3 pb-2' id="grpReq">
                 <animated.div key='grpReq-3' className='flex' style={buttonsAnimation3} id='grpReq-3'>
                 {
@@ -122,25 +219,29 @@ function InputButtons({frmRecord, openDialog, setOpenDialog}) {
                             onClick={() => hanldeOnClick(event)}>
                                 <ButtonIcon typeButton="btn_modificar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Guardar</span>
-                        </button>
-                        <button 
-                            key='btn_bloquear'
-                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                            title='Cambiar el estado del registro a deshabilitado'
-                            type='button'
-                            onClick={() => console.log('deshabiloitar')}>
-                                <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
-                                <span className='text-xs font-normal leading-tight w-fit px-2'>Deshabilitar</span>
-                        </button>
-                        <button 
-                            key='btn_habilitar'
-                            className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                            title='Cambiar el estado del registro a habilitado'
-                            type='button'
-                            onClick={() => console.log('habilitar')}>
-                                <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
-                                <span className='text-xs font-normal leading-tight w-fit px-2'>Habilitar</span>
-                        </button>
+                        </button>{
+                            isAllowed &&                        
+                                <button 
+                                    key='btn_bloquear'
+                                    className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                                    title='Cambiar el estado del registro a deshabilitado'
+                                    type='button'
+                                    onClick={() => console.log('deshabiloitar')}>
+                                        <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
+                                        <span className='text-xs font-normal leading-tight w-fit px-2'>Deshabilitar</span>
+                                </button>
+                            }{
+                            !isAllowed &&                                                
+                                <button 
+                                    key='btn_habilitar'
+                                    className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                                    title='Cambiar el estado del registro a habilitado'
+                                    type='button'
+                                    onClick={() => console.log('habilitar')}>
+                                        <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
+                                        <span className='text-xs font-normal leading-tight w-fit px-2'>Habilitar</span>
+                                </button>
+                            }
                         <button 
                             key='btn_eliminar'
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
@@ -406,8 +507,10 @@ function MPMant({field, frmRecord, openDialog, setOpenDialog, mant, record}) {
     return ( 
         field ?
             <section id="InputsContent" className="py-3 w-full h-full">
-                <h2 className='font-extralight text-lg pb-3 text-[#2c87d2]'>Datos del Proveedor</h2>
-                <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+                <h2 className='font-base text-lg -mb-1'>Datos del Proveedor <span className='text-[#2c87d2]'>Id: {field.PRO_Id}</span></h2>
+                <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.PRO_UsuarioEdit}</span></h2>
+                <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.PRO_FechaEdit}</span></h2>
+                <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
                 <div className="w-full pr-2">
                     <div className='grid grid-cols-12 gap-2 pb-3'>
                         <InputText frmRecord ={frmRecord} name='PRO_RazonSocial' value={field.PRO_RazonSocial} className='col-span-9' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social' errorMessage='Debes ingresar una razón social'/>
@@ -421,12 +524,12 @@ function MPMant({field, frmRecord, openDialog, setOpenDialog, mant, record}) {
                         <InputPhone frmRecord ={frmRecord} name='PRO_Telefono' value={field.PRO_Telefono} className='col-span-4' isRequired={false} placeholder='912345678' label='Teléfono' errorMessage='Debes ingresar un télefono válido'/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <input name="PRO_Banco_ILD" {...frmRecord.register('PRO_Banco_ILD')} type="number" className='col-span-4' required/>
+                        <InputList frmRecord ={frmRecord} name='PRO_Banco_ILD' dataOptions={bancos} className='col-span-4' isRequired={true} placeholder='Seleccione un banco' label={bancos.name} errorMessage='Debes seleccionar un banco'/>
                         <InputText frmRecord ={frmRecord} name='PRO_NumCuentaBancaria' value={field.PRO_NumCuentaBancaria} className='col-span-4' isRequired={true} placeholder='1234567890' label='Número de cuenta bancaria' errorMessage='Debes ingresar el número de cuenta bancaria'/>
-                        <input name="TCU_Id" {...frmRecord.register('TCU_Id')} type="number" className='col-span-4' required/>
+                        <InputList frmRecord ={frmRecord} name='TCU_Id' dataOptions={tiposdecuenta} className='col-span-4' isRequired={true} placeholder='Seleccione un banco' label={tiposdecuenta.name} errorMessage='Debes seleccionar un tipo de cuenta'/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <input name="PRO_Estado" {...frmRecord.register('PRO_Estado')} type="number" className='col-span-6'/>
+                        <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase flex-row-reverse'>{parseInt(field.PRO_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.PRO_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
                     </div>                                                        
                 </div>
             </section> :

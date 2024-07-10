@@ -10,14 +10,7 @@ import { InnerInput } from './StyledComponent.jsx';
 import { useEffect, useState } from 'react';
 import  meses  from "../../../../mocks/meses.json";
 import  proveedores  from "../../../../mocks/proveedores.json";
-
-function sleep(duration) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, duration);
-    });
-  }
+import  Sleep  from "../../../../utils/Sleep.jsx";
 
 export default function FormInputList ({ campo, className }) {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
@@ -38,7 +31,7 @@ export default function FormInputList ({ campo, className }) {
     }
 
     (async () => {
-      await sleep(1e2); // For demo purposes.
+      await Sleep(1e2); // For demo purposes.
 
       if (active) {        
         setOptions([...dataOptions.records]);
