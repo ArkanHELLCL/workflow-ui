@@ -13,9 +13,10 @@ import {
     TableIconPrev
     } from "../../utils/icons.jsx";
     import { useSnackbar } from 'notistack';
+import { useRecords } from "../../hooks/useRecords.jsx";
 
 export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRecord}) {
-
+    const { record }   = useRecords()
     async function hanldeOnClick(event){
         event.preventDefault()
         const isValid = await frmRecord.trigger()
@@ -76,25 +77,29 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                                 <span>cambios</span>
                             </div>
                         </ListItemButton>
-                    </Dropdown>
-                    <Dropdown>
-                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Cambiar el estado del registro a deshabilitado">
-                            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                <TableIconBlock styles='w-9 h-9' />
-                                <span className="!pt-2">Deshabilitar</span>
-                                <span>registro</span>
-                            </div>
-                        </ListItemButton>
-                    </Dropdown>
-                    <Dropdown>
-                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Cambiar el estado del registro a habilitado">
-                            <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                <TableIconAllow styles='w-9 h-9' />
-                                <span className="!pt-2">Habilitar</span>
-                                <span>registro</span>
-                            </div>
-                        </ListItemButton>
-                    </Dropdown>
+                    </Dropdown>{
+                    parseInt(record.record.estado) === 1 &&                    
+                        <Dropdown>
+                            <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Cambiar el estado del registro a deshabilitado">
+                                <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
+                                    <TableIconBlock styles='w-9 h-9' />
+                                    <span className="!pt-2">Deshabilitar</span>
+                                    <span>registro</span>
+                                </div>
+                            </ListItemButton>
+                        </Dropdown>
+                    }{
+                    parseInt(record.record.estado) === 0 &&                           
+                        <Dropdown>
+                            <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Cambiar el estado del registro a habilitado">
+                                <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
+                                    <TableIconAllow styles='w-9 h-9' />
+                                    <span className="!pt-2">Habilitar</span>
+                                    <span>registro</span>
+                                </div>
+                            </ListItemButton>
+                        </Dropdown>
+                    }
                     <Dropdown>
                         <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Eliminación del registro">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
