@@ -16,6 +16,12 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
+const onChange = (event, frmRecord, name) => {
+    console.log('event',event.target.files)
+    frmRecord.setValue(name,event.target.files)
+    frmRecord.clearErrors(name)
+}
+
 export default function InputFile({frmRecord, name, label, className, isRequired}) {
   return (
     <>
@@ -25,6 +31,7 @@ export default function InputFile({frmRecord, name, label, className, isRequired
             variant="outlined"
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
+            className={className}
         >
         {label}
         <VisuallyHiddenInput 
@@ -36,8 +43,9 @@ export default function InputFile({frmRecord, name, label, className, isRequired
                 if(isRequired && frmRecord.getValues(name).length === 0) return 'Debes adjuntar al menos un archivo'
             }})}
             name={name} 
-            className={className}
-            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"/>
+            
+            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview"
+            onChange={() => onChange(event, frmRecord, name)}/>
         </Button>
         <FormHelperText className="!text-red-600">
             {frmRecord.formState.errors[name]?.message}

@@ -38,8 +38,8 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                     <InputPhone frmRecord ={frmRecord} name='USR_Telefono' value={field.USR_Telefono} className='col-span-2' isRequired={false} placeholder='123456788' label='Teléfono' errorMessage=''/>
                     <InputList frmRecord ={frmRecord} name='SEX_Id' dataOptions={sexos} className='col-span-3' isRequired={false} placeholder='Femenino' label='Género' errorMessage=''/>
                     <InputList frmRecord ={frmRecord} name='PER_Id' dataOptions={perfiles} className='col-span-3' isRequired={true} placeholder='Revisor' label='Perfil' errorMessage='Debes ingresar el perfil del usuario'/>
-                    <InputSwitch frmRecord ={frmRecord} name='USR_Jefatura' value={parseInt(field.USR_Jefatura)===0 ? false : true} className='col-span-2 !items-center !justify-center' label='Jefatura'/>
-                    <InputFile frmRecord ={frmRecord} name='USR_Firma' label='Firma' className='col-span-2' isRequired={true}/>
+                    <InputFile frmRecord ={frmRecord} name='USR_Firma' label='Firma' className='col-span-2 h-14 w-full' isRequired={true}/>
+                    <InputSwitch frmRecord ={frmRecord} name='USR_Jefatura' value={parseInt(field.USR_Jefatura)===0 ? false : true} className='col-span-2 !items-center !justify-center' label='Jefatura'/>                    
                 </div>
 
                 <div className='grid grid-cols-12 gap-2 pb-3'>
