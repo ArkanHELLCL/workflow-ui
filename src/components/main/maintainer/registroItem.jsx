@@ -4,6 +4,7 @@ import { useRecords } from "../../../hooks/useRecords.jsx";
 import { BlockIcon, CheckIcon, DelIcon, EditIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
+import { useEffect } from "react";
 
 const { dias } = Constants()
 const diaName = (fecha) => {
@@ -15,6 +16,12 @@ export default function RegistroItem ({registro, ...props}){
     const { record, setRecord } = useRecords()    
     const { filters } = useFilters()
     const regId = filters.itemIdSelected + '-' + registro.Id
+
+    useEffect(() => {
+        const el = document.getElementsByClassName('reqselected')[0]
+        el?.classList.remove('reqselected')
+        setRecord(null)
+    },[filters.itemIdSelected])
     
     const handleRegClick = (id) => {        
         const elToRemove = document.getElementById(filters.itemIdSelected + '-' + record?.record.Id)
