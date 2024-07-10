@@ -86,6 +86,14 @@ export function useFilters() {
             //filters.totalSintomar = filteredRequest.filter((item) => item.IdEditor === undefined).length
             filters.totalVencidos = filteredRequest.filter((item) => item.estado === 0).length      //Bloqueados
             filters.totalPorVencer = filteredRequest.filter((item) => item.estado === 1).length     //Habilitados
+
+            filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : (
+                item.titulo?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+                item.subtitulo?.toUpperCase().match(filters.stringSearch.toUpperCase()) || 
+                item.detalle?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+                item.creador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+                Number(item.Id) === Number(filters.stringSearch)
+            ))
         }
         return {filteredRequest}
     }
