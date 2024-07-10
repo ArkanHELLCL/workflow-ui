@@ -21,7 +21,30 @@
 },{
     "id":"mu",
     "fields": [
-        {}
+        {
+            "USR_Id": 5,
+            "PER_Id": 1,
+            "SEX_Id": 2,
+            "USR_Estado": 1,
+            "USR_Usuario": "lcastillo",
+            "USR_Telefono": "227530592",
+            "USR_Direccion": "Huerfanos 1273",
+            "USR_Mail": "lcastillo@mintrab.gob.cl",
+            "USR_Nombre": "Luis Gabriel",
+            "USR_Apellido": "Castillo Pacheco",
+            "USR_ClaveProvisoria": 0,
+            "USR_UsuarioEdit": "lcastillo",
+            "USR_FechaEdit": "2022-12-13T12:06:38.960",
+            "USR_AccionEdit": "Modificar",
+            "USR_Rut": "12776722k",            
+            "USR_NombreInstitucion": "Subsecreatría del Trabajo",
+            "USR_UltimoListarProyecto": "2021-10-04T12:58:33.490",
+            "COM_Id": 13101,            
+            "USR_LDAP": 1,
+            "DEP_Id": 1,
+            "USR_Jefatura": 0,
+            "USR_Firma": ""
+        }        
     ]
 }]
 }

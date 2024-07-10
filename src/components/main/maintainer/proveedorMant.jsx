@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import  bancos  from "../../../mocks/bancos.json";
-import  tiposdecuenta  from "../../../mocks/tiposdecuenta.json";
+import bancos from "../../../mocks/bancos.json";
+import tiposdecuenta from "../../../mocks/tiposdecuenta.json";
 import InputList from './inputscomponents/inputList.jsx';
 import InputText from './inputscomponents/inputText.jsx';
 import InputRut from './inputscomponents/inputRut.jsx';
@@ -9,7 +9,8 @@ import InputPhone from './inputscomponents/inputPhone.jsx';
 import InputButtons from './inputscomponents/inputButtons.jsx';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 
-export default function MPMant({field, frmRecord, openDialog, setOpenDialog, mant, record}) {
+export default function MPMant({fields, frmRecord, openDialog, setOpenDialog, mant, record}) {
+    const field = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
     return ( 
         field ?
             <section id="InputsContent" className="py-3 w-full h-full">
@@ -35,8 +36,8 @@ export default function MPMant({field, frmRecord, openDialog, setOpenDialog, man
                         <InputList frmRecord ={frmRecord} name='TCU_Id' dataOptions={tiposdecuenta} className='col-span-4' isRequired={true} placeholder='Seleccione un banco' label={tiposdecuenta.name} errorMessage='Debes seleccionar un tipo de cuenta'/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase flex-row-reverse'>{parseInt(field.PRO_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.PRO_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
-                    </div>                                                        
+                        <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.PRO_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.PRO_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
+                    </div>
                 </div>
             </section> :
             (

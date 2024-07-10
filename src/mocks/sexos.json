@@ -1,0 +1,9 @@
+{   
+    "name" : "Sexo",
+    "records" : [
+      { "id": 1, "label": "Femenino"},
+      { "id": 2, "label": "Masculino"},
+      { "id": 3, "label": "Otro"}
+    ],
+    "selected":{"id" : 2, "label" : "Masculino"}
+}

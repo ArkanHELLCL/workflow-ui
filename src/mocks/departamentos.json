@@ -1,0 +1,198 @@
+{   
+    "name" : "Departamento",
+    "records" : [
+        {
+            "id": 0,
+            "label": "Departamento Destinatario"
+        },
+        {
+            "id": 1,
+            "label": "Departamento Tecnologías de la Información y Comunicaciones"
+        },
+        {
+            "id": 2,
+            "label": "Auditoría Interna"
+        },
+        {
+            "id": 3,
+            "label": "Auditoría Ministerial"
+        },
+        {
+            "id": 4,
+            "label": "División Administración y Finanzas"
+        },
+        {
+            "id": 5,
+            "label": "Planificación y Control de Gestión"
+        },
+        {
+            "id": 6,
+            "label": "Relaciones Internacionales"
+        },
+        {
+            "id": 7,
+            "label": "Estudios Laborales"
+        },
+        {
+            "id": 8,
+            "label": "Departamento Gestión y Desarrollo de Personas"
+        },
+        {
+            "id": 9,
+            "label": "Departamento de Finanzas"
+        },
+        {
+            "id": 10,
+            "label": "Departamento de Administración"
+        },
+        {
+            "id": 11,
+            "label": "Biblioteca Y Archivos"
+        },
+        {
+            "id": 12,
+            "label": "Oficina De Partes"
+        },
+        {
+            "id": 13,
+            "label": "División Jurídica"
+        },
+        {
+            "id": 14,
+            "label": "Departamento de Prensa y Comunicaciones"
+        },
+        {
+            "id": 15,
+            "label": "Diálogo Social"
+        },
+        {
+            "id": 16,
+            "label": "Proempleo"
+        },
+        {
+            "id": 17,
+            "label": "Departamento Erradicación Trabajo Infantil"
+        },
+        {
+            "id": 18,
+            "label": "Departamento BNE"
+        },
+        {
+            "id": 19,
+            "label": "SEREMIA Region Metropolitana de Santiago"
+        },
+        {
+            "id": 20,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Arica"
+        },
+        {
+            "id": 21,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Tarapaca"
+        },
+        {
+            "id": 22,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Antofagasta"
+        },
+        {
+            "id": 23,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Atacama"
+        },
+        {
+            "id": 24,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Coquimbo"
+        },
+        {
+            "id": 25,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Valparaiso"
+        },
+        {
+            "id": 26,
+            "label": "SEREMIA Region del Libertador General Bernardo O’Higgins"
+        },
+        {
+            "id": 27,
+            "label": "SEREMIA del Trabajo y Prevision Social Region del Maule"
+        },
+        {
+            "id": 28,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Ñuble"
+        },
+        {
+            "id": 29,
+            "label": "SEREMIA del Trabajo y Prevision Social Region del Biobio"
+        },
+        {
+            "id": 30,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de La Araucania"
+        },
+        {
+            "id": 31,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Los Rios"
+        },
+        {
+            "id": 32,
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Los Lagos"
+        },
+        {
+            "id": 33,
+            "label": "SEREMIA Region de Aysen del General Carlos Ibanez del Campo"
+        },
+        {
+            "id": 34,
+            "label": "SEREMIA Region de Magallanes y de la Antartica Chilena"
+        },
+        {
+            "id": 35,
+            "label": "Gabinete Subsecretario"
+        },
+        {
+            "id": 36,
+            "label": "Gabinete Ministerial"
+        },
+        {
+            "id": 37,
+            "label": "Unidad de Asesores"
+        },
+        {
+            "id": 38,
+            "label": "Gabinete Ministro"
+        },
+        {
+            "id": 41,
+            "label": "prueba grabación"
+        },
+        {
+            "id": 42,
+            "label": "prueba"
+        },
+        {
+            "id": 43,
+            "label": "Activo Fijo Bodega"
+        },
+        {
+            "id": 44,
+            "label": "Factura"
+        },
+        {
+            "id": 45,
+            "label": "Unidad de Servicios Generales"
+        },
+        {
+            "id": 46,
+            "label": "División Políticas de Empleo"
+        },
+        {
+            "id": 47,
+            "label": "Unidad de Transversalización de Género"
+        },
+        {
+            "id": 48,
+            "label": "Contabilidad"
+        },
+        {
+            "id": 49,
+            "label": "Tesorería"
+        }
+    ],
+    "selected":{"id" : 1, "label" : "Departamento Tecnologías de la Información y Comunicaciones"}
+}

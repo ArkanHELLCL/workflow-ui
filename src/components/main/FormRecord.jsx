@@ -11,14 +11,13 @@ import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
 
 function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog}){   
-    const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields
-    const field = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
+    const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields    
 
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
-            return <MPMant field={field} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+            return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
         case 'mu':  //Usuarios
-            return <MUMant field={field} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+            return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
         default:
             return (
                 <>
