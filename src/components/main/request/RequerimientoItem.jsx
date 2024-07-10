@@ -1,56 +1,66 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useMemo, useCallback } from "react";
+//import { useMemo, useCallback } from "react";
 import { useRequest } from "../../../hooks/useRequest.jsx";
 import { ArchiveIcon, EditIcon, UserIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
+import { useFilters } from "../../../hooks/useFilters.jsx";
 
 export const RequerimientoItem = ({ req, showDia }) => {    
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
+    const { filters } = useFilters()
+    const regId = filters.itemIdSelected + '-' + req.VRE_Id        
 
-    const memoizedReq = useMemo(() => req, [req])
-    
-    const diaName = useMemo(() => {
-      const newDate = new Date(req.DRE_FechaEdit)
+    const diaName = (fecha) => {
+      const newDate = new Date(fecha)
       return dias[newDate.getDay()]
-    }, [dias, req.DRE_FechaEdit])
-
-    const isReqSelected = useMemo(() => request?.request?.DRE_Id === req.DRE_Id, [request, req.DRE_Id])
+    }    
   
-    const handleEditClick = useCallback((e) => {
+    const handleEditClick = (e) => {
       e.stopPropagation()
       // handle edit click
-    }, [])
+    }
   
-    const handleUserClick = useCallback((e) => {
+    const handleUserClick = (e) => {
       e.stopPropagation()
       // handle user click
-    }, [])
+    }
   
-    const handleArchiveClick = useCallback((e) => {
+    const handleArchiveClick = (e) => {
       e.stopPropagation()
       // handle archive click
-    }, [])
+    }
   
     /*const handleRequerimiento = useCallback((req) => {
       setRequest(req)
     }, [req])*/
 
-    const handleRequerimiento = useCallback(() => {
+    /*const handleRequerimiento = useCallback(() => {
       //setRequest(memoizedReq)
       setRequest({
-        "request": memoizedReq,
+        "request": req,
         "adjuntos": null,
       })
-    }, [memoizedReq, setRequest])
+    }, [req])*/
+
+    const handleRequerimiento = (id) => {
+      const elToRemove = document.getElementById(filters.itemIdSelected + '-' + request?.request?.VRE_Id)      
+      elToRemove?.classList.remove('reqselected')
+      const elToAdd = document.getElementById(id)
+      elToAdd.classList.add('reqselected')
+      setRequest({
+        "request": req,
+        "adjuntos": null,
+      })
+    }
   
     return (
-      <article className={`${isReqSelected ? 'reqselected' : 'requnselected'} reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento()}>
+      <article className={` reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento(regId)} id={regId}>
         <div className="w-3/4">
-          <p className={`${isReqSelected ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
+          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt!="0" ? req.DRE_UsuarioEditAnt : req.NombreEditor ? '(EA) - ' + req.NombreEditor + ' ' + req.ApellidoEditor : '(CR) - ' + req.NombreCreador + ' ' + req.ApellidoCreador : '(SF) - ' + req.NombreCreador + ' ' + req.ApellidoCreador}</p>
           <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : 'text-sky-600 font-bold'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
-          <p className={`${isReqSelected ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
+          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
         </div>
         <div className="w-1/4">
           <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">

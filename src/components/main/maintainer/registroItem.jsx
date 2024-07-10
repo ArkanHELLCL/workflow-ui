@@ -1,35 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useMemo } from "react";
 import { useRecords } from "../../../hooks/useRecords.jsx";
 import { BlockIcon, CheckIcon, DelIcon, EditIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
+import { useFilters } from "../../../hooks/useFilters.jsx";
 
 const { dias } = Constants()
 const diaName = (fecha) => {
     const newDate = new Date(fecha)
     return dias[newDate.getDay()]
-  }
+}
 
 export default function RegistroItem ({registro, ...props}){
-    const { record, setRecord } = useRecords()
-    const isRegSelected = useMemo(() => parseInt(record?.record?.Id) === parseInt(registro.Id), [record, registro.Id])
-    const memoizedReq = useMemo(() => registro, [registro])
-
-    //console.log('RegistroItem')
+    const { record, setRecord } = useRecords()    
+    const { filters } = useFilters()
+    const regId = filters.itemIdSelected + '-' + registro.Id
     
-    const handleRegClick = () => {        
-        setRecord({
-            "record": memoizedReq,            
+    const handleRegClick = (id) => {        
+        const elToRemove = document.getElementById(filters.itemIdSelected + '-' + record?.record.Id)
+        elToRemove?.classList.remove('reqselected')
+        const elToAdd = document.getElementById(id)
+        elToAdd.classList.add('reqselected')        
+        setRecord({            
+            "record": registro,
           })
     }
 
     return(
-        <article className={`${isRegSelected ? 'reqselected' : 'requnselected'} regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={handleRegClick} {...props}>
+        <article className={` regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={()=>handleRegClick(regId)} {...props} id={regId}>
             <div className="w-3/4">
-            <p className={`${isRegSelected ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
+            <p className={`${record?.record.Id === registro.Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
             <p className={`truncate text-base font-thin uppercase leading-snug`}>{registro.titulo}</p>
-            <p className={`${isRegSelected ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{registro.detalle}</p>
+            <p className={`${record?.record.Id === registro.Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{registro.detalle}</p>
             </div>
             <div className="w-1/4">
             <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">

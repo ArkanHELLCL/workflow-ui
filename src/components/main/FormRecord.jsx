@@ -348,7 +348,7 @@ function MPMant({field, frmRecord, openDialog, setOpenDialog, mant, record}) {
             <section id="InputsContent" className="py-3 w-full h-full">
                 <h2 className='font-base text-lg -mb-1'>Datos del Proveedor <span className='text-[#2c87d2]'>Id: {field.PRO_Id}</span></h2>
                 <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.PRO_UsuarioEdit}</span></h2>
-                <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.PRO_FechaEdit}</span></h2>
+                <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>
                 <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
                 <div className="w-full pr-2">
                     <div className='grid grid-cols-12 gap-2 pb-3'>
