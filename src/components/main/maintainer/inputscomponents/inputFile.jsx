@@ -26,14 +26,13 @@ export default function InputFile({frmRecord, name, label, className, isRequired
     return (
         <FormControl
             size='sm'
-            className={className + ' pb-2'}>
-
-            <label htmlFor={name} className={`flex items-center justify-center rounded min-h-full h-full w-full cursor-pointer gap-2 dark:text-stone-100 text-stone-600 !text-base !font-light hover:text-[#2c87d2] ${frmRecord.formState.errors[name] ? '!text-red-600' : '' } dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] hover:bg-[#eff6fc] dark:hover:bg-[#666666]`}>
-                <CloudUploadIcon /> {label}
+            className={className + ' pb-2'}
+            >
+            <label htmlFor={name} className={`flex items-center justify-center rounded min-h-full h-full w-full cursor-pointer gap-2 dark:text-stone-100 text-stone-450 !text-base !font-light hover:text-[#2c87d2] ${frmRecord.formState.errors[name] ? '!text-red-600' : '' } dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] hover:bg-[#eff6fc] dark:hover:bg-[#666666]`}>
+                <CloudUploadIcon /> <span className='dark:text-stone-100 text-stone-900'>{label}</span>
             </label>
             <input 
-                type="file" 
-                //required
+                type="file"
                 hidden
                 {...frmRecord.register(name, {validate: () => {                    
                     if(isRequired && filesList.length === 0) return errorMessage

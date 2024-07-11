@@ -7,9 +7,12 @@ import InputButtons from './inputscomponents/inputButtons.jsx';
 import InputPhone from './inputscomponents/inputPhone.jsx';
 import InputSwitch from './inputscomponents/inputSwitch.jsx';
 import InputFile from './inputscomponents/inputFile.jsx';
+import DataTable from './inputscomponents/dataTable.jsx';
+
 import departamentos from "../../../mocks/departamentos.json";
 import sexos from "../../../mocks/sexos.json";
 import perfiles from "../../../mocks/perfiles.json";
+import { columns, rows } from "./usuariomant/data.jsx";
 import { ButtonIcon } from '../../../utils/icons.jsx';
 
 export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, mant, record, filesList, setFilesList}) {
@@ -43,16 +46,24 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                     <InputSwitch frmRecord ={frmRecord} name='USR_Jefatura' value={parseInt(field.USR_Jefatura)===0 ? false : true} className='col-span-2 !items-center !justify-center' label='Jefatura'/>                    
                 </div>                
 
-                <div className='grid grid-cols-12 gap-2 pb-3'>
+                <div className='grid grid-cols-12 gap-2'>
                     <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.USR_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.USR_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
-                </div>
-
+                </div>                
+                
                 <div className='grid grid-cols-12 gap-2 pb-3'>
-                    <div className='col-span-3'>{
-                        filesList.length > 0 &&
-                            <img className="h-40 w-56" src={URL.createObjectURL(filesList[0])} />
-                        }
+                    <div className='col-span-3'>
+                        <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950 pb-2'>Previsualizción de firma</h2>{
+                        filesList.length > 0 ? (
+                            <img className="h-auto w-full" src={URL.createObjectURL(filesList[0])} />
+                        ) : (
+                            <div className="h-40 h-a w-full dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] rounded flex justify-center flex-col text-center font-light text-base">
+                                <span>Sin firma cargada</span>
+                            </div>
+                        )}
                     </div>
+                    <div className='col-span-9 flex justify-center flex-col gap-2'>
+                        <DataTable columns={columns} rows={rows} title="Flujos asignados"/>
+                    </div>                    
                 </div>
             </div>
             
