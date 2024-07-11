@@ -23,7 +23,7 @@ export default function DataTable({columns, rows, title}) {
             className: 'dark:!text-stone-100 !text-stone-950 !font-light'
           },          
           row: {
-            className: 'dark:!bg-[#444444] !bg-[#fbfcfe] dark:!text-stone-100 !text-stone-500 !text-sm !font-light hover:dark:!bg-transparent',
+            className: 'dark:!bg-[#444444] !bg-[#fbfcfe] dark:!text-stone-100 !text-stone-500 !text-sm !font-light hover:dark:!bg-transparent hover:!bg-[#e6f2fa]',
           },
           footer: {
             className: '!bg-transparent',
@@ -35,7 +35,7 @@ export default function DataTable({columns, rows, title}) {
             className: 'dark:!text-stone-100 !text-stone-950',
           },
           cell: {
-            className: 'dark:!border-[#575757] !border-white',
+            className: 'dark:!border-[#575757] !border-[b8b5b2]',
           },
           }
         }
