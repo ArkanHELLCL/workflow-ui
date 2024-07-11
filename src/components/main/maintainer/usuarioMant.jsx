@@ -12,8 +12,9 @@ import sexos from "../../../mocks/sexos.json";
 import perfiles from "../../../mocks/perfiles.json";
 import { ButtonIcon } from '../../../utils/icons.jsx';
 
-export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, mant, record}) {
+export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, mant, record, filesList, setFilesList}) {
     const field = fields.filter(fld => parseInt(fld.USR_Id) === parseInt(record?.record?.Id))[0]
+    
     return (
         field ?
         <section id="InputsContent" className="py-3 w-full h-full">            
@@ -38,12 +39,20 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                     <InputPhone frmRecord ={frmRecord} name='USR_Telefono' value={field.USR_Telefono} className='col-span-2' isRequired={false} placeholder='123456788' label='Teléfono' errorMessage=''/>
                     <InputList frmRecord ={frmRecord} name='SEX_Id' dataOptions={sexos} className='col-span-3' isRequired={false} placeholder='Femenino' label='Género' errorMessage=''/>
                     <InputList frmRecord ={frmRecord} name='PER_Id' dataOptions={perfiles} className='col-span-3' isRequired={true} placeholder='Revisor' label='Perfil' errorMessage='Debes ingresar el perfil del usuario'/>
-                    <InputFile frmRecord ={frmRecord} name='USR_Firma' label='Firma' className='col-span-2 h-14 w-full' isRequired={true}/>
+                    <InputFile frmRecord ={frmRecord} name='USR_Firma' label='Firma' className='col-span-2' isRequired={true} filesList={filesList} setFilesList={setFilesList} errorMessage='Debes adjuntar un archivo'/>
                     <InputSwitch frmRecord ={frmRecord} name='USR_Jefatura' value={parseInt(field.USR_Jefatura)===0 ? false : true} className='col-span-2 !items-center !justify-center' label='Jefatura'/>                    
-                </div>
+                </div>                
 
                 <div className='grid grid-cols-12 gap-2 pb-3'>
                     <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.USR_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.USR_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
+                </div>
+
+                <div className='grid grid-cols-12 gap-2 pb-3'>
+                    <div className='col-span-3'>{
+                        filesList.length > 0 &&
+                            <img className="h-40 w-56" src={URL.createObjectURL(filesList[0])} />
+                        }
+                    </div>
                 </div>
             </div>
             

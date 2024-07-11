@@ -4,20 +4,20 @@ import { useFilters } from '../../hooks/useFilters.jsx';
 import { useRecords } from '../../hooks/useRecords.jsx';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { registros } from '../../mocks/registrosM.json'
 
 import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
 
-function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog}){   
+function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList}){   
     const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields    
 
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
             return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
         case 'mu':  //Usuarios
-            return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+            return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList}/>
         default:
             return (
                 <>
@@ -31,11 +31,13 @@ function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog}){
 export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
     const { record } = useRecords()
     const { filters } = useFilters()
+    const [filesList, setFilesList] = useState([]);
 
     const onSubmit = (data) => {        
         console.log('recordcomponent',data);
         frmRecord.reset()
-        frmRecord.clearErrors()        
+        frmRecord.clearErrors()
+        setFilesList([])
     };
 
     useEffect(() => {        
@@ -57,7 +59,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
                     <form id="frmWFRecords" noValidate ref={formRef}
                         className="h-full w-full flex flex-col columns-1"
                         onSubmit={frmRecord.handleSubmit(onSubmit)}>
-                            <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                            <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog} filesList={filesList} setFilesList={setFilesList}/>
                     </form>
                 </section>
             }{

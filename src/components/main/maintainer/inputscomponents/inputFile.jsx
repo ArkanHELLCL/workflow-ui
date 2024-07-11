@@ -1,55 +1,50 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { FormHelperText } from '@mui/material';
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import arrayFilesToFileList from '../../../../utils/arrayFilesToFileList';
+import { useEffect } from 'react';
 
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1,
-});
+export default function InputFile({frmRecord, name, label, className, isRequired, setFilesList, filesList, errorMessage}) {    
+    const onChange = (event) => {
+        let files = [];                
+        if(event.type==='change'){
+            files = Array.from(event.target.files)            
+        }else{
+            files = Array.from(event.dataTransfer.files)            
+        }                
+        setFilesList([...filesList, ...files]);        
+        return filesList
+    }
+    
+    useEffect(() => {
+        frmRecord.setValue(name,arrayFilesToFileList(filesList))
+        frmRecord.clearErrors(name)
+    },[filesList])
 
-const onChange = (event, frmRecord, name) => {
-    console.log('event',event.target.files)
-    frmRecord.setValue(name,event.target.files)
-    frmRecord.clearErrors(name)
-}
+    return (
+        <FormControl
+            size='sm'
+            className={className + ' pb-2'}>
 
-export default function InputFile({frmRecord, name, label, className, isRequired}) {
-  return (
-    <>
-        <Button
-            component="label"
-            role={undefined}
-            variant="outlined"
-            tabIndex={-1}
-            startIcon={<CloudUploadIcon />}
-            className={className}
-        >
-        {label}
-        <VisuallyHiddenInput 
-            type="file" 
-            required
-            {...frmRecord.register(name, {required: () => {
-                //value.length > 0
-                //if(isRequired && filesList.length === 0) return 'Debes adjuntar al menos un archivo'
-                if(isRequired && frmRecord.getValues(name).length === 0) return 'Debes adjuntar al menos un archivo'
-            }})}
-            name={name} 
-            
-            accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview"
-            onChange={() => onChange(event, frmRecord, name)}/>
-        </Button>
-        <FormHelperText className="!text-red-600">
-            {frmRecord.formState.errors[name]?.message}
-        </FormHelperText>
-    </>
-  );
+            <label htmlFor={name} className={`flex items-center justify-center rounded min-h-full h-full w-full cursor-pointer gap-2 dark:text-stone-100 text-stone-600 !text-base !font-light hover:text-[#2c87d2] ${frmRecord.formState.errors[name] ? '!text-red-600' : '' } dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] hover:bg-[#eff6fc] dark:hover:bg-[#666666]`}>
+                <CloudUploadIcon /> {label}
+            </label>
+            <input 
+                type="file" 
+                //required
+                hidden
+                {...frmRecord.register(name, {validate: () => {                    
+                    if(isRequired && filesList.length === 0) return errorMessage
+                }})}
+                name={name}
+                id={name}            
+                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview"
+                onChange={() => onChange(event, frmRecord, name)}/>
+                <FormHelperText className="!text-red-600">
+                    {frmRecord.formState.errors[name]?.message}
+                </FormHelperText>
+        </FormControl>
+    );
 }

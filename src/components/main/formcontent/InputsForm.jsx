@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import FormHelperText from '@mui/joy/FormHelperText';
 import Inputs from './Inputs.jsx';
+import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 
 export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, frmRequest, setFilesList, filesList}) {
     const handleDragEnter = (event) => {
@@ -29,13 +30,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         event.stopPropagation();
     };
 
-    function arrayFilesToFileList(filesList) {
-        return filesList.reduce(function (dataTransfer, file) {        
-            dataTransfer.items.add(file);
-            return dataTransfer;
-        }, new DataTransfer()).files;
-    }
-
+    
     const onChange = (event) => {
         let files = [];                
         if(event.type==='change'){
