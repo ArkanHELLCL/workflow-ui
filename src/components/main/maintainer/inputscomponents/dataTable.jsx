@@ -6,7 +6,6 @@ import {
   useGridApiContext,
   useGridSelector 
 } from '@mui/x-data-grid';
-//import { useDemoData } from '@mui/x-data-grid-generator';
 import { styled } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
@@ -14,7 +13,6 @@ import { useFilters } from '../../../../hooks/useFilters.jsx';
 import { useMemo, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-//.css-d9634g-MuiDataGrid-root .MuiDataGrid-row:hover
 function customCheckbox(theme) {
   return {
     '& .MuiCheckbox-root svg': {
@@ -147,7 +145,7 @@ function CustomPagination() {
   );
 }
 
-export default function DataTable({columns, rows, title, PAGE_SIZE}) {  
+export default function DataTable({columns, rows, title, pageSize}) {  
   const { filters } = useFilters()
   const prefersDarkMode = filters.darkMode
   const theme = useMemo(
@@ -161,7 +159,7 @@ export default function DataTable({columns, rows, title, PAGE_SIZE}) {
   );
 
   const [paginationModel, setPaginationModel] = useState({
-    pageSize: PAGE_SIZE,
+    pageSize: pageSize,
     page: 0,
   });
 
@@ -182,7 +180,7 @@ export default function DataTable({columns, rows, title, PAGE_SIZE}) {
         checkboxSelection
         paginationModel={paginationModel}
         onPaginationModelChange={setPaginationModel}
-        pageSizeOptions={[PAGE_SIZE]}
+        pageSizeOptions={[pageSize]}
         slots={{
           pagination: CustomPagination,
         }}

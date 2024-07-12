@@ -7,7 +7,9 @@ import InputButtons from './inputscomponents/inputButtons.jsx';
 import InputPhone from './inputscomponents/inputPhone.jsx';
 import InputSwitch from './inputscomponents/inputSwitch.jsx';
 import InputFile from './inputscomponents/inputFile.jsx';
-import DataTable from './inputscomponents/dataTable.jsx';
+//import DataTable from './inputscomponents/dataTable.jsx';
+//import DataTableCRUD from './usuariomant/dataTableCRUD.jsx';
+import FlujosTable from './usuariomant/flujosTable.jsx';
 
 import departamentos from "../../../mocks/departamentos.json";
 import sexos from "../../../mocks/sexos.json";
@@ -20,12 +22,12 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
     
     return (
         field ?
-        <section id="InputsContent" className="py-3 w-full h-full">            
+        <section id="InputsContent" className="py-3 w-full flex flex-col h-full">
             <h2 className='font-base text-lg -mb-1'>Datos del Usuario <span className='text-[#2c87d2]'>Id: {field.USR_Id}</span></h2>
             <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.USR_UsuarioEdit}</span></h2>
             <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.USR_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>
             <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
-            <div className="w-full pr-2">
+            <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                 <div className='grid grid-cols-12 gap-2 pb-3'>
                     <InputText frmRecord ={frmRecord} name='USR_Usuario' value={field.USR_Usuario} className='col-span-4' isRequired={true} placeholder='jlopez' label='Código' errorMessage='Debes ingresar un código de usuario'/>
                     <InputText frmRecord ={frmRecord} name='USR_Nombre' value={field.USR_Nombre} className='col-span-4' isRequired={true} placeholder='Juan' label='Nombre' errorMessage='Debes ingresar un nombre de usuario'/>
@@ -62,11 +64,10 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                         )}
                     </div>
                     <div className='col-span-9 flex justify-center flex-col gap-2'>
-                        <DataTable columns={columns} rows={rows} title="Flujos asignados" PAGE_SIZE={5}/>
+                        <FlujosTable title="Flujos asignados" pageSize={5}/>
                     </div>                    
                 </div>
-            </div>
-            
+            </div>            
         </section>
         :
         (

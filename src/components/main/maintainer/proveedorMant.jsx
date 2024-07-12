@@ -13,12 +13,12 @@ export default function MPMant({fields, frmRecord, openDialog, setOpenDialog, ma
     const field = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
     return ( 
         field ?
-            <section id="InputsContent" className="py-3 w-full h-full">
+            <section id="InputsContent" className="py-3 w-full flex flex-col h-full">
                 <h2 className='font-base text-lg -mb-1'>Datos del Proveedor <span className='text-[#2c87d2]'>Id: {field.PRO_Id}</span></h2>
                 <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.PRO_UsuarioEdit}</span></h2>
                 <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>
                 <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
-                <div className="w-full pr-2">
+                <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                     <div className='grid grid-cols-12 gap-2 pb-3'>
                         <InputText frmRecord ={frmRecord} name='PRO_RazonSocial' value={field.PRO_RazonSocial} className='col-span-9' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social' errorMessage='Debes ingresar una razón social'/>
                         <InputRut frmRecord ={frmRecord} name='PRO_Rut' value={field.PRO_Rut} className='col-span-3' isRequired={true} placeholder='12345678K' label='Rut' errorMessage='Debes ingresar un RUT válido'/>
