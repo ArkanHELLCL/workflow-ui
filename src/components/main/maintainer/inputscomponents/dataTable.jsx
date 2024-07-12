@@ -13,6 +13,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import { useFilters } from '../../../../hooks/useFilters.jsx';
 import { useMemo, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 //.css-d9634g-MuiDataGrid-root .MuiDataGrid-row:hover
 function customCheckbox(theme) {
   return {
@@ -55,11 +56,31 @@ function customCheckbox(theme) {
       top: '39%',
       border: 0,
     },
-    '.MuiDataGrid-row:hover': {
+    '& .MuiDataGrid-row:hover': {
       backgroundColor: `${
         theme.palette.mode === 'light' ? '#e6f2fa' : '#383838'
       }`,
     },
+    '& .MuiDataGrid-columnHeader':{
+      border:0,
+      backgroundColor: `${
+        theme.palette.mode === 'light' ? '#faf9f8' : '#1d1d1d'
+      }`,      
+    },
+    '& .MuiDataGrid-columnHeaderTitle':{
+      fontWeight: 350,
+      fontSize: '1rem',
+      lineHeight: '1.5rem',
+      color: `${
+        theme.palette.mode === 'light' ? '#0c0a09' : '#f5f5f4'
+      }`,
+    },
+    '& .MuiDataGrid-cell':{
+      borderRight:0,
+      fontWeight: 300,
+      fontSize: '0.9rem',
+      lineHeight: '2rem'
+    }
   };
 }
 
