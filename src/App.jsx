@@ -28,6 +28,7 @@ function App() {
   const frmRecord = useForm({
     mode: "onBlur",
   })
+
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
 
   return (    
@@ -50,7 +51,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Footer />
       </Suspense>      
-    </div>    
+    </div>
   )
 }
 

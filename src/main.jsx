@@ -9,10 +9,10 @@ import { SnackbarProvider } from 'notistack';
 createRoot(document.getElementById('root')).render(
   <FiltersProvider>
     <RequestProvider>
-    <RecordsProvider>
-      <SnackbarProvider maxSnack={3}>
-        <App />
-      </SnackbarProvider>
+      <RecordsProvider>
+        <SnackbarProvider maxSnack={3}>
+          <App />
+        </SnackbarProvider>
       </RecordsProvider >
     </RequestProvider>
   </FiltersProvider>

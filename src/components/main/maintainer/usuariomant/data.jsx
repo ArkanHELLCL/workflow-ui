@@ -13,7 +13,8 @@ export const columns = [
       headerName: 'Full name',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
-      width: 300,
+      width: 200,
+      flex:1,
       valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
     }
 ];

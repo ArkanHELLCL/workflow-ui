@@ -62,7 +62,7 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                         )}
                     </div>
                     <div className='col-span-9 flex justify-center flex-col gap-2'>
-                        <DataTable columns={columns} rows={rows} title="Flujos asignados"/>
+                        <DataTable columns={columns} rows={rows} title="Flujos asignados" PAGE_SIZE="5"/>
                     </div>                    
                 </div>
             </div>
