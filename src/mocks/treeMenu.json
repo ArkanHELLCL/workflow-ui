@@ -119,6 +119,12 @@
                         "label":"Proveedores",
                         "description":"Mantenedor de proveedoress",
                         "url":"/mantenedores/proveedores"
+                     },
+                     {
+                        "id":"mc",
+                        "label":"Comunas",
+                        "description":"Mantenedor de comunas",
+                        "url":"/mantenedores/comunas"
                      }
                ]
             }
@@ -253,6 +259,12 @@
                         "label":"Items Lista Desplegables",
                         "description":"Mantenedor de Items Lista Desplegables",
                         "url":"/mantenedores/item-lista-desplegable"
+                     },
+                     {
+                        "id":"mc",
+                        "label":"Comunas",
+                        "description":"Mantenedor de comunas",
+                        "url":"/mantenedores/comunas"
                      }
                ]
             }
@@ -393,6 +405,12 @@
                         "label":"Items Lista Desplegables",
                         "description":"Mantenedor de Items Lista Desplegables",
                         "url":"/mantenedores/item-lista-desplegable"
+                     },
+                     {
+                        "id":"mc",
+                        "label":"Comunas",
+                        "description":"Mantenedor de comunas",
+                        "url":"/mantenedores/comunas"
                      }
                ]
             }
@@ -493,6 +511,12 @@
                         "label":"Items Lista Desplegables",
                         "description":"Mantenedor de Items Lista Desplegables",
                         "url":"/mantenedores/item-lista-desplegable"
+                     },
+                     {
+                        "id":"mc",
+                        "label":"Comunas",
+                        "description":"Mantenedor de comunas",
+                        "url":"/mantenedores/comunas"
                      }
                ]
             }

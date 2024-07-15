@@ -53,13 +53,13 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                 </div>                
                 
                 <div className='grid grid-cols-12 gap-2 pb-3'>
-                    <div className='col-span-3 w-full'>
+                    <div className='col-span-3 w-full min-w-36'>
                         <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950 pb-2 truncate'>Previsualizción de firma</h2>{
                         filesList.length > 0 ? (
                             <img className="h-auto w-full" src={URL.createObjectURL(filesList[0])} />
                         ) : (
                             <div className="h-40 h-a w-full dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] rounded flex justify-center flex-col text-center font-light text-base">
-                                <span>Sin firma cargada</span>
+                                <span className='truncate'>Sin firma cargada</span>
                             </div>
                         )}
                     </div>
