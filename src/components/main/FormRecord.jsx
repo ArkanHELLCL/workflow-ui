@@ -9,15 +9,23 @@ import { registros } from '../../mocks/registrosM.json'
 
 import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
+import MCMant from './maintainer/comunaMant.jsx';
 
-function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList}){   
+function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList}){    
     const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields    
-
+    if (fields === undefined) return (
+        <>
+            <h2>Registro del mantenedor no encontrado</h2>
+            Id: {record.record.Id}
+        </>
+    )
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
             return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
         case 'mu':  //Usuarios
             return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList}/>
+        case 'mc':  //Comunas
+            return <MCMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
         default:
             return (
                 <>

@@ -44,13 +44,16 @@ export default function RegistroItem ({registro, ...props}){
             <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">
                 <span className="text-yellow-600 hover:text-yellow-400 leading-snug cursor-pointer" onClick={()=>console.log('click edit reg')} title="Modificar registro"><EditIcon/></span>                        
                 <span className="text-red-600 dark:text-red-800 hover:text-red-400 dark:hover:text-red-500 leading-snug cursor-pointer" onClick={()=>console.log('clik act reg')} title="Eliminar registro"><DelIcon/></span>{
-                    registro.estado === 1 ? 
-                    <span className="text-green-600 dark:text-green-800 hover:text-green-400 dark:hover:text-green-300 leading-snug cursor-pointer" onClick={()=>console.log('clik des reg')} title="Deshabilitar registro"><CheckIcon styles={"w-6 h-6"}/></span> : 
-                    <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-500 leading-snug cursor-pointer" onClick={()=>console.log('clik act reg')} title="Habilitar registro"><BlockIcon styles={"w-5 h-5"}/></span>
+                    registro.estado !== undefined && registro.estado === 1 ? 
+                    <span className="text-green-600 dark:text-green-800 hover:text-green-400 dark:hover:text-green-300 leading-snug cursor-pointer" onClick={()=>console.log('clik des reg')} title="Deshabilitar registro"><CheckIcon styles={"w-6 h-6"}/></span> : registro.estado !== undefined && registro.estado !== 1 ?
+                    <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-500 leading-snug cursor-pointer" onClick={()=>console.log('clik act reg')} title="Habilitar registro"><BlockIcon styles={"w-5 h-5"}/></span> : null
                 }                                
-            </p>
-            <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{diaName(registro.modificacion).slice(0,3) + ' ' + registro.modificacion?.slice(8,10) + '-' + registro.modificacion?.slice(5,7) + '-' + registro.modificacion?.slice(0,4)}</p>
-            <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">Id:{registro.Id}</p>
+            </p>{
+                registro.modificacion && (
+                    <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{diaName(registro.modificacion)?.slice(0,3) + ' ' + registro.modificacion?.slice(8,10) + '-' + registro.modificacion?.slice(5,7) + '-' + registro.modificacion?.slice(0,4)}</p>
+                    )
+                }
+                <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">Id:{registro.Id}</p>                                    
             </div>
         </article>
     )

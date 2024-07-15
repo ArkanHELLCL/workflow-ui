@@ -112,7 +112,7 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
                                         <span className='text-xs font-normal leading-tight w-fit px-2'>Deshabilitar</span>
                                 </button>
                             }{
-                            !isAllowed &&                                                
+                            isAllowed !== null && !isAllowed &&                                                
                                 <button 
                                     key='btn_habilitar'
                                     className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 

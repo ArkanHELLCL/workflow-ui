@@ -26,7 +26,7 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
             <h2 className='font-base text-lg -mb-1'>Datos del Usuario <span className='text-[#2c87d2]'>Id: {field.USR_Id}</span></h2>
             <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.USR_UsuarioEdit}</span></h2>
             <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.USR_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>
-            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.USR_Estado)===1 ? true : false} />
             <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                 <div className='grid grid-cols-12 gap-2 pb-3'>
                     <InputText frmRecord ={frmRecord} name='USR_Usuario' value={field.USR_Usuario} className='col-span-4' isRequired={true} placeholder='jlopez' label='Código' errorMessage='Debes ingresar un código de usuario'/>

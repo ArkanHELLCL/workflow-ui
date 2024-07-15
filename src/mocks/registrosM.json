@@ -46,5 +46,17 @@
             "USR_Firma": ""
         }        
     ]
+},{
+    "id":"mc",
+    "fields": [
+        {
+            "COM_OrdenGeografico": 1101,
+            "COM_Nombre": "Iquique",
+            "REG_Id": 1,
+            "COM_Id": 1,
+            "COM_UsuarioEdit": "lcastillo",
+            "COM_FechaEdit": "2021-01-01 00:00:00"
+        }
+    ]
 }]
 }
