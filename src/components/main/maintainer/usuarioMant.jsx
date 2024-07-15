@@ -14,7 +14,7 @@ import FlujosTable from './usuariomant/flujosTable.jsx';
 import departamentos from "../../../mocks/departamentos.json";
 import sexos from "../../../mocks/sexos.json";
 import perfiles from "../../../mocks/perfiles.json";
-import { columns, rows } from "./usuariomant/data.jsx";
+//import { columns, rows } from "./usuariomant/data.jsx";
 import { ButtonIcon } from '../../../utils/icons.jsx';
 
 export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, mant, record, filesList, setFilesList}) {
@@ -53,8 +53,8 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                 </div>                
                 
                 <div className='grid grid-cols-12 gap-2 pb-3'>
-                    <div className='col-span-3'>
-                        <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950 pb-2'>Previsualizción de firma</h2>{
+                    <div className='col-span-3 w-full'>
+                        <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950 pb-2 truncate'>Previsualizción de firma</h2>{
                         filesList.length > 0 ? (
                             <img className="h-auto w-full" src={URL.createObjectURL(filesList[0])} />
                         ) : (

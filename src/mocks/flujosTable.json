@@ -1,0 +1,11 @@
+{
+    "flujos":[
+        {"value": 1, "label": "Compras"},
+        {"value": 2, "label": "Boletas de Gartaía"},
+        {"value": 3, "label": "Desarrollo"},
+        {"value": 4, "label": "Pagos"}
+    ],
+    "asignados":[
+        {"id":1, "USR_Id": 5, "FLU_Id": 1}
+    ]
+}

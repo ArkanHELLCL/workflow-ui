@@ -23,30 +23,15 @@ import {
   gridPageSelector  
 } from '@mui/x-data-grid';
 import {
-  randomCreatedDate,
-  randomTraderName,
   randomId,
-  randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import { flujos } from '../../../../mocks/flujos.json';
-import { useMemo, useState } from 'react';
+import { flujos, asignados } from '../../../../mocks/flujosTable.json';
+import { user } from '../../../../mocks/usuario.json';
+import { useEffect, useMemo, useState } from 'react';
 
-/*const lstFlujos = {
-    getOptionValue:(value) => value.id,
-    getOptionLabel:(value) => value.name,
-    valueOptions: flujos
-}*/
 
-const lstFlujos = [
-    {value: 0, label: 'Todos los Flujos'},
-    {value: 1, label: 'Compras'},
-    {value: 2, label: 'Boletas de Gartaía'},
-    {value: 3, label: 'Desarrollo'},
-    {value: 4, label: 'Pagos'},    
-]
-
-const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
+//const roles = ['Market', 'Finance', 'Development'];
+/*const randomRole = () => {
   return randomArrayItem(roles);
 };
 
@@ -86,17 +71,17 @@ const initialRows = [
     joinDate: randomCreatedDate(),
     role: randomRole(),
   },
-];
+];*/
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
 
   const handleClick = () => {
     const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+    setRows((oldRows) => [...oldRows, { id, USR_Id: user.USR_Id, isNew: true }]);
     setRowModesModel((oldModel) => ({
       ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
+      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'FLU_Id' },
     }));
   };
 
@@ -195,7 +180,7 @@ function CustomPagination() {
 }
 
 export default function FlujosTable({title, pageSize}) {
-  const [rows, setRows] = useState(initialRows);
+  const [rows, setRows] = useState(asignados);
   const [rowModesModel, setRowModesModel] = useState({});
 
   const { filters } = useFilters()
@@ -251,31 +236,18 @@ export default function FlujosTable({title, pageSize}) {
     setRowModesModel(newRowModesModel);
   };
 
+  useEffect(() => {
+    console.log('rows', rows);
+  }, [rows]);
+
   const columns = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
     {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 80,
-      align: 'left',
-      headerAlign: 'left',
-      editable: true,
-    },
-    {
-      field: 'joinDate',
-      headerName: 'Join date',
-      type: 'date',
-      width: 180,
-      editable: true,
-    },
-    {
-      field: 'role',
+      field: 'FLU_Id',
       headerName: 'Flujo',
       width: 220,
       editable: true,
       type: 'singleSelect',
-      valueOptions: roles,
+      valueOptions: flujos,
     },
     {
       field: 'actions',
@@ -336,6 +308,7 @@ export default function FlujosTable({title, pageSize}) {
             <Box
             sx={{                
                 width: '100%',
+                height: '100%',
                 '& .actions': {
                 color: 'text.secondary',
                 },
@@ -354,6 +327,7 @@ export default function FlujosTable({title, pageSize}) {
                 onRowEditStop={handleRowEditStop}
                 processRowUpdate={processRowUpdate}
                 pageSizeOptions={[pageSize]}
+                autoheight
                 slots={{
                     toolbar: EditToolbar,
                     pagination: CustomPagination,
