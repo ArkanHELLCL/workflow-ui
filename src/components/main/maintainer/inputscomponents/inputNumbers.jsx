@@ -15,7 +15,7 @@ export default function InputNumbers ({frmRecord, name, value : val, className, 
                   required: (value) => {
                     if (!value && isRequired) return errorMessage;
                   },
-                  validEmail: (value) => {
+                  validNumbers: (value) => {
                     let currentNumber = value
                     let regex = /^[0-9]+$/i;
                         if (!regex.test(currentNumber.replace(/\s/g, ''))) {

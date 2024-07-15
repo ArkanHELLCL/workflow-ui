@@ -23,10 +23,10 @@ const handleNotDragOver = (event) => {
 
 function App() {   
   const frmRequest = useForm({
-    mode: "onBlur",
+    mode: "all",
   })
   const frmRecord = useForm({
-    mode: "onBlur",
+    mode: "all",
   })
 
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
