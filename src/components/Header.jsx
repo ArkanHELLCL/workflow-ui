@@ -20,7 +20,7 @@ import {
     InformesMenu,
     BandejaMenu,
     RegistroMenu
-} from "./header/";
+} from "./header/index.jsx";
 
 export default function Header({openDialog, setOpenDialog, frmRecord}){
    const { request } = useRequest()
