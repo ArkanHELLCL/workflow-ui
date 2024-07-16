@@ -8,19 +8,22 @@ import { user } from '../../../mocks/usuario.json';
 import regiones from "../../../mocks/regiones.json";
 import { ButtonIcon } from '../../../utils/icons.jsx';
 
-export default function MCMant({fields, frmRecord, openDialog, setOpenDialog, mant, record, setFilesList, setRecord}) {
+export default function MCMant({fields, frmRecord, openDialog, setOpenDialog, mant, record}) {
     const field = fields.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
+    /*frmRecord({
+        defaultValues: async () => fields.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
+    })*/
     const date = new Date()
     let fecha = date.toISOString()
     fecha = fecha.slice(0,16)?.replace('T',' ')
 
     return (
-        field || record?.record?.Id === 0 ?
+        field ?
         <section id="InputsContent" className="py-3 w-full flex flex-col h-full">
             <h2 className='font-base text-lg -mb-1'>Datos del Usuario <span className='text-[#2c87d2]'>Id: {field?.COM_Id ? field.COM_Id : 'Nuevo'}</span></h2>
             <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field?.COM_UsuarioEdit ? field?.COM_UsuarioEdit : user.USR_Usuario}</span></h2>
             <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field?.COM_FechaEdit ? field?.COM_FechaEdit?.slice(0,16)?.replace('T',' ') : fecha}</span></h2>
-            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={null} setFilesList={setFilesList} setRecord={setRecord}/>
+            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={null} />
             <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">            
                 <div className='grid grid-cols-12 gap-2 pb-3'>                    
                     <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región'/>

@@ -3,7 +3,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { useSnackbar } from 'notistack';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
 
-export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAllowed, setFilesList, setRecord}) {
+export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAllowed}) {
     const buttonsAnimation1 = useSpring({
         delay: 10,
         opacity: 0,
@@ -77,21 +77,15 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
             id:'del',
             open:true,
             frmname:'frmWFRecords',
-            action:'button',
+            action:'delete',
             type:'button'
         })        
     }
 
     async function hanldeNewClick(event){
-        event.preventDefault()
-        frmRecord.reset('', {
-            keepValues: false,
-        })
-        frmRecord.clearErrors()
-        setFilesList([])
-        setRecord({"record":{"Id":0}})
-        const elToRemove = document.getElementsByClassName('reqselected')[0]
-        elToRemove?.classList.remove('reqselected')
+        event.preventDefault()        
+        
+
         setOpenDialog({
             ...openDialog,
             titulo:'Crear  registro',
@@ -99,7 +93,7 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
             id:'new',
             open:true,
             frmname:'frmWFRecords',
-            action:'button',
+            action:'new',
             type:'button'
         })        
     }

@@ -21,11 +21,11 @@ function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, f
     )
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
-            return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} setFilesList={setFilesList} setRecord={setRecord}/>
+            return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
         case 'mu':  //Usuarios
             return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
         case 'mc':  //Comunas
-            return <MCMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} setFilesList={setFilesList} setRecord={setRecord}/>
+            return <MCMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
         default:
             return (
                 <>
@@ -49,9 +49,31 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog, setRec
     };
 
     useEffect(() => {        
-        if(openDialog?.option){
+        if(openDialog?.option && openDialog?.action === 'submit'){
             formRef.current.requestSubmit()
+            //enviar al endpoint datos del formulario
             enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
+        }else{
+            if(openDialog?.option && openDialog?.action === 'delete'){
+                //Ejecutar eliminación
+                enqueueSnackbar('Eliminación realizada correctamente!', { variant : "success" } )
+            }else{
+                if(openDialog?.option && openDialog?.action === 'new'){
+                    //Limpiar formulario
+                    setFilesList([])
+                    setRecord({"record":{"Id":0}})        
+                    const elToRemove = document.getElementsByClassName('reqselected')[0]
+                    elToRemove?.classList.remove('reqselected')
+
+                    frmRecord.reset({
+                        keepValues: false,
+                        keepDirty: false,
+                        keepDirtyValues: false,
+                        keepDefaultValues: false,
+                    })
+                    frmRecord.clearErrors()
+                }
+            }
         }
         setOpenDialog({...openDialog, option:false})                    
     }
