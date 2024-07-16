@@ -3,7 +3,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { useSnackbar } from 'notistack';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
 
-export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAllowed}) {
+export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAllowed, setFilesList, setRecord}) {
     const buttonsAnimation1 = useSpring({
         delay: 10,
         opacity: 0,
@@ -53,21 +53,55 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
         event.preventDefault()
         const isValid = await frmRecord.trigger()
         if(isValid){
-            //if(btns?.dialogo==='confirm'){
-                setOpenDialog({
-                    ...openDialog,
-                    titulo:'Guardar modificaciones',
-                    mensaje:'¿Desaea guardar las modificaciones realizadas?',
-                    id:'edit',
-                    open:true,
-                    frmname:'frmWFRecords',
-                    action:'submit',
-                    type:'button'
-                })
-            //}
+            setOpenDialog({
+                ...openDialog,
+                titulo:'Guardar modificaciones',
+                mensaje:'¿Desaea guardar las modificaciones realizadas?',
+                id:'edit',
+                open:true,
+                frmname:'frmWFRecords',
+                action:'submit',
+                type:'button'
+            })
         }else{
             enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
         }
+    }
+
+    async function hanldeDelClick(event){
+        event.preventDefault()
+        setOpenDialog({
+            ...openDialog,
+            titulo:'Eliminar registro',
+            mensaje:'¿Desaes elimnar el registro actual?',
+            id:'del',
+            open:true,
+            frmname:'frmWFRecords',
+            action:'button',
+            type:'button'
+        })        
+    }
+
+    async function hanldeNewClick(event){
+        event.preventDefault()
+        frmRecord.reset('', {
+            keepValues: false,
+        })
+        frmRecord.clearErrors()
+        setFilesList([])
+        setRecord({"record":{"Id":0}})
+        const elToRemove = document.getElementsByClassName('reqselected')[0]
+        elToRemove?.classList.remove('reqselected')
+        setOpenDialog({
+            ...openDialog,
+            titulo:'Crear  registro',
+            mensaje:'¿Desaes crear un nuebo registro?',
+            id:'new',
+            open:true,
+            frmname:'frmWFRecords',
+            action:'button',
+            type:'button'
+        })        
     }
 
     const { enqueueSnackbar } = useSnackbar();
@@ -82,7 +116,7 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Crear nuevo registro'
                             type='button'
-                            onClick={() => console.log('crear')}>
+                            onClick={() => hanldeNewClick(event)}>
                                 <ButtonIcon typeButton="btn_crear" styles='w-7 h-7'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Nuevo</span>
                         </button>
@@ -128,7 +162,7 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
                             className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                             title='Eliminación del registro'
                             type='button'
-                            onClick={() => console.log('eliminar')}>
+                            onClick={hanldeDelClick}>
                                 <ButtonIcon typeButton="btn_eliminar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
                                 <span className='text-xs font-normal leading-tight w-fit px-2'>Eliminar</span>
                         </button>

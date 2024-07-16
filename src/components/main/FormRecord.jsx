@@ -11,7 +11,7 @@ import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
 import MCMant from './maintainer/comunaMant.jsx';
 
-function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList}){    
+function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList, setRecord}){    
     const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields    
     if (fields === undefined) return (
         <>
@@ -21,11 +21,11 @@ function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, f
     )
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
-            return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+            return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} setFilesList={setFilesList} setRecord={setRecord}/>
         case 'mu':  //Usuarios
-            return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList}/>
+            return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
         case 'mc':  //Comunas
-            return <MCMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record}/>
+            return <MCMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} setFilesList={setFilesList} setRecord={setRecord}/>
         default:
             return (
                 <>
@@ -36,7 +36,7 @@ function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, f
     }
 }
 
-export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
+export default function FormRecord({frmRecord, openDialog, setOpenDialog, setRecord}){
     const { record } = useRecords()
     const { filters } = useFilters()
     const [filesList, setFilesList] = useState([]);
@@ -67,7 +67,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
                     <form id="frmWFRecords" noValidate ref={formRef}
                         className="h-full w-full flex flex-col columns-1"
                         onSubmit={frmRecord.handleSubmit(onSubmit)}>
-                            <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog} filesList={filesList} setFilesList={setFilesList}/>
+                            <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
                     </form>
                 </section>
             }{

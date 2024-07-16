@@ -34,11 +34,12 @@ export default function RegistroItem ({registro, ...props}){
     }
 
     return(
+        registro &&
         <article className={` regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={()=>handleRegClick(regId)} {...props} id={regId}>
             <div className="w-3/4">
-            <p className={`${record?.record.Id === registro.Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
+            <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
             <p className={`truncate text-base font-thin uppercase leading-snug`}>{registro.titulo}</p>
-            <p className={`${record?.record.Id === registro.Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{registro.detalle}</p>
+            <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{registro.detalle}</p>
             </div>
             <div className="w-1/4">
             <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">

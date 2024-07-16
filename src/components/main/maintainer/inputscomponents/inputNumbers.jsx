@@ -14,14 +14,7 @@ export default function InputNumbers ({frmRecord, name, value : val, className, 
                 validate: {
                   required: (value) => {
                     if (!value && isRequired) return errorMessage;
-                  },
-                  validNumbers: (value) => {
-                    let currentNumber = value
-                    let regex = /^[0-9]+$/i;
-                        if (!regex.test(currentNumber.replace(/\s/g, ''))) {
-                            return 'El dato ingresado no es un número';
-                        }
-                    }
+                  }
                 },
               }}
             defaultValue={val}
@@ -42,7 +35,7 @@ export default function InputNumbers ({frmRecord, name, value : val, className, 
                         onChange={onChange}
                         onBlur={onBlur}    
                         slotProps={{ 
-                                input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300' }, 
+                                input: { placeholder: placeholder, type: 'number', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300' }, 
                                 root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
                         sx={{
                             '--Input-minHeight': '56px',

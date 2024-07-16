@@ -83,9 +83,8 @@ export function useFilters() {
 
             //Estadisticas        
             filters.totalRequerimientos = filteredRequest?.length ? filteredRequest?.length : 0
-            //filters.totalSintomar = filteredRequest.filter((item) => item.IdEditor === undefined).length
             filters.totalVencidos = filteredRequest.filter((item) => item.estado === 0).length      //Bloqueados
-            filters.totalPorVencer = filteredRequest.filter((item) => item.estado === 1).length     //Habilitados
+            filters.totalPorVencer = filteredRequest.filter((item) => item.estado === 1 || item.estado === undefined).length     //Habilitados
 
             filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : (
                 item.titulo?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||

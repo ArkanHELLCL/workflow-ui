@@ -8,7 +8,7 @@ import CircularProgress from '@mui/joy/CircularProgress';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 import Box from "@mui/material/Paper";
-import  Sleep  from "../../../../utils/Sleep.jsx";
+import Sleep  from "../../../../utils/Sleep.jsx";
 
 export default function InputList ({frmRecord, name, dataOptions, className, isRequired, placeholder, label, errorMessage}) {
     const [open, setOpen] = useState(false);
