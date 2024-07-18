@@ -5,27 +5,19 @@ import { useRecords } from '../../hooks/useRecords.jsx';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
 import { useEffect, useRef, useState } from 'react';
-import { registros } from '../../mocks/registrosM.json'
 
 import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
 import MCMant from './maintainer/comunaMant.jsx';
 
-function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList, setRecord}){    
-    const fields = registros.filter(reg => reg.id === filters.itemIdSelected)[0].fields    
-    if (fields === undefined) return (
-        <>
-            <h2>Registro del mantenedor no encontrado</h2>
-            Id: {record.record.Id}
-        </>
-    )
+function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList, setRecord}){
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
-            return <MPMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
+            return <MPMant frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
         case 'mu':  //Usuarios
-            return <MUMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
+            return <MUMant frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
         case 'mc':  //Comunas
-            return <MCMant fields={fields} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
+            return <MCMant frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
         default:
             return (
                 <>
@@ -60,18 +52,17 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog, setRec
             }else{
                 if(openDialog?.option && openDialog?.action === 'new'){
                     //Limpiar formulario
+                    frmRecord.reset({}, { 
+                            keepValues: false, 
+                            keepDefaultValues: false, 
+                            keepDirty: false 
+                        })
+                    frmRecord.clearErrors()
+                    console.log('nuevo registro');
                     setFilesList([])
                     setRecord({"record":{"Id":0}})        
                     const elToRemove = document.getElementsByClassName('reqselected')[0]
-                    elToRemove?.classList.remove('reqselected')
-
-                    frmRecord.reset({
-                        keepValues: false,
-                        keepDirty: false,
-                        keepDirtyValues: false,
-                        keepDefaultValues: false,
-                    })
-                    frmRecord.clearErrors()
+                    elToRemove?.classList.remove('reqselected')                    
                 }
             }
         }

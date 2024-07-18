@@ -40,13 +40,20 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
         setOptions([]);
       }
     }, [open]);
+
+    let defaultValue = null
+
+    if(dataOptions.selected){
+      defaultValue = dataOptions.records.find((option) => option.id == dataOptions.selected.id)
+    }    
+    
   
     return (
       <Controller
           control={frmRecord.control}
           name={name}
           rules={isRequired ? {required : errorMessage} : {required : false}}
-          defaultValue={dataOptions.records.find((option) => option.id == dataOptions.selected.id)}        
+          defaultValue={defaultValue}
           render={({ field }) => (
               <FormControl                
                   id={name}

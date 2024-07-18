@@ -84,8 +84,6 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
 
     async function hanldeNewClick(event){
         event.preventDefault()        
-        
-
         setOpenDialog({
             ...openDialog,
             titulo:'Crear  registro',

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import InputList from './inputscomponents/inputList.jsx';
 import InputText from './inputscomponents/inputText.jsx';
@@ -7,15 +8,36 @@ import { user } from '../../../mocks/usuario.json';
 
 import regiones from "../../../mocks/regiones.json";
 import { ButtonIcon } from '../../../utils/icons.jsx';
+import { registros } from '../../../mocks/registrosM.json';
+import { useEffect, useState } from 'react';
 
-export default function MCMant({fields, frmRecord, openDialog, setOpenDialog, mant, record}) {
-    const field = fields.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
-    /*frmRecord({
-        defaultValues: async () => fields.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
-    })*/
+export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, record }) {
+    const [field, setField] = useState(null)
+    
     const date = new Date()
     let fecha = date.toISOString()
     fecha = fecha.slice(0,16)?.replace('T',' ')
+
+    useEffect(() => {
+        let reg
+        if(parseInt(record?.record?.Id) === 0) {
+            frmRecord.reset()
+            reg = {
+                    "COM_Id":0,
+                    "COM_Nombre":null,
+                    "COM_OrdenGeografico":null,                    
+                    "COM_UsuarioEdit":user.USR_Usuario,
+                    "COM_FechaEdit":fecha
+            }
+        }else{
+            reg = registros.filter(reg => reg.id === 'mc')[0].fields?.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
+        }
+        console.log('useEffect')
+        frmRecord.register('COM_Nombre')
+        frmRecord.setValue('COM_Nombre', 'hola')
+        frmRecord.resetField('COM_Nombre', { defaultValue: 'hola' })
+        setField(reg)        
+    },[registros, record])
 
     return (
         field ?

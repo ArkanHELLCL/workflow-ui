@@ -48,15 +48,7 @@
     ]
 },{
     "id":"mc",
-    "fields": [
-        {
-            "COM_OrdenGeografico": 0,
-            "COM_Nombre": null,
-            "REG_Id": null,
-            "COM_Id": 0,
-            "COM_UsuarioEdit": null,
-            "COM_FechaEdit": null
-        },
+    "fields": [        
         {
             "COM_OrdenGeografico": 1101,
             "COM_Nombre": "Iquique",
