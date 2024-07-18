@@ -28,8 +28,8 @@ function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, f
     }
 }
 
-export default function FormRecord({frmRecord, openDialog, setOpenDialog, setRecord}){
-    const { record } = useRecords()
+export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
+    const { record, setRecord } = useRecords()
     const { filters } = useFilters()
     const [filesList, setFilesList] = useState([]);
 

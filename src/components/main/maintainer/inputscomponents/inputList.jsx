@@ -10,7 +10,7 @@ import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.j
 import Box from "@mui/material/Paper";
 import Sleep  from "../../../../utils/Sleep.jsx";
 
-export default function InputList ({frmRecord, name, dataOptions, className, isRequired, placeholder, label, errorMessage}) {
+export default function InputList ({frmRecord, name, dataOptions, className, isRequired, placeholder, label, errorMessage, value}) {
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState([]);
     const loading = open && options.length === 0;      
@@ -39,13 +39,7 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
       if (!open) {
         setOptions([]);
       }
-    }, [open]);
-
-    let defaultValue = null
-
-    if(dataOptions.selected){
-      defaultValue = dataOptions.records.find((option) => option.id == dataOptions.selected.id)
-    }    
+    }, [open]);        
     
   
     return (
@@ -53,7 +47,7 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
           control={frmRecord.control}
           name={name}
           rules={isRequired ? {required : errorMessage} : {required : false}}
-          defaultValue={defaultValue}
+          //defaultValue={value}
           render={({ field }) => (
               <FormControl                
                   id={name}

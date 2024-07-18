@@ -27,10 +27,15 @@ function App() {
   })
   const frmRecord = useForm({
     mode: "all",
+    defaultValues: {
+      COM_Nombre : 'prueba',
+      COM_OrdenGeografico: 2000,
+      REG_Id:{id:1, name:'Región Tarapacá'}
+    }
   })
 
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
-
+  
   return (    
     <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
       <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] z-[60] transition-color delay-75" onDragOver={handleNotDragOver}>

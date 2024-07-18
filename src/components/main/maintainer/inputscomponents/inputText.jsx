@@ -11,8 +11,8 @@ export default function InputText ({frmRecord, name, value, className, isRequire
             control={frmRecord.control}
             name={name}
             rules={isRequired ? {required : errorMessage} : {required : false}}
-            defaultValue={value}
-            render={({ field: { onChange, onBlur } }) => (
+            //defaultValue={value}
+            render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl
                     id={name}
                     size='sm'
@@ -23,11 +23,12 @@ export default function InputText ({frmRecord, name, value, className, isRequire
                         autoComplete='on'
                         autoFocus={false}
                         error={!!frmRecord.formState.errors[name]}                    
-                        defaultValue={value}
+                        //defaultValue={value}
                         variant="outlined"
                         slots={{ input: InnerInput }}
                         onChange={onChange}
-                        onBlur={onBlur}                    
+                        onBlur={onBlur}
+                        value={value}
                         slotProps={{ 
                                 input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                                 root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}

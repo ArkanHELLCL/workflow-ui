@@ -52,8 +52,16 @@
         {
             "COM_OrdenGeografico": 1101,
             "COM_Nombre": "Iquique",
-            "REG_Id": 1,
+            "REG_Id": {"id" : 1, "label" : "Región Tarapacá"},
             "COM_Id": 1,
+            "COM_UsuarioEdit": "lcastillo",
+            "COM_FechaEdit": "2021-01-01 00:00:00"
+        },
+        {
+            "COM_OrdenGeografico": 1107,
+            "COM_Nombre": "Alto Hospicio",
+            "REG_Id": {"id" : 1, "label" : "Región Tarapacá"},
+            "COM_Id": 2,
             "COM_UsuarioEdit": "lcastillo",
             "COM_FechaEdit": "2021-01-01 00:00:00"
         }

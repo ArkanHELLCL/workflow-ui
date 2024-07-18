@@ -24,6 +24,7 @@ export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, reco
             frmRecord.reset()
             reg = {
                     "COM_Id":0,
+                    "REG_Id":null,
                     "COM_Nombre":null,
                     "COM_OrdenGeografico":null,                    
                     "COM_UsuarioEdit":user.USR_Usuario,
@@ -48,7 +49,7 @@ export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, reco
             <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={null} />
             <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">            
                 <div className='grid grid-cols-12 gap-2 pb-3'>                    
-                    <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región'/>
+                    <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región' value={field?.REG_Id}/>
                     <InputText frmRecord ={frmRecord} name='COM_Nombre' value={field?.COM_Nombre} className='col-span-5' isRequired={true} placeholder='Maipú' label='Comuna' errorMessage='Debes ingresar un nombre de comuna'/>
                     <InputNumbers frmRecord ={frmRecord} name='COM_OrdenGeografico' value={field?.COM_OrdenGeografico} className='col-span-2' isRequired={true} placeholder='11201' label='Código' errorMessage='Debes ingresar un código geográfico'/>
                 </div>                   
