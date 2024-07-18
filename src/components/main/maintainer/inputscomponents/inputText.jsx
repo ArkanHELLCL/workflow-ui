@@ -4,7 +4,7 @@ import FormControl from '@mui/joy/FormControl';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
-
+//Prueba pull
 export default function InputText ({frmRecord, name, value, className, isRequired, placeholder, label, errorMessage}) {
     return(
         <Controller
