@@ -41,7 +41,7 @@ export default function MUMant({frmRecord, openDialog, setOpenDialog, mant, reco
                     "SEX_Id":null,
                     "PER_Id":null,
                     "USR_Firma":'',
-                    "USR_Jefatura":0,
+                    "USR_Jefatura":false,
                     "USR_Estado":1,
                     "USR_UsuarioEdit":user.USR_Usuario,
                     "USR_FechaEdit":fecha
@@ -60,7 +60,7 @@ export default function MUMant({frmRecord, openDialog, setOpenDialog, mant, reco
         frmRecord.setValue('SEX_Id', reg?.SEX_Id)
         frmRecord.setValue('PER_Id', reg?.PER_Id)
         frmRecord.setValue('USR_Firma', reg?.USR_Firma)
-        frmRecord.setValue('USR_Jefatura', reg?.USR_Jefatura)        
+        frmRecord.setValue('USR_Jefatura', reg?.USR_Jefatura === 1 ? true : false)        
         
         setField(reg)        
     },[registros, record])
