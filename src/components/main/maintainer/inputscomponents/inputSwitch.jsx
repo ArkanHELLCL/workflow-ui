@@ -3,17 +3,16 @@ import { Controller } from 'react-hook-form';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
-export default function InputSwitch ({frmRecord, name, value, label, className}) {    
+export default function InputSwitch ({frmRecord, name, label, className}) {    
     return(
         <Controller
             control={frmRecord.control}
             name={name}            
-            defaultValue={value}            
-            render={({ field: { onChange, onBlur } }) => (                
+            render={({ field: { onChange, onBlur, value } }) => (                
                 <FormControlLabel 
                     control={
                         <Switch 
-                            defaultChecked={value} 
+                            checked={value}
                             sx={{
                                 "&.MuiSwitch-root .MuiSwitch-switchBase": {
                                   color: "#999999",                                  

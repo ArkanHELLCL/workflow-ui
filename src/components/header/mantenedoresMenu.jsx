@@ -9,7 +9,7 @@ import {
     DownReportIcon
     } from "../../utils/icons.jsx";
 
-export default function MantenedoresMenu ({styles}) {
+export default function MantenedoresMenu ({styles, openDialog, setOpenDialog}) {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -22,11 +22,25 @@ export default function MantenedoresMenu ({styles}) {
         config: { duration: 150 },
         delay: 200
     });
+
+    async function hanldeNewClick(event){
+        event.preventDefault()        
+        setOpenDialog({
+            ...openDialog,
+            titulo:'Crear  registro',
+            mensaje:'¿Desaes crear un nuebo registro?',
+            id:'new',
+            open:true,
+            frmname:'frmWFRecords',
+            action:'new',
+            type:'button'
+        })        
+    }
     return (
         <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
             <ContentMenu title={'Mantenedor del sistema'}>
                 <Dropdown>
-                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('crear reg')} title="Crear un nuevo registro">
+                    <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> hanldeNewClick(event)} title="Crear un nuevo registro">
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                             <TableIconPlus styles='w-8 h-8' />
                             <span className="!pt-2">Crear nuevo</span>

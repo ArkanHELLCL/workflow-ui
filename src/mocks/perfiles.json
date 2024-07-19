@@ -4,6 +4,5 @@
       { "id": 1, "label": "Super Administrador"},
       { "id": 2, "label": "Administrador"},
       { "id": 3, "label": "Revisor"}
-    ],
-    "selected":{"id" : 1, "label" : "Super Administrador"}
+    ]
 }

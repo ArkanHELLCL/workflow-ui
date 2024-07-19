@@ -70,7 +70,7 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
                 {
                     mantSelected &&  
                         <>
-                            <MantenedoresMenu styles={'z-40 h-full'}/>{
+                            <MantenedoresMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>{
                             record &&
                                 <RegistroMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
                             }

@@ -10,7 +10,7 @@ import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.j
 import Box from "@mui/material/Paper";
 import Sleep  from "../../../../utils/Sleep.jsx";
 
-export default function InputList ({frmRecord, name, dataOptions, className, isRequired, placeholder, label, errorMessage, value}) {
+export default function InputList ({frmRecord, name, dataOptions, className, isRequired, placeholder, label, errorMessage}) {
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState([]);
     const loading = open && options.length === 0;      
@@ -47,14 +47,13 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
           control={frmRecord.control}
           name={name}
           rules={isRequired ? {required : errorMessage} : {required : false}}
-          //defaultValue={value}
-          render={({ field }) => (
+          render={({ field: { onBlur, value } }) => (
               <FormControl                
                   id={name}
                   size='sm'
                   className={className}>
-                  <Autocomplete
-                      {...field}
+                  <Autocomplete                      
+                      value={value}
                       placeholder={placeholder}
                       error={!!frmRecord.formState.errors[name]}  
                       variant="outlined"
@@ -62,7 +61,7 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
                       onChange={(event, newValue) => {
                           frmRecord.setValue(name,newValue);
                       }}
-                      onBlur={field.onBlur}                    
+                      onBlur={onBlur}
                       slotProps={{ 
                               input: { placeholder: placeholder, label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                               root : { className : "dark:!bg-transparent dark:!border-[#575757]"},

@@ -11,33 +11,33 @@ import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
-export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, record }) {
+export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, record}) {
     const [field, setField] = useState(null)
     
     const date = new Date()
     let fecha = date.toISOString()
     fecha = fecha.slice(0,16)?.replace('T',' ')
-
+    
     useEffect(() => {
-        let reg
+        let reg        
         if(parseInt(record?.record?.Id) === 0) {
             frmRecord.reset()
             reg = {
                     "COM_Id":0,
                     "REG_Id":null,
-                    "COM_Nombre":null,
-                    "COM_OrdenGeografico":null,                    
+                    "COM_Nombre":'',
+                    "COM_OrdenGeografico":'',
                     "COM_UsuarioEdit":user.USR_Usuario,
                     "COM_FechaEdit":fecha
             }
         }else{
             reg = registros.filter(reg => reg.id === 'mc')[0].fields?.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
         }
-        console.log('useEffect')
-        frmRecord.register('COM_Nombre')
-        frmRecord.setValue('COM_Nombre', 'hola')
-        frmRecord.resetField('COM_Nombre', { defaultValue: 'hola' })
-        setField(reg)        
+        frmRecord.clearErrors()        
+        frmRecord.setValue('COM_Nombre', reg?.COM_Nombre)
+        frmRecord.setValue('REG_Id', reg?.REG_Id)
+        frmRecord.setValue('COM_OrdenGeografico', reg?.COM_OrdenGeografico)
+        setField(reg)
     },[registros, record])
 
     return (
@@ -49,10 +49,11 @@ export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, reco
             <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={null} />
             <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">            
                 <div className='grid grid-cols-12 gap-2 pb-3'>                    
-                    <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región' value={field?.REG_Id}/>
-                    <InputText frmRecord ={frmRecord} name='COM_Nombre' value={field?.COM_Nombre} className='col-span-5' isRequired={true} placeholder='Maipú' label='Comuna' errorMessage='Debes ingresar un nombre de comuna'/>
-                    <InputNumbers frmRecord ={frmRecord} name='COM_OrdenGeografico' value={field?.COM_OrdenGeografico} className='col-span-2' isRequired={true} placeholder='11201' label='Código' errorMessage='Debes ingresar un código geográfico'/>
-                </div>                   
+                    <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región'/>
+                    <InputText frmRecord ={frmRecord} name='COM_Nombre' className='col-span-5' isRequired={true} placeholder='Maipú' label='Comuna' errorMessage='Debes ingresar un nombre de comuna'/>
+                    <InputNumbers frmRecord ={frmRecord} name='COM_OrdenGeografico' className='col-span-2' isRequired={true} placeholder='11201' label='Código' errorMessage='Debes ingresar un código geográfico'/>
+                </div>
+                <input type="hidden" {...frmRecord.register('COM_Id')} value={field?.COM_Id} />
 
                 <div className='grid grid-cols-12 gap-2'>
                     <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field?.COM_Estado) === 1 && field?.COM_Estado !== undefined ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : parseInt(field?.COM_Estado) === 1 && field?.COM_Estado !== undefined ?<ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : null}{parseInt(field?.COM_Estado) === 1  && field?.COM_Estado !== undefined ? ' Habilitado' : parseInt(field?.COM_Estado) !== 1  && field?.COM_Estado !== undefined ? ' Deshabilitado' : null}</span>

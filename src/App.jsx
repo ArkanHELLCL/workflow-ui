@@ -26,12 +26,7 @@ function App() {
     mode: "all",
   })
   const frmRecord = useForm({
-    mode: "all",
-    defaultValues: {
-      COM_Nombre : 'prueba',
-      COM_OrdenGeografico: 2000,
-      REG_Id:{id:1, name:'Región Tarapacá'}
-    }
+    mode: "all"
   })
 
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})

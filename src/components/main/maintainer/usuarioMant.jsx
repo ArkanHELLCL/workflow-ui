@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import InputList from './inputscomponents/inputList.jsx';
 import InputText from './inputscomponents/inputText.jsx';
@@ -8,14 +9,61 @@ import InputPhone from './inputscomponents/inputPhone.jsx';
 import InputSwitch from './inputscomponents/inputSwitch.jsx';
 import InputFile from './inputscomponents/inputFile.jsx';
 import FlujosTable from './usuariomant/flujosTable.jsx';
+import { user } from '../../../mocks/usuario.json';
 
 import departamentos from "../../../mocks/departamentos.json";
 import sexos from "../../../mocks/sexos.json";
 import perfiles from "../../../mocks/perfiles.json";
 import { ButtonIcon } from '../../../utils/icons.jsx';
+import { registros } from '../../../mocks/registrosM.json';
+import { useEffect, useState } from 'react';
 
-export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, mant, record, filesList, setFilesList}) {
-    const field = fields.filter(fld => parseInt(fld.USR_Id) === parseInt(record?.record?.Id))[0]
+export default function MUMant({frmRecord, openDialog, setOpenDialog, mant, record, filesList, setFilesList}) {    
+    const [field, setField] = useState(null)
+    
+    const date = new Date()
+    let fecha = date.toISOString()
+    fecha = fecha.slice(0,16)?.replace('T',' ')
+
+    useEffect(() => {
+        let reg
+        if(parseInt(record?.record?.Id) === 0) {
+            frmRecord.reset()
+            reg = {
+                    "USR_Id":0,
+                    "USR_Usuario":'',
+                    "USR_Nombre":'',
+                    "USR_Apellido":'',
+                    "USR_Rut":'',
+                    "USR_Mail":'',
+                    "DEP_Id":null,
+                    "USR_Telefono":'',
+                    "SEX_Id":null,
+                    "PER_Id":null,
+                    "USR_Firma":'',
+                    "USR_Jefatura":0,
+                    "USR_Estado":1,
+                    "USR_UsuarioEdit":user.USR_Usuario,
+                    "USR_FechaEdit":fecha
+            }
+        }else{
+            reg = registros.filter(reg => reg.id === 'mu')[0].fields?.filter(fld => parseInt(fld.USR_Id) === parseInt(record?.record?.Id))[0]
+        }        
+        frmRecord.setValue('USR_Usuario', reg?.USR_Usuario)
+        frmRecord.setValue('USR_Nombre', reg?.USR_Nombre)
+        frmRecord.setValue('USR_Apellido', reg?.USR_Apellido)
+
+        frmRecord.setValue('USR_Rut', reg?.USR_Rut)
+        frmRecord.setValue('USR_Mail', reg?.USR_Mail)
+        frmRecord.setValue('DEP_Id', reg?.DEP_Id)
+        frmRecord.setValue('USR_Telefono', reg?.USR_Telefono)
+        frmRecord.setValue('SEX_Id', reg?.SEX_Id)
+        frmRecord.setValue('PER_Id', reg?.PER_Id)
+        frmRecord.setValue('USR_Firma', reg?.USR_Firma)
+        frmRecord.setValue('USR_Jefatura', reg?.USR_Jefatura)        
+        
+        setField(reg)        
+    },[registros, record])
     
     return (
         field ?
@@ -39,7 +87,7 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
 
                 <div className='grid grid-cols-12 gap-2 pb-3'>
                     <InputPhone frmRecord ={frmRecord} name='USR_Telefono' value={field.USR_Telefono} className='col-span-2' isRequired={false} placeholder='123456788' label='Teléfono' errorMessage=''/>
-                    <InputList frmRecord ={frmRecord} name='SEX_Id' dataOptions={sexos} className='col-span-3' isRequired={false} placeholder='Femenino' label='Género' errorMessage=''/>
+                    <InputList frmRecord ={frmRecord} name='SEX_Id' dataOptions={sexos} className='col-span-3' isRequired={true} placeholder='Femenino' label='Género' errorMessage='Debes seleccionar un sexo'/>
                     <InputList frmRecord ={frmRecord} name='PER_Id' dataOptions={perfiles} className='col-span-3' isRequired={true} placeholder='Revisor' label='Perfil' errorMessage='Debes ingresar el perfil del usuario'/>
                     <InputFile frmRecord ={frmRecord} name='USR_Firma' label='Firma' className='col-span-2' isRequired={true} filesList={filesList} setFilesList={setFilesList} errorMessage='Debes adjuntar un archivo'/>
                     <InputSwitch frmRecord ={frmRecord} name='USR_Jefatura' value={parseInt(field.USR_Jefatura)===0 ? false : true} className='col-span-2 !items-center !justify-center' label='Jefatura'/>                    
@@ -64,6 +112,8 @@ export default function MUMant({fields, frmRecord, openDialog, setOpenDialog, ma
                         <FlujosTable title="Flujos asignados" pageSize={5}/>
                     </div>                    
                 </div>
+
+                <input type="hidden" {...frmRecord.register('USR_Id')} value={field?.USR_Id} />
             </div>            
         </section>
         :

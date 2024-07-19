@@ -12,7 +12,7 @@ const diaName = (fecha) => {
     return dias[newDate.getDay()]
 }
 
-export default function RegistroItem ({registro, ...props}){
+export default function RegistroItem ({registro, frmRecord, ...props}){
     const { record, setRecord } = useRecords()    
     const { filters } = useFilters()
     const regId = filters.itemIdSelected + '-' + registro.Id
@@ -27,10 +27,12 @@ export default function RegistroItem ({registro, ...props}){
         const elToRemove = document.getElementById(filters.itemIdSelected + '-' + record?.record.Id)
         elToRemove?.classList.remove('reqselected')
         const elToAdd = document.getElementById(id)
-        elToAdd.classList.add('reqselected')        
+        elToAdd.classList.add('reqselected')
         setRecord({            
             "record": registro,
-          })
+        })
+        frmRecord.reset()
+        frmRecord.clearErrors()
     }
 
     return(

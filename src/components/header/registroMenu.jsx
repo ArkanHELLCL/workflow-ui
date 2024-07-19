@@ -12,7 +12,7 @@ import {
     TableIconNext,
     TableIconPrev
     } from "../../utils/icons.jsx";
-    import { useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import { useRecords } from "../../hooks/useRecords.jsx";
 
 export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRecord}) {
@@ -21,21 +21,33 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
         event.preventDefault()
         const isValid = await frmRecord.trigger()
         if(isValid){
-            //if(btns?.dialogo==='confirm'){
-                setOpenDialog({
-                    ...openDialog,
-                    titulo:'Guardar modificaciones',
-                    mensaje:'¿Desaea guardar las modificaciones realizadas?',
-                    id:'edit',
-                    open:true,
-                    frmname:'frmRecord',
-                    action:'submit',
-                    type:'button'
-                })
-            //}
+            setOpenDialog({
+                ...openDialog,
+                titulo:'Guardar modificaciones',
+                mensaje:'¿Desaea guardar las modificaciones realizadas?',
+                id:'edit',
+                open:true,
+                frmname:'frmRecord',
+                action:'submit',
+                type:'button'
+            })            
         }else{
             enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
         }
+    }
+
+    async function hanldeDelClick(event){
+        event.preventDefault()
+        setOpenDialog({
+            ...openDialog,
+            titulo:'Eliminar registro',
+            mensaje:'¿Desaes elimnar el registro actual?',
+            id:'del',
+            open:true,
+            frmname:'frmWFRecords',
+            action:'delete',
+            type:'button'
+        })        
     }
 
     const { enqueueSnackbar } = useSnackbar();
@@ -101,7 +113,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                         </Dropdown>
                     }
                     <Dropdown>
-                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Eliminación del registro">
+                        <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> hanldeDelClick(event)} title="Eliminación del registro">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                                 <TableIconDel styles='w-9 h-9' />
                                 <span className="!pt-2">Eliminar</span>

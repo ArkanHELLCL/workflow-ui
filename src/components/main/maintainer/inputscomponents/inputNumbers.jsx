@@ -5,7 +5,7 @@ import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 
-export default function InputNumbers ({frmRecord, name, value : val, className, isRequired, placeholder, label, errorMessage}) {
+export default function InputNumbers ({frmRecord, name, className, isRequired, placeholder, label, errorMessage}) {
     return(
         <Controller
             control={frmRecord.control}
@@ -17,8 +17,7 @@ export default function InputNumbers ({frmRecord, name, value : val, className, 
                   }
                 },
               }}
-            defaultValue={val}
-            render={({ field: { onChange, onBlur } }) => (
+            render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl
                     id={name}
                     size='sm'
@@ -29,7 +28,7 @@ export default function InputNumbers ({frmRecord, name, value : val, className, 
                         autoComplete='on'
                         autoFocus={false}
                         error={!!frmRecord.formState.errors[name]}                    
-                        defaultValue={val}
+                        value={value}
                         variant="outlined"
                         slots={{ input: InnerInput }}
                         onChange={onChange}

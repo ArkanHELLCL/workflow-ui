@@ -35,7 +35,6 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
 
     const onSubmit = (data) => {        
         console.log('recordcomponent',data);
-        frmRecord.reset()
         frmRecord.clearErrors()
         setFilesList([])
     };

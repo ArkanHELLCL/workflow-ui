@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import bancos from "../../../mocks/bancos.json";
 import tiposdecuenta from "../../../mocks/tiposdecuenta.json";
@@ -8,9 +9,49 @@ import InputEmail from './inputscomponents/inputEmail.jsx';
 import InputPhone from './inputscomponents/inputPhone.jsx';
 import InputButtons from './inputscomponents/inputButtons.jsx';
 import { ButtonIcon } from '../../../utils/icons.jsx';
+import { user } from '../../../mocks/usuario.json';
+import { registros } from '../../../mocks/registrosM.json';
+import { useEffect, useState } from 'react';
 
-export default function MPMant({fields, frmRecord, openDialog, setOpenDialog, mant, record }) {
-    const field = fields.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
+export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, record }) {
+    const [field, setField] = useState(null)
+    
+    const date = new Date()
+    let fecha = date.toISOString()
+    fecha = fecha.slice(0,16)?.replace('T',' ')
+
+    useEffect(() => {
+        let reg
+        if(parseInt(record?.record?.Id) === 0) {
+            frmRecord.reset()
+            reg = {
+                    "PRO_Id":0,
+                    "PRO_RazonSocial":'',
+                    "PRO_Rut":'',
+                    "PRO_Direccion":'',
+                    "PRO_Mail":'',
+                    "PRO_Telefono":'',
+                    "PRO_Banco_ILD":null,
+                    "PRO_NumCuentaBancaria":'',
+                    "TCU_Id":null,
+                    "PRO_Estado":1,
+                    "PRO_UsuarioEdit":user.USR_Usuario,                    
+                    "PRO_FechaEdit":fecha
+            }
+        }else{
+            reg = registros.filter(reg => reg.id === 'mp')[0].fields?.filter(fld => parseInt(fld.PRO_Id) === parseInt(record?.record?.Id))[0]
+        }        
+        frmRecord.setValue('PRO_RazonSocial', reg?.PRO_RazonSocial)
+        frmRecord.setValue('PRO_Rut', reg?.PRO_Rut)
+        frmRecord.setValue('PRO_Direccion', reg?.PRO_Direccion)
+        frmRecord.setValue('PRO_Mail', reg?.PRO_Mail)
+        frmRecord.setValue('PRO_Telefono', reg?.PRO_Telefono)
+        frmRecord.setValue('PRO_Banco_ILD', reg?.PRO_Banco_ILD)
+        frmRecord.setValue('PRO_NumCuentaBancaria', reg?.PRO_NumCuentaBancaria)
+        frmRecord.setValue('TCU_Id', reg?.TCU_Id)
+        setField(reg)        
+    },[registros, record])
+
     return ( 
         field ?
             <section id="InputsContent" className="py-3 w-full flex flex-col h-full">
@@ -20,25 +61,27 @@ export default function MPMant({fields, frmRecord, openDialog, setOpenDialog, ma
                 <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
                 <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <InputText frmRecord ={frmRecord} name='PRO_RazonSocial' value={field.PRO_RazonSocial} className='col-span-9' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social' errorMessage='Debes ingresar una razón social'/>
-                        <InputRut frmRecord ={frmRecord} name='PRO_Rut' value={field.PRO_Rut} className='col-span-3' isRequired={true} placeholder='12345678K' label='Rut' errorMessage='Debes ingresar un RUT válido'/>
+                        <InputText frmRecord={frmRecord} name='PRO_RazonSocial' className='col-span-9' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social' errorMessage='Debes ingresar una razón social'/>
+                        <InputRut frmRecord={frmRecord} name='PRO_Rut' className='col-span-3' isRequired={true} placeholder='12345678K' label='Rut' errorMessage='Debes ingresar un RUT válido'/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <InputText frmRecord ={frmRecord} name='PRO_Direccion' value={field.PRO_Direccion} className='col-span-12' isRequired={false} placeholder='Calle 35, Providencia' label='Dirección comercial' errorMessage=''/>
+                        <InputText frmRecord ={frmRecord} name='PRO_Direccion' className='col-span-12' isRequired={false} placeholder='Calle 35, Providencia' label='Dirección comercial' errorMessage=''/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <InputEmail frmRecord ={frmRecord} name='PRO_Mail' value={field.PRO_Mail} className='col-span-8' isRequired={true} placeholder='miempresa@correo.cl' label='Correo electrónico' errorMessage='Debes ingresar el Email del proveedor'/>
-                        <InputPhone frmRecord ={frmRecord} name='PRO_Telefono' value={field.PRO_Telefono} className='col-span-4' isRequired={false} placeholder='912345678' label='Teléfono' errorMessage='Debes ingresar un télefono válido'/>
+                        <InputEmail frmRecord ={frmRecord} name='PRO_Mail' className='col-span-8' isRequired={true} placeholder='miempresa@correo.cl' label='Correo electrónico' errorMessage='Debes ingresar el Email del proveedor'/>
+                        <InputPhone frmRecord ={frmRecord} name='PRO_Telefono' className='col-span-4' isRequired={false} placeholder='912345678' label='Teléfono' errorMessage='Debes ingresar un télefono válido'/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
                         <InputList frmRecord ={frmRecord} name='PRO_Banco_ILD' dataOptions={bancos} className='col-span-4' isRequired={true} placeholder='Seleccione un banco' label={bancos.name} errorMessage='Debes seleccionar un banco'/>
-                        <InputText frmRecord ={frmRecord} name='PRO_NumCuentaBancaria' value={field.PRO_NumCuentaBancaria} className='col-span-4' isRequired={true} placeholder='1234567890' label='Número de cuenta bancaria' errorMessage='Debes ingresar el número de cuenta bancaria'/>
+                        <InputText frmRecord ={frmRecord} name='PRO_NumCuentaBancaria' className='col-span-4' isRequired={true} placeholder='1234567890' label='Número de cuenta bancaria' errorMessage='Debes ingresar el número de cuenta bancaria'/>
                         <InputList frmRecord ={frmRecord} name='TCU_Id' dataOptions={tiposdecuenta} className='col-span-4' isRequired={true} placeholder='Seleccione un banco' label={tiposdecuenta.name} errorMessage='Debes seleccionar un tipo de cuenta'/>
                     </div>
                     <div className='grid grid-cols-12 gap-2 pb-3'>
                         <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.PRO_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.PRO_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
                     </div>
                 </div>
+
+                <input type="hidden" {...frmRecord.register('PRO_Id')} value={field?.PRO_Id} />
             </section> :
             (
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50`}>

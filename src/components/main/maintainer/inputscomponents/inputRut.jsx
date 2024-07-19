@@ -7,7 +7,7 @@ import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.j
 import FormatearRut from '../../../../utils/FormatearRut.jsx';
 import { Fn } from '../../../../utils/validaRut.jsx';
 
-export default function InputRut ({frmRecord, name, value : val, className, isRequired, placeholder, label, errorMessage}) {
+export default function InputRut ({frmRecord, name, className, isRequired, placeholder, label, errorMessage}) {
     return (
       <Controller
           control={frmRecord.control}
@@ -20,8 +20,7 @@ export default function InputRut ({frmRecord, name, value : val, className, isRe
                 }
               },
               maxLength: 13
-            }}
-          defaultValue={FormatearRut(val)}
+            }}          
           render={({ field }) => (
               <FormControl
                   {...field}
@@ -38,7 +37,7 @@ export default function InputRut ({frmRecord, name, value : val, className, isRe
                       slots={{ input: InnerInput }}
                       onChange={(e) => field.onChange(()=>frmRecord.setValue(name,FormatearRut(e.target.value)))}
                       onBlur={field.onBlur}
-                      value={field.value}
+                      value={FormatearRut(field.value)}
                       slotProps={{ 
                               input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                               root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}

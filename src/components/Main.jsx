@@ -51,7 +51,7 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
                         <ListaRequerimientos/>
                       </>
                     ) : (                      
-                      <ListaRegMantenedores />                      
+                      <ListaRegMantenedores frmRecord={frmRecord}/>                      
                     )
                 }
                 </Suspense>                  

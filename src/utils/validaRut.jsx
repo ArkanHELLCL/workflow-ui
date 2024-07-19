@@ -1,6 +1,6 @@
 export const Fn = {
 	// Valida el rut con su cadena completa "XXXXXXXX-X"
-	validaRut : function (rutCompleto) {      
+	validaRut : function (rutCompleto) {
         if(typeof rutCompleto === 'string' ){ 
             rutCompleto = rutCompleto?.replace(/[^0-9kK-]+/g, '');
             if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))

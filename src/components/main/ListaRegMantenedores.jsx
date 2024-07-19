@@ -8,7 +8,7 @@ import Loading from "../../utils/Loading.jsx";
 
 //const mantenedores = lazy(() => import('../../mocks/mantenedores.json'));
 
-export default function ListaRegMantenedores(){
+export default function ListaRegMantenedores({frmRecord}){
     const { filterRequest } = useFilters() 
     const { filteredRequest } = filterRequest(mantenedores)   
     //console.log('ListaRegMantenedores')
@@ -20,7 +20,7 @@ export default function ListaRegMantenedores(){
                 </div>            
             )}
             {filteredRequest.map((item, index) => (
-               <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : 'unde-' + index}/>
+               <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : 'unde-' + index} frmRecord={frmRecord}/>
             ))}        
         </Suspense>            
     )
