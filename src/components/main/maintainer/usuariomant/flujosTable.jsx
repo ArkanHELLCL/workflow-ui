@@ -168,11 +168,12 @@ export default function FlujosTable({title, pageSize}) {
 
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-    //console.log('Save row with id:', id,rows) ;
+    //console.log('Save row with id:', id,rows.length) ;
+    //console.log('Save row with id:', id,rows) ;    
   };
 
   const handleDeleteClick = (id) => () => {
-    setRows(rows.filter((row) => row.id !== id));
+    setRows(rows.filter((row) => row.id !== id));    
   };
 
   const handleCancelClick = (id) => () => {
@@ -198,8 +199,8 @@ export default function FlujosTable({title, pageSize}) {
   };
 
   useEffect(() => {
-    setRows(asignados.filter(item => parseInt(item.USR_Id) === parseInt(record.record.Id)))
-    console.log('rows', rows);
+    setRows(asignados.filter(item => parseInt(item.USR_Id) === parseInt(record.record.Id)))    
+    //console.log('rows', rows);
   }, [record]);
 
   const columns = [

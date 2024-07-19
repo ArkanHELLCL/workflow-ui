@@ -34,7 +34,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
     const [filesList, setFilesList] = useState([]);
 
     const onSubmit = (data) => {        
-        console.log('recordcomponent',data);
+        console.log('recordcomponent',data, record);
         frmRecord.clearErrors()
         setFilesList([])
     };
