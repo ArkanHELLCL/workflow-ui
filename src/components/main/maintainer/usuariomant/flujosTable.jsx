@@ -30,49 +30,7 @@ import { flujos, asignados } from '../../../../mocks/flujosTable.json';
 import { user } from '../../../../mocks/usuario.json';
 import { useEffect, useMemo, useState } from 'react';
 import { useRecords } from '../../../../hooks/useRecords.jsx';
-
-//const roles = ['Market', 'Finance', 'Development'];
-/*const randomRole = () => {
-  return randomArrayItem(roles);
-};
-
-const initialRows = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 19,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 28,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 23,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-];*/
+import { esES } from '@mui/x-data-grid/locales';
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
@@ -193,7 +151,8 @@ export default function FlujosTable({title, pageSize}) {
         palette: {
           mode: prefersDarkMode ? 'dark' : 'light',
         },
-      }),
+      },
+    esES),
     [prefersDarkMode],
   );
 
@@ -253,11 +212,11 @@ export default function FlujosTable({title, pageSize}) {
       valueOptions: flujos,
     },
     {
-      field: 'actions',
+      field: 'acciones',
       type: 'actions',
-      headerName: 'Actions',
+      headerName: 'Acciones',
       flex: 1,
-      cellClassName: 'actions',
+      cellClassName: 'acciones',
       getActions: ({ id }) => {
         const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
 

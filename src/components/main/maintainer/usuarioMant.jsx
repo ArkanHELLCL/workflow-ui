@@ -52,7 +52,6 @@ export default function MUMant({frmRecord, openDialog, setOpenDialog, mant, reco
         frmRecord.setValue('USR_Usuario', reg?.USR_Usuario)
         frmRecord.setValue('USR_Nombre', reg?.USR_Nombre)
         frmRecord.setValue('USR_Apellido', reg?.USR_Apellido)
-
         frmRecord.setValue('USR_Rut', reg?.USR_Rut)
         frmRecord.setValue('USR_Mail', reg?.USR_Mail)
         frmRecord.setValue('DEP_Id', reg?.DEP_Id)

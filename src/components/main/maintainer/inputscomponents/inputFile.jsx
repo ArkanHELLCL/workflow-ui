@@ -28,7 +28,7 @@ export default function InputFile({frmRecord, name, label, className, isRequired
             size='sm'
             className={className + ' pb-2'}
             >
-            <label htmlFor={name} className={`flex items-center justify-center rounded min-h-full h-full w-full cursor-pointer gap-2 dark:text-stone-100 text-stone-450 !text-base !font-light hover:text-[#2c87d2] ${frmRecord.formState.errors[name] ? '!text-red-600' : '' } dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] hover:bg-[#eff6fc] dark:hover:bg-[#666666]`}>
+            <label htmlFor={name} className={`flex items-center justify-center rounded min-h-[54px] w-full cursor-pointer gap-2 dark:text-stone-100 text-stone-450 !text-base !font-light hover:text-[#2c87d2] ${frmRecord.formState.errors[name] ? '!text-red-600' : '' }  outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] hover:bg-[#eff6fc] dark:hover:bg-[#666666]`}>
                 <CloudUploadIcon /> <span className='dark:text-stone-100 text-stone-900'>{label}</span>
             </label>
             <input 

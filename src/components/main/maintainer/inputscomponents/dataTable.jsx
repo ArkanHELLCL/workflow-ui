@@ -12,6 +12,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import { useFilters } from '../../../../hooks/useFilters.jsx';
 import { useMemo, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { esES } from '@mui/x-data-grid/locales';
 
 function customCheckbox(theme) {
   return {
@@ -154,7 +155,8 @@ export default function DataTable({columns, rows, title, pageSize}) {
         palette: {
           mode: prefersDarkMode ? 'dark' : 'light',
         },
-      }),
+      },
+      esES),
     [prefersDarkMode],
   );
 
