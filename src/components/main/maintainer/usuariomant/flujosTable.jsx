@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { styled } from '@mui/material/styles';
 import { useFilters } from '../../../../hooks/useFilters.jsx';
@@ -28,7 +29,7 @@ import {
 import { flujos, asignados } from '../../../../mocks/flujosTable.json';
 import { user } from '../../../../mocks/usuario.json';
 import { useEffect, useMemo, useState } from 'react';
-
+import { useRecords } from '../../../../hooks/useRecords.jsx';
 
 //const roles = ['Market', 'Finance', 'Development'];
 /*const randomRole = () => {
@@ -180,8 +181,9 @@ function CustomPagination() {
 }
 
 export default function FlujosTable({title, pageSize}) {
-  const [rows, setRows] = useState(asignados);
+  const [rows, setRows] = useState([]);
   const [rowModesModel, setRowModesModel] = useState({});
+  const { record } = useRecords();
 
   const { filters } = useFilters()
   const prefersDarkMode = filters.darkMode
@@ -237,8 +239,9 @@ export default function FlujosTable({title, pageSize}) {
   };
 
   useEffect(() => {
+    setRows(asignados.filter(item => parseInt(item.USR_Id) === parseInt(record.record.Id)))
     console.log('rows', rows);
-  }, [rows]);
+  }, [record]);
 
   const columns = [
     {

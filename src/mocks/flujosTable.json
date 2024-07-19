@@ -6,6 +6,7 @@
         {"value": 4, "label": "Pagos"}
     ],
     "asignados":[
-        {"id":1, "USR_Id": 5, "FLU_Id": 1}
+        {"id":1, "USR_Id": 5, "FLU_Id": 1},
+        {"id":1, "USR_Id": 6, "FLU_Id": 2}
     ]
 }
