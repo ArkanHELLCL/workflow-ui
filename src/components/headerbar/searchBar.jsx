@@ -13,12 +13,12 @@ import MenuItem from '@mui/joy/MenuItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Check from '@mui/icons-material/Check'
 import SearchIcon from '@mui/icons-material/Search';
+import { useFilters } from "../../hooks/useFilters.jsx";
 
-
-
-export default function SearchBar({openSearch, setOpenSearch, setFilters, filters}) {    
+export default function SearchBar({openSearch, setOpenSearch}) {    
     const menuSearch = useId();
     const [value, setValue] = useState();
+    const { filters, setFilters } = useFilters();
 
     useEffect(() => {
         if(filters.stringSearch==="") setValue('')
@@ -93,7 +93,7 @@ export default function SearchBar({openSearch, setOpenSearch, setFilters, filter
     return(
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} onDragOver={handleNotDragOver}>{
-                openSearch &&            
+                openSearch && filters.itemIdSelected.charAt(0).toUpperCase() === 'B' &&
                     <animated.div
                         className={`absolute`}
                         style={searchAnimation}>                            
