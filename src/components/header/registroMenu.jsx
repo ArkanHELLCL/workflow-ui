@@ -84,7 +84,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                     <Dropdown>
                         <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={() => hanldeOnClick(event)} title="Guardar modificaciones realizadas">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                <TableIconSave styles='w-9 h-9' />
+                                <TableIconSave styles='w-10 h-10' />
                                 <span className="!pt-2">Guardar</span>
                                 <span>cambios</span>
                             </div>
@@ -94,7 +94,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                         <Dropdown>
                             <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('deshanilitar inf')} title="Cambiar el estado del registro a deshabilitado">
                                 <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                    <TableIconBlock styles='w-9 h-9' />
+                                    <TableIconBlock styles='w-10 h-10' />
                                     <span className="!pt-2">Deshabilitar</span>
                                     <span>registro</span>
                                 </div>
@@ -105,7 +105,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                         <Dropdown>
                             <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('habilitar inf')} title="Cambiar el estado del registro a habilitado">
                                 <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                    <TableIconAllow styles='w-9 h-9' />
+                                    <TableIconAllow styles='w-10 h-10' />
                                     <span className="!pt-2">Habilitar</span>
                                     <span>registro</span>
                                 </div>
@@ -115,7 +115,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                     <Dropdown>
                         <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> hanldeDelClick(event)} title="Eliminación del registro">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                <TableIconDel styles='w-9 h-9' />
+                                <TableIconDel styles='w-10 h-10' />
                                 <span className="!pt-2">Eliminar</span>
                                 <span>registro</span>
                             </div>
@@ -129,7 +129,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                     <Dropdown>
                         <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2`} onClick={()=> console.log('crear reg')} title="Ir al registro anterior">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap pb-7">
-                                <TableIconPrev styles='w-9 h-9' />
+                                <TableIconPrev styles='w-10 h-10' />
                                 <span className="!pt-2">Registro</span>
                                 <span>anterior</span>
                             </div>
@@ -138,7 +138,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                     <Dropdown>
                         <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title="Ir al registro siguiente">
                             <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
-                                <TableIconNext styles='w-9 h-9' />
+                                <TableIconNext styles='w-10 h-10' />
                                 <span className="!pt-2">Registro</span>
                                 <span>siguiente</span>
                             </div>
