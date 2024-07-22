@@ -36,7 +36,7 @@ export default function CrearMenu ({styles, openDialog, setOpenDialog}){
                 <Dropdown>
                     <MenuButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Crear un nuevo requerimiento">
                         <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
-                            <FlowPlusIcon styles='w-11 h-11' strokeWidth='2' />                         
+                            <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                         
                             <span>Crear nuevo</span>
                             <span>requerimiento</span>
                             <KeyboardArrowDownIcon />
