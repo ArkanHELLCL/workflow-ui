@@ -93,6 +93,30 @@ export function useFilters() {
                 item.creador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
                 Number(item.Id) === Number(filters.stringSearch)
             ))
+
+            //Orden de los registros
+            if(filters.filter === 1){   //Fecha creación
+                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => new Date(a.modificacion).getTime() > new Date(b.modificacion).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.modificacion).getTime() < new Date(b.modificacion).getTime() ? -1 : 1)
+            }
+            if(filters.filter === 2){   //Id del registro
+                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => parseInt(a.Id) > parseInt(b.Id) ? -1 : 1) : filteredRequest.sort((a, b) => parseInt(a.Id) < parseInt(b.Id) ? -1 : 1)
+                
+                if(filters.orderDes){
+                    filters.maxReq = filteredRequest[0]?.Id
+                    filters.minReq = filteredRequest[filteredRequest.length - 1]?.Id
+                }else{
+                    filters.minReq = filteredRequest[0]?.Id
+                    filters.maxReq = filteredRequest[filteredRequest.length - 1]?.Id
+                }
+            }
+            if(filters.filter === 3){  //Titulo
+                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.titulo.toUpperCase() > b.titulo.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.titulo.toUpperCase() < b.titulo.toUpperCase() ? -1 : 1)
+            }
+
+            //Filros adicionales por cada mantenedor, cuando corresponda
+            if(filters.itemIdSelected==='mu'){   //Departamento
+                filteredRequest = filteredRequest.filter((item) => filters.departamento === 0 ? item : parseInt(item.DEP_Id) === parseInt(filters.departamento))
+            }
         }
         return {filteredRequest}
     }

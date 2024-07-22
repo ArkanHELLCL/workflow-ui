@@ -1,0 +1,19 @@
+{       
+    "orderby": [
+            {
+                "id": 1,
+                "name": "Por Fecha",
+                "description": "Fecha de creación"
+            },
+            {
+                "id": 2,
+                "name": "Por Id.",
+                "description": "Id del registro"
+            },
+            {
+                "id": 3,
+                "name": "Por Descripción",
+                "description": "Descripción del registro"
+            }                
+        ]
+}

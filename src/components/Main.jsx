@@ -13,6 +13,9 @@ import Formcomponent from "./main/Formcomponent.jsx";
 import Loading from "../utils/Loading.jsx";
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 import FormRecord from "./main/FormRecord.jsx";
+import Departamentos from "./main/maintainer/usuariomant/filtroDepartamento.jsx";
+import MenuFiltersUsr from "./main/maintainer/usuariomant/menuFiltersUsr.jsx";
+import MenuFiltersMan from "./main/maintainer/menuFiltersMan.jsx";
 
 export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpenDialog, frmRecord}) {
     /*const [sizes, setSizes] = useState([
@@ -32,7 +35,8 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
               <Menu flujos={flujos} frmRecord={frmRecord} />
             </Suspense>
           </aside>
-          <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] h-full border-r flex flex-col columns-1 z-50 bg-[#ffffff] dark:bg-transparent pr-1'>{
+          <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] h-full border-r flex flex-col columns-1 z-50 bg-[#ffffff] dark:bg-transparent pr-1'>  
+              {
               filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' && 
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">                    
                     <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
@@ -42,6 +46,29 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
                       <MenuFilters />
                     </div>
                 </div>
+              }{
+                filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' && 
+                  <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40 dark:border-[#353535] border-[#d4d4d4] border-b">{
+                    filters.itemIdSelected?.toUpperCase() === 'MU' ? (     
+                      <>                
+                        <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
+                              <Departamentos />                            
+                        </div>
+                        <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
+                              <MenuFiltersUsr />                            
+                        </div>
+                      </> 
+                      ) : (
+                        <>
+                          <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
+                          </div>
+                          <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
+                              <MenuFiltersMan />                            
+                          </div>
+                        </>                        
+                      )
+                    }
+                  </div>
               }
               <div className="overflow-auto h-full relative pr-2 w-full flex flex-col columns-1" id="containerRef">              
                 <Suspense fallback={<Loading />}>{

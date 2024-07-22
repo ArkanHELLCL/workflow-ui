@@ -20718,6 +20718,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Luis Gabriel Castillo Pacheco",
+                    "DEP_Id": 1,
                     "detalle": "lcastillo@mintrab.gob.cl",
                     "Id": 5,
                     "estado": 1,
@@ -20727,6 +20728,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Cynthia Paola Sepúlveda Campos",
+                    "DEP_Id": 1,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 6,
                     "estado": 0,
@@ -20736,6 +20738,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "José Vicente Elgueta Alonso",
+                    "DEP_Id": 1,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 7,
                     "estado": 1,
@@ -20745,6 +20748,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Adriana María Alvarado Astorga",
+                    "DEP_Id": 1,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 9,
                     "estado": 1,
@@ -20754,6 +20758,7 @@
                 {
                     "subtitulo": "Auditoría Interna",
                     "titulo": "Sara Ramírez",
+                    "DEP_Id": 2,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 10,
                     "estado": 1,
@@ -20763,6 +20768,7 @@
                 {
                     "subtitulo": "Auditoría Interna",
                     "titulo": "Claudia Perez Gaete",
+                    "DEP_Id": 2,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 11,
                     "estado": 1,
@@ -20772,6 +20778,7 @@
                 {
                     "subtitulo": "Auditoría Ministerial",
                     "titulo": "Karla Manukian Von Bennewitz",
+                    "DEP_Id": 3,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 12,
                     "estado": 1,
@@ -20781,6 +20788,7 @@
                 {
                     "subtitulo": "Auditoría Ministerial",
                     "titulo": "Víctor Menjibas ",
+                    "DEP_Id": 3,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 13,
                     "estado": 1,
@@ -20790,6 +20798,7 @@
                 {
                     "subtitulo": "División Administración y Finanzas",
                     "titulo": "Samir Baeza Araya",
+                    "DEP_Id": 4,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 14,
                     "estado": 1,
@@ -20799,6 +20808,7 @@
                 {
                     "subtitulo": "División Administración y Finanzas",
                     "titulo": "Claudio  Toledo Sepúlveda",
+                    "DEP_Id": 4,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 15,
                     "estado": 0,
@@ -20808,6 +20818,7 @@
                 {
                     "subtitulo": "Planificación y Control de Gestión",
                     "titulo": "Paola Constantino Árevalo",
+                    "DEP_Id": 5,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 16,
                     "estado": 1,
@@ -20817,6 +20828,7 @@
                 {
                     "subtitulo": "Planificación y Control de Gestión",
                     "titulo": "Raúl Ormazabal Morgado",
+                    "DEP_Id": 5,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 17,
                     "estado": 1,
@@ -20826,6 +20838,7 @@
                 {
                     "subtitulo": "Estudios Laborales",
                     "titulo": "Ingrid Alvarez Carrasco",
+                    "DEP_Id": 7,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 18,
                     "estado": 1,
@@ -20835,6 +20848,7 @@
                 {
                     "subtitulo": "Relaciones Internacionales",
                     "titulo": "Pedro Pablo Silva Sánchez",
+                    "DEP_Id": 6,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 19,
                     "estado": 1,
@@ -20844,6 +20858,7 @@
                 {
                     "subtitulo": "Estudios Laborales",
                     "titulo": "Fernando  Carreño Ulloa",
+                    "DEP_Id": 7,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 20,
                     "estado": 1,
@@ -20853,6 +20868,7 @@
                 {
                     "subtitulo": "Estudios Laborales",
                     "titulo": "Hans Schlechter Stecher",
+                    "DEP_Id": 7,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 21,
                     "estado": 1,
@@ -20862,6 +20878,7 @@
                 {
                     "subtitulo": "Departamento Gestión y Desarrollo de Personas",
                     "titulo": "Noelia Cerda García",
+                    "DEP_Id": 8,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 22,
                     "estado": 1,
@@ -20871,6 +20888,7 @@
                 {
                     "subtitulo": "Departamento Gestión y Desarrollo de Personas",
                     "titulo": "Juan Moscoso Caroca",
+                    "DEP_Id": 8,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 23,
                     "estado": 1,
@@ -20880,6 +20898,7 @@
                 {
                     "subtitulo": "Factura",
                     "titulo": "Pedro Sepúlveda Saavedra",
+                    "DEP_Id": 44,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 24,
                     "estado": 1,
@@ -20889,6 +20908,7 @@
                 {
                     "subtitulo": "Departamento de Finanzas",
                     "titulo": "Chrystian Urzúa Bilbao",
+                    "DEP_Id": 9,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 25,
                     "estado": 1,
@@ -20898,6 +20918,7 @@
                 {
                     "subtitulo": "Departamento de Administración",
                     "titulo": "Francisco Gárate Muñoz",
+                    "DEP_Id": 10,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 26,
                     "estado": 1,
@@ -20907,6 +20928,7 @@
                 {
                     "subtitulo": "Departamento de Administración",
                     "titulo": "César  Saavedra Robles ",
+                    "DEP_Id": 10,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 27,
                     "estado": 1,
@@ -20916,6 +20938,7 @@
                 {
                     "subtitulo": "División Jurídica",
                     "titulo": "Raúl  Canales Muñoz",
+                    "DEP_Id": 13,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 28,
                     "estado": 1,
@@ -20925,6 +20948,7 @@
                 {
                     "subtitulo": "División Jurídica",
                     "titulo": "Eduardo Yañez Rebolledo",
+                    "DEP_Id": 13,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 29,
                     "estado": 1,
@@ -20934,6 +20958,7 @@
                 {
                     "subtitulo": "Departamento de Prensa y Comunicaciones",
                     "titulo": "Ana Moraga Reyes",
+                    "DEP_Id": 14,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 30,
                     "estado": 1,
@@ -20943,6 +20968,7 @@
                 {
                     "subtitulo": "Departamento de Prensa y Comunicaciones",
                     "titulo": "Karin \tGrollmus Fritz",
+                    "DEP_Id": 14,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 31,
                     "estado": 1,
@@ -20952,6 +20978,7 @@
                 {
                     "subtitulo": "Diálogo Social",
                     "titulo": "Javiera  Kretschmer Soruco",
+                    "DEP_Id": 15,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 32,
                     "estado": 1,
@@ -20961,6 +20988,7 @@
                 {
                     "subtitulo": "Diálogo Social",
                     "titulo": "Cristóbal  Auger Hinrichsen",
+                    "DEP_Id": 15,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 33,
                     "estado": 1,
@@ -20970,6 +20998,7 @@
                 {
                     "subtitulo": "Proempleo",
                     "titulo": "Carolina Poblete ",
+                    "DEP_Id": 16,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 34,
                     "estado": 1,
@@ -20979,6 +21008,7 @@
                 {
                     "subtitulo": "Proempleo",
                     "titulo": "Rodrigo  Díaz Corral",
+                    "DEP_Id": 16,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 35,
                     "estado": 1,
@@ -20988,6 +21018,7 @@
                 {
                     "subtitulo": "Departamento BNE",
                     "titulo": "Laura  Ceballos Hinojosa",
+                    "DEP_Id": 18,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 36,
                     "estado": 1,
@@ -20997,6 +21028,7 @@
                 {
                     "subtitulo": "Departamento BNE",
                     "titulo": "Cristian Duarte Barriga",
+                    "DEP_Id": 18,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 37,
                     "estado": 1,
@@ -21006,6 +21038,7 @@
                 {
                     "subtitulo": "Gabinete Subsecretario",
                     "titulo": "Rossana  Trittini Moreno",
+                    "DEP_Id": 35,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 38,
                     "estado": 1,
@@ -21015,6 +21048,7 @@
                 {
                     "subtitulo": "Gabinete Subsecretario",
                     "titulo": "Gustavo Rosende Salazar",
+                    "DEP_Id": 35,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 39,
                     "estado": 1,
@@ -21024,6 +21058,7 @@
                 {
                     "subtitulo": "Gabinete Ministro",
                     "titulo": "Paulina  Hernández ",
+                    "DEP_Id": 38,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 40,
                     "estado": 1,
@@ -21033,6 +21068,7 @@
                 {
                     "subtitulo": "Gabinete Ministro",
                     "titulo": "Cristian  Olivares Pino",
+                    "DEP_Id": 38,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 41,
                     "estado": 1,
@@ -21042,6 +21078,7 @@
                 {
                     "subtitulo": "Departamento de Administración",
                     "titulo": "Karina Alvarez Gutiérrez",
+                    "DEP_Id": 10,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 43,
                     "estado": 1,
@@ -21051,6 +21088,7 @@
                 {
                     "subtitulo": "Departamento de Finanzas",
                     "titulo": "Sebastian Frangini",
+                    "DEP_Id": 9,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 44,
                     "estado": 1,
@@ -21060,6 +21098,7 @@
                 {
                     "subtitulo": "Tesorería",
                     "titulo": "Marcelo  Duarte Devia",
+                    "DEP_Id": 49,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 45,
                     "estado": 1,
@@ -21069,6 +21108,7 @@
                 {
                     "subtitulo": "Oficina De Partes",
                     "titulo": "Antonio Eladio Aguila Rodas",
+                    "DEP_Id": 12,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 54,
                     "estado": 1,
@@ -21077,6 +21117,7 @@
                 {
                     "subtitulo": "Planificación y Control de Gestión",
                     "titulo": "Maria Paz Salvo Ahumada",
+                    "DEP_Id": 5,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 55,
                     "estado": 1,
@@ -21085,6 +21126,7 @@
                 {
                     "subtitulo": "Tesorería",
                     "titulo": "Daniela Carolyn Contreras Nieto",
+                    "DEP_Id": 49,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 56,
                     "estado": 1,
@@ -21094,6 +21136,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Gladys Angelica Castillo Patiño",
+                    "DEP_Id": 1,
                     "detalle": "gcastillo@mintrab.gob.cl",
                     "Id": 57,
                     "estado": 1,
@@ -21102,6 +21145,7 @@
                 {
                     "subtitulo": "Contabilidad",
                     "titulo": "Ivan Ceferino Morales Chuquihuanca",
+                    "DEP_Id": 48,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 58,
                     "estado": 1,
@@ -21111,6 +21155,7 @@
                 {
                     "subtitulo": "Activo Fijo Bodega",
                     "titulo": "Felipe Avendaño Cordova",
+                    "DEP_Id": 43,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 59,
                     "estado": 1,
@@ -21120,6 +21165,7 @@
                 {
                     "subtitulo": "Activo Fijo Bodega",
                     "titulo": "Rodrigo Alonso Fuentes Morales",
+                    "DEP_Id": 43,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 60,
                     "estado": 1,
@@ -21129,6 +21175,7 @@
                 {
                     "subtitulo": "Activo Fijo Bodega",
                     "titulo": "Jorge Patricio Salinas Galvez",
+                    "DEP_Id": 43,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 61,
                     "estado": 1,
@@ -21138,6 +21185,7 @@
                 {
                     "subtitulo": "Factura",
                     "titulo": "Pamela del Rosario Godoy Pereira",
+                    "DEP_Id": 44,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 62,
                     "estado": 1,
@@ -21147,6 +21195,7 @@
                 {
                     "subtitulo": "División Administración y Finanzas",
                     "titulo": "Margarita Miranda Erazo",
+                    "DEP_Id": 4,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 63,
                     "estado": 1,
@@ -21156,6 +21205,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Camilo Enrique Araya Morales",
+                    "DEP_Id": 1,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 64,
                     "estado": 1,
@@ -21165,6 +21215,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Cristobal Ignacio Herrera Arce",
+                    "DEP_Id": 1,
                     "detalle": "cherrera@mintrab.gob.cl",
                     "Id": 65,
                     "estado": 1,
@@ -21174,6 +21225,7 @@
                 {
                     "subtitulo": "Contabilidad",
                     "titulo": "Marco Diaz Navarrete",
+                    "DEP_Id": 48,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 66,
                     "estado": 1,
@@ -21183,6 +21235,7 @@
                 {
                     "subtitulo": "Departamento de Administración",
                     "titulo": "Maria Cristina Ramirez Merizalde",
+                    "DEP_Id": 10,
                     "detalle": "csepulvedac@mintrab.gob.cl",
                     "Id": 67,
                     "estado": 1,
@@ -21192,6 +21245,7 @@
                 {
                     "subtitulo": "Estudios Laborales",
                     "titulo": "Felix Roberto Arredondo Armijo",
+                    "DEP_Id": 7,
                     "detalle": "farredondo@mintrab.gob.cl",
                     "Id": 68,
                     "estado": 1,
@@ -21201,6 +21255,7 @@
                 {
                     "subtitulo": "Departamento Tecnologías de la Información y Comunicaciones",
                     "titulo": "Barbara Francesca Farias Jara",
+                    "DEP_Id": 1,
                     "detalle": "bfarias@mintrab.gob.cl",
                     "Id": 69,
                     "estado": 1,

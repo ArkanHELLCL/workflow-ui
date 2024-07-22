@@ -3,195 +3,260 @@
     "records" : [
         {
             "id": 0,
-            "label": "Departamento Destinatario"
+            "label": "Todos los Destinatario",
+            "shortname": "Todos"
         },
         {
             "id": 1,
-            "label": "Departamento Tecnologías de la Información y Comunicaciones"
+            "label": "Departamento Tecnologías de la Información y Comunicaciones",
+            "shortname": "Dep. TIC"
         },
         {
             "id": 2,
-            "label": "Auditoría Interna"
+            "label": "Auditoría Interna",
+            "shortname": "Auditoría Interna"
         },
         {
             "id": 3,
-            "label": "Auditoría Ministerial"
+            "label": "Auditoría Ministerial",
+            "shortname": "Auditoría Ministerial"
         },
         {
             "id": 4,
-            "label": "División Administración y Finanzas"
+            "label": "División Administración y Finanzas",
+            "shortname": "DAF"
         },
         {
             "id": 5,
-            "label": "Planificación y Control de Gestión"
+            "label": "Planificación y Control de Gestión",
+            "shortname": "Plan. y Control de Gestión"
         },
         {
             "id": 6,
-            "label": "Relaciones Internacionales"
+            "label": "Relaciones Internacionales",
+            "shortname": "Relaciones Internacionales"
         },
         {
             "id": 7,
-            "label": "Estudios Laborales"
+            "label": "Estudios Laborales",
+            "shortname": "Estudios Laborales"
         },
         {
             "id": 8,
-            "label": "Departamento Gestión y Desarrollo de Personas"
+            "label": "Departamento Gestión y Desarrollo de Personas",
+            "shortname": "Dep. Ges. y Des. de Personas"
         },
         {
             "id": 9,
-            "label": "Departamento de Finanzas"
+            "label": "Departamento de Finanzas",
+            "shortname": "Finanzas"
         },
         {
             "id": 10,
-            "label": "Departamento de Administración"
+            "label": "Departamento de Administración",
+            "shortname": "Dep. de Administración"
         },
         {
             "id": 11,
-            "label": "Biblioteca Y Archivos"
+            "label": "Biblioteca Y Archivos",
+            "shortname": "Biblioteca y Archivos"
         },
         {
             "id": 12,
-            "label": "Oficina De Partes"
+            "label": "Oficina De Partes",
+            "shortname": "Oficina de Partes"
         },
         {
             "id": 13,
-            "label": "División Jurídica"
+            "label": "División Jurídica",
+            "shortname": "Div. Jurídica"
         },
         {
             "id": 14,
-            "label": "Departamento de Prensa y Comunicaciones"
+            "label": "Departamento de Prensa y Comunicaciones",
+            "shortname": "Dep. de Prensa y Com."
         },
         {
             "id": 15,
-            "label": "Diálogo Social"
+            "label": "Diálogo Social",
+            "shortname": "Diálogo Social"
         },
         {
             "id": 16,
-            "label": "Proempleo"
+            "label": "Proempleo",
+            "shortname": "Proempleo"
         },
         {
             "id": 17,
-            "label": "Departamento Erradicación Trabajo Infantil"
+            "label": "Departamento Erradicación Trabajo Infantil",
+            "shortname": "Dep. Err. Trab. Infantil"
         },
         {
             "id": 18,
-            "label": "Departamento BNE"
+            "label": "Departamento BNE",
+            "shortname": "Dep. BNE"
         },
         {
             "id": 19,
-            "label": "SEREMIA Region Metropolitana de Santiago"
+            "label": "SEREMIA Region Metropolitana de Santiago",
+            "shortname": "SEREMIA Santiago"
         },
         {
             "id": 20,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Arica"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Arica",
+            "shortname": "SEREMIA Arica"
         },
         {
             "id": 21,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Tarapaca"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Tarapaca",
+            "shortname": "SEREMIA Trapaca"
         },
         {
             "id": 22,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Antofagasta"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Antofagasta",
+            "shortname": "SEREMIA Antofagasta"
         },
         {
             "id": 23,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Atacama"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Atacama",
+            "shortname": "SEREMIA Atacama"
         },
         {
             "id": 24,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Coquimbo"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Coquimbo",
+            "shortname": "SEREMIA Coquimbo"
         },
         {
             "id": 25,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Valparaiso"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Valparaiso",
+            "shortname": "SEREMIA Valparaiso"
         },
         {
             "id": 26,
-            "label": "SEREMIA Region del Libertador General Bernardo O’Higgins"
+            "label": "SEREMIA Region del Libertador General Bernardo O’Higgins",
+            "shortname": "SEREMIA O'Higgins"
         },
         {
             "id": 27,
-            "label": "SEREMIA del Trabajo y Prevision Social Region del Maule"
+            "label": "SEREMIA del Trabajo y Prevision Social Region del Maule",
+            "shortname": "SEREMIA Maule"
         },
         {
             "id": 28,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Ñuble"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Ñuble",
+            "shortname": "SEREMIA Ñuble"
         },
         {
             "id": 29,
-            "label": "SEREMIA del Trabajo y Prevision Social Region del Biobio"
+            "label": "SEREMIA del Trabajo y Prevision Social Region del Biobio",
+            "shortname": "SEREMIA Biobio"
         },
         {
             "id": 30,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de La Araucania"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de La Araucania",
+            "shortname": "SEREMIA Araucanía"
         },
         {
             "id": 31,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Los Rios"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Los Rios",
+            "shortname": "SEREMIA Los Rios"
         },
         {
             "id": 32,
-            "label": "SEREMIA del Trabajo y Prevision Social Region de Los Lagos"
+            "label": "SEREMIA del Trabajo y Prevision Social Region de Los Lagos",
+            "shortname": "SEREMIA Los Lagos"
         },
         {
             "id": 33,
-            "label": "SEREMIA Region de Aysen del General Carlos Ibanez del Campo"
+            "label": "SEREMIA Region de Aysen del General Carlos Ibanez del Campo",
+            "shortname": "SEREMIA Aysen"
         },
         {
             "id": 34,
-            "label": "SEREMIA Region de Magallanes y de la Antartica Chilena"
+            "label": "SEREMIA Region de Magallanes y de la Antartica Chilena",
+            "shortname": "SEREMIA Magallanes"
         },
         {
             "id": 35,
-            "label": "Gabinete Subsecretario"
+            "label": "Gabinete Subsecretario",
+            "shortname": "Gab. Subsecretario"
         },
         {
             "id": 36,
-            "label": "Gabinete Ministerial"
+            "label": "Gabinete Ministerial",
+            "shortname": "Gab. Ministerial"
         },
         {
             "id": 37,
-            "label": "Unidad de Asesores"
+            "label": "Unidad de Asesores",
+            "shortname": "Un. Asesores"
         },
         {
             "id": 38,
-            "label": "Gabinete Ministro"
+            "label": "Gabinete Ministro",
+            "shortname": "Gab. Ministro"
         },
         {
             "id": 41,
-            "label": "prueba grabación"
+            "label": "prueba grabación",
+            "shortname": "Prueba"
         },
         {
             "id": 42,
-            "label": "prueba"
+            "label": "prueba",
+            "shortname": "prueba"
         },
         {
             "id": 43,
-            "label": "Activo Fijo Bodega"
+            "label": "Activo Fijo Bodega",
+            "shortname": "AF-Bodega"
         },
         {
             "id": 44,
-            "label": "Factura"
+            "label": "Factura",
+            "shortname": "Factura"
         },
         {
             "id": 45,
-            "label": "Unidad de Servicios Generales"
+            "label": "Unidad de Servicios Generales",
+            "shortname": "SSGG"
         },
         {
             "id": 46,
-            "label": "División Políticas de Empleo"
+            "label": "División Políticas de Empleo",
+            "shortname": "División Políticas de Empleo"
         },
         {
             "id": 47,
-            "label": "Unidad de Transversalización de Género"
+            "label": "Unidad de Transversalización de Género",
+            "shortname": "Unidad de Transversalización de Género"
         },
         {
             "id": 48,
-            "label": "Contabilidad"
+            "label": "Contabilidad",
+            "shortname": "Contabilidad"
         },
         {
             "id": 49,
-            "label": "Tesorería"
+            "label": "Tesorería",
+            "shortname": "Tesorería"
         }
-    ]    
+    ],
+    "orderby": [
+            {
+                "id": 1,
+                "name": "Por Fecha",
+                "description": "Fecha de creación"
+            },
+            {
+                "id": 2,
+                "name": "Por Id.",
+                "description": "Id del registro"
+            },
+            {
+                "id": 3,
+                "name": "Por Usuario",
+                "description": "Nombre de Usuario"
+            }                
+        ]
 }

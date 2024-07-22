@@ -21,7 +21,8 @@ export function FiltersProvider({ children }) {
         filterSearch: 1,
         stringSearch: '',
         filterSearchResult:false,
-        darkMode: true
+        darkMode: true,
+        departamento: 0
     });
     
     return (
