@@ -31,7 +31,7 @@ function LstRegiones(){
                 <span className="pt-[2px] min-w-[50px]">Región : </span>
                 <Dropdown>
                     <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 overflow-hidden`}>
-                        <div className="w-auto truncate">
+                        <div className="w-auto truncate !font-normal">
                             {filters.region ? Region.records.filter(item => parseInt(item.id) === parseInt(filters.region))[0].shortname : 'Todas'}
                         </div>
                     </MenuButton>
