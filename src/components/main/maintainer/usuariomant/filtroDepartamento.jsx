@@ -69,7 +69,7 @@ function LstDepartamentos(){
                     <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min max-h-60 overflow-y-auto" id="lstDepMen">{
                         Departamento.records.map((item) =>
                             <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetDeptos(item.id)} id={'lstDep-'+ item.id}>
-                                <ListItemDecorator className={``}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}                    
+                                <ListItemDecorator className={`${filters.departamento===item.id ? 'selected' : null}`}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}                    
                             </MenuItem> 
                         )
                     }

@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useFilters } from "../../../../hooks/useFilters.jsx";
-import { useRequest } from "../../../../hooks/useRequest.jsx";
+import { useRecords } from "../../../../hooks/useRecords.jsx";
 import Departamento from "../../../../mocks/departamentos.json";
 
 import Menu from '@mui/joy/Menu';
@@ -14,17 +15,18 @@ import ListDivider from '@mui/joy/ListDivider';
 import List from '@mui/joy/List';
 import ListItemButton from '@mui/joy/ListItemButton';
 import StraightIcon from '@mui/icons-material/Straight';
+import { useEffect } from "react";
 
 export default function MenuFiltersUsr() {
     const { filters, setFilters } = useFilters()
-    const { setRequest } = useRequest()    
+    const { setRecord } = useRecords()    
     
-    const handleSetFlujos = (id) => {         
+    const handleSetFDepto = (id) => {         
         setFilters(prevState => ({
             ...prevState, 
             departamento: id,
-        }))
-        setRequest(null)   
+        }))        
+        setRecord(null)
     }
     const handleSetFiltros = (filtro) => {         
         setFilters(prevState => ({
@@ -38,6 +40,12 @@ export default function MenuFiltersUsr() {
             orderDes: orderDes,
         }))
     }
+
+    useEffect(() => {
+        const el = document.getElementsByClassName('reqselected')[0]
+        el?.classList.remove('reqselected')
+        setRecord(null)
+    },[filters.departamento])
 
     function desOrder(orderDes){   
         //Fecha de creación     
@@ -75,9 +83,9 @@ export default function MenuFiltersUsr() {
                 </MenuButton>
                 <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">                    
                     <p className="px-6 py-2 text-xs font-semibold truncate">Filtrar</p>
-                    <div className=" max-h-56 overflow-y-auto">{
+                    <div className=" max-h-48 overflow-y-auto">{
                         Departamento.records.map((item) =>
-                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFlujos(item.id)}>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFDepto(item.id)}>
                                 <ListItemDecorator className={``}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}                    
                             </MenuItem> 
                         )
