@@ -114,10 +114,10 @@ export function useFilters() {
             }
 
             //Filros adicionales por cada mantenedor, cuando corresponda
-            if(filters.itemIdSelected==='mu'){   //Departamento
+            if(filters.itemIdSelected==='mu'){   //Usuarios - Filtro por Departamento
                 filteredRequest = filteredRequest.filter((item) => filters.departamento === 0 ? item : parseInt(item.DEP_Id) === parseInt(filters.departamento))
             }
-            if(filters.itemIdSelected==='mc'){   //Region
+            if(filters.itemIdSelected==='mc'){   //Comunas - Filtro por Region
                 filteredRequest = filteredRequest.filter((item) => filters.region === 0 ? item : parseInt(item.REG_Id) === parseInt(filters.region))
             }
         }
