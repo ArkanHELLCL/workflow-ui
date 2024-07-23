@@ -11,14 +11,14 @@ import Dropdown from '@mui/joy/Dropdown';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Check from '@mui/icons-material/Check'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 
 function LstDepartamentos(){
     const { filters, setFilters } = useFilters()
     //const { scrollPos, setScrollPos } = useState()
 
     const { setRecord } = useRecords()
-    let listElement
+    //let listElement
 
     /*function centerElement(selector) {
         const element = document.getElementById(selector);
@@ -63,7 +63,7 @@ function LstDepartamentos(){
                 <Dropdown>
                     <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 overflow-hidden`}>
                         <div className="w-auto truncate">
-                        {filters.departamento ? Departamento.records.filter(item => item.id === filters.departamento)[0].shortname : 'Todos'}
+                            {filters.departamento ? Departamento.records.filter(item => item.id === filters.departamento)[0].shortname : 'Todos'}
                         </div>
                     </MenuButton>
                     <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min max-h-60 overflow-y-auto" id="lstDepMen">{

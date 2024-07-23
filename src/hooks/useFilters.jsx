@@ -117,6 +117,9 @@ export function useFilters() {
             if(filters.itemIdSelected==='mu'){   //Departamento
                 filteredRequest = filteredRequest.filter((item) => filters.departamento === 0 ? item : parseInt(item.DEP_Id) === parseInt(filters.departamento))
             }
+            if(filters.itemIdSelected==='mc'){   //Region
+                filteredRequest = filteredRequest.filter((item) => filters.region === 0 ? item : parseInt(item.REG_Id) === parseInt(filters.region))
+            }
         }
         return {filteredRequest}
     }

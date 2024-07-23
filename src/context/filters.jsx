@@ -22,7 +22,8 @@ export function FiltersProvider({ children }) {
         stringSearch: '',
         filterSearchResult:false,
         darkMode: true,
-        departamento: 0
+        departamento: 0,
+        region:0
     });
     
     return (

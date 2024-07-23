@@ -16,6 +16,8 @@ import FormRecord from "./main/FormRecord.jsx";
 import Departamentos from "./main/maintainer/usuariomant/filtroDepartamento.jsx";
 import MenuFiltersUsr from "./main/maintainer/usuariomant/menuFiltersUsr.jsx";
 import MenuFiltersMan from "./main/maintainer/menuFiltersMan.jsx";
+import MenuFiltersCom from "./main/maintainer/comunamant/menuFiltersCom.jsx";
+import Regiones from "./main/maintainer/comunamant/filtroRegion.jsx";
 
 export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpenDialog, frmRecord}) {
     /*const [sizes, setSizes] = useState([
@@ -51,16 +53,25 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
                   <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40 dark:border-[#353535] border-[#d4d4d4] border-b">{
                     filters.itemIdSelected?.toUpperCase() === 'MU' ? (     
                       <>                
-                        <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
+                        <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                               <Departamentos />                            
                         </div>
                         <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
                               <MenuFiltersUsr />                            
                         </div>
                       </> 
+                      ) : filters.itemIdSelected?.toUpperCase() === 'MC' ? (  
+                        <>                
+                          <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
+                                <Regiones />                            
+                          </div>
+                          <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
+                                <MenuFiltersCom />                            
+                          </div>
+                        </> 
                       ) : (
                         <>
-                          <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
+                          <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                           </div>
                           <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
                               <MenuFiltersMan />                            

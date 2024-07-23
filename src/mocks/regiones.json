@@ -2,72 +2,111 @@
     "name": "Región",
     "records" : [
         {
+            "id": 0,
+            "label": "Todas",
+            "shortname": "Todas"
+        },
+        {
             "id": 1,
-            "label": "Región Tarapacá"
+            "label": "Región Tarapacá",
+            "shortname": "Tarapacá"
         },
         {
             "id": 2,
-            "label": "Región Antofagasta"
+            "label": "Región Antofagasta",
+            "shortname": "Antofagasta"
         },
         {
             "id": 3,
-            "label": "Región Atacama"
+            "label": "Región Atacama",
+            "shortname": "Atacama"
         },
         {
             "id": 4,
-            "label": "Región Coquimbo"
+            "label": "Región Coquimbo",
+            "shortname": "Coquimbo"
         },
         {
             "id": 5,
-            "label": "Región Valparaíso"
+            "label": "Región Valparaíso",
+            "shortname": "Valparaíso"
         },
         {
             "id": 6,
-            "label": "Región del Libertador Gral. Bernardo O’Higgins"
+            "label": "Región del Libertador Gral. Bernardo O’Higgins",
+            "shortname": "O’Higgins"
         },
         {
             "id": 7,
-            "label": "Región del Maule"
+            "label": "Región del Maule",
+            "shortname": "Maule"
         },
         {
             "id": 8,
-            "label": "Región del Bío-Bío"
+            "label": "Región del Bío-Bío",
+            "shortname": "Bío-Bío"
         },
         {
             "id": 9,
-            "label": "Región de la Araucanía"
+            "label": "Región de la Araucanía",
+            "shortname": "Araucanía"
         },
         {
             "id": 10,
-            "label": "Región de los Lagos"
+            "label": "Región de los Lagos",
+            "shortname": "Los Lagos"
         },
         {
             "id": 11,
-            "label": "Región Aisén del Gral. Carlos Ibáñez del Campo"
+            "label": "Región Aisén del Gral. Carlos Ibáñez del Campo",
+            "shortname": "Aisén"
         },
         {
             "id": 12,
-            "label": "Región de Magallanes y de la Antártica Chilena"
+            "label": "Región de Magallanes y de la Antártica Chilena",
+            "shortname": "Magallanes"
         },
         {
             "id": 13,
-            "label": "Región Metropolitana de Santiago"
+            "label": "Región Metropolitana de Santiago",
+            "shortname": "Metropolitana"
         },
         {
             "id": 14,
-            "label": "Región de los Ríos"
+            "label": "Región de los Ríos",
+            "shortname": "Los Ríos"
         },
         {
             "id": 15,
-            "label": "Región de Arica y Parinacota"
+            "label": "Región de Arica y Parinacota",
+            "shortname": "Arica y Parinacota"
         },
         {
             "id": 16,
-            "label": "Región de Ñuble"
+            "label": "Región de Ñuble",
+            "shortname": "Ñuble"
         },
         {
             "id": 17,
-            "label": "prueba mod"
+            "label": "prueba mod",
+            "shortname": "mod"
         }
-    ]    
+    ],
+    "orderby": [
+            {
+                "id": 1,
+                "name": "Por Fecha",
+                "description": "Fecha de creación"
+            },
+            {
+                "id": 2,
+                "name": "Por Id.",
+                "description": "Id del registro"
+            },
+            {
+                "id": 3,
+                "name": "Por Comuna",
+                "description": "Nombre de Comuna"
+            }                
+        ]
 }
