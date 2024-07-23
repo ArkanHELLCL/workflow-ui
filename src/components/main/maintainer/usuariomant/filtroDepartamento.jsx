@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useFilters } from "../../../../hooks/useFilters.jsx";
 import { useRecords } from "../../../../hooks/useRecords.jsx";
@@ -10,23 +11,50 @@ import Dropdown from '@mui/joy/Dropdown';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Check from '@mui/icons-material/Check'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useState, useEffect } from "react";
 
 function LstDepartamentos(){
     const { filters, setFilters } = useFilters()
-    const { setRecord } = useRecords()
+    //const { scrollPos, setScrollPos } = useState()
 
+    const { setRecord } = useRecords()
+    let listElement
+
+    /*function centerElement(selector) {
+        const element = document.getElementById(selector);
+        const parentOfElement = element.parentElement;
+        const { width, height } = parentOfElement.getBoundingClientRect();
+        console.log(width, height, selector)
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
+        //element.style = `top: ${height / 2}px; left: ${width / 2}px`;
+        element.style = `top: ${height / 2}px`;
+      }
+*/
     const handleSetDeptos = (id) => {         
         setFilters(prevState => ({
             ...prevState, 
             departamento: id,
         }))
         setRecord(null)
-        /*if(flujo === 0 && filters.filter===4)
-            setFilters(prevState => ({
-                ...prevState, 
-                filter: 1,
-        }))*/
-    }    
+        //centerElement('lstDep-'+ id)
+        //listElement = document.getElementById('lstDepMen');
+        //console.log(listElement)
+        //const { width, height } = listElement.getBoundingClientRect();
+        //console.log(width, height)
+    }
+    /*
+
+    useEffect(() => {
+        listElement = document.getElementById('lstDepMen');
+        console.log(listElement)
+        const { width, height } = listElement.getBoundingClientRect();
+        console.log(width, height)
+    },[Departamento])*/
+    
 
     return (
         <div className="relative">
@@ -38,9 +66,9 @@ function LstDepartamentos(){
                         {filters.departamento ? Departamento.records.filter(item => item.id === filters.departamento)[0].shortname : 'Todos'}
                         </div>
                     </MenuButton>
-                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min max-h-60 overflow-y-auto">{
+                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min max-h-60 overflow-y-auto" id="lstDepMen">{
                         Departamento.records.map((item) =>
-                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetDeptos(item.id)}>
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetDeptos(item.id)} id={'lstDep-'+ item.id}>
                                 <ListItemDecorator className={``}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}                    
                             </MenuItem> 
                         )

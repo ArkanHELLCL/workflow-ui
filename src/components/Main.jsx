@@ -47,7 +47,7 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
                     </div>
                 </div>
               }{
-                filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' && 
+                filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' && filters.itemIdSelected.length > 1 &&
                   <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40 dark:border-[#353535] border-[#d4d4d4] border-b">{
                     filters.itemIdSelected?.toUpperCase() === 'MU' ? (     
                       <>                
