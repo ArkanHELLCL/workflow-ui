@@ -45,7 +45,7 @@ function LstDepartamentos(){
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
                     onClick={handleClick}
-                    className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !overflow-hidden !pt-[6px]`}
+                    className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !overflow-hidden !pt-[6px] max-w-40`}
                     style={{border: '2px solid transparent'}}
                 >
                     <div className="!w-auto !truncate !font-normal !text-sm">
