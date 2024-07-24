@@ -3,85 +3,87 @@
 import { useFilters } from "../../../../hooks/useFilters.jsx";
 import { useRecords } from "../../../../hooks/useRecords.jsx";
 import Departamento from "../../../../mocks/departamentos.json";
-
-import Menu from '@mui/joy/Menu';
-import MenuButton from '@mui/joy/MenuButton';
-import MenuItem from '@mui/joy/MenuItem';
-import Dropdown from '@mui/joy/Dropdown';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Check from '@mui/icons-material/Check'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-//import { useState, useEffect } from "react";
+import { useState } from "react";
+import { IconButton } from "@mui/material";
 
 function LstDepartamentos(){
     const { filters, setFilters } = useFilters()
-    //const { scrollPos, setScrollPos } = useState()
-
     const { setRecord } = useRecords()
-    //let listElement
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
 
-    /*function centerElement(selector) {
-        const element = document.getElementById(selector);
-        const parentOfElement = element.parentElement;
-        const { width, height } = parentOfElement.getBoundingClientRect();
-        console.log(width, height, selector)
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "center",
-        });
-        //element.style = `top: ${height / 2}px; left: ${width / 2}px`;
-        element.style = `top: ${height / 2}px`;
-      }
-*/
-    const handleSetDeptos = (id) => {         
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);        
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleSetDepto= (id) => {
+        setAnchorEl(null);
         setFilters(prevState => ({
             ...prevState, 
             departamento: id,
         }))
         setRecord(null)
-        //centerElement('lstDep-'+ id)
-        //listElement = document.getElementById('lstDepMen');
-        //console.log(listElement)
-        //const { width, height } = listElement.getBoundingClientRect();
-        //console.log(width, height)
     }
-    /*
-
-    useEffect(() => {
-        listElement = document.getElementById('lstDepMen');
-        console.log(listElement)
-        const { width, height } = listElement.getBoundingClientRect();
-        console.log(width, height)
-    },[Departamento])*/
-    
+    const ITEM_HEIGHT = 48;
 
     return (
         <div className="relative">
-            <div className="w-full flex z-50 items-start max-w-48">
-                <span className="pt-[2px] min-w-[50px]">Depto : </span>
-                <Dropdown>
-                    <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 overflow-hidden`}>
-                        <div className="w-auto truncate !font-normal">
-                            {filters.departamento ? Departamento.records.filter(item => item.id === filters.departamento)[0].shortname : 'Todos'}
-                        </div>
-                    </MenuButton>
-                    <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min max-h-60 overflow-y-auto" id="lstDepMen">{
-                        Departamento.records.map((item) =>
-                            <MenuItem  
-                                className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} 
-                                key={item.id} 
-                                onClick={() => handleSetDeptos(item.id)} 
-                                id={'lstDep-'+ item.id} >
-                                <ListItemDecorator className={`${filters.departamento===item.id ? 'selected' : null}`}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}                    
-                            </MenuItem> 
-                        )
-                    }
-                    </Menu>
-                </Dropdown>
+            <div className="w-full flex z-50 max-w-48 items-start">
+                <span className="min-w-[50px]">Depto : </span>
+                <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? 'lstDepMen' : undefined}
+                    aria-expanded={open ? 'true' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                    className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !overflow-hidden !pt-[6px]`}
+                >
+                    <div className="!w-auto !truncate !font-normal !text-sm">
+                        {filters.departamento ? Departamento.records.filter(item => parseInt(item.id) === parseInt(filters.departamento))[0].shortname : 'Todos'}
+                    </div>
+                    <KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />
+                </IconButton>
+                <Menu
+                    id="lstDepMen"
+                    placement="bottom-start"
+                    MenuListProps={{
+                        'aria-labelledby': 'long-button',
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    PaperProps={{
+                        style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: 'auto',                            
+                        },
+                        className: "!py-1 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
+                    }}
+                >
+                    {Departamento.records.map((item) => (
+                    <MenuItem 
+                        key={item.id} 
+                        selected={filters.departamento===item.id } 
+                        onClick={()=>handleSetDepto(item.id)}
+                        className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow !pl-8 relative`} 
+                        id={'lstReg-'+ item.id}
+                        >
+                            <ListItemDecorator className={`${filters.departamento===item.id ? 'selected' : null} absolute left-1`}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}
+                    </MenuItem>
+                    ))}
+                </Menu>
             </div>
         </div>
-    )
+    );
 }
 
 export default function Departamentos(){

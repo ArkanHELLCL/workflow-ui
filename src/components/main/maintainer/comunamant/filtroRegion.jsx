@@ -17,12 +17,12 @@ function LstRegiones(){
     const { setRecord } = useRecords()
     
     const handleSetRegion = (id) => {
-        console.log('region',id)
+        //console.log('region',id)
         setFilters(prevState => ({
             ...prevState, 
             region: id,
         }))
-        setRecord(null)        
+        setRecord(null)
     }
 
     return (
@@ -38,7 +38,7 @@ function LstRegiones(){
                     <Menu placement="bottom-start" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min max-h-60 overflow-y-auto" id="lstDepMen">{
                         Region.records.map((item) =>
                             <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetRegion(item.id)} id={'lstReg-'+ item.id}>
-                                <ListItemDecorator className={`${filters.region===item.id ? 'selected' : null}`}>{filters.region===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}                    
+                                <ListItemDecorator className={`${filters.region===item.id ? 'selected' : null}`}>{filters.region===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}
                             </MenuItem> 
                         )
                     }
