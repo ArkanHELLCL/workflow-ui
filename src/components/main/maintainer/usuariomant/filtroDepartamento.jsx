@@ -46,6 +46,7 @@ function LstDepartamentos(){
                     aria-haspopup="true"
                     onClick={handleClick}
                     className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !overflow-hidden !pt-[6px]`}
+                    style={{border: '2px solid transparent'}}
                 >
                     <div className="!w-auto !truncate !font-normal !text-sm">
                         {filters.departamento ? Departamento.records.filter(item => parseInt(item.id) === parseInt(filters.departamento))[0].shortname : 'Todos'}
@@ -66,7 +67,7 @@ function LstDepartamentos(){
                             maxHeight: ITEM_HEIGHT * 4.5,
                             width: 'auto',                            
                         },
-                        className: "!py-1 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
+                        className: "!border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
                     }}
                 >
                     {Departamento.records.map((item) => (
