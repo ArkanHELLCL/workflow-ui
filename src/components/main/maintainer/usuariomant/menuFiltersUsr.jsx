@@ -95,7 +95,7 @@ export default function MenuFiltersUsr() {
                     <p className="px-6 py-2 text-xs font-semibold truncate">Organizas por</p>{
                         Departamento?.orderby.map((item) =>
                             <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFiltros(item.id)}>
-                                <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                                <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}
                             </MenuItem> 
                         )
                     }

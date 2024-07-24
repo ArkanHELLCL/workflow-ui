@@ -5,7 +5,7 @@ import { useRecords } from "../../../../hooks/useRecords.jsx";
 import Departamento from "../../../../mocks/departamentos.json";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import Check from '@mui/icons-material/Check'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
@@ -36,7 +36,7 @@ function LstDepartamentos(){
 
     return (
         <div className="relative">
-            <div className="w-full flex z-50 max-w-48 items-start">
+            <div className="w-full z-50 max-w-48 items-start table-header-group">
                 <span className="min-w-[50px]">Depto : </span>
                 <IconButton
                     aria-label="more"
@@ -75,10 +75,13 @@ function LstDepartamentos(){
                         key={item.id} 
                         selected={filters.departamento===item.id } 
                         onClick={()=>handleSetDepto(item.id)}
-                        className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow !pl-8 relative`} 
+                        className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} 
                         id={'lstReg-'+ item.id}
                         >
-                            <ListItemDecorator className={`${filters.departamento===item.id ? 'selected' : null} absolute left-1`}>{filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.shortname}
+                            <ListItemIcon className={`${filters.departamento===item.id ? 'selected' : null} dark:!text-stone-100 !text-stone-500`}>
+                                {filters.departamento===item.id ? <Check className="!w-4 !h-4" /> : null}                                
+                            </ListItemIcon>
+                            {item.label}
                     </MenuItem>
                     ))}
                 </Menu>
