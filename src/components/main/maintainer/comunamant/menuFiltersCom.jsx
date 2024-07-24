@@ -77,7 +77,7 @@ export default function MenuFiltersCom() {
         return (      
             <>             
             <Dropdown>
-                <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none`}>{
+                <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-sm`}>{
                                 Region.orderby.filter((item) => item.id === filters.filter)[0].name
                             }                
                 </MenuButton>

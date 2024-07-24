@@ -45,7 +45,7 @@ function LstRegiones(){
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
                     onClick={handleClick}
-                    className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !overflow-hidden !pt-[6px] max-w-40`}
+                    className={`hover:!border-sky-600 !text-sky-600 !border-0 !border-transparent !border-b-2 !bg-transparent !rounded-none !overflow-hidden !py-0 max-w-40 h-7`}
                     style={{border: '2px solid transparent'}}
                 >
                     <div className="!w-auto !truncate !font-normal !text-sm">
@@ -75,7 +75,7 @@ function LstRegiones(){
                         key={item.id} 
                         selected={filters.region===item.id } 
                         onClick={()=>handleSetDepto(item.id)}
-                        className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow !pl-8 relative`} 
+                        className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`} 
                         id={'lstReg-'+ item.id}
                         >
                             <ListItemIcon className={`${filters.region===item.id ? 'selected' : null} dark:!text-stone-100 !text-stone-500`}>
