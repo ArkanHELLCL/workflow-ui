@@ -54,8 +54,7 @@ function LstDepartamentos(){
                     <KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />
                 </IconButton>
                 <Menu
-                    id="lstDepMen"
-                    placement="bottom-start"
+                    id="lstDepMen"                    
                     MenuListProps={{
                         'aria-labelledby': 'long-button',
                     }}

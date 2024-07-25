@@ -98,7 +98,7 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
 
     const { enqueueSnackbar } = useSnackbar();
     return(
-        <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6'> 
+        <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6 max-w-[70%] overflow-x-auto'> 
             <div className='flex items-center gap-3 pb-2' id="grpReq">
                 <animated.div key='grpReq-3' className='flex' style={buttonsAnimation3} id='grpReq-3'>
                 {
