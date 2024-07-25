@@ -95,13 +95,13 @@ export function useFilters() {
             ))
 
             //Orden de los registros
-            if(filters.filter === 1){   //Fecha creación
-                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => new Date(a.modificacion).getTime() > new Date(b.modificacion).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.modificacion).getTime() < new Date(b.modificacion).getTime() ? -1 : 1)
+            if(filters.filterMant === 1){   //Fecha creación
+                filteredRequest = filters.orderDesMant ? filteredRequest.sort((a, b) => new Date(a.modificacion).getTime() > new Date(b.modificacion).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.modificacion).getTime() < new Date(b.modificacion).getTime() ? -1 : 1)
             }
-            if(filters.filter === 2){   //Id del registro
-                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => parseInt(a.Id) > parseInt(b.Id) ? -1 : 1) : filteredRequest.sort((a, b) => parseInt(a.Id) < parseInt(b.Id) ? -1 : 1)
+            if(filters.filterMant === 2){   //Id del registro
+                filteredRequest = filters.orderDesMant ? filteredRequest.sort((a, b) => parseInt(a.Id) > parseInt(b.Id) ? -1 : 1) : filteredRequest.sort((a, b) => parseInt(a.Id) < parseInt(b.Id) ? -1 : 1)
                 
-                if(filters.orderDes){
+                if(filters.orderDesMant){
                     filters.maxReq = filteredRequest[0]?.Id
                     filters.minReq = filteredRequest[filteredRequest.length - 1]?.Id
                 }else{
@@ -109,8 +109,8 @@ export function useFilters() {
                     filters.maxReq = filteredRequest[filteredRequest.length - 1]?.Id
                 }
             }
-            if(filters.filter === 3){  //Titulo
-                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.titulo.toUpperCase() > b.titulo.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.titulo.toUpperCase() < b.titulo.toUpperCase() ? -1 : 1)
+            if(filters.filterMant === 3){  //Titulo
+                filteredRequest = filters.orderDesMant ? filteredRequest.sort((a, b) => a.titulo.toUpperCase() > b.titulo.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.titulo.toUpperCase() < b.titulo.toUpperCase() ? -1 : 1)
             }
 
             //Filros adicionales por cada mantenedor, cuando corresponda
