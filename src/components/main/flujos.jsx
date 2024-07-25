@@ -25,7 +25,8 @@ function Flujos(){
     };
 
     const ITEM_HEIGHT = 48;
-    const handleSetFlujos = (flujo) => {         
+    const handleSetFlujos = (flujo) => {
+        setAnchorEl(null);
         setFilters(prevState => ({
             ...prevState, 
             flujo: flujo,
