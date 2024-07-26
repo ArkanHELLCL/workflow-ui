@@ -53,7 +53,7 @@ export function useFilters() {
                 filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() > new Date(b.DRE_FechaEdit).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() < new Date(b.DRE_FechaEdit).getTime() ? -1 : 1)
             }
             if(filters.filter === 2){   //Numero del requerimiento
-                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.VRE_Id > b.VRE_Id ? -1 : 1) : filteredRequest.sort((a, b) => a.VRE_Id < b.VRE_Id ? -1 : 1)
+                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => parseInt(a.VRE_Id) > parseInt(b.VRE_Id) ? -1 : 1) : filteredRequest.sort((a, b) => parseInt(a.VRE_Id) < parseInt(b.VRE_Id) ? -1 : 1)
                 
                 if(filters.orderDes){
                     filters.maxReq = filteredRequest[0]?.VRE_Id
