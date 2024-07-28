@@ -67,7 +67,7 @@ export function useFilters() {
                 filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() > new Date(b.DRE_FechaEdit).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() < new Date(b.DRE_FechaEdit).getTime() ? -1 : 1)
             }
             if(filters.filter === 4){   //Paso actual
-                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.FLD_CodigoPaso > b.FLD_CodigoPaso ? -1 : 1) : filteredRequest.sort((a, b) => a.FLD_CodigoPaso < b.FLD_CodigoPaso ? -1 : 1)            
+                filteredRequest = filters.orderDes ? filteredRequest.sort((a, b) => a.FLD_CodigoPaso >= b.FLD_CodigoPaso ? -1 : 1) : filteredRequest.sort((a, b) => a.FLD_CodigoPaso < b.FLD_CodigoPaso ? -1 : 1)            
                 
                 if(filters.orderDes){
                     filters.maxStep = filteredRequest[0]?.FLD_CodigoPaso
