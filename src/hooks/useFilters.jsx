@@ -12,7 +12,6 @@ export function useFilters() {
             bandeja = request?.filter(item => item?.id === filters.itemIdSelected)
         }        
         if(filters.stringSearch!=='' && filters.filterSearch===2){            
-            //let requerimientosArray = [];            
             // Recorremos cada elemento en el objeto "bandejas"
             request?.forEach(item => {                
                 // Recorremos cada requerimiento en la bandeja actual y lo agregamos al array de requerimientos
