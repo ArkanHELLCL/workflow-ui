@@ -9,7 +9,7 @@ export default function SenderData({request, formulario}) {
                 <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-green-600 bg-green-500 rounded-full top-0 -right-1"></span>
             </div>
             <div className='grid'>                                
-                <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt ? request?.request?.DRE_UsuarioEditAnt!="0" ? request?.request?.DRE_UsuarioEditAnt : request?.request?.NombreEditor ? request?.request?.NombreEditor + ' ' + request?.request?.ApellidoEditor : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span>
+                <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt ? request?.request?.DRE_UsuarioEditAnt ? request?.request?.DRE_UsuarioEditAnt : request?.request?.NombreEditor ? request?.request?.NombreEditor + ' ' + request?.request?.ApellidoEditor : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span>
                 <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.request?.ESRAnterior_Descripcion}</strong></span>
             </div>            
         </div>

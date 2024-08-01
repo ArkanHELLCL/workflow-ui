@@ -60,6 +60,7 @@
                 "DRE_FechaEdit": "2024-05-16T14:41:18.720",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 55,
+                "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
             {
@@ -122,7 +123,8 @@
                 "DRE_FechaEdit": "2024-04-16T17:22:13.053",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 77,
-                "DRE_UsuarioEditAnt": "0",
+                "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
+                "ESRAnterior_Descripcion": "Revisado",
                 "rn": 1
             },
             {
@@ -186,7 +188,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 80,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Tomado",
+                "ESRAnterior_Descripcion": "Pagado(a)",
                 "rn": 1
             },
             {
@@ -314,7 +316,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 156,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Tomado",
+                "ESRAnterior_Descripcion": "Revisado",
                 "rn": 1
             },
             {
@@ -563,7 +565,6 @@
                 "DRE_FechaEdit": "2023-10-17T11:27:19.290",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 207,
-                "DRE_UsuarioEditAnt": "0",
                 "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
@@ -680,7 +681,6 @@
                 "DRE_FechaEdit": "2023-10-11T12:47:31.433",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 211,
-                "DRE_UsuarioEditAnt": "0",
                 "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
@@ -802,6 +802,7 @@
                 "DRE_FechaEdit": "2023-09-29T09:46:51.003",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 219,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -1052,7 +1053,6 @@
                 "DRE_FechaEdit": "2023-09-13T08:30:14.427",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 231,
-                "DRE_UsuarioEditAnt": "0",
                 "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
@@ -1223,6 +1223,7 @@
                 "DRE_FechaEdit": "2023-09-13T07:10:50.397",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 231,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -1279,6 +1280,7 @@
                 "DRE_FechaEdit": "2023-09-13T07:10:06.383",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 231,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -1466,7 +1468,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 232,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Tomado",
+                "ESRAnterior_Descripcion": "Visado",
                 "rn": 1
             },
             {
@@ -1521,7 +1523,8 @@
                 "DRE_FechaEdit": "2023-09-12T16:49:57.090",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 232,
-                "DRE_UsuarioEditAnt": "0",
+                "DRE_UsuarioEditAnt": "Pamela del Rosario  Godoy Pereira",
+                "ESRAnterior_Descripcion": "Visado",
                 "rn": 1
             },
             {
@@ -1633,7 +1636,6 @@
                 "DRE_FechaEdit": "2023-09-11T11:28:38.353",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 233,
-                "DRE_UsuarioEditAnt": "0",
                 "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
@@ -1686,7 +1688,6 @@
                 "DRE_FechaEdit": "2023-09-11T11:13:00.483",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 233,
-                "DRE_UsuarioEditAnt": "0",
                 "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
@@ -1800,6 +1801,7 @@
                 "DRE_FechaEdit": "2023-08-09T11:52:32.080",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 256,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -1923,6 +1925,7 @@
                 "DRE_FechaEdit": "2023-08-09T10:42:44.233",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 256,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -1979,6 +1982,7 @@
                 "DRE_FechaEdit": "2023-08-09T10:41:46.660",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 256,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -2039,6 +2043,7 @@
                 "DRE_FechaEdit": "2023-08-08T07:08:17.350",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 257,
+                "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
             {
@@ -2162,6 +2167,7 @@
                 "DRE_FechaEdit": "2023-08-04T07:06:39.267",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 259,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -2218,6 +2224,7 @@
                 "DRE_FechaEdit": "2023-07-19T12:07:30.240",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 271,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -2281,7 +2288,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 271,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Visado",
+                "ESRAnterior_Descripcion": "Aprobado",
                 "rn": 1
             },
             {
@@ -2397,7 +2404,6 @@
                 "DRE_FechaEdit": "2023-05-17T15:05:25.500",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 316,
-                "DRE_UsuarioEditAnt": "0",
                 "ESRAnterior_Descripcion": "Creado",
                 "rn": 1
             },
@@ -2639,6 +2645,7 @@
                 "DRE_FechaEdit": "2023-04-21T19:43:40.660",
                 "DRE_AccionEdit": "Modificar Nombre Requerimiento",
                 "DRE_DifDias": 334,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -2830,7 +2837,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 433,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Tomado",
+                "ESRAnterior_Descripcion": "Abierto",
                 "rn": 1
             },
             {
@@ -2894,7 +2901,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 472,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Visado",
+                "ESRAnterior_Descripcion": "Modificado el Editor",
                 "rn": 1
             },
             {
@@ -2951,6 +2958,7 @@
                 "DRE_FechaEdit": "2022-07-25T11:09:03.077",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 522,
+                "ESRAnterior_Descripcion": "1",
                 "rn": 1
             },
             {
@@ -3013,8 +3021,8 @@
                 "DRE_FechaEdit": "2022-06-16T11:48:28.833",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 547,
-                "DRE_UsuarioEditAnt": "Cynthia Paola  Sepúlveda Campos",
-                "ESRAnterior_Descripcion": "Adjudicado",
+                "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
+                "ESRAnterior_Descripcion": "Modificado el Editor",
                 "rn": 1
             },
             {
@@ -3076,8 +3084,8 @@
                 "DRE_FechaEdit": "2022-06-07T11:50:47.380",
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 554,
-                "DRE_UsuarioEditAnt": "0",
-                "ESRAnterior_Descripcion": "3",
+                "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
+                "ESRAnterior_Descripcion": "Devuelto",
                 "rn": 1
             },
             {
@@ -3267,7 +3275,7 @@
                 "DRE_AccionEdit": "Agregar",
                 "DRE_DifDias": 593,
                 "DRE_UsuarioEditAnt": "Luis Gabriel  Castillo Pacheco",
-                "ESRAnterior_Descripcion": "Tomado",
+                "ESRAnterior_Descripcion": "Revisado",
                 "rn": 1
             }
         ]
