@@ -75,7 +75,7 @@ export const AccordionItem = memo(function AccordionItem({ item }) {
             <AccordionDetails className="py-0">
                 {
                     <Suspense fallback={<Loading />}>
-                        <Requerimiento item={item.requerimientos} showDia={item.showdia} />
+                        <Requerimiento item={item.requerimientos} showDia={item.showdia} showYear={item.showyear} />
                     </Suspense>
                 }
             </AccordionDetails>

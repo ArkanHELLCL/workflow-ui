@@ -10,20 +10,22 @@ let rangeDays = [
     { id: 8, title: 'Hace tres semanas', desde: 20, hasta: 26, showdia:true },
     { id: 9, title: 'Hace un mes', desde: 27, hasta: 56, showdia:true },
     { id: 10, title: 'Más de dos meses', desde: 57, hasta: 86, showdia:true },
-    { id: 11, title: 'Más antiguos', desde: 87, hasta: 9999, showdia:true },   
+    { id: 11, title: 'Más antiguos', desde: 87, hasta:null, showyear:true },   
 ]
 
 function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
     let anterior = new Date(hoy); 
     let maxdias  = new Date(hoy); 
     anterior.setDate(anterior.getDate() - diasDesde);
-    maxdias.setDate(maxdias.getDate() - diasHasta);
+    diasHasta !== null ? maxdias.setDate(maxdias.getDate() - diasHasta) : maxdias = null
+    
     return filteredRequest?.filter(
-      (item) =>
-        //item.DRE_FechaEdit?.slice(0, 10) <= anterior.toISOString().slice(0, 10) &&
-        //item.DRE_FechaEdit?.slice(0, 10) >= maxdias.toISOString().slice(0, 10)
-        new Date(item.DRE_FechaEdit).getTime() <= new Date(anterior).getTime() &&
-        new Date(item.DRE_FechaEdit).getTime() >= new Date(maxdias).getTime()
+      (item) =>        
+        maxdias !== null ?
+            new Date(item.DRE_FechaEdit).getTime() <= new Date(anterior).getTime() &&
+            new Date(item.DRE_FechaEdit).getTime() >= new Date(maxdias).getTime()
+        :
+        new Date(item.DRE_FechaEdit).getTime() <= new Date(anterior).getTime()
     );
 }
 
@@ -33,7 +35,7 @@ export function ListRequestByDate(hoy, maxAccordions, filteredRequest){
     let requerimientoAccordion = []    
 
     for (let index = 1; index <= maxAccordions; index++) {      
-        requerimientoAccordion.push({id:index, title:rangeDays[index-1].title, desde: rangeDays[index-1].desde, hasta: rangeDays[index-1].hasta, open: true, requerimientos: FiltroRequerimientos(hoy,filteredRequest,rangeDays[index-1].desde,rangeDays[index-1].hasta), showdia:rangeDays[index-1].showdia})
+        requerimientoAccordion.push({id:index, title:rangeDays[index-1].title, desde: rangeDays[index-1].desde, hasta: rangeDays[index-1].hasta, open: true, requerimientos: FiltroRequerimientos(hoy,filteredRequest,rangeDays[index-1].desde,rangeDays[index-1].hasta), showdia:rangeDays[index-1].showdia, showyear:rangeDays[index-1].showyear})
     }
     return requerimientoAccordion
 }

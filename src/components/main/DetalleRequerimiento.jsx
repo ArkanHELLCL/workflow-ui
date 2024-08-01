@@ -80,19 +80,29 @@ export default function DetalleRequerimiento(){
                                             <li>Creador: <span className='font-medium dark:text-stone-300'>{request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span></li>
                                             <li>Dep. creación: <span className='font-medium dark:text-stone-300'>{request?.request?.DepDescripcionOrigen}</span></li>
                                             <li>Creación: <span className='font-medium dark:text-stone-300'>{request?.request?.REQ_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.request?.REQ_FechaEdit.slice(5,7))] + ' de ' + request?.request?.REQ_FechaEdit.slice(0,4)}</span></li>
-                                            <li>Modificacón: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.request?.DRE_FechaEdit.slice(5,7))] + ' de ' + request?.request?.DRE_FechaEdit.slice(0,4)}</span></li>
-                                            <li>Acción realizada: <span className='font-medium dark:text-stone-300'>{request?.request?.ESRAnterior_Descripcion ? request?.request?.ESRAnterior_Descripcion : 'S/F'}</span></li>
+                                            <li>Modificacón: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.request?.DRE_FechaEdit.slice(5,7))] + ' de ' + request?.request?.DRE_FechaEdit.slice(0,4)}</span></li>{
+                                            request?.request?.ESRAnterior_Descripcion ?                                            
+                                                <li>Acción realizada: <span className='font-medium dark:text-stone-300'>{request?.request?.ESRAnterior_Descripcion}</span></li>
+                                            : null}
                                         </ul>
                                     </div>
                                     <div className="mb-3 text-stone-500 dark:text-stone-400">
-                                        <ul className="space-y-2">
-                                            <li>Días limite: <span className='font-medium dark:text-stone-300'>{request?.request?.FLD_DiasLimites}</span></li>
-                                            <li>Dias sin responder: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_DifDias}</span></li>
-                                            <li>Número del formulario: <span className='font-medium dark:text-stone-300'>{request?.request?.VFO_Id}</span></li>
+                                        <ul className="space-y-2">{
+                                            request?.request?.FLD_DiasLimites ?
+                                                <li>Días limite: <span className='font-medium dark:text-stone-300'>{request?.request?.FLD_DiasLimites}</span></li>
+                                            : null}{
+                                            request?.request?.DRE_DifDias ?                                             
+                                                <li>Dias sin responder: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_DifDias}</span></li>
+                                            : null}{
+                                            request?.request?.VFO_Id ?                                            
+                                                <li>Número del formulario: <span className='font-medium dark:text-stone-300'>{request?.request?.VFO_Id}</span></li>
+                                            : null}
                                             <li>Paso actual: <span className='font-medium dark:text-stone-300'>{request?.request?.FLD_CodigoPaso}</span></li>
                                             <li>Editor actual: <span className='font-medium dark:text-stone-300'>{request?.request?.NombreEditor ? request?.request?.NombreEditor + ' ' + request?.request?.ApellidoEditor : 'Esperando a ser tomado'}</span></li>                            
-                                            <li>Dep. actual: <span className='font-medium dark:text-stone-300'>{request?.request?.DepDescripcionActual}</span></li>
-                                            <li>Acción a realizar: <span className='font-medium dark:text-stone-300'>{request?.request?.ESR_AccionFlujoDatos}</span></li>
+                                            <li>Dep. actual: <span className='font-medium dark:text-stone-300'>{request?.request?.DepDescripcionActual}</span></li>{
+                                            request?.request?.ESR_AccionFlujoDatos ?                                            
+                                                <li>Acción a realizar: <span className='font-medium dark:text-stone-300'>{request?.request?.ESR_AccionFlujoDatos}</span></li>
+                                            : null}
                                             <li>Estado del Req.: <span className='font-medium dark:text-stone-300'>{request?.request?.ESR_DescripcionRequerimiento ? request?.request?.ESR_DescripcionRequerimiento : 'Pendiente'}</span></li>                                            
                                         </ul>
                                     </div>

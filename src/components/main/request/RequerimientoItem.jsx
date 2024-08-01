@@ -6,7 +6,7 @@ import { ArchiveIcon, EditIcon, UserIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
 
-export const RequerimientoItem = ({ req, showDia }) => {    
+export const RequerimientoItem = ({ req, showDia, showYear }) => {    
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
     const { filters } = useFilters()
@@ -69,7 +69,7 @@ export const RequerimientoItem = ({ req, showDia }) => {
             <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Archivar Requerimiento"><ArchiveIcon/></span>
             <span className={`${(req.FLD_DiasLimites - req.DRE_DifDias < 0) ? 'text-red-500 visible' : (req.FLD_DiasLimites - req.DRE_DifDias <= 5) && (req.FLD_DiasLimites - req.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold `}>!</span>
           </p>
-          <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : req.DRE_FechaEdit.slice(11,16)}</p>
+          <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : showYear ? diaName(req.DRE_FechaEdit).slice(0,3) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) + '-' + req.DRE_FechaEdit.slice(0,4): req.DRE_FechaEdit.slice(11,16)}</p>
           <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">N°{req.VRE_Id}</p>
         </div>
       </article>

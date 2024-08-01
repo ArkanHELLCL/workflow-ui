@@ -12,15 +12,14 @@ import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
-export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
-    const { REQ_Adjuntos } = formulario;
-    const { FOR_Campos } = formulario; 
+export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){    
     const { request, setRequest } = useRequest()
     const [dropEnter, setDropEnter] = useState(false);
     const [preview, setPreview] = useState(false)
-    const [selected, setSelected] = useState(null)
-    const [adjuntos, setAdjuntos] = useState(REQ_Adjuntos);
+    const [selected, setSelected] = useState(null)    
+    const [adjuntos, setAdjuntos] = useState([]);
     const [filesList, setFilesList] = useState([]);
+    const [form, setForm] = useState()    
     
     useEffect(() => {
         selected ?
@@ -32,11 +31,18 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
         null
     },[selected, adjuntos])
 
+    useEffect(() => {
+        const frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id) ? formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id) : {}
+        const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []        
+        setAdjuntos(adjuntos)
+        setForm(frm[0])
+    },[formulario, request])
+
     const onSubmit = (data) => {        
         console.log('formcomponent',data);
         frmRequest.reset()
         frmRequest.clearErrors()        
-        setAdjuntos(REQ_Adjuntos)
+        setAdjuntos(form.REQ_Adjuntos)
         setFilesList([])
     };
 
@@ -50,27 +56,27 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
     ,[openDialog?.option])    
 
     const { enqueueSnackbar } = useSnackbar();
-    const formRef = useRef(null)
+    const formRef = useRef(null)    
     return(
         <>
             {
-                request && request?.request?.VFO_Id === formulario?.VFO_Id &&
+                request && form &&
                 <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>                    
-                    <form id={formulario.name} noValidate ref={formRef}
+                    <form id={form.name} noValidate ref={formRef}
                         className="h-full w-full flex flex-col columns-1"
                         onSubmit={frmRequest.handleSubmit(onSubmit)}   
                         >
-                            <Header preview={preview} request={request} formulario={formulario} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
+                            <Header preview={preview} request={request} formulario={form} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
                             <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
                                 !preview &&
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={FOR_Campos} setAdjuntos={setAdjuntos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} setAdjuntos={setAdjuntos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 }{
                                     preview && selected!==null &&
                                         <Preview selected={selected} />
                                 }                        
                     </form>
                 </section>
-            }{  request?.request?.VFO_Id !== formulario?.VFO_Id &&
+            }{  request?.request?.VFO_Id !== form?.VFO_Id &&
                     <NoData request={request}/>
             }{
                 openDialog?.open &&

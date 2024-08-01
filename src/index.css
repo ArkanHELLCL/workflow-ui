@@ -70,3 +70,7 @@ header, #buttonsRequest, #buttonsRecord{
 header::-webkit-scrollbar, #buttonsRequest::-webkit-scrollbar, #buttonsRecord::-webkit-scrollbar{
   display: none;
 }
+
+#imgSender{
+  clip-path: circle(50%);
+}
