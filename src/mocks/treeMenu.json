@@ -54,37 +54,17 @@
                         "children":[
                            {
                               "id":"bnc",
-                              "label":"Sistema de Compras",
-                              "description":"Requerimientos Sistema de Compras",
+                              "label":"Sistema de Compras v0",
+                              "description":"Requerimientos Sistema de Compras v0",
                               "url":"/bandejas/antiguos/compras"
                            },
                            {
                               "id":"bnw",
                               "label":"Sistema WorkFlow v1",
                               "description":"Requerimientos Sistema WorkFlow v1",
-                              "url":"/bandejas/antiguos/workflowv1",
-                              "children":[
-                                 {
-                                    "id":"bnwc",
-                                    "label":"Flujo Compras",
-                                    "description":"WorkFlow v1 Flujo de Compras",
-                                    "url":"/bandejas/antiguos/workflowv1/compras"
-                                 },
-                                 {
-                                    "id":"bnwb",
-                                    "label":"Flujo Boletas",
-                                    "description":"WorkFlow v1 Flujo Boletas de Garantías",
-                                    "url":"/bandejas/antiguos/workflowv1/boletas"
-                                 }
-                              ]
+                              "url":"/bandejas/antiguos/workflowv1"
                            }
                         ]
-                     },
-                     {
-                        "id":"bp",
-                        "label":"De Antiguos Pen.",
-                        "description":"Bandeja de Antiguos Pendientes",
-                        "url":"/bandejas/antiguos-pendientes"
                      }
                   ]
             }
@@ -206,29 +186,15 @@
                         "children":[
                            {
                               "id":"bnc",
-                              "label":"Sistema de Compras",
-                              "description":"Requerimientos Sistema de Compras",
+                              "label":"Sistema de Compras v0",
+                              "description":"Requerimientos Sistema de Compras v0",
                               "url":"/bandejas/antiguos/compras"                
                            },
                            {
                               "id":"bnw",
                               "label":"Sistema WorkFlow v1",
                               "description":"Requerimientos Sistema WorkFlow v1",
-                              "url":"/bandejas/workflowv1",
-                              "children":[
-                                 {
-                                    "id":"bnwc",
-                                    "label":"Flujo Compras",
-                                    "description":"WorkFlow v1 Flujo de Compras",
-                                    "url":"/bandejas/workflowv1/compras"
-                                 },
-                                 {
-                                    "id":"bnwb",
-                                    "label":"Flujo Boletas",
-                                    "description":"WorkFlow v1 Flujo Boletas de Garantías",
-                                    "url":"/bandejas/workflowv1/boletas"
-                                 }
-                              ]
+                              "url":"/bandejas/antiguos/workflowv1"                              
                            }
                         ]
                      }
@@ -346,37 +312,17 @@
                         "children":[
                            {
                               "id":"bnc",
-                              "label":"Sistema de Compras",
-                              "description":"Requerimientos Sistema de Compras",
+                              "label":"Sistema de Compras v0",
+                              "description":"Requerimientos Sistema de Compras v0",
                               "url":"/bandejas/antiguos/compras"                     
                            },
                            {
                               "id":"bnw",
                               "label":"Sistema WorkFlow v1",
                               "description":"Requerimientos Sistema WorkFlow v1",
-                              "url":"/bandejas/antiguos/workflowv1",
-                              "children":[
-                                 {
-                                    "id":"bnwc",
-                                    "label":"Flujo Compras",
-                                    "description":"WorkFlow v1 Flujo de Compras",
-                                    "url":"/bandejas/antiguos/workflowv1/compras"
-                                 },
-                                 {
-                                    "id":"bnwb",
-                                    "label":"Flujo Boletas",
-                                    "description":"WorkFlow v1 Flujo Boletas de Garantías",
-                                    "url":"/bandejas/antiguos/workflowv1/boletas"
-                                 }
-                              ]
+                              "url":"/bandejas/antiguos/workflowv1"
                            }
                         ]
-                     },
-                     {
-                        "id":"bp",
-                        "label":"De Antiguos Pen.",
-                        "description":"Bandeja de Antiguos Pendientes",
-                        "url":"/bandejas/antiguos-pendientes"               
                      }
                   ]
             }

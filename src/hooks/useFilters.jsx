@@ -28,6 +28,8 @@ export function useFilters() {
         //Solo para bandejas
         if(filters.itemIdSelected.charAt(0).toUpperCase() === 'B'){            
             filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : (
+                filters.stringSearch.slice(0,2).toUpperCase() === '@N' ? Number(item.VRE_Id) === Number(filters.stringSearch.slice(2, filters.stringSearch.length)) :
+
                 item.DRE_UsuarioEditAnt?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
                 item.NombreEditor?.toUpperCase().match(filters.stringSearch.toUpperCase()) || 
                 item.ApellidoEditor?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
@@ -39,7 +41,9 @@ export function useFilters() {
             ))
             
             //Por Flujo seleccionado
-            filteredRequest = filteredRequest?.filter((item) => filters.flujo === 0 ? item : item.FLU_Id === filters.flujo)
+            //Solo para bandejas activas no historicas
+            if(filters.itemIdSelected.slice(0,3).toUpperCase() !== 'BNC')    //Bandejas de antiguos requerimientos
+                filteredRequest = filteredRequest?.filter((item) => filters.flujo === 0 ? item : item.FLU_Id === filters.flujo)
 
             //Estadisticas        
             filters.totalRequerimientos = filteredRequest?.length ? filteredRequest?.length : 0

@@ -124,5 +124,91 @@
                 }
             ]
         }
+    ],
+    "flujosv0": [
+        {
+            "id": 0,
+            "name": "Compras v0",
+            "description": "Flujo de compras v0",
+            "orderby": [
+                {
+                    "id": 1,
+                    "name": "Por Fecha",
+                    "description": "Fecha de asignación"
+                },
+                {
+                    "id": 2,
+                    "name": "Por Requerimiento",
+                    "description": "Número de requerimiento"
+                }         
+            ]
+        }        
+    ],
+    "flujosv1": [
+        {
+            "id": 0,
+            "name": "Todos",
+            "description": "Todos los flujos",
+            "orderby": [
+                {
+                    "id": 1,
+                    "name": "Por Fecha",
+                    "description": "Fecha de asignación"
+                },
+                {
+                    "id": 2,
+                    "name": "Por Requerimiento",
+                    "description": "Número de requerimiento"
+                }         
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Compras v1",
+            "description": "Flujo de compras v1",
+            "steps":7,
+            "ver":1,            
+            "orderby": [
+                {
+                    "id": 1,
+                    "name": "Por Fecha",
+                    "description": "Fecha de asignación"
+                },
+                {
+                    "id": 2,
+                    "name": "Por Requerimiento",
+                    "description": "Número de requerimiento"
+                },
+                {
+                    "id": 4,
+                    "name": "Por Paso",
+                    "description": "Paso actual del requerimiento"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Boletas",
+            "description": "Flujo de boletas de garantías v1",
+            "steps":3,
+            "ver":1,                        
+            "orderby": [
+                {
+                    "id": 1,
+                    "name": "Por Fecha",
+                    "description": "Fecha de asignación"
+                },
+                {
+                    "id": 2,
+                    "name": "Por Requerimiento",
+                    "description": "Número de requerimiento"
+                },
+                {
+                    "id": 4,
+                    "name": "Por Paso",
+                    "description": "Paso actual del requerimiento"
+                }
+            ]
+        }
     ]
 }
