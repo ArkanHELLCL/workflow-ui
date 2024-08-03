@@ -17,7 +17,6 @@ import ListDivider from '@mui/joy/ListDivider';
 import List from '@mui/joy/List';
 import ListItemButton from '@mui/joy/ListItemButton';
 import StraightIcon from '@mui/icons-material/Straight';
-//import { useEffect } from "react";
 
 export default function MenuFilters() {
     const { filters, setFilters } = useFilters()
@@ -46,16 +45,7 @@ export default function MenuFilters() {
             ...prevState, 
             orderDes: orderDes,
         }))
-    }
-
-    /*useEffect(() => {
-        if(filters.itemIdSelected==='BNC'){
-            setFilters(prevState => ({
-                ...prevState,
-                flujo: 0,
-            }))
-        }
-    }, [filters.itemIdSelected])*/
+    }    
 
     function desOrder(orderDes){        
         if(filters.filter===1 && orderDes){

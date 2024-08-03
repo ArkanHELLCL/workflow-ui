@@ -51,11 +51,12 @@ export function MenuTree({ menu, frmRecord }) {
             itemIdSelected: itemId,            
             filterSearch: itemId === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
             stringSearch:'',
-            filterSearchResult:false
+            filterSearchResult:false,
+            flujo : itemId==='bnc' ? 0 : filters.flujo
         }))    
         setRequest(null)
         setRecord(null)
-        frmRecord?.unregister()
+        frmRecord?.unregister()        
     };
     return (
         //menu.length > 0 &&
