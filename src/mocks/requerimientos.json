@@ -4,6 +4,7 @@
          "id" : "be",
          "registros" :[
             {
+                "Bandeja": "be",
                 "DRE_Id": 13363,
                 "VRE_Id": 5324,
                 "REQ_Id": 5324,
@@ -64,6 +65,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 13360,
                 "VRE_Id": 5323,
                 "REQ_Id": 5323,
@@ -125,6 +127,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 13359,
                 "VRE_Id": 5322,
                 "REQ_Id": 5322,
@@ -182,6 +185,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 12966,
                 "VRE_Id": 2250,
                 "REQ_Id": 2250,
@@ -246,6 +250,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 12964,
                 "VRE_Id": 5313,
                 "REQ_Id": 5313,
@@ -310,6 +315,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 12873,
                 "VRE_Id": 5311,
                 "REQ_Id": 5311,
@@ -374,6 +380,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 9825,
                 "VRE_Id": 2309,
                 "REQ_Id": 2309,
@@ -438,6 +445,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 9617,
                 "VRE_Id": 2303,
                 "REQ_Id": 2303,
@@ -501,6 +509,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8604,
                 "VRE_Id": 42,
                 "REQ_Id": 42,
@@ -565,6 +574,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8590,
                 "VRE_Id": 6,
                 "REQ_Id": 6,
@@ -629,6 +639,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8584,
                 "VRE_Id": 2291,
                 "REQ_Id": 2291,
@@ -689,6 +700,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8580,
                 "VRE_Id": 2302,
                 "REQ_Id": 2302,
@@ -748,6 +760,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8548,
                 "VRE_Id": 2298,
                 "REQ_Id": 2298,
@@ -812,6 +825,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8500,
                 "VRE_Id": 2292,
                 "REQ_Id": 2292,
@@ -864,6 +878,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8188,
                 "VRE_Id": 2271,
                 "REQ_Id": 2271,
@@ -928,6 +943,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8186,
                 "VRE_Id": 2280,
                 "REQ_Id": 2280,
@@ -985,6 +1001,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 8162,
                 "VRE_Id": 2278,
                 "REQ_Id": 2278,
@@ -1049,6 +1066,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7902,
                 "VRE_Id": 2245,
                 "REQ_Id": 2245,
@@ -1113,6 +1131,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7469,
                 "VRE_Id": 2254,
                 "REQ_Id": 2254,
@@ -1177,6 +1196,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7356,
                 "VRE_Id": 2248,
                 "REQ_Id": 2248,
@@ -1236,6 +1256,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7344,
                 "VRE_Id": 2246,
                 "REQ_Id": 2246,
@@ -1296,6 +1317,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7305,
                 "VRE_Id": 2243,
                 "REQ_Id": 2243,
@@ -1349,6 +1371,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7286,
                 "VRE_Id": 2242,
                 "REQ_Id": 2242,
@@ -1406,6 +1429,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7285,
                 "VRE_Id": 2241,
                 "REQ_Id": 2241,
@@ -1463,6 +1487,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7284,
                 "VRE_Id": 2240,
                 "REQ_Id": 2240,
@@ -1527,6 +1552,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7267,
                 "VRE_Id": 2239,
                 "REQ_Id": 2239,
@@ -1591,6 +1617,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7254,
                 "VRE_Id": 2237,
                 "REQ_Id": 2237,
@@ -1651,6 +1678,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7104,
                 "VRE_Id": 2232,
                 "REQ_Id": 2232,
@@ -1707,6 +1735,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7095,
                 "VRE_Id": 2231,
                 "REQ_Id": 2231,
@@ -1766,6 +1795,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7088,
                 "VRE_Id": 2230,
                 "REQ_Id": 2230,
@@ -1825,6 +1855,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7081,
                 "VRE_Id": 2229,
                 "REQ_Id": 2229,
@@ -1878,6 +1909,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7045,
                 "VRE_Id": 2225,
                 "REQ_Id": 2225,
@@ -1941,6 +1973,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7042,
                 "VRE_Id": 2224,
                 "REQ_Id": 2224,
@@ -2004,6 +2037,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7023,
                 "VRE_Id": 2221,
                 "REQ_Id": 2221,
@@ -2063,6 +2097,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7020,
                 "VRE_Id": 2220,
                 "REQ_Id": 2220,
@@ -2126,6 +2161,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7008,
                 "VRE_Id": 2218,
                 "REQ_Id": 2218,
@@ -2189,6 +2225,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 7001,
                 "VRE_Id": 2217,
                 "REQ_Id": 2217,
@@ -2252,6 +2289,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6994,
                 "VRE_Id": 2216,
                 "REQ_Id": 2216,
@@ -2315,6 +2353,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6963,
                 "VRE_Id": 2213,
                 "REQ_Id": 2213,
@@ -2374,6 +2413,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6960,
                 "VRE_Id": 2212,
                 "REQ_Id": 2212,
@@ -2433,6 +2473,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6955,
                 "VRE_Id": 2211,
                 "REQ_Id": 2211,
@@ -2485,6 +2526,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6389,
                 "VRE_Id": 2182,
                 "REQ_Id": 2182,
@@ -2541,6 +2583,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6370,
                 "VRE_Id": 2183,
                 "REQ_Id": 2183,
@@ -2598,6 +2641,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6347,
                 "VRE_Id": 2180,
                 "REQ_Id": 2180,
@@ -2658,6 +2702,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6286,
                 "VRE_Id": 2179,
                 "REQ_Id": 2179,
@@ -2715,6 +2760,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6285,
                 "VRE_Id": 1135,
                 "REQ_Id": 1135,
@@ -2779,6 +2825,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6254,
                 "VRE_Id": 2177,
                 "REQ_Id": 2177,
@@ -2839,6 +2886,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6253,
                 "VRE_Id": 2176,
                 "REQ_Id": 2176,
@@ -2896,6 +2944,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6179,
                 "VRE_Id": 1149,
                 "REQ_Id": 1149,
@@ -2957,6 +3006,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6120,
                 "VRE_Id": 2168,
                 "REQ_Id": 2168,
@@ -3021,6 +3071,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6109,
                 "VRE_Id": 2170,
                 "REQ_Id": 2170,
@@ -3084,6 +3135,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6105,
                 "VRE_Id": 2166,
                 "REQ_Id": 2166,
@@ -3147,6 +3199,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6021,
                 "VRE_Id": 2163,
                 "REQ_Id": 2163,
@@ -3207,6 +3260,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 6016,
                 "VRE_Id": 2160,
                 "REQ_Id": 2160,
@@ -3270,6 +3324,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 5984,
                 "VRE_Id": 2158,
                 "REQ_Id": 2158,
@@ -3327,6 +3382,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 5983,
                 "VRE_Id": 2157,
                 "REQ_Id": 2157,
@@ -3387,6 +3443,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 5964,
                 "VRE_Id": 2154,
                 "REQ_Id": 2154,
@@ -3450,6 +3507,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 5945,
                 "VRE_Id": 2153,
                 "REQ_Id": 2153,
@@ -3510,6 +3568,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4955,
                 "VRE_Id": 1153,
                 "REQ_Id": 1153,
@@ -3567,6 +3626,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4954,
                 "VRE_Id": 1150,
                 "REQ_Id": 1150,
@@ -3631,6 +3691,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4926,
                 "VRE_Id": 1152,
                 "REQ_Id": 1152,
@@ -3695,6 +3756,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4875,
                 "VRE_Id": 1147,
                 "REQ_Id": 1147,
@@ -3756,6 +3818,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4873,
                 "VRE_Id": 1145,
                 "REQ_Id": 1145,
@@ -3808,6 +3871,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4467,
                 "VRE_Id": 1133,
                 "REQ_Id": 1133,
@@ -3872,6 +3936,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4441,
                 "VRE_Id": 1131,
                 "REQ_Id": 1131,
@@ -3929,6 +3994,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4376,
                 "VRE_Id": 1129,
                 "REQ_Id": 1129,
@@ -3986,6 +4052,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 4187,
                 "VRE_Id": 1123,
                 "REQ_Id": 1123,
@@ -4049,6 +4116,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 3693,
                 "VRE_Id": 1099,
                 "REQ_Id": 1099,
@@ -4112,6 +4180,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 3329,
                 "VRE_Id": 1076,
                 "REQ_Id": 1076,
@@ -4169,6 +4238,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 3023,
                 "VRE_Id": 1062,
                 "REQ_Id": 1062,
@@ -4226,6 +4296,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 3160,
                 "VRE_Id": 1067,
                 "REQ_Id": 1067,
@@ -4287,6 +4358,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 3159,
                 "VRE_Id": 1066,
                 "REQ_Id": 1066,
@@ -4344,6 +4416,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 3156,
                 "VRE_Id": 1065,
                 "REQ_Id": 1065,
@@ -4408,6 +4481,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 2121,
                 "VRE_Id": 59,
                 "REQ_Id": 59,
@@ -4472,6 +4546,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 2084,
                 "VRE_Id": 56,
                 "REQ_Id": 56,
@@ -4532,6 +4607,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1918,
                 "VRE_Id": 54,
                 "REQ_Id": 54,
@@ -4593,6 +4669,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1779,
                 "VRE_Id": 49,
                 "REQ_Id": 49,
@@ -4657,6 +4734,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1368,
                 "VRE_Id": 48,
                 "REQ_Id": 48,
@@ -4721,6 +4799,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1351,
                 "VRE_Id": 40,
                 "REQ_Id": 40,
@@ -4782,6 +4861,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1328,
                 "VRE_Id": 46,
                 "REQ_Id": 46,
@@ -4839,6 +4919,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1319,
                 "VRE_Id": 45,
                 "REQ_Id": 45,
@@ -4898,6 +4979,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1314,
                 "VRE_Id": 39,
                 "REQ_Id": 39,
@@ -4957,6 +5039,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1212,
                 "VRE_Id": 30,
                 "REQ_Id": 30,
@@ -5021,6 +5104,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1191,
                 "VRE_Id": 35,
                 "REQ_Id": 35,
@@ -5078,6 +5162,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1190,
                 "VRE_Id": 34,
                 "REQ_Id": 34,
@@ -5137,6 +5222,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 1168,
                 "VRE_Id": 32,
                 "REQ_Id": 32,
@@ -5196,6 +5282,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 738,
                 "VRE_Id": 26,
                 "REQ_Id": 26,
@@ -5259,6 +5346,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 660,
                 "VRE_Id": 24,
                 "REQ_Id": 24,
@@ -5320,6 +5408,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 432,
                 "VRE_Id": 16,
                 "REQ_Id": 16,
@@ -5384,6 +5473,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 261,
                 "VRE_Id": 5,
                 "REQ_Id": 5,
@@ -5448,6 +5538,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "be",
                 "DRE_Id": 166,
                 "VRE_Id": 8,
                 "REQ_Id": 8,
@@ -5517,6 +5608,7 @@
          "id" : "bf",
          "registros" :[
             {
+                "Bandeja": "bf",
                 "DRE_Id": 13334,
                 "VRE_Id": 5319,
                 "REQ_Id": 5319,
@@ -5580,6 +5672,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 13302,
                 "VRE_Id": 5318,
                 "REQ_Id": 5318,
@@ -5643,6 +5736,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 13222,
                 "VRE_Id": 5314,
                 "REQ_Id": 5314,
@@ -5706,6 +5800,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 13162,
                 "VRE_Id": 5316,
                 "REQ_Id": 5316,
@@ -5769,6 +5864,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 13139,
                 "VRE_Id": 5317,
                 "REQ_Id": 5317,
@@ -5832,6 +5928,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 13021,
                 "VRE_Id": 5315,
                 "REQ_Id": 5315,
@@ -5895,6 +5992,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 11892,
                 "VRE_Id": 4311,
                 "REQ_Id": 4311,
@@ -5958,6 +6056,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 11860,
                 "VRE_Id": 4310,
                 "REQ_Id": 4310,
@@ -6021,6 +6120,7 @@
                 "ESRAnterior_Descripcion": "Reclamada"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 11844,
                 "VRE_Id": 4309,
                 "REQ_Id": 4309,
@@ -6084,6 +6184,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 11802,
                 "VRE_Id": 4308,
                 "REQ_Id": 4308,
@@ -6147,6 +6248,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 11760,
                 "VRE_Id": 4307,
                 "REQ_Id": 4307,
@@ -6210,6 +6312,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 9800,
                 "VRE_Id": 2308,
                 "REQ_Id": 2308,
@@ -6273,6 +6376,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 9758,
                 "VRE_Id": 2307,
                 "REQ_Id": 2307,
@@ -6336,6 +6440,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 9710,
                 "VRE_Id": 2305,
                 "REQ_Id": 2305,
@@ -6399,6 +6504,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 9661,
                 "VRE_Id": 2304,
                 "REQ_Id": 2304,
@@ -6462,6 +6568,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 8451,
                 "VRE_Id": 2289,
                 "REQ_Id": 2289,
@@ -6525,6 +6632,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 8421,
                 "VRE_Id": 2288,
                 "REQ_Id": 2288,
@@ -6588,6 +6696,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 8383,
                 "VRE_Id": 2286,
                 "REQ_Id": 2286,
@@ -6651,6 +6760,7 @@
                 "ESRAnterior_Descripcion": "Reclamada"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 8291,
                 "VRE_Id": 2283,
                 "REQ_Id": 2283,
@@ -6714,6 +6824,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7735,
                 "VRE_Id": 2265,
                 "REQ_Id": 2265,
@@ -6770,6 +6881,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7730,
                 "VRE_Id": 2234,
                 "REQ_Id": 2234,
@@ -6826,6 +6938,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7725,
                 "VRE_Id": 2186,
                 "REQ_Id": 2186,
@@ -6882,6 +6995,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7720,
                 "VRE_Id": 2172,
                 "REQ_Id": 2172,
@@ -6938,6 +7052,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7677,
                 "VRE_Id": 2263,
                 "REQ_Id": 2263,
@@ -7001,6 +7116,7 @@
                 "ESRAnterior_Descripcion": "Reclamada"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7644,
                 "VRE_Id": 2262,
                 "REQ_Id": 2262,
@@ -7064,6 +7180,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7553,
                 "VRE_Id": 2260,
                 "REQ_Id": 2260,
@@ -7127,6 +7244,7 @@
                 "ESRAnterior_Descripcion": "Reclamada"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7530,
                 "VRE_Id": 2258,
                 "REQ_Id": 2258,
@@ -7190,6 +7308,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 7242,
                 "VRE_Id": 2238,
                 "REQ_Id": 2238,
@@ -7253,6 +7372,7 @@
                 "ESRAnterior_Descripcion": "Reclamada"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6839,
                 "VRE_Id": 2202,
                 "REQ_Id": 2202,
@@ -7316,6 +7436,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6789,
                 "VRE_Id": 2200,
                 "REQ_Id": 2200,
@@ -7379,6 +7500,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6607,
                 "VRE_Id": 2188,
                 "REQ_Id": 2188,
@@ -7442,6 +7564,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6440,
                 "VRE_Id": 2189,
                 "REQ_Id": 2189,
@@ -7505,6 +7628,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6387,
                 "VRE_Id": 2175,
                 "REQ_Id": 2175,
@@ -7568,6 +7692,7 @@
                 "ESRAnterior_Descripcion": "Visado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6163,
                 "VRE_Id": 2171,
                 "REQ_Id": 2171,
@@ -7631,6 +7756,7 @@
                 "ESRAnterior_Descripcion": "Devuelto"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 6074,
                 "VRE_Id": 2165,
                 "REQ_Id": 2165,
@@ -7694,6 +7820,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 5000,
                 "VRE_Id": 1154,
                 "REQ_Id": 1154,
@@ -7750,6 +7877,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4870,
                 "VRE_Id": 1114,
                 "REQ_Id": 1114,
@@ -7813,6 +7941,7 @@
                 "ESRAnterior_Descripcion": "Modificado el Editor"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4861,
                 "VRE_Id": 1144,
                 "REQ_Id": 1144,
@@ -7869,6 +7998,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4856,
                 "VRE_Id": 1143,
                 "REQ_Id": 1143,
@@ -7925,6 +8055,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4851,
                 "VRE_Id": 1142,
                 "REQ_Id": 1142,
@@ -7981,6 +8112,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4771,
                 "VRE_Id": 1100,
                 "REQ_Id": 1100,
@@ -8037,6 +8169,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4764,
                 "VRE_Id": 1104,
                 "REQ_Id": 1104,
@@ -8093,6 +8226,7 @@
                 "ESRAnterior_Descripcion": "Modificado Folio DV"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4757,
                 "VRE_Id": 1137,
                 "REQ_Id": 1137,
@@ -8149,6 +8283,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4750,
                 "VRE_Id": 1141,
                 "REQ_Id": 1141,
@@ -8205,6 +8340,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4745,
                 "VRE_Id": 1140,
                 "REQ_Id": 1140,
@@ -8261,6 +8397,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4728,
                 "VRE_Id": 1139,
                 "REQ_Id": 1139,
@@ -8317,6 +8454,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4641,
                 "VRE_Id": 1136,
                 "REQ_Id": 1136,
@@ -8373,6 +8511,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4636,
                 "VRE_Id": 1134,
                 "REQ_Id": 1134,
@@ -8429,6 +8568,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4544,
                 "VRE_Id": 1115,
                 "REQ_Id": 1115,
@@ -8492,6 +8632,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4517,
                 "VRE_Id": 1101,
                 "REQ_Id": 1101,
@@ -8555,6 +8696,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4514,
                 "VRE_Id": 1122,
                 "REQ_Id": 1122,
@@ -8618,6 +8760,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4310,
                 "VRE_Id": 1118,
                 "REQ_Id": 1118,
@@ -8681,6 +8824,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4277,
                 "VRE_Id": 1125,
                 "REQ_Id": 1125,
@@ -8744,6 +8888,7 @@
                 "ESRAnterior_Descripcion": "Modificado Folio DV"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4155,
                 "VRE_Id": 1120,
                 "REQ_Id": 1120,
@@ -8807,6 +8952,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4107,
                 "VRE_Id": 1098,
                 "REQ_Id": 1098,
@@ -8870,6 +9016,7 @@
                 "ESRAnterior_Descripcion": "Pagado(a)"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 4018,
                 "VRE_Id": 1117,
                 "REQ_Id": 1117,
@@ -8928,6 +9075,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3878,
                 "VRE_Id": 1112,
                 "REQ_Id": 1112,
@@ -8986,6 +9134,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3875,
                 "VRE_Id": 1111,
                 "REQ_Id": 1111,
@@ -9044,6 +9193,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3872,
                 "VRE_Id": 1110,
                 "REQ_Id": 1110,
@@ -9102,6 +9252,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3869,
                 "VRE_Id": 1109,
                 "REQ_Id": 1109,
@@ -9160,6 +9311,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3866,
                 "VRE_Id": 1108,
                 "REQ_Id": 1108,
@@ -9218,6 +9370,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3863,
                 "VRE_Id": 1107,
                 "REQ_Id": 1107,
@@ -9276,6 +9429,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3860,
                 "VRE_Id": 1106,
                 "REQ_Id": 1106,
@@ -9334,6 +9488,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3857,
                 "VRE_Id": 1105,
                 "REQ_Id": 1105,
@@ -9392,6 +9547,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3793,
                 "VRE_Id": 1103,
                 "REQ_Id": 1103,
@@ -9455,6 +9611,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 3328,
                 "VRE_Id": 1075,
                 "REQ_Id": 1075,
@@ -9518,6 +9675,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 1260,
                 "VRE_Id": 43,
                 "REQ_Id": 43,
@@ -9576,6 +9734,7 @@
                 "ESRAnterior_Descripcion": "Creado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 1010,
                 "VRE_Id": 29,
                 "REQ_Id": 29,
@@ -9639,6 +9798,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 958,
                 "VRE_Id": 28,
                 "REQ_Id": 28,
@@ -9702,6 +9862,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 918,
                 "VRE_Id": 27,
                 "REQ_Id": 27,
@@ -9765,6 +9926,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 882,
                 "VRE_Id": 18,
                 "REQ_Id": 18,
@@ -9827,6 +9989,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 855,
                 "VRE_Id": 22,
                 "REQ_Id": 22,
@@ -9883,6 +10046,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 814,
                 "VRE_Id": 25,
                 "REQ_Id": 25,
@@ -9946,6 +10110,7 @@
                 "ESRAnterior_Descripcion": "Devuelto"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 655,
                 "VRE_Id": 21,
                 "REQ_Id": 21,
@@ -10009,6 +10174,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 572,
                 "VRE_Id": 19,
                 "REQ_Id": 19,
@@ -10072,6 +10238,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 325,
                 "VRE_Id": 13,
                 "REQ_Id": 13,
@@ -10135,6 +10302,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 243,
                 "VRE_Id": 11,
                 "REQ_Id": 11,
@@ -10198,6 +10366,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 225,
                 "VRE_Id": 10,
                 "REQ_Id": 10,
@@ -10261,6 +10430,7 @@
                 "ESRAnterior_Descripcion": "Revisado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 215,
                 "VRE_Id": 9,
                 "REQ_Id": 9,
@@ -10324,6 +10494,7 @@
                 "ESRAnterior_Descripcion": "Adjudicado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 185,
                 "VRE_Id": 7,
                 "REQ_Id": 7,
@@ -10387,6 +10558,7 @@
                 "ESRAnterior_Descripcion": "Rechazado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 53,
                 "VRE_Id": 4,
                 "REQ_Id": 4,
@@ -10450,6 +10622,7 @@
                 "ESRAnterior_Descripcion": "Devuelto"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 31,
                 "VRE_Id": 3,
                 "REQ_Id": 3,
@@ -10513,6 +10686,7 @@
                 "ESRAnterior_Descripcion": "Rechazado"
             },
             {
+                "Bandeja": "bf",
                 "DRE_Id": 17,
                 "VRE_Id": 2,
                 "REQ_Id": 2,
@@ -10581,6 +10755,7 @@
          "id" : "ba",
          "registros" :[
             {
+                "Bandeja": "ba",
                 "DRE_Id": 7739,
                 "VRE_Id": 2257,
                 "REQ_Id": 2257,
@@ -10644,6 +10819,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "ba",
                 "DRE_Id": 7738,
                 "VRE_Id": 2252,
                 "REQ_Id": 2252,
@@ -10701,6 +10877,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "ba",
                 "DRE_Id": 7737,
                 "VRE_Id": 2259,
                 "REQ_Id": 2259,
@@ -10764,6 +10941,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "ba",
                 "DRE_Id": 7736,
                 "VRE_Id": 2264,
                 "REQ_Id": 2264,
@@ -10821,6 +10999,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "ba",
                 "DRE_Id": 1261,
                 "VRE_Id": 38,
                 "REQ_Id": 38,
@@ -10885,6 +11064,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "ba",
                 "DRE_Id": 1097,
                 "VRE_Id": 17,
                 "REQ_Id": 17,
@@ -10948,6 +11128,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "ba",
                 "DRE_Id": 1096,
                 "VRE_Id": 23,
                 "REQ_Id": 23,
@@ -11010,6 +11191,7 @@
          "id" : "bs",
          "registros":[
             {
+                "Bandeja": "bs",
                 "DRE_Id": 13866,
                 "VRE_Id": 5321,
                 "REQ_Id": 5321,
@@ -11067,6 +11249,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 13357,
                 "VRE_Id": 5320,
                 "REQ_Id": 5320,
@@ -11124,6 +11307,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 12970,
                 "VRE_Id": 2253,
                 "REQ_Id": 2253,
@@ -11181,6 +11365,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 12946,
                 "VRE_Id": 2233,
                 "REQ_Id": 2233,
@@ -11238,6 +11423,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 12894,
                 "VRE_Id": 4312,
                 "REQ_Id": 4312,
@@ -11294,6 +11480,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 12886,
                 "VRE_Id": 5312,
                 "REQ_Id": 5312,
@@ -11358,6 +11545,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 10764,
                 "VRE_Id": 3308,
                 "REQ_Id": 3308,
@@ -11422,6 +11610,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 10741,
                 "VRE_Id": 3307,
                 "REQ_Id": 3307,
@@ -11482,6 +11671,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 9716,
                 "VRE_Id": 2306,
                 "REQ_Id": 2306,
@@ -11534,6 +11724,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 9686,
                 "VRE_Id": 2290,
                 "REQ_Id": 2290,
@@ -11591,6 +11782,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8588,
                 "VRE_Id": 2300,
                 "REQ_Id": 2300,
@@ -11648,6 +11840,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8571,
                 "VRE_Id": 2301,
                 "REQ_Id": 2301,
@@ -11705,6 +11898,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8561,
                 "VRE_Id": 2299,
                 "REQ_Id": 2299,
@@ -11769,6 +11963,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8532,
                 "VRE_Id": 2296,
                 "REQ_Id": 2296,
@@ -11826,6 +12021,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8515,
                 "VRE_Id": 2293,
                 "REQ_Id": 2293,
@@ -11883,6 +12079,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8497,
                 "VRE_Id": 2284,
                 "REQ_Id": 2284,
@@ -11940,6 +12137,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8372,
                 "VRE_Id": 2287,
                 "REQ_Id": 2287,
@@ -11997,6 +12195,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8255,
                 "VRE_Id": 2282,
                 "REQ_Id": 2282,
@@ -12054,6 +12253,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8228,
                 "VRE_Id": 2281,
                 "REQ_Id": 2281,
@@ -12111,6 +12311,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8185,
                 "VRE_Id": 2279,
                 "REQ_Id": 2279,
@@ -12168,6 +12369,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8129,
                 "VRE_Id": 2277,
                 "REQ_Id": 2277,
@@ -12225,6 +12427,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8088,
                 "VRE_Id": 2276,
                 "REQ_Id": 2276,
@@ -12282,6 +12485,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8069,
                 "VRE_Id": 2275,
                 "REQ_Id": 2275,
@@ -12339,6 +12543,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8042,
                 "VRE_Id": 33,
                 "REQ_Id": 33,
@@ -12396,6 +12601,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8040,
                 "VRE_Id": 1151,
                 "REQ_Id": 1151,
@@ -12453,6 +12659,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8036,
                 "VRE_Id": 2274,
                 "REQ_Id": 2274,
@@ -12510,6 +12717,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 8011,
                 "VRE_Id": 2273,
                 "REQ_Id": 2273,
@@ -12567,6 +12775,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7976,
                 "VRE_Id": 2272,
                 "REQ_Id": 2272,
@@ -12620,6 +12829,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7934,
                 "VRE_Id": 2270,
                 "REQ_Id": 2270,
@@ -12677,6 +12887,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7887,
                 "VRE_Id": 2269,
                 "REQ_Id": 2269,
@@ -12734,6 +12945,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7820,
                 "VRE_Id": 2268,
                 "REQ_Id": 2268,
@@ -12791,6 +13003,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7787,
                 "VRE_Id": 2266,
                 "REQ_Id": 2266,
@@ -12848,6 +13061,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7767,
                 "VRE_Id": 2267,
                 "REQ_Id": 2267,
@@ -12905,6 +13119,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7483,
                 "VRE_Id": 2256,
                 "REQ_Id": 2256,
@@ -12962,6 +13177,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7419,
                 "VRE_Id": 2251,
                 "REQ_Id": 2251,
@@ -13015,6 +13231,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7363,
                 "VRE_Id": 2249,
                 "REQ_Id": 2249,
@@ -13072,6 +13289,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7351,
                 "VRE_Id": 2247,
                 "REQ_Id": 2247,
@@ -13129,6 +13347,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7320,
                 "VRE_Id": 2244,
                 "REQ_Id": 2244,
@@ -13186,6 +13405,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7223,
                 "VRE_Id": 2236,
                 "REQ_Id": 2236,
@@ -13243,6 +13463,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7072,
                 "VRE_Id": 2228,
                 "REQ_Id": 2228,
@@ -13296,6 +13517,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7063,
                 "VRE_Id": 2227,
                 "REQ_Id": 2227,
@@ -13349,6 +13571,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 7054,
                 "VRE_Id": 2226,
                 "REQ_Id": 2226,
@@ -13402,6 +13625,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6384,
                 "VRE_Id": 2185,
                 "REQ_Id": 2185,
@@ -13459,6 +13683,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6380,
                 "VRE_Id": 2184,
                 "REQ_Id": 2184,
@@ -13523,6 +13748,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6369,
                 "VRE_Id": 2173,
                 "REQ_Id": 2173,
@@ -13580,6 +13806,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6354,
                 "VRE_Id": 2181,
                 "REQ_Id": 2181,
@@ -13643,6 +13870,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6269,
                 "VRE_Id": 2178,
                 "REQ_Id": 2178,
@@ -13700,6 +13928,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6249,
                 "VRE_Id": 2174,
                 "REQ_Id": 2174,
@@ -13755,6 +13984,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6240,
                 "VRE_Id": 2169,
                 "REQ_Id": 2169,
@@ -13810,6 +14040,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6096,
                 "VRE_Id": 2167,
                 "REQ_Id": 2167,
@@ -13874,6 +14105,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6082,
                 "VRE_Id": 2162,
                 "REQ_Id": 2162,
@@ -13931,6 +14163,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6043,
                 "VRE_Id": 2164,
                 "REQ_Id": 2164,
@@ -13995,6 +14228,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6019,
                 "VRE_Id": 2161,
                 "REQ_Id": 2161,
@@ -14058,6 +14292,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 6013,
                 "VRE_Id": 2159,
                 "REQ_Id": 2159,
@@ -14122,6 +14357,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 5982,
                 "VRE_Id": 2156,
                 "REQ_Id": 2156,
@@ -14185,6 +14421,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 5979,
                 "VRE_Id": 2155,
                 "REQ_Id": 2155,
@@ -14242,6 +14479,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4631,
                 "VRE_Id": 1138,
                 "REQ_Id": 1138,
@@ -14306,6 +14544,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4532,
                 "VRE_Id": 1128,
                 "REQ_Id": 1128,
@@ -14363,6 +14602,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4530,
                 "VRE_Id": 1130,
                 "REQ_Id": 1130,
@@ -14420,6 +14660,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4454,
                 "VRE_Id": 1127,
                 "REQ_Id": 1127,
@@ -14477,6 +14718,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4452,
                 "VRE_Id": 1132,
                 "REQ_Id": 1132,
@@ -14534,6 +14776,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4302,
                 "VRE_Id": 1126,
                 "REQ_Id": 1126,
@@ -14591,6 +14834,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4258,
                 "VRE_Id": 1124,
                 "REQ_Id": 1124,
@@ -14648,6 +14892,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4175,
                 "VRE_Id": 1121,
                 "REQ_Id": 1121,
@@ -14705,6 +14950,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4082,
                 "VRE_Id": 1119,
                 "REQ_Id": 1119,
@@ -14758,6 +15004,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 4009,
                 "VRE_Id": 1116,
                 "REQ_Id": 1116,
@@ -14815,6 +15062,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3914,
                 "VRE_Id": 1113,
                 "REQ_Id": 1113,
@@ -14872,6 +15120,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3888,
                 "VRE_Id": 31,
                 "REQ_Id": 31,
@@ -14929,6 +15178,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3886,
                 "VRE_Id": 57,
                 "REQ_Id": 57,
@@ -14993,6 +15243,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3783,
                 "VRE_Id": 1102,
                 "REQ_Id": 1102,
@@ -15050,6 +15301,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3504,
                 "VRE_Id": 41,
                 "REQ_Id": 41,
@@ -15114,6 +15366,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3488,
                 "VRE_Id": 1087,
                 "REQ_Id": 1087,
@@ -15178,6 +15431,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3361,
                 "VRE_Id": 58,
                 "REQ_Id": 58,
@@ -15235,6 +15489,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 3237,
                 "VRE_Id": 61,
                 "REQ_Id": 61,
@@ -15292,6 +15547,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 2115,
                 "VRE_Id": 62,
                 "REQ_Id": 62,
@@ -15349,6 +15605,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 1940,
                 "VRE_Id": 55,
                 "REQ_Id": 55,
@@ -15406,6 +15663,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 1332,
                 "VRE_Id": 37,
                 "REQ_Id": 37,
@@ -15463,6 +15721,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 1327,
                 "VRE_Id": 44,
                 "REQ_Id": 44,
@@ -15520,6 +15779,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 1196,
                 "VRE_Id": 36,
                 "REQ_Id": 36,
@@ -15577,6 +15837,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 879,
                 "VRE_Id": 20,
                 "REQ_Id": 20,
@@ -15634,6 +15895,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 361,
                 "VRE_Id": 1,
                 "REQ_Id": 1,
@@ -15691,6 +15953,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 345,
                 "VRE_Id": 14,
                 "REQ_Id": 14,
@@ -15755,6 +16018,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bs",
                 "DRE_Id": 270,
                 "VRE_Id": 12,
                 "REQ_Id": 12,
@@ -15824,6 +16088,7 @@
          "id" : "bo",
          "registros" :[
             {
+                "Bandeja": "bo",
                 "DRE_Id": 8539,
                 "VRE_Id": 2297,
                 "REQ_Id": 2297,
@@ -15881,6 +16146,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 8525,
                 "VRE_Id": 2295,
                 "REQ_Id": 2295,
@@ -15938,6 +16204,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 8518,
                 "VRE_Id": 2294,
                 "REQ_Id": 2294,
@@ -15990,6 +16257,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 8334,
                 "VRE_Id": 2285,
                 "REQ_Id": 2285,
@@ -16054,6 +16322,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7659,
                 "VRE_Id": 2215,
                 "REQ_Id": 2215,
@@ -16113,6 +16382,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7554,
                 "VRE_Id": 2261,
                 "REQ_Id": 2261,
@@ -16170,6 +16440,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7470,
                 "VRE_Id": 2255,
                 "REQ_Id": 2255,
@@ -16227,6 +16498,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7212,
                 "VRE_Id": 2235,
                 "REQ_Id": 2235,
@@ -16291,6 +16563,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7035,
                 "VRE_Id": 2223,
                 "REQ_Id": 2223,
@@ -16349,6 +16622,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7029,
                 "VRE_Id": 2222,
                 "REQ_Id": 2222,
@@ -16407,6 +16681,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 7013,
                 "VRE_Id": 2219,
                 "REQ_Id": 2219,
@@ -16462,6 +16737,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 6973,
                 "VRE_Id": 2214,
                 "REQ_Id": 2214,
@@ -16517,6 +16793,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 6943,
                 "VRE_Id": 2209,
                 "REQ_Id": 2209,
@@ -16574,6 +16851,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 6940,
                 "VRE_Id": 2208,
                 "REQ_Id": 2208,
@@ -16635,6 +16913,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 6939,
                 "VRE_Id": 2207,
                 "REQ_Id": 2207,
@@ -16696,6 +16975,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 4876,
                 "VRE_Id": 1148,
                 "REQ_Id": 1148,
@@ -16757,6 +17037,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 4874,
                 "VRE_Id": 1146,
                 "REQ_Id": 1146,
@@ -16817,6 +17098,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 4375,
                 "VRE_Id": 1081,
                 "REQ_Id": 1081,
@@ -16881,6 +17163,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 3350,
                 "VRE_Id": 1082,
                 "REQ_Id": 1082,
@@ -16938,6 +17221,7 @@
                 "rn": 1
             },
             {
+                "Bandeja": "bo",
                 "DRE_Id": 407,
                 "VRE_Id": 15,
                 "REQ_Id": 15,
@@ -17007,6 +17291,7 @@
          "id": "bnc",
          "registros":[
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1,
                 "VRE_Id": 1,
                 "VRE_Descripcion": "se solicita la adquisición de 02 discos duros externos de 1 TB",
@@ -17035,6 +17320,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 3,
                 "VRE_Id": 3,
                 "VRE_Descripcion": "Se solicita la compra de 04 PC por contrato marco a empresa COINSA.\r\n\r\n\r\n\r\n",
@@ -17063,6 +17349,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 5,
                 "VRE_Id": 5,
                 "VRE_Descripcion": "Se solicita la compra de 02 notebook Sony Vaio VPC-Z130GL",
@@ -17091,6 +17378,7 @@
                 "DRE_UsuarioEditAnt": "Oscar Villegas Peña"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 7,
                 "VRE_Id": 7,
                 "VRE_Descripcion": "Se solicita la adquisicion de 02 sillones ejecutivos para oficina de Informática",
@@ -17119,6 +17407,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 8,
                 "VRE_Id": 8,
                 "VRE_Descripcion": "Solicitud de compra por contrato marco de software y licencias a empresa Coinsa,segun especificaciones.En las  licencias de dreamweaver CS5 agregar 01 licencia mas para adquirir un total de 04.",
@@ -17147,6 +17436,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 9,
                 "VRE_Id": 9,
                 "VRE_Descripcion": "Se solicita en calidad de urgente la adquisicion de 01 impresora personal marca Epson Stylus, modelo Office T40W.    ",
@@ -17175,6 +17465,7 @@
                 "DRE_UsuarioEditAnt": "Jimena Moreno"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 13,
                 "VRE_Id": 13,
                 "VRE_Descripcion": "Se solicita la adquisicion de 02 discos duros de 500GB marca IOMEGA.",
@@ -17203,6 +17494,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 14,
                 "VRE_Id": 14,
                 "VRE_Descripcion": "Se solicita Reparacion de planta,revision de 08 anexos y reprogramacion de planta telefonica.",
@@ -17231,6 +17523,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 18,
                 "VRE_Id": 18,
                 "VRE_Descripcion": "Se solicita la adquisicion por contrato marco a empresa COINSA, por presupuesto de <strong>Proempleo<\/strong> de las siguientes licencias:\r\n- 30 licencias Office 2010 pro , Valor unitario con IVA US$422,45\r\n- 4 licencias Adove Creative Suite 5 Web Premium , Valor unitario con IVA US$2374,05\r\n- 4 licencias Visual Studio Pro 2010 Client , Valor unitario con IVA US$627,13\r\n- 5 licencias Windows 7 Pro 64 bits , Valor unitario con IVA US$189,21\r\n- 1 licencia Visio Profesional 2010 , Valor unitario co",
@@ -17259,6 +17552,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 19,
                 "VRE_Id": 19,
                 "VRE_Descripcion": "Se solicita la adquisicion por contrato marco a empresa COINSA ,por presupuesto de Subtrab de :\r\n- 1 licencia Visio Professional 2010 , Valor unitario con IVA US$474,81\r\nSe adjunta cotizacion",
@@ -17287,6 +17581,7 @@
                 "DRE_UsuarioEditAnt": "Oscar Villegas Peña"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 20,
                 "VRE_Id": 20,
                 "VRE_Descripcion": "01 Telón Eléctrico para Data similar al del Subsecretario\r\n   (180x180 aprox.)\r\n- Banda Ancha Móvil full para Informática.\r\n",
@@ -17315,6 +17610,7 @@
                 "DRE_UsuarioEditAnt": "Oscar Villegas Peña"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 21,
                 "VRE_Id": 21,
                 "VRE_Descripcion": "Comprar por Proempleo\r\n \r\n01 Equipo (Contrato Marco Coinsa)\r\nHP 8100 CORE I3 \/ 2GB RAM\/ 500 GB \/WINDOWS 7\r\n\r\nCOMPUTADOR HP 8100 ELITE SFF UNIDAD Formato \r\n\r\nProducto id:690903 US$ 707.62 + IVA\r\n\r\n\r\nAgregar:\r\n\r\n Memoria Ram 2GB                       US$  24 + IVA\r\n\r\nMonitor LCD 21”                            US$ 267 + IVA\r\n\r\n02 Impresoras (Contrato Marco Coinsa)\r\n\r\nIMPRESORA MULTIFUNCIÓN EPSON MULTIFUNCIONAL INYECCION DE TINTA TX-400 Formato   US$ 121 + IVA\r\n\r\nProducto id:348618 (PARA ENTREGAR IM",
@@ -17343,6 +17639,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 22,
                 "VRE_Id": 22,
                 "VRE_Descripcion": "Comprar Por Subtrab\r\n\r\n10 Impresoras (Contrato Marco Coinsa)\r\nIMPRESORA MULTIFUNCIÓN EPSON MULTIFUNCIONAL INYECCION DE TINTA TX-400 Formato   US$ 121 + IVA\r\n\r\nProducto id:348618 (PARA ENTREGAR IMPRESORA EPSON TX-420)\r\n\r\n",
@@ -17371,6 +17668,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 23,
                 "VRE_Id": 23,
                 "VRE_Descripcion": "Se requiere contratar los servicios de tecnico  electrico para instalar una caja de distribucion en dependencias de Informatica  ",
@@ -17399,6 +17697,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 25,
                 "VRE_Id": 25,
                 "VRE_Descripcion": "Se solicita compra por contrato marco a empresa COINSA  de \r\n- 04 licencias ADOBE PHOTOSHOP CS5 12 WINDOWS ESPAÑOL 1 USER ID: 589834\r\nPARA HOMOLOGAR CON ADOVE CAPTIVATE 4 WIN ESPAÑOL",
@@ -17427,6 +17726,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 26,
                 "VRE_Id": 26,
                 "VRE_Descripcion": "Solicitud de prueba con linea de inversion uno",
@@ -17455,6 +17755,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 32,
                 "VRE_Id": 32,
                 "VRE_Descripcion": "Registro de prueba para ser anulado por Jefatura directa",
@@ -17483,6 +17784,7 @@
                 "DRE_UsuarioEditAnt": "Luis Castillo"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 40,
                 "VRE_Id": 40,
                 "VRE_Descripcion": "Se solicita la compra de los siguientes insumos :\r\nPARA IMPRESORA LEXMARK C534 :\r\n- 01 TRANSFER BELT 40X3572\r\n\r\nPARA IMPRESORAS LEXMARK C524\r\n- 24 UNIDADES DE FOTOCONDUCTOR C52030X\r\n-03 BOTELLA DE DESPERDICIOS C52025X\r\n-02 TRANSFER BELT 40X1401",
@@ -17511,6 +17813,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 41,
                 "VRE_Id": 41,
                 "VRE_Descripcion": "Se solicita la compra de pasajes para soporte tecnico German Cubillo a las regiones VIII y IX. Se adjunta itinerario de vuelos. Los dias son : Martes 11 de enero a viernes 14 de enero de 2011.",
@@ -17539,6 +17842,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 42,
                 "VRE_Id": 42,
                 "VRE_Descripcion": "Se solicita la compra de 04 pendrives de 4GB (NO menos x razones técnicas)",
@@ -17567,6 +17871,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 47,
                 "VRE_Id": 47,
                 "VRE_Descripcion": "Se solicita la compra de pasaje para el dia lunes 24 de Enero a La Serena,con regreso para el dia 25 de Enero.Se adjunta archivo con la informacion de los vuelos.Quien viaja es el funcionario Sr. German Cubillo.",
@@ -17595,6 +17900,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 48,
                 "VRE_Id": 48,
                 "VRE_Descripcion": "Se solicita enviar data a reparación y   mantención  \r\n- Datashow marca Epson\r\n- Modelo EMP-1705\r\n- Serie N° JJKG710321F\r\n- N° Inventario :3679\r\nEl cual se utiliza en el Gabinete de la Sra. Ministra. \r\nSe adjunta cotizacion enviada por empresa y se destaca coon amarillo el data que debe ser enviado a reparacion.",
@@ -17623,6 +17929,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 69,
                 "VRE_Id": 69,
                 "VRE_Descripcion": "Se solicitan los servicios de electrico en Gabinete de piso 6°,para revisar conexiones en oficina de Sra. Ministra, y reparacion de enchufes en escritorio de Ingrid Alvarez.",
@@ -17651,6 +17958,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 70,
                 "VRE_Id": 70,
                 "VRE_Descripcion": "Prueba de envio de correo a DAF, favor anular",
@@ -17679,6 +17987,7 @@
                 "DRE_UsuarioEditAnt": "Luis Castillo"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 108,
                 "VRE_Id": 108,
                 "VRE_Descripcion": "5 Tintas de cada una, numero 133 de color negro, azul, amarillo y roja para impresora EPSON Stylus TX420W",
@@ -17707,6 +18016,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 117,
                 "VRE_Id": 117,
                 "VRE_Descripcion": "Se solicita la reparacion de 01 linea telefonica ubicada en estas dependencias.",
@@ -17735,6 +18045,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 118,
                 "VRE_Id": 118,
                 "VRE_Descripcion": "Se solicita la adquisicion por contrato marco a empresa Coinsa de una impresora marca Epson Stylus 1410\r\nValor : US$ 384 + IVA\r\n",
@@ -17763,6 +18074,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 119,
                 "VRE_Id": 119,
                 "VRE_Descripcion": "Se solicita la adquisicion de Switchs para respaldo y cambio :\r\nProducto:\r\nSWITCH 3COM 3CBLSG48 \r\n3COM SWITCH BASELINE 2948-SFP PLUS, 48 PORT GIGA + 4 DUAL PROPOSITO (SFP\/GIGA).\r\nProveedor Contrato Marco:\r\nChilena de Computacion Limitada\r\nCantidad : 3 (1 Piso 6, 1 Piso 3, 1 Backup)\r\nValor Unitario : US$ 681 + IVA\r\n \r\n",
@@ -17791,6 +18103,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 120,
                 "VRE_Id": 120,
                 "VRE_Descripcion": "Prueba",
@@ -17819,6 +18132,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 121,
                 "VRE_Id": 121,
                 "VRE_Descripcion": "-Se solicita con urgencia la compra de 35 carpetas,tamaño carta con capacidad para 135 hojas,el lomo debe ser entre 0.5 y 1 pulgada,ya que depende de la marca la capacidad de hojas de la carpeta.\r\n- Comprar separadores de hoja tamaño carta de preferencia blancos,deben ser 12 separadores por carpeta.",
@@ -17847,6 +18161,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 123,
                 "VRE_Id": 123,
                 "VRE_Descripcion": "PRUEBA INFORMATICA",
@@ -17875,6 +18190,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 126,
                 "VRE_Id": 126,
                 "VRE_Descripcion": "Se solicita la confeccion de tarjetas de visita para el Sr. Pablo Muñoz Palma.Usar formato con nuevo logo.",
@@ -17903,6 +18219,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 128,
                 "VRE_Id": 128,
                 "VRE_Descripcion": "Se solicita la confeccion de tarjetas de visita para el Sr. Carlos Puente Vallejos, Jefe Informática\r\nFavor utilizar el mismo formato de las tarjetas del Jefe de Gabinete Sr. Fernan Lecaros",
@@ -17931,6 +18248,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 131,
                 "VRE_Id": 131,
                 "VRE_Descripcion": "Prueba Capacitacion",
@@ -17959,6 +18277,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 133,
                 "VRE_Id": 133,
                 "VRE_Descripcion": "se solicita la compra urgente hoy de 02 cajas de carpetas archivador presentacion carta de 1\"(1 pulgada) ",
@@ -17987,6 +18306,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 149,
                 "VRE_Id": 149,
                 "VRE_Descripcion": "Se solicita comprar 3 cartuchos para impresora Epson 1410 - 81 negro TO81120 - 81 CIAN TO81220 - 81 CIAN CLARO TO81520 - 81 MAGENTA TO81320 - 81 MAGENTA CLARO TO81620 - 81 AMARILLO TO81420 ",
@@ -18015,6 +18335,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 159,
                 "VRE_Id": 159,
                 "VRE_Descripcion": "Se solicita la reparacion en forma Urgente de impresora modelo HPCM2320 ,corresponde a impresora de auditoria interna.Se encuentra en las oficinas de Informatica",
@@ -18043,6 +18364,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 161,
                 "VRE_Id": 161,
                 "VRE_Descripcion": "Se solicita la adquisicion de 02 notebook por contrato marco a empresa Ingesmart.\r\n- Cargar a cuenta de Proempleo\r\n- modelo sony Vaio VPC \r\nSe adjunta archivo con especificaciones tecnicas",
@@ -18071,6 +18393,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 162,
                 "VRE_Id": 162,
                 "VRE_Descripcion": "Se solicita la conmpra de 01 notebook Sony Vaio VPC por contrato marco a empresa Ingesmart.\r\nSe adjunta archivo con especificacion tecnica",
@@ -18099,6 +18422,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 167,
                 "VRE_Id": 167,
                 "VRE_Descripcion": "Se solicita la conmpra de 02 pc por contrato marco a empresa Coinsa\r\n-Proveedor Contrato Marco : Coinsa, Código :709625         \r\n- Nombre : COMPUTADOR HP PRO 3000 SFF POTENCIADO\r\n- Modelo : PRO 3000 SFF \r\n- Medida : POTENCIADO\r\n- Marca : HP\r\nValores \r\n- Equipos Base : US$ 539\r\n- Memoria 2 GB : US$ 24\r\n- Monitor 15\" (entrega 17\") : 145\r\n \r\n Total US$ 708 + IVA C\/U\r\n \r\n",
@@ -18127,6 +18451,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 168,
                 "VRE_Id": 168,
                 "VRE_Descripcion": "Se solicita la conmpra de 02 pc por contrato marco a empresa Coinsa -Proveedor Contrato Marco : Coinsa, Código :709625 - Nombre : COMPUTADOR HP PRO 3000 SFF POTENCIADO - Modelo : PRO 3000 SFF - Medida : POTENCIADO - Marca : HP Valores - Equipos Base : US$ 539 - Memoria 2 GB : US$ 24 - Monitor 15\" (entrega 17\") : 145 Total US$\r\n 708 + IVA C\/U\r\nSE ADJUNTA DETALLE MAS CLARO EN ARCHIVO ",
@@ -18155,6 +18480,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 173,
                 "VRE_Id": 173,
                 "VRE_Descripcion": "SE SOLICITA LA COMPRA DE 01 VIDEO PROYECTOR INTERACTIVO POR CONTRATO MARCO A EMPRESA TECEM.SE ADJUNTA COTIZACION Y ESPECIFICACIONES TECNICAS.\r\nCOTIZACIÓN Nº: 38-03-2011",
@@ -18183,6 +18509,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 174,
                 "VRE_Id": 174,
                 "VRE_Descripcion": "SE SOLICITA LA COMPRA DE 01 VIDEO PROYECTOR POR CONTRATO MARCO AEMPRESA TECEM CON CARGO A PROEMPLEO,EQUIPO SE ENTREGA INSTALADO EN ASCENSOR.\r\nPROYECTOR  EPSON  1716  \r\n2700    ANSILUMENES        ID: 101550\r\nUS$ 1.060 + IVA\r\n\r\n \r\n\r\n\r\n",
@@ -18211,6 +18538,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 175,
                 "VRE_Id": 175,
                 "VRE_Descripcion": "SE SOLICITA LA COMPRA POR CONTRATO MARCO A EMPRESA TECEM DE 01 VIDEO PROYECTOR.ANTECEDENTES VAN EN ARCHIVO ADJUNTO\r\nCOTIZACIÓN Nº: 37-03-2011-1",
@@ -18239,6 +18567,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 178,
                 "VRE_Id": 178,
                 "VRE_Descripcion": "Se solicita la copia de llaves para funcionario nuevo de esta unidad",
@@ -18267,6 +18596,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 179,
                 "VRE_Id": 179,
                 "VRE_Descripcion": "Se solicita habilitacion de nuevo anexo telefónico y colocacion de aparato telefónico para Sr. Juan Andres Riquelme",
@@ -18295,6 +18625,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 187,
                 "VRE_Id": 187,
                 "VRE_Descripcion": "20 cables de poder MAGIC de 3 mt ",
@@ -18323,6 +18654,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 191,
                 "VRE_Id": 191,
                 "VRE_Descripcion": "Se solicita la confeccion de tarjetas de visita para el Sr. Pablo Muñoz Palma.Usar formato con nuevo logo.",
@@ -18351,6 +18683,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 206,
                 "VRE_Id": 206,
                 "VRE_Descripcion": "Prueba",
@@ -18379,6 +18712,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 235,
                 "VRE_Id": 235,
                 "VRE_Descripcion": "Proveedor Contrato Marco: Coinsa , Código : 709624 Nombre : COMPUTADOR HP 8100 ELITE SFF POTENCIADO Modelo : 8100 ELITE SFF Medida : POTENCIADO\r\n \r\nEquipo Base : US$ 745\r\n4 GB RAM : US$ 69\r\nSO 64 Bits : US$ 221\r\nMonitor 17\" : US$ 155\r\n \r\nTotal : US$ 1.190.- + IVA",
@@ -18407,6 +18741,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 268,
                 "VRE_Id": 268,
                 "VRE_Descripcion": "Se solicita la adquisicion de : \r\n-Pizarra Arcovi Blanca 1.2 x 2.4 Mts \r\n-Contrato Marco : Libreria Rey Ser y Cia. Ltda.\r\n-Valor : $ 46.069.- + IVA\r\n \r\n\r\n",
@@ -18435,6 +18770,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 269,
                 "VRE_Id": 269,
                 "VRE_Descripcion": "Se solicita la adquisicion de 02 software para el equipo de Discapacidad Visual, viene en soporte USB. \r\nSon representantes exclusivos, se adjunta cotizacion y certificado, no estan en Contrato Marco, pero sin en Mercado Publico.\r\n",
@@ -18463,6 +18799,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 270,
                 "VRE_Id": 270,
                 "VRE_Descripcion": "Se solicita la adquisicion de 02 software para el equipo de Discapacidad Visual, viene en soporte USB. Son representantes exclusivos, se adjunta cotizacion y certificado, no estan en Contrato Marco, pero sin en Mercado Publico. ",
@@ -18491,6 +18828,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 272,
                 "VRE_Id": 272,
                 "VRE_Descripcion": " SE SOLICITA LA ADQUISICION DE 02 IMPRESORAS EPSON TX420 POR CONTRATO MARCO A EMPRESA COINSA\r\n- ID 663317\r\n- VALOR UNITARIO US$  102 + IVA \r\n\r\n",
@@ -18519,6 +18857,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 273,
                 "VRE_Id": 273,
                 "VRE_Descripcion": "SE SOLICITA LA COMPRA POR CONTRATO MARCO A EMPRESA COINSA CON CARGO A PROEMPLEO DE :\r\n-COMPUTADOR HP HP PRO 3000 SFF C2Q Q8400 POTENCIADO Formato ID : 709626   US$ 735 +IVA\r\nPara entregar:    HP 8100 CORE i3\r\nAGREGAR :\r\n\r\n-Memoria Ram 4GB US$ 69\r\n-Monitor LCD 15” US$ 145  Para entregar  Monitor LCD 18,5” \r\n-Windows 7 PRO OEM  ID: 588540  US$ 149 + IVA\r\n\r\n",
@@ -18547,6 +18886,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 274,
                 "VRE_Id": 274,
                 "VRE_Descripcion": "SE SOLICITA LA COMPRA POR CONTRATO MARCO A EMPRESA COINSA DE 02\r\n COMPUTADORES HP HP PRO 3000 SFF C2Q Q8400 POTENCIADO Formato ID : 709626   US$ 735 +IVA\r\nPara entregar:    HP 8100 CORE i3:\r\n\r\nAGREGAR :\r\n\r\nMemoria Ram 4GB US$ 69\r\nMonitor LCD 15” US$ 145 Para entregar  Monitor LCD 18,5” \r\nWindows 7 PRO OEM  ID: 588540  US$ 149 + IVA\r\n",
@@ -18575,6 +18915,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 278,
                 "VRE_Id": 278,
                 "VRE_Descripcion": "Se solicta la compra de 01 telon retractil manual de 2.20 mts. de largo. ",
@@ -18603,6 +18944,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 283,
                 "VRE_Id": 283,
                 "VRE_Descripcion": "SE SOLICITA LA ADQUISICION DE 01 COMPUTADOR Y 02 IMPRESORAS MULTIFUNCIONALES POR CONTRATO MARCO MARCO A EMPRESA COINSA\r\nSE ADJUNTA ARCHIVO CON ESPECIFICACION DE COMPUTADOR\r\n\r\n-IMPRESORA EPSON TX420 \r\n- ID 663317 US$  102 + IVA \r\n\r\n\r\n",
@@ -18631,6 +18973,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 288,
                 "VRE_Id": 288,
                 "VRE_Descripcion": "Se solicita comprar 3 cartuchos para impresora Epson 1410 - 81 negro TO81120 - 81 CIAN TO81220 - 81 CIAN CLARO TO81520 - 81 MAGENTA TO81320 - 81 MAGENTA CLARO TO81620 - 81 AMARILLO TO81420 ",
@@ -18659,6 +19002,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 310,
                 "VRE_Id": 310,
                 "VRE_Descripcion": "SE SOLICITA LA ADQUISICION DE 02 IMPRESORAS EPSON TX420 POR CONTRATO MARCO A EMPRESA COINSA",
@@ -18687,6 +19031,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 312,
                 "VRE_Id": 312,
                 "VRE_Descripcion": "SE SOLICITA LA ADQUISICION DE 02 IMPRESORAS EPSON TX420 POR CONTRATO MARCO A EMPRESA COINSA",
@@ -18715,6 +19060,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 322,
                 "VRE_Id": 322,
                 "VRE_Descripcion": "SE SOLICTA CAMBIO DE CHAPA DE SALON ROJO.",
@@ -18743,6 +19089,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 348,
                 "VRE_Id": 348,
                 "VRE_Descripcion": "4 PCs de Escritorio, con la sgte caracteristicas\r\n\r\nDELL QUOTE #45970233\r\n\r\n   SKU #    DESCRIPTION                             \r\n----------  ----------------------------------------\r\n  262-7005  OptiPlex 990 Minitower\r\n  310-6719  Chassis intrusion switch, DellOptiPlex\r\n  310-8325  You have chosen a FreeDOS System\r\n  317-6591  Core i7-2600, 3.4GHz, 8M, VT-x, 95W, Optiplex 990\r\n  317-6782  8GB,Non-ECC,1333MHz DDR3,2x4GB,Dell OptiPlex 990\r\n  318-0319  Internal Speaker, OPtiplex 990\r\n  318-0483  1",
@@ -18771,6 +19118,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 355,
                 "VRE_Id": 355,
                 "VRE_Descripcion": "Se solicita la compra de pasajes en avion para viaje a seremas de Arica e Iquique para el funcionario Bernardo Figueroa entre los dias 14 y 15 de Junio",
@@ -18799,6 +19147,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 356,
                 "VRE_Id": 356,
                 "VRE_Descripcion": "Se solicita la compra de pasajes en avion para viaje a serema de Temuco para el funcionario German Cubillo entre los dias 16 y 17 de Junio",
@@ -18827,6 +19176,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 384,
                 "VRE_Id": 384,
                 "VRE_Descripcion": "Se solicita la adquisicion de 30 licencias:\r\nProducto : OFFICE PROFESSIONAL PLUS 2010 OLP NL GOV\r\nProveedor Contrato Marco : SUMINISTROS Y PAPELES CONTINUOS LTDA Precio Oferta : US$ 338 + IVA\r\nCantidad : 30\r\n \r\nValor Total : US$ 12.067.- IVA Incluido\r\n \r\n",
@@ -18855,6 +19205,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 408,
                 "VRE_Id": 408,
                 "VRE_Descripcion": "SE SOLICITA LA ADQUISICION DE 02\r\nImpresora : IMPRESORA MULTIFUNCIÓN EPSON TX-420W STYLUS\r\nProveedor Contrato Marco : Coinsa\r\nValor Unitarios : US$ 102 + IVA\r\nCantidad : 2\r\nPresupuesto por Proempleo\r\n",
@@ -18883,6 +19234,7 @@
                 "DRE_UsuarioEditAnt": "Hector Torres Osses"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 426,
                 "VRE_Id": 426,
                 "VRE_Descripcion": "Se solicta la reparacion de equipo de aire acondicionado que se encuentran ubicado en el area de desarrollo y jefatura.Nos informaron del primer piso que estan goteando. ",
@@ -18911,6 +19263,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 433,
                 "VRE_Id": 433,
                 "VRE_Descripcion": "Se solicita la compra de 04 cajas de fotoconductores C53034X",
@@ -18939,6 +19292,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 437,
                 "VRE_Id": 437,
                 "VRE_Descripcion": "Se solicita comprar a nombre de Pro-empleo Licencias de:\r\n05 Adobe Acrobat Professional\r\nProducto : Adobe Acrobat X Professional Win Esp ( ID : 715954)\r\nProveedor : Chilena Computacion \r\nValor Unitario : US$ 380 + IVA\r\nCantidad : 5\r\n \r\n05 Microsoft Office Visio\r\nProducto : VISIO PRO LIC\/SA PACK OLP NL GOVT (Version 2010)\r\nProveedor : SUMINISTROS Y PAPELES CONTINUOS LTDA\r\nValor Unitario : US$ 507 + IVA\r\nCantidad : 5\r\n \r\n15 Microsoft Office 2010\r\nProducto: OFFICE PROFESSIONAL PLUS 2010 OLP NL GOV\r",
@@ -18967,6 +19321,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 440,
                 "VRE_Id": 440,
                 "VRE_Descripcion": "Se solicita la compra de pasajes en avion para el funcionario Bernardo figueroa Hernandez con destino a:\r\n-Santiago - La Serena via Lan Chile el  dia 26 de Julio \r\n- La serena- Copiapo via Sky el dia 26 de julio en la noche\r\n- Copiapo- Antofagasta via Sky el dia 27 de julio\r\n- Antofagasta -Santiago via Lan Chile el dia 28 de julio",
@@ -18995,6 +19350,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 467,
                 "VRE_Id": 467,
                 "VRE_Descripcion": "Se solicita la compra de pasajes aereos para los funcionarios \r\n- Bernardo Figueroa H.\r\n- German cubillo R.\r\nPara viaje a seremia de la Serena el dia viernes 05 de Agosto",
@@ -19023,6 +19379,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 476,
                 "VRE_Id": 476,
                 "VRE_Descripcion": "Se solicita la adquisicion de:\r\n- 2 Discos duros portátiles de al menos 1 Tera GB para Notebooks (ocupan sólo corriente del PC)\r\n- 2 Pendrives de 16 GB\r\n- 2 Pendrives de 32 GB\r\n",
@@ -19051,6 +19408,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 480,
                 "VRE_Id": 480,
                 "VRE_Descripcion": "Se solicita aislar acusticamente la sala de la central telefonica ubicada en piso 2 para eliminar ruido.",
@@ -19079,6 +19437,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 481,
                 "VRE_Id": 481,
                 "VRE_Descripcion": "Se solicita gestionar mantencion de impresora \"HP LaserJet 4250\/4350\" de la oficina de tesorería, ya que, ha presentado algunas fallas en el último tiempo.\r\n \r\n",
@@ -19107,6 +19466,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 485,
                 "VRE_Id": 485,
                 "VRE_Descripcion": "Se solicita la compra de las siguientes normas en el INN \r\n- NCh-ISO27001.Of2009   $33000  \r\n- NCh-ISO27002.Of2009   $49500\r\n \r\n",
@@ -19135,6 +19495,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 490,
                 "VRE_Id": 490,
                 "VRE_Descripcion": "Se solicita el arriendo de impresora, Samsung SCX 6545\r\nAdicionar al contrato que se tiene con Mellafe y Salas",
@@ -19163,6 +19524,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 491,
                 "VRE_Id": 491,
                 "VRE_Descripcion": "Solicitud de compra URGENTE\r\nProducto:\r\nDos (2) Certificados SSL 128 Internacional VeriSign (Para sitio Web)(Debe indicar plazo de entrega en la cotización)\r\nCriterios Evaluacion :\r\nPrecio : 70 %\r\nEntrega : 30 %\r\nEvalúa : \r\nJefe Informática\r\n(Valor aproximado $ 1.3 Millones con IVA)\r\nFavor de dar urgencia, ya que los necesitamos antes del 26 de Agosto.\r\n \r\n \r\n ",
@@ -19191,6 +19553,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 508,
                 "VRE_Id": 508,
                 "VRE_Descripcion": "Se solicita la compra de grabador de DVD externo.Se adjunta ficha del producto",
@@ -19219,6 +19582,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 512,
                 "VRE_Id": 512,
                 "VRE_Descripcion": "Se solicita la compra de :\r\nProducto : Proyector Epson 1705 (Entrega 1750)\r\nID Contrato Marco : 257338\r\nProveedor Contrato Marco : Tecem \r\nValor: US$ : 1.402.- + IVA\r\n",
@@ -19247,6 +19611,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 515,
                 "VRE_Id": 515,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa COINSA de  01 equipo\r\nSe adjunta cotizacion de empresa.",
@@ -19275,6 +19640,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 528,
                 "VRE_Id": 528,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco de equipo que se detalla en archivo adjunto.\r\nCódigo : 747604 con la configuración adicional entregada en archivo adjunto para igualar oferta entrega en Quote. No olvidar incluir el número de Quote: 47131209 en la Orden de compra.\r\nEntrega: 25 dias corridos una vez recibida la OC.\r\n\r\n",
@@ -19303,6 +19669,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 529,
                 "VRE_Id": 529,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco de 01 equipo con especificaciones en archivo adjunto\r\nCódigo : 747604 con la configuración adicional entregada en archivo adjunto para igualar oferta entrega en Quote. No olvidar incluir el número de Quote: 47131209 en la Orden de compra.\r\n\r\nEntrega: 25 dias corridos una vez recibida la OC.\r\n\r\n",
@@ -19331,6 +19698,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 530,
                 "VRE_Id": 530,
                 "VRE_Descripcion": "Se solicita la compra de 01 notebook por contrato marco a empresa IngeSmart. Comprar a nombre de Proempleo.\r\nespecificaciones en archivo adjunto ",
@@ -19359,6 +19727,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 543,
                 "VRE_Id": 543,
                 "VRE_Descripcion": "Se solicita Contratacion de Servicios por trato directo  segun documento adjunto.\r\nSegun articulo 10, puntos  3, 7D y 7F de la Ley 19.886\r\n\r\n",
@@ -19387,6 +19756,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 545,
                 "VRE_Id": 545,
                 "VRE_Descripcion": "Se solicita la mantencion de equipos de aire acondicionado ubicados en sala de servidores de area T.I.",
@@ -19415,6 +19785,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 546,
                 "VRE_Id": 546,
                 "VRE_Descripcion": "Se solicta la compra de 01 notebook,mismas caracteristicas que el solicitado en ID 530\r\nContrato marco Ingesmart",
@@ -19443,6 +19814,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 560,
                 "VRE_Id": 560,
                 "VRE_Descripcion": "Se solicta la reparacion de data Powerlite 1750 N° de serie JJKG710321F.\r\nSe solicta ademas hacer retiro del otro equipo ya que no se arreglara debido al alto costo que implica. ",
@@ -19471,6 +19843,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 561,
                 "VRE_Id": 561,
                 "VRE_Descripcion": "se solicta enviar a reparar impresora Canon MX320 de la secretaria de la jefa UGP sra. Maria Elena Remedi\r\nLlevarla a electronica Solari ubicada en Diagonal Oriente 1920 ",
@@ -19499,6 +19872,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 570,
                 "VRE_Id": 570,
                 "VRE_Descripcion": "Se solicita adquisicion \"SISTEMA DE GESTION DOCUMENTAL PARA AUTOMATIZAR FLUJOS DE TRABAJO INSTITUCIONALES\"\r\nSegun bases adjuntas.\r\nMonto estimado entre 30 y 35 millones.\r\n",
@@ -19527,6 +19901,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 607,
                 "VRE_Id": 607,
                 "VRE_Descripcion": "Se solicita la adquisisicon de 10 baterias ORIGINALES PARA Blackberry\r\nBatería Original BlackBerry modelo CS-2 para dispositivos BlackBerry 8520,se cotizo producto en tiendamovil.cl\r\n",
@@ -19555,6 +19930,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 609,
                 "VRE_Id": 609,
                 "VRE_Descripcion": "el dia de ayer vino tecnico Sr. Jorge maturana a revisar line 6958160 y reparo anexo de secretaria",
@@ -19583,6 +19959,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 614,
                 "VRE_Id": 614,
                 "VRE_Descripcion": "Se solicita Licitacion Planta y Servicios Telefonicos, segun bases adjuntas.  Utilizando el proceso de Grandes Compras del Mercado Publico, en el Item de Telecomunicaciones.  Se adjuntan bases tecnicas para el proceso.\r\n",
@@ -19611,6 +19988,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 618,
                 "VRE_Id": 618,
                 "VRE_Descripcion": "A cargo de PREMPLEO\r\nSe solicita pedido de cotizaciones para compra escanners segun el siguiente detalle:\r\n \r\n2 (Dos ) Escanners de escritorio con alimentador automatico de documentos, que permitan documentos tamaño legal\/oficio, que permitan escannear a PDF y con software OCR, conectividad USB 2.0, garantía mínimo 1 año (deseable más).\r\n \r\n2 (Dos) Escanners portatiles, que permitan documentos tamaño legal\/oficio, que permitan escannear a PDF y con software OCR, conectividad y alimentados por US",
@@ -19639,6 +20017,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 626,
                 "VRE_Id": 626,
                 "VRE_Descripcion": "Se solicita gestionar la sanitizacion de baños y fumigacion de dependencias de Informatica.Favor contactarse con unidad cuando se contraten los servicios para coordinar horarios.",
@@ -19667,6 +20046,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 633,
                 "VRE_Id": 633,
                 "VRE_Descripcion": "Se solicita en forma urgente la habilitacion de 15 puntos de red y servicio de instalacion de data en oficinas de nueva Seremia RM y Unidad Relac. Sindicales ubicadas en 1° piso de esta subsecretaria. ",
@@ -19695,6 +20075,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 634,
                 "VRE_Id": 634,
                 "VRE_Descripcion": "Se solicita la adquisisicon URGENTE de 03 baterias ORIGINALES PARA Blackberry modelo CS-2 para dispositivos BlackBerry 8520",
@@ -19723,6 +20104,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 636,
                 "VRE_Id": 636,
                 "VRE_Descripcion": "Se solicita el arriendo de impresora, Samsung SCX 6545 Adicionar al contrato que se tiene con Mellafe y Salas",
@@ -19751,6 +20133,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 650,
                 "VRE_Id": 650,
                 "VRE_Descripcion": "Se solicita la compra de pasajes para funcionario de esta unidad Sr. German Cubillo R. Destino :Seremia Punta Arenas Dia : 17 de Octubre de 2011 Ida\r\n      18 de Octubre de 2011 Regreso    ",
@@ -19779,6 +20162,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 653,
                 "VRE_Id": 653,
                 "VRE_Descripcion": "Se solicita el arriendo urgente de impresora, Samsung SCX 6545 Adicionar al contrato que se tiene con Mellafe y Salas",
@@ -19807,6 +20191,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 665,
                 "VRE_Id": 665,
                 "VRE_Descripcion": "Cambio de Plataforma - Convenio marco\r\nCant.  Modelo\r\n1      PS6010XV\r\n1      PC 8024F\r\n2      R610\r\n1      LICENCIAS VMWare\r\n1      SERVICIOS PROFESIONALES",
@@ -19835,6 +20220,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 671,
                 "VRE_Id": 671,
                 "VRE_Descripcion": "Se solicita la compra de dos Upgrade de windows 7 pro 64 a la empresa Ingesmart,por contrato marco para notebooks VAIO comprados a dicha empresa. \r\n1 por Proempleo,y 1 por la Subtrab",
@@ -19863,6 +20249,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 672,
                 "VRE_Id": 672,
                 "VRE_Descripcion": "Por Contrato Marco a la Empresa Tecem\r\nColocar O\/C\r\n8 (ocho) Mts Cuadrados Construccion Datacenter, a un valor unitario de US$ 7.500 + IVA, dolar observado a la fecha de o\/c. \r\nTotal : US$ 60.000 + IVA (Aprox 36 Millones con IVA) \r\nID Contrato Marco : 818337\r\n",
@@ -19891,6 +20278,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 674,
                 "VRE_Id": 674,
                 "VRE_Descripcion": "solicitud de trabajos electricos segun documento adjunto, monto estimado de los trabajos 5 a 6 Millones.\r\n \r\n",
@@ -19919,6 +20307,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 685,
                 "VRE_Id": 685,
                 "VRE_Descripcion": "Se solicita confeccion de tarjetas para el Sr. Luis Gabriel Castillo Pacheco bajo el formato anterior, pero agregando celular 79699384\r\n  ",
@@ -19947,6 +20336,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 691,
                 "VRE_Id": 691,
                 "VRE_Descripcion": "Se solicita URGENTE compra de lo indicado en documento adjunto.\r\nPor trato directo a Dell Chile.\r\n1 KVM con cables\r\n1 KVM sin cables\r\n1 consola",
@@ -19975,6 +20365,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 712,
                 "VRE_Id": 712,
                 "VRE_Descripcion": "Se solicita la adquisicion de un a silla ergonometrica para la secretaria de esta unidad, ya que la que tiene sufrio un desperfecto y no se puede arreglar",
@@ -20003,6 +20394,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 713,
                 "VRE_Id": 713,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa  Dell de :\r\n-30 equipos segun este detalle, total US$ 34.800.- + IVA\r\nOPTIPLEX 790\r\nIntel Core i7 2700 Processor (3.4GHz, 8M), RAM 16GB, DD 1TB, DVD-RW, LCD 17\", Win 7 PRO 64Bits\r\nvalor US$ 1.160\r\nID 786649\r\n \r\n\r\n \r\n",
@@ -20031,6 +20423,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 716,
                 "VRE_Id": 716,
                 "VRE_Descripcion": "Se solicita colocar solicitud de llamado a  Licitacion por Sistema de Control de acceso, segun documentos adjuntos.\r\n \r\nMontos estimado 40 Millones.\r\n \r\n",
@@ -20059,6 +20452,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 717,
                 "VRE_Id": 717,
                 "VRE_Descripcion": "Colocar por sistema de compra, solicitud de o\/c segun documento adjunto, por camaras solicitadas por Don Mario Robledo.\r\n \r\nMonto de la o\/c US$ 1.772.- con IVA\r\n",
@@ -20087,6 +20481,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 718,
                 "VRE_Id": 718,
                 "VRE_Descripcion": "Se solicita la mantencion de equipos de aire acondicionado ubicados en sala de servidores de area T.I.",
@@ -20115,6 +20510,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 722,
                 "VRE_Id": 722,
                 "VRE_Descripcion": "Colocar por sistema de compras solicitud de cotizaciones, monto aprox 8 Millones mas IVA.\r\n-Dos (2) Switches para Servidores y Almacenamiento Dell con las siguientes caracteristicas y componentes : \r\n- Switch con:\r\n24 Puertos 10 GBE \r\nCapacidad de Stacking \r\nCon ocho (8) Modulos SFP+ SR. \r\nCon ocho (8) cables SFP+ de 5 Mts. \r\nRieles para montaje en Rack \r\n3 Años de garantia y soporte On-Site 7x24 (otorgado por la marca) \r\nInstalados\r\n\r\n",
@@ -20143,6 +20539,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 746,
                 "VRE_Id": 746,
                 "VRE_Descripcion": "Colocar por sistema la compra de : \r\n-Dos Racks para servidores segun el siguiente detalle\r\n \r\nDell PowerEdge 4220 Rack 42U, With Doors and Side Panels Air Shipment\r\nPDU 2X (Dos) PDU 16A PowerCord\r\nWarranty 3 Year Basic Warranty, 3 Year NBD\r\n\r\nMonto aproximado de la compra 4 Millones con IVA.\r\n",
@@ -20171,6 +20568,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 749,
                 "VRE_Id": 749,
                 "VRE_Descripcion": "Colocar por sistema de compras lo indicado en documento adjunto, por contrato marco empresa TECEM. \r\nHabilitacion Auditorio con Telon, Proyector y Sonido. \r\nValor US$ 8.370 + IVA.\r\n",
@@ -20199,6 +20597,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 754,
                 "VRE_Id": 754,
                 "VRE_Descripcion": "Colocar por sistema de compra lo siguiente : \r\nLicitacion por Migracion de NW a MS, segun documento adjunto. \r\nMonto estimado de la licitacion, 35 Millones.\r\n",
@@ -20227,6 +20626,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 770,
                 "VRE_Id": 770,
                 "VRE_Descripcion": "Colocar por sistema de Compras \r\n-3 (tres) Licencias ACL Named V 9.01 2 Licencias para Auditoria Interna, 1 Licencia para Auditoria Ministerial. \r\nValor unitario US$ 2685 + IVA, Total US$ 9586 IVA Incluida\r\nPor trato directo, proveedor unico, se adjunta carta de proveedor unico, y cotizacion.\r\n",
@@ -20255,6 +20655,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 773,
                 "VRE_Id": 773,
                 "VRE_Descripcion": "Se solicita la revision y mantencion de luces de emergencia que se encuentran en el area de soporte donde esta laSala de servidores.",
@@ -20283,6 +20684,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 779,
                 "VRE_Id": 779,
                 "VRE_Descripcion": "Compra a Ingesmart por contrato marco la compra de 7 Notebooks con la siguiente configuracion,\r\n \r\nID Notebook 809253 Valor USD 675.-\r\nID Licencia 674001 Valor USD 375.-\r\nUnitario US$ 1249.5 IVA Incluido\r\n \r\nTotal : 7497.- IVA Incluido",
@@ -20311,6 +20713,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 789,
                 "VRE_Id": 789,
                 "VRE_Descripcion": "colocar por sistema de compras lo siguiente:  \r\nCompra de Licencias Microsoft por sistema de Grandes Compras, segun el detalle adjunto.\r\n",
@@ -20339,6 +20742,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 809,
                 "VRE_Id": 809,
                 "VRE_Descripcion": "Favor colocar por sistema de compras lo siguiente,a TECEM por Contrato Marco,etapas de avance trabajos 1er Subterraneo:\r\n-58.877 Unidades de ID 822700, Climatizacion Precisa para sala servidores por BTU (para manejar 58.877 BTU)\r\n  Valor Unitario : US$ 1.07 + IVA, Total : US$ 62.999.- + IVA.\r\n",
@@ -20367,6 +20771,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 810,
                 "VRE_Id": 810,
                 "VRE_Descripcion": "Favor de colocar por sistema de compras lo siguiente,a TECEM por Contrato Marco, etapas de avance trabajos 1er Subterraneo\r\n- 52 Unidades de ID 822701, Potencia Ininterrumpida con Doble conversion por KVA (para manejar 52 KVA)\r\nValor Unitario : US$ 1.067,22 + IVA, Total : US$ 55.873.- + IVA.\r\n\r\n",
@@ -20395,6 +20800,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 811,
                 "VRE_Id": 811,
                 "VRE_Descripcion": "Trato directo con Dell Chile debido a que las licitaciones publicas respectivas estuvieron desiertas por falta de partipantes.\r\n- Dos Unidades Racks según descripcion,  Total US$ 5.842.- + IVA\r\n- Dos Unidades Switchs según descripcion,  Total US$ 12.994.- + IVA\r\nSe adjunta documento con especificaciones\r\n\r\n\r\n",
@@ -20423,6 +20829,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 812,
                 "VRE_Id": 812,
                 "VRE_Descripcion": "Favor colocar por sistema de compras lo siguiente :\r\nTrato directo con Dell Chile debido a que las licitaciones publicas respectivas estuvieron desiertas por falta de partipantes.\r\n- Dos Unidades Racks según descripcion,  Total US$ 5.842.- + IVA\r\nRack 42U\r\nQuote #:48399292 Cfg-Id: 7185209\r\nPrecio Unitario: USD 2.921 + IVA\r\n- Dos Unidades Switchs según descripcion,  \r\nTotal US$ 12.994.- + IVA\r\nSwitch\r\nQuote #:48892780      \r\nPrecio Unitario: USD 6.497 + IVA\r\nSe adjunta archivo con especificacione",
@@ -20451,6 +20858,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 813,
                 "VRE_Id": 813,
                 "VRE_Descripcion": "Favor colocar por sistema de compras lo siguiente : Trato directo con Dell Chile debido a que las licitaciones publicas respectivas estuvieron desiertas por falta de partipantes. - Dos Unidades Racks según descripcion, Total US$ 5.842.- + IVA Rack 42U Quote #:48399292 Cfg-Id: 7185209 Precio Unitario: USD 2.921 + IVA - Dos Unidades Switchs según descripcion, Total US$ 12.994.- + IVA Switch Quote #:48892780 Precio Unitario: USD 6.497 + IVA Se adjunta archivo con especificacione",
@@ -20479,6 +20887,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 814,
                 "VRE_Id": 814,
                 "VRE_Descripcion": "mjrwher",
@@ -20507,6 +20916,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 815,
                 "VRE_Id": 815,
                 "VRE_Descripcion": "Colocar por sistema de compras lo siguiente :\r\nTrato directo con Dell Chile debido a que las licitaciones publicas respectivas estuvieron desiertas por falta de partipantes.\r\n-Dos Unidades Racks según descripcion,  Total US$ 5.842.- + IVA\r\nRack 42U\r\nQuote #:48399292      Cfg-Id: 7185209\r\nPrecio Unitario: USD 2.921 + IVA\r\n- Dos Unidades Switchs según descripcion,  Total US$ 12.994.- + IVA\r\nSwitch\r\nQuote #:48892780      \r\nPrecio Unitario: USD 6.497 + IVA\r\nSe adjunta archivo con especificaciones",
@@ -20535,6 +20945,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 816,
                 "VRE_Id": 816,
                 "VRE_Descripcion": "Poner OC\r\n\r\nA Dell Computer por contrato marco\r\n 30 Unidades del ID 786649 OPTIPLEX 790 Intel Core i7 2700 Processor (3.4GHz, 8M), RAM 16GB, DD 1TB, DVD-RW, LCD 17\", Win 7 PRO 64Bits, Valor Unitario US$ 1.160.- + IVA, Total 41.412.- IVA Incluido.\r\n",
@@ -20563,6 +20974,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 817,
                 "VRE_Id": 817,
                 "VRE_Descripcion": "Poner OC\r\nA Ingesmart por contrato marco \r\n10 Unidades del ID 784872 Notebook VAIO con Windows 7 Pro 64, Valor unitario US$ 1.032 + IVA, Total, US$ 12.280,8.- IVA Incluido.\r\n \r\n",
@@ -20591,6 +21003,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 821,
                 "VRE_Id": 821,
                 "VRE_Descripcion": "Se solicito revision de equipo de citofono accceso oficina de informatica y de telefonos area soporte.",
@@ -20619,6 +21032,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 827,
                 "VRE_Id": 827,
                 "VRE_Descripcion": "Colocar solicitud de o\/c Urgente por contrato Marco a la empres Cynersis de lo siguiente\r\n-Dos (2) Autocad LT\r\n596183 SOFTWARE AUTODESK AUTOCAD LT  COMMERCIAL NEW SLM  IDIOMAS\r\n-Veintisiete (27) Acrobat 9 (Entrega Acrobat 10, X)\r\n308775 SOFTWARE ADOBE ACROBAT 9 ESPAÑOL  UNIDAD\r\n\r\nTotal o\/c US$ 9496,2.- IVA Incluido\r\n\r\n\r\n ",
@@ -20647,6 +21061,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 828,
                 "VRE_Id": 828,
                 "VRE_Descripcion": "Colocar o\/c por contrato marco de trabajos de canalizacion y tendido de fibra segun documentos adjuntos.\r\nA la empresa Tecem, con el ID de contrato marco 822703 CONFIGURACION TECEM E INSTALACIÓN DE COMUNICACIONES  PARA SALAS DE SERVIDORES, monto $ 18.692.107.- + IVA\r\n",
@@ -20675,6 +21090,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 829,
                 "VRE_Id": 829,
                 "VRE_Descripcion": "Colocar o\/c por contrato marco de trabajos de canalizacion y tendido de fibra segun documentos adjuntos. A la empresa Tecem, con el ID de contrato marco 822703 CONFIGURACION TECEM E INSTALACIÓN DE COMUNICACIONES PARA SALAS DE SERVIDORES, monto $ 18.692.107.- + IVA \r\nCOORDINAR CON CARLOS CANALES DE TECEM,PARA QUE LEVANTE OFERTA EN EL PORTAL POR EL MONTO INDICADO,PARA LA COLOCACION DE LA O\/C",
@@ -20703,6 +21119,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 839,
                 "VRE_Id": 839,
                 "VRE_Descripcion": "Se solicita el arriendo de impresora, Samsung SCX 6545 Adicionar al contrato que se tiene con Mellafe y Salas.\r\nSe enviara a la seremia de la I region.Ver factibilidad con la empresa para que ellos la despachen a Iquique y la instalen",
@@ -20731,6 +21148,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 873,
                 "VRE_Id": 873,
                 "VRE_Descripcion": "Se solicita urgente la revision de equipos de aire acondicionado ubicados en la sala de servidores,ya que en uno de ellos al parecer fallo la bomba.",
@@ -20759,6 +21177,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 874,
                 "VRE_Id": 874,
                 "VRE_Descripcion": "Se solicita la instalacion de 7 puntos de red y 7 puntos telefonicos canalizados y certificados en la nueva direccion que ocupara la seremia de Iquique",
@@ -20787,6 +21206,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 877,
                 "VRE_Id": 877,
                 "VRE_Descripcion": "Se solicita colocar solicitud de reparación de aires según cotización adjunta en sistema de compras.\r\nEsto es para motarlo provisoriamente en el data center\r\n",
@@ -20815,6 +21235,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 898,
                 "VRE_Id": 898,
                 "VRE_Descripcion": "Compra de dos(2)aires acondiconados de 24.000 BTU (Marca Samsung, LG, GE, Panasonic) con instalación para sala del primer subterraneo.",
@@ -20843,6 +21264,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 900,
                 "VRE_Id": 900,
                 "VRE_Descripcion": "Mantención urgente de aires acondicionados de huérfanos 1294 oficina 24, los 3 del data y los otros de oficina.",
@@ -20871,6 +21293,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 925,
                 "VRE_Id": 925,
                 "VRE_Descripcion": "Cotizacion por equipamiento del auditorium azul\r\n1 amplificador \r\n4 parlantes de techo\r\n220 cable tecem por metro\r\n1 accesorio soporte universal",
@@ -20899,6 +21322,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 937,
                 "VRE_Id": 937,
                 "VRE_Descripcion": "Dar curso a la contratacion de servicios para el PMG SSI 2012, por contrato marco segun documento adjunto a la empresa EXE Ingenieria.\r\n",
@@ -20927,6 +21351,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 938,
                 "VRE_Id": 938,
                 "VRE_Descripcion": "Se solicita con calidad URGENTE lo siguiente. \r\nColocar a la empresa E-Money, por trato directo, o\/c por lo siguiente, \r\n \r\n.- Dos equipos FortiAP-220B\r\n.- Dos Licencias por 12 meses para FortiAP\r\n.- Servicio de implementacion y configuracion \r\n\r\nValores indicados en documento adjunto,\r\n \r\n",
@@ -20955,6 +21380,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 939,
                 "VRE_Id": 939,
                 "VRE_Descripcion": "Se solicita la adquisicion de 5 multifuncionales epson ID 709620 por un valor unitario de US$ 115 + IVA a la empresa RyC por Contrato Marco segun documento adjunto.\r\n\r\n",
@@ -20983,6 +21409,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 940,
                 "VRE_Id": 940,
                 "VRE_Descripcion": "Se solicita la adquisicion de 5 multifuncionales epson ID 709620 por un valor unitario de US$ 115 + IVA a la empresa RyC por Contrato Marco segun documento adjunto. ",
@@ -21011,6 +21438,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 950,
                 "VRE_Id": 950,
                 "VRE_Descripcion": " contrato marco Tecem, lo siguiente :\r\n \r\nSe solicita compra de:\r\n3 Unidades del ID 822704\r\nSERVICIO DE CONFIGURACION TECEM SEGURIDAD, INCENDIO, CONTROL DE ACCESO E ILUMINACIÓN - \r\nValor Unitario  U$ 21.500 + IVA\r\n",
@@ -21039,6 +21467,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 954,
                 "VRE_Id": 954,
                 "VRE_Descripcion": "Se solicita gestionar la limpieza de sillon que se encuentra ubicado en nuestras dependencias.",
@@ -21067,6 +21496,7 @@
                 "DRE_UsuarioEditAnt": "Hector Torres Osses"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 956,
                 "VRE_Id": 956,
                 "VRE_Descripcion": "Se solicita la adquisicion de 5 multifuncionales epson ID 709620 por un valor unitario de US$ 115 + IVA a la empresa RyC por Contrato Marco segun documento adjunto. ",
@@ -21095,6 +21525,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 961,
                 "VRE_Id": 961,
                 "VRE_Descripcion": "Se solicta revision de telefonos y citofonos.",
@@ -21123,6 +21554,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 969,
                 "VRE_Id": 969,
                 "VRE_Descripcion": "Dar curso a la contratacion de servicios para el PMG SSI 2012, por contrato marco segun documento adjunto a la empresa EXE Ingenieria. ",
@@ -21151,6 +21583,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 972,
                 "VRE_Id": 972,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a la empres RyC de: \r\n 5 (cinco) VIDEO PROYECTOR VIEWSONIC PJD6221 2700 lum, ID Contrato Marco 641675, Valor Unitario US$ 650 + IVA.\r\nTotal compra US$ 3867,5 IVA Incluido.\r\n \r\n",
@@ -21179,6 +21612,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 980,
                 "VRE_Id": 980,
                 "VRE_Descripcion": "Se solicita contratar  Trabajos de Remodelacion Hall de Entrada Edificio los Trabajadores segun documento adjunto, costo estimado 20 Millones.\r\n\r\n",
@@ -21207,6 +21641,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 984,
                 "VRE_Id": 984,
                 "VRE_Descripcion": "Se solicita la confeccion de tarjetas institucionales para el Sr. Carlos Puente Vallejos\r\nen la parte de cargo cambiar por Jefe TIC\r\nEl resto de la informacion se mantiene.\r\n",
@@ -21235,6 +21670,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 985,
                 "VRE_Id": 985,
                 "VRE_Descripcion": "Se solicita la compra de 04 pendrive de 16GB para esta unidad",
@@ -21263,6 +21699,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 998,
                 "VRE_Id": 998,
                 "VRE_Descripcion": "se solicita la confección de un mueble, en sala de proyección del auditorium, se deben tomaar las medidas de acuerdo al espacio a utilizar. Consultar medidas con informatica.",
@@ -21291,6 +21728,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1009,
                 "VRE_Id": 1009,
                 "VRE_Descripcion": "Se solicita la adquisisicon de una vitrina con capacidad para colgar 30 llaves y que a su vez tenga cierre con llave",
@@ -21319,6 +21757,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1031,
                 "VRE_Id": 1031,
                 "VRE_Descripcion": "Se solicita gestionar compra de sistema de Integración  Para ing software,segun cotizacion adjunta de empresa Vigatec,tema reloj control\r\n",
@@ -21347,6 +21786,7 @@
                 "DRE_UsuarioEditAnt": "Hector Torres Osses"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1039,
                 "VRE_Id": 1039,
                 "VRE_Descripcion": "Prueba 1",
@@ -21375,6 +21815,7 @@
                 "DRE_UsuarioEditAnt": "Luis Castillo"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1040,
                 "VRE_Id": 1040,
                 "VRE_Descripcion": "Se solicita la adquisicion y renovacion del antivirus Mcaffe por dos años según el detalle indicado a la empresa Coinsa por Contrato Marco.\r\nSe adjunta propuesta por licenciamiento McAfee por 2 años y servicios de soporte incluyendo los ID con ofertas publicadas en Convenio Marco.\r\n\r\n \r\n\r\n \r\n",
@@ -21403,6 +21844,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1050,
                 "VRE_Id": 1050,
                 "VRE_Descripcion": "Prueba",
@@ -21431,6 +21873,7 @@
                 "DRE_UsuarioEditAnt": "Luis Castillo"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1054,
                 "VRE_Id": 1054,
                 "VRE_Descripcion": "Solicitud de prueba",
@@ -21459,6 +21902,7 @@
                 "DRE_UsuarioEditAnt": "Luis Castillo"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1057,
                 "VRE_Id": 1057,
                 "VRE_Descripcion": "Se solicita gestionar la limpieza de sillon que se encuentra ubicado en nuestras dependencias.",
@@ -21487,6 +21931,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1077,
                 "VRE_Id": 1077,
                 "VRE_Descripcion": "se solicita la compra URGENTE de 05 desinfectantes spray LISOFORM\r\nPARA APLICAR EN ESTA DEPENDENCIAS PRODUCTO DE INUNDACION DE PISO SUPERIOR QUE AFECTO A ESTA OFICINA CON AGUAS SERVIDAS",
@@ -21515,6 +21960,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1081,
                 "VRE_Id": 1081,
                 "VRE_Descripcion": "Se solicita gestionar la adquisicion e instalacion de laminas para polarizar vidrios de la sala de proyeccion del auditorium.",
@@ -21543,6 +21989,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1090,
                 "VRE_Id": 1090,
                 "VRE_Descripcion": "Se solicita con cargo a Proempleo el arriendo de impresora, Samsung SCX 6545 blanco y negro.Adicionar al contrato que se tiene con Mellafe y Salas",
@@ -21571,6 +22018,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1108,
                 "VRE_Id": 1108,
                 "VRE_Descripcion": "Se solicita la adquisicion de un timbre de recepcion para la secretaria de unidad TIC.Se entrega modelo de timbre en adquisiciones",
@@ -21599,6 +22047,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1135,
                 "VRE_Id": 1135,
                 "VRE_Descripcion": "Se solicita en calidad de URGENTE mantencion de equipos de aire acondicionado que se encuentran en nuestras dependencias.Se requiere que se retiren las unidades compresoras para hacer una mantencion completa y revision de instalacion electrica de las mismas.Se pide lo mas URgente posible porque ayer fallo un equipo.",
@@ -21627,6 +22076,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1176,
                 "VRE_Id": 1176,
                 "VRE_Descripcion": "Se solicita arriendo e instalacion de impresora Samsung CLX-8385 para Unidad TIC.\r\nAdicionar al contrato de Mellafe y Salas",
@@ -21655,6 +22105,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1177,
                 "VRE_Id": 1177,
                 "VRE_Descripcion": "Se solicita la adquisicion de 01 hergvidor de agua para unidsad TIC ya que el que tenemos ser averio",
@@ -21683,6 +22134,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1181,
                 "VRE_Id": 1181,
                 "VRE_Descripcion": "Se solicta la adquisicion para impresora lexmark C534 de :\r\n-2 Cajas de Fotoconductor N° parte C53030X\r\n-3 Transfer Belt N° parte 40X3572\r\n-1 Botella de Desperdicios\r\nSe solicita la adquisicion para impresora Lexmark C524 de :\r\n- 4 Cajas de Fotoconductor N° parte C52030X\r\n- 4 Unidades de Fusor N° parte 40X1402\r\n\r\n",
@@ -21711,6 +22163,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1186,
                 "VRE_Id": 1186,
                 "VRE_Descripcion": "Se solicita gestionar compra de sistema de Integración Para ing software,segun cotizacion adjunta de empresa Vigatec,tema reloj control ",
@@ -21739,6 +22192,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1192,
                 "VRE_Id": 1192,
                 "VRE_Descripcion": "URGENTE Compra de Switches\r\nColocar por sistema de compras lo indicado en documento adjunto, a la empresa RyC por Contrato Marco\r\nSe requiere con urgencia ya que deben ser instalados la proxima semana, para poder dar comienzo al proyecto de cambio de plataforma.\r\n \r\n",
@@ -21767,6 +22221,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1212,
                 "VRE_Id": 1212,
                 "VRE_Descripcion": "Se solicita la compra para esta Unidad de lo siguiente:\r\n-02 Discos duros.\r\nWestern Digital Disco Externo 2TB 3.5\" My Book Live\r\nCaracterísticas\r\nSerie: My Book Live\r\nModelo: WDBACG0020HCH-NESN\r\nColor: Negro\r\nFormato: 3,5\", externo.\r\nCapacidad: 2 TB\r\nInterfaz (externa): Gigabit Ethernet \r\nInformación: Compatible con Windows XP, Vista, 7 y Mac\r\nVoltaje de entrada CA    100-240 VCA\r\nDimensiones : 167 x 139 x 50 mm\r\nPeso: 1,09 Kg.\r\nIncluye:\r\nCable Ethernet\r\nAdaptador de alimentación de CA\r\nCD de in",
@@ -21795,6 +22250,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1214,
                 "VRE_Id": 1214,
                 "VRE_Descripcion": "Se solicita la compra para esta unidad  de 01 MacBook pro con las siguientes características:\r\nMacBook Pro 13,3\"\/2,4GHz\/4GB\/500GB Últimas Unidades\r\nMD313CI\/A\r\nCaracterísticas\r\nProcesador Intel Core i5 intel de doble núcleo a 2.4 GHz.\r\nDisco duro de 500 GB a 5400 rpm 4GB de memoria, ampliable a 8 GB.\r\nPantalla ancha brillante retroiluminada por LED de 13\" 1280x800 píxeles.\r\n",
@@ -21823,6 +22279,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1215,
                 "VRE_Id": 1215,
                 "VRE_Descripcion": "Se solicita gestionar reparacion de conexion VGA de data ubicado en piso 7°.Se reviso y se detecto que fue roto por los usuarios.Se solicita en calidad de urgente",
@@ -21851,6 +22308,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1218,
                 "VRE_Id": 1218,
                 "VRE_Descripcion": "prueba",
@@ -21879,6 +22337,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1234,
                 "VRE_Id": 1234,
                 "VRE_Descripcion": "Se solicita en calidad de URGENTE licitacion o compra por contrato marco de lo siguiente:\r\nLicencias vMWare\r\n-Dos(2)Licencias de  vMWare vSphere 5 Enterprise for 1 Procesor (64 GB vRAM por procesador),con\r\nSupport\/Subscription por 1 año.\r\n-Una (1) Licencia vMWare vCenter Server 5, con\r\nSupport\/Subscription por  1 año.\r\n\r\nAccesorios DELL\r\nAccesorios de la marca, para manter garantia y soporte.\r\n-Dos(2) Racks Dell PE4220 cada uno con dos PDU de 16, instalados.\r\n-Dos(2) ampliaciones de Memoria para",
@@ -21907,6 +22366,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1235,
                 "VRE_Id": 1235,
                 "VRE_Descripcion": "Se solicita la revision de puerta de sala de servidores de esta unidad,ya que aun estando con llave se abre.",
@@ -21935,6 +22395,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1236,
                 "VRE_Id": 1236,
                 "VRE_Descripcion": "Se solicita la compra de equipos indicados a Dell Chile por contrato Marco, a presupuesto de Proempleo.\r\n-Seis (6) Dell Optiplex 790, CPU i72600, 16 GB RAM, 1 TB Disco, Grabador, Win7Pro, Monitor LCD 17\", 3 Años de Garantia\r\nValor Unitario US$ 1.160+ IVA.\r\nID de Contrato Marco : 786649\r\n",
@@ -21963,6 +22424,7 @@
                 "DRE_UsuarioEditAnt": "Jimena Moreno"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1249,
                 "VRE_Id": 1249,
                 "VRE_Descripcion": "Se solicita \r\n- Cambiar chapas de salas de rack de los pisos:4°,5° y 7°\r\n- Cambiar chapa de salon rojo\r\nEntregar llaves en esta Unidad",
@@ -21991,6 +22453,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1275,
                 "VRE_Id": 1275,
                 "VRE_Descripcion": "Se solicita para Proempleo, la compra por contrato marco o licitacion, de dos Proyectores Epson 1750 Power Lite, con base para instalacion en el techo, con montaje y cableado de los mismos.",
@@ -22019,6 +22482,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1286,
                 "VRE_Id": 1286,
                 "VRE_Descripcion": "Se solicita arriendo e instalacion de 02 impresoras\r\nXEROX WORK CENTRE 7535, para Unidad TIC y para Seremia de antofagasta. Adicionar al contrato de Mellafe y Salas",
@@ -22047,6 +22511,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1298,
                 "VRE_Id": 1298,
                 "VRE_Descripcion": "Se solicita gestionar el arreglo de sistema VGA para conectar proyector, que esta ubicado en sala de reuniones del gabinete de la ministra. Se requiere este arreglo a la brevedad.  ",
@@ -22075,6 +22540,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1308,
                 "VRE_Id": 1308,
                 "VRE_Descripcion": "Se solicta la revision y reparacion de 03 equipos de telefono ubicados en dependencias de unidad TIC",
@@ -22103,6 +22569,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1319,
                 "VRE_Id": 1319,
                 "VRE_Descripcion": "Se solicita la adquisicion de 1 calefactor de aire y 1 hervidor de agua para la central telefonica ",
@@ -22131,6 +22598,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1325,
                 "VRE_Id": 1325,
                 "VRE_Descripcion": "Se solicita la adquisicion de 550 porta credenciales y 550 cordones.\r\nSe adjunta via sistema cotizacion de empresa Odis para tener como referencia de precios.\r\nNo es obligacion comprar a Odis,solo se envia como referencia. ",
@@ -22159,6 +22627,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1332,
                 "VRE_Id": 1332,
                 "VRE_Descripcion": "Se solicita la compra de :\r\n- 340 portacredenciales transparentes\r\n- 300 cordones(con diseño institucional)\r\n- 40 porta crdenciales tipo yo-yo",
@@ -22187,6 +22656,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1333,
                 "VRE_Id": 1333,
                 "VRE_Descripcion": "Se solicita la adquisicion de 10 unidades de estuches de CUERO para Blackberry modelo 8520.\r\n",
@@ -22215,6 +22685,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1349,
                 "VRE_Id": 1349,
                 "VRE_Descripcion": "Se solicita gestionar mantencion y limpieza a fondo de equipos de aire acondicionado ubicados en sala de servidores y sala de soporte, en total 4, de esta Unidad  ",
@@ -22243,6 +22714,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1354,
                 "VRE_Id": 1354,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa Ingesmart con cargo a Proempleo de:\r\n- 03 Notebook Sony Vaio VPC-SA45GL\r\n(Incluye bolso + Docking o Batería de Larga Duración) \r\nUSD$1.235\r\nID  858341\r\nProcesador: Intel® Core™ i5-2450M | Pantalla: LED VAIO Plus de 13.3” | Disco Duro: HDD 750GB | Sistema Operativo: Windows® 7 Professional de 64 bit | Memoria: 6GB DDR3 SDRAM | Peso: 1.72 kg\r\n\r\n\r\n",
@@ -22271,6 +22743,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1356,
                 "VRE_Id": 1356,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa Ingesmart con cargo a Proempleo de:\r\n- 03 Notebook Sony Vaio VPC-SA45GL\r\n(Incluye bolso + Docking o Batería de Larga Duración) \r\nUSD$1.235\r\nID  858341\r\nProcesador: Intel® Core™ i5-2450M | Pantalla: LED VAIO Plus de 13.3” | Disco Duro: HDD 750GB | Sistema Operativo: Windows® 7 Professional de 64 bit | Memoria: 6GB DDR3 SDRAM | Peso: 1.72 kg\r\n\r\n\r\n",
@@ -22299,6 +22772,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1358,
                 "VRE_Id": 1358,
                 "VRE_Descripcion": "Se solicita revision de equipo telefonico de Jose Moya que esta sin tono.",
@@ -22327,6 +22801,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1372,
                 "VRE_Id": 1372,
                 "VRE_Descripcion": "Se solicita la adquisicion de manera urgente para secretaria gabinete ministra Paulina Hernandez de \r\n01 impresora multifuncional marca Epson Stylus 430W",
@@ -22355,6 +22830,7 @@
                 "DRE_UsuarioEditAnt": "Jimena Moreno"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1381,
                 "VRE_Id": 1381,
                 "VRE_Descripcion": "Se solicita la compra de \r\n-06 pendrive de 32GB de capacidad.",
@@ -22383,6 +22859,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1383,
                 "VRE_Id": 1383,
                 "VRE_Descripcion": "Se solicita cambio de musica en espera en equipo existente en central telefonica de Subsecretaria del Trabajo a empresa Sistek",
@@ -22411,6 +22888,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1386,
                 "VRE_Id": 1386,
                 "VRE_Descripcion": "Se solicita revision y reparacion de telefono de Bernardo Figueroa.No se escucha.",
@@ -22439,6 +22917,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1395,
                 "VRE_Id": 1395,
                 "VRE_Descripcion": "se solicita enviar a confeccionar una caja con llave para proteger la conexion VGA que esta ubicada en el salon azul",
@@ -22467,6 +22946,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1419,
                 "VRE_Id": 1419,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa Dell Computer chile Ltda. de :\r\n- 09 Pc Dell Optiplex 990 DTL1\r\nSe adjuntan indicaciones de compra enviadas por Dell\r\nMonto US$1.257,16+IVA unitario ",
@@ -22495,6 +22975,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1420,
                 "VRE_Id": 1420,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa Dell Computer chile Ltda. de : - 09 Pc Dell Optiplex 990 DTL1 Se adjuntan indicaciones de compra enviadas por Dell Monto US$1.257,16+IVA UNITARIO ",
@@ -22523,6 +23004,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1429,
                 "VRE_Id": 1429,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco de :\r\n- 01 servidor Dell Poweredge R610(se recibe R620).\r\n-2 x E5-2670\r\n128GB RAM\r\n2 x 146GB R1\r\n1 x HBA 10G GbE Dual\r\n1 x Quad GbE NIC\r\n1 x Quad GbE NIC Adicional\r\nSD Dual R1\r\n2 x Vsphere Embedded 5.x Ent \r\n2 x Vmware basic support 1y\r\n4 horas tiempo de soporte MC\r\nInstalación Física\r\nPrecio unitario: USD 16.908 + IVA\r\nSe adjunta cotizacion\r\n\r\n\r\n",
@@ -22551,6 +23033,7 @@
                 "DRE_UsuarioEditAnt": "Alfredo Aguilera"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1444,
                 "VRE_Id": 1444,
                 "VRE_Descripcion": "Se solicita la adquisicion de 32 lectores HID adicionales.Se adjunta cotizacion ",
@@ -22579,6 +23062,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1457,
                 "VRE_Id": 1457,
                 "VRE_Descripcion": "Se solicita contratacion de servicio de peritaje de servidor web en forma URGENTE.\r\nValor aproximado 80 UF\r\nEmpresa : Neosecure",
@@ -22607,6 +23091,7 @@
                 "DRE_UsuarioEditAnt": "Carlos Puente Vallejos"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1460,
                 "VRE_Id": 1460,
                 "VRE_Descripcion": "Se solicita la adquisicion de impresora mutifuncional EPSON TX 560WD para Paulina Lobos",
@@ -22635,6 +23120,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1468,
                 "VRE_Id": 1468,
                 "VRE_Descripcion": "Se solicita la compra por contrato marco a empresa Dell Computer chile Ltda. de : - 09 Pc Dell Optiplex 990 DTL1 Se adjuntan indicaciones de compra enviadas por Dell Monto US$1.257,16+IVA UNITARIO ",
@@ -22663,6 +23149,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1469,
                 "VRE_Id": 1469,
                 "VRE_Descripcion": "Se solicita en calidad de URGENTE analisis forense de Servidor Mintrab.\r\nSe adjuntan especificaciones del servicio y cotizacion de este.",
@@ -22691,6 +23178,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1515,
                 "VRE_Id": 1515,
                 "VRE_Descripcion": "Se solicita hacer las gestiones para realizar cambio de punto de red,punto de poder y punto de telefono que estan ubicados en el puesto asignado a las secretaria de UGP",
@@ -22719,6 +23207,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1519,
                 "VRE_Id": 1519,
                 "VRE_Descripcion": "Se solicita la adquisiscion de 02 discos duros externos de 1 Tera byte  ",
@@ -22747,6 +23236,7 @@
                 "DRE_UsuarioEditAnt": "Jorge Salas Arriagada"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1520,
                 "VRE_Id": 1520,
                 "VRE_Descripcion": "Se solicita servicio de instalacion y configuracion de aplicacion de reloj control de empresa Vigatec para equipo de usuaria de remuneraciones Gloria Guerrero.\r\nSe adjunta cotizacion de empresa",
@@ -22775,6 +23265,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1522,
                 "VRE_Id": 1522,
                 "VRE_Descripcion": "Se solicita la adquisisicon e instalacion de 01 equipo de Aire Acondicionado para la sala de servidores de esta unidad.Con las siguientes caracteristicas:\r\n18.000 BTU\r\nSPLIT MURO ",
@@ -22803,6 +23294,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1524,
                 "VRE_Id": 1524,
                 "VRE_Descripcion": "Se solicita la adquisiscion de 01 generador diesel para ser utilizado en : Data center, piso 3° y  piso 6°.\r\nSe adjunta termin",
@@ -22831,6 +23323,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1527,
                 "VRE_Id": 1527,
                 "VRE_Descripcion": "Se solicita la compra de 01 impresora para unidad de Contabilidad, con las siguientes caracteristicas:\r\n-Impresora laser a color, Con conexion de red,que escanee,fotocopie.\r\n",
@@ -22859,6 +23352,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1534,
                 "VRE_Id": 1534,
                 "VRE_Descripcion": "Se solicita la adquisicion de : \r\n01 grabador externo Bluray USB 3.0\r\n01 pack de 10 discos Bluray grabables doble capa",
@@ -22887,6 +23381,7 @@
                 "DRE_UsuarioEditAnt": "Jimena Moreno"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1555,
                 "VRE_Id": 1555,
                 "VRE_Descripcion": "Se solicita la compra con cargo a la Unidad de Proempleo por contrato marco segun archivo adjunto enviado por Andres Villarroel seria el N°4 :\r\n-2 Notebook Sony Vaio SVE14A27CL Touch",
@@ -22915,6 +23410,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1556,
                 "VRE_Id": 1556,
                 "VRE_Descripcion": "Se solicita la compra con cargo a la Unidad de Proempleo por contrato marco segun archivo adjunto enviado por Andres Villarroel seria el N°4 : -2 Notebook Sony Vaio SVE14A27CL Touch",
@@ -22943,6 +23439,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1557,
                 "VRE_Id": 1557,
                 "VRE_Descripcion": "Se solicita la compra con cargo a la Unidad de Proempleo por contrato marco segun archivo adjunto enviado por Andres Villarroel seria el N°4 : -2 Notebook Sony Vaio SVE14A27CL Touch",
@@ -22971,6 +23468,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1558,
                 "VRE_Id": 1558,
                 "VRE_Descripcion": "Se solicita la compra con cargo a la Unidad de Proempleo por contrato marco segun archivo adjunto enviado por Andres Villarroel seria el N°4 : -2 Notebook Sony Vaio SVE14A27CL Touch",
@@ -22999,6 +23497,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1559,
                 "VRE_Id": 1559,
                 "VRE_Descripcion": "Se solicita la adquisisicon de 05 baterias ORIGINALES PARA Blackberry Batería Original BlackBerry modelo CS-2 para dispositivos BlackBerry 8520.se cotizo en mercado libre y el costo promedio es de $15.000 ",
@@ -23027,6 +23526,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1589,
                 "VRE_Id": 1589,
                 "VRE_Descripcion": "Se solicita la adquisicion de 01 impresora Epson Stylus Office TX620FWD",
@@ -23055,6 +23555,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1590,
                 "VRE_Id": 1590,
                 "VRE_Descripcion": "Se solicita la confeccion de tarjetas de visita para el jefe de esta Unidad\r\nNombre : Jose Vicente Elgueta A.\r\nJefe Unidad Tic\r\nSubsecretaria del Trabajo\r\nHuerfanos #1294,Oficina 24\r\nSantiago -Chile\r\nTelef.:(56-2)2696 1830 - (56-2)2695 8160\r\nCelular:(09)5 3729446\r\nMail.jvelgueta@mintrab.gob.cl",
@@ -23083,6 +23584,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1593,
                 "VRE_Id": 1593,
                 "VRE_Descripcion": "Se solicita la compra de 10 equipos computacionales marca Dell Optiplex 990 por contrato marco\r\n- 8GB RAM\r\n- Procesador I5\r\n- Disco duro 500GB\r\n- Monitor 21.5 \"\r\n",
@@ -23111,6 +23613,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1613,
                 "VRE_Id": 1613,
                 "VRE_Descripcion": "Se solicita gestionar con la empresa Mellafe y Salas el cambio de 01 de las impresoras Samsung SCX 6545 por 01 impresora Samsung CLX 8385.\r\nEsto se gestiona con cargo a la Unidad de Proempleo donde en este momento existen 02 impresoras Samsung SCX 6545 que imprimen solo en blanco y negro y necesitan una a color",
@@ -23139,6 +23642,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1622,
                 "VRE_Id": 1622,
                 "VRE_Descripcion": "Se solicita la adquisicion de 01 impresora Epson Stylus Office TX620FWD.",
@@ -23167,6 +23671,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1634,
                 "VRE_Id": 1634,
                 "VRE_Descripcion": "Se solicita la compra de 30 cables de red categoria 6\r\n- 10 de color rojo\r\n- 10 de color azul \r\n- 10 de color verde.\r\nLa medidda debe ser de 3.00mts\r\n  ",
@@ -23195,6 +23700,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1635,
                 "VRE_Id": 1635,
                 "VRE_Descripcion": "Se solicita la recarga o compra de 03 extintores que estan ubicados en dependencias de unidad TIC a la brevedad",
@@ -23223,6 +23729,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1641,
                 "VRE_Id": 1641,
                 "VRE_Descripcion": "Se solicita revision y reparacion si corresponde de equipo de aire acondicionado ubicado en oficina de recepcion de esta unidad ",
@@ -23251,6 +23758,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1651,
                 "VRE_Id": 1651,
                 "VRE_Descripcion": "Se solicita renovacion de 05 licencias de Retain.\r\nGW-Retain MN 1 year Archiving 50 Users (Retain para exchange y soporte anual, para un minimo de 50 usuarios)\r\n90221-1\r\n",
@@ -23279,6 +23787,7 @@
                 "DRE_UsuarioEditAnt": "Sebastian Franggini "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1658,
                 "VRE_Id": 1658,
                 "VRE_Descripcion": "Se solicita la adquisicion de 01 equipo de aire acondicionado para oficina de recepcion de esta unidad.",
@@ -23307,6 +23816,7 @@
                 "DRE_UsuarioEditAnt": "Sebastian Franggini "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1677,
                 "VRE_Id": 1677,
                 "VRE_Descripcion": "Se solicita la adquisicion e instalacion de un remarcador de enrgia que se ubicara en 1° subterraneo del edificio Los Trabajadores. Se adjunta cotizacion ",
@@ -23335,6 +23845,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1681,
                 "VRE_Id": 1681,
                 "VRE_Descripcion": "Se solicita la adquisicion e instalacion de cortinas tipo roller en dependencias de Central Telefonica",
@@ -23363,6 +23874,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1696,
                 "VRE_Id": 1696,
                 "VRE_Descripcion": "Se solicita la compra de 2 equipos balanceadores de carga marca barracuda LB340,con tres años de garantia\r\nValor US$11.294",
@@ -23391,6 +23903,7 @@
                 "DRE_UsuarioEditAnt": "Sebastian Franggini "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1700,
                 "VRE_Id": 1700,
                 "VRE_Descripcion": "SE SOLICITAN LOS SIGUIENTES CAMBIOS EN CONTRATO CON NUESTRO PROVEEDOR MELLAFE Y SALAS :\r\n- CAMBIO DE 12 IMPRESORAS SAMSUNG MODELO 6545 Y 2 IMPRESORAS SAMSUNG MODELO 8385, POR 12 IMPRESORAS XEROX MODELO 4260 Y 2 IMPRESORAS XEROX MODELO 7535 RESPECTIVAMENTE.SE SOLICITA ESTE CAMBIO PARA MAQUINAS UBICADAS EN SUBSECRETARIA\r\n- ADEMAS SE SOLICITA EL ARRIENDO DE 13 NUEVAS IMPRESORAS XEROX MODELO 4260 PARA SER ENVIADAS A SEREMIAS REGIONALES.   ",
@@ -23419,6 +23932,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1721,
                 "VRE_Id": 1721,
                 "VRE_Descripcion": "Se solicita certificacion de puntos de red en categoria 5e y 6.\r\nSe adjunta archivo con especificaciones tecnicas",
@@ -23447,6 +23961,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1724,
                 "VRE_Id": 1724,
                 "VRE_Descripcion": "Se solicita la adquisicion de 6 pendrives de 32GB.Favor que no sean el modelo anterior que se compro ya que se quebran(plastico negro)",
@@ -23475,6 +23990,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1725,
                 "VRE_Id": 1725,
                 "VRE_Descripcion": "Se solicita la adquisicion de 02 muebles tipo cajonera para funcionarios nuevos de estas dependencias",
@@ -23503,6 +24019,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1742,
                 "VRE_Id": 1742,
                 "VRE_Descripcion": "Se solicita la compra de 15 computadores Optiplex 9010 AIO con pantalla de 23\" con procesador intel core i7 con 8 Gb de memoria RAM, disco dureo de 1TB,valor US$ 1245+ IVA\r\nGarantia 3 años.\r\nAdemas se solicita la compra de 7 computadores 990 UN. con pantalla de 21,5\" procesador intel core i5 con 8 Gb de memoria RAM y disco duro de 500 GBm valor US$1235 +IVA\r\nGarantia 3 años",
@@ -23531,6 +24048,7 @@
                 "DRE_UsuarioEditAnt": "Jose Vicente Elgueta"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1743,
                 "VRE_Id": 1743,
                 "VRE_Descripcion": "Se solicita la compra de 15 computadores Optiplex 9010 AIO con pantalla de 23\" con procesador intel core i7 con 8 Gb de memoria RAM, disco dureo de 1TB,valor US$ 1245+ IVA Garantia 3 años. Ademas se solicita la compra de 7 computadores 990 UN. con pantalla de 21,5\" procesador intel core i5 con 8 Gb de memoria RAM y disco duro de 500 GBm valor US$1235 +IVA Garantia 3 años",
@@ -23559,6 +24077,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1745,
                 "VRE_Id": 1745,
                 "VRE_Descripcion": "Se solicita la compra de 300 tarjetas para credenciales a empresa ODIS.",
@@ -23587,6 +24106,7 @@
                 "DRE_UsuarioEditAnt": "Sebastian Franggini "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1766,
                 "VRE_Id": 1766,
                 "VRE_Descripcion": "Compra de 2 paquetes de cinco certificados sitio seguro geotrust true businessid mutidomain valor x 1 año. Mayores detalles Camilo Araya Encargado Redes Subtrab. Valor c\/paquete  US$ 599 + IVA",
@@ -23615,6 +24135,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1774,
                 "VRE_Id": 1774,
                 "VRE_Descripcion": "Se solicita la compra de impresora de credenciales FARGO DTC 1000 DUAL o similar con grabador de tarjetas HID  y sus accesorios (cintas de color,kit de limpieza y software de diseño y confeccion de credenciales). \r\nAdemas se solicita la compra de 500 tarjetas HID formato Wigand 26 bits",
@@ -23643,6 +24164,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1786,
                 "VRE_Id": 1786,
                 "VRE_Descripcion": "Se solicita la adquisicion en forma URGENTE de 02 discos duros sata de 1T 7200rpm marca WD",
@@ -23671,6 +24193,7 @@
                 "DRE_UsuarioEditAnt": "Jorge Salas Arriagada"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1795,
                 "VRE_Id": 1795,
                 "VRE_Descripcion": "Se solicita instalacion de cableado para enlace de red piso 6.",
@@ -23699,6 +24222,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1810,
                 "VRE_Id": 1810,
                 "VRE_Descripcion": "18 Switch catalyst 2960S 24 GigE PoE 370W, 4 x SFP LAN Base. Codigo WS-C2960S-24-PS-L.\r\n18 Cisco SMARTNET 8x5xNBD Catalyst 2960S Stack (Seguro de Garantia 1 año).\r\n18 Cisco 1000BASE-SX SFP transsceiver module MMF 850nm, DOM\r\n9 Cable FO Multimodo 3 mts. full duplex LC.\r\n\r\n",
@@ -23727,6 +24251,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1811,
                 "VRE_Id": 1811,
                 "VRE_Descripcion": "Se solicita la compra de 40 computadores DELL optiplex 9010 AIO UN. ID 894947",
@@ -23755,6 +24280,7 @@
                 "DRE_UsuarioEditAnt": "Jose Vicente Elgueta"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1812,
                 "VRE_Id": 1812,
                 "VRE_Descripcion": "Se solicita la compra de 7 Notebook Dell XPS 13(225-3683)\r\nCore i5, 4 Gb RAM, 256 Gb Disco SSD",
@@ -23783,6 +24309,7 @@
                 "DRE_UsuarioEditAnt": "Jose Vicente Elgueta"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1816,
                 "VRE_Id": 1816,
                 "VRE_Descripcion": "Se solicita la compra de:\r\n\r\n1 Storage Dell modelo Equallogic PS6110E 24x3TB SFPs y cables valor aprox US$ 34.135,98\r\n\r\n1 Servicio instalación y configuración EQL: Add to Pool US$ 2.822,55\r\n\r\n2 Servidores Dell PowerEdge R720 (225-2133)\r\nvalor US$ 17.656 + IVA, precio unitario\r\n\r\n2 SERVICIOS CONFIGURACION VMWARE\r\nValor US$ 971 + IVA, precio unitario\r\n\r\n1 Equipo de Respaldo en Cinta Dell TL4000 4xSAS LTO-6\r\n Valor aprox. US$ 18.198,14\r\n\r\n1 Paquete de 50 Cintas LTO-6 Valor aprox. US$ 6.709 + IVA\r\n\r",
@@ -23811,6 +24338,7 @@
                 "DRE_UsuarioEditAnt": "Jose Vicente Elgueta"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1817,
                 "VRE_Id": 1817,
                 "VRE_Descripcion": "WhatsUp Gold Premium 300 new Devices w\/12 M Services. Valor aprox. US$ 7.493,75\r\n\r\nWhatsUp Gold Flow Monitor 25 Ne Sources w\/12 M Services.\r\nValor Aprox. US$6.243,75\r\n\r\nWhatsUp Gold WhatsConfigured Plug-in 50 new Devices w\/12 M Services. Valor aprox US$ 2.993,75\r\n\r\nServicios de instalacion y configuracion . Valor aprox UF 90",
@@ -23839,6 +24367,7 @@
                 "DRE_UsuarioEditAnt": "Jose Vicente Elgueta"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1832,
                 "VRE_Id": 1832,
                 "VRE_Descripcion": "Se requiere la adquisicion de una impresora de credenciales FARGO DTC 1000 dual o similar,con grabador de tarjetas HID y accesorio,y la compra de 500 tarjetas HID formato wigand 26 bits ,para la operacion del sistema de acceso al edificio institucional del Ministerio. \r\nAdemas se requiere el suministro de los productos,repuestos,accesorios y mantenciones para asegurar la funcionalidad del servicio.\r\nDe acuerdo a bases adjuntas",
@@ -23867,6 +24396,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1833,
                 "VRE_Id": 1833,
                 "VRE_Descripcion": "Se requiere la adquisicion de una impresora de credenciales FARGO DTC 1000 dual o similar,con grabador de tarjetas HID y accesorio,y la compra de 500 tarjetas HID formato wigand 26 bits ,para la operacion del sistema de acceso al edificio institucional del Ministerio. Ademas se requiere el suministro de los productos,repuestos,accesorios y mantenciones para asegurar la funcionalidad del servicio. ",
@@ -23895,6 +24425,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1834,
                 "VRE_Id": 1834,
                 "VRE_Descripcion": "Se requiere la adquisicion de una impresora de credenciales FARGO DTC 1000 dual o similar,con grabador de tarjetas HID y accesorio,y la compra de 500 tarjetas HID formato wigand 26 bits ,para la operacion del sistema de acceso al edificio institucional del Ministerio. Ademas se requiere el suministro de los productos,repuestos,accesorios y mantenciones para asegurar la funcionalidad del servicio",
@@ -23923,6 +24454,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1840,
                 "VRE_Id": 1840,
                 "VRE_Descripcion": "Se solicita la compra de 40 computadores DELL Optiplex 9010 AIO UN. ID 894947",
@@ -23951,6 +24483,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1841,
                 "VRE_Id": 1841,
                 "VRE_Descripcion": "Se solicita la adquisición de Software de Administración de Red: de acuerdo al siguiente detalle:\r\n1)WhatsUp Gold Premium 300 new Devices w\/12 M Services. \r\n2)WhatsUp Gold Flow Monitor 25 Ne Sources w\/12 M Services. \r\n3)WhatsUp Gold WhatsConfigured Plug-in 50 new Devices w\/12 M Services. \r\n4)Instalación y configuración. \r\n",
@@ -23979,6 +24512,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1842,
                 "VRE_Id": 1842,
                 "VRE_Descripcion": "Se solicita la compra de: \r\n1)1 Storage Dell modelo Equallogic PS6110E 24x3TB SFPs y cables\r\n2)1 Servicio instalación y configuración EQL: Add to Pool \r\n3)2 Servidores Dell PowerEdge R720 (225-2133). La configuración del servidor se adjunta junto con esta información.\r\n4)2 SERVICIOS CONFIGURACION VMWARE \r\n5)1 Equipo de Respaldo en Cinta Dell TL4000 4xSAS LTO-6 \r\n6)1 Paquete de 50 Cintas LTO-6 \r\n7)1 Tarjeta de conexión SAS",
@@ -24007,6 +24541,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1843,
                 "VRE_Id": 1843,
                 "VRE_Descripcion": "Se solicita la compra de: \r\n1)1 Storage Dell modelo Equallogic PS6110E 24x3TB SFPs y cables\r\n2)1 Servicio instalación y configuración EQL: Add to Pool \r\n3)2 Servidores Dell PowerEdge R720 (225-2133). La configuración del servidor se adjunta junto con esta información.\r\n4)2 SERVICIOS CONFIGURACION VMWARE \r\n5)1 Equipo de Respaldo en Cinta Dell TL4000 4xSAS LTO-6 \r\n6)1 Paquete de 50 Cintas LTO-6 \r\n7)1 Tarjeta de conexión SAS\r\n",
@@ -24035,6 +24570,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1862,
                 "VRE_Id": 1862,
                 "VRE_Descripcion": "Cambio de Alcance Proyecto Implementacion VMware vSphere.\r\n1) Excluir del alcance original la creacion de 2 maquinas virtuales.\r\n2) Agregar 1 servidor a la lista de los que se migraran de fisico a virtual.\r\n3) Incluir un tercer host a vCenter.\r\n4) Activar HA para todas las maquinas virtuales.\r\n5) Sugerir y configurr un diagrama de red que permita tener redundancia. Entregar un diagrama impreso de como deberia quedar todo conectado a nivel de red.\r\n6) Crear topologia de red para configurar una DM",
@@ -24063,6 +24599,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1868,
                 "VRE_Id": 1868,
                 "VRE_Descripcion": "Se solicita la adquisicion por convenio MARCO de :\r\nLicencia de Gestor Documental que permita modelar,automatizar,operar y gestionar el ciclo de vida de los documentos y que incorpore firma electronica simple y avanzada,y que este basado segun la legislacion chilena.",
@@ -24091,6 +24628,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1873,
                 "VRE_Id": 1873,
                 "VRE_Descripcion": "Se solicita contratacion de servicios profesionales para: \r\n- Cambio de alcance Proyecto Implementación VMware vSphere RFS-2012-38148\r\nNuestra subsecretaria solicitó cambio de alcance respecto al SOW original. Lo solicitado es:\r\n1)Excluir del alcance original la creación de las 2 máquinas virtuales\r\n2)Agregar un servidor de la lista de los que se migrarán de físico a virtual. Originalmente eran 4, por lo que el alcance final es migrar 5 servidores. \r\n3)Incluir un tercer host en vCenter. \r\n4)Acti",
@@ -24119,6 +24657,7 @@
                 "DRE_UsuarioEditAnt": "Adriana Alvarado Astorga"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1876,
                 "VRE_Id": 1876,
                 "VRE_Descripcion": "Se solicita la compra de dos equipos firewall marca fortinet modelo fortigate 310b. Se solicita ademas la compra de 1 equipo firewall de web marca fortinet modelo fortiweb 400c.",
@@ -24147,6 +24686,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1878,
                 "VRE_Id": 1878,
                 "VRE_Descripcion": "Se solicita la adquisicion de 01 impresora para oficina de Economistas del Gabinete de la Ministra",
@@ -24175,6 +24715,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1880,
                 "VRE_Id": 1880,
                 "VRE_Descripcion": "Se solicita la revision y mantencion de equipo de aire acondicionado ubicado en el area de Desarrollo de esta Unidad.",
@@ -24203,6 +24744,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1883,
                 "VRE_Id": 1883,
                 "VRE_Descripcion": "Se solicita impresora multifuncional para Jefe de Administracion y Finanzas.",
@@ -24231,6 +24773,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1889,
                 "VRE_Id": 1889,
                 "VRE_Descripcion": "se solicita la compra de 1000 tarjetas HID formato Wigand 26 bits, para proyecto de control de acceso.",
@@ -24259,6 +24802,7 @@
                 "DRE_UsuarioEditAnt": "Aldo Leal"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1890,
                 "VRE_Id": 1890,
                 "VRE_Descripcion": "Se solicita la compra de:\r\n1 torniquete acero inoxidable con indicador de estado colapsable\r\n1 Buzon de tarjetas  con Motor para torniquete\r\n1 Lector de proximidad HID Prox Point para buzon de tarjetas\r\nMaterial para instalaciones y mano de obra.\r\n\r\nAdemas se solicita el servicio de mantencion por un año del sistema de torniquetes y control de acceso.",
@@ -24287,6 +24831,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1918,
                 "VRE_Id": 1918,
                 "VRE_Descripcion": "Se solicita la compra de:\r\n\r\n1 Rollo cable red UTP categoria 6 certificado marcas Leviton, Gigamedia o Legrand.\r\n1 Patch panel marca Leviton 24 bocas.",
@@ -24315,6 +24860,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1925,
                 "VRE_Id": 1925,
                 "VRE_Descripcion": "Se solicita la compra de 24 cables UTP user cord categoria 6 de 3 mts de largo certificados e inyectados.",
@@ -24343,6 +24889,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1943,
                 "VRE_Id": 1943,
                 "VRE_Descripcion": "Se solicita la mantencion de todos los equipos de aire acondicionado ubicados en dependencias de unidad TIC",
@@ -24371,6 +24918,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1952,
                 "VRE_Id": 1952,
                 "VRE_Descripcion": "Se solicita la confeccion de tarjetas de visita para los funcionarios de esta unidad\r\nPaola Constantino\r\nCamilo Araya\r\nSe adjunta informacion que debe ir en las tarjetas",
@@ -24399,6 +24947,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1957,
                 "VRE_Id": 1957,
                 "VRE_Descripcion": "Se solicita la compra de proyector para Gabinete de Subsecretario.\r\n",
@@ -24427,6 +24976,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1959,
                 "VRE_Id": 1959,
                 "VRE_Descripcion": "Se solicita la adquisicion de 4 licencias Genexus X Ev2 que se desglosan de la siguiente forma:\r\n4 licencias developer\r\n4 licencias generador .net\r\n4 capacitaciones ",
@@ -24455,6 +25005,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1960,
                 "VRE_Id": 1960,
                 "VRE_Descripcion": "Se solicita la instalacion de 5 punstos de red certificados para modulos de trabajo de Proempleo",
@@ -24483,6 +25034,7 @@
                 "DRE_UsuarioEditAnt": "Andres Villarroel "
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1961,
                 "VRE_Id": 1961,
                 "VRE_Descripcion": "Se solicita la compra de 5 notebooks con docking.",
@@ -24511,6 +25063,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1962,
                 "VRE_Id": 1962,
                 "VRE_Descripcion": "Se solicita la adquisicion de impresora para Oficina Subsecretario.",
@@ -24539,6 +25092,7 @@
                 "DRE_UsuarioEditAnt": "FELIPE AVENDAÑO CORDOBA"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1970,
                 "VRE_Id": 1970,
                 "VRE_Descripcion": "Se solicita la compra de:\r\n. Sistema de Activo Fijo\r\n· Equipo Capturador Códigos de Barra\r\n· Impresora de Transferencia Térmica\r\n· Etiquetas\r\n· Cinta",
@@ -24567,6 +25121,7 @@
                 "DRE_UsuarioEditAnt": "Jose Vicente Elgueta"
             },
             {
+                "Bandeja": "bnc",
                 "DRE_Id": 1971,
                 "VRE_Id": 1971,
                 "VRE_Descripcion": "Debido a la necesidad de la División Administración y Finanzas de realizar un control oportuno, certero y eficaz de la administración de los activos fijos de la Subsecretaría del Trabajo. El sistema actual presenta numerosas fallas técnicas y además obedece a una versión muy antigua, cuyo costo de actualización es equivalente a la adquisición de un software nuevo. Sumado a lo anterior, que el proceso de ingreso y salidas de activos  se debe realizar en forma Manual, es por ello que se agrega a e",
