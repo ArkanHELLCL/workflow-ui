@@ -3,12 +3,17 @@ import { ListRequestByNumber } from './accordion/LisRequestByNumber.jsx';
 import { Constants } from "../../../utils/const.jsx";
 import { ListRequestByPending } from './accordion/LisRequestByPending.jsx';
 import { ListRequestByStep } from './accordion/LisRequestByStep.jsx';
+import { ListRequestSearchResult } from './accordion/ListRequestSearchResult.jsx';
 
 export function Accordions(filteredRequest, filters){
-    const { maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()    
+    const { maxAccSearch, maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()    
     //Accordion
     let requerimientoAccordion = []
-    if(filteredRequest.length > 0){            
+    if(filteredRequest.length > 0){
+        if(filters.filterSearchResult){
+            requerimientoAccordion = ListRequestSearchResult(maxAccSearch, filteredRequest)
+            return { requerimientoAccordion }
+        }
         if(filters.filter === 1){   //Fecha nueva logica
             requerimientoAccordion = ListRequestByDate(filters.hoy, maxAccByDate, filteredRequest)
         }

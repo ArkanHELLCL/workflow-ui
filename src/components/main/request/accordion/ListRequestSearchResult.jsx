@@ -15,7 +15,7 @@ function FiltroRequerimientos( filteredRequest, cod ) {
     );
 }
 
-export function ListRequestByDate(maxAccordions, filteredRequest){    
+export function ListRequestSearchResult(maxAccordions, filteredRequest){    
     let requerimientoAccordion = []
 
     for (let index = 1; index <= maxAccordions; index++) {      

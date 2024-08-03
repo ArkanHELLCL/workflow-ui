@@ -6,6 +6,7 @@ export function Constants(){
     const maxAccByDate = 11
     const maxAccByNumber = 5
     const maxAccByStep = 5
+    const maxAccSearch = 7
 
-    return {meses, dias, diasAbrev, mesesAbrev, maxAccByDate, maxAccByNumber, maxAccByStep}
+    return {meses, dias, diasAbrev, mesesAbrev, maxAccByDate, maxAccByNumber, maxAccByStep, maxAccSearch}
 }
