@@ -5,7 +5,6 @@ import { useRequest } from "../../../hooks/useRequest.jsx";
 import { ArchiveIcon, EditIcon, UserIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
-import { user } from "../../../mocks/usuario.json";
 
 export const RequerimientoItem = ({ req, showDia, showYear }) => {    
     const { dias } = Constants()
