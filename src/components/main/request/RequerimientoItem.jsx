@@ -5,6 +5,7 @@ import { useRequest } from "../../../hooks/useRequest.jsx";
 import { ArchiveIcon, EditIcon, UserIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
+import { user } from "../../../mocks/usuario.json";
 
 export const RequerimientoItem = ({ req, showDia, showYear }) => {    
     const { dias } = Constants()
@@ -56,10 +57,10 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
     }
   
     return (
-      <article className={` reqitem  ${req.IdEditor ? 'reqtomado' : 'reqnotomado'} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento(regId)} id={regId}>
+      <article className={` reqitem  ${req.IdEditor ? 'reqtomado' : filters.itemIdSelected === 'be' ? 'reqnotomado' : ''} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento(regId)} id={regId}>
         <div className="w-3/4">
-          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt : req.NombreCreador + ' ' + req.ApellidoCreador}</p>
-          <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : 'text-sky-600 font-bold'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
+          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{filters.itemIdSelected === 'be' ? req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt : req.NombreCreador + ' ' + req.ApellidoCreador : req.NombreEditor ? req.NombreEditor + ' ' + req.ApellidoEditor : req.DepDescripcionActual}</p>
+          <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : filters.itemIdSelected === 'be' ? 'text-sky-600 font-bold' : 'dark:text-stone-400 text-stone-500'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
           <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
         </div>
         <div className="w-1/4">

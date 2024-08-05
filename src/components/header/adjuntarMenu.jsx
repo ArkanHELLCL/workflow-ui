@@ -3,6 +3,7 @@
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { useRequest } from "../../hooks/useRequest.jsx";
+import { useFilters } from "../../hooks/useFilters.jsx";
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu"
 import { AttachIcon } from "../../utils/icons.jsx";
@@ -10,6 +11,7 @@ import { user } from "../../mocks/usuario.json";
 
 export default function Adjuntar ({styles}){
     const { request } = useRequest()
+    const { filters } = useFilters()
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -39,7 +41,7 @@ export default function Adjuntar ({styles}){
     }*/
     return (
         <>{
-            request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) &&
+            request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' &&
                 <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
                     <ContentMenu title={'Adjuntar'} styles={styles}>
                         <Dropdown>
