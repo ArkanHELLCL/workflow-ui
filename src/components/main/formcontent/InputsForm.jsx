@@ -4,8 +4,10 @@ import { useEffect } from 'react';
 import FormHelperText from '@mui/joy/FormHelperText';
 import Inputs from './Inputs.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
+import { useRequest } from '../../../hooks/useRequest.jsx';
 
 export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, frmRequest, setFilesList, filesList}) {
+    const { request } = useRequest()
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -74,7 +76,40 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         frmRequest.clearErrors('frmWFInputFile')
     },[filesList])
 
-    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;    
+    useEffect(() => {
+        frmRequest.reset()
+        setFilesList([])
+
+        frmRequest.clearErrors()
+        campos.map(campo => {
+            frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato?.trim())
+        })
+    },[campos, request])
+
+    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;
+
+    //Seteo de los valores de los campos en el primer renderizado
+    /*useEffect(() => {
+        let reg        
+        if(parseInt(record?.record?.Id) === 0) {
+            frmRecord.reset()
+            reg = {
+                    "COM_Id":0,
+                    "REG_Id":null,
+                    "COM_Nombre":'',
+                    "COM_OrdenGeografico":'',
+                    "COM_UsuarioEdit":user.USR_Usuario,
+                    "COM_FechaEdit":fecha
+            }
+        }else{
+            reg = registros.filter(reg => reg.id === 'mc')[0].fields?.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
+        }
+            
+        frmRecord.setValue('COM_Nombre', reg?.COM_Nombre)
+        frmRecord.setValue('REG_Id', reg?.REG_Id)
+        frmRecord.setValue('COM_OrdenGeografico', reg?.COM_OrdenGeografico)
+        //setField(reg)
+    },[request])*/
 
     return (
         <>
@@ -84,8 +119,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
                     <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}                        
-                        onDragLeave={handleDragLeave}
-                        //onDragEnd={handleDragEnd}
+                        onDragLeave={handleDragLeave}                        
                         >
                         <div>
                             <span className='text-[#2c87d2]'> Agregar adjuntos</span>
@@ -97,14 +131,10 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
             <input 
                 type="file" 
                 multiple 
-                hidden
-                //required={required}
-                //value={filesList}
+                hidden                
                 name="frmWFInputFile" 
-                id="frmWFInputFile" 
-                //{...frmRequest.register("frmWFInputFile",{required : required})}
-                {...frmRequest.register("frmWFInputFile", {validate: () => {
-                    //value.length > 0
+                id="frmWFInputFile"                 
+                {...frmRequest.register("frmWFInputFile", {validate: () => {                    
                     if(required && filesList.length === 0) return 'Debes adjuntar al menos un archivo'
                 }})}
                 accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-powerpoint"

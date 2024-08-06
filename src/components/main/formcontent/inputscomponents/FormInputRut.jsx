@@ -37,7 +37,7 @@ export default function FormInputRut ({ campo, className }) {
               },
               maxLength: 13
             }}
-          defaultValue={FormatearRut(campo.DFO_Dato)}
+          //defaultValue={FormatearRut(campo.DFO_Dato)}
           render={({ field }) => (
               <FormControl
                   {...field}

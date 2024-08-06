@@ -90,8 +90,8 @@ export default function FormInputTextArea ({ campo, className }) {
         control={control}
         name={campo.FDI_NombreHTML}
         rules={required}
-        defaultValue={campo.DFO_Dato}
-        render={({ field: { onChange, onBlur } }) => (
+        //defaultValue={campo.DFO_Dato}
+        render={({ field: { onChange, onBlur, value } }) => (
             <FormControl
                 id={campo.FDI_NombreHTML}
                 size='sm'
@@ -103,7 +103,8 @@ export default function FormInputTextArea ({ campo, className }) {
                     autoComplete='on'
                     autoFocus={false}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
-                    defaultValue={campo.DFO_Dato}
+                    //defaultValue={campo.DFO_Dato}
+                    value={value}
                     variant="outlined"                    
                     slots={{ input: TextArea }}
                     onChange={onChange}

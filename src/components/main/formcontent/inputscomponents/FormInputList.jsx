@@ -93,7 +93,7 @@ export default function FormInputList ({ campo, className }) {
         control={control}
         name={campo.FDI_NombreHTML}
         rules={required}        
-        defaultValue={dataOptions.records?.find((option) => option.id == parseInt(campo.DFO_Dato)) || ''}        
+        //defaultValue={dataOptions.records?.find((option) => option.id == parseInt(campo.DFO_Dato)) || ''}        
         render={({ field }) => (
             <FormControl                
                 id={campo.FDI_NombreHTML}
@@ -109,7 +109,8 @@ export default function FormInputList ({ campo, className }) {
                     onChange={(event, newValue) => {
                       setValue(campo.FDI_NombreHTML,newValue);
                     }}
-                    onBlur={field.onBlur}                    
+                    onBlur={field.onBlur}
+                    value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
                     slotProps={{ 
                             input: { placeholder: campo.FDI_Placeholder, label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                             root : { className : "dark:!bg-transparent dark:!border-[#575757]"},
