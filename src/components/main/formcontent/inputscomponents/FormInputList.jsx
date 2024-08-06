@@ -76,18 +76,15 @@ export default function FormInputList ({ campo, className }) {
     <Controller
         control={control}
         name={campo.FDI_NombreHTML}
-        rules={required}
-        //defaultValue={dataOptions.records?.find((option) => option.id == dataOptions.selected?.id)}
-        //defaultValue={campo.DFO_Dato}
-        //defaultValue={dataOptions.records?.find((option) => option.label.trim().toUpperCase() === campo.DFO_Dato.trim().toUpperCase())}
-        defaultValue={dataOptions.records?.find((option) => option.id == parseInt(campo.DFO_Dato))}
+        rules={required}        
+        defaultValue={dataOptions.records?.find((option) => option.id == parseInt(campo.DFO_Dato)) || ''}        
         render={({ field }) => (
             <FormControl                
                 id={campo.FDI_NombreHTML}
                 size='sm'
                 className={className}>
                 <Autocomplete
-                    {...field}
+                    {...field}                    
                     placeholder={campo.FDI_Descripcion}
                     error={!!errors[campo?.FDI_NombreHTML]}  
                     variant="outlined"

@@ -735,6 +735,22 @@
         },
         {
             "FOR_Id": 8,
+            "FDI_Id": 114,
+            "FDI_TipoCampo": "A",
+            "FDI_Descripcion": "Adjuntos",
+            "FDI_CampoObligatorio": 1,
+            "FDI_NuevaLineaDiseno": 1,
+            "FDI_TamanoDiseno": 12,
+            "FDI_Prioridad": 230,
+            "FDI_NombreHTML": "PagAdjuntos",
+            "FDI_EditableSiempre": 1,
+            "DFO_Id": 423302,
+            "DFO_Dato": "0",
+            "FDI_Editable": 0,
+            "FDI_ErrorMessage": "Debes ingresar un adjunto"
+        },
+        {
+            "FOR_Id": 8,
             "FDI_Id": 116,
             "FDI_TipoCampo": "PM",
             "FDI_Descripcion": "Período que se está pagando",
