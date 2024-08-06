@@ -1,0 +1,769 @@
+{   
+    "name" : "Tipo de Moneda",
+    "records": [
+        {
+            "id": 5,
+            "label": "Luis Gabriel Castillo Pacheco"
+        },
+        {
+            "id": 6,
+            "label": "Cynthia Paola Sepúlveda Campos"
+        },
+        {
+            "id": 7,
+            "label": "Adriana Maria Alvarado Astorga"
+        },
+        {
+            "id": 8,
+            "label": "Cristobal Ignacio Herrera Arce"
+        },
+        {
+            "id": 9,
+            "label": "Felipe Mc Guire Cancino"
+        },
+        {
+            "id": 10,
+            "label": "Jose Vicente Elgueta Alonso"
+        },
+        {
+            "id": 11,
+            "label": "Camilo Enrique Araya Morales"
+        },
+        {
+            "id": 12,
+            "label": "Juan Andres Riquelme Araya"
+        },
+        {
+            "id": 13,
+            "label": "Karina Paz Alvarez Gutierrez"
+        },
+        {
+            "id": 14,
+            "label": "Margarita Miranda Erazo"
+        },
+        {
+            "id": 15,
+            "label": "Chrystian Omar Urzua Bilbao"
+        },
+        {
+            "id": 16,
+            "label": "Pedro Eduardo Sepulveda Saavedra"
+        },
+        {
+            "id": 17,
+            "label": "Ivan Ceferino Morales Chuquihuanca"
+        },
+        {
+            "id": 18,
+            "label": "Paola Constantino Arevalo"
+        },
+        {
+            "id": 19,
+            "label": "Raul Eduardo Ormazabal Morgado"
+        },
+        {
+            "id": 20,
+            "label": "Cesar Saavedra Robles"
+        },
+        {
+            "id": 21,
+            "label": "Daniela Carolyn Contreras Nieto"
+        },
+        {
+            "id": 22,
+            "label": "Jennifer Jeanette Lazo Vergara"
+        },
+        {
+            "id": 23,
+            "label": "Juan Francisco Moscoso Caroca"
+        },
+        {
+            "id": 24,
+            "label": "Victor Menjibas"
+        },
+        {
+            "id": 25,
+            "label": "Maribel Soledad Torrealba Retamal"
+        },
+        {
+            "id": 26,
+            "label": "Maria Cecilia Berrios Salgado"
+        },
+        {
+            "id": 27,
+            "label": "Natalia Andrea Lepez Hermosilla"
+        },
+        {
+            "id": 28,
+            "label": "Damarit Sandoval Suazo"
+        },
+        {
+            "id": 29,
+            "label": "Sandra Aida Quintana Rodriguez"
+        },
+        {
+            "id": 30,
+            "label": "Jacqueline Alejandra Rojas Cordova"
+        },
+        {
+            "id": 31,
+            "label": "Minerva Tegualda Castañeda Meliñan"
+        },
+        {
+            "id": 32,
+            "label": "Marcela Petermann Belmar"
+        },
+        {
+            "id": 33,
+            "label": "Leandro Emmanuel Paredes Jaramillo"
+        },
+        {
+            "id": 34,
+            "label": "Karina Loretto Lobos Carcamo"
+        },
+        {
+            "id": 35,
+            "label": "Angel Francisco Cabrera Mancilla"
+        },
+        {
+            "id": 36,
+            "label": "Katherine Liseth Rojas Tolg"
+        },
+        {
+            "id": 37,
+            "label": "Humberto Marin Leiva"
+        },
+        {
+            "id": 38,
+            "label": "Orieta Wellmann Pinuer"
+        },
+        {
+            "id": 39,
+            "label": "Doris Sandoval Miranda"
+        },
+        {
+            "id": 40,
+            "label": "Patricia Roldan Maldonado"
+        },
+        {
+            "id": 41,
+            "label": "Miriam Pamela Bruna Navea"
+        },
+        {
+            "id": 42,
+            "label": "Jaime Alonso Vicencio Villegas"
+        },
+        {
+            "id": 43,
+            "label": "Jacqueline Alfaro Galindo"
+        },
+        {
+            "id": 44,
+            "label": "Camila Fernanda Cortes Ruiz"
+        },
+        {
+            "id": 45,
+            "label": "Luis Rodolfo Moya Calabacero"
+        },
+        {
+            "id": 46,
+            "label": "Gladys Paola Cortes Varas"
+        },
+        {
+            "id": 47,
+            "label": "Veronica Gallardo"
+        },
+        {
+            "id": 48,
+            "label": "Claudia Santander Campillay"
+        },
+        {
+            "id": 49,
+            "label": "Viviana Concha Farias"
+        },
+        {
+            "id": 50,
+            "label": "Susana Misselle Calderon Romero"
+        },
+        {
+            "id": 51,
+            "label": "Yasna Paola Cortes Ugarte"
+        },
+        {
+            "id": 52,
+            "label": "Manuel Andres Ahumada Letelier"
+        },
+        {
+            "id": 53,
+            "label": "Jorge Rolando Salas Arriagada"
+        },
+        {
+            "id": 54,
+            "label": "Gloria Eugenia Duhalde Santana"
+        },
+        {
+            "id": 55,
+            "label": "Sofia Mayor Mejias"
+        },
+        {
+            "id": 56,
+            "label": "Maria Poblete Muñoz"
+        },
+        {
+            "id": 57,
+            "label": "Pablo Chacon Cancino"
+        },
+        {
+            "id": 58,
+            "label": "Paulina Hernandez Cruz"
+        },
+        {
+            "id": 59,
+            "label": "Alejandra Castro Maldonado"
+        },
+        {
+            "id": 60,
+            "label": "Elizabeth Briones Sandoval"
+        },
+        {
+            "id": 61,
+            "label": "Maria Elizabeth Soto Parada"
+        },
+        {
+            "id": 62,
+            "label": "Ana Virginia Le Roy Aranda"
+        },
+        {
+            "id": 63,
+            "label": "Rossana Trittini Moreno"
+        },
+        {
+            "id": 64,
+            "label": "Yani Aguilar Paulsen"
+        },
+        {
+            "id": 65,
+            "label": "Ana Rosa Moraga Reyes"
+        },
+        {
+            "id": 66,
+            "label": "Carolina Andrea Barrera Soto"
+        },
+        {
+            "id": 67,
+            "label": "Alejandro Andres Chaparro de la Barra"
+        },
+        {
+            "id": 68,
+            "label": "Sara Ramirez"
+        },
+        {
+            "id": 69,
+            "label": "Pia Monsalve"
+        },
+        {
+            "id": 70,
+            "label": "Eliel Hasson Nisis"
+        },
+        {
+            "id": 71,
+            "label": "Ingrid Wilma Alvarez Carrasco"
+        },
+        {
+            "id": 72,
+            "label": "Andrea Veronica Soto Araya"
+        },
+        {
+            "id": 73,
+            "label": "Irene Catrileo Cayuqueo"
+        },
+        {
+            "id": 74,
+            "label": "Raul Canales Muñoz"
+        },
+        {
+            "id": 75,
+            "label": "Samir Baeza Araya"
+        },
+        {
+            "id": 76,
+            "label": "Nicolas Ratto Ribo"
+        },
+        {
+            "id": 77,
+            "label": "Cristian Alfonso Rojas Gruzmacher"
+        },
+        {
+            "id": 78,
+            "label": "Arlette Martinez Ossa"
+        },
+        {
+            "id": 79,
+            "label": "Karla Manukian Von Bennewitz"
+        },
+        {
+            "id": 80,
+            "label": "Claudia Ulloa Quezada"
+        },
+        {
+            "id": 81,
+            "label": "Fidel Bennett Ramos"
+        },
+        {
+            "id": 82,
+            "label": "Fabian Marcelo Laurel Ardiles"
+        },
+        {
+            "id": 83,
+            "label": "Noelia Cerda Garcia"
+        },
+        {
+            "id": 84,
+            "label": "Claudia Paola Bustos Marin"
+        },
+        {
+            "id": 85,
+            "label": "Elfrides Vesubio Miranda"
+        },
+        {
+            "id": 86,
+            "label": "Hector Sepulveda Rojas"
+        },
+        {
+            "id": 87,
+            "label": "Patricio Alexis Cordova Muñoz"
+        },
+        {
+            "id": 88,
+            "label": "Sebastian Frangini"
+        },
+        {
+            "id": 89,
+            "label": "Felipe Avendaño Cordova"
+        },
+        {
+            "id": 90,
+            "label": "Jorge Patricio Salinas Galvez"
+        },
+        {
+            "id": 91,
+            "label": "Jorge Claudio Uribe Bascur"
+        },
+        {
+            "id": 92,
+            "label": "Carlos Alberto Diutour Valderas"
+        },
+        {
+            "id": 93,
+            "label": "Bruno Auza Fabres"
+        },
+        {
+            "id": 94,
+            "label": "Eugenio Saenz Rojas"
+        },
+        {
+            "id": 95,
+            "label": "Eduardo Albornoz Inostroza"
+        },
+        {
+            "id": 96,
+            "label": "Barbara Lorena Torres Vasquez"
+        },
+        {
+            "id": 97,
+            "label": "Felix Roberto Arredondo Armijo"
+        },
+        {
+            "id": 98,
+            "label": "Francisco Javier Rivera Tobar"
+        },
+        {
+            "id": 99,
+            "label": "Maria Cristina Ramirez Merizalde"
+        },
+        {
+            "id": 100,
+            "label": "Andrea Ramirez Huaiquilaf"
+        },
+        {
+            "id": 101,
+            "label": "Marco Antonio Canales Huenchuan"
+        },
+        {
+            "id": 102,
+            "label": "Doris Edith Rodriguez Zavalla"
+        },
+        {
+            "id": 103,
+            "label": "Rodrigo Alfredo Diaz Cordaro"
+        },
+        {
+            "id": 104,
+            "label": "Rodrigo Itvan Leiva Caro"
+        },
+        {
+            "id": 105,
+            "label": "Fabiola Reinoso"
+        },
+        {
+            "id": 106,
+            "label": "Nicolas Andres Diaz Farias"
+        },
+        {
+            "id": 107,
+            "label": "Pamela del Rosario Godoy Pereira"
+        },
+        {
+            "id": 108,
+            "label": "Rodrigo Alonso Fuentes Morales"
+        },
+        {
+            "id": 109,
+            "label": "Andrea Silvana Mancilla Chaparro"
+        },
+        {
+            "id": 110,
+            "label": "Claudia Lorena Tapia de la Peña"
+        },
+        {
+            "id": 111,
+            "label": "Marcelo Antonio Duarte Devia"
+        },
+        {
+            "id": 112,
+            "label": "Sergio Gustavo Herrera Toloza"
+        },
+        {
+            "id": 113,
+            "label": "Fernanda de los Angeles Fahrenbuhler Castillo"
+        },
+        {
+            "id": 114,
+            "label": "Irma Bacho Andrade"
+        },
+        {
+            "id": 115,
+            "label": "Gabriela Camila Muñoz Díaz"
+        },
+        {
+            "id": 116,
+            "label": "Ignacio Andrés Prieto Henríquez"
+        },
+        {
+            "id": 117,
+            "label": "Josef Valdés Silva"
+        },
+        {
+            "id": 118,
+            "label": "Marco Diaz Navarrete"
+        },
+        {
+            "id": 119,
+            "label": "Yerson Alejandro Olivares Bonilla"
+        },
+        {
+            "id": 120,
+            "label": "Rodolfo Jorge Patricio Cuevas Pinto"
+        },
+        {
+            "id": 121,
+            "label": "Hugo Plaza Piña"
+        },
+        {
+            "id": 122,
+            "label": "John Alexis Burgos Saavedra"
+        },
+        {
+            "id": 123,
+            "label": "Cristian Eduardo Quijada Pedrero"
+        },
+        {
+            "id": 124,
+            "label": "Hernan Larrain Olea"
+        },
+        {
+            "id": 125,
+            "label": "Constanza Paz Ormeño Oyarce"
+        },
+        {
+            "id": 126,
+            "label": "Luis Boris Pino Palacios"
+        },
+        {
+            "id": 127,
+            "label": "Marco Antonio Ramirez Horta"
+        },
+        {
+            "id": 128,
+            "label": "Paula Guajardo Cordova"
+        },
+        {
+            "id": 129,
+            "label": "Estefany Mabel Alfaro Bascuñan"
+        },
+        {
+            "id": 130,
+            "label": "Daniela Lopez Leiva"
+        },
+        {
+            "id": 131,
+            "label": "Paola Ivette Gonzalez Espindola"
+        },
+        {
+            "id": 132,
+            "label": "Octavio Aguayo"
+        },
+        {
+            "id": 133,
+            "label": "Eduardo Andres Riquelme Lagos"
+        },
+        {
+            "id": 134,
+            "label": "Tamara Carolina Gutiérrez Cornejo"
+        },
+        {
+            "id": 135,
+            "label": "Fabiola Alejandra Torres Peralta"
+        },
+        {
+            "id": 136,
+            "label": "Milene Sofia Olivera Palma"
+        },
+        {
+            "id": 137,
+            "label": "Andrea Urquieta Maraboli"
+        },
+        {
+            "id": 1137,
+            "label": "Patricio Beltran Diaz"
+        },
+        {
+            "id": 1138,
+            "label": "Isabel Hortensia Torres Acevedo"
+        },
+        {
+            "id": 1139,
+            "label": "Irma Evelyn Leyton Leyton"
+        },
+        {
+            "id": 1140,
+            "label": "Ency Alfredo Hernandez Caballero"
+        },
+        {
+            "id": 1141,
+            "label": "Carolina Poblete"
+        },
+        {
+            "id": 1142,
+            "label": "Isidora Antonia Inigo Valderrama"
+        },
+        {
+            "id": 1143,
+            "label": "Carlos Tapia Alvarez"
+        },
+        {
+            "id": 1144,
+            "label": "Marcelo Nikolai Tapia Valenzuela"
+        },
+        {
+            "id": 1145,
+            "label": "Angel Custodio Guerrero Bravo"
+        },
+        {
+            "id": 1146,
+            "label": "Fernando Javier Carreno Ulloa"
+        },
+        {
+            "id": 1147,
+            "label": "Vitalia Puchi Castro"
+        },
+        {
+            "id": 1148,
+            "label": "Daniela Cabrera Perez"
+        },
+        {
+            "id": 1149,
+            "label": "Claudio Alejandro Salas Gonzalez"
+        },
+        {
+            "id": 1150,
+            "label": "Dissa Maria Castellani Martinez"
+        },
+        {
+            "id": 1151,
+            "label": "Nicolle Vivanco Pereira"
+        },
+        {
+            "id": 1152,
+            "label": "Natalia Testa"
+        },
+        {
+            "id": 1153,
+            "label": "Alan Turner Moreno"
+        },
+        {
+            "id": 1154,
+            "label": "Carolina Paz Salazar Escobedo"
+        },
+        {
+            "id": 1155,
+            "label": "Mauricio Mundaca Villalobos"
+        },
+        {
+            "id": 1156,
+            "label": "Jorge Andreucic Martínez"
+        },
+        {
+            "id": 1157,
+            "label": "Ricardo Alexis Ebner Torres"
+        },
+        {
+            "id": 1158,
+            "label": "Francisco Neira Reyes"
+        },
+        {
+            "id": 1159,
+            "label": "Jorge Millaquen Mercado"
+        },
+        {
+            "id": 1160,
+            "label": "Elizabeth Yamilett Aguilera Castillo"
+        },
+        {
+            "id": 1161,
+            "label": "Andres Bustamante Araneda"
+        },
+        {
+            "id": 1162,
+            "label": "Oscar Menares Hernandez"
+        },
+        {
+            "id": 1163,
+            "label": "Francisco Yaschin Brizuela Tapia"
+        },
+        {
+            "id": 1164,
+            "label": "Miguel Fernando Toledo Alegria"
+        },
+        {
+            "id": 1165,
+            "label": "Guido Rodrigo Munoz Sarria"
+        },
+        {
+            "id": 1166,
+            "label": "Scarlette Dennis Olguin Castro"
+        },
+        {
+            "id": 1167,
+            "label": "Hans Pinochet"
+        },
+        {
+            "id": 1168,
+            "label": "Francisco Maureira Gomez"
+        },
+        {
+            "id": 1169,
+            "label": "Leandra Macias Leiva"
+        },
+        {
+            "id": 1170,
+            "label": "Madelin Calfunao Baeza"
+        },
+        {
+            "id": 1171,
+            "label": "Jonathan Claudio Paez Toro"
+        },
+        {
+            "id": 1172,
+            "label": "Claudio Reyes Rojas"
+        },
+        {
+            "id": 1173,
+            "label": "Javiera Soledad Isidora Ceballos Aedo"
+        },
+        {
+            "id": 1174,
+            "label": "Alejandra Constanza Rubio Araya"
+        },
+        {
+            "id": 1175,
+            "label": "Ricardo Alfredo Gomez Montoya"
+        },
+        {
+            "id": 1176,
+            "label": "Jaime Rojas Vasquez"
+        },
+        {
+            "id": 1177,
+            "label": "Daniela Alejandra Morales Burdiles"
+        },
+        {
+            "id": 1178,
+            "label": "Roxana Mariela Rubio Arevalo"
+        },
+        {
+            "id": 1179,
+            "label": "Victor Romero Figueroa"
+        },
+        {
+            "id": 1180,
+            "label": "Hugo Sanhueza"
+        },
+        {
+            "id": 1181,
+            "label": "Christian Alex Aros Troncoso"
+        },
+        {
+            "id": 1182,
+            "label": "Alfredo Gonzalo Garcia Vera"
+        },
+        {
+            "id": 1183,
+            "label": "Maria Francisca Robles Aravena"
+        },
+        {
+            "id": 1184,
+            "label": "Jaime Antonio Chamorro Galdames"
+        },
+        {
+            "id": 1185,
+            "label": "Raul Sepulveda Faundez"
+        },
+        {
+            "id": 1186,
+            "label": "Barbara Francesca Farias Jara"
+        },
+        {
+            "id": 1187,
+            "label": "Jesús Andrés Aravena Sepúlveda"
+        },
+        {
+            "id": 1188,
+            "label": "Maximiliano Gilabert Luco"
+        },
+        {
+            "id": 1189,
+            "label": "Hardy Riffo Monsalves"
+        },
+        {
+            "id": 1190,
+            "label": "Felix Rodrigo Fuentes Jimenez"
+        },
+        {
+            "id": 1191,
+            "label": "Carolina Delia Diaz Hurtado"
+        },
+        {
+            "id": 1192,
+            "label": "Isabel Carmen Gajardo Morales"
+        },
+        {
+            "id": 1193,
+            "label": "Lucila María Amoroso."
+        },
+        {
+            "id": 1194,
+            "label": "Angy Villegas Espejo"
+        }
+    ]
+}

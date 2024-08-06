@@ -37,6 +37,10 @@ export default function InputsType({campo, className}){
             return <InputList campo={campo} className={className}/>
         case 'X1':   //Lista desplegable
             return <InputList campo={campo} className={className}/>
+        case 'U':   //Usuario destinatario
+            return <InputList campo={campo} className={className}/>
+        case 'PM':  //Periodos de pago
+            return <InputList campo={campo} className={className}/>
         default:
             return <InputText campo={campo} className={className}/>
     }

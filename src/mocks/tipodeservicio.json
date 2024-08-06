@@ -1,0 +1,21 @@
+{   
+    "name" : "Tipo de servicio",
+    "records": [
+        {
+            "id": 1265,
+            "label": "Otros"
+        },
+        {
+            "id": 1266,
+            "label": "Móvil"
+        },
+        {
+            "id": 1267,
+            "label": "BAM"
+        },
+        {
+            "id": 1268,
+            "label": "Móvil y BAM"
+        }
+    ]
+}

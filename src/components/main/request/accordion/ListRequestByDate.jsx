@@ -25,8 +25,7 @@ function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
         maxdias = anterior
     else
         diasHasta !== null ? maxdias.setDate(maxdias.getDate() - diasHasta) : maxdias = null
-
-    console.log('anterior',anterior, maxdias)
+    
     return filteredRequest?.filter(
       (item) =>        
         maxdias !== null ?

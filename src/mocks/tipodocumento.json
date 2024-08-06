@@ -1,0 +1,21 @@
+{   
+    "name" : "Tipo de Documento",
+    "records": [
+        {
+            "id": 252,
+            "label": "Factura"
+        },
+        {
+            "id": 253,
+            "label": "Boleta"
+        },
+        {
+            "id": 254,
+            "label": "Recibo"
+        },
+        {
+            "id": 255,
+            "label": "Boleta de Honorarios"
+        }
+    ]  
+}

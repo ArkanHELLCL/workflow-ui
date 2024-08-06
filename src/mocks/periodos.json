@@ -1,0 +1,53 @@
+{   
+    "name" : "Periodo de pago",
+    "records": [
+        {
+            "id": 1,
+            "label": "Enero 2024"
+        },
+        {
+            "id": 2,
+            "label": "Febrero 2024"
+        },
+        {
+            "id": 3,
+            "label": "Marzo 2024"
+        },
+        {
+            "id": 4,
+            "label": "Abril 2024"
+        },
+        {
+            "id": 5,
+            "label": "Mayo 2024"
+        },
+        {
+            "id": 6,
+            "label": "Junio 2024"
+        },
+        {
+            "id": 7,
+            "label": "Julio 2024"
+        },
+        {
+            "id": 8,
+            "label": "Agosto 2024"
+        },
+        {
+            "id": 9,
+            "label": "Septiembre 2024"
+        },
+        {
+            "id": 10,
+            "label": "Octubre 2024"
+        },
+        {
+            "id": 11,
+            "label": "Noviembre 2024"
+        },
+        {
+            "id": 12,
+            "label": "Diciembre 2024"
+        }
+    ]
+}

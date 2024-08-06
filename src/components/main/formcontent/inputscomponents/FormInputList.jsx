@@ -8,9 +8,15 @@ import Box from "@mui/material/Paper";
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { useEffect, useState } from 'react';
-import  meses  from "../../../../mocks/meses.json";
-import  proveedores  from "../../../../mocks/proveedores.json";
+import meses  from "../../../../mocks/meses.json";
+import proveedores  from "../../../../mocks/proveedores.json";
+import tipodocumento from "../../../../mocks/tipodocumento.json";
+import moneda from "../../../../mocks/moneda.json";
+import usuarios from "../../../../mocks/usuarios.json";
+import periodos from "../../../../mocks/periodos.json";
+import tipodeservicio from "../../../../mocks/tipodeservicio.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
+
 
 export default function FormInputList ({ campo, className }) {
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
@@ -21,7 +27,24 @@ export default function FormInputList ({ campo, className }) {
   const loading = open && options.length === 0;
 
   let dataOptions = [];
-  campo.FDI_TipoCampo==='X1' ? dataOptions = structuredClone(proveedores) : campo.LID_Id===16 && campo.FDI_TipoCampo==='L' ? dataOptions = structuredClone(meses) : dataOptions = [];
+  //campo.FDI_TipoCampo==='X1' ? dataOptions = structuredClone(proveedores) : campo.LID_Id===16 && campo.FDI_TipoCampo==='L' ? dataOptions = structuredClone(meses) : dataOptions = [];
+  if(campo.FDI_TipoCampo==='X1')
+    dataOptions = structuredClone(proveedores)
+  if(campo.FDI_TipoCampo==='U')
+    dataOptions = structuredClone(usuarios)
+  if(campo.FDI_TipoCampo==='PM')
+    dataOptions = structuredClone(periodos)
+  if(campo.FDI_TipoCampo==='L'){
+    if(campo.LID_Id===16)
+      dataOptions = structuredClone(meses)
+    if(campo.LID_Id===17)
+      dataOptions = structuredClone(tipodocumento)
+    if(campo.LID_Id===4)
+      dataOptions = structuredClone(moneda)
+    if(campo.LID_Id===20)
+      dataOptions = structuredClone(tipodeservicio)
+  }
+  
 
   useEffect(() => {
     let active = true;
@@ -54,7 +77,10 @@ export default function FormInputList ({ campo, className }) {
         control={control}
         name={campo.FDI_NombreHTML}
         rules={required}
-        defaultValue={dataOptions.records.find((option) => option.id == dataOptions.selected.id)}        
+        //defaultValue={dataOptions.records?.find((option) => option.id == dataOptions.selected?.id)}
+        //defaultValue={campo.DFO_Dato}
+        //defaultValue={dataOptions.records?.find((option) => option.label.trim().toUpperCase() === campo.DFO_Dato.trim().toUpperCase())}
+        defaultValue={dataOptions.records?.find((option) => option.id == parseInt(campo.DFO_Dato))}
         render={({ field }) => (
             <FormControl                
                 id={campo.FDI_NombreHTML}

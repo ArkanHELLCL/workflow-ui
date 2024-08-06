@@ -1,0 +1,21 @@
+{   
+    "name" : "Tipo de Moneda",
+    "records": [
+        {
+            "id": 53,
+            "label": "Sin Moneda"
+        },
+        {
+            "id": 54,
+            "label": "Pesos"
+        },
+        {
+            "id": 55,
+            "label": "UF"
+        },
+        {
+            "id": 56,
+            "label": "USD"
+        }
+    ]
+}
