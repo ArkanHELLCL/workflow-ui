@@ -1,0 +1,13 @@
+{   
+    "name" : "Tipo de Pago Tesoreria",
+    "records": [
+        {
+            "id": 256,
+            "label": "Nómina"
+        },
+        {
+            "id": 257,
+            "label": "Transferencia Directa"
+        }
+    ]
+}

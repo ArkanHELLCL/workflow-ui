@@ -5,10 +5,22 @@ import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
+import { useRequest } from '../../../../hooks/useRequest';
+import { user } from '../../../../mocks/usuario.json'
 
 export default function FormInputFecha ({ campo, className }) {
-  //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+  const { request } = useRequest();  
   const { control, formState: { errors } } = useFormContext();
+
+  const disabled = () => {    
+      if(request.request.IdEditor === undefined || request.request.IdEditor === null)
+          return true
+      if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
+          return true    
+      if(campo.FDI_EditableSiempre === 1 || campo.FDI_Editable === 1)
+          return false
+      return true
+  }
   return (
     <Controller
         control={control}
@@ -31,7 +43,8 @@ export default function FormInputFecha ({ campo, className }) {
                 className={className}>
                 <Input                                
                     placeholder={campo.FDI_Descripcion}
-                    name={campo.FDI_NombreHTML}
+                    name={campo.FDI_NombreHTML}                    
+                    disabled={disabled()}
                     //type='date'
                     autoComplete='on'
                     autoFocus={false}

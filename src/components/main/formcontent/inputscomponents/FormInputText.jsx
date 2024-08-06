@@ -4,11 +4,24 @@ import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
+import { useRequest } from '../../../../hooks/useRequest';
+import { user } from '../../../../mocks/usuario.json'
 
 export default function FormInputText ({ campo, className }) {
-  const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-  const { control, formState: { errors } } = useFormContext();
-  return (
+    const { request } = useRequest();
+    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const { control, formState: { errors } } = useFormContext();
+
+    const disabled = () => {    
+        if(request.request.IdEditor === undefined || request.request.IdEditor === null)
+            return true
+        if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
+            return true    
+        if(campo.FDI_EditableSiempre === 1 || campo.FDI_Editable === 1)
+            return false
+        return true
+    }
+    return (
     <Controller
         control={control}
         name={campo.FDI_NombreHTML}
@@ -21,14 +34,13 @@ export default function FormInputText ({ campo, className }) {
                 className={className}>
                 <Input                                
                     placeholder={campo.FDI_Descripcion}
-                    name={campo.FDI_NombreHTML}
-                    //type='text'
+                    name={campo.FDI_NombreHTML}                    
+                    disabled={disabled()}                    
                     autoComplete='on'
                     autoFocus={false}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
                     defaultValue={campo.DFO_Dato}
-                    variant="outlined"
-                    //endDecorator={<CheckCircleOutlined />}
+                    variant="outlined"                    
                     slots={{ input: InnerInput }}
                     onChange={onChange}
                     onBlur={onBlur}                    
@@ -46,5 +58,5 @@ export default function FormInputText ({ campo, className }) {
             </FormControl>
         )}
     />
-  );
+    );
 }

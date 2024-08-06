@@ -6,6 +6,8 @@ import { styled } from '@mui/joy/styles';
 import Input from '@mui/joy/Input';
 import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
 import { forwardRef, useId } from 'react';
+import { useRequest } from '../../../../hooks/useRequest';
+import { user } from '../../../../mocks/usuario.json'
 
   const StyledInput = styled(BaseTextareaAutosize)(
     {
@@ -71,8 +73,18 @@ const TextArea = forwardRef(function InnerInput(props, ref) {
   });
 
 export default function FormInputTextArea ({ campo, className }) {
+  const { request } = useRequest();
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
   const { control, formState: { errors } } = useFormContext();
+  const disabled = () => {    
+      if(request.request.IdEditor === undefined || request.request.IdEditor === null)
+          return true
+      if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
+          return true    
+      if(campo.FDI_EditableSiempre === 1 || campo.FDI_Editable === 1)
+          return false
+      return true
+  }
   return (
     <Controller
         control={control}
@@ -86,14 +98,13 @@ export default function FormInputTextArea ({ campo, className }) {
                 className={className}>
                 <Input                                
                     placeholder={campo.FDI_Descripcion}
-                    name={campo.FDI_NombreHTML}
-                    //type='text'
+                    name={campo.FDI_NombreHTML}                    
+                    disabled={disabled()}                    
                     autoComplete='on'
                     autoFocus={false}
                     error={!!errors[campo?.FDI_NombreHTML]}                    
                     defaultValue={campo.DFO_Dato}
-                    variant="outlined"
-                    //endDecorator={<CheckCircleOutlined />}
+                    variant="outlined"                    
                     slots={{ input: TextArea }}
                     onChange={onChange}
                     onBlur={onBlur}                    

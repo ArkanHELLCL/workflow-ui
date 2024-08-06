@@ -15,19 +15,32 @@ import moneda from "../../../../mocks/moneda.json";
 import usuarios from "../../../../mocks/usuarios.json";
 import periodos from "../../../../mocks/periodos.json";
 import tipodeservicio from "../../../../mocks/tipodeservicio.json";
+import tipodepago from "../../../../mocks/tipodepago.json";
+import pagotesoreria from "../../../../mocks/pagotesoreria.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
+import { useRequest } from '../../../../hooks/useRequest';
+import { user } from '../../../../mocks/usuario.json'
 
-
-export default function FormInputList ({ campo, className }) {
-  const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+export default function FormInputList ({ campo, className }) {  
+  const { request } = useRequest();
+  const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
   const { control, setValue, formState: { errors } } = useFormContext();
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
 
-  let dataOptions = [];
-  //campo.FDI_TipoCampo==='X1' ? dataOptions = structuredClone(proveedores) : campo.LID_Id===16 && campo.FDI_TipoCampo==='L' ? dataOptions = structuredClone(meses) : dataOptions = [];
+  const disabled = () => {    
+    if(request.request.IdEditor === undefined || request.request.IdEditor === null)
+      return true
+    if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
+      return true    
+    if(campo.FDI_EditableSiempre === 1 || campo.FDI_Editable === 1)
+      return false
+    return true
+  }
+  
+  let dataOptions = [];  
   if(campo.FDI_TipoCampo==='X1')
     dataOptions = structuredClone(proveedores)
   if(campo.FDI_TipoCampo==='U')
@@ -43,8 +56,11 @@ export default function FormInputList ({ campo, className }) {
       dataOptions = structuredClone(moneda)
     if(campo.LID_Id===20)
       dataOptions = structuredClone(tipodeservicio)
-  }
-  
+    if(campo.LID_Id===13)
+      dataOptions = structuredClone(tipodepago)
+    if(campo.LID_Id===18)
+      dataOptions = structuredClone(pagotesoreria)
+  }  
 
   useEffect(() => {
     let active = true;
@@ -84,7 +100,8 @@ export default function FormInputList ({ campo, className }) {
                 size='sm'
                 className={className}>
                 <Autocomplete
-                    {...field}                    
+                    {...field}
+                    disabled={disabled()}
                     placeholder={campo.FDI_Descripcion}
                     error={!!errors[campo?.FDI_NombreHTML]}  
                     variant="outlined"

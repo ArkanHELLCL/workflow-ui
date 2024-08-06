@@ -1,0 +1,21 @@
+{   
+    "name" : "Mes",
+    "records": [
+        {
+            "id": 232,
+            "label": "Pago TGR"
+        },
+        {
+            "id": 233,
+            "label": "Pago SUBTRAB"
+        },
+        {
+            "id": 234,
+            "label": "Pago Automático"
+        },
+        {
+            "id": 258,
+            "label": "Pago Proempleo"
+        }
+    ]
+}
