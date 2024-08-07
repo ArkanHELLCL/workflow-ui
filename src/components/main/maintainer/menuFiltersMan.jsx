@@ -20,38 +20,38 @@ export default function MenuFiltersMan() {
     const handleSetFiltros = (filtro) => {         
         setFilters(prevState => ({
             ...prevState, 
-            filter: filtro,
+            filterMant: filtro,
         }))
     }
     const handleSetOrder = (orderDes) => {         
         setFilters(prevState => ({
             ...prevState, 
-            orderDes: orderDes,
+            orderDesMant: orderDes,
         }))
     }
 
     function desOrder(orderDes){   
         //Fecha de creación     
-        if(filters.filter===1 && orderDes){
+        if(filters.filterMant===1 && orderDes){
             return 'Más reciente en la parte superior'
         }
-        if(filters.filter===1 && !orderDes){
+        if(filters.filterMant===1 && !orderDes){
             return 'Más reciente en la parte inferior'
         }
 
         //Por id de registro
-        if(filters.filter===2 && orderDes){
+        if(filters.filterMant===2 && orderDes){
             return 'Id. mayor en la parte superior'
         }
-        if(filters.filter===2 && !orderDes){
+        if(filters.filterMant===2 && !orderDes){
             return 'Id. mayor en la parte inferior'
         }
 
         //Por nombre de usuario
-        if(filters.filter===3 && orderDes){
+        if(filters.filterMant===3 && orderDes){
             return 'Usuarios ordenados descendente'
         }
-        if(filters.filter===3 && !orderDes){
+        if(filters.filterMant===3 && !orderDes){
             return 'Usuarios ordenados ascendente'
         }
         return 'Sin orden'
@@ -61,7 +61,7 @@ export default function MenuFiltersMan() {
             <>             
             <Dropdown>
                 <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none`}>{
-                                orderby.filter((item) => item.id === filters.filter)[0].name
+                                orderby.filter((item) => item.id === filters.filterMant)[0].name
                             }                
                 </MenuButton>
                 <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">                    
@@ -69,23 +69,23 @@ export default function MenuFiltersMan() {
                     <p className="px-6 py-2 text-xs font-semibold truncate">Organizas por</p>{
                         orderby.map((item) =>
                             <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFiltros(item.id)}>
-                                <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                                <ListItemDecorator className={`text-green-500`}>{filters.filterMant===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
                             </MenuItem> 
                         )
                     }
                     <ListDivider/>
                     <p className="px-6 py-2 text-xs font-semibold truncate">Ordenar</p>
                     <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={'o1'} onClick={() => handleSetOrder(true)}>
-                        <ListItemDecorator className={``}>{filters.orderDes ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{desOrder(true)}                   
+                        <ListItemDecorator className={``}>{filters.orderDesMant ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{desOrder(true)}                   
                     </MenuItem>
                     <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={'o2'} onClick={() => handleSetOrder(false)}>
-                        <ListItemDecorator className={``}>{!filters.orderDes ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{desOrder(false)}                   
+                        <ListItemDecorator className={``}>{!filters.orderDesMant ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{desOrder(false)}                   
                     </MenuItem> 
                         
                 </Menu>
             </Dropdown>
             <List className="!py-0">
-                <ListItemButton onClick={() => handleSetOrder(!filters.orderDes)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500">{filters.orderDes ? <StraightIcon className="!w-5 !h-5 dark:!text-stone-100 !text-stone-500 transition-all"/> : <StraightIcon className="!rotate-180 !w-5 !h-5 dark:!text-stone-100 !text-stone-500 transitio-all"/>}</ListItemButton>
+                <ListItemButton onClick={() => handleSetOrder(!filters.orderDesMant)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500">{filters.orderDesMant ? <StraightIcon className="!w-5 !h-5 dark:!text-stone-100 !text-stone-500 transition-all"/> : <StraightIcon className="!rotate-180 !w-5 !h-5 dark:!text-stone-100 !text-stone-500 transitio-all"/>}</ListItemButton>
             </List>
         </>
         )
