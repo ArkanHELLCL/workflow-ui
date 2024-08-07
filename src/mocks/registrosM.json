@@ -8,8 +8,8 @@
             "PRO_Direccion": "EYZAGUIRRE 1140 La Florida",
             "PRO_Telefono": "662785900",
             "PRO_Mail": "pintomatt_ramirez@hotmail.com",
-            "PRO_Banco_ILD": {"value":11, "label":"De Chile"},
-            "TCU_Id": {"value":1, "label":"Corriente"},
+            "PRO_Banco_ILD": "11",
+            "TCU_Id": "1",
             "PRO_NumCuentaBancaria": "163-02580-00",
             "PRO_Estado": 0,
             "PRO_UsuarioEdit": "lcastillo",
@@ -23,8 +23,8 @@
             "PRO_Direccion": "",
             "PRO_Telefono": "6423597",
             "PRO_Mail": "ricardolorca@chile.com",
-            "PRO_Banco_ILD": {"value":21, "label":"Estado"},
-            "TCU_Id": {"value":1, "label":"Vista"},
+            "PRO_Banco_ILD": "21",
+            "TCU_Id": "1",
             "PRO_NumCuentaBancaria": "7682177-1",
             "PRO_Estado": 1,
             "PRO_UsuarioEdit": "csepulvedac",
@@ -37,8 +37,8 @@
     "fields": [
         {
             "USR_Id": 5,
-            "PER_Id": {"id" : 1, "label" : "Super Administrador"},
-            "SEX_Id": {"id" : 2, "label" : "Masculino"},
+            "PER_Id": "1",
+            "SEX_Id": "2",
             "USR_Estado": 1,
             "USR_Usuario": "lcastillo",
             "USR_Telefono": "227530592",
@@ -54,14 +54,14 @@
             "USR_NombreInstitucion": "Subsecreatría del Trabajo",            
             "COM_Id": 13101,            
             "USR_LDAP": 1,
-            "DEP_Id": {"id" : 1, "label" : "Departamento Tecnologías de la Información y Comunicaciones"},
+            "DEP_Id": "1",
             "USR_Jefatura": 0,
             "USR_Firma": ""
         },
         {
             "USR_Id": 6,            
-            "PER_Id": {"id" : 2, "label" : "Administrador"},
-            "SEX_Id": {"id" : 1, "label" : "Femenino"},
+            "PER_Id": "2",
+            "SEX_Id": "1",
             "USR_Estado": 0,
             "USR_Usuario": "csepulvedac",
             "USR_Telefono": "227530509",
@@ -77,7 +77,7 @@
             "USR_NombreInstitucion": "Subsecretaría del Trabajo",
             "COM_Id": 13101,            
             "USR_LDAP": 1,
-            "DEP_Id": {"id" : 1, "label" : "Departamento Tecnologías de la Información y Comunicaciones"},
+            "DEP_Id": "1",
             "USR_Jefatura": 0,
             "USR_Firma": ""
         }
@@ -88,7 +88,7 @@
         {
             "COM_OrdenGeografico": 1101,
             "COM_Nombre": "Iquique",
-            "REG_Id": {"id" : 1, "label" : "Región Tarapacá"},
+            "REG_Id": "1",
             "COM_Id": 1,
             "COM_UsuarioEdit": "lcastillo",
             "COM_FechaEdit": "2021-01-01 00:00:00"
@@ -96,7 +96,7 @@
         {
             "COM_OrdenGeografico": 1107,
             "COM_Nombre": "Alto Hospicio",
-            "REG_Id": {"id" : 1, "label" : "Región Tarapacá"},
+            "REG_Id": "1",
             "COM_Id": 2,
             "COM_UsuarioEdit": "lcastillo",
             "COM_FechaEdit": "2021-01-01 00:00:00"

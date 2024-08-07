@@ -86,30 +86,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         })
     },[campos, request])
 
-    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;
-
-    //Seteo de los valores de los campos en el primer renderizado
-    /*useEffect(() => {
-        let reg        
-        if(parseInt(record?.record?.Id) === 0) {
-            frmRecord.reset()
-            reg = {
-                    "COM_Id":0,
-                    "REG_Id":null,
-                    "COM_Nombre":'',
-                    "COM_OrdenGeografico":'',
-                    "COM_UsuarioEdit":user.USR_Usuario,
-                    "COM_FechaEdit":fecha
-            }
-        }else{
-            reg = registros.filter(reg => reg.id === 'mc')[0].fields?.filter(fld => parseInt(fld.COM_Id) === parseInt(record?.record?.Id))[0]
-        }
-            
-        frmRecord.setValue('COM_Nombre', reg?.COM_Nombre)
-        frmRecord.setValue('REG_Id', reg?.REG_Id)
-        frmRecord.setValue('COM_OrdenGeografico', reg?.COM_OrdenGeografico)
-        //setField(reg)
-    },[request])*/
+    const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;    
 
     return (
         <>
