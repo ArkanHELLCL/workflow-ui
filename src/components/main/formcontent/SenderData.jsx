@@ -10,7 +10,7 @@ export default function SenderData({request, formulario}) {
             </div>
             <div className='grid'>                                
             <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt ? request?.request?.DRE_UsuarioEditAnt : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span>
-                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.request?.ESRAnterior_Descripcion}</strong></span>
+                <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{parseInt(request?.request?.ESRAnterior_Descripcion)>=0 ? 'Creación' : request?.request?.ESRAnterior_Descripcion}</strong></span>
             </div>            
         </div>
     )
