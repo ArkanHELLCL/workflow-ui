@@ -31,8 +31,13 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
         null
     },[selected, adjuntos])
 
-    useEffect(() => {
-        const frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id) ? formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id) : {}
+    useEffect(() => {        
+        let frm
+        if(request?.request?.VFO_Id){
+            frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id)
+        }else{
+            frm = formulario.filter(item => (item.VFO_Id === 0 && item.FLU_Id === request?.request?.FLU_Id))   
+        }        
         const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []        
         setAdjuntos(adjuntos)
         setForm(frm[0])
