@@ -34,25 +34,20 @@ export default function FormInputFecha ({ campo, className }) {
                 }
                 },
                 maxLength: 10
-            }}
-            //defaultValue={campo.DFO_Dato}
+            }}            
             render={({ field: { onChange, onBlur, value } }) => (
-                <FormControl
-                    id={campo.FDI_NombreHTML}
+                <FormControl                    
                     size='sm'
                     className={className}>
                     <Input                                
                         placeholder={campo.FDI_Descripcion}
                         name={campo.FDI_NombreHTML}                    
                         disabled={disabled()}
-                        //type='date'
                         autoComplete='on'
                         autoFocus={false}
-                        error={!!errors[campo?.FDI_NombreHTML]}                    
-                        //defaultValue={campo.DFO_Dato}
+                        error={!!errors[campo?.FDI_NombreHTML]}                        
                         value={value}
-                        variant="outlined"
-                        //endDecorator={<CheckCircleOutlined />}
+                        variant="outlined"                        
                         slots={{ input: InnerInput }}
                         onChange={onChange}
                         onBlur={onBlur}                    

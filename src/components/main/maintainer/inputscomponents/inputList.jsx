@@ -51,7 +51,9 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
               <FormControl                  
                   size='sm'
                   className={className}>
-                  <Autocomplete                      
+                  <Autocomplete
+                      autoComplete={true}
+                      clearOnEscape={true}
                       value={dataOptions.records?.find((option) => option.id == parseInt(value)) || value || ''}
                       placeholder={placeholder}
                       error={!!frmRecord.formState.errors[name]}  

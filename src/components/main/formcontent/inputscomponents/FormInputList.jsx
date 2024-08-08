@@ -104,6 +104,8 @@ export default function FormInputList ({ campo, className }) {
                 className={className}>
                 <Autocomplete
                     {...field}
+                    autoComplete={true}
+                    clearOnEscape={true}
                     defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
                     disabled={disabled()}
                     placeholder={campo.FDI_Descripcion}
