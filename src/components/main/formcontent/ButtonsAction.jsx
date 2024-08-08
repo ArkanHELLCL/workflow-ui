@@ -56,7 +56,10 @@ export default function Buttons({request, formulario, setOpenDialog}){
                 })
             }
         }else{
-            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
+            enqueueSnackbar('Debes corregir los errores antes de grabar!', { 
+                    variant : "error", 
+                    anchorOrigin : { horizontal: "right", vertical: "bottom"}                   
+                })
         }
     }
 
@@ -74,7 +77,7 @@ export default function Buttons({request, formulario, setOpenDialog}){
                             grp[0].botones.map(btns =>
                                 <button 
                                     key={btns.id} 
-                                    className='h-9 w-auto dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                                    className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                                     title={btns.nombre}
                                     onClick={() => hanldeOnClick(event, btns)}>
                                         <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{

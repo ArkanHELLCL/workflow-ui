@@ -55,7 +55,7 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
     useEffect(() => {        
         if(openDialog?.option){
             formRef.current.requestSubmit()
-            enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
+            enqueueSnackbar('Operación realizada correctamente!', { variant : "success" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
         }
         setOpenDialog({...openDialog, option:false})                    
     }
@@ -82,7 +82,7 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
                                 }                        
                     </form>
                 </section>
-            }{  request?.request?.VFO_Id !== form?.VFO_Id &&
+            }{  !form && //request?.request?.VFO_Id !== form?.VFO_Id &&
                     <NoData request={request}/>
             }{
                 openDialog?.open &&
