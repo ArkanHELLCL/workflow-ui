@@ -35,7 +35,7 @@ export default function InputEmail ({frmRecord, name, className, isRequired, pla
                         autoComplete='on'
                         autoFocus={false}
                         error={!!frmRecord.formState.errors[name]}                    
-                        value={value}                        
+                        value={value || ''}                        
                         variant="outlined"
                         slots={{ input: InnerInput }}
                         onChange={onChange}

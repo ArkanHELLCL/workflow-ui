@@ -26,7 +26,7 @@ export default function InputText ({frmRecord, name, className, isRequired, plac
                         slots={{ input: InnerInput }}
                         onChange={onChange}
                         onBlur={onBlur}
-                        value={value}
+                        value={value || ''}
                         slotProps={{ 
                                 input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                                 root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}

@@ -37,7 +37,7 @@ export default function InputRut ({frmRecord, name, className, isRequired, place
                       slots={{ input: InnerInput }}
                       onChange={(e) => field.onChange(()=>frmRecord.setValue(name,FormatearRut(e.target.value)))}
                       onBlur={field.onBlur}
-                      value={FormatearRut(field.value)}
+                      value={FormatearRut(field.value) || ''}
                       slotProps={{ 
                               input: { placeholder: placeholder, type: 'text', label: label, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                               root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}

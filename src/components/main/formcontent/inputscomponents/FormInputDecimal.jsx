@@ -58,8 +58,7 @@ export default function FormInputDecimal ({ campo, className }) {
         <Controller
             control={control}
             name={campo.FDI_NombreHTML}
-            rules={required}
-            //defaultValue={campo.DFO_Dato}
+            rules={required}            
             render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl
                     id={campo.FDI_NombreHTML}
@@ -71,11 +70,9 @@ export default function FormInputDecimal ({ campo, className }) {
                         disabled={disabled()}
                         autoComplete='on'
                         autoFocus={false}
-                        error={!!errors[campo?.FDI_NombreHTML]}                    
-                        //defaultValue={campo.DFO_Dato}
-                        value={value}
-                        variant="outlined"
-                        //endDecorator={<CheckCircleOutlined />}
+                        error={!!errors[campo?.FDI_NombreHTML]}
+                        value={value || ''}
+                        variant="outlined"                        
                         slots={{ input: InnerInput }}
                         onChange={onChange}
                         onBlur={onBlur}                    

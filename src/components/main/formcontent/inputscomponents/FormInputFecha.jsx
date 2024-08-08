@@ -11,6 +11,7 @@ import { user } from '../../../../mocks/usuario.json'
 export default function FormInputFecha ({ campo, className }) {
     const { request } = useRequest();  
     const { control, formState: { errors } } = useFormContext();
+    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
     
     const disabled = () => {    
         if(request.request.IdEditor === undefined || request.request.IdEditor === null)
@@ -25,7 +26,7 @@ export default function FormInputFecha ({ campo, className }) {
         <Controller
             control={control}
             name={campo.FDI_NombreHTML}
-            rules={{
+            /*rules={{
                 validate: {
                 required: (value) => {
                     if (!value && !campo.FDI_CampoObligatorio) return true;
@@ -34,19 +35,20 @@ export default function FormInputFecha ({ campo, className }) {
                 }
                 },
                 maxLength: 10
-            }}            
+            }}*/
+           rules={required}
             render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl                    
                     size='sm'
                     className={className}>
-                    <Input                                
+                    <Input
                         placeholder={campo.FDI_Descripcion}
                         name={campo.FDI_NombreHTML}                    
                         disabled={disabled()}
                         autoComplete='on'
                         autoFocus={false}
                         error={!!errors[campo?.FDI_NombreHTML]}                        
-                        value={value}
+                        value={value || ''}
                         variant="outlined"                        
                         slots={{ input: InnerInput }}
                         onChange={onChange}

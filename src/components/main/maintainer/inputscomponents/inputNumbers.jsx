@@ -28,7 +28,7 @@ export default function InputNumbers ({frmRecord, name, className, isRequired, p
                         autoComplete='on'
                         autoFocus={false}
                         error={!!frmRecord.formState.errors[name]}                    
-                        value={value}
+                        value={value || ''}
                         variant="outlined"
                         slots={{ input: InnerInput }}
                         onChange={onChange}

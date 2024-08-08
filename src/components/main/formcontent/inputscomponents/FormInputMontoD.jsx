@@ -73,7 +73,7 @@ export default function FormInputMontoD ({ campo, className }) {
                         autoFocus={false}
                         error={!!errors[campo?.FDI_NombreHTML]}                    
                         //defaultValue={campo.DFO_Dato}
-                        value={value}
+                        value={value || ''}
                         variant="outlined"                        
                         slots={{ input: InnerInput }}
                         onChange={onChange}
