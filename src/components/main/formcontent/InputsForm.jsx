@@ -77,13 +77,12 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
     },[filesList])
 
     useEffect(() => {
-        frmRequest.reset()
-        setFilesList([])
-
-        frmRequest.clearErrors()
+        //frmRequest.clearErrors()
+        //frmRequest.reset({keepIsSubmitted : false, keepSubmitCount: false})        
+        setFilesList([])        
         campos.map(campo => {
-            frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato?.trim())
-        })
+            frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato?.trim())            
+        })        
     },[campos, request])
 
     const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;    

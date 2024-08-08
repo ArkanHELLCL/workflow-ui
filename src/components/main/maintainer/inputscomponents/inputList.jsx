@@ -48,12 +48,11 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
           name={name}
           rules={isRequired ? {required : errorMessage} : {required : false}}
           render={({ field: { onBlur, value } }) => (
-              <FormControl                
-                  id={name}
+              <FormControl                  
                   size='sm'
                   className={className}>
                   <Autocomplete                      
-                      value={dataOptions.records?.find((option) => option.id == parseInt(value)) || ''}
+                      value={dataOptions.records?.find((option) => option.id == parseInt(value)) || value || ''}
                       placeholder={placeholder}
                       error={!!frmRecord.formState.errors[name]}  
                       variant="outlined"

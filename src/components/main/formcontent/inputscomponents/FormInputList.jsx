@@ -3,7 +3,7 @@
 import FormControl from '@mui/joy/FormControl';
 import Autocomplete from '@mui/joy/Autocomplete';
 import CircularProgress from '@mui/joy/CircularProgress';
-import FormHelperText from '@mui/joy/FormHelperText';
+import FormHelperText from '@mui/material/FormHelperText';
 import Box from "@mui/material/Paper";
 import { useFormContext, Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
@@ -88,29 +88,34 @@ export default function FormInputList ({ campo, className }) {
     }
   }, [open]);
 
+  /*const onChange = (event, newValue) => {
+    console.log('onChange',newValue)  
+    setValue(campo.FDI_NombreHTML,newValue);
+  }*/
+
   return (
     <Controller
         control={control}
         name={campo.FDI_NombreHTML}
         rules={required}        
-        //defaultValue={dataOptions.records?.find((option) => option.id == parseInt(campo.DFO_Dato)) || ''}        
         render={({ field }) => (
-            <FormControl                
-                id={campo.FDI_NombreHTML}
+            <FormControl                                
                 size='sm'
                 className={className}>
                 <Autocomplete
                     {...field}
+                    defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
                     disabled={disabled()}
                     placeholder={campo.FDI_Descripcion}
                     error={!!errors[campo?.FDI_NombreHTML]}  
                     variant="outlined"
                     slots={{ input: InnerInput }}
                     onChange={(event, newValue) => {
-                      setValue(campo.FDI_NombreHTML,newValue);
-                    }}
-                    onBlur={field.onBlur}
-                    value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
+                      console.log('onChange',newValue)  
+                      setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
+                    }}                    
+                    onBlur={field.onBlur}                                      
+                    value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || field.value || ''}
                     slotProps={{ 
                             input: { placeholder: campo.FDI_Placeholder, label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
                             root : { className : "dark:!bg-transparent dark:!border-[#575757]"},

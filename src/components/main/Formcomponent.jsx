@@ -38,15 +38,16 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
         }else{
             frm = formulario.filter(item => (item.VFO_Id === 0 && item.FLU_Id === request?.request?.FLU_Id))   
         }        
-        const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []        
+        const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []
+        frmRequest.clearErrors()
         setAdjuntos(adjuntos)
-        setForm(frm[0])
+        setForm(frm[0])        
     },[formulario, request])
 
     const onSubmit = (data) => {        
         console.log('formcomponent',data);
-        frmRequest.reset()
-        frmRequest.clearErrors()        
+        //frmRequest.clearErrors()
+        //frmRequest.reset()
         setAdjuntos(form.REQ_Adjuntos)
         setFilesList([])
     };
