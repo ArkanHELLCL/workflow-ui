@@ -112,8 +112,7 @@ export default function FormInputList ({ campo, className }) {
                     error={!!errors[campo?.FDI_NombreHTML]}  
                     variant="outlined"
                     slots={{ input: InnerInput }}
-                    onChange={(event, newValue) => {
-                      console.log('onChange',newValue)  
+                    onChange={(event, newValue) => {                      
                       setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
                     }}                    
                     onBlur={field.onBlur}                                      
