@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
+import { useAttach } from '../../hooks/useAttach.jsx';
 import {    NoData, 
             Header,
             Files,
@@ -14,10 +15,11 @@ import { formulario } from'../../mocks/formulario.json'
 
 export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){    
     const { request, setRequest } = useRequest()
+    const { adjuntos, setAdjuntos } = useAttach()
     const [dropEnter, setDropEnter] = useState(false);
     const [preview, setPreview] = useState(false)
     const [selected, setSelected] = useState(null)    
-    const [adjuntos, setAdjuntos] = useState([]);
+    //const [adjuntos, setAdjuntos] = useState([]);
     const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()    
     
@@ -73,9 +75,9 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
                         onSubmit={frmRequest.handleSubmit(onSubmit)}   
                         >
                             <Header preview={preview} request={request} formulario={form} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
-                            <Files adjuntos={adjuntos} setAdjuntos={setAdjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
+                            <Files adjuntos={adjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
                                 !preview &&
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} setAdjuntos={setAdjuntos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 }{
                                     preview && selected!==null &&
                                         <Preview selected={selected} />

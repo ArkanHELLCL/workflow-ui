@@ -4,6 +4,7 @@ import './index.css'
 import { FiltersProvider } from './context/filters.jsx'
 import { RequestProvider } from './context/request.jsx'
 import { RecordsProvider } from './context/records.jsx'
+import { AttachProvider } from './context/attach.jsx'
 import { SnackbarProvider } from 'notistack';
 import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')).render(
             success: StyledMaterialDesignContent,
             error: StyledMaterialDesignContent,
           }}>
-          <App />
+            <AttachProvider>
+              <App />
+            </AttachProvider>
         </SnackbarProvider>
       </RecordsProvider >
     </RequestProvider>

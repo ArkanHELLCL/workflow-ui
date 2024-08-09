@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useAttach } from '../../../hooks/useAttach.jsx';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
@@ -98,7 +99,8 @@ const handleNotDragOver = (event) => {
     return false;
 }
 
-export default function Attachments({adjuntos, setAdjuntos, selected, setSelected, setPreview, setFilesList, filesList}){    
+export default function Attachments({adjuntos, selected, setSelected, setPreview, setFilesList, filesList}){    
+    const {setAdjuntos} = useAttach()
     return(
         <div className=' max-h-28 overflow-y-auto py-0 pr-2 relative z-10' onDragOver = {handleNotDragOver}>
             <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-1">

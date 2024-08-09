@@ -5,10 +5,12 @@ import FormHelperText from '@mui/joy/FormHelperText';
 import Inputs from './Inputs.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';
+import { useAttach } from '../../../hooks/useAttach.jsx';
 import { user } from '../../../mocks/usuario.json'
 
-export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, frmRequest, setFilesList, filesList}) {
+export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest, setFilesList, filesList}) {
     const { request } = useRequest()
+    const { setAdjuntos } = useAttach()
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
