@@ -5,13 +5,15 @@ import FormHelperText from '@mui/joy/FormHelperText';
 import Inputs from './Inputs.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';
+import { user } from '../../../mocks/usuario.json'
 
 export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos, frmRequest, setFilesList, filesList}) {
     const { request } = useRequest()
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        setDropEnter(true);
+        parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) ? setDropEnter(true) : setDropEnter(false);
+        //setDropEnter(true);
     };
     
     const handleDragLeave = (event) => {
@@ -81,7 +83,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, setAdjuntos
         //frmRequest.reset({keepIsSubmitted : false, keepSubmitCount: false})        
         setFilesList([])        
         campos.map(campo => {
-            frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato?.trim())            
+            frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : null)            
         })        
     },[campos, request])
 
