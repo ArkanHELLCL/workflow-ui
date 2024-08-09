@@ -6,7 +6,6 @@ import MenuItem from '@mui/joy/MenuItem';
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import { useRequest } from "../../hooks/useRequest.jsx";
-
 import { useSpring, animated } from "@react-spring/web";
 import { informes } from "../../mocks/informes.json";
 import { pasos } from "../../mocks/pasos.json";
@@ -19,8 +18,19 @@ import {
     } from "../../utils/icons.jsx";
 
 
-export default function RequerimientoMenu ({styles, openDialog, setOpenDialog}){
-    const { request } = useRequest()
+function AnimatedReuestMenu({styles, openDialog, setOpenDialog, request}){
+    const  menuAppear = useSpring({
+        to:{
+            transform:'translate(0)',
+            opacity:1,
+        },
+        from:{
+            opacity:0,
+            transform:'translate(150px)',
+        },
+        config: { duration: 150 },
+        delay: 200
+    });
 
     function hanldeOnClick(flujo){
         if(flujo?.dialogo==='confirm'){
@@ -37,18 +47,7 @@ export default function RequerimientoMenu ({styles, openDialog, setOpenDialog}){
         }
     }
 
-    const  menuAppear = useSpring({
-        to:{
-            transform:'translate(0)',
-            opacity:1,
-        },
-        from:{
-            opacity:0,
-            transform:'translate(150px)',
-        },
-        config: { duration: 150 },
-        delay: 200
-    });
+    
 
     const ButtonsRequest = () => {        
         const gen = informes[0].flujos.filter((item) => item.id===request?.request.FLU_Id)[0].tipos?.filter((item) => item.tipo === "generacion")[0]?.informes
@@ -137,10 +136,19 @@ export default function RequerimientoMenu ({styles, openDialog, setOpenDialog}){
         )
     }
 
+
     return (
-        request &&
-            <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
+        <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
                 <ButtonsRequest />            
             </animated.div>
+    )
+}
+
+export default function RequerimientoMenu ({styles, openDialog, setOpenDialog}){
+    const { request } = useRequest()
+    
+    return (
+        request &&
+            <AnimatedReuestMenu styles={styles} openDialog={openDialog} setOpenDialog={setOpenDialog} request={request}/>
     )    
 }

@@ -10,8 +10,7 @@ import {
 import { ListItemButton } from '@mui/material';
 import { useRequest } from '../../hooks/useRequest';
 
-export default function BandejaMenu ({styles}){
-    const { request } = useRequest();
+function AnimatedInBoxMenu({styles, request}){
     const  menuAppear = useSpring({
         to:{
             transform:'translate(0)',
@@ -24,9 +23,8 @@ export default function BandejaMenu ({styles}){
         config: { duration: 150 },
         delay: 150
     });
-
-    const ButtonsRequest = () => {
-        return(            
+    return (
+        <animated.div style={menuAppear} className={styles}>
             <ContentMenu title={'Bandeja'} styles={styles} className="flex-col h-full">
                 <Dropdown>
                     <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title='Generar y descargar informe con los registro actuales'>
@@ -60,12 +58,16 @@ export default function BandejaMenu ({styles}){
                     </>
                 }
             </ContentMenu>
-        )
-    }
-
-    return (        
-        <animated.div style={menuAppear} className={styles}>
-            <ButtonsRequest />            
         </animated.div>
+    )
+}
+
+export default function BandejaMenu ({styles}){
+    const { request } = useRequest();
+
+    return (
+        request &&            
+            <AnimatedInBoxMenu styles={styles} request={request}/>          
+            
     )    
 }

@@ -2,12 +2,10 @@
 /* eslint-disable react/prop-types */
 import { Suspense, useEffect, useState } from "react";
 import Loading from "../utils/Loading.jsx";
-
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useRecords } from "../hooks/useRecords.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
-
 import ConfirmationDialog from "./main/ConfirmationDialog.jsx";
 import {
     CrearMenu,
@@ -29,8 +27,12 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
    const [grupos, setGrupos] = useState(null);   
 
    useEffect(() => {
-        let FOR_Botones
-        formulario.VFO_Id === request?.request?.VFO_Id ? FOR_Botones = formulario.FOR_Botones : FOR_Botones = null        
+        let FOR_Botones = null
+        if(request?.request?.VFO_Id)
+            FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id))[0]?.FOR_Botones
+        else
+            FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === 0)[0]?.FOR_Botones       //  && parseInt(filters.flujo) === parseInt(item.FLU_Id)
+        
         setGrupos(FOR_Botones?.map(grupo => grupo))
     },[formulario,request])
 
@@ -50,21 +52,12 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
                 {
                     banSelected &&
                     <>
-                        <BandejaMenu styles={'z-40 h-full'}/>
-                        { 
-                        request &&
-                            <RequerimientoMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
-                        }
-                        {                            
-                            request?.selected &&
-                            <>
-                                <AccionesMenu  styles={'z-30 h-full'}/>
-                                <GuardarMenu  styles={'z-20 h-full'}/>                                
-                            </>
-                        }{
-                        request &&
-                            <AdjuntarMenu styles={'z-10 h-full'}/>}
-                            <FormularioMenu styles={'z-10 h-full'} grupos={grupos} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                        <BandejaMenu styles={'z-40 h-full'}/>                        
+                        <RequerimientoMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>                                                    
+                        <AccionesMenu  styles={'z-30 h-full'}/>
+                        <GuardarMenu  styles={'z-20 h-full'}/>
+                        <AdjuntarMenu styles={'z-10 h-full'}/>
+                        <FormularioMenu styles={'z-10 h-full'} grupos={grupos} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                     </>
                 }
                 {

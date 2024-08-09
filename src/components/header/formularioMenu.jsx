@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu.jsx"
-
+import { useRequest } from "../../hooks/useRequest.jsx";
+import { useFilters } from "../../hooks/useFilters.jsx";
+import { user } from "../../mocks/usuario.json";
 import Dropdown from '@mui/joy/Dropdown';
 import MenuButton from '@mui/joy/MenuButton';
 import { 
@@ -70,11 +72,14 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
 }
 
 export default function FormularioMenu ({styles, grupos, openDialog, setOpenDialog}) {
+    const { request } = useRequest()
+    const { filters } = useFilters()
     return(
-        grupos?.map((grp, index) => 
-            (
-                <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (index*30)} grp={grp} key={index} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+        request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
+            grupos?.map((grp, index) => 
+                (
+                    <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (index*30)} grp={grp} key={index} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                )
             )
-        )
     )
 }

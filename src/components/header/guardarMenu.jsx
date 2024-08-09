@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu.jsx"
-
+import { useRequest } from "../../hooks/useRequest.jsx";
+import { useFilters } from "../../hooks/useFilters.jsx";
+import { user } from "../../mocks/usuario.json";
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { 
@@ -9,7 +11,7 @@ import {
     SaveAllIconBig
     } from "../../utils/icons.jsx";
 
-export default function GuardarMenu ({styles}) {
+function AnimatedSaveMenu({styles}) {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -23,7 +25,7 @@ export default function GuardarMenu ({styles}) {
         delay: 250
     });
 
-    return (
+    return(
         <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
             <ContentMenu title={'Guardar en el equipo'}>
                 <Dropdown>
@@ -46,5 +48,14 @@ export default function GuardarMenu ({styles}) {
                 </Dropdown>
             </ContentMenu>
         </animated.div>
+    )
+}
+
+export default function GuardarMenu ({styles}) {
+    const { request } = useRequest()
+    const { filters } = useFilters()    
+    return (
+        request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
+            <AnimatedSaveMenu styles={styles}/>
     )    
 }

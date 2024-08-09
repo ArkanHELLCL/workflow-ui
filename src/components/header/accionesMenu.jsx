@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
-
-
+import { useRequest } from "../../hooks/useRequest.jsx";
+import { useFilters } from "../../hooks/useFilters.jsx";
+import { user } from "../../mocks/usuario.json";
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu"
 import {     
@@ -11,8 +12,7 @@ import {
     DeleteFileIcon
     } from "../../utils/icons.jsx";
 
-
-export default function Acciones ({styles}) {
+const AnimateMenuActions = ({styles}) => {
     const  menuAppear = useSpring({        
         to:{
             transform:'translate(0)',
@@ -25,7 +25,6 @@ export default function Acciones ({styles}) {
         config: { duration: 150 },
         delay: 200
     });
-
     return (
         <animated.div style={menuAppear} styles={styles} className="flex-col h-full">
             <ContentMenu title={'Acciones'}>
@@ -57,5 +56,15 @@ export default function Acciones ({styles}) {
                 </Dropdown>
             </ContentMenu>
         </animated.div>
+    )
+}
+
+export default function Acciones ({styles}) {
+    const { request } = useRequest()
+    const { filters } = useFilters()    
+
+    return (        
+        request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
+            <AnimateMenuActions styles={styles}/>
     )    
 }
