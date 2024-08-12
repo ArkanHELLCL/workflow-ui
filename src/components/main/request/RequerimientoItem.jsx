@@ -54,7 +54,7 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
       setRequest({
         "request": req,
         "adjuntos": null,
-        "selected":null
+        "selected": null
       })
     }
   

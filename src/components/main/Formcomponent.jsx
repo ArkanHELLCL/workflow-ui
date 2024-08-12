@@ -14,23 +14,16 @@ import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
 export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){    
-    const { request, setRequest } = useRequest()
-    const { adjuntos, setAdjuntos } = useAttach()
+    const { request } = useRequest()
+    const { setAdjuntos } = useAttach()
     const [dropEnter, setDropEnter] = useState(false);
-    const [preview, setPreview] = useState(false)
-    const [selected, setSelected] = useState(null)    
+    const [preview, setPreview] = useState(false)    
     const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()    
     
-    useEffect(() => {
-        selected ?
-            setRequest({
-                ...request,
-                "adjuntos": adjuntos,
-                "selected": selected,
-            }) :
-        null
-    },[selected, adjuntos])
+    useEffect(() => {        
+        setPreview(false)        
+    },[request?.request])
 
     useEffect(() => {        
         let frm
@@ -74,12 +67,12 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
                         onSubmit={frmRequest.handleSubmit(onSubmit)}   
                         >
                             <Header preview={preview} formulario={form} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
-                            <Files adjuntos={adjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
+                            <Files setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
                                 !preview &&
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 }{
-                                    preview && selected!==null &&
-                                        <Preview selected={selected} />
+                                    preview && request?.selected!==null &&
+                                        <Preview />
                                 }                        
                     </form>
                 </section>
