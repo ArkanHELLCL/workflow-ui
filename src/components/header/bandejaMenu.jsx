@@ -66,8 +66,6 @@ export default function BandejaMenu ({styles}){
     const { request } = useRequest();
 
     return (
-        request &&            
-            <AnimatedInBoxMenu styles={styles} request={request}/>          
-            
+        <AnimatedInBoxMenu styles={styles} request={request}/>            
     )    
 }

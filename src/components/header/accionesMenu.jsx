@@ -2,8 +2,6 @@
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { useRequest } from "../../hooks/useRequest.jsx";
-import { useFilters } from "../../hooks/useFilters.jsx";
-import { user } from "../../mocks/usuario.json";
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu"
 import {     
@@ -60,11 +58,10 @@ const AnimateMenuActions = ({styles}) => {
 }
 
 export default function Acciones ({styles}) {
-    const { request } = useRequest()
-    const { filters } = useFilters()    
+    const { request } = useRequest()    
 
     return (        
-        request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
+        request?.selected && 
             <AnimateMenuActions styles={styles}/>
     )    
 }

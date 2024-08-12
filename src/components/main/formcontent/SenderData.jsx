@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-export default function SenderData({request, formulario}) {
+import { useRequest } from '../../../hooks/useRequest.jsx';
+export default function SenderData({formulario}) {
+    const { request } = useRequest()
     return (
         <div className='flex items-center gap-3 pb-1 pt-1'>
             <div className="relative">

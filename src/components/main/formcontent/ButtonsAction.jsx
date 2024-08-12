@@ -6,7 +6,7 @@ import { ButtonIcon } from '../../../utils/icons.jsx';
 import { useFormContext } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
 
-export default function Buttons({request, formulario, setOpenDialog}){
+export default function Buttons({formulario, setOpenDialog}){
     const { FOR_Botones } = formulario;
     const grupos = FOR_Botones.map(grupo => grupo)
     const frmname = formulario.name
@@ -92,7 +92,7 @@ export default function Buttons({request, formulario, setOpenDialog}){
                 })
             }
             </div> 
-            <UpdateDate request={request}/>      
+            <UpdateDate />      
         </div>
         
     )

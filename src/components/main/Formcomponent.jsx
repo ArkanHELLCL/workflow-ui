@@ -19,7 +19,6 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
     const [dropEnter, setDropEnter] = useState(false);
     const [preview, setPreview] = useState(false)
     const [selected, setSelected] = useState(null)    
-    //const [adjuntos, setAdjuntos] = useState([]);
     const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()    
     
@@ -74,7 +73,7 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
                         className="h-full w-full flex flex-col columns-1"
                         onSubmit={frmRequest.handleSubmit(onSubmit)}   
                         >
-                            <Header preview={preview} request={request} formulario={form} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
+                            <Header preview={preview} formulario={form} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
                             <Files adjuntos={adjuntos} selected={selected} setSelected={setSelected} setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
                                 !preview &&
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
@@ -85,7 +84,7 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
                     </form>
                 </section>
             }{  !form && //request?.request?.VFO_Id !== form?.VFO_Id &&
-                    <NoData request={request}/>
+                    <NoData />
             }{
                 openDialog?.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />

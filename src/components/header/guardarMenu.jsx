@@ -2,8 +2,6 @@
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu.jsx"
 import { useRequest } from "../../hooks/useRequest.jsx";
-import { useFilters } from "../../hooks/useFilters.jsx";
-import { user } from "../../mocks/usuario.json";
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { 
@@ -52,10 +50,9 @@ function AnimatedSaveMenu({styles}) {
 }
 
 export default function GuardarMenu ({styles}) {
-    const { request } = useRequest()
-    const { filters } = useFilters()    
+    const { request } = useRequest()    
     return (
-        request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
+        request?.selected && 
             <AnimatedSaveMenu styles={styles}/>
     )    
 }

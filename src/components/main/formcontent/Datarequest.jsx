@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-export default function Datarequest({request}) {    
+import { useRequest } from '../../../hooks/useRequest.jsx';
+export default function Datarequest() {
+    const { request } = useRequest()
     return (
         <div id="dataRequest" className='w-full h-full grid'>
             <h1 className='text-base truncate w-auto pr-2'>{request?.request?.REQ_Descripcion.toUpperCase()}</h1>

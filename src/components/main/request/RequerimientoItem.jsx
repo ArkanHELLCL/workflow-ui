@@ -50,10 +50,11 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
       elToRemove?.classList.remove('reqselected')
       const elToAdd = document.getElementById(id)
       elToAdd.classList.add('reqselected')
-      console.log(req)
+      //console.log(req)
       setRequest({
         "request": req,
         "adjuntos": null,
+        "selected":null
       })
     }
   

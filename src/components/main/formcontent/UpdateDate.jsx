@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useRequest } from '../../../hooks/useRequest.jsx';
 import { Constants } from "../../../utils/const.jsx";
 
 const fecha = (date, dias) => {
@@ -6,7 +7,8 @@ const fecha = (date, dias) => {
     return dias[newDate.getDay()] + ' ' + newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes()        
 } 
 
-export default function UpdateDate({request}){
+export default function UpdateDate(){
+    const { request } = useRequest()
     const { dias } = Constants()
 
     return(

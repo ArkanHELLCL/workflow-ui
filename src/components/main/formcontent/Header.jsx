@@ -14,17 +14,17 @@ const handleNotDragOver = (event) => {
     return false;
 }
 
-export default function Header({preview, setPreview, request, formulario, setOpenDialog}) {
+export default function Header({preview, setPreview, formulario, setOpenDialog}) {
     return (
         <div id="headerForm" className='w-full h-auto relative z-20 overflow-hidden' onDragOver={handleNotDragOver}>{
             !preview && (
                 <>
                     <div className='flex justify-between relative w-full'>                        
-                        <DataRequest request={request} />                                                
-                        <Buttons request={request} formulario={formulario} setOpenDialog={setOpenDialog}/>                        
+                        <DataRequest />                                                
+                        <Buttons formulario={formulario} setOpenDialog={setOpenDialog}/>                        
                     </div>
                     <div className='flex justify-between'>
-                        <SenderData request={request} formulario={formulario} />
+                        <SenderData formulario={formulario} />
                     </div>
                 </>
             )
