@@ -76,17 +76,19 @@ export default function Footer() {
             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">{descripcion !== null ? descripcion : 'Sin menú'}</span>
             {
                 tipoABuscar === "bandejas" && filters.itemIdSelected.length > 1 ? 
-                    <>
-                        <div className="dark:text-orange-300 text-orange-400 flex z-20">
-                            <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
-                                <WarningIcon />
-                            </span>                
-                            <animated.div style={porVencerApper} className='overflow-hidden pt-[1px]'>
-                                <span className="z-10 truncate pt-1">Total de requerimientos por vencer :</span> 
-                            </animated.div>                           
-                            <span className="pt-[1px]">{filters.totalPorVencer}</span>  
-                        </div>
-
+                    <>{                        
+                        filters.itemIdSelected.slice(0,2) !== 'ba' &&
+                        <>
+                            <div className="dark:text-orange-300 text-orange-400 flex z-20">
+                                <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
+                                    <WarningIcon />
+                                </span>                
+                                <animated.div style={porVencerApper} className='overflow-hidden pt-[1px]'>
+                                    <span className="z-10 truncate pt-1">Total de requerimientos por vencer :</span> 
+                                </animated.div>                           
+                                <span className="pt-[1px]">{filters.totalPorVencer}</span>  
+                            </div>
+                    
                         <div className="text-red-500 flex z-20">
                             <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
                                 <WarningIcon />
@@ -96,15 +98,20 @@ export default function Footer() {
                             </animated.div>                           
                             <span className="pt-[1px]">{filters.totalVencidos}</span>  
                         </div>
-                        <div className="text-sky-500 flex z-20">
-                            <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickSinTomar()}>
-                                <QuestionIcon />
-                            </span>                
-                            <animated.div style={sintomarApper} className='overflow-hidden pt-[1px]'>
-                                <span className="z-10 truncate">Total de requerimientos sin tomar :</span> 
-                            </animated.div>                           
-                            <span className="pt-[1px]">{filters.totalSintomar}</span>  
-                        </div>                        
+                        </>
+                    }{
+                        filters.itemIdSelected.slice(0,2) !== 'bn' && filters.itemIdSelected.slice(0,2) !== 'ba' &&
+                            <div className="text-sky-500 flex z-20">
+                                <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickSinTomar()}>
+                                    <QuestionIcon />
+                                </span>
+                                    <animated.div style={sintomarApper} className='overflow-hidden pt-[1px]'>
+                                        <span className="z-10 truncate pt-1">Total de requerimientos sin tomar :</span> 
+                                    </animated.div>
+                                
+                                <span className="pt-[1px]">{filters.totalSintomar}</span>  
+                            </div>
+                        }
                         <div>
                             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
                             <span className="text-green-500">{filters.totalRequerimientos}</span>                
