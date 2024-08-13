@@ -4,7 +4,7 @@ import { useFilters } from "../../hooks/useFilters.jsx";
 import { useRequest } from "../../hooks/useRequest.jsx";
 import { flujos } from "../../mocks/flujos.json";
 import { flujosv0 } from "../../mocks/flujos.json";
-//import { flujosv1 } from "../../mocks/flujos.json";
+import { flujosv1 } from "../../mocks/flujos.json";
 
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -85,11 +85,14 @@ export default function MenuFilters() {
                                 filters.itemIdSelected.slice(0,3).toUpperCase() === 'BNC' ?
                                     flujosv0.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
                                 :
-                                    flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
-                            }                
+                                    filters.itemIdSelected.slice(0,3).toUpperCase() === 'BNW' ?
+                                        flujosv1.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name 
+                                    :
+                                            flujos.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
+                            }
                 </MenuButton>
                 <Menu placement="bottom-end" className="!py-2 !border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500 !m-h-min">{
-                    filters.itemIdSelected.slice(0,3).toUpperCase() !== 'BNC' &&
+                    filters.itemIdSelected.slice(0,2).toUpperCase() !== 'BN' ?
                         <>
                             <p className="px-6 py-2 text-xs font-semibold truncate">Filtrar</p>{                        
                                 flujos.map((item) =>
@@ -99,8 +102,20 @@ export default function MenuFilters() {
                                 )
                             }
                             <ListDivider/>
-                        </>                                         
-                    }
+                        </>
+                    : filters.itemIdSelected.slice(0,3).toUpperCase() === 'BNW' ?
+                        <>
+                            <p className="px-6 py-2 text-xs font-semibold truncate">Filtrar</p>{                        
+                                flujosv1.map((item) =>
+                                    <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFlujos(item.id)}>
+                                        <ListItemDecorator className={``}>{filters.flujo===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                                    </MenuItem> 
+                                )
+                            }
+                            <ListDivider/>
+                        </>
+                    : null
+                }
                     <p className="px-6 py-2 text-xs font-semibold truncate">Organizas por</p>{
                         filters.itemIdSelected.slice(0,3).toUpperCase() === 'BNC' ?
                             flujosv0.filter((item) => item.id === filters.flujo)[0].orderby.map((item) =>
@@ -109,11 +124,18 @@ export default function MenuFilters() {
                                 </MenuItem> 
                             )
                         :
-                            flujos.filter((item) => item.id === filters.flujo)[0].orderby.map((item) =>
-                                <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFiltros(item.id)}>
-                                    <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
-                                </MenuItem> 
-                            )
+                            filters.itemIdSelected.slice(0,3).toUpperCase() === 'BNW' ?
+                                flujosv1.filter((item) => item.id === filters.flujo)[0].orderby.map((item) =>
+                                    <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFiltros(item.id)}>
+                                        <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                                    </MenuItem> 
+                                )
+                            :
+                                flujos.filter((item) => item.id === filters.flujo)[0].orderby.map((item) =>
+                                    <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} key={item.id} onClick={() => handleSetFiltros(item.id)}>
+                                        <ListItemDecorator className={`text-green-500`}>{filters.filter===item.id ? <Check className="!w-4 !h-4" /> : null}</ListItemDecorator>{item.description}                    
+                                    </MenuItem> 
+                                )
                     }
                     <ListDivider/>
                     <p className="px-6 py-2 text-xs font-semibold truncate">Ordenar</p>

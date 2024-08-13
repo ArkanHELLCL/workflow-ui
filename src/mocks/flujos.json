@@ -188,7 +188,7 @@
         },
         {
             "id": 2,
-            "name": "Boletas",
+            "name": "Boletas v1",
             "description": "Flujo de boletas de garantías v1",
             "steps":3,
             "ver":1,                        

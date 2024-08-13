@@ -87,17 +87,16 @@ export default function Footer() {
                                     <span className="z-10 truncate pt-1">Total de requerimientos por vencer :</span> 
                                 </animated.div>                           
                                 <span className="pt-[1px]">{filters.totalPorVencer}</span>  
+                            </div>                    
+                            <div className="text-red-500 flex z-20">
+                                <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
+                                    <WarningIcon />
+                                </span>                
+                                <animated.div style={vencidosApper} className='overflow-hidden pt-[1px]'>
+                                    <span className="z-10 truncate">Total de requerimientos vencidos :</span> 
+                                </animated.div>                           
+                                <span className="pt-[1px]">{filters.totalVencidos}</span>  
                             </div>
-                    
-                        <div className="text-red-500 flex z-20">
-                            <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
-                                <WarningIcon />
-                            </span>                
-                            <animated.div style={vencidosApper} className='overflow-hidden pt-[1px]'>
-                                <span className="z-10 truncate">Total de requerimientos vencidos :</span> 
-                            </animated.div>                           
-                            <span className="pt-[1px]">{filters.totalVencidos}</span>  
-                        </div>
                         </>
                     }{
                         filters.itemIdSelected.slice(0,2) !== 'bn' && filters.itemIdSelected.slice(0,2) !== 'ba' &&
