@@ -10,9 +10,9 @@ import Loading from "../../utils/Loading.jsx";
 
 export default function ListaRegMantenedores({frmRecord}){
     const { filterRequest } = useFilters() 
-    const { filteredRequest } = filterRequest(mantenedores)   
-    //console.log('ListaRegMantenedores')
-    return (        
+    const { filteredRequest } = filterRequest(mantenedores)    
+    return (       
+        <>
         <Suspense fallback={<Loading />}>{
             filteredRequest.length===0 && (
                 <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-full w-full !overflow-hidden">
@@ -22,6 +22,15 @@ export default function ListaRegMantenedores({frmRecord}){
             {filteredRequest.map((item, index) => (
                <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : 'unde-' + index} frmRecord={frmRecord}/>
             ))}        
-        </Suspense>            
+        </Suspense>{
+            filteredRequest.length === 1000 ? 
+                    <div className="!text-xs font-semibold !text-center !text-stone-500 dark:!text-stone-100 flex flex-col py-3 gap-3">
+                        <span>Hay más elementos en esta carpeta en el servidor</span>
+                        <label htmlFor="btnMore" className="underline font-semibold text-xs text-[#2c87d2] cursor-pointer">Haga click aquí para ver más sobre elementos de esta carpeta</label>
+                        <button id="btnMore" className="hidden" onClick={()=>console.log("Ver más")}></button>
+                    </div>
+                    : null
+                }
+        </>
     )
 }

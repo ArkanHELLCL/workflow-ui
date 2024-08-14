@@ -15,7 +15,7 @@ export function FiltersProvider({ children }) {
         totalPorVencer: 0,        
         //hoy : new Date('2024-08-05T23:00:00'),
         //hoy: new Date(),
-        hoy:'2024-08-05T00:00:00',
+        hoy:'2024-08-14T00:00:00',
         minReq : null,
         maxReq : null,
         maxStep : null,
