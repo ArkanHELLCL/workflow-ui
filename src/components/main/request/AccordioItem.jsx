@@ -56,14 +56,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export const AccordionItem = memo(function AccordionItem({ item }) {
     const { dias } = Constants()    
-    
     if (item.requerimientos?.length === 0) {
       return null
     }    
 
     const DRE_FechaEdit = new Date(item.requerimientos[0].DRE_FechaEdit)
     const dia = DRE_FechaEdit.getDay() - 1
-    return (        
+    return (                
         <Accordion defaultExpanded className="z-0 !bg-transparent" slotProps={{ transition: { timeout: 350 } }}>
             <AccordionSummary                 
                 className='dark:!text-stone-100 !text-stone-500 dark:!border-[#353535] !border-[#d4d4d4] !text-[.7rem] !font-bold truncate dark:!bg-[#444444] !bg-[#f0f0f0] !py-1 hover:!dark:bg-[#666666] hover:!bg-[#e6f2fa] dark:hover:!bg-[#505050] overflow-hidden !px-2 !h-7 !min-h-7 !m-0 !border-b'
@@ -72,13 +71,11 @@ export const AccordionItem = memo(function AccordionItem({ item }) {
                 >
                     {item.title ? item.title.charAt(0).toUpperCase() + item.title.slice(1) + ' (' + item.requerimientos?.length + ')' : dias[dia].charAt(0).toUpperCase() + dias[dia].slice(1) + ' (' + item.requerimientos?.length + ')'}
             </AccordionSummary>
-            <AccordionDetails className="py-0">
-                {
-                    <Suspense fallback={<Loading />}>
-                        <Requerimiento item={item.requerimientos} showDia={item.showdia} showYear={item.showyear} />
-                    </Suspense>
-                }
+            <AccordionDetails className="py-0">                
+                <Suspense fallback={<Loading />}>
+                    <Requerimiento item={item.requerimientos} showDia={item.showdia} showYear={item.showyear} />
+                </Suspense>                
             </AccordionDetails>
-        </Accordion>         
+        </Accordion>
     )
 })

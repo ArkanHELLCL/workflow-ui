@@ -8,7 +8,7 @@ export function ListRequestByNumber(min, max, maxAccordions, orderDes, filteredR
         let title = ''
         orderDes ? title = `Del ${start} al ${end}` : title = `Del ${end} al ${start}`    
 
-        requerimientoAccordion.push({id:i+1, title: title, desde: start, hasta: end, open:true,requerimientos: filteredRequest.filter((req) => req.VRE_Id >= start && req.VRE_Id <= end), showdia:true})
+        requerimientoAccordion.push({id:i+1, title: title, desde: start, hasta: end, open:true,requerimientos: filteredRequest.filter((req) => req.VRE_Id >= start && req.VRE_Id <= end), showdia:false, showyear:true})
     }
     return requerimientoAccordion
 }
