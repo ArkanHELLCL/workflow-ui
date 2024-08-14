@@ -79,8 +79,8 @@ export default function DetalleRequerimiento(){
                                             <li>Número: <span className='font-medium dark:text-stone-300'>{request?.request?.VRE_Id}</span></li>
                                             <li>Creador: <span className='font-medium dark:text-stone-300'>{request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span></li>
                                             <li>Dep. creación: <span className='font-medium dark:text-stone-300'>{request?.request?.DepDescripcionOrigen}</span></li>
-                                            <li>Creación: <span className='font-medium dark:text-stone-300'>{request?.request?.REQ_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.request?.REQ_FechaEdit.slice(5,7))] + ' de ' + request?.request?.REQ_FechaEdit.slice(0,4)}</span></li>
-                                            <li>Modificacón: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_FechaEdit.slice(8,10) + ' de ' + meses[parseInt(request?.request?.DRE_FechaEdit.slice(5,7))] + ' de ' + request?.request?.DRE_FechaEdit.slice(0,4)}</span></li>{
+                                            <li>Creación: <span className='font-medium dark:text-stone-300'>{request?.request?.REQ_FechaEdit?.slice(8,10) + ' de ' + meses[parseInt(request?.request?.REQ_FechaEdit?.slice(5,7))] + ' de ' + request?.request?.REQ_FechaEdit?.slice(0,4)}</span></li>
+                                            <li>Modificacón: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_FechaEdit?.slice(8,10) + ' de ' + meses[parseInt(request?.request?.DRE_FechaEdit?.slice(5,7))] + ' de ' + request?.request?.DRE_FechaEdit?.slice(0,4)}</span></li>{
                                             request?.request?.ESRAnterior_Descripcion ?                                            
                                                 <li>Acción realizada: <span className='font-medium dark:text-stone-300'>{request?.request?.ESRAnterior_Descripcion}</span></li>
                                             : null}
