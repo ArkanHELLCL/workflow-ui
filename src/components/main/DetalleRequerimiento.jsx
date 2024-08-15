@@ -82,7 +82,7 @@ export default function DetalleRequerimiento(){
                                             <li>Creación: <span className='font-medium dark:text-stone-300'>{request?.request?.REQ_FechaEdit?.slice(8,10) + ' de ' + meses[parseInt(request?.request?.REQ_FechaEdit?.slice(5,7))] + ' de ' + request?.request?.REQ_FechaEdit?.slice(0,4)}</span></li>
                                             <li>Modificacón: <span className='font-medium dark:text-stone-300'>{request?.request?.DRE_FechaEdit?.slice(8,10) + ' de ' + meses[parseInt(request?.request?.DRE_FechaEdit?.slice(5,7))] + ' de ' + request?.request?.DRE_FechaEdit?.slice(0,4)}</span></li>{
                                             request?.request?.ESRAnterior_Descripcion ?                                            
-                                                <li>Acción realizada: <span className='font-medium dark:text-stone-300'>{request?.request?.ESRAnterior_Descripcion}</span></li>
+                                                <li>Acción realizada: <span className='font-medium dark:text-stone-300'>{parseInt(request?.request?.ESRAnterior_Descripcion)>=0 ? 'Creación' : request?.request?.ESRAnterior_Descripcion}</span></li>
                                             : null}
                                         </ul>
                                     </div>
