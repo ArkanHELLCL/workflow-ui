@@ -3716,6 +3716,134 @@
             "DFO_Dato": "para ser utilizados por la Jefa D.A.F."
         }
     ]
+      },
+      {
+         "name":"frmWorkFlowv4",
+         "VFO_Id":40,
+         "IdSender_Foto":"data:image/png;base64,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",
+         "Bandeja":"bnc",
+         "FOR_Campos": [
+        {
+            "FDI_TipoCampo": "C",
+            "FDI_Descripcion": "Creador",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 10,
+            "FDI_NombreHTML": "ComCreador",
+            "DFO_Dato": "Adriana Alvarado Astorga"
+        },
+        {
+            "FDI_TipoCampo": "C",
+            "FDI_Descripcion": "Unidad Solicitante",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 30,
+            "FDI_NombreHTML": "ComUnidadSolicitante",
+            "DFO_Dato": "Informatica"
+        },
+        {
+            "FDI_TipoCampo": "F",
+            "FDI_Descripcion": "Adjudicación",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 110,
+            "FDI_NombreHTML": "ComAdjudicacion",
+            "DFO_Dato": "2011-01-28"
+        },
+        {
+            "FDI_TipoCampo": "F",
+            "FDI_Descripcion": "Autorización DAF",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 80,
+            "FDI_NombreHTML": "ComAutorizaDAF",
+            "DFO_Dato": "2011-01-13"
+        },
+        {
+            "FDI_TipoCampo": "F",
+            "FDI_Descripcion": "Autorización Jefatura",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 70,
+            "FDI_NombreHTML": "ComAutorizaJefe",
+            "DFO_Dato": "2011-01-07"
+        },
+        {
+            "FDI_TipoCampo": "F",
+            "FDI_Descripcion": "Entrega Producto\/Servicio",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 110,
+            "FDI_NombreHTML": "ComEntrega",
+            "DFO_Dato": "2011-03-07"
+        },
+        {
+            "FDI_TipoCampo": "F",
+            "FDI_Descripcion": "Fecha de Ingreso",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 20,
+            "FDI_NombreHTML": "ComFechaIngreso",
+            "DFO_Dato": "2011-01-06"
+        },
+        {
+            "FDI_TipoCampo": "F",
+            "FDI_Descripcion": "Inicio de Compra",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 90,
+            "FDI_NombreHTML": "ComInicioCompra",
+            "DFO_Dato": "2011-01-14"
+        },
+        {
+            "FDI_TipoCampo": "G",
+            "FDI_Descripcion": "Costo",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 4,
+            "FDI_Prioridad": 100,
+            "FDI_NombreHTML": "ComCosto",
+            "DFO_Dato": "1058672"
+        },
+        {
+            "FDI_TipoCampo": "T",
+            "FDI_Descripcion": "Descripción",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 1,
+            "FDI_TamanoDiseno": 12,
+            "FDI_Prioridad": 40,
+            "FDI_NombreHTML": "ComDescripcion",
+            "DFO_Dato": "Se solicita la compra de los siguientes insumos :\r\nPARA IMPRESORA LEXMARK C534 :\r\n- 01 TRANSFER BELT 40X3572\r\n\r\nPARA IMPRESORAS LEXMARK C524\r\n- 24 UNIDADES DE FOTOCONDUCTOR C52030X\r\n-03 BOTELLA DE DESPERDICIOS C52025X\r\n-02 TRANSFER BELT 40X1401"
+        },
+        {
+            "FDI_TipoCampo": "T",
+            "FDI_Descripcion": "Especificaciones",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 1,
+            "FDI_TamanoDiseno": 12,
+            "FDI_Prioridad": 60,
+            "FDI_NombreHTML": "ComEspecificaciones",
+            "DFO_Dato": "Terminos de referencia : Insumos para fotocopiadora Lexmark c534 y c524\r\n01 Transfer Belt Nº de Parte 40x3572\r\n24 Unidad de Fotoconductores c52030x\r\n03 Botella de Desperdicios c52025\r\n02 Transfer Belt 40x1401"
+        },
+        {
+            "FDI_TipoCampo": "T",
+            "FDI_Descripcion": "Justificación",
+            "FDI_CampoObligatorio": 0,
+            "FDI_NuevaLineaDiseno": 1,
+            "FDI_TamanoDiseno": 12,
+            "FDI_Prioridad": 50,
+            "FDI_NombreHTML": "ComJustificacion",
+            "DFO_Dato": "Para repuesto de impresoras que se ubican en pisos 3°,7° e Informatica"
+        }
+    ]
       }
    ]
 }
