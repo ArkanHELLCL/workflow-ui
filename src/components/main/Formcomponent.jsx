@@ -28,9 +28,9 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
     useEffect(() => {        
         let frm
         if(request?.request?.VFO_Id){
-            frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id)
+            frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id && item.Bandeja === request?.request?.Bandeja)
         }else{
-            frm = formulario.filter(item => (item.VFO_Id === 0 && item.FLU_Id === request?.request?.FLU_Id))   
+            frm = formulario.filter(item => (item.VFO_Id === 0 && item.FLU_Id === request?.request?.FLU_Id && item.Bandeja === request?.request?.Bandeja))   
         }        
         const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []
         frmRequest.clearErrors()

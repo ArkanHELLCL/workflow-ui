@@ -24,14 +24,14 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
    const { request } = useRequest()
    const { record } = useRecords()
    const { filters } = useFilters()
-   const [grupos, setGrupos] = useState(null);   
+   const [grupos, setGrupos] = useState(null);
 
    useEffect(() => {
         let FOR_Botones = null
         if(request?.request?.VFO_Id)
-            FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id))[0]?.FOR_Botones
+            FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id) && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
         else
-            FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === 0)[0]?.FOR_Botones       //  && parseInt(filters.flujo) === parseInt(item.FLU_Id)
+            FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === 0 && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones       //  && parseInt(filters.flujo) === parseInt(item.FLU_Id)
         
         setGrupos(FOR_Botones?.map(grupo => grupo))
     },[formulario,request])

@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 
 export default function Buttons({formulario, setOpenDialog}){
     const { FOR_Botones } = formulario;
-    const grupos = FOR_Botones.map(grupo => grupo)
+    const grupos = FOR_Botones?.map(grupo => grupo)
     const frmname = formulario.name
     const idGroups = useId()
 
