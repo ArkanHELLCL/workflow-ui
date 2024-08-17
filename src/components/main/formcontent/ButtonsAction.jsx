@@ -64,7 +64,7 @@ export default function Buttons({formulario, setOpenDialog}){
 
     const { enqueueSnackbar } = useSnackbar();
     return(
-        <div id="buttonsRequest" className='grid text-right leading-tight absolute right-2 top-8 max-w-[60%] overflow-x-auto justify-items-end'> 
+        <div id="buttonsRequest" className='grid text-right leading-tight absolute right-2 bottom-0 max-w-[60%] overflow-x-auto justify-items-end'> 
             <div className='flex items-center gap-3 pb-2' id={idGroups}>
             {
                 grupos?.map(grp => {

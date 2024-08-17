@@ -12,7 +12,7 @@ export default function UpdateDate(){
     const { dias } = Constants()
 
     return(
-        <div className='absolute -bottom-1 right-2'>
+        <div className='absolute -top-1 right-2'>
             <span className='text-[11px] leading-tight'>{fecha(request?.request?.DRE_FechaEdit, dias)}</span>
         </div>
     )

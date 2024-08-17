@@ -22,10 +22,10 @@ export default function Header({preview, setPreview, formulario, setOpenDialog})
                 <>
                     <div className='flex justify-between relative w-full'>                        
                         <DataRequest />                                                
-                        <Buttons formulario={formulario} setOpenDialog={setOpenDialog}/>   
-                        <UpdateDate />                      
+                        <Buttons formulario={formulario} setOpenDialog={setOpenDialog}/>                                                 
                     </div>
-                    <div className='flex justify-between'>
+                    <div className='flex justify-between relative'>
+                        <UpdateDate />
                         <SenderData formulario={formulario} />
                     </div>
                 </>
