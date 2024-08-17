@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useId, useState } from 'react'
-import UpdateDate from './UpdateDate.jsx';
 import { useSpring, animated } from "@react-spring/web";
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { useFormContext } from 'react-hook-form';
@@ -91,9 +90,7 @@ export default function Buttons({formulario, setOpenDialog}){
                     )
                 })
             }
-            </div> 
-            <UpdateDate />      
-        </div>
-        
+            </div>                  
+        </div>        
     )
 }

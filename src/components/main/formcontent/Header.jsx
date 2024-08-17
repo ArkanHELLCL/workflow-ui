@@ -2,6 +2,7 @@
 import DataRequest from './Datarequest.jsx';
 import SenderData from './SenderData.jsx';
 import Buttons from "./ButtonsAction.jsx";
+import UpdateDate from './UpdateDate.jsx';
 
 import Dropdown from '@mui/joy/Dropdown';
 import MenuButton from '@mui/joy/MenuButton';
@@ -21,7 +22,8 @@ export default function Header({preview, setPreview, formulario, setOpenDialog})
                 <>
                     <div className='flex justify-between relative w-full'>                        
                         <DataRequest />                                                
-                        <Buttons formulario={formulario} setOpenDialog={setOpenDialog}/>                        
+                        <Buttons formulario={formulario} setOpenDialog={setOpenDialog}/>   
+                        <UpdateDate />                      
                     </div>
                     <div className='flex justify-between'>
                         <SenderData formulario={formulario} />
