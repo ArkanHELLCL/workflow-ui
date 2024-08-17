@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { dark } from "@mui/material/styles/createPalette";
 import { createContext, useState } from "react";
 
 export const FiltersContext = createContext();

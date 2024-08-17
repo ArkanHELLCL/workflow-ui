@@ -76,10 +76,7 @@ header::-webkit-scrollbar, #buttonsRequest::-webkit-scrollbar, #buttonsRecord::-
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator{
-  cursor: pointer;
-  /*border-radius: 4px;
-  margin-right: 2px;
-  opacity: 0.9;*/
+  cursor: pointer;  
   filter: invert(0.6);
 }
 
