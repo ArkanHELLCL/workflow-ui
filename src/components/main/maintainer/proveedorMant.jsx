@@ -22,7 +22,7 @@ export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, reco
 
     useEffect(() => {
         let reg
-        if(parseInt(record?.record?.Id) === 0) {
+        if(parseInt(record?.record?.Id) === 0 || !record?.record) {
             frmRecord.reset()
             reg = {
                     "PRO_Id":0,

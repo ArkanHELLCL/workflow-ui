@@ -100,7 +100,7 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
             filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? 
               request ? ( 
-                <Formcomponent frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                <Formcomponent frmRequest={frmRequest} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
               ) : ( 
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                     <div className='w-full h-full flex justify-center align-middle items-center'>

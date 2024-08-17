@@ -13,13 +13,16 @@ import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
-export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){    
+import MPMant from './maintainer/proveedorMant.jsx'
+
+export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpenDialog}){    
     const { request } = useRequest()
     const { setAdjuntos } = useAttach()
     const [dropEnter, setDropEnter] = useState(false);
     const [preview, setPreview] = useState(false)    
     const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()    
+    const [maintainer, setMaintainer] = useState({state:false, obj:'mp'})
     
     useEffect(() => {        
         setPreview(false)        
@@ -66,14 +69,20 @@ export default function Formcomponent({frmRequest, openDialog, setOpenDialog}){
                         className="h-full w-full flex flex-col columns-1"
                         onSubmit={frmRequest.handleSubmit(onSubmit)}   
                         >
-                            <Header preview={preview} formulario={form} setOpenDialog={setOpenDialog} setPreview={setPreview}/>                
+                            <Header preview={preview} setPreview={setPreview} maintainer={maintainer} setMaintainer={setMaintainer} formulario={form} setOpenDialog={setOpenDialog} />                
                             <Files setPreview={setPreview} setFilesList={setFilesList} filesList={filesList}/>{
-                                !preview &&
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
+                                !preview && !maintainer.state &&
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList} maintainer={maintainer} setMaintainer={setMaintainer}/>
                                 }{
                                     preview && request?.selected!==null &&
                                         <Preview />
-                                }                        
+                                }{
+                                    maintainer.state && maintainer.obj === 'X1' &&
+                                        <>
+                                            <h2 className="font-thin text-xl">Mantenedor de proveeodres</h2>
+                                            <MPMant frmRecord={frmRecord}/>
+                                        </>                                        
+                                }
                     </form>
                 </section>
             }{  !form && //request?.request?.VFO_Id !== form?.VFO_Id &&

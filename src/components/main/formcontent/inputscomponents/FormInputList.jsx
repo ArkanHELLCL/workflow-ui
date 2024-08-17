@@ -22,7 +22,7 @@ import { useRequest } from '../../../../hooks/useRequest';
 import { user } from '../../../../mocks/usuario.json'
 import ExternalMantainer from './ExternalMantainer.jsx'
 
-export default function FormInputList ({ campo, className }) {  
+export default function FormInputList ({ campo, className, maintainer, setMaintainer }) {  
   const { request } = useRequest();
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
   const { control, setValue, formState: { errors } } = useFormContext();
@@ -150,7 +150,7 @@ export default function FormInputList ({ campo, className }) {
                           /*loading ? (
                               <CircularProgress size="sm" sx={{ bgcolor: 'transparent' }} />
                           ) : null*/
-                          buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo}/> ) : null
+                          buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} maintainer={maintainer} setMaintainer={setMaintainer} /> ) : null
                       }
                       renderOption={(props, option) => 
                         <Box component="li" {...props} key={option.id}>                        

@@ -11,7 +11,7 @@ import {
     InputList
 } from './inputscomponents'
 
-export default function InputsType({campo, className}){    
+export default function InputsType({campo, className, maintainer, setMaintainer}){    
     switch (campo.FDI_TipoCampo.trim().toUpperCase()) {
         case 'A':   //Archivo
             return
@@ -36,7 +36,7 @@ export default function InputsType({campo, className}){
         case 'L':   //Lista desplegable
             return <InputList campo={campo} className={className}/>
         case 'X1':   //Lista desplegable
-            return <InputList campo={campo} className={className}/>
+            return <InputList campo={campo} className={className} maintainer={maintainer} setMaintainer={setMaintainer}/>
         case 'U':   //Usuario destinatario
             return <InputList campo={campo} className={className}/>
         case 'PM':  //Periodos de pago

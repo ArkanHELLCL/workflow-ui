@@ -8,7 +8,7 @@ import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useAttach } from '../../../hooks/useAttach.jsx';
 import { user } from '../../../mocks/usuario.json'
 
-export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest, setFilesList, filesList}) {
+export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest, setFilesList, filesList, maintainer, setMaintainer}) {
     const { request } = useRequest()
     const { setAdjuntos } = useAttach()
     const handleDragEnter = (event) => {
@@ -105,7 +105,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
                             <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                         </div>
                     </div> :
-                    <Inputs campos={campos} />
+                    <Inputs campos={campos} maintainer={maintainer} setMaintainer={setMaintainer}/>
                 }
             </div>            
             <input 
