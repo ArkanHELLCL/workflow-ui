@@ -25,17 +25,7 @@ export default function FormInputFecha ({ campo, className }) {
     return (
         <Controller
             control={control}
-            name={campo.FDI_NombreHTML}
-            /*rules={{
-                validate: {
-                required: (value) => {
-                    if (!value && !campo.FDI_CampoObligatorio) return true;
-                    if (!!isNaN(Date.parse(value))) return 'Debes ingresar una fecha válida';
-                    if (!value && campo.FDI_CampoObligatorios) return campo.FDI_ErrorMessage;
-                }
-                },
-                maxLength: 10
-            }}*/
+            name={campo.FDI_NombreHTML}            
            rules={required}
             render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl                    

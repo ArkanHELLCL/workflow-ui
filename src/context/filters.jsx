@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { dark } from "@mui/material/styles/createPalette";
 import { createContext, useState } from "react";
 
 export const FiltersContext = createContext();
@@ -25,7 +26,8 @@ export function FiltersProvider({ children }) {
         filterSearch: 1,
         stringSearch: '',
         filterSearchResult:false,
-        darkMode: true,
+        //darkMode: true,
+        darkMode: window.localStorage.getItem('DarkMode') === 'false' ? false : true, 
         departamento: 0,
         region:0,
         orderDesMant: true,

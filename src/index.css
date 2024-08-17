@@ -74,3 +74,15 @@ header::-webkit-scrollbar, #buttonsRequest::-webkit-scrollbar, #buttonsRecord::-
 .imgSender{
   clip-path: circle(50%);
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+  /*border-radius: 4px;
+  margin-right: 2px;
+  opacity: 0.9;*/
+  filter: invert(0.6);
+}
+
+input[type=date]:required:invalid::-webkit-datetime-edit {
+  filter: invert(0.6);
+}
