@@ -54,12 +54,12 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
 
     const  menuAppear = useSpring({        
         to:{
-            transform:'translate(0)',
+            transform:'translateX(0px)',
             opacity:1,
         },
         from:{
             opacity:0,
-            transform:'translate(150px)',
+            transform:'translateX(150px)',
         },
         config: { duration: 200 },
         delay: 200
@@ -67,12 +67,12 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
 
     const  menuAppearR = useSpring({        
         to:{
-            transform:'translate(0)',
+            transform:'translateX(0px)',
             opacity:1,
         },
         from:{
             opacity:0,
-            transform:'translate(150px)',
+            transform:'translateX(150px)',
         },
         config: { duration: 250 },
         delay: 200

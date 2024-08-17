@@ -69,46 +69,6 @@
                   ]
             }
          ],
-         "mantenedores":[
-            {
-               "id":"m",
-               "label":"Mantenedores",
-               "description":"Mantenedores de todos los flujos",
-               "url":"/mantenedores",
-               "children":[
-                     {
-                        "id":"mu",
-                        "label":"Usuarios",
-                        "description":"Mantenedor de Usuarios",
-                        "url":"/mantenedores/usuarios"
-                     },
-                     {
-                        "id":"ml",
-                        "label":"Lista Desplegables",
-                        "description":"Mantenedor de Lista Desplegables",
-                        "url":"/mantenedores/lista-desplegable"
-                     },
-                     {
-                        "id":"mi",
-                        "label":"Items Lista Desplegables",
-                        "description":"Mantenedor de Items Lista Desplegables",
-                        "url":"/mantenedores/item-lista-desplegable"
-                     },
-                     {
-                        "id":"mp",
-                        "label":"Proveedores",
-                        "description":"Mantenedor de proveedoress",
-                        "url":"/mantenedores/proveedores"
-                     },
-                     {
-                        "id":"mc",
-                        "label":"Comunas",
-                        "description":"Mantenedor de comunas",
-                        "url":"/mantenedores/comunas"
-                     }
-               ]
-            }
-         ],
          "reportes":[
             {
                "id":"r",
@@ -200,41 +160,7 @@
                      }
                   ]               
             }
-         ],
-         "mantenedores":[
-            {
-               "id":"m",
-               "label":"Mantenedores",
-               "description":"Mantenedores de Compras",
-               "url":"/mantenedores",
-               "children":[
-                     {
-                        "id":"mu",
-                        "label":"Usuarios",
-                        "description":"Mantenedor de Usuarios",
-                        "url":"/mantenedores/usuarios"
-                     },
-                     {
-                        "id":"ml",
-                        "label":"Lista Desplegables",
-                        "description":"Mantenedor de Lista Desplegables",
-                        "url":"/mantenedores/lista-desplegable"
-                     },
-                     {
-                        "id":"mi",
-                        "label":"Items Lista Desplegables",
-                        "description":"Mantenedor de Items Lista Desplegables",
-                        "url":"/mantenedores/item-lista-desplegable"
-                     },
-                     {
-                        "id":"mc",
-                        "label":"Comunas",
-                        "description":"Mantenedor de comunas",
-                        "url":"/mantenedores/comunas"
-                     }
-               ]
-            }
-         ],
+         ],         
          "reportes":[
             {
                "id":"r",
@@ -326,41 +252,7 @@
                      }
                   ]
             }
-         ],
-         "mantenedores":[
-            {
-               "id":"m",
-               "label":"Mantenedores",
-               "description":"Mantenedores de Boletas de Garantías",
-               "url":"/mantenedores",
-               "children":[
-                     {
-                        "id":"mu",
-                        "label":"Usuarios",
-                        "description":"Mantenedor de Usuarios",
-                        "url":"/mantenedores/usuarios"
-                     },
-                     {
-                        "id":"ml",
-                        "label":"Lista Desplegables",
-                        "description":"Mantenedor de Lista Desplegables",
-                        "url":"/mantenedores/lista-desplegable"
-                     },
-                     {
-                        "id":"mi",
-                        "label":"Items Lista Desplegables",
-                        "description":"Mantenedor de Items Lista Desplegables",
-                        "url":"/mantenedores/item-lista-desplegable"
-                     },
-                     {
-                        "id":"mc",
-                        "label":"Comunas",
-                        "description":"Mantenedor de comunas",
-                        "url":"/mantenedores/comunas"
-                     }
-               ]
-            }
-         ],
+         ],         
          "reportes":[
             {
                "id":"r",
@@ -432,41 +324,7 @@
                   }
                ]
             }
-         ],
-         "mantenedores":[
-            {
-               "id":"m",
-               "label":"Mantenedores",
-               "description":"Mantenedores de Pagos",
-               "url":"/mantenedores",
-               "children":[
-                     {
-                        "id":"mu",
-                        "label":"Usuarios",
-                        "description":"Mantenedor de Usuarios",
-                        "url":"/mantenedores/usuarios"
-                     },
-                     {
-                        "id":"ml",
-                        "label":"Lista Desplegables",
-                        "description":"Mantenedor de Lista Desplegables",
-                        "url":"/mantenedores/lista-desplegable"
-                     },
-                     {
-                        "id":"mi",
-                        "label":"Items Lista Desplegables",
-                        "description":"Mantenedor de Items Lista Desplegables",
-                        "url":"/mantenedores/item-lista-desplegable"
-                     },
-                     {
-                        "id":"mc",
-                        "label":"Comunas",
-                        "description":"Mantenedor de comunas",
-                        "url":"/mantenedores/comunas"
-                     }
-               ]
-            }
-         ],
+         ],         
          "reportes":[
             {
                "id":"r",
@@ -496,5 +354,79 @@
             }
          ]
       }
-   ]      
+   ],
+   "mantenedores":[
+      {
+         "id":"m",
+         "label":"Mantenedores",
+         "description":"Mantenedores de todos los flujos",
+         "url":"/mantenedores",
+         "children":[
+               {
+                  "id":"mu",
+                  "label":"Usuarios",
+                  "description":"Mantenedor de Usuarios",
+                  "url":"/mantenedores/usuarios"
+               },
+               {
+                  "id":"ml",
+                  "label":"Lista Desplegables",
+                  "description":"Mantenedor de Lista Desplegables",
+                  "url":"/mantenedores/lista-desplegable"
+               },
+               {
+                  "id":"mi",
+                  "label":"Items Lista Desplegables",
+                  "description":"Mantenedor de Items Lista Desplegables",
+                  "url":"/mantenedores/item-lista-desplegable"
+               },
+               {
+                  "id":"mp",
+                  "label":"Proveedores",
+                  "description":"Mantenedor de proveedoress",
+                  "url":"/mantenedores/proveedores"
+               },
+               {
+                  "id":"mc",
+                  "label":"Comunas",
+                  "description":"Mantenedor de comunas",
+                  "url":"/mantenedores/comunas"
+               }
+         ]
+      }
+   ],
+   "mensajes":[
+      {
+         "id":"j",
+         "label":"Mensajes",
+         "description":"Mensajes personales",
+         "url":"/mensajes",
+         "children":[
+               {
+                  "id":"jr",
+                  "label":"Recibidos",
+                  "description":"Mensajes Recibidos",
+                  "url":"/mensajes/recibidos"
+               },
+               {
+                  "id":"je",
+                  "label":"Enviados",
+                  "description":"Mensajes Enviados",
+                  "url":"/mensajes/enviados"
+               },
+               {
+                  "id":"jb",
+                  "label":"Borradores",
+                  "description":"Mensajes Borradores",
+                  "url":"/mensajes/borradores"
+               },
+               {
+                  "id":"jl",
+                  "label":"Eliminados",
+                  "description":"Mensajes Eliminados",
+                  "url":"/mensajes/eliminados"
+               }
+         ]
+      }
+   ]
 }

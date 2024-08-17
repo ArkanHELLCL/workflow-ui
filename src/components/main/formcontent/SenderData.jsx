@@ -5,7 +5,7 @@ export default function SenderData({formulario}) {
     return (
         <div className='flex items-center gap-3 pb-1 pt-1'>
             <div className="relative">
-                <div className='hover:cursor-pointer w-14 h-14 flex items-center p-0 m-0 overflow-hidden' id='imgSender' title="Enviar mensaje">
+                <div className='hover:cursor-pointer w-14 h-14 flex items-center p-0 m-0 overflow-hidden imgSender' title="Enviar mensaje">
                     <img src = {formulario.IdSender_Foto} />                
                 </div>{
                     request?.request?.Bandeja?.slice(0,2) !== 'bn' &&                

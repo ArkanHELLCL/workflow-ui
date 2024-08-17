@@ -8,7 +8,7 @@ import Flujos from "./main/flujos.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx"
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx"
 import Menu from './main//Menu.jsx'
-import { flujos } from "../mocks/treeMenu.json";
+import treeMmenu  from "../mocks/treeMenu.json";
 import Formcomponent from "./main/Formcomponent.jsx";
 import Loading from "../utils/Loading.jsx";
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
@@ -34,7 +34,7 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
         <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[700px] h-full flex z-0' id="Resizable" onDragOver={handleNotDragOver}>
           <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[250px] border-r overflow-auto transition-color delay-75 z-0 flex flex-col columns-1'>              
             <Suspense fallback={<Loading />}>
-              <Menu flujos={flujos} frmRecord={frmRecord} />
+              <Menu menu={treeMmenu} frmRecord={frmRecord} />
             </Suspense>
           </aside>
           <aside className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-[450px] h-full border-r flex flex-col columns-1 z-50 bg-[#ffffff] dark:bg-transparent pr-1'>  
@@ -120,16 +120,20 @@ export default function Main ({handleNotDragOver, frmRequest, openDialog, setOpe
                         </div>
                     </div>
                   ) :
-                    filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' ? 
-                      record ? (
-                        <h2>Reporte</h2>
-                      ) : (
+                    filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' ? (                      
                         <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                             <div className='w-full h-full flex justify-center align-middle items-center'>
                                 <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un requerimiento para ver<br/> los datos del reporte</span>
                             </div>
                         </div>
-                        ) : (
+                        ) : 
+                        filters.itemIdSelected?.charAt(0).toUpperCase() === 'J' ? (                      
+                          <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
+                              <div className='w-full h-full flex justify-center align-middle items-center'>
+                                  <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un mensaje para ver<br/> el contenido y sus acciones</span>
+                              </div>
+                          </div>
+                          ) : (
                           <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                               <div className='w-full h-full flex justify-center align-middle items-center'>
                                   <span className='text-[#2c87d2] text-2xl text-balance text-center'>Menú no especificado</span>

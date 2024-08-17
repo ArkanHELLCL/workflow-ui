@@ -42,12 +42,12 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
 
     const menuAppear = useSpring({        
         to:{
-            transform:'translate(0)',
+            transform:'translateX(0px)',
             opacity:1,
         },
         from:{
             opacity:0,
-            transform:'translate(150px)',
+            transform:'translateX(150px)',
         },
         config: { duration: 150 },
         delay: delay

@@ -71,6 +71,6 @@ header::-webkit-scrollbar, #buttonsRequest::-webkit-scrollbar, #buttonsRecord::-
   display: none;
 }
 
-#imgSender{
+.imgSender{
   clip-path: circle(50%);
 }

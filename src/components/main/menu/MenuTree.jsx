@@ -30,7 +30,8 @@ export function MenuTree({ menu, frmRecord }) {
             filterSearch: itemId === 'b' ? filters.filterSearch = 2 : filters.filterSearch = 1,
             stringSearch:'',
             filterSearchResult:false,
-            flujo : itemId.slice(0,2)==='bn' ? 0 : filters.flujo
+            //flujo : itemId.slice(0,2)==='bn' ? 0 : filters.flujo
+            flujo : itemId.slice(0,1) === 'b' && itemId.slice(0,2)!=='bn' ? filters.flujo : 0
         }))    
         setRequest(null)
         setRecord(null)

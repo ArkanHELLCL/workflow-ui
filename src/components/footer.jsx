@@ -60,10 +60,19 @@ export default function Footer() {
     let tipoABuscar = ''    
     
     filters.itemIdSelected.charAt(0) === "b" ? tipoABuscar = "bandejas" :
+    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : 
     filters.itemIdSelected.charAt(0) === "m" ? tipoABuscar = "mantenedores" :
-    filters.itemIdSelected.charAt(0) === "r" ? tipoABuscar = "reportes" : tipoABuscar = "bandejas" 
-        
-    const obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
+    filters.itemIdSelected.charAt(0) === "j" ? tipoABuscar = "mensajes" : tipoABuscar = "bandejas" 
+    
+    let obj
+
+
+    if(tipoABuscar === "bandejas" || tipoABuscar === "reportes"){
+        obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
+    }else{
+        obj = menu[tipoABuscar][0]
+    }
+
     const descripcion = EncontrarDescripcionPorId(filters.itemIdSelected, obj).description;
 
     const handleNotDragOver = (event) => {
@@ -117,13 +126,13 @@ export default function Footer() {
                         </div> 
                     </>
                     : 
-                        filters.itemIdSelected === 'm' ? (
+                        filters.itemIdSelected === 'm' || filters.itemIdSelected === 'j' ? (
                             <div>
                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
+                                <span className="text-green-500">{obj.children.length}</span>                
                             </div>
                         ) : 
-                            filters.itemIdSelected.charAt(0) === "m" ? (                            
+                            filters.itemIdSelected.charAt(0) === "m" || filters.itemIdSelected.charAt(0) === "j" ? (                            
                             <>
                                 <div className="dark:text-green-300 text-green-400 flex z-20">
                                     <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
@@ -153,7 +162,7 @@ export default function Footer() {
                         ) : (
                             <div>
                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                <span className="text-green-500">{filters.itemIdSelected === "m" || filters.itemIdSelected === "r" ? obj.children.length :obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
+                                <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
                             </div>
                         )
                     

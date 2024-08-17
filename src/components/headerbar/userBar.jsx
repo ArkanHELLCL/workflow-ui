@@ -14,7 +14,7 @@ export default function UserBar({open, setOpen}) {
     const ButtonUsrProfile = () => {
         return (
             <>
-                <span><img src={user.USR_Photo} className={`rounded-full w-[25px] h-[25px] hover:cursor-pointer`}/></span>
+                <span className={`w-[25px] h-[25px] hover:cursor-pointer imgSender overflow-hidden flex items-center p-0 mx-0 my-1 `}><img src={user.USR_Photo}/></span>
                 <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-red-600 bg-red-500 rounded-full top-0 right-0"></span>
             </>
         )
@@ -23,8 +23,8 @@ export default function UserBar({open, setOpen}) {
     const UserDetail = () => {
         return (
             <div className="flex justify-center items-center gap-5 h-fit p-4">
-                    <div className={`rounded-full w-[100px] h-[100px]`}>
-                        <img src={user.USR_Photo} className={`rounded-full h-full w-full`} />
+                    <div className={`w-[100px] h-[100px] imgSender overflow-hidden flex items-center p-0 m-0 `}>
+                        <img src={user.USR_Photo} className='w-28 h-auto'/>
                     </div>
                     <div className="flex flex-col h-fit max-w-[260px]">
                         <span className="text-xl font-semibold truncate dark:!text-white !text-[#262626]">{user.USR_Nombre}</span>
@@ -65,7 +65,7 @@ export default function UserBar({open, setOpen}) {
                     endAction={
                         <DarkModeToggle />
                     }>
-                    Ver mis mensajes privados
+                    Ver mensajes
                 </ListItem>
             </Menu>
         </Dropdown>        
