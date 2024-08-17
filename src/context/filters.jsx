@@ -10,6 +10,8 @@ export function FiltersProvider({ children }) {
         filter: 1,        
         itemIdSelected: 'be',
         totalRequerimientos: 0,
+        totalMensajes: 0,
+        totalReportes: 0,
         totalSintomar: 0,
         totalVencidos: 0,
         totalPorVencer: 0,        

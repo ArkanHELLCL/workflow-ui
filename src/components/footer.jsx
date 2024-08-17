@@ -132,7 +132,7 @@ export default function Footer() {
                                 <span className="text-green-500">{obj.children.length}</span>                
                             </div>
                         ) : 
-                            filters.itemIdSelected.charAt(0) === "m" || filters.itemIdSelected.charAt(0) === "j" ? (                            
+                            filters.itemIdSelected.charAt(0) === "m" ? (                            
                             <>
                                 <div className="dark:text-green-300 text-green-400 flex z-20">
                                     <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
@@ -141,7 +141,7 @@ export default function Footer() {
                                     <animated.div style={regHabilitados} className='overflow-hidden pt-[1px]'>
                                         <span className="z-10 truncate pt-1">Total de registros habilitados:</span> 
                                     </animated.div>                           
-                                    <span className="pt-[1px]">{filters.totalPorVencer}</span>  
+                                    <span className="pt-[1px]">{filters.totalPorVencer}</span>
                                 </div>
 
                                 <div className="text-red-500 flex z-20">
@@ -162,7 +162,7 @@ export default function Footer() {
                         ) : (
                             <div>
                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || 0}</span>                
+                                <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || filters.itemIdSelected.charAt(0) === "j" ? filters.totalMensajes : 0}</span>                
                             </div>
                         )
                     
