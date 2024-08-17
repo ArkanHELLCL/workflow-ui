@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu.jsx"
-import { useRequest } from "../../hooks/useRequest.jsx";
+import { usePreview } from "../../hooks/usePreview.jsx";
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { 
@@ -50,9 +50,10 @@ function AnimatedSaveMenu({styles}) {
 }
 
 export default function GuardarMenu ({styles}) {
-    const { request } = useRequest()    
+    const { preview } = usePreview()    
+
     return (
-        request?.selected && 
+        preview?.selected && 
             <AnimatedSaveMenu styles={styles}/>
     )    
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
-import { useRequest } from "../../hooks/useRequest.jsx";
+import { usePreview } from "../../hooks/usePreview.jsx";
 import { useSpring, animated } from "@react-spring/web";
 import ContentMenu from "./contentMenu"
 import {     
@@ -58,10 +58,10 @@ const AnimateMenuActions = ({styles}) => {
 }
 
 export default function Acciones ({styles}) {
-    const { request } = useRequest()    
+    const { preview } = usePreview()    
 
     return (        
-        request?.selected && 
+        preview?.selected && 
             <AnimateMenuActions styles={styles}/>
     )    
 }

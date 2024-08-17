@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useRequest } from '../../../hooks/useRequest.jsx';
+import { usePreview } from '../../../hooks/usePreview.jsx';
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 export default function DocPreview() {
-    const { request } = useRequest()
-    console.log('request', request?.selected)
+    const { preview } = usePreview()
     const handleNotDragOver = (event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
@@ -26,7 +25,7 @@ export default function DocPreview() {
       //{ uri: 'http://localhost:5173/download/prueba.docx'},
       //{ uri: './download/especificacion_tecnica.docx'}
       //{ uri: 'http://localhost:5173/download/prueba.pptx', fileType: "pptx"}
-      {uri: request?.selected?.url + request?.selected?.nombre, fileType: request?.selected.extension}
+      {uri: preview?.selected?.url + preview?.selected?.nombre, fileType: preview?.selected.extension}
     ];
   return (
     <div className='h-full pt-[10px] w-full relative overflow-hidden flex flex-col z-10 pr-2 text-black' onDragOver={handleNotDragOver}>

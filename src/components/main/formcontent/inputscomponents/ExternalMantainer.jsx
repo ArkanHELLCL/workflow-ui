@@ -1,10 +1,16 @@
 /* eslint-disable react/prop-types */
+import { usePreview } from '../../../../hooks/usePreview.jsx'
 import IconButton from '@mui/material/IconButton';
 import { ExternalMantainerIcon } from '../../../../utils/icons.jsx'
 
-export default function ExternalMantainer({titleMessage, tipo, maintainer, setMaintainer}){
+export default function ExternalMantainer({titleMessage, tipo}){
+    const { setPreview } = usePreview()
     const handleOnClikc = () =>{
-        setMaintainer({state:true, obj:tipo})
+        setPreview({
+            state:true, 
+            obj:tipo,
+            selected: null
+        })
     }    
 
     return (

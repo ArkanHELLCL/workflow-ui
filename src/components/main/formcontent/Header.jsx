@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { usePreview } from '../../../hooks/usePreview.jsx';
 import DataRequest from './Datarequest.jsx';
 import SenderData from './SenderData.jsx';
 import Buttons from "./ButtonsAction.jsx";
@@ -13,15 +14,19 @@ const handleNotDragOver = (event) => {
     event.dataTransfer.dropEffect = "none";
     return false;
 }
-export default function Header({preview, maintainer, setMaintainer, setPreview, formulario, setOpenDialog}) {
+export default function Header({formulario, setOpenDialog}) {
+    const { preview, setPreview } = usePreview();
     const handleOnClick = () => {
-        setPreview(false);
-        setMaintainer({state:false});
+        setPreview({
+            state:false,
+            obj:null,
+            selected:preview.selected
+        })        
     }
     
     return (
         <div id="headerForm" className='w-full h-auto min-h-10 relative z-20 overflow-hidden' onDragOver={handleNotDragOver}>{
-            !preview && !maintainer.state &&(
+            !preview.state && !preview.obj &&(
                 <>
                     <div className='flex justify-between relative w-full'>                        
                         <DataRequest />                                                
@@ -34,19 +39,12 @@ export default function Header({preview, maintainer, setMaintainer, setPreview, 
                 </>
             )
         }{
-            preview && 
+            preview.state && 
                 <Dropdown>
                     <MenuButton startDecorator={<TrendingFlatIcon className="rotate-180" />} className="hover:dark:!bg-[#505050] hover:!bg-[#e6f2fa] !border-0 dark:!text-stone-100 !text-stone-500 !text-xs !font-base !py-1 !rounded-none !ps-1 !pe-1" onClick={handleOnClick}>
                     Volver al formulario
                     </MenuButton>
                 </Dropdown>
-        }{
-            maintainer.state && 
-            <Dropdown>
-                <MenuButton startDecorator={<TrendingFlatIcon className="rotate-180" />} className="hover:dark:!bg-[#505050] hover:!bg-[#e6f2fa] !border-0 dark:!text-stone-100 !text-stone-500 !text-xs !font-base !py-1 !rounded-none !ps-1 !pe-1" onClick={handleOnClick}>
-                Volver al formulario
-                </MenuButton>
-            </Dropdown>
         }
         </div>
     )
