@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 //import { useMemo, useCallback } from "react";
 import { useRequest } from "../../../hooks/useRequest.jsx";
+import { useAttach } from "../../../hooks/useAttach.jsx";
+import { usePreview } from "../../../hooks/usePreview.jsx";
 import { ArchiveIcon, UnArchiveIcon, EditIcon, UserIcon, CloseRequest } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
@@ -10,6 +12,8 @@ import { user } from '../../../mocks/usuario.json'
 export const RequerimientoItem = ({ req, showDia, showYear }) => {    
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
+    const { setAdjuntos } = useAttach()
+    const { setPreview } = usePreview()
     const { filters } = useFilters()
     const regId = req.Bandeja + '-' + req.VRE_Id        
 
@@ -50,11 +54,14 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
       elToRemove?.classList.remove('reqselected')
       const elToAdd = document.getElementById(id)
       elToAdd.classList.add('reqselected')
-      //console.log(req)
-      setRequest({
-        "request": req,
-        "adjuntos": null,
-        "selected": null
++      setRequest({
+        request: req
+      })
+      setAdjuntos(null)
+      setPreview({
+        status: false,
+        selected: null,
+        obj: null
       })
     }
   

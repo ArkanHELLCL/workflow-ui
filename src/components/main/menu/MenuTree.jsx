@@ -4,6 +4,7 @@ import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useFilters } from "../../../hooks/useFilters.jsx";
 import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useRecords } from '../../../hooks/useRecords.jsx';
+import { usePreview } from "../../../hooks/usePreview.jsx";
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
@@ -21,6 +22,7 @@ export function MenuTree({ menu, frmRecord }) {
     const { filters, setFilters } = useFilters()
     const { setRecord } = useRecords()
     const { setRequest } = useRequest()    
+    const { setPreview } = usePreview()
 
     //const handleItemExpansionToggle = (event, itemId, isExpanded) => {
     const handleItemExpansionToggle = (event, itemId) => {
@@ -35,6 +37,11 @@ export function MenuTree({ menu, frmRecord }) {
         }))    
         setRequest(null)
         setRecord(null)
+        setPreview({
+            statur: false,
+            slected: null,
+            obj: null
+        })
         frmRecord?.unregister()        
     };
     return (        

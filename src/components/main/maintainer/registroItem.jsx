@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useRecords } from "../../../hooks/useRecords.jsx";
+import { useRequest } from '../../../hooks/useRequest.jsx';
+import { usePreview } from "../../../hooks/usePreview.jsx";
 import { BlockIcon, CheckIcon, DelIcon, EditIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
@@ -13,7 +15,9 @@ const diaName = (fecha) => {
 }
 
 export default function RegistroItem ({registro, frmRecord, ...props}){
-    const { record, setRecord } = useRecords()    
+    const { record, setRecord } = useRecords()
+    const { setRequest } = useRequest()
+    const { setPreview } = usePreview()
     const { filters } = useFilters()
     const regId = filters.itemIdSelected + '-' + registro.Id
 
@@ -29,7 +33,13 @@ export default function RegistroItem ({registro, frmRecord, ...props}){
         const elToAdd = document.getElementById(id)
         elToAdd.classList.add('reqselected')
         setRecord({            
-            "record": registro,
+            record: registro,
+        })
+        setRequest(null)
+        setPreview({
+            statur: false,
+            slected: null,
+            obj: null
         })
         frmRecord.reset()
         frmRecord.clearErrors()
