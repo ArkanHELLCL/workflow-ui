@@ -27,7 +27,7 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
     if(id === 1)
       option = true
     if(id === 2)
-      enqueueSnackbar('Operacion cancelada!', { variant : "warning" }) 
+      enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} }) 
 
     setOpenDialog({
       ...openDialog,

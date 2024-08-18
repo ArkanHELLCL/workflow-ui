@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { usePreview } from '../../hooks/usePreview.jsx';
 import { useAttach } from '../../hooks/useAttach.jsx';
+import { useActiveform } from '../../hooks/useActiveform.jsx';
 import {    NoData, 
             Header,
             Files,
@@ -18,11 +19,15 @@ import MPMant from './maintainer/proveedorMant.jsx'
 
 export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpenDialog}){    
     const { request } = useRequest()
-    const { preview } = usePreview()
+    const { preview, setPreview } = usePreview()
     const { setAdjuntos } = useAttach()
+    const { setActiveform } = useActiveform()
+
     const [dropEnter, setDropEnter] = useState(false);
     const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()
+    const { enqueueSnackbar } = useSnackbar();
+    const formRef = useRef(null) 
 
     useEffect(() => {        
         let frm
@@ -34,28 +39,42 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []
         frmRequest.clearErrors()
         setAdjuntos(adjuntos)
-        setForm(frm[0])        
+        setForm(frm[0])
+
+        setActiveform({
+            context:1,
+            name:frm[0]?.name,
+            refform:formRef,
+            action:null,
+            buttonpress:null,
+            errorMessage:null,
+            successMessage:null,
+            cancelMessage:null
+        })
     },[formulario, request])
 
-    const onSubmit = (data) => {        
+    const onSubmitRequest = (data) => {
         console.log('formcomponent',data);
-        //frmRequest.clearErrors()
-        //frmRequest.reset()
+        frmRequest.clearErrors()
+        frmRequest.reset()
         setAdjuntos(form.REQ_Adjuntos)
         setFilesList([])
+        setPreview({
+            state:false,
+            obj:null,
+            selected:null
+        }) 
     };
 
-    useEffect(() => {        
-        if(openDialog?.option){
-            formRef.current.requestSubmit()
+    useEffect(() => {    
+        if(openDialog?.option && openDialog?.type === 'submit' && openDialog.frmname === form?.name){
+            formRef.current.requestSubmit()            
             enqueueSnackbar('Operación realizada correctamente!', { variant : "success" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
         }
-        setOpenDialog({...openDialog, option:false})                    
+        setOpenDialog({...openDialog, option:false})
     }
     ,[openDialog?.option])    
-
-    const { enqueueSnackbar } = useSnackbar();
-    const formRef = useRef(null)    
+       
     return(
         <>
             {
@@ -63,7 +82,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
                 <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>                    
                     <form id={form.name} noValidate ref={formRef}
                         className="h-full w-full flex flex-col columns-1"
-                        onSubmit={frmRequest.handleSubmit(onSubmit)}   
+                        onSubmit={frmRequest.handleSubmit(onSubmitRequest)}   
                         >
                             <Header formulario={form} setOpenDialog={setOpenDialog} />                
                             <Files setFilesList={setFilesList} filesList={filesList}/>{
@@ -77,7 +96,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
                                     preview.state && preview.obj === 'X1' &&
                                         <>
                                             <h2 className="font-thin text-xl">Mantenedor de proveeodres</h2>
-                                            <MPMant frmRecord={frmRecord}/>
+                                            <MPMant frmRecord={frmRecord} singleButton={true} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                                         </>                                        
                                 }
                     </form>

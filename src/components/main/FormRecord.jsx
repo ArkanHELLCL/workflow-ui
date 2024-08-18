@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useFilters } from '../../hooks/useFilters.jsx';
 import { useRecords } from '../../hooks/useRecords.jsx';
+import { usePreview } from '../../hooks/usePreview.jsx';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { useSnackbar } from 'notistack';
 import { useEffect, useRef, useState } from 'react';
@@ -30,17 +31,24 @@ function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, f
 
 export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
     const { record, setRecord } = useRecords()
+    const { setPreview } = usePreview()
     const { filters } = useFilters()
     const [filesList, setFilesList] = useState([]);
 
-    const onSubmit = (data) => {        
+    const onSubmitRecords = (data) => {        
         console.log('recordcomponent',data, record);
         frmRecord.clearErrors()
+        frmRecord.reset()
         setFilesList([])
+        setPreview({
+            state:false,
+            obj:null,
+            selected:null
+        })
     };
 
     useEffect(() => {        
-        if(openDialog?.option && openDialog?.action === 'submit'){
+        if(openDialog?.option && openDialog?.action === 'submit' && openDialog.frmname === 'frmWFRecords'){
             formRef.current.requestSubmit()
             //enviar al endpoint datos del formulario
             enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
@@ -78,7 +86,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
                 <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
                     <form id="frmWFRecords" noValidate ref={formRef}
                         className="h-full w-full flex flex-col columns-1"
-                        onSubmit={frmRecord.handleSubmit(onSubmit)}>
+                        onSubmit={frmRecord.handleSubmit(onSubmitRecords)}>
                             <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
                     </form>
                 </section>

@@ -8,12 +8,13 @@ import InputRut from './inputscomponents/inputRut.jsx';
 import InputEmail from './inputscomponents/inputEmail.jsx';
 import InputPhone from './inputscomponents/inputPhone.jsx';
 import InputButtons from './inputscomponents/inputButtons.jsx';
+import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { user } from '../../../mocks/usuario.json';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
-export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, record }) {
+export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, record, singleButton }) {
     const [field, setField] = useState(null)
     
     const date = new Date()
@@ -57,8 +58,12 @@ export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, reco
             <section id="InputsContent" className="py-3 w-full flex flex-col h-full">
                 <h2 className='font-base text-lg -mb-1'>Datos del Proveedor <span className='text-[#2c87d2]'>Id: {field.PRO_Id}</span></h2>
                 <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.PRO_UsuarioEdit}</span></h2>
-                <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>
-                <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
+                <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>{
+                    singleButton ?
+                        <InputSaveButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+                    :   
+                        <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
+                }
                 <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                     <div className='grid grid-cols-12 gap-2 pb-3'>
                         <InputText frmRecord={frmRecord} name='PRO_RazonSocial' className='col-span-9' isRequired={true} placeholder='Empresa de aseo y limpieza' label='Razón Social' errorMessage='Debes ingresar una razón social'/>
