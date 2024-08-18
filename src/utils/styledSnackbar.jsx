@@ -4,7 +4,7 @@ import { useFilters } from '../hooks/useFilters.jsx';
 
 const StyledMaterialDesignContent = styled(MaterialDesignContent)(() => {
     const { filters } = useFilters();
-    const bgDark = filters?.darkMode ? '#444444' : 'white';
+    const bgDark = filters?.darkMode ? '#262626' : '#ffffff';
 
     return ({
     '&.notistack-MuiContent-success': {      

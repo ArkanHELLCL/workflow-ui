@@ -51,11 +51,11 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
         if(openDialog?.option && openDialog?.action === 'submit' && openDialog.frmname === 'frmWFRecords'){
             formRef.current.requestSubmit()
             //enviar al endpoint datos del formulario
-            enqueueSnackbar('Operación realizada correctamente!', { variant : "success" } )
+            enqueueSnackbar('Operación realizada correctamente!', { variant : "success" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
         }else{
             if(openDialog?.option && openDialog?.action === 'delete'){
                 //Ejecutar eliminación
-                enqueueSnackbar('Eliminación realizada correctamente!', { variant : "success" } )
+                enqueueSnackbar('Eliminación realizada correctamente!', { variant : "success" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
             }else{
                 if(openDialog?.option && openDialog?.action === 'new'){
                     //Limpiar formulario

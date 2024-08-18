@@ -34,7 +34,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp, openDialog, setOpenDialog}) 
                 })
             }
         }else{
-            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
+            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
         }
     }
 

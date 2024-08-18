@@ -32,7 +32,7 @@ export default function RegistroMenu ({styles, openDialog, setOpenDialog, frmRec
                 type:'button'
             })            
         }else{
-            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" })
+            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
         }
     }
 
