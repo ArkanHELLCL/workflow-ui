@@ -96,6 +96,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
                                     preview.state && preview.obj === 'X1' &&
                                         <>
                                             <h2 className="font-thin text-xl">Mantenedor de proveeodres</h2>
+                                            <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario</h2>                                            
                                             <MPMant frmRecord={frmRecord} singleButton={true} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                                         </>                                        
                                 }
