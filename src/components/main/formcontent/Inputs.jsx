@@ -2,11 +2,6 @@
 import InputsType from './InputsType.jsx'
 
 const colwidth = (campo) => {
-   /* let columSize;
-    if(parseInt(campo.FDI_TamanoDiseno)>=6){
-        columSize = 'sm:col-span-'+campo.FDI_TamanoDiseno+' md:col-span-'+campo.FDI_TamanoDiseno+' lg:col-span-'+campo.FDI_TamanoDiseno+' xl:col-span-'+campo.FDI_TamanoDiseno
-        return columSize
-    }*/
     return 'col-span-' + campo.FDI_TamanoDiseno
 }
 
