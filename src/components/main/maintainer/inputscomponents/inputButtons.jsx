@@ -99,13 +99,13 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog, isAl
     const { enqueueSnackbar } = useSnackbar();
     return(
         <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6 max-w-[60%] overflow-x-auto'> 
-            <div className='flex items-center gap-3 pb-2' id="grpReq">
+            <div className='flex items-center gap-3 pb-2 pt-1 pr-[1px] pl-1' id="grpReq">
                 <animated.div key='grpReq-3' className='flex' style={buttonsAnimation3} id='grpReq-3'>
                 {
                     <>
                         <button 
                             key='btn_crear'
-                            className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                            className='h-9 w-auto dark:bg-[#444444] bg-white flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20 outline outline-1 outline-[#b8b5b2] dark:outline-[#575757] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1]' 
                             title='Crear nuevo registro'
                             type='button'
                             onClick={() => hanldeNewClick(event)}>

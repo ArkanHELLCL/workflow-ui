@@ -40,11 +40,11 @@ export default function InputButtons({frmRecord, openDialog, setOpenDialog}) {
     const { enqueueSnackbar } = useSnackbar();
     return(
         <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6 max-w-[70%] overflow-x-auto'> 
-            <div className='flex items-center gap-3 pb-2' id="grpSaveReq">                
+            <div className='flex items-center gap-3 pb-2 pt-1 pr-[1px] pl-1' id="grpSaveReq">                
                 <animated.div key='grpSaveReq' className='flex' style={buttonsAnimation1} id='grpSaveReq'>
                     <button 
                         key='btn_modificar'
-                        className='h-9 w-auto dark:bg-[#444444] border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
+                        className='h-9 w-auto dark:bg-[#444444] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20 outline outline-1 outline-[#b8b5b2] dark:outline-[#575757] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1]' 
                         title='Guardar modificaciones realizadas'
                         onClick={() => hanldeOnClick(event)}>
                             <ButtonIcon typeButton="btn_modificar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>

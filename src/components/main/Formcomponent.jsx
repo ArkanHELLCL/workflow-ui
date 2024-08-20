@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { usePreview } from '../../hooks/usePreview.jsx';
 import { useAttach } from '../../hooks/useAttach.jsx';
-import { useActiveform } from '../../hooks/useActiveform.jsx';
 import {    NoData, 
             Header,
             Files,
@@ -20,9 +19,7 @@ import MPMant from './maintainer/proveedorMant.jsx'
 export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpenDialog}){    
     const { request } = useRequest()
     const { preview, setPreview } = usePreview()
-    const { setAdjuntos } = useAttach()
-    const { setActiveform } = useActiveform()
-
+    const { setAdjuntos } = useAttach()    
     const [dropEnter, setDropEnter] = useState(false);
     const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()
@@ -40,17 +37,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         frmRequest.clearErrors()
         setAdjuntos(adjuntos)
         setForm(frm[0])
-
-        setActiveform({
-            context:1,
-            name:frm[0]?.name,
-            refform:formRef,
-            action:null,
-            buttonpress:null,
-            errorMessage:null,
-            successMessage:null,
-            cancelMessage:null
-        })
+        
     },[formulario, request])
 
     const onSubmitRequest = (data) => {
@@ -73,8 +60,8 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         }
         setOpenDialog({...openDialog, option:false})
     }
-    ,[openDialog?.option])    
-       
+    ,[openDialog?.option])
+    
     return(
         <>
             {
@@ -89,20 +76,19 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
                                 !preview.state && !preview.obj &&
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 }{
-                                    //preview && request?.selected!==null &&
                                     preview.state && preview?.selected!==null &&
                                         <Preview />
                                 }{
                                     preview.state && preview.obj === 'X1' &&
-                                        <>
+                                        <>                                            
                                             <h2 className="font-thin text-xl">Mantenedor de proveeodres</h2>
-                                            <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario</h2>                                            
+                                            <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario</h2>
                                             <MPMant frmRecord={frmRecord} singleButton={true} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                                         </>                                        
                                 }
                     </form>
                 </section>
-            }{  !form && //request?.request?.VFO_Id !== form?.VFO_Id &&
+            }{  !form &&
                     <NoData />
             }{
                 openDialog?.open &&
