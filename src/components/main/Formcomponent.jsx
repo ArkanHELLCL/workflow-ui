@@ -42,6 +42,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
 
     const onSubmitRequest = (data) => {
         console.log('formcomponent',data);
+        enqueueSnackbar('Los datos han sifo grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
         frmRequest.clearErrors()
         frmRequest.reset()
         setAdjuntos(form.REQ_Adjuntos)
@@ -53,15 +54,25 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         }) 
     };
 
-    useEffect(() => {    
+    /*useEffect(() => {    
         if(openDialog?.option && openDialog?.type === 'submit' && openDialog.frmname === form?.name){
             formRef.current.requestSubmit()            
             enqueueSnackbar('Operación realizada correctamente!', { variant : "success" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
         }
         setOpenDialog({...openDialog, option:false})
     }
-    ,[openDialog?.option])
+    ,[openDialog?.option])*/
+
+    //console.log('formcomponent',frmRecord.formState.isSubmitting, frmRecord.formState.isSubmitted, frmRecord.formState.isValid, frmRecord.formState.submitCount, frmRecord.formState.isValidating)
+
+    //detectandoo error al submitir el formulario
     
+    //frmRequest.formState.isValid && frmRequest.formState.isSubmitted ? 
+    //null :
+    !frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitting ?  
+        enqueueSnackbar('Debes corregir los errores antes de grabar! ' + frmRequest.formState.submitCount, { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} }) 
+        : null 
+
     return(
         <>
             {
