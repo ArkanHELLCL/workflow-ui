@@ -42,9 +42,10 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
 
     const onSubmitRequest = (data) => {
         console.log('formcomponent',data);
-        enqueueSnackbar('Los datos han sifo grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+        enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
         frmRequest.clearErrors()
         frmRequest.reset()
+        console.log(frmRequest.formState.isSubmitted)
         setAdjuntos(form.REQ_Adjuntos)
         setFilesList([])
         setPreview({
@@ -69,7 +70,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
     
     //frmRequest.formState.isValid && frmRequest.formState.isSubmitted ? 
     //null :
-    !frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitting ?  
+    !frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitted ?  
         enqueueSnackbar('Debes corregir los errores antes de grabar! ' + frmRequest.formState.submitCount, { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} }) 
         : null 
 
