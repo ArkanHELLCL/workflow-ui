@@ -27,16 +27,7 @@ export default function InputButtons() {
     return(
         <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6 max-w-[70%] overflow-x-auto'> 
             <div className='flex items-center gap-3 pb-2 pt-1 pr-[1px] pl-1' id="grpSaveReq">                
-                <Slide in={true} direction='left' timeout={500} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                    node.addEventListener(
-                        'transitionend',
-                        (e) => {
-                            //console.log('Actually done');
-                            done(e);
-                        },
-                        false
-                    )
-                }>
+                <Slide in={true} direction='left' timeout={500} mountOnEnter unmountOnExit >
                     <div className='flex'>
                         <button 
                             key='btn_modificar'
@@ -53,3 +44,16 @@ export default function InputButtons() {
         
     )
 }
+
+/*
+addEndListener={(node, done) =>
+                    node.addEventListener(
+                        'transitionend',
+                        (e) => {
+                            //console.log('Actually done');
+                            done(e);
+                        },
+                        false
+                    )
+                }
+*/

@@ -28,16 +28,7 @@ export default function Adjuntar ({styles, delay}){
     }*/
     return (
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' &&
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-            node.addEventListener(
-              'transitionend',
-              (e) => {
-                //console.log('Actually done');
-                done(e);
-              },
-              false
-            )
-          }>
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Adjuntar'} styles={styles}>
                     <Dropdown>

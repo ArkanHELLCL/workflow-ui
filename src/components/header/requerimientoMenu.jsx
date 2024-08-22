@@ -23,16 +23,7 @@ export default function RequerimientoMenu ({styles, delay}){
     
     return (
         request &&                    
-                <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                    node.addEventListener(
-                      'transitionend',
-                      (e) => {
-                        //console.log('Actually done');
-                        done(e);
-                      },
-                      false
-                    )
-                  }>
+                <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
                 <div className={styles + ' relative flex-col h-full'}> 
                     <ContentMenu title={'Requerimiento'} styles={styles}>{
                         gen &&

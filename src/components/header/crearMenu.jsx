@@ -17,16 +17,7 @@ export default function CrearMenu ({styles, delay}){
     }
 
     return (  
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-            node.addEventListener(
-              'transitionend',
-              (e) => {
-                //console.log('Actually done');
-                done(e);
-              },
-              false
-            )
-          }>   
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >   
             <div className="h-full relative">
                 <ContentMenu title={'Crear'} styles={styles} className="flex-col h-full">
                     <Dropdown>

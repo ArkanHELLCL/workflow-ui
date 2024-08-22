@@ -11,16 +11,7 @@ export default function GuardarMenu ({styles, delay}) {
 
     return (
         preview?.selected && 
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-            node.addEventListener(
-              'transitionend',
-              (e) => {
-                //console.log('Actually done');
-                done(e);
-              },
-              false
-            )
-          }>
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
             <div className={styles + 'flex-col h-full relative'}>
                 <ContentMenu title={'Guardar en el equipo'}>
                     <Dropdown>

@@ -35,16 +35,7 @@ export default function InputButtons({isAllowed}) {
     return(
         <div id="buttonsRecord" className='grid text-right leading-tight absolute right-2 top-6 max-w-[60%] overflow-x-auto'> 
             <div className='flex items-center gap-3 pb-2 pt-1 pr-[1px] pl-1' id="grpReq">
-                <Slide in={true} direction='left' timeout={500} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                    node.addEventListener(
-                        'transitionend',
-                        (e) => {
-                            //console.log('Actually done');
-                            done(e);
-                        },
-                        false
-                    )
-                }>
+                <Slide in={true} direction='left' timeout={500} mountOnEnter unmountOnExit >
                     <div className='flex'>
                     {
                         <>
@@ -61,16 +52,7 @@ export default function InputButtons({isAllowed}) {
                     }
                     </div>
                 </Slide>
-                <Slide in={true} direction='left' timeout={600} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                    node.addEventListener(
-                        'transitionend',
-                        (e) => {
-                            //console.log('Actually done');
-                            done(e);
-                        },
-                        false
-                    )
-                }>
+                <Slide in={true} direction='left' timeout={600} mountOnEnter unmountOnExit >
                     <div className='flex'>
                     {
                         <>
@@ -117,16 +99,7 @@ export default function InputButtons({isAllowed}) {
                     }
                     </div>
                 </Slide>
-                <Slide in={true} direction='left' timeout={700} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                    node.addEventListener(
-                        'transitionend',
-                        (e) => {
-                            //console.log('Actually done');
-                            done(e);
-                        },
-                        false
-                    )
-                }>
+                <Slide in={true} direction='left' timeout={700} mountOnEnter unmountOnExit >
                     <div className='flex'>
                     {
                         <>

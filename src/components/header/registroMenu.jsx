@@ -35,16 +35,7 @@ export default function RegistroMenu ({styles, delay}) {
     //const { enqueueSnackbar } = useSnackbar();
     return (
         <>
-            <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                node.addEventListener(
-                'transitionend',
-                (e) => {
-                    //console.log('Actually done');
-                    done(e);
-                },
-                false
-                )
-            }>
+            <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
                 <div className={styles + ' flex-col h-full relative'}>
                     <ContentMenu title={'Registro'}>                
                         <Dropdown>
@@ -90,16 +81,7 @@ export default function RegistroMenu ({styles, delay}) {
                     </ContentMenu>
                 </div>
             </Slide>
-            <Slide in={true} direction='left' timeout={delay + 100} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                node.addEventListener(
-                'transitionend',
-                (e) => {
-                    //console.log('Actually done');
-                    done(e);
-                },
-                false
-                )
-            }>
+            <Slide in={true} direction='left' timeout={delay + 100} mountOnEnter unmountOnExit >
                 <div className={styles + ' flex-col h-full relative'}>
                     <ContentMenu title={'Revisar'}>
                         <Dropdown>

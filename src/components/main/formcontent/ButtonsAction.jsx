@@ -11,16 +11,7 @@ export default function Buttons({formulario}){
             {
                 grupos?.map(grp => {
                     return (
-                        <Slide key={grp[0].id} in={true} direction='left' timeout={500} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-                            node.addEventListener(
-                              'transitionend',
-                              (e) => {
-                                //console.log('Actually done');
-                                done(e);
-                              },
-                              false
-                            )
-                          }>
+                        <Slide key={grp[0].id} in={true} direction='left' timeout={500} mountOnEnter unmountOnExit >
                             <div className='flex'>
                             {
                                 grp[0].botones.map(btns =>

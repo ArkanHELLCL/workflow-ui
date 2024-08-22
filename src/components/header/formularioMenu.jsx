@@ -9,16 +9,7 @@ import { ButtonIcon } from "../../utils/icons.jsx";
 
 const BtsFormulario = ({styles, keygrp, delay, grp}) => {        
     return (
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-            node.addEventListener(
-              'transitionend',
-              (e) => {
-                //console.log('Actually done');
-                done(e);
-              },
-              false
-            )
-          }>
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
             <div className={styles + ' flex-col h-full relative'} id={keygrp}>
                 <ContentMenu title={grp[0].descripcion}>{
                     grp[0].botones.map(btns =>

@@ -9,16 +9,7 @@ import { useRequest } from '../../hooks/useRequest';
 export default function BandejaMenu ({styles, delay}){
     const { request } = useRequest();
     return (
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-            node.addEventListener(
-              'transitionend',
-              (e) => {
-                //console.log('Actually done');
-                done(e);
-              },
-              false
-            )
-          }>
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Bandeja'} styles={styles} className="flex-col h-full">
                     <Dropdown>

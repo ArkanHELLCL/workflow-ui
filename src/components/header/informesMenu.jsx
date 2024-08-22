@@ -10,16 +10,7 @@ import {
 
 export default function Informes ({styles, delay}) {
     return (
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
-            node.addEventListener(
-              'transitionend',
-              (e) => {
-                //console.log('Actually done');
-                done(e);
-              },
-              false
-            )
-          }>
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Informe del sistema'}>
                     <Dropdown>
