@@ -14,7 +14,7 @@ const handleNotDragOver = (event) => {
     event.dataTransfer.dropEffect = "none";
     return false;
 }
-export default function Header({formulario, setOpenDialog}) {
+export default function Header({formulario}) {
     const { preview, setPreview } = usePreview();
     const handleOnClick = () => {
         setPreview({
@@ -30,7 +30,7 @@ export default function Header({formulario, setOpenDialog}) {
                 <>
                     <div className='flex justify-between relative w-full'>                        
                         <DataRequest />                                                
-                        <Buttons formulario={formulario} setOpenDialog={setOpenDialog}/>                                                 
+                        <Buttons formulario={formulario}/>                                                 
                     </div>
                     <div className='flex justify-between relative'>
                         <UpdateDate />

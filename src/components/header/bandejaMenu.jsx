@@ -2,17 +2,14 @@
 import Dropdown from '@mui/joy/Dropdown';
 import Slide from '@mui/material/Slide';
 import ContentMenu from "./contentMenu"
-import {    
-    DownReportIcon,
-    TableIconNext,
-    TableIconPrev
-    } from "../../utils/icons.jsx";
+import {DownReportIcon, TableIconNext, TableIconPrev} from "../../utils/icons.jsx";
 import { ListItemButton } from '@mui/material';
 import { useRequest } from '../../hooks/useRequest';
 
-function AnimatedInBoxMenu({styles, request}){    
+export default function BandejaMenu ({styles, delay}){
+    const { request } = useRequest();
     return (
-        <Slide in={true} direction='left' timeout={500} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
             node.addEventListener(
               'transitionend',
               (e) => {
@@ -22,7 +19,7 @@ function AnimatedInBoxMenu({styles, request}){
               false
             )
           }>
-            <div className={styles + ' relative'}>
+            <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Bandeja'} styles={styles} className="flex-col h-full">
                     <Dropdown>
                         <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} onClick={()=> console.log('descargar inf')} title='Generar y descargar informe con los registro actuales'>
@@ -58,12 +55,5 @@ function AnimatedInBoxMenu({styles, request}){
                 </ContentMenu>
             </div>
         </Slide>
-    )
-}
-
-export default function BandejaMenu ({styles}){
-    const { request } = useRequest();
-    return (
-        <AnimatedInBoxMenu styles={styles} request={request}/>            
     )    
 }

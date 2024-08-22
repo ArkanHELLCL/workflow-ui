@@ -4,16 +4,14 @@ import { ButtonIcon } from '../../../utils/icons.jsx';
 
 export default function Buttons({formulario}){
     const { FOR_Botones } = formulario;
-    const grupos = FOR_Botones?.map(grupo => grupo)    
-    
-    //, webkitTransitionEnd, oTransitionEnd, otransitionend, MSTransitionEnd
+    const grupos = FOR_Botones?.map(grupo => grupo)
     return(
         <div id="buttonsRequest" className='grid text-right leading-tight absolute right-2 bottom-0 max-w-[60%] overflow-x-auto justify-items-end'> 
             <div className='flex items-center gap-3 pb-2 pt-1 pr-[1px] pl-1'>
             {
-                grupos?.map(grp => {                    
+                grupos?.map(grp => {
                     return (
-                        <Slide key={grp.id} in={true} direction='left' timeout={500} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+                        <Slide key={grp[0].id} in={true} direction='left' timeout={500} mountOnEnter unmountOnExit addEndListener={(node, done) =>
                             node.addEventListener(
                               'transitionend',
                               (e) => {

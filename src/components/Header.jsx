@@ -31,7 +31,7 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);
     const containerRef = useRef(null);
-    const $header = document.querySelector('header');
+    //const $header = document.querySelector('header');
 
     const handleScroll = (e) => {        
         const { scrollLeft, scrollWidth, clientWidth } = e.target;
@@ -49,12 +49,12 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
         }
     };
 
-    useEffect(() => {
+    /*useEffect(() => {
         if($header){
             const { scrollWidth, clientWidth } = $header;
             setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
         }
-    }, [$header, request, formulario]);
+    }, [$header, request, formulario]);*/
 
     useEffect(() => {
         const container = containerRef.current;
@@ -112,16 +112,16 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
                 </Button>
              }
             <Suspense fallback={<Loading />}>
-                <CrearMenu styles={'z-50 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                <CrearMenu styles={'z-50 h-full'} delay={500}/>
                 {
                     banSelected &&
                     <>
-                        <BandejaMenu styles={'z-40 h-full'}/>                        
-                        <RequerimientoMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>                                                    
+                        <BandejaMenu styles={'z-40'} delay={550}/>                        
+                        <RequerimientoMenu styles={'z-40'} delay={500}/>
                         <AccionesMenu  styles={'z-30 h-full'}/>
                         <GuardarMenu  styles={'z-20 h-full'}/>
                         <AdjuntarMenu styles={'z-10 h-full'}/>
-                        <FormularioMenu styles={'z-10 h-full'} grupos={grupos} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                        <FormularioMenu styles={'z-10'} grupos={grupos}/>
                     </>
                 }
                 {
@@ -141,7 +141,7 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
                 openDialog.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
             }{
-                scrollON && scrollPosition < 100 &&
+                scrollON && scrollPosition < 100 && scrollPosition > 0 && 
                 <>
                     <Button className="!sticky -right-[8px] top-0 h-full flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#b1d6f0] opacity-90 !px-0 !rounded-none !py-0 min-h-[145px] !-mt-2 z-50"
                     onClick={()=>handleScrollX(1)}>
