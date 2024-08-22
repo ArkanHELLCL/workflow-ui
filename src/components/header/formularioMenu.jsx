@@ -13,7 +13,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp}) => {
             node.addEventListener(
               'transitionend',
               (e) => {
-                console.log('Actually done');
+                //console.log('Actually done');
                 done(e);
               },
               false

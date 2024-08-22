@@ -39,8 +39,8 @@ export default function InputButtons({isAllowed}) {
                     node.addEventListener(
                         'transitionend',
                         (e) => {
-                        console.log('Actually done');
-                        done(e);
+                            //console.log('Actually done');
+                            done(e);
                         },
                         false
                     )
@@ -65,8 +65,8 @@ export default function InputButtons({isAllowed}) {
                     node.addEventListener(
                         'transitionend',
                         (e) => {
-                        console.log('Actually done');
-                        done(e);
+                            //console.log('Actually done');
+                            done(e);
                         },
                         false
                     )
@@ -121,8 +121,8 @@ export default function InputButtons({isAllowed}) {
                     node.addEventListener(
                         'transitionend',
                         (e) => {
-                        console.log('Actually done');
-                        done(e);
+                            //console.log('Actually done');
+                            done(e);
                         },
                         false
                     )

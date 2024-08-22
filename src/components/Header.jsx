@@ -27,17 +27,14 @@ export default function Header({openDialog, setOpenDialog}){
             (scrollLeft / (scrollWidth - clientWidth)) * 100
         );
         setScrollPosition(position);
-        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-        console.log('scroll', scrollLeft, scrollWidth, clientWidth, position)
+        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);        
     };
 
     const handleResize = () => {
         if(!$header) return
         const { scrollWidth, clientWidth } = $header;
         setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-        handleScroll();
-        console.log('scrollON',scrollON, scrollPosition, scrollWidth, clientWidth)
-        
+        handleScroll();        
     };
 
     useEffect(() => {

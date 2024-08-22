@@ -31,8 +31,8 @@ export default function InputButtons() {
                     node.addEventListener(
                         'transitionend',
                         (e) => {
-                        console.log('Actually done');
-                        done(e);
+                            //console.log('Actually done');
+                            done(e);
                         },
                         false
                     )

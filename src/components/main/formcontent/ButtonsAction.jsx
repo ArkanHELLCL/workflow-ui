@@ -15,7 +15,7 @@ export default function Buttons({formulario}){
                             node.addEventListener(
                               'transitionend',
                               (e) => {
-                                console.log('Actually done');
+                                //console.log('Actually done');
                                 done(e);
                               },
                               false
