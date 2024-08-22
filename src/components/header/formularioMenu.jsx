@@ -38,14 +38,14 @@ const BtsFormulario = ({styles, keygrp, delay, grp}) => {
     )
 }
 
-export default function FormularioMenu ({styles, grupos}) {
+export default function FormularioMenu ({styles, grupos, delay}) {
     const { request } = useRequest()
     const { filters } = useFilters()
     return(
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
             grupos?.map((grp, index) => 
                 (
-                    <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (index*30)} grp={grp} key={index}/>
+                    <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (delay)} grp={grp} key={index}/>
                 )
             )
     )

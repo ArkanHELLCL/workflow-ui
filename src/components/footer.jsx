@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import Collapse from '@mui/material/Collapse';
 import { useFilters } from "../hooks/useFilters.jsx";
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
-import { useSpring, animated } from "@react-spring/web";
 import * as menu from "../mocks/treeMenu.json"
 import EncontrarDescripcionPorId from "./main/menu/EncontrarDescripcionPorId.jsx";
 
@@ -11,32 +11,7 @@ export default function Footer() {
     const [clickVencidos, setClickVencidos] = useState(false);
     const [clickSinTomar, setClickSinTomar] = useState(false);
 
-    const { filters } = useFilters()
-
-    const porVencerApper = useSpring({
-        opacity: clickPorVencer ? 1 : 0,
-        width: `${clickPorVencer ? 195 : 0}` + 'px',    
-    });
-
-    const regHabilitados = useSpring({
-        opacity: clickPorVencer ? 1 : 0,
-        width: `${clickPorVencer ? 160 : 0}` + 'px',    
-    });
-
-    const regBloqueados = useSpring({
-        opacity: clickVencidos ? 1 : 0,
-        width: `${clickVencidos ? 165 : 0}` + 'px',    
-    });
-
-    const vencidosApper = useSpring({
-        opacity: clickVencidos ? 1 : 0,
-        width: `${clickVencidos ? 185 : 0}` + 'px',    
-    });
-
-    const sintomarApper = useSpring({
-        opacity: clickSinTomar ? 1 : 0,
-        width: `${clickSinTomar ? 185 : 0}` + 'px',    
-    });
+    const { filters } = useFilters()   
 
     function handleClickPorVencer(){
         setClickPorVencer(!clickPorVencer)
@@ -92,18 +67,22 @@ export default function Footer() {
                                 <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
                                     <WarningIcon />
                                 </span>                
-                                <animated.div style={porVencerApper} className='overflow-hidden pt-[1px]'>
-                                    <span className="z-10 truncate pt-1">Total de requerimientos por vencer :</span> 
-                                </animated.div>                           
+                                <Collapse in={clickPorVencer} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                    <div className='overflow-hidden pt-[1px] pr-1'>
+                                        <span className="z-10 truncate pt-1">Total de requerimientos por vencer : </span> 
+                                    </div>
+                                </Collapse >
                                 <span className="pt-[1px]">{filters.totalPorVencer}</span>  
                             </div>                    
                             <div className="text-red-500 flex z-20">
                                 <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
                                     <WarningIcon />
                                 </span>                
-                                <animated.div style={vencidosApper} className='overflow-hidden pt-[1px]'>
-                                    <span className="z-10 truncate">Total de requerimientos vencidos :</span> 
-                                </animated.div>                           
+                                <Collapse in={clickVencidos} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                    <div className='overflow-hidden pt-[1px] pr-1'>
+                                        <span className="z-10 truncate">Total de requerimientos vencidos :</span> 
+                                    </div>
+                                </Collapse>
                                 <span className="pt-[1px]">{filters.totalVencidos}</span>  
                             </div>
                         </>
@@ -113,10 +92,11 @@ export default function Footer() {
                                 <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickSinTomar()}>
                                     <QuestionIcon />
                                 </span>
-                                    <animated.div style={sintomarApper} className='overflow-hidden pt-[1px]'>
+                                <Collapse in={clickSinTomar} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                    <div className='overflow-hidden pt-[1px] pr-1'>
                                         <span className="z-10 truncate pt-1">Total de requerimientos sin tomar :</span> 
-                                    </animated.div>
-                                
+                                    </div>
+                                </Collapse>
                                 <span className="pt-[1px]">{filters.totalSintomar}</span>  
                             </div>
                         }
@@ -137,20 +117,24 @@ export default function Footer() {
                                 <div className="dark:text-green-300 text-green-400 flex z-20">
                                     <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
                                         <CheckIcon styles={"w-3 h-3"}/>
-                                    </span>                
-                                    <animated.div style={regHabilitados} className='overflow-hidden pt-[1px]'>
-                                        <span className="z-10 truncate pt-1">Total de registros habilitados:</span> 
-                                    </animated.div>                           
+                                    </span>
+                                    <Collapse in={clickPorVencer} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                        <div className='overflow-hidden pt-[1px] pr-1'>
+                                            <span className="z-10 truncate pt-1">Total de registros habilitados :</span> 
+                                        </div>
+                                    </Collapse>
                                     <span className="pt-[1px]">{filters.totalPorVencer}</span>
                                 </div>
 
                                 <div className="text-red-500 flex z-20">
                                     <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
                                         <BlockIcon styles={"w-3 h-3"} />
-                                    </span>                
-                                    <animated.div style={regBloqueados} className='overflow-hidden pt-[1px]'>
-                                        <span className="z-10 truncate">Total de registros bloqueados:</span> 
-                                    </animated.div>                           
+                                    </span>
+                                    <Collapse in={clickVencidos} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                        <div className='overflow-hidden pt-[1px] pr-1'>
+                                            <span className="z-10 truncate">Total de registros bloqueados :</span> 
+                                        </div>
+                                    </Collapse>
                                     <span className="pt-[1px]">{filters.totalVencidos}</span>  
                                 </div>
 

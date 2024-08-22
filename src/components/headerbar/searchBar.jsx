@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useId, useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
 import { InputDebounce } from "../../utils/InputDebounce.jsx";
 
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
@@ -50,15 +49,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
             ...prevState,                     
             filterSearch: id            
         }))
-    }
-    const referenceWidth = (widthMenuSearch + 12 + 42) 
-    const searchAnimation = useSpring({
-        transform: `translateX(-${referenceWidth}px)`,
-        from: { transform: "translateX(0px)" },
-        config: { duration: 0 },
-        reverse: !openSearch,
-        reset: !openSearch,
-    });
+    }    
 
     const HandleSubmit = (e) => {
         e.preventDefault();
@@ -94,21 +85,21 @@ export default function SearchBar({openSearch, setOpenSearch}) {
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} onDragOver={handleNotDragOver}>{
                 openSearch && filters.itemIdSelected.charAt(0).toUpperCase() === 'B' &&
-                    <animated.div
-                        className={`absolute`}
-                        style={searchAnimation}>                            
-                        <Dropdown>
-                            <MenuButton endDecorator={<KeyboardArrowDownIcon className='!w-4 !h-4 !mt-1 !ml-1'/>} className={`dark:!bg-[#323130] !bg-[#ffffff] hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !border-0 dark:!text-stone-100 !text-stone-500 !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
-                            <Menu placement="bottom-start" className="dark:!bg-[#323130] !bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal dark:!text-stone-100 !text-stone-500 !py-0 !m-h-min">
-                                <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] dark:!text-stone-100 !text-stone-500 !pr-12 mnuFlow !text-xs !leading-0`}>
-                                    <ListItemDecorator className={`text-green-500`}>{filters.filterSearch === 2 ? <Check /> : null}</ListItemDecorator>Todas las bandejas
-                                </MenuItem>
-                                <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] dark:!text-stone-100 !text-stone-500 !pr-12 mnuFlow !text-xs !leading-0`}>
-                                    <ListItemDecorator className={`text-green-500`}>{filters.filterSearch === 1 ? <Check /> : null}</ListItemDecorator>Bandeja actual
-                                </MenuItem>                                                               
-                            </Menu>
-                        </Dropdown>
-                    </animated.div>
+                    
+                        <div className={`absolute transition-all duration-400 ${openSearch && filters.filterSearch === 2 ? ' -translate-x-[151px]' : openSearch && filters.filterSearch === 1 ? ' -translate-x-[133px]' : ' translate-x-0'}`} id="mnuSearchBandejas">
+                            <Dropdown>
+                                <MenuButton endDecorator={<KeyboardArrowDownIcon className='!w-4 !h-4 !mt-1 !ml-1'/>} className={`dark:!bg-[#323130] !bg-[#ffffff] hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !border-0 dark:!text-stone-100 !text-stone-500 !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
+                                <Menu placement="bottom-start" className="dark:!bg-[#323130] !bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal dark:!text-stone-100 !text-stone-500 !py-0 !m-h-min">
+                                    <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] dark:!text-stone-100 !text-stone-500 !pr-12 mnuFlow !text-xs !leading-0`}>
+                                        <ListItemDecorator className={`text-green-500`}>{filters.filterSearch === 2 ? <Check /> : null}</ListItemDecorator>Todas las bandejas
+                                    </MenuItem>
+                                    <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] dark:!text-stone-100 !text-stone-500 !pr-12 mnuFlow !text-xs !leading-0`}>
+                                        <ListItemDecorator className={`text-green-500`}>{filters.filterSearch === 1 ? <Check /> : null}</ListItemDecorator>Bandeja actual
+                                    </MenuItem>                                                               
+                                </Menu>
+                            </Dropdown>
+                        </div>
+                    
                 }                
                 <form className="flex relative" onSubmit={HandleSubmit}>
                     <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">

@@ -22,7 +22,7 @@ import {
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
 
-export default function Header({openDialog, setOpenDialog, frmRecord}){
+export default function Header({openDialog, setOpenDialog}){
     const { request } = useRequest()
     const { record } = useRecords()
     const { filters } = useFilters()
@@ -45,7 +45,8 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
     const handleResize = () => {
         if (containerRef.current) {
             const { scrollWidth, clientWidth } = containerRef.current;
-            setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);            
+            setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
+            console.log('scrollON',scrollON, scrollPosition)
         }
     };
 
@@ -116,26 +117,26 @@ export default function Header({openDialog, setOpenDialog, frmRecord}){
                 {
                     banSelected &&
                     <>
-                        <BandejaMenu styles={'z-40'} delay={550}/>                        
+                        <BandejaMenu styles={'z-40'} delay={600}/>                        
                         <RequerimientoMenu styles={'z-40'} delay={500}/>
-                        <AccionesMenu  styles={'z-30 h-full'}/>
-                        <GuardarMenu  styles={'z-20 h-full'}/>
-                        <AdjuntarMenu styles={'z-10 h-full'}/>
-                        <FormularioMenu styles={'z-10'} grupos={grupos}/>
+                        <AccionesMenu  styles={'z-30'} delay={500}/>
+                        <GuardarMenu  styles={'z-20'} delay={600}/>
+                        <AdjuntarMenu styles={'z-10'} delay={600}/>
+                        <FormularioMenu styles={'z-10'} grupos={grupos} delay={700}/>
                     </>
                 }
                 {
                     mantSelected &&  
                         <>
-                            <MantenedoresMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog}/>{
+                            <MantenedoresMenu styles={'z-40'} delay={500}/>{
                             record &&
-                                <RegistroMenu styles={'z-40 h-full'} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
+                                <RegistroMenu styles={'z-40'} delay={500}/>
                             }
                         </>
                 }
                 {
                     repoSelected &&         
-                        <InformesMenu styles={'z-40 h-full'} />                    
+                        <InformesMenu styles={'z-40'} delay={500} />                    
                 }                
             </Suspense>{
                 openDialog.open &&

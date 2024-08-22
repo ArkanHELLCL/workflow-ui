@@ -11,14 +11,14 @@ import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
 import MCMant from './maintainer/comunaMant.jsx';
 
-function FormMatainer ({frmRecord, record, filters, openDialog, setOpenDialog, filesList, setFilesList, setRecord}){
+function FormMatainer ({frmRecord, record, filters, filesList, setFilesList, setRecord}){
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores
-            return <MPMant frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
+            return <MPMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} />
         case 'mu':  //Usuarios
-            return <MUMant frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
+            return <MUMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
         case 'mc':  //Comunas
-            return <MCMant frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} mant={filters.itemIdSelected} record={record} />
+            return <MCMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} />
         default:
             return (
                 <>

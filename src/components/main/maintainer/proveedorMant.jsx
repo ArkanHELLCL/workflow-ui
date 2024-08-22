@@ -14,7 +14,7 @@ import { user } from '../../../mocks/usuario.json';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
-export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, record, singleButton }) {
+export default function MPMant({frmRecord, mant, record, singleButton }) {
     const [field, setField] = useState(null)
     
     const date = new Date()
@@ -60,9 +60,9 @@ export default function MPMant({frmRecord, openDialog, setOpenDialog, mant, reco
                 <h2 className='font-sm text-base -mb-1'>{field.PRO_Id === 0 ? 'Creador: ' : 'Último editor: '} <span className='text-[#2c87d2]'>{field.PRO_UsuarioEdit}</span></h2>
                 <h2 className='font-sm text-base pb-3'>{field.PRO_Id === 0 ? 'Fecha de creación: ' : 'Fecha de edición: '}<span className='text-[#2c87d2]'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>{
                     singleButton ?
-                        <InputSaveButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+                        <InputSaveButtons />
                     :   
-                        <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
+                        <InputButtons isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
                 }
                 <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                     <div className='grid grid-cols-12 gap-2 pb-3'>

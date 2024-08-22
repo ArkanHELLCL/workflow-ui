@@ -11,7 +11,7 @@ import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
-export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, record}) {
+export default function MCMant({frmRecord, mant, record}) {
     const [field, setField] = useState(null)
     
     const date = new Date()
@@ -46,7 +46,7 @@ export default function MCMant({frmRecord, openDialog, setOpenDialog, mant, reco
             <h2 className='font-base text-lg -mb-1'>Datos del Usuario <span className='text-[#2c87d2]'>Id: {field?.COM_Id ? field.COM_Id : 'Nuevo'}</span></h2>
             <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field?.COM_UsuarioEdit ? field?.COM_UsuarioEdit : user.USR_Usuario}</span></h2>
             <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field?.COM_FechaEdit ? field?.COM_FechaEdit?.slice(0,16)?.replace('T',' ') : fecha}</span></h2>
-            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={null} />
+            <InputButtons isAllowed={null} />
             <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">            
                 <div className='grid grid-cols-12 gap-2 pb-3'>                    
                     <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región'/>

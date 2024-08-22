@@ -18,7 +18,7 @@ import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
-export default function MUMant({frmRecord, openDialog, setOpenDialog, mant, record, filesList, setFilesList}) {    
+export default function MUMant({frmRecord, mant, record, filesList, setFilesList}) {    
     const [field, setField] = useState(null)
     
     const date = new Date()
@@ -70,7 +70,7 @@ export default function MUMant({frmRecord, openDialog, setOpenDialog, mant, reco
             <h2 className='font-base text-lg -mb-1'>Datos del Usuario <span className='text-[#2c87d2]'>Id: {field.USR_Id}</span></h2>
             <h2 className='font-sm text-base -mb-1'>Último editor: <span className='text-[#2c87d2]'>{field.USR_UsuarioEdit}</span></h2>
             <h2 className='font-sm text-base pb-3'>Fecha de edición: <span className='text-[#2c87d2]'>{field.USR_FechaEdit.slice(0,16).replace('T',' ')}</span></h2>
-            <InputButtons frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} isAllowed={parseInt(field.USR_Estado)===1 ? true : false} />
+            <InputButtons isAllowed={parseInt(field.USR_Estado)===1 ? true : false} />
             <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
                 <div className='grid grid-cols-12 gap-2 pb-3'>
                     <InputText frmRecord ={frmRecord} name='USR_Usuario' value={field.USR_Usuario} className='col-span-4' isRequired={true} placeholder='jlopez' label='Código' errorMessage='Debes ingresar un código de usuario'/>
