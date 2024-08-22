@@ -25,7 +25,7 @@ export default function RequerimientoMenu ({styles, delay, setAnimationEnd}) {
     
     useEffect(() => {
         setAnimationEnd(false);
-    },[informes, request, pasos])
+    },[gen, des, request, pasos])
 
     return (
         request &&                    

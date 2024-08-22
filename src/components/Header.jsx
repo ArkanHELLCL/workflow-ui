@@ -55,7 +55,7 @@ export default function Header({openDialog, setOpenDialog}){
         console.log('animationEnd', animationEnd, scrollON)
         setScrollON(false)        
         handleResize();
-    },[animationEnd, filters.itemIdSelected, request])
+    },[animationEnd, filters.itemIdSelected, request, record, formulario])
     
     useEffect(() => {
         let FOR_Botones = null
