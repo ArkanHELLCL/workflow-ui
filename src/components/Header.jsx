@@ -1,24 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Loading from "../utils/Loading.jsx";
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useRecords } from "../hooks/useRecords.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
 import ConfirmationDialog from "./main/ConfirmationDialog.jsx";
-import {
-    CrearMenu,
-    RequerimientoMenu,
-    AdjuntarMenu,
-    AccionesMenu,
-    FormularioMenu,
-    GuardarMenu,
-    MantenedoresMenu,
-    InformesMenu,
-    BandejaMenu,
-    RegistroMenu
-} from "./header/index.jsx";
+import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
 
@@ -27,50 +16,44 @@ export default function Header({openDialog, setOpenDialog}){
     const { record } = useRecords()
     const { filters } = useFilters()
     const [grupos, setGrupos] = useState(null);
-    //const [scroll, setScroll] = useState(false)
     const [scrollPosition, setScrollPosition] = useState(0);
-    const [scrollON, setScrollON] = useState(false);
-    const containerRef = useRef(null);
-    //const $header = document.querySelector('header');
+    const [scrollON, setScrollON] = useState(false);    
+    const $header = document.querySelector('header');
 
-    const handleScroll = (e) => {        
-        const { scrollLeft, scrollWidth, clientWidth } = e.target;
+    const handleScroll = () => {        
+        if(!$header) return
+        const { scrollLeft, scrollWidth, clientWidth } = $header;
         const position = Math.ceil(
             (scrollLeft / (scrollWidth - clientWidth)) * 100
         );
         setScrollPosition(position);
-        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);        
+        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
+        console.log('scroll', scrollLeft, scrollWidth, clientWidth, position)
     };
 
     const handleResize = () => {
-        if (containerRef.current) {
-            const { scrollWidth, clientWidth } = containerRef.current;
-            setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-            console.log('scrollON',scrollON, scrollPosition)
-        }
+        if(!$header) return
+        const { scrollWidth, clientWidth } = $header;
+        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
+        handleScroll();
+        console.log('scrollON',scrollON, scrollPosition, scrollWidth, clientWidth)
+        
     };
 
-    /*useEffect(() => {
-        if($header){
-            const { scrollWidth, clientWidth } = $header;
-            setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-        }
-    }, [$header, request, formulario]);*/
-
     useEffect(() => {
-        const container = containerRef.current;
-        const { scrollWidth, clientWidth } = containerRef.current;
+        if(!$header) return
+        const { scrollWidth, clientWidth } = $header;
         setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-        if (container) {
-            container.addEventListener('scroll', handleScroll);
+        
+            $header.addEventListener('scroll', handleScroll);
             window.addEventListener('resize', handleResize);
             handleResize(); // Check scroll status on mount
 
             return () => {
-                container.removeEventListener('scroll', handleScroll);
+                $header.removeEventListener('scroll', handleScroll);
                 window.removeEventListener('resize', handleResize);
             };
-        }
+        
     }, [formulario,request]);
 
     useEffect(() => {
@@ -91,9 +74,9 @@ export default function Header({openDialog, setOpenDialog}){
     }    
 
     const handleScrollX = (value) => {
-        const container = containerRef.current;
-        if (value === -1) container.scrollLeft -= 200;
-        else container.scrollLeft += 200;
+        if(!$header) return
+        if (value === -1) $header.scrollLeft -= 200;
+        else $header.scrollLeft += 200;
     }
 
     const banSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "b")
@@ -104,7 +87,7 @@ export default function Header({openDialog, setOpenDialog}){
     return (        
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start px-2 py-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] ml-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 min-h-[145px] h-[160px] overflow-x-auto'
         onDragOver={handleNotDragOver}
-        ref={containerRef}        
+        
         >
             {scrollON && scrollPosition > 0 &&
                 <Button className="!sticky -left-2 top-0 h-full flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#b1d6f0] opacity-90 !px-0 !rounded-none  !py-0 min-h-[145px] !-mt-2 z-50"
@@ -142,7 +125,7 @@ export default function Header({openDialog, setOpenDialog}){
                 openDialog.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
             }{
-                scrollON && scrollPosition < 100 && scrollPosition > 0 && 
+                scrollON && scrollPosition <100 &&
                 <>
                     <Button className="!sticky -right-[8px] top-0 h-full flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#b1d6f0] opacity-90 !px-0 !rounded-none !py-0 min-h-[145px] !-mt-2 z-50"
                     onClick={()=>handleScrollX(1)}>
