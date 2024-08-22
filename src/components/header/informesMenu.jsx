@@ -1,16 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Slide from '@mui/material/Slide';
 import ContentMenu from "./contentMenu.jsx"
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
-import { 
-    GenReportIcon,
-    DownReportIcon
-    } from "../../utils/icons.jsx";
+import { GenReportIcon, DownReportIcon } from "../../utils/icons.jsx";
+import { useEffect } from 'react';
+import { useRequest } from '../../hooks/useRequest';
 
-export default function Informes ({styles, delay}) {
+export default function Informes ({styles, delay, setAnimationEnd}) {
+    const { request } = useRequest();
+
+    useEffect(() => {
+        setAnimationEnd(false);
+    },[request])
+    
     return (
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+            node.addEventListener(
+              'transitionend',
+              (e) => {                
+                setAnimationEnd(true);
+                done(e);
+              },
+              false
+            )
+          }>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Informe del sistema'}>
                     <Dropdown>

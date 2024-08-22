@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Slide from '@mui/material/Slide';
 import Dropdown from '@mui/joy/Dropdown';
@@ -7,8 +8,9 @@ import { useFilters } from "../../hooks/useFilters.jsx";
 import ContentMenu from "./contentMenu"
 import { AttachIcon } from "../../utils/icons.jsx";
 import { user } from "../../mocks/usuario.json";
+import { useEffect } from 'react';
 
-export default function Adjuntar ({styles, delay}){
+export default function Adjuntar ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const { filters } = useFilters()
     
@@ -26,9 +28,23 @@ export default function Adjuntar ({styles, delay}){
         const  elemento = document.getElementById('frmWFInputFile');
         elemento.click()
     }*/
+
+    useEffect(() => {
+        setAnimationEnd(false);
+    },[request, filters.itemIdSelected])
+    
     return (
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' &&
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+            node.addEventListener(
+              'transitionend',
+              (e) => {                
+                setAnimationEnd(true);
+                done(e);
+              },
+              false
+            )
+          }>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Adjuntar'} styles={styles}>
                     <Dropdown>

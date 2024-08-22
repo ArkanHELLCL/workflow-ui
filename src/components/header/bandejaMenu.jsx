@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Dropdown from '@mui/joy/Dropdown';
 import Slide from '@mui/material/Slide';
@@ -5,11 +6,25 @@ import ContentMenu from "./contentMenu"
 import {DownReportIcon, TableIconNext, TableIconPrev} from "../../utils/icons.jsx";
 import { ListItemButton } from '@mui/material';
 import { useRequest } from '../../hooks/useRequest';
+import { useEffect } from 'react';
 
-export default function BandejaMenu ({styles, delay}){
+export default function BandejaMenu ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest();
+    useEffect(() => {
+        setAnimationEnd(false);
+    },[request])
+
     return (
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+            node.addEventListener(
+              'transitionend',
+              (e) => {                
+                setAnimationEnd(true);
+                done(e);
+              },
+              false
+            )
+          }>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Bandeja'} styles={styles} className="flex-col h-full">
                     <Dropdown>

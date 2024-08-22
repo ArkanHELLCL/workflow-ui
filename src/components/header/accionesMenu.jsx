@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Dropdown from '@mui/joy/Dropdown';
 import Slide from '@mui/material/Slide';
@@ -5,13 +6,26 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import { usePreview } from "../../hooks/usePreview.jsx";
 import ContentMenu from "./contentMenu"
 import { OpenFolderIcon, PrinterIcon, DeleteFileIcon } from "../../utils/icons.jsx";
+import { useEffect } from 'react';
 
-export default function Acciones ({styles, delay}) {
-    const { preview } = usePreview()    
+export default function Acciones ({styles, delay, setAnimationEnd}) {
+    const { preview } = usePreview()  
+    useEffect(() => {
+        setAnimationEnd(false);
+    },[preview])
 
     return (        
         preview?.selected && 
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+            node.addEventListener(
+              'transitionend',
+              (e) => {                
+                setAnimationEnd(true);
+                done(e);
+              },
+              false
+            )
+          }>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Acciones'}>
                     <Dropdown>

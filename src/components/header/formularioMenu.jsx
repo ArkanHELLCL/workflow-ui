@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Slide from '@mui/material/Slide';
 import ContentMenu from "./contentMenu.jsx"
@@ -6,10 +7,20 @@ import { useFilters } from "../../hooks/useFilters.jsx";
 import { user } from "../../mocks/usuario.json";
 import Dropdown from '@mui/joy/Dropdown';
 import { ButtonIcon } from "../../utils/icons.jsx";
+import { useEffect } from 'react';
 
-const BtsFormulario = ({styles, keygrp, delay, grp}) => {        
+const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {        
     return (
-        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit >
+        <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
+            node.addEventListener(
+              'transitionend',
+              (e) => {                
+                setAnimationEnd(true);
+                done(e);
+              },
+              false
+            )
+          }>
             <div className={styles + ' flex-col h-full relative'} id={keygrp}>
                 <ContentMenu title={grp[0].descripcion}>{
                     grp[0].botones.map(btns =>
@@ -29,14 +40,19 @@ const BtsFormulario = ({styles, keygrp, delay, grp}) => {
     )
 }
 
-export default function FormularioMenu ({styles, grupos, delay}) {
+export default function FormularioMenu ({styles, grupos, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const { filters } = useFilters()
+
+    useEffect(() => {
+        setAnimationEnd(false);
+    },[request, filters.itemIdSelected])
+
     return(
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
             grupos?.map((grp, index) => 
                 (
-                    <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (delay)} grp={grp} key={index}/>
+                    <BtsFormulario styles={styles} keygrp={'btnGrp-' + index} delay={200 + (delay)} grp={grp} key={index} setAnimationEnd={setAnimationEnd}/>
                 )
             )
     )

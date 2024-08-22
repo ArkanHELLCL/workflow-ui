@@ -17,7 +17,8 @@ export default function Header({openDialog, setOpenDialog}){
     const { filters } = useFilters()
     const [grupos, setGrupos] = useState(null);
     const [scrollPosition, setScrollPosition] = useState(0);
-    const [scrollON, setScrollON] = useState(false);    
+    const [scrollON, setScrollON] = useState(false);
+    const [animationEnd, setAnimationEnd] = useState(false);
     const $header = document.querySelector('header');
 
     const handleScroll = () => {        
@@ -37,22 +38,25 @@ export default function Header({openDialog, setOpenDialog}){
         handleScroll();        
     };
 
-    useEffect(() => {
+    useEffect(() => {        
         if(!$header) return
-        const { scrollWidth, clientWidth } = $header;
-        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-        
-            $header.addEventListener('scroll', handleScroll);
-            window.addEventListener('resize', handleResize);
-            handleResize(); // Check scroll status on mount
+        $header.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Check scroll status on mount
 
-            return () => {
-                $header.removeEventListener('scroll', handleScroll);
-                window.removeEventListener('resize', handleResize);
-            };
+        return () => {
+            $header.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
         
-    }, [formulario,request]);
+    }, [request, record, filters.itemIdSelected]);
 
+    useEffect(() => {
+        console.log('animationEnd', animationEnd, scrollON)
+        setScrollON(false)        
+        handleResize();
+    },[animationEnd, filters.itemIdSelected, request])
+    
     useEffect(() => {
         let FOR_Botones = null
         if(filters.itemIdSelected.charAt(0) === "b")
@@ -82,7 +86,7 @@ export default function Header({openDialog, setOpenDialog}){
     //const mensSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "j")
     
     return (        
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start px-2 py-2 transition-color delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] ml-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 min-h-[145px] h-[145px] overflow-x-auto'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start px-2 py-2 transition-all delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] ml-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 min-h-[145px] h-[145px] overflow-x-auto'
         onDragOver={handleNotDragOver}
         
         >
@@ -92,30 +96,30 @@ export default function Header({openDialog, setOpenDialog}){
                 </Button>
              }
             <Suspense fallback={<Loading />}>
-                <CrearMenu styles={'z-50 h-full'} delay={500}/>
+                <CrearMenu styles={'z-50 h-full'} delay={500} setAnimationEnd={setAnimationEnd}/>
                 {
                     banSelected &&
                     <>
-                        <BandejaMenu styles={'z-40'} delay={600}/>                        
-                        <RequerimientoMenu styles={'z-40'} delay={500}/>
-                        <AccionesMenu  styles={'z-30'} delay={500}/>
-                        <GuardarMenu  styles={'z-20'} delay={600}/>
-                        <AdjuntarMenu styles={'z-10'} delay={600}/>
-                        <FormularioMenu styles={'z-10'} grupos={grupos} delay={700}/>
+                        <BandejaMenu styles={'z-40'} delay={600} setAnimationEnd={setAnimationEnd}/>                        
+                        <RequerimientoMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>
+                        <AccionesMenu  styles={'z-30'} delay={500} setAnimationEnd={setAnimationEnd}/>
+                        <GuardarMenu  styles={'z-20'} delay={600} setAnimationEnd={setAnimationEnd}/>
+                        <AdjuntarMenu styles={'z-10'} delay={600} setAnimationEnd={setAnimationEnd}/>
+                        <FormularioMenu styles={'z-10'} grupos={grupos} delay={700} setAnimationEnd={setAnimationEnd}/>
                     </>
                 }
                 {
                     mantSelected &&  
                         <>
-                            <MantenedoresMenu styles={'z-40'} delay={500}/>{
+                            <MantenedoresMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>{
                             record &&
-                                <RegistroMenu styles={'z-40'} delay={500}/>
+                                <RegistroMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>
                             }
                         </>
                 }
                 {
                     repoSelected &&         
-                        <InformesMenu styles={'z-40'} delay={500} />                    
+                        <InformesMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>                    
                 }                
             </Suspense>{
                 openDialog.open &&
