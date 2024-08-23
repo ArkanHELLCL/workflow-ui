@@ -10,17 +10,11 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ContentMenu from "./contentMenu"
 import { flujos } from "../../mocks/flujos.json";
 import { FlowIcon, FlowPlusIcon } from "../../utils/icons.jsx";
-import { useEffect } from 'react';
-
 
 export default function CrearMenu ({styles, delay, setAnimationEnd}) {
     function  hanldeOnClick(flujo){
         console.log('Click on ' + flujo.description)
     }
-
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[flujos])
 
     return (  
         <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
@@ -32,7 +26,8 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>   
+          }
+          onEnter={() =>  setAnimationEnd(false)}>   
             <div className="h-full relative">
                 <ContentMenu title={'Crear'} styles={styles} className="flex-col h-full">
                     <Dropdown>

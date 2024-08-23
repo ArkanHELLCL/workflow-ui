@@ -7,7 +7,6 @@ import { useFilters } from "../../hooks/useFilters.jsx";
 import { user } from "../../mocks/usuario.json";
 import Dropdown from '@mui/joy/Dropdown';
 import { ButtonIcon } from "../../utils/icons.jsx";
-import { useEffect } from 'react';
 
 const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {        
     return (
@@ -20,7 +19,8 @@ const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'} id={keygrp}>
                 <ContentMenu title={grp[0].descripcion}>{
                     grp[0].botones.map(btns =>
@@ -43,10 +43,6 @@ const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
 export default function FormularioMenu ({styles, grupos, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const { filters } = useFilters()
-
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[request, filters.itemIdSelected])
 
     return(
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 

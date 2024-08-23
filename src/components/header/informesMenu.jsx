@@ -5,15 +5,8 @@ import ContentMenu from "./contentMenu.jsx"
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { GenReportIcon, DownReportIcon } from "../../utils/icons.jsx";
-import { useEffect } from 'react';
-import { useRequest } from '../../hooks/useRequest';
 
 export default function Informes ({styles, delay, setAnimationEnd}) {
-    const { request } = useRequest();
-
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[request])
     
     return (
         <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
@@ -25,7 +18,8 @@ export default function Informes ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Informe del sistema'}>
                     <Dropdown>

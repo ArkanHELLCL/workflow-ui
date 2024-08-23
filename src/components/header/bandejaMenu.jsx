@@ -6,13 +6,9 @@ import ContentMenu from "./contentMenu"
 import {DownReportIcon, TableIconNext, TableIconPrev} from "../../utils/icons.jsx";
 import { ListItemButton } from '@mui/material';
 import { useRequest } from '../../hooks/useRequest';
-import { useEffect } from 'react';
 
 export default function BandejaMenu ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest();
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[request])
 
     return (
         <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
@@ -24,7 +20,8 @@ export default function BandejaMenu ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Bandeja'} styles={styles} className="flex-col h-full">
                     <Dropdown>

@@ -6,14 +6,9 @@ import { usePreview } from "../../hooks/usePreview.jsx";
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { SaveAsIconBig, SaveAllIconBig } from "../../utils/icons.jsx"
-import { useEffect } from 'react';
 
 export default function GuardarMenu ({styles, delay, setAnimationEnd}) {
     const { preview } = usePreview()  
-    
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[preview])
 
     return (
         preview?.selected && 
@@ -26,7 +21,8 @@ export default function GuardarMenu ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + 'flex-col h-full relative'}>
                 <ContentMenu title={'Guardar en el equipo'}>
                     <Dropdown>

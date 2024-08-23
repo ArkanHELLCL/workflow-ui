@@ -5,17 +5,11 @@ import ContentMenu from "./contentMenu.jsx"
 import Dropdown from '@mui/joy/Dropdown';
 import ListItemButton from '@mui/joy/ListItemButton';
 import { TableIconPlus, DownReportIcon } from "../../utils/icons.jsx";
-import { useEffect } from 'react';
-import { useRecords } from '../../hooks/useRecords';
 
 export default function MantenedoresMenu ({styles, delay, setAnimationEnd}) {
-    const { records } = useRecords();
     async function hanldeNewClick(event){
         event.preventDefault()         
     }
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[records])
 
     return (
         <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
@@ -27,7 +21,8 @@ export default function MantenedoresMenu ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Mantenedor del sistema'}>
                     <Dropdown>

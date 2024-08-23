@@ -7,7 +7,6 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import { TableIconSave, TableIconBlock, TableIconAllow, TableIconDel, TableIconNext, TableIconPrev } from "../../utils/icons.jsx";
 //import { useSnackbar } from 'notistack';
 import { useRecords } from "../../hooks/useRecords.jsx";
-import { useEffect } from 'react';
 
 export default function RegistroMenu ({styles, delay, setAnimationEnd}) {
     const { record }   = useRecords()
@@ -34,10 +33,6 @@ export default function RegistroMenu ({styles, delay, setAnimationEnd}) {
         event.preventDefault()           
     }
 
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[record])
-
     //const { enqueueSnackbar } = useSnackbar();
     return (
         <>
@@ -50,7 +45,8 @@ export default function RegistroMenu ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
                 <div className={styles + ' flex-col h-full relative'}>
                     <ContentMenu title={'Registro'}>                
                         <Dropdown>

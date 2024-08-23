@@ -6,13 +6,9 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import { usePreview } from "../../hooks/usePreview.jsx";
 import ContentMenu from "./contentMenu"
 import { OpenFolderIcon, PrinterIcon, DeleteFileIcon } from "../../utils/icons.jsx";
-import { useEffect } from 'react';
 
 export default function Acciones ({styles, delay, setAnimationEnd}) {
-    const { preview } = usePreview()  
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[preview])
+    const { preview } = usePreview()      
 
     return (        
         preview?.selected && 
@@ -25,7 +21,8 @@ export default function Acciones ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Acciones'}>
                     <Dropdown>

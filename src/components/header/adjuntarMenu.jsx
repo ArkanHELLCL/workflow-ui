@@ -8,7 +8,6 @@ import { useFilters } from "../../hooks/useFilters.jsx";
 import ContentMenu from "./contentMenu"
 import { AttachIcon } from "../../utils/icons.jsx";
 import { user } from "../../mocks/usuario.json";
-import { useEffect } from 'react';
 
 export default function Adjuntar ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest()
@@ -28,10 +27,6 @@ export default function Adjuntar ({styles, delay, setAnimationEnd}) {
         const  elemento = document.getElementById('frmWFInputFile');
         elemento.click()
     }*/
-
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[request, filters.itemIdSelected])
     
     return (
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' &&
@@ -44,7 +39,8 @@ export default function Adjuntar ({styles, delay, setAnimationEnd}) {
               },
               false
             )
-          }>
+          }
+          onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Adjuntar'} styles={styles}>
                     <Dropdown>

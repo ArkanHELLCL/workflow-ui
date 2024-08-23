@@ -18,44 +18,78 @@ export default function Header({openDialog, setOpenDialog}){
     const [grupos, setGrupos] = useState(null);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);
-    const [animationEnd, setAnimationEnd] = useState(false);
-    const $header = document.querySelector('header');
+    const [animationEnd, setAnimationEnd] = useState(true);
 
-    const handleScroll = () => {        
-        if(!$header) return
-        const { scrollLeft, scrollWidth, clientWidth } = $header;
+    const calcScroll = ($container) => {
+        if(!animationEnd) {
+            setScrollON(false)
+            setScrollPosition(0)
+            $container.scrollLeft = 0
+            return
+        }
+        console.log('calcScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
+        const { scrollLeft, scrollWidth, clientWidth } = $container;
         const position = Math.ceil(
             (scrollLeft / (scrollWidth - clientWidth)) * 100
         );
-        setScrollPosition(position);
+        console.log('calcScroll', position, scrollLeft, scrollWidth, clientWidth)
+        setScrollPosition(position ? position : 0);
         setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);        
+    }
+
+    const handleScroll = () => {
+        const $header = document.querySelector('header');        
+        if(!$header) return
+        console.log('handleScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
+        calcScroll($header)
     };
 
     const handleResize = () => {
+        const $header = document.querySelector('header');
         if(!$header) return
-        const { scrollWidth, clientWidth } = $header;
-        setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);
-        handleScroll();        
+        console.log('handleResize animacion :', animationEnd, 'scrolon : ' , scrollON)
+        calcScroll($header)       
     };
 
-    useEffect(() => {        
+    useEffect(() => { 
+        const $header = document.querySelector('header');               
         if(!$header) return
+        console.log('useEffect-1 animacion :', animationEnd, 'scrolon : ' , scrollON)
         $header.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Check scroll status on mount
-
+        window.addEventListener('resize', handleResize);        
         return () => {
             $header.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
-        };
-        
-    }, [request, record, filters.itemIdSelected]);
+        };        
+    }, []);
 
-    useEffect(() => {
-        console.log('animationEnd', animationEnd, scrollON)
-        setScrollON(false)        
-        handleResize();
-    },[animationEnd, filters.itemIdSelected, request, record, formulario])
+    useEffect(() => {    
+        const $header = document.querySelector('header'); 
+        if(!$header) return    
+        console.log('useEffect-2 animacion :', animationEnd, 'scrolon : ' , scrollON)       
+        calcScroll($header)
+    },[animationEnd])   //, filters.itemIdSelected, request, record, formulario
+
+    useEffect(() => {        
+        const $header = document.querySelector('header'); 
+        if(!$header) return 
+        console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)    
+        setScrollON(false)
+        setScrollPosition(0)
+        $header.scrollLeft = 0
+        calcScroll($header)
+    },[filters.itemIdSelected, request, record, formulario])
+
+    const handleScrollX = (value) => {
+        const $header = document.querySelector('header');
+        if(!$header) return        
+        if (value === -1) $header.scrollLeft -= 200;
+        else $header.scrollLeft += 200;
+        setScrollON(true)
+        setScrollPosition(0)
+        calcScroll($header);
+        console.log('handleScrollX', scrollPosition)
+    }
     
     useEffect(() => {
         let FOR_Botones = null
@@ -72,12 +106,6 @@ export default function Header({openDialog, setOpenDialog}){
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
         return false;
-    }    
-
-    const handleScrollX = (value) => {
-        if(!$header) return
-        if (value === -1) $header.scrollLeft -= 200;
-        else $header.scrollLeft += 200;
     }
 
     const banSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "b")
@@ -125,7 +153,7 @@ export default function Header({openDialog, setOpenDialog}){
                 openDialog.open &&
                     <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
             }{
-                scrollON && scrollPosition <100 &&
+                scrollON && scrollPosition < 100 &&
                 <>
                     <Button className="!sticky -right-[8px] !-top-[0px] !min-h-[141px] !h-[141px] flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none !-mt-2 z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1]" onClick={()=>handleScrollX(1)}>
                         <ButtonIcon typeButton={'btn_avanzar'} styles='dark:text-green-400 text-green-600 w-8 h-8'strokeWidth='1.3' typeIcon={1}/>

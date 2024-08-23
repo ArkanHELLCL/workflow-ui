@@ -12,7 +12,6 @@ import { informes } from "../../mocks/informes.json";
 import { pasos } from "../../mocks/pasos.json";
 import ContentMenu from "./contentMenu"
 import { GenReportIcon, DownReportIcon, MessagesIcon, FlowStepIcon } from "../../utils/icons.jsx";
-import { useEffect } from 'react';
 
 const hanldeOnClick = (item) => {
     console.log('Click on ' + item.description)
@@ -22,11 +21,7 @@ export default function RequerimientoMenu ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const gen = informes[0].flujos.filter((item) => item.id===request?.request.FLU_Id)[0]?.tipos?.filter((item) => item.tipo === "generacion")[0]?.informes
     const des = informes[0].flujos.filter((item) => item.id===request?.request.FLU_Id)[0]?.tipos?.filter((item) => item.tipo === "descarga")[0]?.informes
-    
-    useEffect(() => {
-        setAnimationEnd(false);
-    },[gen, des, request, pasos])
-
+        
     return (
         request &&                    
                 <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>
@@ -38,7 +33,8 @@ export default function RequerimientoMenu ({styles, delay, setAnimationEnd}) {
                       },
                       false
                     )
-                  }>
+                  } 
+                  onEnter={() =>  setAnimationEnd(false)}>
                 <div className={styles + ' relative flex-col h-full'}> 
                     <ContentMenu title={'Requerimiento'} styles={styles}>{
                         gen &&
