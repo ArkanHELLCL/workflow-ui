@@ -83,8 +83,8 @@ export default function SearchBar({openSearch, setOpenSearch}) {
         
     return(
         <ClickAwayListener onClickAway={handleClickAway}>
-            <div className="h-[24px] flex absolute left-[305px] z-50" id={menuSearch} onDragOver={handleNotDragOver}>                    
-                <div className={`absolute transition-all duration-400 ${openSearch && filters.filterSearch === 2 ? ' -translate-x-[151px]' : openSearch && filters.filterSearch === 1 ? ' -translate-x-[133px]' : ' translate-x-0'}`} id="mnuSearchBandejas">
+            <div className="h-full flex py-[2px] z-50 w-full" id={menuSearch} onDragOver={handleNotDragOver}>                    
+                <div className={`absolute top-[1px] transition-all duration-400 py-[2px] ${openSearch && filters.filterSearch === 2 ? ' -translate-x-[158px]' : openSearch && filters.filterSearch === 1 ? ' -translate-x-[134px]' : ' translate-x-0'}`} id="mnuSearchBandejas">
                     <Dropdown>
                         <MenuButton endDecorator={<KeyboardArrowDownIcon className='!w-4 !h-4 !mt-1 !ml-1'/>} className={`dark:!bg-[#323130] !bg-[#ffffff] hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !border-0 dark:!text-stone-100 !text-stone-500 !rounded-none !min-h-min !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-[1.5px] text-xs !w-[${widthMenuSearch}px] !font-light`}>{nameItemSelected}</MenuButton>
                         <Menu placement="bottom-start" className="dark:!bg-[#323130] !bg-[#ffffff] border dark:border-[#8a8886] border-[#e1dfdd] !rounded-none !text-xs !leading-6 !font-normal dark:!text-stone-100 !text-stone-500 !py-0 !m-h-min">
@@ -97,14 +97,14 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                         </Menu>
                     </Dropdown>
                 </div>                                                    
-                <form className="flex relative" onSubmit={HandleSubmit}>
+                <form className="flex relative w-full" onSubmit={HandleSubmit}>
                     <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
                         <SearchIcon className="!w-5 !h-5 !-mt-1"/>
                     </span>                
                     <InputDebounce 
                         type="text" 
                         name="search" 
-                        classname="w-[400px] h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
+                        classname="w-full h-full pl-12 dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none focus:ring-1 dark:focus:ring-white focus:ring-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
                         placehold="Buscar"
                         onfocus={(e) => e.target.placeholder = ""}
                         onblur={(e) => HandleOnBlur(e)} 

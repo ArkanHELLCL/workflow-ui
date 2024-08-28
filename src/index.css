@@ -83,3 +83,63 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
 input[type=date]:required:invalid::-webkit-datetime-edit {
   filter: invert(0.6);
 }
+
+#container{
+  display: grid;
+  grid-template-areas:    
+    "headerbarleft headerbarleft searchbar headerbarright"
+    "sidebar header header header"
+    "sidebar menu list formwf"
+    /*"sidebar main main main"*/
+    "footer footer footer footer";
+    grid-template-rows: 30px 145px 1fr 25px;
+    grid-template-columns: 50px 250px 450px 1fr;
+}
+
+#headerbar{
+  grid-area: headerbar;  
+}
+
+#sidebar{
+  grid-area: sidebar;
+} 
+
+#header{
+  grid-area: header;
+}
+
+#footer{
+  grid-area: footer;
+}
+
+#main{
+  grid-area: main;
+  overflow: hidden;
+} 
+
+#menu{
+  grid-area: menu;
+  overflow: hidden;
+}
+
+#list{
+  grid-area: list;
+  overflow: hidden;
+}
+
+#formwf{
+  grid-area: formwf;
+  overflow: hidden;
+}
+
+#headerbarleft{
+  grid-area: headerbarleft;
+}
+
+#headerbarright{
+  grid-area: headerbarright;
+}
+
+#searchbar{
+  grid-area: searchbar;
+}

@@ -38,8 +38,11 @@ export default function Header({openDialog, setOpenDialog}){
     }
 
     const handleScroll = () => {
+        //const $btnRight = document.getElementById('btn_scrollRightHeader');        
         const $header = document.querySelector('header');        
         if(!$header) return
+        //console.log($btnRight?.getBoundingClientRect().left , $header.getBoundingClientRect().left)
+        //if($btnRight?.getBoundingClientRect().left > $header.getBoundingClientRect().left) return
         console.log('handleScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
         calcScroll($header)
     };
@@ -71,13 +74,13 @@ export default function Header({openDialog, setOpenDialog}){
     },[animationEnd])   //, filters.itemIdSelected, request, record, formulario
 
     useEffect(() => {        
-        const $header = document.querySelector('header'); 
+        const $header = document.querySelector('header');         
         if(!$header) return 
-        console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)    
+        console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)
         setScrollON(false)
         setScrollPosition(0)
         $header.scrollLeft = 0
-        calcScroll($header)
+        //calcScroll($header)
     },[filters.itemIdSelected, request, record, formulario])
 
     const handleScrollX = (value) => {
@@ -114,12 +117,12 @@ export default function Header({openDialog, setOpenDialog}){
     //const mensSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "j")
     
     return (        
-        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start px-2 py-2 transition-all delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] ml-14 relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 min-h-[145px] h-[145px] overflow-x-auto'
+        <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start px-2 py-2 transition-all delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-full overflow-x-auto'
         onDragOver={handleNotDragOver}
         
         >
             {scrollON && scrollPosition > 0 &&
-                <Button className="!sticky -left-[7px] !-top-[0px] !min-h-[141px] !h-[141px] flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none !-mt-2 z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1]" onClick={()=>handleScrollX(-1)}>
+                <Button className="!sticky -left-[7px] !-top-[0px] !min-h-[141px] !h-[141px] flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none !-mt-2 z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1]" onClick={()=>handleScrollX(-1)} id="btn_scrollLeftHeader">
                     <ButtonIcon typeButton={'btn_retroceder'} styles='dark:text-green-400 text-green-600 w-8 h-8'strokeWidth='1.3' typeIcon={1}/>
                 </Button>
              }
@@ -155,7 +158,7 @@ export default function Header({openDialog, setOpenDialog}){
             }{
                 scrollON && scrollPosition < 100 &&
                 <>
-                    <Button className="!sticky -right-[8px] !-top-[0px] !min-h-[141px] !h-[141px] flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none !-mt-2 z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1]" onClick={()=>handleScrollX(1)}>
+                    <Button className="!sticky -right-[8px] !-top-[0px] !min-h-[141px] !h-[141px] flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none !-mt-2 z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1]" onClick={()=>handleScrollX(1)} id="btn_scrollRightHeader">
                         <ButtonIcon typeButton={'btn_avanzar'} styles='dark:text-green-400 text-green-600 w-8 h-8'strokeWidth='1.3' typeIcon={1}/>
                     </Button>                   
                 </>
