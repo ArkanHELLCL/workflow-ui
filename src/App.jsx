@@ -56,7 +56,7 @@ function App() {
   const [openSearch, setOpenSearch] = useState(false);    
 
   return (    
-    <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
+    <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
       <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full z-[60] transition-color delay-75" onDragOver={handleNotDragOver} id="headerbarleft">
         <HeaderBarLeft />          
       </section>
@@ -78,7 +78,7 @@ function App() {
         <section id="menu" className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] border-r overflow-auto transition-color delay-75 z-0'>                        
           <Menu menu={treeMmenu} frmRecord={frmRecord} />              
         </section>
-        <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4]h-full border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1' id="list">
+        <section className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1' id="list">
               {
               filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' && 
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">                    
@@ -187,7 +187,7 @@ function App() {
       <section id="footer">
         <Footer />
       </section>      
-    </div>
+    </main>
   )
 }
 
