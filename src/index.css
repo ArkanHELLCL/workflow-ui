@@ -92,7 +92,7 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
     "sidebar menu list formwf"
     "footer footer footer footer";
     grid-template-rows: 30px 145px 1fr 25px;
-    grid-template-columns: 50px 250px 450px 1fr;
+    grid-template-columns: 50px minmax(70px, 250px) minmax(100px, 450px) 1fr;
 }
 
 #headerbar{
