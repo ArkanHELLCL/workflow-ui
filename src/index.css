@@ -142,3 +142,14 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
   grid-area: searchbar;
   overflow: hidden;
 }
+
+.dataform{
+  grid-template-areas: 
+    "frmtitle frmtitle"
+    "frmheader frmbuttonsact",
+    "frmheaderto frmheaderto",
+    "frmatachment frmatachment",
+    "frmbody frmbody"
+    "frmfooter frmfooter";
+    grid-template-columns: 40% 60%;
+}

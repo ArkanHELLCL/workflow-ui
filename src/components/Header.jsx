@@ -27,12 +27,12 @@ export default function Header({openDialog, setOpenDialog}){
             $container.scrollLeft = 0
             return
         }
-        console.log('calcScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
+        //console.log('calcScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
         const { scrollLeft, scrollWidth, clientWidth } = $container;
         const position = Math.ceil(
             (scrollLeft / (scrollWidth - clientWidth)) * 100
         );
-        console.log('calcScroll', position, scrollLeft, scrollWidth, clientWidth)
+        //console.log('calcScroll', position, scrollLeft, scrollWidth, clientWidth)
         setScrollPosition(position ? position : 0);
         setScrollON(parseInt(scrollWidth) > parseInt(clientWidth) ? true : false);        
     }
@@ -43,21 +43,21 @@ export default function Header({openDialog, setOpenDialog}){
         if(!$header) return
         //console.log($btnRight?.getBoundingClientRect().left , $header.getBoundingClientRect().left)
         //if($btnRight?.getBoundingClientRect().left > $header.getBoundingClientRect().left) return
-        console.log('handleScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
+        //console.log('handleScroll animacion :', animationEnd, 'scrolon : ' , scrollON)
         calcScroll($header)
     };
 
     const handleResize = () => {
         const $header = document.querySelector('header');
         if(!$header) return
-        console.log('handleResize animacion :', animationEnd, 'scrolon : ' , scrollON)
+        //console.log('handleResize animacion :', animationEnd, 'scrolon : ' , scrollON)
         calcScroll($header)       
     };
 
     useEffect(() => { 
         const $header = document.querySelector('header');               
         if(!$header) return
-        console.log('useEffect-1 animacion :', animationEnd, 'scrolon : ' , scrollON)
+        //console.log('useEffect-1 animacion :', animationEnd, 'scrolon : ' , scrollON)
         $header.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);        
         return () => {
@@ -69,14 +69,14 @@ export default function Header({openDialog, setOpenDialog}){
     useEffect(() => {    
         const $header = document.querySelector('header'); 
         if(!$header) return    
-        console.log('useEffect-2 animacion :', animationEnd, 'scrolon : ' , scrollON)       
+        //console.log('useEffect-2 animacion :', animationEnd, 'scrolon : ' , scrollON)       
         calcScroll($header)
     },[animationEnd])   //, filters.itemIdSelected, request, record, formulario
 
     useEffect(() => {        
         const $header = document.querySelector('header');         
         if(!$header) return 
-        console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)
+        //console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)
         setScrollON(false)
         setScrollPosition(0)
         $header.scrollLeft = 0
@@ -91,7 +91,7 @@ export default function Header({openDialog, setOpenDialog}){
         setScrollON(true)
         setScrollPosition(0)
         calcScroll($header);
-        console.log('handleScrollX', scrollPosition)
+        //console.log('handleScrollX', scrollPosition)
     }
     
     useEffect(() => {
