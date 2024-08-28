@@ -7,8 +7,9 @@ import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import { ListItem } from '@mui/joy';
 import { Divider, ListItemButton } from '@mui/material';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+//import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import IconButton from '@mui/joy/IconButton';
+import { MailIcon } from '../../utils/icons.jsx';
 
 export default function UserBar({open, setOpen}) {
     const ButtonUsrProfile = () => {
@@ -59,7 +60,7 @@ export default function UserBar({open, setOpen}) {
                     startAction={
                         <ListItemButton className="!w-fit dark:!text-white !text-black !text-xs !pl-3 !pr-0 !px-0 !font-thin" 
                             onClick={()=>console.log("ver mensajes")}>
-                                <MailOutlineIcon className="!w-10 !h-10" />
+                                <MailIcon styles="!w-10 !h-10" strokeWidth={1}/>
                                 <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
                         </ListItemButton>}
                     endAction={

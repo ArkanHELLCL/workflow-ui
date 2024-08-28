@@ -183,7 +183,7 @@ function App() {
           }
           </div>
         </section>
-      </FormProvider>      
+      </FormProvider>
       <section id="footer">
         <Footer />
       </section>      
