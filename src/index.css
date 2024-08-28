@@ -111,11 +111,6 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
   grid-area: footer;
 }
 
-#main{
-  grid-area: main;
-  overflow: hidden;
-} 
-
 #menu{
   grid-area: menu;
   overflow: hidden;
@@ -124,11 +119,13 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 #list{
   grid-area: list;
   overflow: hidden;
+  /*resize: horizontal;*/
 }
 
 #formwf{
   grid-area: formwf;
   overflow: hidden;
+  /*resize: horizontal;*/
 }
 
 #headerbarleft{

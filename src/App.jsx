@@ -61,7 +61,7 @@ function App() {
           <Menu menu={treeMmenu} frmRecord={frmRecord} />              
         </section>
         <section id="list">
-              <List frmRecord={frmRecord}/>
+          <List frmRecord={frmRecord}/>
         </section>
         <section id="formwf" className="bg-[#ffffff] dark:bg-transparent">
           <DataForm frmRequest={frmRequest} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
