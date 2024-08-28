@@ -90,7 +90,6 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
     "headerbarleft headerbarleft searchbar headerbarright"
     "sidebar header header header"
     "sidebar menu list formwf"
-    /*"sidebar main main main"*/
     "footer footer footer footer";
     grid-template-rows: 30px 145px 1fr 25px;
     grid-template-columns: 50px 250px 450px 1fr;
@@ -134,12 +133,15 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 
 #headerbarleft{
   grid-area: headerbarleft;
+  overflow: hidden;
 }
 
 #headerbarright{
   grid-area: headerbarright;
+  overflow: hidden;
 }
 
 #searchbar{
   grid-area: searchbar;
+  overflow: hidden;
 }
