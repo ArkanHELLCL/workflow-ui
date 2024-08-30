@@ -1,13 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
-import HeaderBar from './components/HeaderBar.jsx'
 import SideBar from './components/SideBar.jsx'
-import Loading from "./utils/Loading.jsx"; 
-import Main from './components/Main.jsx'
+import treeMmenu  from "./mocks/treeMenu.json";
+import Menu from './components/main/Menu.jsx'
 import { useForm, FormProvider } from "react-hook-form"
+import HeaderBarLeft from "./components/headerbar/HeaderBarLeft.jsx";
+import SearchBar from "./components/headerbar/searchBar.jsx";
+import HeaderBarRight from "./components/headerbar/HeaderBarRight.jsx";
+import List from "./components/main/list.jsx";
+import DataForm from "./components/main/dataform.jsx";
 
 //import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 //import { useFilters } from "./hooks/useFilters.jsx";
@@ -21,7 +25,8 @@ const handleNotDragOver = (event) => {
   return false;
 }
 
-function App() {   
+function App() {
+  
   const frmRequest = useForm({
     mode: "onBlur",
     //mode: "all"
@@ -32,28 +37,40 @@ function App() {
   })
 
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
-  
+  const [openSearch, setOpenSearch] = useState(false);    
+
   return (    
-    <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative pb-[30px] flex flex-col">
-      <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full h-[30px] z-[60] transition-color delay-75" onDragOver={handleNotDragOver}>
-        <HeaderBar />          
+    <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
+      <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full z-[60] transition-color delay-75" onDragOver={handleNotDragOver} id="headerbarleft">
+        <HeaderBarLeft />          
       </section>
-      <nav className="h-full w-14 absolute left-0 dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75 z-20 pt-[30px]" 
-        onDragOver={handleNotDragOver}>
-        <Suspense fallback={<Loading />}>
-          <SideBar />
-        </Suspense>
-      </nav>        
-      <Suspense fallback={<Loading />}>
-        <FormProvider {...frmRequest}>          
-          <Header openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
-          <Main handleNotDragOver={handleNotDragOver} frmRequest={frmRequest} openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord}/>
-        </FormProvider>
-      </Suspense>
-      <Suspense fallback={<Loading />}>
+      <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full z-[60] transition-color delay-75" onDragOver={handleNotDragOver} id="searchbar">
+        <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} />
+      </section>
+      <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full z-[60] transition-color delay-75" onDragOver={handleNotDragOver} id="headerbarright">
+        <HeaderBarRight />
+      </section>
+      <section className="h-full dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75 z-20" onDragOver={handleNotDragOver} id="sidebar">
+        <SideBar />
+      </section>
+      <FormProvider {...frmRequest}>
+        <section id="header">
+          <Header openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord} />
+        </section>
+        <section id="menu" className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] border-r overflow-auto transition-color delay-75 z-0'>                        
+          <Menu menu={treeMmenu} frmRecord={frmRecord} />              
+        </section>
+        <section id="list">
+          <List frmRecord={frmRecord}/>
+        </section>
+        <section id="formwf" className="bg-[#ffffff] dark:bg-transparent">
+          <DataForm frmRequest={frmRequest} frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog} />
+        </section>
+      </FormProvider>
+      <section id="footer">
         <Footer />
-      </Suspense>      
-    </div>
+      </section>      
+    </main>
   )
 }
 
