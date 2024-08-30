@@ -78,25 +78,27 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         <>
             {
                 request && form &&
-                <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>                    
+                <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
                     <form id={form.name} noValidate ref={formRef}
-                        className="h-full w-full flex flex-col columns-1"
+                        className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : 'dataform'} `}
                         onSubmit={frmRequest.handleSubmit(onSubmitRequest)}   
                         >
-                            <Header formulario={form} setOpenDialog={setOpenDialog} />                
-                            <Files setFilesList={setFilesList} filesList={filesList}/>{
+                            <Header formulario={form} setOpenDialog={setOpenDialog} />{
                                 !preview.state && !preview.obj &&
+                                <>
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
-                                }{
-                                    preview.state && preview?.selected!==null &&
-                                        <Preview />
-                                }{
+                                
+                            <Files setFilesList={setFilesList} filesList={filesList}/>
+                            </>}{
                                     preview.state && preview.obj === 'X1' &&
                                         <>                                            
                                             <h2 className="font-thin text-xl">Mantenedor de proveeodres</h2>
                                             <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario</h2>
                                             <MPMant frmRecord={frmRecord} singleButton={true} />
                                         </>                                        
+                                }{
+                                    preview.state && preview?.selected!==null &&
+                                        <Preview />
                                 }
                     </form>
                 </section>

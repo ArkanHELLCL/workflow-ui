@@ -93,7 +93,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
 
     return (
         <>
-            <div id="inpuntsForm" className={`flex-1 overflow-auto flex ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-0 min-w-96`} onDragEnter={handleDragEnter}>
+            <div id="inpuntsForm" className={`frmbody overflow-auto ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-0 min-w-96`} onDragEnter={handleDragEnter}>
                 {
                     dropEnter ?
                     <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'

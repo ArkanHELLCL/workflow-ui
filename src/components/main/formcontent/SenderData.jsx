@@ -3,7 +3,7 @@ import { useRequest } from '../../../hooks/useRequest.jsx';
 export default function SenderData({formulario}) {
     const { request } = useRequest()    
     return (
-        <div className='flex items-center gap-3 pb-1 pt-1'>
+        <div className='flex items-center gap-3 pb-1 frmheaderto w-full'>
             <div className="relative">
                 <div className='hover:cursor-pointer w-14 h-14 flex items-center p-0 m-0 overflow-hidden imgSender' title="Enviar mensaje">
                     <img src = {formulario.IdSender_Foto} />                
@@ -13,7 +13,7 @@ export default function SenderData({formulario}) {
                     }
             </div>
             <div className='grid'>                                
-            <span className='text-base font-light leading-tight'>De : {request?.request?.DRE_UsuarioEditAnt ? request?.request?.DRE_UsuarioEditAnt : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span>{
+            <span className='text-base font-light leading-tight truncate'>De : {request?.request?.DRE_UsuarioEditAnt ? request?.request?.DRE_UsuarioEditAnt : request?.request?.NombreCreador + ' ' + request?.request?.ApellidoCreador}</span>{
                 request?.request?.Bandeja === 'bnc' ?
                         <span className='text-sm font-light leading-tight'>Acción realizada: <strong className='text-[#bf6ac3]'>{request?.request?.ESR_DescripcionRequerimiento ? request?.request?.ESR_DescripcionRequerimiento : 'Pendiente'}</strong></span>
                     :

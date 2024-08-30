@@ -93,8 +93,7 @@ const Adjuntos = ({file, preview, setPreview, setAdjuntos, setFilesList}) => {
                         }
                     </Menu>   
                 </Dropdown>
-            </div>                
-                  
+            </div>                  
         </>
     )
 }
@@ -109,7 +108,7 @@ export default function Attachments({setFilesList, filesList}){
     const {adjuntos, setAdjuntos} = useAttach()
     const {preview, setPreview} = usePreview()
     return(
-        <div className=' max-h-28 overflow-y-auto py-0 pr-2 relative z-10' onDragOver = {handleNotDragOver}>
+        <div className=' max-h-28 overflow-y-auto py-0 pr-2 relative z-10 frmatachment' onDragOver = {handleNotDragOver}>
             <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-1">
             {
                 adjuntos?.map((file, index) => {

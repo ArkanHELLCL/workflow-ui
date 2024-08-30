@@ -144,12 +144,73 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 }
 
 .dataform{
+  display: grid;
   grid-template-areas: 
     "frmtitle frmtitle"
-    "frmheader frmbuttonsact",
-    "frmheaderto frmheaderto",
-    "frmatachment frmatachment",
+    "frmheader frmbuttonsact"
+    "frmdate frmdate"
+    "frmheaderto frmheaderto"
+    "frmatachment frmatachment"
     "frmbody frmbody"
     "frmfooter frmfooter";
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 40% minmax(60%, 60%);
+    grid-template-rows: 24px 38px 11px;
+}
+
+.frmtitle{
+  grid-area: frmtitle; 
+}
+
+.frmheader{
+  grid-area: frmheader;
+}
+
+.frmbuttonsact{
+  grid-area: frmbuttonsact;
+  /*overflow: hidden;*/
+  overflow-x: auto;
+}
+
+.frmheaderto{
+  grid-area: frmheaderto;
+  overflow: hidden;
+}
+
+.frmatachment{
+  grid-area: frmatachment;  
+}
+
+.frmbody{
+  grid-area: frmbody;
+  overflow: hidden;
+}
+
+.frmfooter{
+  grid-area: frmfooter;
+}
+
+.frmdate{
+  grid-area: frmdate;
+}
+
+.datapreview{
+  display: grid;
+  grid-template-areas: 
+    "prevtitle"
+    "prevbody"
+    "prevfooter";
+    grid-template-rows: 24px 100%;
+}
+
+.prevtitle{
+  grid-area: prevtitle;
+  /*align-items: start;*/
+}
+
+.prevbody{
+  grid-area: prevbody;
+}
+
+.prevfooter{
+  grid-area: prevfooter;
 }
