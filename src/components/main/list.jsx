@@ -61,7 +61,7 @@ export default function List({frmRecord}) {
                     }
                   </div>
               }
-              <div className="overflow-auto h-full relative pr-2 w-full flex flex-col columns-1" id="containerRef">              
+              <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">              
                 <Suspense fallback={<Loading />}>{
                   filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? ( 
                       <>

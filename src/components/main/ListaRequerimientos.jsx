@@ -11,7 +11,7 @@ const Accordion = ({acc, moreItems}) => {
     return(
         <>  
             {acc.length===0 && 
-                <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-full w-full !overflow-hidden">
+                <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-[70vh] w-full !overflow-hidden">
                     <span className='text-[#2c87d2] text-xl w-full'>No se encontraron registros</span>
                 </div>            
             }
