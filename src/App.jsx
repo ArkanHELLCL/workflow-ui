@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
 import Header from './components/Header.jsx'
@@ -15,6 +15,7 @@ import HeaderBarRight from "./components/headerbar/HeaderBarRight.jsx";
 import List from "./components/main/list.jsx";
 import DataForm from "./components/main/dataform.jsx";
 import { useSnackbar } from 'notistack';
+import { ContactSupportOutlined } from "@mui/icons-material";
 
 //import EncontrarIdPorUrl from './components/EncontrarIdPorUrl.jsx'
 //import { useFilters } from "./hooks/useFilters.jsx";
@@ -47,16 +48,18 @@ function App() {
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
 
-  !frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitted ?  
-    enqueueSnackbar('Debes corregir los errores antes de grabar! ' + frmRequest.formState.submitCount, { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} }) 
-    : null 
+  useEffect(() => {
+    //if(frmRequest.formState.isSubmitting && !frmRequest.formState.isValid && !frmRequest.isSubmitSuccessful){
+    if(!frmRequest.isSubmitSuccessful && frmRequest.formState.submitCount > 0){
+      enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    }
+  },[frmRequest.formState.submitCount])
 
   const onSubmitRequest = (data) => {
     console.log('formcomponent',data);
     enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     frmRequest.clearErrors()
     frmRequest.reset()
-    console.log(frmRequest.formState.isSubmitted)
     setAdjuntos([])
     setFilesList([])
     setPreview({
