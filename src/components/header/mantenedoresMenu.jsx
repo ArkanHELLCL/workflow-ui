@@ -17,13 +17,13 @@ export default function MantenedoresMenu ({styles, delay, setAnimationEnd}) {
               'transitionend',
               (e) => {                
                 setAnimationEnd(true);
-                console.log('mantenedoresMenu end')
+                //console.log('mantenedoresMenu end')
                 done(e);
               },
               false
             )
           }
-          onEnter={() => {console.log('inicio animacion'); setAnimationEnd(false)}}>
+          onEnter={() => {setAnimationEnd(false)}}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Mantenedor del sistema'}>
                     <Dropdown>

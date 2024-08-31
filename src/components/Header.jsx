@@ -24,7 +24,7 @@ export default function Header({openDialog, setOpenDialog}){
         const $header = document.querySelector('header'); 
         if(!$header) return 
         if(!animationEnd) {
-            console.log('calcScroll !animacion :', animationEnd, 'scrolon : ' , scrollON)
+            //console.log('calcScroll !animacion :', animationEnd, 'scrolon : ' , scrollON)
             setScrollON(false)
             setScrollPosition(0)
             $header.scrollLeft = 0
@@ -71,10 +71,6 @@ export default function Header({openDialog, setOpenDialog}){
         calcScroll()
     },[animationEnd])
 
-    /*useEffect(() => {   
-        calcScroll()    
-        console.log('useEffect-4 animacion :', animationEnd, 'scrolon : ' , scrollON) 
-        setAnimationEnd(false)*/
     useEffect(() => {        
         const $header = document.querySelector('header');         
         if(!$header) return 

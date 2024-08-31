@@ -1,11 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { useFilters } from '../../../../hooks/useFilters.jsx';
+import { useRecords } from '../../../../hooks/useRecords.jsx';
 import Slide from '@mui/material/Slide';
 //import { useSnackbar } from 'notistack';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 
 export default function InputButtons({isAllowed}) {   
+    const { filters } = useFilters()
+    const { record } = useRecords()
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);    
     let $container = document.getElementById('buttonsRecord');
@@ -48,6 +53,15 @@ export default function InputButtons({isAllowed}) {
         if (value === -1) $container.scrollLeft -= 200;
         else $container.scrollLeft += 200;
     }
+
+    useEffect(() => {        
+        const $header = document.querySelector('header');         
+        if(!$header) return 
+        //console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)
+        setScrollON(false)
+        setScrollPosition(0)
+        ////calcScroll()
+    },[filters.itemIdSelected, record])
 
     async function hanldeOnClick(event){
         event.preventDefault()

@@ -1,11 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { useFilters } from '../../../../hooks/useFilters.jsx';
+import { useRequest } from '../../../../hooks/useRequest.jsx';
 import Slide from '@mui/material/Slide';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 
 export default function Buttons({formulario}){
+    const { request } = useRequest()
+    const { filters } = useFilters()
     const { FOR_Botones } = formulario;
     const grupos = FOR_Botones?.map(grupo => grupo)
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -50,6 +54,15 @@ export default function Buttons({formulario}){
         if (value === -1) $container.scrollLeft -= 200;
         else $container.scrollLeft += 200;
     }
+
+    useEffect(() => {        
+        const $header = document.querySelector('header');         
+        if(!$header) return 
+        //console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)
+        setScrollON(false)
+        setScrollPosition(0)
+        ////calcScroll()
+    },[filters.itemIdSelected, request])
 
     return(
         <div id="buttonsRequest" className='frmbuttonsact w-full h-full'>
