@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useRequest } from '../../../hooks/useRequest.jsx';
+import { useRequest } from '../../../../hooks/useRequest.jsx';
 export default function SenderData({formulario}) {
     const { request } = useRequest()    
     return (
-        <div className='flex items-center gap-3 pb-1 frmheaderto w-full'>
+        <div className='flex items-center gap-3 pb-1 frmheaderto w-full -mt-1 mb-1'>
             <div className="relative">
                 <div className='hover:cursor-pointer w-14 h-14 flex items-center p-0 m-0 overflow-hidden imgSender' title="Enviar mensaje">
                     <img src = {formulario.IdSender_Foto} />                

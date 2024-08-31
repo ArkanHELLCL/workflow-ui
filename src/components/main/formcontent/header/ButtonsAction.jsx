@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Slide from '@mui/material/Slide';
-import { ButtonIcon } from '../../../utils/icons.jsx';
+import { ButtonIcon } from '../../../../utils/icons.jsx';
 import { useState } from 'react';
 import { Button } from '@mui/material';
 
@@ -53,13 +53,13 @@ export default function Buttons({formulario}){
 
     return(
         <div id="buttonsRequest" className='frmbuttonsact w-full h-full'>
-            <div className='relative leading-tight flex content-end'>
+            <div className='relative leading-tight flex justify-end w-fit ml-auto'>
                 {scrollON && scrollPosition > 0 &&
                     <Button className="!sticky left-[1px] !min-h-full !h-[36px] flex !align-middle !items-center !content-center !w-5 !min-w-5 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] !mt-[1px]" onClick={()=>handleScrollX(-1)}>
                         <ButtonIcon typeButton={'btn_retroceder'} styles='dark:text-green-400 text-green-600 w-8 h-[38px]'strokeWidth='1.3' typeIcon={1}/>
                     </Button>
                 }
-                <div className='flex items-center gap-3 pr-2 py-[1px]'>
+                <div className='flex items-center gap-3 pr-2 pl-[1px] pt-[1px]'>
                 {
                     grupos?.map(grp => {
                         return (

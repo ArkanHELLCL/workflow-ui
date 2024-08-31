@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { usePreview } from '../../../hooks/usePreview.jsx';
-import { useRequest } from '../../../hooks/useRequest.jsx';
-import DataRequest from './Datarequest.jsx';
-import SenderData from './SenderData.jsx';
-import Buttons from "./ButtonsAction.jsx";
-import UpdateDate from './UpdateDate.jsx';
+import ReqTitle from './header/ReqTitle.jsx';
+import FrmHeader from './header/FrmHeader.jsx';
+import SenderData from './header/SenderData.jsx';
+import Buttons from "./header/ButtonsAction.jsx";
+import UpdateDate from './header/UpdateDate.jsx';
 
 import Dropdown from '@mui/joy/Dropdown';
 import MenuButton from '@mui/joy/MenuButton';
@@ -17,7 +17,6 @@ const handleNotDragOver = (event) => {
 }
 export default function Header({formulario}) {
     const { preview, setPreview } = usePreview();
-    const { request } = useRequest()
     const handleOnClick = () => {
         setPreview({
             state:false,
@@ -28,14 +27,9 @@ export default function Header({formulario}) {
     
     return (
             !preview.state && !preview.obj ? (
-                <>
-                    <div className='frmtitle w-full' onDragOver={handleNotDragOver}>
-                        <h1 className='text-base truncate w-auto pr-2'>{request?.request?.REQ_Descripcion.toUpperCase()}</h1>
-                    </div>
-                    <div className='frmheader' onDragOver={handleNotDragOver}>
-                        <h2 className='text-sm font-light leading-tight'>Flujo: <strong>{request?.request?.FLU_Descripcion}</strong> / Paso : <strong>{request?.request?.FLD_CodigoPaso}</strong></h2>
-                        <h2 className='text-sm font-light leading-tight'>Para: <strong>{request?.request?.NombreEditor ? request?.request?.NombreEditor + ' ' + request?.request?.ApellidoEditor : request?.request?.DepDescripcionActual}</strong></h2>
-                    </div>
+                <>                    
+                    <ReqTitle handleNotDragOver={handleNotDragOver}/>                   
+                    <FrmHeader handleNotDragOver={handleNotDragOver}/>
                     <Buttons formulario={formulario}/>
                     <SenderData formulario={formulario} />
                     <UpdateDate />

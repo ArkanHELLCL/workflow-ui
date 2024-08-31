@@ -74,7 +74,7 @@ export default function Header({openDialog, setOpenDialog}){
     /*useEffect(() => {   
         calcScroll()    
         console.log('useEffect-4 animacion :', animationEnd, 'scrolon : ' , scrollON) 
-        setAnimationEnd(false)
+        setAnimationEnd(false)*/
     useEffect(() => {        
         const $header = document.querySelector('header');         
         if(!$header) return 
@@ -82,7 +82,7 @@ export default function Header({openDialog, setOpenDialog}){
         setScrollON(false)
         setScrollPosition(0)
         ////calcScroll()
-    },[filters.itemIdSelected, request, record, formulario])    */
+    },[filters.itemIdSelected, request, record, formulario])
 
     const handleScrollX = (value) => {
         const $header = document.querySelector('header');

@@ -78,7 +78,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         <>
             {
                 request && form &&
-                <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
+                <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
                     <form id={form.name} noValidate ref={formRef}
                         className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : 'dataform'} `}
                         onSubmit={frmRequest.handleSubmit(onSubmitRequest)}   
