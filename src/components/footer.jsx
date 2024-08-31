@@ -102,7 +102,7 @@ export default function Footer() {
                         }
                         <div>
                             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                            <span className="text-green-500">{filters.totalRequerimientos}</span>                
+                            <span className="text-green-500">{filters.totalRequerimientos === 1000 ? '1000+' : filters.totalRequerimientos}</span>                
                         </div> 
                     </>
                     : 
@@ -140,7 +140,7 @@ export default function Footer() {
 
                                 <div>
                                     <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                    <span className="text-blue-500">{filters.totalRequerimientos}</span>                
+                                    <span className="text-blue-500">{filters.totalRequerimientos === 1000 ? '1000+' : filters.totalRequerimientos}</span>                
                                 </div> 
                             </>
                         ) : (
