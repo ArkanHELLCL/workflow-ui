@@ -28,7 +28,7 @@ export default function DocPreview() {
       {uri: preview?.selected?.url + preview?.selected?.nombre, fileType: preview?.selected.extension}
     ];
   return (
-    <div className='pt-[10px] relative overflow-hidden z-10 pr-2 text-black prevbody' onDragOver={handleNotDragOver}>
+    <div className='pt-0 relative overflow-hidden z-10 pr-2 text-black prevbody' onDragOver={handleNotDragOver}>
         <DocViewer 
             prefetchMethod="GET" 
             pluginRenderers={DocViewerRenderers} 

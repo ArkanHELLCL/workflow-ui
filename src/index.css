@@ -199,16 +199,17 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
     "prevtitle"
     "prevbody"
     "prevfooter";
-    grid-template-rows: 24px 100%;
+    grid-template-rows: 36px 100%;
 }
 
 .prevtitle{
   grid-area: prevtitle;
-  /*align-items: start;*/
+  overflow: hidden;
 }
 
 .prevbody{
   grid-area: prevbody;
+  overflow-y: auto;
 }
 
 .prevfooter{
