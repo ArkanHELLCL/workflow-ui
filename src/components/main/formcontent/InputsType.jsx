@@ -11,37 +11,37 @@ import {
     InputList
 } from './inputscomponents'
 
-export default function InputsType({campo, className}){    
+export default function InputsType({frmRequest, campo, className}){    
     switch (campo.FDI_TipoCampo.trim().toUpperCase()) {
         case 'A':   //Archivo
             return
         case 'C':   //Texto tamaño mediano
-            return <InputText campo={campo} className={className}/>
+            return <InputText frmRequest={frmRequest} campo={campo} className={className}/>
         case 'N':   //Número, separador de miles sin decimales
-            return <InputNumber campo={campo} className={className}/>
+            return <InputNumber frmRequest={frmRequest} campo={campo} className={className}/>
         case 'D':   //Número, separador de miles con 2 decimales
-            return <InputDecimal campo={campo} className={className}/>
+            return <InputDecimal frmRequest={frmRequest} campo={campo} className={className}/>
         case 'G':   //Monto, separador de miles sin decimales
-            return <InputMonto campo={campo} className={className}/>
+            return <InputMonto frmRequest={frmRequest} campo={campo} className={className}/>
         case 'H':   //Monto, separador de miles con 2 decimales
-            return <InputMontoD campo={campo} className={className}/>
+            return <InputMontoD frmRequest={frmRequest} campo={campo} className={className}/>
         case 'F':   //Fecha
-            return <InputFecha campo={campo} className={className}/>
+            return <InputFecha frmRequest={frmRequest} campo={campo} className={className}/>
         case 'V':   //Fecha Vencimiento
-            return <InputFecha campo={campo} className={className}/>
+            return <InputFecha frmRequest={frmRequest} campo={campo} className={className}/>
         case 'T':   //Texto tamaño grande
-            return <InputTextArea campo={campo} className={className}/>
+            return <InputTextArea frmRequest={frmRequest} campo={campo} className={className}/>
         case 'R':   //Rut
-            return <InputRut campo={campo} className={className}/>
+            return <InputRut frmRequest={frmRequest} campo={campo} className={className}/>
         case 'L':   //Lista desplegable
-            return <InputList campo={campo} className={className}/>
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         case 'X1':   //Lista desplegable
-            return <InputList campo={campo} className={className}/>
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         case 'U':   //Usuario destinatario
-            return <InputList campo={campo} className={className}/>
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         case 'PM':  //Periodos de pago
-            return <InputList campo={campo} className={className}/>
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         default:
-            return <InputText campo={campo} className={className}/>
+            return <InputText frmRequest={frmRequest} campo={campo} className={className}/>
     }
 }

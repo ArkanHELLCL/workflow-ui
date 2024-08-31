@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/joy/FormControl';
 import FormHelperText from '@mui/joy/FormHelperText';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { styled } from '@mui/joy/styles';
 import Input from '@mui/joy/Input';
 import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
@@ -72,10 +72,10 @@ const TextArea = forwardRef(function InnerInput(props, ref) {
     );
   });
 
-export default function FormInputTextArea ({ campo, className }) {
+export default function FormInputTextArea ({ frmRequest, campo, className }) {
   const { request } = useRequest();
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-  const { control, formState: { errors } } = useFormContext();
+
   const disabled = () => {    
       if(request.request.IdEditor === undefined || request.request.IdEditor === null)
           return true
@@ -87,7 +87,7 @@ export default function FormInputTextArea ({ campo, className }) {
   }
   return (
     <Controller
-        control={control}
+        control={frmRequest.control}
         name={campo.FDI_NombreHTML}
         rules={required}        
         render={({ field: { onChange, onBlur, value } }) => (
@@ -101,7 +101,7 @@ export default function FormInputTextArea ({ campo, className }) {
                     disabled={disabled()}                    
                     autoComplete='on'
                     autoFocus={false}
-                    error={!!errors[campo?.FDI_NombreHTML]}                                        
+                    error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}                                        
                     value={value || ''}
                     variant="outlined"                    
                     slots={{ input: TextArea }}
@@ -116,7 +116,7 @@ export default function FormInputTextArea ({ campo, className }) {
                     }}                                
                 />
                 <FormHelperText className="!text-red-600">
-                    {errors[campo.FDI_NombreHTML]?.message}
+                    {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
                 </FormHelperText>
             </FormControl>
         )}

@@ -105,7 +105,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
                             <span className='text-[#2c87d2]'> Agregar adjuntos</span>
                         </div>
                     </div> :
-                    <Inputs campos={campos}/>
+                    <Inputs frmRequest={frmRequest} campos={campos}/>
                 }
             </div>            
             <input 

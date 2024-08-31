@@ -2,7 +2,7 @@
 import FormControl from '@mui/joy/FormControl';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { NumericFormat } from 'react-number-format';
 import PropTypes from 'prop-types';
@@ -40,10 +40,9 @@ NumericFormatAdapter.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
-export default function FormInputMonto ({ campo, className }) {
+export default function FormInputMonto ({ frmRequest, campo, className }) {
     const { request } = useRequest();
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-    const { control, formState: { errors } } = useFormContext();
 
     const disabled = () => {    
         if(request.request.IdEditor === undefined || request.request.IdEditor === null)
@@ -56,7 +55,7 @@ export default function FormInputMonto ({ campo, className }) {
     }
   return (
     <Controller
-        control={control}
+        control={frmRequest.control}
         name={campo.FDI_NombreHTML}
         rules={required}
         //defaultValue={campo.DFO_Dato}
@@ -71,7 +70,7 @@ export default function FormInputMonto ({ campo, className }) {
                     disabled={disabled()}                    
                     autoComplete='on'
                     autoFocus={false}
-                    error={!!errors[campo?.FDI_NombreHTML]}                    
+                    error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}                    
                     //defaultValue={campo.DFO_Dato}
                     value={value || ''}
                     variant="outlined"                    
@@ -87,10 +86,10 @@ export default function FormInputMonto ({ campo, className }) {
                     }}                                
                 />
                 <FormHelperText className="!text-red-600">
-                    {errors[campo.FDI_NombreHTML]?.message}
+                    {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
                 </FormHelperText>                       
             </FormControl>
         )}
     />
   );
-};
+}

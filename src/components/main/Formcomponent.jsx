@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { usePreview } from '../../hooks/usePreview.jsx';
 import { useAttach } from '../../hooks/useAttach.jsx';
@@ -11,7 +11,7 @@ import {    NoData,
             Preview
         } from './formcontent';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
-import { useSnackbar } from 'notistack';
+//import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
 import MPMant from './maintainer/proveedorMant.jsx'
@@ -19,15 +19,14 @@ import Dropdown from '@mui/joy/Dropdown';
 import MenuButton from '@mui/joy/MenuButton';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 
-export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpenDialog}){    
+export default function Formcomponent({frmRequest, frmRecord, filesList, setFilesList, openDialog, setOpenDialog}){    
     const { request } = useRequest()
     const { preview, setPreview } = usePreview()
     const { setAdjuntos } = useAttach()    
     const [dropEnter, setDropEnter] = useState(false);
-    const [filesList, setFilesList] = useState([]);
     const [form, setForm] = useState()
-    const { enqueueSnackbar } = useSnackbar();
-    const formRef = useRef(null) 
+    //const { enqueueSnackbar } = useSnackbar();
+    //const formRef = useRef(null) 
 
     useEffect(() => {        
         let frm
@@ -43,7 +42,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         
     },[formulario, request])
 
-    const onSubmitRequest = (data) => {
+    /*const onSubmitRequest = (data) => {
         console.log('formcomponent',data);
         enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
         frmRequest.clearErrors()
@@ -56,7 +55,7 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
             obj:null,
             selected:null
         }) 
-    };
+    };*/
 
     const handleOnClick = () => {
         setPreview({
@@ -81,44 +80,44 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
     
     //frmRequest.formState.isValid && frmRequest.formState.isSubmitted ? 
     //null :
-    !frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitted ?  
+
+
+    /*!frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitted ?  
         enqueueSnackbar('Debes corregir los errores antes de grabar! ' + frmRequest.formState.submitCount, { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} }) 
-        : null 
+        : null */
 
     return(
         <>
             {
                 request && form &&
                 <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
-                    <form id={form.name} noValidate ref={formRef}
-                        className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}
-                        onSubmit={frmRequest.handleSubmit(onSubmitRequest)}   
-                        >
-                            <Header formulario={form} setOpenDialog={setOpenDialog} />{
-                                !preview.state && !preview.obj &&
+                    <div className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}>
+                        <Header formulario={form} setOpenDialog={setOpenDialog} />
+                        {
+                            !preview.state && !preview.obj &&
                                 <>
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                     <Files setFilesList={setFilesList} filesList={filesList}/>
-                                </>}
-                                {
-                                    preview.state && preview.obj === 'X1' &&
-                                        <>
-                                            <Dropdown>
-                                                <MenuButton startDecorator={<TrendingFlatIcon className="rotate-180" />} className="hover:dark:!bg-[#505050] hover:!bg-[#e6f2fa] !border-0 dark:!text-stone-100 !text-stone-500 !text-xs !font-base !py-1 !rounded-none !ps-1 !pe-1 prevtitle w-fit frmmantbackbuttom" onClick={handleOnClick}>
-                                                Volver al formulario
-                                                </MenuButton>
-                                            </Dropdown>
-                                            <div className="frmmanttitle">
-                                                <h2 className="font-thin text-xl">Mantenedor de proveedores</h2>
-                                                <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario de {request?.request?.FLU_Descripcion}</h2>
-                                            </div>
-                                            <MPMant frmRecord={frmRecord} singleButton={true} />   
-                                        </>
-                                }{
-                                    preview.state && preview?.selected!==null &&
-                                        <Preview />
-                                }
-                    </form>
+                                </>
+                        }{
+                            preview.state && preview.obj === 'X1' &&
+                                <>
+                                    <Dropdown>
+                                        <MenuButton startDecorator={<TrendingFlatIcon className="rotate-180" />} className="hover:dark:!bg-[#505050] hover:!bg-[#e6f2fa] !border-0 dark:!text-stone-100 !text-stone-500 !text-xs !font-base !py-1 !rounded-none !ps-1 !pe-1 prevtitle w-fit frmmantbackbuttom" onClick={handleOnClick}>
+                                        Volver al formulario
+                                        </MenuButton>
+                                    </Dropdown>
+                                    <div className="frmmanttitle">
+                                        <h2 className="font-thin text-xl">Mantenedor de proveedores</h2>
+                                        <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario de {request?.request?.FLU_Descripcion}</h2>
+                                    </div>
+                                    <MPMant frmRecord={frmRecord} singleButton={true} />   
+                                </>
+                        }{
+                            preview.state && preview?.selected!==null &&
+                                <Preview />
+                        }
+                    </div>
                 </section>
             }{  !form &&
                     <NoData />

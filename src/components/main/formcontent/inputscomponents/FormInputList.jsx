@@ -5,7 +5,7 @@ import Autocomplete from '@mui/joy/Autocomplete';
 //import CircularProgress from '@mui/joy/CircularProgress';
 import FormHelperText from '@mui/material/FormHelperText';
 import Box from "@mui/material/Paper";
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { useEffect, useState } from 'react';
 import meses  from "../../../../mocks/meses.json";
@@ -22,10 +22,9 @@ import { useRequest } from '../../../../hooks/useRequest';
 import { user } from '../../../../mocks/usuario.json'
 import ExternalMantainer from './ExternalMantainer.jsx'
 
-export default function FormInputList ({ campo, className }) {  
+export default function FormInputList ({ frmRequest, campo, className }) {  
   const { request } = useRequest();
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
-  const { control, setValue, formState: { errors } } = useFormContext();
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
@@ -99,7 +98,7 @@ export default function FormInputList ({ campo, className }) {
 
   return (    
       <Controller
-          control={control}
+          control={frmRequest.control}
           name={campo.FDI_NombreHTML}
           rules={required}        
           render={({ field }) => (
@@ -113,11 +112,11 @@ export default function FormInputList ({ campo, className }) {
                       defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
                       disabled={disabled()}
                       placeholder={campo.FDI_Descripcion}
-                      error={!!errors[campo?.FDI_NombreHTML]}  
+                      error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}  
                       variant="outlined"
                       slots={{ input: InnerInput }}
                       onChange={(event, newValue) => {                      
-                        setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
+                        frmRequest.setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
                       }}                    
                       onBlur={field.onBlur}                                      
                       value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || field.value || ''}
@@ -164,7 +163,7 @@ export default function FormInputList ({ campo, className }) {
                       openText={'Abrir'}
                   />
                   <FormHelperText className="!text-red-600">
-                      {errors[campo.FDI_NombreHTML]?.message}
+                      {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
                   </FormHelperText>                       
               </FormControl>
           )}

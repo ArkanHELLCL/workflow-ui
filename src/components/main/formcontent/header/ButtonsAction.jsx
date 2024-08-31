@@ -63,7 +63,7 @@ export default function Buttons({formulario}){
         setScrollPosition(0)
         ////calcScroll()
     },[filters.itemIdSelected, request])
-
+    
     return(
         <div id="buttonsRequest" className='frmbuttonsact w-full h-full'>
             <div className='relative leading-tight flex justify-end w-fit ml-auto'>
@@ -95,6 +95,7 @@ export default function Buttons({formulario}){
                                             title={btns.nombre}
                                             id={btns.id} 
                                             type={btns.type}
+                                            form={'frmWorkFlowv4'}
                                             >
                                                 <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{
                                                     btns.nombre &&

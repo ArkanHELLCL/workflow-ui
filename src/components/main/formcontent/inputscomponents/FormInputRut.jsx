@@ -3,16 +3,15 @@
 import FormControl from '@mui/joy/FormControl';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/joy/FormHelperText';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { Fn } from '../../../../utils/validaRut.jsx';
 import FormatearRut from '../../../../utils/FormatearRut.jsx';
 import { useRequest } from '../../../../hooks/useRequest';
 import { user } from '../../../../mocks/usuario.json'
 
-export default function FormInputRut ({ campo, className }) {
+export default function FormInputRut ({ frmRequest, campo, className }) {
     const { request } = useRequest();
-    const { control, setValue, formState: { errors } } = useFormContext();
 
     const disabled = () => {    
       if(request.request.IdEditor === undefined || request.request.IdEditor === null)
@@ -26,7 +25,7 @@ export default function FormInputRut ({ campo, className }) {
 
     return (
       <Controller
-          control={control}
+          control={frmRequest.control}
           name={campo.FDI_NombreHTML}
           rules={{
               validate: {
@@ -50,10 +49,10 @@ export default function FormInputRut ({ campo, className }) {
                       disabled={disabled()}                      
                       autoComplete='on'
                       autoFocus={false}
-                      error={!!errors[campo?.FDI_NombreHTML]}                                          
+                      error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}                                          
                       variant="outlined"                      
                       slots={{ input: InnerInput }}
-                      onChange={(e) => field.onChange(()=>setValue(campo.FDI_NombreHTML,FormatearRut(e.target.value)))}
+                      onChange={(e) => field.onChange(()=>frmRequest.setValue(campo.FDI_NombreHTML,FormatearRut(e.target.value)))}
                       onBlur={field.onBlur}
                       value={FormatearRut(field.value) || ''}
                       slotProps={{ 
@@ -65,7 +64,7 @@ export default function FormInputRut ({ campo, className }) {
                       }}                                
                   />
                   <FormHelperText className="!text-red-600">
-                      {errors[campo.FDI_NombreHTML]?.message}
+                      {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
                   </FormHelperText>                       
               </FormControl>
           )}
