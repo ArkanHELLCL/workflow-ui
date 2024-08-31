@@ -17,7 +17,7 @@ export default function List({frmRecord}) {
     const { filters } = useFilters()
 
     return (
-        <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1'>
+        <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full grid border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1 content-baseline'>
               {
               filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' && 
                 <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40">                    
