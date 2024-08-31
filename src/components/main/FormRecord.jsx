@@ -85,7 +85,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
                 record  &&
                 <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
                     <form id="frmWFRecords" noValidate ref={formRef}
-                        className="h-full w-full flex flex-col columns-1"
+                        className="h-full w-full mantform"
                         onSubmit={frmRecord.handleSubmit(onSubmitRecords)}>
                             <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
                     </form>

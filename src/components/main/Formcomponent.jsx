@@ -15,6 +15,9 @@ import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
 import MPMant from './maintainer/proveedorMant.jsx'
+import Dropdown from '@mui/joy/Dropdown';
+import MenuButton from '@mui/joy/MenuButton';
+import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 
 export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpenDialog}){    
     const { request } = useRequest()
@@ -55,6 +58,14 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
         }) 
     };
 
+    const handleOnClick = () => {
+        setPreview({
+            state:false,
+            obj:null,
+            selected:preview.selected
+        })        
+    }
+
     /*useEffect(() => {    
         if(openDialog?.option && openDialog?.type === 'submit' && openDialog.frmname === form?.name){
             formRef.current.requestSubmit()            
@@ -80,22 +91,29 @@ export default function Formcomponent({frmRequest, frmRecord, openDialog, setOpe
                 request && form &&
                 <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
                     <form id={form.name} noValidate ref={formRef}
-                        className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : 'dataform'} `}
+                        className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}
                         onSubmit={frmRequest.handleSubmit(onSubmitRequest)}   
                         >
                             <Header formulario={form} setOpenDialog={setOpenDialog} />{
                                 !preview.state && !preview.obj &&
                                 <>
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
-                                
-                            <Files setFilesList={setFilesList} filesList={filesList}/>
-                            </>}{
+                                    <Files setFilesList={setFilesList} filesList={filesList}/>
+                                </>}
+                                {
                                     preview.state && preview.obj === 'X1' &&
-                                        <>                                            
-                                            <h2 className="font-thin text-xl">Mantenedor de proveeodres</h2>
-                                            <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario</h2>
-                                            <MPMant frmRecord={frmRecord} singleButton={true} />
-                                        </>                                        
+                                        <>
+                                            <Dropdown>
+                                                <MenuButton startDecorator={<TrendingFlatIcon className="rotate-180" />} className="hover:dark:!bg-[#505050] hover:!bg-[#e6f2fa] !border-0 dark:!text-stone-100 !text-stone-500 !text-xs !font-base !py-1 !rounded-none !ps-1 !pe-1 prevtitle w-fit frmmantbackbuttom" onClick={handleOnClick}>
+                                                Volver al formulario
+                                                </MenuButton>
+                                            </Dropdown>
+                                            <div className="frmmanttitle">
+                                                <h2 className="font-thin text-xl">Mantenedor de proveedores</h2>
+                                                <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario de {request?.request?.FLU_Descripcion}</h2>
+                                            </div>
+                                            <MPMant frmRecord={frmRecord} singleButton={true} />   
+                                        </>
                                 }{
                                     preview.state && preview?.selected!==null &&
                                         <Preview />

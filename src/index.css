@@ -153,7 +153,7 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
     "frmatachment frmatachment"
     "frmbody frmbody"
     "frmfooter frmfooter";
-    grid-template-columns: 40% minmax(60%, 60%);
+    grid-template-columns: 40% 60%;
     grid-template-rows: 24px 38px 11px;
 }
 
@@ -214,4 +214,58 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 
 .prevfooter{
   grid-area: prevfooter;
+}
+
+.dataMantform{
+  display: grid;
+  grid-template-areas: 
+    "frmmantbackbuttom frmmantbackbuttom"
+    "frmmanttitle frmmanttitle"
+    "frmmantheaderfrom frmmantbuttonsact"
+    "frmmantdate frmmantdate"
+    "frmmantbody frmmantbody"
+    "frmmantfooter frmmantfooter";
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 36px 60px 50px 15px 100%;
+}
+
+.frmmantbackbuttom{
+  grid-area: frmmantbackbuttom;
+}
+
+.frmmanttitle{
+  grid-area: frmmanttitle; 
+}
+
+.frmmantbuttonsact{
+  grid-area: frmmantbuttonsact;
+  overflow-x: auto;
+}
+
+.frmmantdate{
+  grid-area: frmmantdate;
+}
+
+.frmmantheaderfrom{
+  grid-area: frmmantheaderfrom;
+}
+
+.frmmantbody{
+  grid-area: frmmantbody;
+  overflow: hidden;
+}
+
+.frmmantfooter{
+  grid-area: frmmantfooter;
+}
+
+.mantform{
+  display: grid;
+  grid-template-areas: 
+    "frmmantheaderfrom frmmantbuttonsact"
+    "frmmantdate frmmantdate"
+    "frmmantbody frmmantbody"
+    "frmmantfooter frmmantfooter";
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 50px 15px 100%;
 }
