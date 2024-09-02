@@ -13,21 +13,6 @@ export default function Adjuntar ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const { filters } = useFilters()
     
-    /*const handleAdjunto = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const input = document.getElementById('adjuntos-input')
-        input.click()
-        //console.log('adjuntar')
-    }*/
-
-    //const idInput = useId()
-    /*const handleClickAdjunto = () =>{
-        const  elemento = document.getElementById('frmWFInputFile');
-        elemento.click()
-    }*/
-    
     return (
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' &&
         <Slide in={true} direction='left' timeout={delay} mountOnEnter unmountOnExit addEndListener={(node, done) =>

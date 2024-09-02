@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import { useFilters } from "../../../hooks/useFilters.jsx";
-import { useRequest } from '../../../hooks/useRequest.jsx';
-import { useRecords } from '../../../hooks/useRecords.jsx';
-import { usePreview } from "../../../hooks/usePreview.jsx";
+import { useFilters } from "../../hooks/useFilters.jsx";
+import { useRequest } from '../../hooks/useRequest.jsx';
+import { useRecords } from '../../hooks/useRecords.jsx';
+import { usePreview } from "../../hooks/usePreview.jsx";
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];

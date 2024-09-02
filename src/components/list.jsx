@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useFilters } from "../../hooks/useFilters.jsx";
-import MenuFilters from "./menuFilters.jsx";
-import Flujos from "./flujos.jsx";
-import Departamentos from "./maintainer/usuariomant/filtroDepartamento.jsx";
-import MenuFiltersUsr from "./maintainer/usuariomant/menuFiltersUsr.jsx";
-import MenuFiltersMan from "./maintainer/menuFiltersMan.jsx";
-import MenuFiltersCom from "./maintainer/comunamant/menuFiltersCom.jsx";
-import Regiones from "./maintainer/comunamant/filtroRegion.jsx";
-import DetalleRequerimiento from "./DetalleRequerimiento.jsx";
-import ListaRequerimientos from "./ListaRequerimientos.jsx";
-import ListaRegMantenedores from "./ListaRegMantenedores.jsx";
-import Loading from "../../utils/Loading.jsx"; 
+import { useFilters } from "../hooks/useFilters.jsx";
+import MenuFilters from "./main/menuFilters.jsx";
+import Flujos from "./main/flujos.jsx";
+import Departamentos from "./main/maintainer/usuariomant/filtroDepartamento.jsx";
+import MenuFiltersUsr from "./main/maintainer/usuariomant/menuFiltersUsr.jsx";
+import MenuFiltersMan from "./main/maintainer/menuFiltersMan.jsx";
+import MenuFiltersCom from "./main/maintainer/comunamant/menuFiltersCom.jsx";
+import Regiones from "./main/maintainer/comunamant/filtroRegion.jsx";
+import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
+import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
+import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
+import Loading from "../utils/Loading.jsx"; 
 import { Suspense } from "react";
 
 export default function List({frmRecord}) {    

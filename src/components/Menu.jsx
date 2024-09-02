@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { MenuTree } from "./menu/MenuTree.jsx"
-import { useFilters } from "../../hooks/useFilters.jsx";
+import { useFilters } from "../hooks/useFilters.jsx";
 import { Suspense } from "react";
-import Loading from "../../utils/Loading.jsx";
-import EncontrarDescripcionPorId from "./menu/EncontrarDescripcionPorId.jsx";
+import Loading from "../utils/Loading.jsx";
+import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 
 const MenuArbol = ({itemIdSelected, mnuBandejas, mnuMantenedores, mnuReportes, mnuMensajes, frmRecord}) => {
     let url = ''

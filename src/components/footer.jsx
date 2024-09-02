@@ -4,7 +4,7 @@ import Collapse from '@mui/material/Collapse';
 import { useFilters } from "../hooks/useFilters.jsx";
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import * as menu from "../mocks/treeMenu.json"
-import EncontrarDescripcionPorId from "./main/menu/EncontrarDescripcionPorId.jsx";
+import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 
 export default function Footer() {    
     const [clickPorVencer, setClickPorVencer] = useState(false);

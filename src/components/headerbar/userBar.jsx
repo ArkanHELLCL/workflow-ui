@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { user } from '../../mocks/usuario.json'
+import { user } from '../../mocks/usuario.json';
 import { DarkModeToggle } from '../../utils/DarkMode.jsx';
 
 import MenuButton from '@mui/joy/MenuButton';

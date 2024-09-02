@@ -31,6 +31,7 @@ export default function SideBar(){
     }    
 
     return(
+        <section className="h-full dark:bg-[#363636] bg-[#ffffff] border-r-[1px] border-[#d4d4d4] dark:border-[#484644] transition-color delay-75 z-20" onDragOver={handleNotDragOver} id="sidebar">
         <section className="flex flex-col items-start gap-3 h-full pt-1 pr-1 pl-2 relative dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100" onDragOver={handleNotDragOver}>
             <div className={`w-[2px] h-[36px] absolute left-[6px] bg-[#58b8fe] mt-[2px] transition-all duration-300 ${filters.itemIdSelected.charAt(0).toLowerCase()==='b' ? ' translate-y-[2px]': filters.itemIdSelected.charAt(0).toLowerCase()==='j' ? ' translate-y-[50px]' : filters.itemIdSelected.charAt(0).toLowerCase()==='r' ? ' translate-y-[106px]': filters.itemIdSelected.charAt(0).toLowerCase()==='m' ? ' translate-y-[156px]' : ' translate-y-[2px]'}`}></div>            
             <ul className="flex flex-col w-full h-full gap-2">
@@ -55,6 +56,7 @@ export default function SideBar(){
                     </div>
                 </li>     
             </ul>
+        </section>
         </section>
     )
 }
