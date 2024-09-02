@@ -47,6 +47,13 @@ function App() {
     }
   },[frmRequest.formState.submitCount])
 
+  useEffect(() => {
+    //if(frmRequest.formState.isSubmitting && !frmRequest.formState.isValid && !frmRequest.isSubmitSuccessful){
+    if(!frmRecord.isSubmitSuccessful && frmRecord.formState.submitCount > 0){
+      enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    }
+  },[frmRecord.formState.submitCount])
+
   const onSubmitRequest = (data) => {
     console.log('formcomponent',data);
     enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
@@ -63,9 +70,9 @@ function App() {
 
   const onSubmitRecord = (data) => {
     console.log('formcomponent',data);
-    enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
-    frmRequest.clearErrors()
-    frmRequest.reset()
+    enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRecord.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    frmRecord.clearErrors()
+    frmRecord.reset()
     setAdjuntos([])
     setFilesList([])
     setPreview({
