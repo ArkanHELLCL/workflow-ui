@@ -45,6 +45,7 @@ function App() {
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
+  const formRegRef = useRef(null)
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
 
@@ -56,6 +57,20 @@ function App() {
   },[frmRequest.formState.submitCount])
 
   const onSubmitRequest = (data) => {
+    console.log('formcomponent',data);
+    enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    frmRequest.clearErrors()
+    frmRequest.reset()
+    setAdjuntos([])
+    setFilesList([])
+    setPreview({
+        state:false,
+        obj:null,
+        selected:null
+    })
+  };
+
+  const onSubmitRecord = (data) => {
     console.log('formcomponent',data);
     enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     frmRequest.clearErrors()
@@ -104,6 +119,12 @@ function App() {
         ref={formReqRef}  
         onSubmit={frmRequest.handleSubmit(onSubmitRequest)}>
       </form>
+      <form 
+        id={'frmWFRecords'} 
+        noValidate 
+        ref={formRegRef}  
+        onSubmit={frmRecord.handleSubmit(onSubmitRecord)}>
+      </form>      
     </main>
   )
 }

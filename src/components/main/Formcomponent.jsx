@@ -11,7 +11,6 @@ import {    NoData,
             Preview
         } from './formcontent';
 import ConfirmationDialog from './ConfirmationDialog.jsx';
-//import { useSnackbar } from 'notistack';
 import { formulario } from'../../mocks/formulario.json'
 
 import MPMant from './maintainer/proveedorMant.jsx'
@@ -25,8 +24,6 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     const { setAdjuntos } = useAttach()    
     const [dropEnter, setDropEnter] = useState(false);
     const [form, setForm] = useState()
-    //const { enqueueSnackbar } = useSnackbar();
-    //const formRef = useRef(null) 
 
     useEffect(() => {        
         let frm
@@ -42,21 +39,6 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         
     },[formulario, request])
 
-    /*const onSubmitRequest = (data) => {
-        console.log('formcomponent',data);
-        enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
-        frmRequest.clearErrors()
-        frmRequest.reset()
-        console.log(frmRequest.formState.isSubmitted)
-        setAdjuntos(form.REQ_Adjuntos)
-        setFilesList([])
-        setPreview({
-            state:false,
-            obj:null,
-            selected:null
-        }) 
-    };*/
-
     const handleOnClick = () => {
         setPreview({
             state:false,
@@ -64,27 +46,6 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
             selected:preview.selected
         })        
     }
-
-    /*useEffect(() => {    
-        if(openDialog?.option && openDialog?.type === 'submit' && openDialog.frmname === form?.name){
-            formRef.current.requestSubmit()            
-            enqueueSnackbar('Operación realizada correctamente!', { variant : "success" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
-        }
-        setOpenDialog({...openDialog, option:false})
-    }
-    ,[openDialog?.option])*/
-
-    //console.log('formcomponent',frmRecord.formState.isSubmitting, frmRecord.formState.isSubmitted, frmRecord.formState.isValid, frmRecord.formState.submitCount, frmRecord.formState.isValidating)
-
-    //detectandoo error al submitir el formulario
-    
-    //frmRequest.formState.isValid && frmRequest.formState.isSubmitted ? 
-    //null :
-
-
-    /*!frmRequest.formState.isValid && frmRequest.formState.submitCount >= 0 && frmRequest.formState.isSubmitted ?  
-        enqueueSnackbar('Debes corregir los errores antes de grabar! ' + frmRequest.formState.submitCount, { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} }) 
-        : null */
 
     return(
         <>

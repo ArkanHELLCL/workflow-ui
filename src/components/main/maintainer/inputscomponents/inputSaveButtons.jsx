@@ -1,29 +1,8 @@
 /* eslint-disable react/prop-types */
 import Slide from '@mui/material/Slide';
-//import { useSnackbar } from 'notistack';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
 
 export default function InputButtons() {    
-    async function hanldeOnClick(event){
-        event.preventDefault()
-        /*const isValid = await frmRecord.trigger()
-        if(isValid){            
-            setOpenDialog({
-                ...openDialog,
-                titulo:'Guardar modificaciones',
-                mensaje:'¿Desaea guardar las modificaciones realizadas?',
-                id:'edit',
-                open:true,
-                frmname:'frmWFRecords',
-                action:'submit',
-                type:'button'
-            })
-        }else{
-            enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} )
-        }*/
-    }    
-
-    //const { enqueueSnackbar } = useSnackbar();
     return(
         <div id="buttonsRecord" className='frmmantbuttonsact w-full h-full pt-2'>
             <div className='relative leading-tight flex justify-end w-fit ml-auto'>                
@@ -33,8 +12,9 @@ export default function InputButtons() {
                             <button 
                                 key='btn_modificar'
                                 className='h-9 w-auto dark:bg-[#444444] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20 outline outline-1 outline-[#b8b5b2] dark:outline-[#575757] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1]' 
-                                title='Guardar modificaciones realizadas'
-                                onClick={() => hanldeOnClick(event)}>
+                                title='Guardar modificaciones realizadas'                                
+                                form='frmWFRecords'
+                                type='submit'>
                                     <ButtonIcon typeButton="btn_modificar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
                                     <span className='text-xs font-normal leading-tight w-fit px-2'>Guardar</span>
                             </button>                        
@@ -46,16 +26,3 @@ export default function InputButtons() {
         
     )
 }
-
-/*
-addEndListener={(node, done) =>
-                    node.addEventListener(
-                        'transitionend',
-                        (e) => {
-                            //console.log('Actually done');
-                            done(e);
-                        },
-                        false
-                    )
-                }
-*/
