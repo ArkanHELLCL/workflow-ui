@@ -96,7 +96,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                         </Menu>
                     </Dropdown>
                 </div>                                                    
-                <form className="flex relative w-full" onSubmit={HandleSubmit}>
+                <form className="flex relative w-full px-[1px]" onSubmit={HandleSubmit}>
                     <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
                         <SearchIcon className="!w-5 !h-5 !-mt-1"/>
                     </span>                
