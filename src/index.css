@@ -154,7 +154,7 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
     "frmbody frmbody"
     "frmfooter frmfooter";
     grid-template-columns: 40% 60%;
-    grid-template-rows: 24px 38px 11px;
+    grid-template-rows: 24px 38px 11px 60px auto 3fr;
 }
 
 .frmtitle{

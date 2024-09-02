@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import FormHelperText from '@mui/joy/FormHelperText';
 import Inputs from './Inputs.jsx';
+import DropAttach from './DropAttach.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useAttach } from '../../../hooks/useAttach.jsx';
@@ -93,19 +94,12 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
 
     return (
         <>
-            <div id="inpuntsForm" className={`frmbody overflow-auto ${dropEnter ? 'dark:bg-[#1c1c1c]' : ''} px-0 py-0 min-w-96`} onDragEnter={handleDragEnter}>
+            <div id="inpuntsForm" className={`frmbody overflow-auto bg-transparent ${dropEnter ? '' : ''} px-0 py-0 w-full`} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave}>
                 {
                     dropEnter ?
-                    <div className=' dark:bg-[#071725] bg-[#ebf3fc] opacity-80 border border-dashed dark:border-[#1f4568] border-[#478ecc] hover:pointer-events-auto z-50 flex justify-center align-middle items-center flex-1'
-                        onDrop={handleDrop}
-                        onDragOver={handleDragOver}                        
-                        onDragLeave={handleDragLeave}                        
-                        >
-                        <div>
-                            <span className='text-[#2c87d2]'> Agregar adjuntos</span>
-                        </div>
-                    </div> :
-                    <Inputs frmRequest={frmRequest} campos={campos}/>
+                        <DropAttach handleDrop={handleDrop} handleDragOver={handleDragOver} handleDragLeave={handleDragLeave} />
+                    :
+                        <Inputs frmRequest={frmRequest} campos={campos}/>
                 }
             </div>            
             <input 

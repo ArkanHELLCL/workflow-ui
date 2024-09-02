@@ -90,14 +90,14 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         <>
             {
                 request && form &&
-                <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? 'dark:bg-[#1c1c1c]' : ''}`}>
+                <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? ' dark:bg-[#1c1c1c]' : ''}`}>
                     <div className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}>
                         <Header formulario={form} setOpenDialog={setOpenDialog} />
                         {
                             !preview.state && !preview.obj &&
                                 <>
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                     <Files setFilesList={setFilesList} filesList={filesList}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 </>
                         }{
                             preview.state && preview.obj === 'X1' &&
