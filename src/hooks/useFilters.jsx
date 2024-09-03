@@ -123,6 +123,9 @@ export function useFilters() {
             if(filters.itemIdSelected==='mc'){   //Comunas - Filtro por Region
                 filteredRequest = filteredRequest.filter((item) => filters.region === 0 ? item : parseInt(item.REG_Id) === parseInt(filters.region))
             }
+            if(filters.itemIdSelected==='mi'){   //Item Lista Desplegable - Filtro por Lista Desplegable
+                filteredRequest = filteredRequest.filter((item) => filters.listadesplegable === 0 ? item : parseInt(item.LID_Id) === parseInt(filters.listadesplegable))
+            }
         }
         return {filteredRequest}
     }

@@ -7,6 +7,7 @@ import MenuFiltersUsr from "./main/maintainer/usuariomant/menuFiltersUsr.jsx";
 import MenuFiltersMan from "./main/maintainer/menuFiltersMan.jsx";
 import MenuFiltersCom from "./main/maintainer/comunamant/menuFiltersCom.jsx";
 import Regiones from "./main/maintainer/comunamant/filtroRegion.jsx";
+import ListaDesplegable from "./main/maintainer/itemslistaMant/filtroListaDesplegable.jsx";
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
@@ -45,6 +46,15 @@ export default function List({frmRequest, frmRecord}) {
                         <>                
                           <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                                 <Regiones />                            
+                          </div>
+                          <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
+                                <MenuFiltersCom />                            
+                          </div>
+                        </> 
+                      ) : filters.itemIdSelected?.toUpperCase() === 'MI' ? (  
+                        <>                
+                          <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
+                                <ListaDesplegable />                            
                           </div>
                           <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75">
                                 <MenuFiltersCom />                            

@@ -1,0 +1,106 @@
+{
+    "name": "Lista Desplegable",
+    "records" : [
+        {
+            "id": 0,
+            "label": "Todas"
+        },
+        {
+            "id": 1,
+            "label": "Tipo de Documento"
+        },
+        {
+            "id": 2,
+            "label": "Bancos"
+        },
+        {
+            "id": 3,
+            "label": "Estados"
+        },
+        {
+            "id": 4,
+            "label": "Monedas"
+        },
+        {
+            "id": 5,
+            "label": "Programas"
+        },
+        {
+            "id": 6,
+            "label": "Garantías"
+        },
+        {
+            "id": 7,
+            "label": "Línea"
+        },
+        {
+            "id": 8,
+            "label": "Llamado"
+        },
+        {
+            "id": 9,
+            "label": "Anticipo"
+        },
+        {
+            "id": 10,
+            "label": "Programa Presupuestario"
+        },
+        {
+            "id": 11,
+            "label": "Imputación"
+        },
+        {
+            "id": 12,
+            "label": "Modalidad de Compra"
+        },
+        {
+            "id": 13,
+            "label": "Tipo de Pago"
+        },
+        {
+            "id": 14,
+            "label": "Tipo Documento a Pagar"
+        },
+        {
+            "id": 15,
+            "label": "Acepta o Reclama Factura"
+        },
+        {
+            "id": 16,
+            "label": "Meses"
+        },
+        {
+            "id": 17,
+            "label": "Tipo Documento Pago"
+        },
+        {
+            "id": 18,
+            "label": "Tipo de Pago Tesorería"
+        },
+        {
+            "id": 19,
+            "label": "Tipo de Facturación o Pago"
+        },
+        {
+            "id": 20,
+            "label": "Tipo de Servicio"
+        }
+    ],
+    "orderby": [
+            {
+                "id": 1,
+                "name": "Por Fecha",
+                "description": "Fecha de creación"
+            },
+            {
+                "id": 2,
+                "name": "Por Id.",
+                "description": "Id del registro"
+            },
+            {
+                "id": 3,
+                "name": "Por Comuna",
+                "description": "Nombre de Comuna"
+            }                
+        ]
+}

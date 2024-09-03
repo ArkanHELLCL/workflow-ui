@@ -29,6 +29,7 @@ export function FiltersProvider({ children }) {
         darkMode: window.localStorage.getItem('DarkMode') === 'false' ? false : true, 
         departamento: 0,
         region:0,
+        listadesplegable:0,
         orderDesMant: true,
         filterMant: 1
     });
