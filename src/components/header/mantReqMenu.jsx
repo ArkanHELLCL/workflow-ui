@@ -21,10 +21,7 @@ export default function MantReqMenu ({styles, delay, setAnimationEnd}) {
           onEnter={() =>  setAnimationEnd(false)}>
                 <div className={styles + ' flex-col h-full relative'}>
                     <ContentMenu title={'Registro'}>                
-                        <button key='btn_modificar'                            
-                            title='Guardar modificaciones realizadas'
-                            form='frmWFRecords'
-                            type='submit'>
+                        <button form='frmWFRecords' type='submit' className='flex' id='btn_modificar' title='Guardar modificaciones'>
                             <ListItemButton className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-2 `} title="Guardar modificaciones realizadas">
                                 <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                                     <TableIconSave styles='w-10 h-10' />
