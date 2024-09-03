@@ -18,7 +18,7 @@ const getAllItemsWithChildrenItemIds = (menu) => {
     return itemIds;
 };
 
-export function MenuTree({ menu, frmRecord }) { 
+export function MenuTree({ menu, frmRecord, frmRequest }) { 
     const { filters, setFilters } = useFilters()
     const { setRecord } = useRecords()
     const { setRequest } = useRequest()    
@@ -42,7 +42,8 @@ export function MenuTree({ menu, frmRecord }) {
             slected: null,
             obj: null
         })
-        frmRecord?.unregister()        
+        frmRecord?.unregister()
+        frmRequest?.unregister()
     };
     return (        
         <RichTreeView 

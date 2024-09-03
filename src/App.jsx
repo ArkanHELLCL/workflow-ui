@@ -54,9 +54,9 @@ function App() {
     }
   },[frmRecord.formState.submitCount])
 
-  const onSubmitRequest = (data) => {
-    console.log('formcomponent',data);
-    enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+  const onSubmitRequest = (data, event) => {
+    console.log('formcomponent',data, event.nativeEvent.submitter.formAction);
+    enqueueSnackbar('Los datos han sido grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     frmRequest.clearErrors()
     frmRequest.reset()
     setAdjuntos([])
@@ -68,9 +68,9 @@ function App() {
     })
   };
 
-  const onSubmitRecord = (data) => {
-    console.log('formcomponent',data);
-    enqueueSnackbar('Los datos han sifo grabados exitosamente! ' + frmRecord.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+  const onSubmitRecord = (data, event) => {
+    console.log('formcomponent',data, event.nativeEvent.submitter.formAction);
+    enqueueSnackbar('Los datos han sido grabados exitosamente! ' + frmRecord.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     frmRecord.clearErrors()
     frmRecord.reset()
     setAdjuntos([])
@@ -85,22 +85,12 @@ function App() {
   return (    
     <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
       <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver}/>      
-      <SideBar />      
-      <section id="header">
-        <Header openDialog={openDialog} setOpenDialog={setOpenDialog} frmRecord={frmRecord} />
-      </section>
-      <section id="menu" className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] border-r overflow-auto transition-color delay-75 z-0'>                        
-        <Menu menu={treeMmenu} frmRecord={frmRecord} />              
-      </section>
-      <section id="list">
-        <List frmRecord={frmRecord}/>
-      </section>
-      <section id="formwf" className="bg-[#ffffff] dark:bg-transparent">
-        <DataForm frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} openDialog={openDialog} setOpenDialog={setOpenDialog} />
-      </section>
-      <section id="footer">
-        <Footer />
-      </section>
+      <SideBar />            
+      <Header openDialog={openDialog} setOpenDialog={setOpenDialog} />      
+      <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
+      <List frmRequest={frmRequest} frmRecord={frmRecord}/>      
+      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} openDialog={openDialog} setOpenDialog={setOpenDialog} />      
+      <Footer />
       <form 
         id={'frmWorkFlowv4'} 
         noValidate 

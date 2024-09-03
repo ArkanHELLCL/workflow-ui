@@ -13,10 +13,11 @@ import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
 import Loading from "../utils/Loading.jsx"; 
 import { Suspense } from "react";
 
-export default function List({frmRecord}) {    
+export default function List({frmRequest, frmRecord}) {    
     const { filters } = useFilters()
 
     return (
+      <section id="list">
         <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full grid border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1 content-baseline'>
               {
               filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' && 
@@ -66,7 +67,7 @@ export default function List({frmRecord}) {
                   filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? ( 
                       <>
                         <DetalleRequerimiento />
-                        <ListaRequerimientos/>
+                        <ListaRequerimientos frmRequest={frmRequest}/>
                       </>
                     ) : (                      
                       <ListaRegMantenedores frmRecord={frmRecord}/>                      
@@ -75,5 +76,6 @@ export default function List({frmRecord}) {
                 </Suspense>                  
               </div>
         </div>
+      </section>
     )
 }

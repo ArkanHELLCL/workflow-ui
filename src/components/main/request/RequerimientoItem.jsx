@@ -9,7 +9,7 @@ import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
 import { user } from '../../../mocks/usuario.json'
 
-export const RequerimientoItem = ({ req, showDia, showYear }) => {    
+export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {    
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
     const { setAdjuntos } = useAttach()
@@ -63,6 +63,8 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
         selected: null,
         obj: null
       })
+      frmRequest.reset()
+      frmRequest.clearErrors()
     }
   
     return (
