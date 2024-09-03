@@ -8,11 +8,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { Divider, IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { ButtonIcon } from '../../utils/icons.jsx';
+import { ButtonIcon } from './icons.jsx';
 
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {
-  //const { enqueueSnackbar } = useSnackbar();
   const handleClose = () => {
     setOpenDialog({
       ...openDialog,

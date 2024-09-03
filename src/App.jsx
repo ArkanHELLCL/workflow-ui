@@ -13,6 +13,7 @@ import List from "./components/list.jsx";
 import DataForm from "./components/dataform.jsx";
 import { useSnackbar } from 'notistack';
 import HeaderBar from "./components/headerBar.jsx";
+import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -85,11 +86,14 @@ function App() {
     <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
       <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver}/>      
       <SideBar />            
-      <Header openDialog={openDialog} setOpenDialog={setOpenDialog} />      
+      <Header />      
       <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
       <List frmRequest={frmRequest} frmRecord={frmRecord}/>      
-      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} openDialog={openDialog} setOpenDialog={setOpenDialog} />      
-      <Footer />
+      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} />      
+      <Footer />{
+          openDialog?.open &&
+              <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+      }
       <form 
         id={'frmWorkFlowv4'} 
         noValidate 

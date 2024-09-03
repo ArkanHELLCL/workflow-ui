@@ -10,7 +10,6 @@ import {    NoData,
             Inputs,
             Preview
         } from './formcontent';
-import ConfirmationDialog from './ConfirmationDialog.jsx';
 import { formulario } from'../../mocks/formulario.json'
 
 import MPMant from './maintainer/proveedorMant.jsx'
@@ -18,7 +17,7 @@ import Dropdown from '@mui/joy/Dropdown';
 import MenuButton from '@mui/joy/MenuButton';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 
-export default function Formcomponent({frmRequest, frmRecord, filesList, setFilesList, openDialog, setOpenDialog}){    
+export default function Formcomponent({frmRequest, frmRecord, filesList, setFilesList}){    
     const { request } = useRequest()
     const { preview, setPreview } = usePreview()
     const { setAdjuntos } = useAttach()    
@@ -53,7 +52,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                 request && form &&
                 <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? ' dark:bg-[#1c1c1c]' : ''}`}>
                     <div className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}>
-                        <Header formulario={form} setOpenDialog={setOpenDialog} />
+                        <Header formulario={form} />
                         {
                             !preview.state && !preview.obj &&
                                 <>
@@ -82,10 +81,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                 </section>
             }{  !form &&
                     <NoData />
-            }{
-                openDialog?.open &&
-                    <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
-            }  
+            }
         </>
     )
 }

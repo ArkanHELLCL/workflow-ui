@@ -2,9 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useFilters } from '../../hooks/useFilters.jsx';
 import { useRecords } from '../../hooks/useRecords.jsx';
-//import { usePreview } from '../../hooks/usePreview.jsx';
 import { useState } from 'react';
-
 import MPMant from './maintainer/proveedorMant.jsx';
 import MUMant from './maintainer/usuarioMant.jsx';
 import MCMant from './maintainer/comunaMant.jsx';
@@ -27,7 +25,7 @@ function FormMatainer ({frmRecord, record, filters, filesList, setFilesList, set
     }
 }
 
-export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
+export default function FormRecord({frmRecord}){
     const { record, setRecord } = useRecords()
     //const { setPreview } = usePreview()
     const { filters } = useFilters()
@@ -37,7 +35,7 @@ export default function FormRecord({frmRecord, openDialog, setOpenDialog}){
         record  &&
         <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
             <div className="h-full w-full mantform">
-                <FormMatainer frmRecord={frmRecord} record={record} filters={filters} openDialog={openDialog} setOpenDialog={setOpenDialog} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
+                <FormMatainer frmRecord={frmRecord} record={record} filters={filters} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
             </div>
         </section>        
     )

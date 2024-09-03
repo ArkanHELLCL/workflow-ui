@@ -6,12 +6,11 @@ import { useRequest } from "../hooks/useRequest.jsx";
 import { useRecords } from "../hooks/useRecords.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
-import ConfirmationDialog from "./main/ConfirmationDialog.jsx";
 import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
 
-export default function Header({openDialog, setOpenDialog}){
+export default function Header(){
     const { request } = useRequest()
     const { record } = useRecords()
     const { filters } = useFilters()
@@ -147,9 +146,6 @@ export default function Header({openDialog, setOpenDialog}){
                         <InformesMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>                    
                 }                
             </Suspense>{
-                openDialog.open &&
-                    <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
-            }{
                 scrollON && scrollPosition < 100 &&
                 <>
                     <Button className="!sticky -right-[8px] !-top-[0px] !min-h-[141px] !h-[141px] flex !align-middle !items-center !content-center !w-7 !min-w-7 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none !-mt-2 z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1]" onClick={()=>handleScrollX(1)} id="btn_scrollRightHeader">

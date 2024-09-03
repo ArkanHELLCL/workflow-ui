@@ -5,7 +5,7 @@ import { useRecords } from "../hooks/useRecords.jsx";
 import FormRecord from "./main/FormRecord.jsx";
 import Formcomponent from "./main/Formcomponent.jsx";
 
-export default function DataForm({frmRequest, frmRecord, filesList, setFilesList, openDialog, setOpenDialog}){
+export default function DataForm({frmRequest, frmRecord, filesList, setFilesList}){
     const { filters } = useFilters()
     const { request } = useRequest()
     const { record } = useRecords()
@@ -14,7 +14,7 @@ export default function DataForm({frmRequest, frmRecord, filesList, setFilesList
         <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
             filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' ? 
               request ? ( 
-                <Formcomponent frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+                <Formcomponent frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} />
               ) : ( 
                 <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                     <div className='w-full h-full flex justify-center align-middle items-center'>
@@ -25,7 +25,7 @@ export default function DataForm({frmRequest, frmRecord, filesList, setFilesList
                 filters.itemIdSelected?.charAt(0).toUpperCase() === 'M' ? 
                   record ? (
                     <>
-                      <FormRecord frmRecord={frmRecord} openDialog={openDialog} setOpenDialog={setOpenDialog}/>                      
+                      <FormRecord frmRecord={frmRecord} />                      
                     </>
                   ) : (                
                     <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
