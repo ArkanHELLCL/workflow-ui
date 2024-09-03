@@ -40,23 +40,22 @@ function App() {
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
 
-  useEffect(() => {
-    //if(frmRequest.formState.isSubmitting && !frmRequest.formState.isValid && !frmRequest.isSubmitSuccessful){
-    if(!frmRequest.isSubmitSuccessful && frmRequest.formState.submitCount > 0){
+  useEffect(() => {    
+    if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRecord.formState.isValidating){
       enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     }
   },[frmRequest.formState.submitCount])
 
   useEffect(() => {
     //if(frmRequest.formState.isSubmitting && !frmRequest.formState.isValid && !frmRequest.isSubmitSuccessful){
-    if(!frmRecord.isSubmitSuccessful && frmRecord.formState.submitCount > 0){
+    if(!frmRecord.formState.isSubmitSuccessful && frmRecord.formState.submitCount > 0 && !frmRecord.formState.isValidating){
       enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     }
   },[frmRecord.formState.submitCount])
 
   const onSubmitRequest = (data, event) => {
     console.log('formcomponent',data, event.nativeEvent.submitter.formAction);
-    enqueueSnackbar('Los datos han sido grabados exitosamente! ' + frmRequest.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     frmRequest.clearErrors()
     frmRequest.reset()
     setAdjuntos([])
