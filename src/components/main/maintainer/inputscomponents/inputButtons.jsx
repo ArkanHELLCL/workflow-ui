@@ -127,7 +127,7 @@ export default function InputButtons({isAllowed}) {
                                             key='btn_habilitar'
                                             id='btn_habilitar'
                                             className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                                            title='Habilitar registor'                                            
+                                            title='Habilitar registro'                                            
                                             form='frmWFRecords'
                                             type='submit'>
                                                 <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>

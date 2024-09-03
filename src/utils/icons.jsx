@@ -568,7 +568,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
         )
-        if(typeButton==='btn_enviarDes')
+        if(typeButton==='btn_enviardes')
         return (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-green-600'}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
@@ -746,7 +746,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             </div>
             
         )
-        if(typeButton==='btn_enviarDes')
+        if(typeButton==='btn_enviardes')
         return (
             <div className="relative">
                 <span>
