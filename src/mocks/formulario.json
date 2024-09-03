@@ -54,7 +54,7 @@
                         "tooltiptext":"Enviar Requerimiento al siguiente paso."
                      },               
                      {
-                        "id":"btn_enviarDes",
+                        "id":"btn_enviardes",
                         "nombre":"Usuario",
                         "descripcion":["Enviar a","Destinatario"],
                         "type" : "submit",

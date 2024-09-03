@@ -84,6 +84,7 @@ export default function InputButtons({isAllowed}) {
                             <>
                                 <button 
                                     key='btn_crear'
+                                    id='btn_crear'
                                     className='h-9 w-auto dark:bg-[#444444] bg-white flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20 outline outline-1 outline-[#b8b5b2] dark:outline-[#575757] hover:outline-[#0078d4] hover:dark:outline-[#b1b1b1]' 
                                     title='Crear nuevo registro'                                    
                                     form='frmWFRecords'
@@ -101,8 +102,9 @@ export default function InputButtons({isAllowed}) {
                             <>
                                 <button 
                                     key='btn_modificar'
+                                    id='btn_modificar'
                                     className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                                    title='Guardar modificaciones realizadas'
+                                    title='Guardar modificaciones'                                    
                                     form='frmWFRecords'
                                     type='submit'>
                                         <ButtonIcon typeButton="btn_modificar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
@@ -111,8 +113,9 @@ export default function InputButtons({isAllowed}) {
                                     isAllowed &&                        
                                         <button 
                                             key='btn_bloquear'
+                                            id='btn_bloquear'
                                             className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                                            title='Cambiar el estado del registro a deshabilitado'                                            
+                                            title='Deshabilitar el registro'                                            
                                             form='frmWFRecords'
                                             type='submit'>
                                                 <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
@@ -122,8 +125,9 @@ export default function InputButtons({isAllowed}) {
                                     isAllowed !== null && !isAllowed &&                                                
                                         <button 
                                             key='btn_habilitar'
+                                            id='btn_habilitar'
                                             className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                                            title='Cambiar el estado del registro a habilitado'                                            
+                                            title='Habilitar registor'                                            
                                             form='frmWFRecords'
                                             type='submit'>
                                                 <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
@@ -132,8 +136,9 @@ export default function InputButtons({isAllowed}) {
                                     }
                                 <button 
                                     key='btn_eliminar'
+                                    id='btn_eliminar'
                                     className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
-                                    title='Eliminación del registro'
+                                    title='Eliminar el registro'
                                     form='frmWFRecords'
                                     type='submit'>
                                         <ButtonIcon typeButton="btn_eliminar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>
@@ -149,14 +154,16 @@ export default function InputButtons({isAllowed}) {
                             <>
                                 <button 
                                     key='btn_anterior'
+                                    id='btn_anterior'
                                     className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                                     title='Ir al registro anterior'
                                     type='button'
                                     onClick={() => console.log('reg. anterior')}>
                                         <ButtonIcon typeButton="btn_retroceder" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>                                
                                 </button>
-                                    <button 
+                                <button 
                                     key='btn_siguiente'
+                                    id='btn_siguiente'
                                     className='h-9 w-auto dark:bg-[#444444] bg-white border dark:border-[#575757] border-[#b8b5b2] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] flex items-center pr-1 pl-2 hover:bg-[#eff6fc] dark:hover:bg-[#666666] z-10 hover:z-20' 
                                     title='Ir al registro siguiente'
                                     type='button'

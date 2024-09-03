@@ -7,9 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { Divider, IconButton } from '@mui/material';
-import { useSnackbar } from 'notistack';
 import { ButtonIcon } from './icons.jsx';
-
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {
   const handleClose = () => {
@@ -17,17 +15,9 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
       ...openDialog,
       open:false
     })
-  };
-
-  const { enqueueSnackbar } = useSnackbar();
+  };  
   
-  const handleOptionClicked = (id) => {
-    let option = false
-    if(id === 1)
-      option = true
-    if(id === 2)
-      enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} ) 
-
+  const handleOptionClicked = (option) => {      
     setOpenDialog({
       ...openDialog,
       open:false,
@@ -46,7 +36,7 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
           className: 'dark:!bg-[#292929] dark:!border-[#3f3e3e] !rounded-none !border !border-[#80bcea] !shadow-[#80bcea] !shadow-inner !shadow dark:!shadow-none'
         }}>
         
-        <DialogTitle id="alert-dialog-title" className='flex align-middle gap-2 dark:!text-[#e8e9e9]'>
+        <DialogTitle id="alert-dialog-title" className='flex align-middle gap-2 dark:!text-[#e8e9e9] !pr-14'>
           <ButtonIcon typeButton={openDialog.id} styles='w-8 h-8'strokeWidth='1.3' typeIcon={1}/> {openDialog?.titulo}
         </DialogTitle>
         <IconButton
@@ -68,8 +58,8 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleOptionClicked(2)} className='!text-red-500 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]'>No</Button>
-          <Button onClick={() => handleOptionClicked(1)} className='!text-green-600 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]' autoFocus formAction={openDialog.action} form={openDialog.frmname} type={openDialog.type}>Si</Button>
+          <Button onClick={() => handleOptionClicked(false)} className='!text-red-500 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]'>No</Button>
+          <Button onClick={() => handleOptionClicked(true)} className='!text-green-600 !rounded-none hover:!outline hover:!outline-[1px] dark:hover:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] hover:!bg-[#eff6fc] dark:hover:!bg-[#666666]' autoFocus formAction={openDialog.action} form={openDialog.frmname} type={openDialog.type}>Si</Button>
         </DialogActions>
       </Dialog>
     </>

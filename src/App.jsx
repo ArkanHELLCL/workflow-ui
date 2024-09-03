@@ -14,6 +14,7 @@ import DataForm from "./components/dataform.jsx";
 import { useSnackbar } from 'notistack';
 import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
+import ConfirmationMessage from './utils/confirmationMessage.jsx';
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -34,7 +35,7 @@ function App() {
 
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
-  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false})
+  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false, "data":null, "formAction":null, "frmobj":null})
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
@@ -48,39 +49,62 @@ function App() {
   },[frmRequest.formState.submitCount])
 
   useEffect(() => {
-    //if(frmRequest.formState.isSubmitting && !frmRequest.formState.isValid && !frmRequest.isSubmitSuccessful){
     if(!frmRecord.formState.isSubmitSuccessful && frmRecord.formState.submitCount > 0 && !frmRecord.formState.isValidating){
       enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     }
   },[frmRecord.formState.submitCount])
 
   const onSubmitRequest = (data, event) => {
-    console.log('formcomponent',data, event.nativeEvent.submitter.formAction);
-    enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
-    frmRequest.clearErrors()
-    frmRequest.reset()
-    setAdjuntos([])
-    setFilesList([])
-    setPreview({
-        state:false,
-        obj:null,
-        selected:null
+    const id = event.nativeEvent.submitter.id
+    const titulo = event.nativeEvent.submitter.title
+    const formAction = event.nativeEvent.submitter.formAction
+    
+    setOpenDialog({
+      ...openDialog,
+      open:true,
+      data,
+      formAction,
+      frmobj:frmRequest,
+      titulo,
+      mensaje:ConfirmationMessage(id),
+      id
     })
   };
 
   const onSubmitRecord = (data, event) => {
-    console.log('formcomponent',data, event.nativeEvent.submitter.formAction);
-    enqueueSnackbar('Los datos han sido grabados exitosamente! ' + frmRecord.formState.submitCount , { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
-    frmRecord.clearErrors()
-    frmRecord.reset()
-    setAdjuntos([])
-    setFilesList([])
-    setPreview({
-        state:false,
-        obj:null,
-        selected:null
+    const id = event.nativeEvent.submitter.id
+    const titulo = event.nativeEvent.submitter.title
+    const formAction = event.nativeEvent.submitter.formAction
+        
+    setOpenDialog({
+      ...openDialog,
+      open:true,
+      data,
+      formAction,
+      frmobj:frmRecord,
+      titulo,
+      mensaje:ConfirmationMessage(id),
+      id
     })
   };
+
+  useEffect(() => {
+    if(openDialog.option){
+      console.log('formcomponent',openDialog.data, openDialog.formAction);
+      enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+      openDialog.frmobj.clearErrors()
+      openDialog.frmobj.reset()
+      setAdjuntos([])
+      setFilesList([])
+      setPreview({
+          state:false,
+          obj:null,
+          selected:null
+      })
+    }else{
+      enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} ) 
+    }
+  },[openDialog.option])
 
   return (    
     <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
