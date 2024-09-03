@@ -35,7 +35,7 @@ function App() {
 
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
-  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "option" : false, "data":null, "formAction":null, "frmobj":null})
+  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null})
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
@@ -88,7 +88,7 @@ function App() {
     })
   };
 
-  useEffect(() => {
+  useEffect(() => {    
     if(openDialog.option){
       console.log('formcomponent',openDialog.data, openDialog.formAction);
       enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
@@ -102,7 +102,9 @@ function App() {
           selected:null
       })
     }else{
-      enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} ) 
+      if(!openDialog.option && openDialog.option !== undefined){
+        enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} ) 
+      }
     }
   },[openDialog.option])
 
