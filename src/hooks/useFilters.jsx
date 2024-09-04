@@ -6,6 +6,7 @@ export function useFilters() {
 
     const filterRequest = (request) => {
         let filteredRequest = []
+        filters.totalFiltrados = 0
         //Search request        
         let bandeja = []
         if(filters.stringSearch!=='' && filters.filterSearch===1){
@@ -115,17 +116,23 @@ export function useFilters() {
             if(filters.filterMant === 3){  //Titulo
                 filteredRequest = filters.orderDesMant ? filteredRequest.sort((a, b) => a.titulo.toUpperCase() > b.titulo.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.titulo.toUpperCase() < b.titulo.toUpperCase() ? -1 : 1)
             }
-
+            
+            let PrevfilteredRequest = filteredRequest.length
             //Filros adicionales por cada mantenedor, cuando corresponda
             if(filters.itemIdSelected==='mu'){   //Usuarios - Filtro por Departamento
                 filteredRequest = filteredRequest.filter((item) => filters.departamento === 0 ? item : parseInt(item.DEP_Id) === parseInt(filters.departamento))
+                filters.totalFiltrados = filteredRequest.length
             }
             if(filters.itemIdSelected==='mc'){   //Comunas - Filtro por Region
                 filteredRequest = filteredRequest.filter((item) => filters.region === 0 ? item : parseInt(item.REG_Id) === parseInt(filters.region))
+                filters.totalFiltrados = filteredRequest.length
             }
             if(filters.itemIdSelected==='mi'){   //Item Lista Desplegable - Filtro por Lista Desplegable
                 filteredRequest = filteredRequest.filter((item) => filters.listadesplegable === 0 ? item : parseInt(item.LID_Id) === parseInt(filters.listadesplegable))
+                filters.totalFiltrados = filteredRequest.length
             }
+
+            PrevfilteredRequest === filters.totalFiltrados ? filters.totalFiltrados = 0 : filters.totalFiltrados
         }
         return {filteredRequest}
     }

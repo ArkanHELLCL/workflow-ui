@@ -62,30 +62,30 @@ export default function Footer() {
                 tipoABuscar === "bandejas" && filters.itemIdSelected.length > 1 ? 
                     <>{                        
                         filters.itemIdSelected.slice(0,2) !== 'ba' &&
-                        <>
-                            <div className="dark:text-orange-300 text-orange-400 flex z-20">
-                                <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
-                                    <WarningIcon />
-                                </span>                
-                                <Collapse in={clickPorVencer} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
-                                    <div className='overflow-hidden pt-[1px] pr-1'>
-                                        <span className="z-10 truncate pt-1">Total de requerimientos por vencer : </span> 
-                                    </div>
-                                </Collapse >
-                                <span className="pt-[1px]">{filters.totalPorVencer}</span>  
-                            </div>                    
-                            <div className="text-red-500 flex z-20">
-                                <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
-                                    <WarningIcon />
-                                </span>                
-                                <Collapse in={clickVencidos} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
-                                    <div className='overflow-hidden pt-[1px] pr-1'>
-                                        <span className="z-10 truncate">Total de requerimientos vencidos :</span> 
-                                    </div>
-                                </Collapse>
-                                <span className="pt-[1px]">{filters.totalVencidos}</span>  
-                            </div>
-                        </>
+                            <>
+                                <div className="dark:text-orange-300 text-orange-400 flex z-20">
+                                    <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
+                                        <WarningIcon />
+                                    </span>                
+                                    <Collapse in={clickPorVencer} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                        <div className='overflow-hidden pt-[1px] pr-1'>
+                                            <span className="z-10 truncate pt-1">Total de requerimientos por vencer : </span> 
+                                        </div>
+                                    </Collapse >
+                                    <span className="pt-[1px]">{filters.totalPorVencer}</span>  
+                                </div>                    
+                                <div className="text-red-500 flex z-20">
+                                    <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
+                                        <WarningIcon />
+                                    </span>                
+                                    <Collapse in={clickVencidos} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                        <div className='overflow-hidden pt-[1px] pr-1'>
+                                            <span className="z-10 truncate">Total de requerimientos vencidos :</span> 
+                                        </div>
+                                    </Collapse>
+                                    <span className="pt-[1px]">{filters.totalVencidos}</span>  
+                                </div>
+                            </>
                     }{
                         filters.itemIdSelected.slice(0,2) !== 'bn' && filters.itemIdSelected.slice(0,2) !== 'ba' &&
                             <div className="text-sky-500 flex z-20">
@@ -99,6 +99,12 @@ export default function Footer() {
                                 </Collapse>
                                 <span className="pt-[1px]">{filters.totalSintomar}</span>  
                             </div>
+                        }{
+                            filters.totalFiltrados > 0 &&
+                                <div>
+                                    <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
+                                    <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
+                                </div> 
                         }
                         <div>
                             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
@@ -107,10 +113,19 @@ export default function Footer() {
                     </>
                     : 
                         filters.itemIdSelected === 'm' || filters.itemIdSelected === 'j' ? (
-                            <div>
-                                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                <span className="text-green-500">{obj.children.length}</span>                
-                            </div>
+                            <> {
+                                    filters.totalFiltrados > 0 && (
+                                        <div>
+                                            <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
+                                            <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
+                                        </div> 
+                                    )
+                                }
+                                <div>
+                                    <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                    <span className="text-green-500">{obj.children.length}</span>                
+                                </div>
+                            </>
                         ) : 
                             filters.itemIdSelected.charAt(0) === "m" ? (                            
                             <>
@@ -137,17 +152,33 @@ export default function Footer() {
                                     </Collapse>
                                     <span className="pt-[1px]">{filters.totalVencidos}</span>  
                                 </div>
-
+                                {
+                                    filters.totalFiltrados > 0 && (
+                                        <div>
+                                            <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
+                                            <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
+                                        </div> 
+                                    )
+                                }
                                 <div>
                                     <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
                                     <span className="text-blue-500">{filters.totalRequerimientos === 1000 ? '1000+' : filters.totalRequerimientos}</span>                
                                 </div> 
                             </>
                         ) : (
-                            <div>
-                                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || filters.itemIdSelected.charAt(0) === "j" ? filters.totalMensajes : 0}</span>                
-                            </div>
+                            <>{
+                                filters.totalFiltrados > 0 && (
+                                    <div>
+                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
+                                        <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
+                                    </div> 
+                                )
+                            }
+                                <div>
+                                    <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                    <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || filters.itemIdSelected.charAt(0) === "j" ? filters.totalMensajes : 0}</span>                
+                                </div>
+                            </>
                         )
                     
                 }
