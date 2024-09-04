@@ -81,7 +81,7 @@ export default function MenuFilters() {
         return (      
             <>             
             <Dropdown>
-                <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1 !ml-1" />} className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] p-2 pt-[6px] pb-[6px]" !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 !pb-1.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none`}>{
+                <MenuButton endDecorator={<KeyboardArrowDownIcon className="!w-4 !h-4 !mt-1" />} className={`dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] !bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-sm !min-h-full !px-2`}>{
                                 filters.itemIdSelected.slice(0,3).toUpperCase() === 'BNC' ?
                                     flujosv0.filter((item) => item.id === filters.flujo)[0].orderby.filter((item) => item.id === filters.filter)[0].name
                                 :
@@ -149,7 +149,7 @@ export default function MenuFilters() {
                 </Menu>
             </Dropdown>
             <List className="!py-0">
-                <ListItemButton onClick={() => handleSetOrder(!filters.orderDes)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500">{filters.orderDes ? <StraightIcon className="!w-5 !h-5 dark:!text-stone-100 !text-stone-500 transition-all"/> : <StraightIcon className="!rotate-180 !w-5 !h-5 dark:!text-stone-100 !text-stone-500 transitio-all"/>}</ListItemButton>
+                <ListItemButton onClick={() => handleSetOrder(!filters.orderDes)} className="dark:hover:!bg-[#444444] hover:!bg-[#f0f0f0] dark:!text-stone-100 !text-stone-500 !min-h-full !w-7 !p-0 !m-0 flex justify-center">{filters.orderDes ? <StraightIcon className="!w-auto !h-5 dark:!text-stone-100 !text-stone-500 transition-all"/> : <StraightIcon className="!rotate-180 !w-auto !h-5 dark:!text-stone-100 !text-stone-500 transitio-all"/>}</ListItemButton>
             </List>
         </>
         )
