@@ -28,7 +28,7 @@ export default function List({frmRequest, frmRecord}) {
                         <div className="flex gap-2 font-semibold z-50 transition-color delay-75">
                           <Flujos />                
                         </div>
-                        <div className="flex justify-end align-bottom pr-5 z-50 transition-color delay-75 h-full !pb-[2px]">
+                        <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
                           <MenuFilters />
                         </div>
                     </div>
@@ -48,7 +48,7 @@ export default function List({frmRequest, frmRecord}) {
                           <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                                 <Departamentos />                            
                           </div>
-                          <div className="flex justify-end align-bottom pr-5 z-50 transition-color delay-75 h-full !pb-[2px]">
+                          <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
                                 <MenuFiltersUsr />                            
                           </div>
                         </> 
@@ -57,7 +57,7 @@ export default function List({frmRequest, frmRecord}) {
                             <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                                   <Regiones />                            
                             </div>
-                            <div className="flex justify-end align-bottom pr-5 z-50 transition-color delay-75 h-full !pb-[2px]">
+                            <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
                                   <MenuFiltersCom />                            
                             </div>
                           </> 
@@ -66,7 +66,7 @@ export default function List({frmRequest, frmRecord}) {
                             <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                                   <ListaDesplegable />                            
                             </div>
-                            <div className="flex justify-end align-bottom pr-5 z-50 transition-color delay-75 h-full !pb-[2px]">
+                            <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
                                   <MenuFiltersListaDes />                            
                             </div>
                           </> 
@@ -74,7 +74,7 @@ export default function List({frmRequest, frmRecord}) {
                           <>
                             <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                             </div>
-                            <div className="flex justify-end align-bottom pr-5 z-50 transition-color delay-75 h-full !pb-[2px]">
+                            <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
                                 <MenuFiltersMan />                            
                             </div>
                           </>                        
