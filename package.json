@@ -18,6 +18,8 @@
     "@mui/system": "6.0.2",
     "@mui/x-data-grid": "7.15.0",
     "@mui/x-data-grid-generator": "7.15.0",
+    "@mui/x-date-pickers": "7.15.0",
+    "@mui/x-date-pickers-pro": "7.15.0",
     "@mui/x-tree-view": "7.15.0",
     "install": "0.13.0",
     "lodash": "4.17.21",

@@ -12,6 +12,7 @@ import ListaDesplegable from "./main/maintainer/itemslistaMant/filtroListaDesple
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
+import ReportFilters from "./main/ReportFilters.jsx";
 import Loading from "../utils/Loading.jsx"; 
 import { Suspense } from "react";
 
@@ -87,7 +88,12 @@ export default function List({frmRequest, frmRecord}) {
                       </Suspense>
                     </div>
                   </>
-              }              
+              }{
+                filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' && filters.itemIdSelected.length > 1 &&
+                  <>
+                    <ReportFilters />
+                  </>
+              }
         </div>
       </section>
     )
