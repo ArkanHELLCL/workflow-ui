@@ -143,6 +143,10 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
   overflow: hidden;
 }
 
+#containerRef{
+  scrollbar-gutter: stable;
+}
+
 .dataform{
   display: grid;
   grid-template-areas: 
