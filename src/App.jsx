@@ -32,6 +32,10 @@ function App() {
     //mode: "all"
     mode : "onBlur"
   })
+  const frmReport = useForm({
+    //mode: "all"
+    mode : "onBlur"
+  })
 
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
@@ -39,6 +43,7 @@ function App() {
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
+  const formRepRef = useRef(null)
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
 
@@ -53,6 +58,12 @@ function App() {
       enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     }
   },[frmRecord.formState.submitCount])
+
+  useEffect(() => {
+    if(!frmReport.formState.isSubmitSuccessful && frmReport.formState.submitCount > 0 && !frmReport.formState.isValidating){
+      enqueueSnackbar('Debes corregir los errores antes de proceder!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    }
+  },[frmReport.formState.submitCount])
 
   const onSubmitRequest = (data, event) => {
     const id = event.nativeEvent.submitter.id
@@ -72,6 +83,23 @@ function App() {
   };
 
   const onSubmitRecord = (data, event) => {
+    const id = event.nativeEvent.submitter.id
+    const titulo = event.nativeEvent.submitter.title
+    const formAction = event.nativeEvent.submitter.formAction
+        
+    setOpenDialog({
+      ...openDialog,
+      open:true,
+      data,
+      formAction,
+      frmobj:frmRecord,
+      titulo,
+      mensaje:ConfirmationMessage(id),
+      id
+    })
+  };
+
+  const onSubmitReport = (data, event) => {
     const id = event.nativeEvent.submitter.id
     const titulo = event.nativeEvent.submitter.title
     const formAction = event.nativeEvent.submitter.formAction
@@ -114,8 +142,8 @@ function App() {
       <SideBar />            
       <Header />      
       <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
-      <List frmRequest={frmRequest} frmRecord={frmRecord}/>      
-      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} filesList={filesList} setFilesList={setFilesList} />      
+      <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
+      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} />      
       <Footer />{
           openDialog?.open &&
               <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
@@ -131,7 +159,13 @@ function App() {
         noValidate 
         ref={formRegRef}  
         onSubmit={frmRecord.handleSubmit(onSubmitRecord)}>
-      </form>      
+      </form>
+      <form 
+        id={'frmWFReports'} 
+        noValidate 
+        ref={formRepRef}  
+        onSubmit={frmRecord.handleSubmit(onSubmitReport)}>
+      </form>
     </main>
   )
 }

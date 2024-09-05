@@ -44,7 +44,13 @@ export default function ConfirmationMessage(id) {
       }
       if(id === 'btn_habilitar'){
         mensaje = 'Estas seguro de querer habilitar el registro?'
-      }      
+      }
+      if(id === 'btn_generar'){
+        mensaje = 'Estas seguro de querer generar el informe?'
+      }
+      if(id === 'btn_descargar'){
+        mensaje = 'Estas seguro de querer descargar el informe?'
+      } 
 
       return mensaje
 }

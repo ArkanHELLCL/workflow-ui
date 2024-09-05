@@ -20,7 +20,7 @@ import usuarios from "../mocks/usuarios.json";
 import Slide from '@mui/material/Slide';
 import InputReportButton from "./main/reports/InputReportButton.jsx";
 
-export default function List({frmRequest, frmRecord}) {    
+export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
 
     return (
@@ -100,7 +100,7 @@ export default function List({frmRequest, frmRecord}) {
                           <>
                             <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
                               <div>
-                                <InputList frmRecord ={frmRecord} name='USR_Id' dataOptions={usuarios} className='col-span-12 px-2 py-2' isRequired={false} placeholder='Revisor' label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
+                                <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='col-span-12 px-2 py-2' isRequired={false} placeholder='Revisor' label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
                               </div>
                             </Slide>
                             <InputReportButton />
