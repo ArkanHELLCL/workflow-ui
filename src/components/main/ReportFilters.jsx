@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { esES } from '@mui/x-date-pickers/locales';
 import 'dayjs/locale/es';
+import Slide from '@mui/material/Slide';
 import { useFilters } from '../../hooks/useFilters';
 import { useMemo } from 'react';
 
@@ -128,7 +129,7 @@ export default function ReportFilters() {
                 >
                 <div className='flex gap-0 dark:border-[#353535] border border-t-0 border-l-0 border-r-0'>
                     <div className='grid'>
-                        
+                        <Slide in={true} timeout={500}>
                         <StaticDatePicker
                             localeText={{ toolbarTitle: "Seleccionar Fecha Desde:" }}
                             slotProps={{
@@ -137,9 +138,10 @@ export default function ReportFilters() {
                                 },
                             }}
                         />
+                        </Slide>
                     </div>
                     <div className='grid'>
-                        
+                        <Slide in={true} timeout={700}>
                         <StaticDatePicker
                             localeText={{ toolbarTitle: "Seleccionar Fecha Hasta:" }}
                             slotProps={{
@@ -148,6 +150,7 @@ export default function ReportFilters() {
                                 },
                             }}
                         />
+                        </Slide>
                     </div>
                 </div>
                 
