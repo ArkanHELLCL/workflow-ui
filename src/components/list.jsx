@@ -15,6 +15,10 @@ import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
 import ReportFilters from "./main/ReportFilters.jsx";
 import Loading from "../utils/Loading.jsx"; 
 import { Suspense } from "react";
+import InputList from "./main/maintainer/inputscomponents/inputList.jsx";
+import usuarios from "../mocks/usuarios.json";
+import Slide from '@mui/material/Slide';
+import InputReportButton from "./main/reports/InputReportButton.jsx";
 
 export default function List({frmRequest, frmRecord}) {    
     const { filters } = useFilters()
@@ -76,7 +80,7 @@ export default function List({frmRequest, frmRecord}) {
                             <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
                             </div>
                             <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
-                                <MenuFiltersMan />                            
+                                <MenuFiltersMan />
                             </div>
                           </>                        
                         )
@@ -90,8 +94,19 @@ export default function List({frmRequest, frmRecord}) {
                   </>
               }{
                 filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' && filters.itemIdSelected.length > 1 &&
-                  <>
-                    <ReportFilters />
+                  <>                  
+                    <ReportFilters />{
+                        filters.itemIdSelected?.toUpperCase() === 'RU' ? (
+                          <>
+                            <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
+                              <div>
+                                <InputList frmRecord ={frmRecord} name='USR_Id' dataOptions={usuarios} className='col-span-12 px-2 py-2' isRequired={false} placeholder='Revisor' label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
+                              </div>
+                            </Slide>
+                            <InputReportButton />
+                          </>
+                        ) : null
+                      }
                   </>
               }
         </div>

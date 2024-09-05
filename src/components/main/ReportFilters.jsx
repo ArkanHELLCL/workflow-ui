@@ -141,7 +141,7 @@ export default function ReportFilters() {
                         </Slide>
                     </div>
                     <div className='grid'>
-                        <Slide in={true} timeout={700}>
+                        <Slide in={true} timeout={700} mountOnEnter unmountOnExit>
                         <StaticDatePicker
                             localeText={{ toolbarTitle: "Seleccionar Fecha Hasta:" }}
                             slotProps={{

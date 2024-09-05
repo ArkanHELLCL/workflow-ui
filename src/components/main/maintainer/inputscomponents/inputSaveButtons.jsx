@@ -2,7 +2,7 @@
 import Slide from '@mui/material/Slide';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
 
-export default function InputButtons() {    
+export default function InputSaveButtons() {    
     return(
         <div id="buttonsRecord" className='frmmantbuttonsact w-full h-full pt-2'>
             <div className='relative leading-tight flex justify-end w-fit ml-auto'>                

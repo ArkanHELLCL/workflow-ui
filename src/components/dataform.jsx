@@ -37,7 +37,7 @@ export default function DataForm({frmRequest, frmRecord, filesList, setFilesList
                     filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' ? (                      
                         <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                             <div className='w-full h-full flex justify-center align-middle items-center'>
-                                <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un requerimiento para ver<br/> los datos del reporte</span>
+                                <span className='text-[#2c87d2] text-2xl text-balance text-center'>Selecciona un informe para ver<br/> los datos del reporte</span>
                             </div>
                         </div>
                         ) : 
