@@ -10,7 +10,7 @@ import { esES } from '@mui/x-data-grid/locales';
 import { useMemo } from 'react';
 import { Box } from '@mui/system';
 
-export default function ExportDefaultToolbar({dataReport, loading, pageSize}) {
+export default function ExportDefaultToolbar({dataReport, loading}) {
   const { filters } = useFilters()
   const prefersDarkMode = filters.darkMode
   const theme = useMemo(
@@ -193,13 +193,10 @@ export default function ExportDefaultToolbar({dataReport, loading, pageSize}) {
                 variant: 'skeleton',
                 noRowsVariant: 'skeleton',
               },
-            }}
-            pageSizeOptions={[pageSize]}
-            autoheight
-            initialState={{
-              pagination: {
-                  paginationModel: { page: 0, pageSize },                  
-              },
+            }}            
+            //autoheight
+            autoPageSize
+            initialState={{              
               columns: {
                 columnVisibilityModel: {
                   id: false
