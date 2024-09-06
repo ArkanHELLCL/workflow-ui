@@ -6,7 +6,7 @@ import FormRecord from "./main/FormRecord.jsx";
 import Formcomponent from "./main/Formcomponent.jsx";
 import FormReport from "./main/FormReport.jsx";
 
-export default function DataForm({frmRequest, frmRecord, frmReport, filesList, setFilesList, dataReport, loading}) {
+export default function DataForm({frmRequest, frmRecord, filesList, setFilesList, dataReport, loading}) {
     const { filters } = useFilters()
     const { request } = useRequest()
     const { record } = useRecords()

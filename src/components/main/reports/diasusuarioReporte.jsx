@@ -88,6 +88,9 @@ export default function ExportDefaultToolbar({dataReport, loading}) {
         color: `${
           theme.palette.mode === 'light' ? '#0c0a09' : '#f5f5f4'
         }`,
+      },
+      '& .MuiDataGrid-toolbarContainer':{
+        padding: '10px 4px 0px',
       }
   }));
 
@@ -175,10 +178,10 @@ export default function ExportDefaultToolbar({dataReport, loading}) {
       />
     );
   }
-  console.log(dataReport)
+  
   return (
     <ThemeProvider theme={theme}>
-        <div className='h-full w-full flex self-center flex-col pr-2 py-2'>
+        <div className='h-full w-full flex self-center flex-col pr-2 py-1'>
           <StyledDataGrid 
             {...dataReport}            
             loading={loading}
