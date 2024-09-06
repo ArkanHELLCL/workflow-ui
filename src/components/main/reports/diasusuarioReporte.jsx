@@ -1,59 +1,30 @@
-    /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { styled } from '@mui/material/styles';
 import { useFilters } from '../../../hooks/useFilters.jsx';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { DataGrid, GridToolbar, useGridApiContext, useGridSelector, gridPageCountSelector, gridPageSelector } from '@mui/x-data-grid';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import CancelIcon from '@mui/icons-material/Close';
-import {
-  GridRowModes,
-  DataGrid,
-  GridToolbarContainer,
-  GridActionsCellItem,
-  GridRowEditStopReasons,
-  useGridApiContext,
-  useGridSelector,
-  gridPageCountSelector,
-  gridPageSelector  
-} from '@mui/x-data-grid';
-import {
-  randomId,
-} from '@mui/x-data-grid-generator';
-import { flujos, asignados } from '../../../mocks/flujosTable.json';
-import { user } from '../../../mocks/usuario.json';
-import { useEffect, useMemo, useState } from 'react';
-import { useRecords } from '../../../hooks/useRecords.jsx';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { esES } from '@mui/x-data-grid/locales';
+import { useMemo } from 'react';
+import { Box } from '@mui/system';
 
-function EditToolbar(props) {
-  const { setRows, setRowModesModel } = props;
+export default function ExportDefaultToolbar({dataReport, loading, pageSize}) {
+  const { filters } = useFilters()
+  const prefersDarkMode = filters.darkMode
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+        },
+      },
+    esES),
+    [prefersDarkMode],
+    );
 
-  const handleClick = () => {
-    const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, USR_Id: user.USR_Id, isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'FLU_Id' },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Agregar Registro
-      </Button>
-    </GridToolbarContainer>
-  );
-}
-
-const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
+  const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
     border: 0,
     color:
       theme.palette.mode === 'light' ? 'rgba(0,0,0,.85)' : 'rgba(255,255,255,0.85)',
@@ -118,9 +89,62 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
           theme.palette.mode === 'light' ? '#0c0a09' : '#f5f5f4'
         }`,
       }
-}));
+  }));
 
-function CustomPagination() {
+  const StyledGridOverlay = styled('div')(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    '& .no-rows-primary': {
+      fill: '#3D4751',
+      ...theme.applyStyles('light', {
+        fill: '#AEB8C2',
+      }),
+    },
+    '& .no-rows-secondary': {
+      fill: '#1D2126',
+      ...theme.applyStyles('light', {
+        fill: '#E8EAED',
+      }),
+    },
+  }));
+
+  function CustomNoRowsOverlay() {
+    return (
+      <StyledGridOverlay>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          width={96}
+          viewBox="0 0 452 257"
+          aria-hidden
+          focusable="false"
+        >
+          <path
+            className="no-rows-primary"
+            d="M348 69c-46.392 0-84 37.608-84 84s37.608 84 84 84 84-37.608 84-84-37.608-84-84-84Zm-104 84c0-57.438 46.562-104 104-104s104 46.562 104 104-46.562 104-104 104-104-46.562-104-104Z"
+          />
+          <path
+            className="no-rows-primary"
+            d="M308.929 113.929c3.905-3.905 10.237-3.905 14.142 0l63.64 63.64c3.905 3.905 3.905 10.236 0 14.142-3.906 3.905-10.237 3.905-14.142 0l-63.64-63.64c-3.905-3.905-3.905-10.237 0-14.142Z"
+          />
+          <path
+            className="no-rows-primary"
+            d="M308.929 191.711c-3.905-3.906-3.905-10.237 0-14.142l63.64-63.64c3.905-3.905 10.236-3.905 14.142 0 3.905 3.905 3.905 10.237 0 14.142l-63.64 63.64c-3.905 3.905-10.237 3.905-14.142 0Z"
+          />
+          <path
+            className="no-rows-secondary"
+            d="M0 10C0 4.477 4.477 0 10 0h380c5.523 0 10 4.477 10 10s-4.477 10-10 10H10C4.477 20 0 15.523 0 10ZM0 59c0-5.523 4.477-10 10-10h231c5.523 0 10 4.477 10 10s-4.477 10-10 10H10C4.477 69 0 64.523 0 59ZM0 106c0-5.523 4.477-10 10-10h203c5.523 0 10 4.477 10 10s-4.477 10-10 10H10c-5.523 0-10-4.477-10-10ZM0 153c0-5.523 4.477-10 10-10h195.5c5.523 0 10 4.477 10 10s-4.477 10-10 10H10c-5.523 0-10-4.477-10-10ZM0 200c0-5.523 4.477-10 10-10h203c5.523 0 10 4.477 10 10s-4.477 10-10 10H10c-5.523 0-10-4.477-10-10ZM0 247c0-5.523 4.477-10 10-10h231c5.523 0 10 4.477 10 10s-4.477 10-10 10H10c-5.523 0-10-4.477-10-10Z"
+          />
+        </svg>
+        <Box sx={{ mt: 2 }}>Sin Registros</Box>
+      </StyledGridOverlay>
+    );
+  }
+
+  function CustomPagination() {
     const apiRef = useGridApiContext();
     const page = useGridSelector(apiRef, gridPageSelector);
     const pageCount = useGridSelector(apiRef, gridPageCountSelector);
@@ -136,176 +160,34 @@ function CustomPagination() {
         onChange={(event, value) => apiRef.current.setPage(value - 1)}
       />
     );
-}
-
-export default function DiasUsuarioReporte({title, pageSize}) {
-  const [rows, setRows] = useState([]);
-  const [rowModesModel, setRowModesModel] = useState({});
-  const { record } = useRecords();
-
-  const { filters } = useFilters()
-  const prefersDarkMode = filters.darkMode
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: prefersDarkMode ? 'dark' : 'light',
-        },
-      },
-    esES),
-    [prefersDarkMode],
-  );
-
-  const handleRowEditStop = (params, event) => {
-    if (params.reason === GridRowEditStopReasons.rowFocusOut) {
-      event.defaultMuiPrevented = true;
-    }
-  };
-
-  const handleEditClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-  };
-
-  const handleSaveClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-    //console.log('Save row with id:', id,rows.length) ;
-    //console.log('Save row with id:', id,rows) ;    
-  };
-
-  const handleDeleteClick = (id) => () => {
-    setRows(rows.filter((row) => row.id !== id));    
-  };
-
-  const handleCancelClick = (id) => () => {
-    setRowModesModel({
-      ...rowModesModel,
-      [id]: { mode: GridRowModes.View, ignoreModifications: true },
-    });
-
-    const editedRow = rows.find((row) => row.id === id);
-    if (editedRow.isNew) {
-      setRows(rows.filter((row) => row.id !== id));
-    }
-  };
-
-  const processRowUpdate = (newRow) => {
-    const updatedRow = { ...newRow, isNew: false };
-    setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
-    return updatedRow;
-  };
-
-  const handleRowModesModelChange = (newRowModesModel) => {
-    setRowModesModel(newRowModesModel);
-  };
-
-  useEffect(() => {
-    setRows(asignados.filter(item => parseInt(item.USR_Id) === parseInt(record.record.Id)))    
-    //console.log('rows', rows);
-  }, [record]);
-
-  const columns = [
-    {
-      field: 'FLU_Id',
-      headerName: 'Flujo',
-      width: 220,
-      editable: true,
-      type: 'singleSelect',
-      valueOptions: flujos,
-    },
-    {
-      field: 'acciones',
-      type: 'actions',
-      headerName: 'Acciones',
-      flex: 1,
-      cellClassName: 'acciones',
-      getActions: ({ id }) => {
-        const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-
-        if (isInEditMode) {
-          return [
-            <GridActionsCellItem
-              icon={<SaveIcon />}
-              label="Save"
-              key={`save-${id}`}
-              sx={{
-                color: 'primary.main',
-              }}
-              onClick={handleSaveClick(id)}
-            />,
-            <GridActionsCellItem
-              icon={<CancelIcon />}
-              label="Cancel"
-              className="textPrimary"
-              onClick={handleCancelClick(id)}
-              color="inherit"
-              key={`cancel-${id}`}
-            />,
-          ];
-        }
-
-        return [
-          <GridActionsCellItem
-            icon={<EditIcon />}
-            label="Edit"
-            className="textPrimary"
-            onClick={handleEditClick(id)}
-            color="inherit"
-            key={`edit-${id}`}
-          />,
-          <GridActionsCellItem
-            icon={<DeleteIcon />}
-            label="Delete"
-            onClick={handleDeleteClick(id)}
-            color="inherit"
-            key={`delete-${id}`}
-          />,
-        ];
-      },
-    },
-  ];
-
+  }
+  console.log(dataReport)
   return (
     <ThemeProvider theme={theme}>
-        <div className='h-full w-full flex self-center flex-col gap-2'>
-            <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950'>{title}</h2>
-            <Box
-            sx={{                
-                width: '100%',
-                height: '100%',
-                '& .actions': {
-                color: 'text.secondary',
-                },
-                '& .textPrimary': {
-                color: 'text.primary',
-                },
+        <div className='h-full w-full flex self-center flex-col pr-2 py-0'>
+          <StyledDataGrid 
+            {...dataReport}            
+            loading={loading}
+            slots={{
+              toolbar: GridToolbar,
+              pagination: CustomPagination,
+              noRowsOverlay: CustomNoRowsOverlay,
             }}
-            >
-            <StyledDataGrid
-                rows={rows}
-                columns={columns}
-                editMode="row"
-                density="compact"
-                rowModesModel={rowModesModel}
-                onRowModesModelChange={handleRowModesModelChange}
-                onRowEditStop={handleRowEditStop}
-                processRowUpdate={processRowUpdate}
-                pageSizeOptions={[pageSize]}
-                autoheight
-                slots={{
-                    toolbar: EditToolbar,
-                    pagination: CustomPagination,
-                }}
-                slotProps={{
-                    toolbar: { setRows, setRowModesModel },
-                }}
-                initialState={{
-                    pagination: {
-                        paginationModel: { page: 0, pageSize:5 },
-                    },
-                }}
-            />
-            </Box>
+            slotProps={{
+              loadingOverlay: {
+                variant: 'skeleton',
+                noRowsVariant: 'skeleton',
+              },
+            }}
+            pageSizeOptions={[pageSize]}
+            autoheight
+            initialState={{
+              pagination: {
+                  paginationModel: { page: 0, pageSize },
+              }
+          }}
+          />
         </div>
     </ThemeProvider>
-  )
+  );
 }

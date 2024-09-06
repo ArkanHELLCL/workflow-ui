@@ -15,6 +15,7 @@ import { useSnackbar } from 'notistack';
 import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
+import { data} from './mocks/datadiasusuario.json'
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -46,6 +47,8 @@ function App() {
   const formRepRef = useRef(null)
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
+  const [dataReport, setDataReport] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {    
     if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRecord.formState.isValidating){
@@ -119,6 +122,9 @@ function App() {
   useEffect(() => {    
     if(openDialog.option){
       console.log('formcomponent',openDialog.data, openDialog.formAction);
+      setLoading(true)      
+      setDataReport(data)
+      setLoading(false)
       enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
       openDialog.frmobj.clearErrors()
       openDialog.frmobj.reset()
@@ -143,10 +149,10 @@ function App() {
       <Header />      
       <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
       <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} />      
+      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={dataReport} loading={loading}/>      
       <Footer />{
-          openDialog?.open &&
-              <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+      openDialog?.open &&
+        <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
       }
       <form 
         id={'frmWorkFlowv4'} 

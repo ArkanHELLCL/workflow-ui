@@ -6,11 +6,11 @@ import FormRecord from "./main/FormRecord.jsx";
 import Formcomponent from "./main/Formcomponent.jsx";
 import FormReport from "./main/FormReport.jsx";
 
-export default function DataForm({frmRequest, frmRecord, frmReport, filesList, setFilesList}){
+export default function DataForm({frmRequest, frmRecord, frmReport, filesList, setFilesList, dataReport, loading}) {
     const { filters } = useFilters()
     const { request } = useRequest()
     const { record } = useRecords()
-    const report = true
+    //const report = true
     return(
       <section id="formwf" className="bg-[#ffffff] dark:bg-transparent">
         <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{
@@ -35,8 +35,8 @@ export default function DataForm({frmRequest, frmRecord, frmReport, filesList, s
                     </div>
                   ) :
                     filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' ? 
-                        report ? (
-                          <FormReport frmReport={frmReport} />                      
+                      dataReport ? (
+                          <FormReport dataReport={dataReport} loading={loading}/>                      
                       ) : (                      
                         <div className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 `}>
                             <div className='w-full h-full flex justify-center align-middle items-center'>

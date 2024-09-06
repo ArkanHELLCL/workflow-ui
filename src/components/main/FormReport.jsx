@@ -5,10 +5,10 @@ import { useFilters } from '../../hooks/useFilters.jsx';
 //import MPMant from './maintainer/proveedorMant.jsx';
 import RUReport from './reports/diasusuarioReporte.jsx'
 
-function FormReporter ({frmReport, filters}){
+function FormReporter ({filters, dataReport, loading, pageSize}){
     switch (filters.itemIdSelected) {
         case 'ru':  //Dias por usuario
-            return <RUReport />
+            return <RUReport dataReport={dataReport} loading={loading} pageSize={pageSize}/>
         default:
             return (
                 <>
@@ -19,13 +19,14 @@ function FormReporter ({frmReport, filters}){
     }
 }
 
-export default function FormReport({frmReport}){
+export default function FormReport({dataReport, loading}){
     const { filters } = useFilters()
+    const pageSize = 10
 
     return(        
-        <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
-            <div className="h-full w-full mantform">
-                <FormReporter frmReport={frmReport} filters={filters} />
+        <section id="" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
+            <div className="h-full w-full flex">
+                <FormReporter filters={filters} dataReport={dataReport} loading={loading} pageSize={pageSize}/>
             </div>
         </section>        
     )
