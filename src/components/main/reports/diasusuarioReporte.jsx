@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useFilters } from '../../../hooks/useFilters.jsx';
-import { DataGrid, GridToolbar, useGridApiContext, useGridSelector, gridPageCountSelector, gridPageSelector } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarFilterButton , GridToolbarContainer, GridToolbarExport, useGridApiContext, useGridSelector, gridPageCountSelector, gridPageSelector } from '@mui/x-data-grid';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -144,6 +144,20 @@ export default function ExportDefaultToolbar({dataReport, loading, pageSize}) {
     );
   }
 
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer>
+        <GridToolbarExport 
+          csvOptions={{
+            fileName: 'customerDataBase',
+            delimiter: ';',
+            utf8WithBom: true,
+          }}/>
+        <GridToolbarFilterButton  />
+      </GridToolbarContainer>
+    );
+  }
+
   function CustomPagination() {
     const apiRef = useGridApiContext();
     const page = useGridSelector(apiRef, gridPageSelector);
@@ -164,12 +178,13 @@ export default function ExportDefaultToolbar({dataReport, loading, pageSize}) {
   console.log(dataReport)
   return (
     <ThemeProvider theme={theme}>
-        <div className='h-full w-full flex self-center flex-col pr-2 py-0'>
+        <div className='h-full w-full flex self-center flex-col pr-2 py-2'>
           <StyledDataGrid 
             {...dataReport}            
             loading={loading}
+            density={'compact'}
             slots={{
-              toolbar: GridToolbar,
+              toolbar: CustomToolbar,
               pagination: CustomPagination,
               noRowsOverlay: CustomNoRowsOverlay,
             }}
@@ -183,7 +198,12 @@ export default function ExportDefaultToolbar({dataReport, loading, pageSize}) {
             autoheight
             initialState={{
               pagination: {
-                  paginationModel: { page: 0, pageSize },
+                  paginationModel: { page: 0, pageSize },                  
+              },
+              columns: {
+                columnVisibilityModel: {
+                  id: false
+                }                      
               }
           }}
           />

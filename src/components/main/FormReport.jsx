@@ -21,7 +21,7 @@ function FormReporter ({filters, dataReport, loading, pageSize}){
 
 export default function FormReport({dataReport, loading}){
     const { filters } = useFilters()
-    const pageSize = 10
+    const pageSize = 15
 
     return(        
         <section id="" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
