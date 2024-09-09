@@ -121,11 +121,11 @@ function App() {
     })
   };
 
-  useEffect(() => {    
+  useEffect(() => {
     if(openDialog.option){
       console.log('formcomponent',openDialog.data, openDialog.formAction);
+      console.log(data)
       setLoading(true)      
-      //setDataReport(data)
       setReport(data)
       setLoading(false)
       enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
@@ -138,10 +138,10 @@ function App() {
           obj:null,
           selected:null
       })
-    }else{
-      if(!openDialog.option && openDialog.option !== undefined){
-        enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} ) 
-      }
+      setOpenDialog({
+        ...openDialog,
+        option: false,
+      })
     }
   },[openDialog.option])
 

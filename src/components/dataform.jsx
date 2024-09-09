@@ -10,6 +10,7 @@ export default function DataForm({frmRequest, frmRecord, filesList, setFilesList
     const { filters } = useFilters()
     const { request } = useRequest()
     const { record } = useRecords()
+    
     //const report = true
     return(
       <section id="formwf" className="bg-[#ffffff] dark:bg-transparent">

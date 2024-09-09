@@ -8,8 +8,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { Divider, IconButton } from '@mui/material';
 import { ButtonIcon } from './icons.jsx';
+import { useSnackbar } from 'notistack';
 
 export default function ConfirmationDialog({openDialog, setOpenDialog}) {
+  const { enqueueSnackbar } = useSnackbar();
   const handleClose = () => {
     setOpenDialog({
       ...openDialog,
@@ -23,6 +25,9 @@ export default function ConfirmationDialog({openDialog, setOpenDialog}) {
       open:false,
       option: option
     })    //hacer submit del formulario    
+    if(!option){
+      enqueueSnackbar('Operacion cancelada!', { variant : "warning" , anchorOrigin : { horizontal: "right", vertical: "bottom"}} ) 
+    }
   }
 
   return (
