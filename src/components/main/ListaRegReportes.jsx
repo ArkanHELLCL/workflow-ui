@@ -21,7 +21,7 @@ export default function ListaRegReportes({frmReport}) {
                     <>
                         <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
                         <div>
-                            <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='col-span-12 px-2 py-2' isRequired={true} label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
+                            <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='w-full !px-2 !py-2' isRequired={true} label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
                         </div>
                         </Slide>
                         <InputReportButton />
@@ -31,7 +31,7 @@ export default function ListaRegReportes({frmReport}) {
                     <>
                         <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
                         <div>
-                            <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='col-span-12 px-2 py-2' isRequired={true} label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
+                            <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='w-full !px-2 !py-2' isRequired={true} label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
                         </div>
                         </Slide>
                         <InputReportButton />
