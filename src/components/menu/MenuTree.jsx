@@ -5,6 +5,7 @@ import { useFilters } from "../../hooks/useFilters.jsx";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { useRecords } from '../../hooks/useRecords.jsx';
 import { usePreview } from "../../hooks/usePreview.jsx";
+import { useReports } from '../../hooks/useReports.jsx';
 
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
@@ -23,6 +24,7 @@ export function MenuTree({ menu, frmRecord, frmRequest }) {
     const { setRecord } = useRecords()
     const { setRequest } = useRequest()    
     const { setPreview } = usePreview()
+    const { setReport } = useReports()
 
     //const handleItemExpansionToggle = (event, itemId, isExpanded) => {
     const handleItemExpansionToggle = (event, itemId) => {
@@ -37,6 +39,7 @@ export function MenuTree({ menu, frmRecord, frmRequest }) {
         }))    
         setRequest(null)
         setRecord(null)
+        setReport(null)
         setPreview({
             statur: false,
             slected: null,

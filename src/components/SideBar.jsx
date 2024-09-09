@@ -4,16 +4,23 @@ import { useEffect } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { useRequest } from '../hooks/useRequest.jsx';
 import { useRecords } from '../hooks/useRecords.jsx';
+import { useReports } from '../hooks/useReports.jsx';
+import { usePreview } from "../hooks/usePreview.jsx";
 import { InBoxIcon, ReportIcon, TableIcon, MyMessageIcon } from "../utils/icons.jsx";
 
 export default function SideBar(){
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
     const { setRecord } = useRecords()    
+    const { setReport } = useReports()
+    const { setPreview } = usePreview()
     
     useEffect(() => {                
         setRequest(null)
-        setRecord(null)        
+        setRecord(null)
+        setReport(null)
+        setPreview(null)
+
     }, [filters.itemIdSelected])
     
     function handleClickItem(id) {

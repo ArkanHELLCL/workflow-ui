@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
+import { useReports } from "./hooks/useReports.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
@@ -40,6 +41,7 @@ function App() {
 
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
+  const { report, setReport } = useReports()
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null})
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
@@ -47,7 +49,7 @@ function App() {
   const formRepRef = useRef(null)
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
-  const [dataReport, setDataReport] = useState(null)
+  //const [dataReport, setDataReport] = useState(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {    
@@ -123,7 +125,8 @@ function App() {
     if(openDialog.option){
       console.log('formcomponent',openDialog.data, openDialog.formAction);
       setLoading(true)      
-      setDataReport(data)
+      //setDataReport(data)
+      setReport(data)
       setLoading(false)
       enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
       openDialog.frmobj.clearErrors()
@@ -149,7 +152,7 @@ function App() {
       <Header />      
       <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
       <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={dataReport} loading={loading}/>      
+      <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>      
       <Footer />{
       openDialog?.open &&
         <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />

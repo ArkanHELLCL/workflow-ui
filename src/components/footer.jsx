@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useReports } from "../hooks/useReports.jsx";
 import Collapse from '@mui/material/Collapse';
 import { useFilters } from "../hooks/useFilters.jsx";
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import * as menu from "../mocks/treeMenu.json"
 import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 
-export default function Footer() {    
+export default function Footer() {
+    const {report} = useReports()
     const [clickPorVencer, setClickPorVencer] = useState(false);
     const [clickVencidos, setClickVencidos] = useState(false);
     const [clickSinTomar, setClickSinTomar] = useState(false);
@@ -54,7 +56,8 @@ export default function Footer() {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
         return false;
-    }   
+    }
+    
     return (        
         <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-screen h-[25px] transition-color delay-75 flex items-center p-3 space-x-2 text-xs absolute bottom-0 z-20' onDragOver={handleNotDragOver} id="footer">
             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">{descripcion !== null ? descripcion : 'Sin menú'}</span>
@@ -173,11 +176,19 @@ export default function Footer() {
                                         <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
                                     </div> 
                                 )
-                            }
+                            }{
+                                report ? (
+                                    <div>
+                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                        <span className="text-green-500">{report?.rows?.length}</span>                
+                                    </div>    
+                                ): (
                                 <div>
                                     <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
                                     <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || filters.itemIdSelected.charAt(0) === "j" ? filters.totalMensajes : 0}</span>                
                                 </div>
+                                )
+                            }                                
                             </>
                         )
                     
