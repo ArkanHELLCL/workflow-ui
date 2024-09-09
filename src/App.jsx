@@ -42,18 +42,17 @@ function App() {
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
   const { report, setReport } = useReports()
-  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null})
+  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true})
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
   const formRepRef = useRef(null)
   const { enqueueSnackbar } = useSnackbar();
   const [filesList, setFilesList] = useState([]);
-  //const [dataReport, setDataReport] = useState(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {    
-    if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRecord.formState.isValidating){
+    if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRequest.formState.isValidating){
       enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
     }
   },[frmRequest.formState.submitCount])
@@ -114,23 +113,25 @@ function App() {
       open:true,
       data,
       formAction,
-      frmobj:frmRecord,
+      frmobj:frmReport,
       titulo,
       mensaje:ConfirmationMessage(id),
-      id
+      id,
+      reset:false
     })
   };
 
   useEffect(() => {
     if(openDialog.option){
-      console.log('formcomponent',openDialog.data, openDialog.formAction);
-      console.log(data)
+      console.log('formcomponent',openDialog.data, openDialog.formAction);      
       setLoading(true)      
       setReport(data)
       setLoading(false)
       enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
       openDialog.frmobj.clearErrors()
-      openDialog.frmobj.reset()
+      if(openDialog.reset)
+        openDialog.frmobj.reset()
+    
       setAdjuntos([])
       setFilesList([])
       setPreview({
@@ -173,7 +174,7 @@ function App() {
         id={'frmWFReports'} 
         noValidate 
         ref={formRepRef}  
-        onSubmit={frmRecord.handleSubmit(onSubmitReport)}>
+        onSubmit={frmReport.handleSubmit(onSubmitReport)}>
       </form>
     </main>
   )

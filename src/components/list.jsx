@@ -12,13 +12,9 @@ import ListaDesplegable from "./main/maintainer/itemslistaMant/filtroListaDesple
 import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
-import ReportFilters from "./main/ReportFilters.jsx";
+import ListaRegReportes from "./main/ListaRegReportes.jsx";
 import Loading from "../utils/Loading.jsx"; 
 import { Suspense } from "react";
-import InputList from "./main/maintainer/inputscomponents/inputList.jsx";
-import usuarios from "../mocks/usuarios.json";
-import Slide from '@mui/material/Slide';
-import InputReportButton from "./main/reports/InputReportButton.jsx";
 
 export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
@@ -94,20 +90,7 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                   </>
               }{
                 filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' && filters.itemIdSelected.length > 1 &&
-                  <>                  
-                    <ReportFilters />{
-                        filters.itemIdSelected?.toUpperCase() === 'RU' ? (
-                          <>
-                            <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
-                              <div>
-                                <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='col-span-12 px-2 py-2' isRequired={false} placeholder='Revisor' label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
-                              </div>
-                            </Slide>
-                            <InputReportButton />
-                          </>
-                        ) : null
-                      }
-                  </>
+                  <ListaRegReportes frmReport={frmReport} />
               }
         </div>
       </section>
