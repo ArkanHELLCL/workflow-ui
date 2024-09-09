@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import FormControl from '@mui/joy/FormControl';
-import FormHelperText from '@mui/joy/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 import { Controller } from 'react-hook-form';
 import { styled } from '@mui/joy/styles';
 import Input from '@mui/joy/Input';

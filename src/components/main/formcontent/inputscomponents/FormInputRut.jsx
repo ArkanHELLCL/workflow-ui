@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import FormControl from '@mui/joy/FormControl';
+import FormControl from '@mui/material/FormControl';
 import Input from '@mui/joy/Input';
-import FormHelperText from '@mui/joy/FormHelperText';
+import FormHelperText from '@mui/material/FormHelperText';
 import { Controller } from 'react-hook-form';
 import { InnerInput } from './StyledComponent.jsx';
 import { Fn } from '../../../../utils/validaRut.jsx';

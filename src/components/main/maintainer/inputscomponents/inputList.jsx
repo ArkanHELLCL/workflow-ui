@@ -2,10 +2,10 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Controller } from 'react-hook-form';
-import FormControl from '@mui/joy/FormControl';
+import FormControl from '@mui/material/FormControl';
 import Autocomplete from '@mui/joy/Autocomplete';
-import CircularProgress from '@mui/joy/CircularProgress';
-import FormHelperText from '@mui/joy/FormHelperText';
+import CircularProgress from '@mui/material/CircularProgress';
+import FormHelperText from '@mui/material/FormHelperText';
 import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 import Box from "@mui/material/Paper";
 import Sleep  from "../../../../utils/Sleep.jsx";

@@ -10,6 +10,7 @@ import { esES } from '@mui/x-date-pickers/locales';
 import Slide from '@mui/material/Slide';
 import { useFilters } from '../../hooks/useFilters';
 import { useMemo } from 'react';
+//import dayjs from 'dayjs'; 
 
 export default function ReportFilters({frmRecord, name, isRequired, label, errorMessage, className}) {
     const { filters } = useFilters()
@@ -138,7 +139,8 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                       <Controller
                         control={frmRecord.control}
                         name={nameDesde}
-                        rules={isRequired ? {required : errorMessageDesde} : {required : false}}                        
+                        rules={isRequired ? {required : errorMessageDesde} : {required : false}}
+                        //value={dayjs(new Date())}
                         render={({ field: { onBlur, onChange } }) => (
                             <FormControl                  
                                 size='sm'
@@ -152,9 +154,10 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                                           },
                                       }}                                      
                                       onBlur={onBlur}                                      
-                                      onChange={(date) => {                                        
+                                      onChange={(date) =>{
                                         onChange(date?.$d.toLocaleDateString("es-CL"));
-                                      }}                               
+                                      }}
+                                      //value={value}
                                   />
                                 </Slide>
                                 <FormHelperText className="!text-red-600">

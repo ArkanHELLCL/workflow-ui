@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Controller } from 'react-hook-form';
-import FormControl from '@mui/joy/FormControl';
+import FormControl from '@mui/material/FormControl';
 import Input from '@mui/joy/Input';
-import FormHelperText from '@mui/joy/FormHelperText';
+import FormHelperText from '@mui/material/FormHelperText';
 import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 
 export default function InputPhone ({frmRecord, name, className, isRequired, placeholder, label, errorMessage}) {

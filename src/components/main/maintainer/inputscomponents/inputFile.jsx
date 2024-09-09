@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import FormControl from '@mui/joy/FormControl';
-import FormHelperText from '@mui/joy/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 import arrayFilesToFileList from '../../../../utils/arrayFilesToFileList';
 import { useEffect } from 'react';
 
