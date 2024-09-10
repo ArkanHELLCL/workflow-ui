@@ -86,7 +86,10 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
         //frmRequest.reset({keepIsSubmitted : false, keepSubmitCount: false})        
         setFilesList([])        
         campos.map(campo => {
-            frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : null)            
+            if(campo.FDI_TipoCampo.trim().toUpperCase() === 'F' || campo.FDI_TipoCampo.trim().toUpperCase() === 'V')
+                frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : new Date())
+            else
+                frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : null)            
         })        
     },[campos, request])
 

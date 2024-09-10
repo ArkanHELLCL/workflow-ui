@@ -1,125 +1,115 @@
 /* eslint-disable react/prop-types */
+import { styled } from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 import { Controller } from 'react-hook-form';
-import { styled } from '@mui/joy/styles';
-import Input from '@mui/joy/Input';
-import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
-import { forwardRef, useId } from 'react';
 import { useRequest } from '../../../../hooks/useRequest';
+import { useFilters } from '../../../../hooks/useFilters';
 import { user } from '../../../../mocks/usuario.json'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { esES } from '@mui/x-data-grid/locales';
+import { useMemo } from 'react';
 
-  const StyledInput = styled(BaseTextareaAutosize)(
-    {
-        border: 'none', // remove the native input border
-        minWidth: 0, // remove the native input width
-        outline: 0, // remove the native input outline
-        padding: 0, // remove the native input padding
-        paddingTop: '1.5em',
-        flex: 1,
-        color: 'inherit',
-        backgroundColor: 'transparent',
-        fontFamily: 'inherit',
-        fontSize: 'inherit',
-        fontStyle: 'inherit',
-        fontWeight: 'inherit',
-        lineHeight: 'inherit',
-        textOverflow: 'ellipsis',
-        '&::placeholder': {
-          opacity: 0,
-          transition: '0.1s ease-out',
-        },
-        '&:focus::placeholder': {
-          opacity: 1,
-        },
-        '&:focus ~ label, &:not(:placeholder-shown) ~ label, &:-webkit-autofill ~ label': {
-          top: '0.5rem',
-          fontSize: '0.75rem',
-        },
-        '&:focus ~ label': {
-          color: 'var(--Input-focusedHighlight)',
-        },
-        '&:-webkit-autofill': {
-          alignSelf: 'stretch', // to fill the height of the root slot
-        },
-        '&:-webkit-autofill:not(* + &)': {
-          marginInlineStart: 'calc(-1 * var(--Input-paddingInline))',
-          paddingInlineStart: 'var(--Input-paddingInline)',
-          borderTopLeftRadius:
-            'calc(var(--Input-radius) - var(--variant-borderWidth, 0px))',
-          borderBottomLeftRadius:
-            'calc(var(--Input-radius) - var(--variant-borderWidth, 0px))',
-        },
+const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkmode }) => ({
+  '& label.Mui-focused': {
+    color: '#0b6bcb',
+    fontWeight: 400
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#B2BAC2',
+  },
+  '& .MuiOutlinedInput-root': {
+      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(12 10 9)',
+      '& fieldset': {
+        borderColor: prefersdarkmode ? '#575757' : '#E0E3E7',
+      },
+      '&:hover fieldset': {
+        borderColor: '#B2BAC2',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#0b6bcb',
+      },
+      
+  },
+  '& label': {
+      color: prefersdarkmode ? '#575757' : '#afafaf',            
+  },
+  '& ::placeholder': {
+      color: prefersdarkmode ? '#575757' : '#afafaf'
+  },
+  '& .MuiInputBase-input.Mui-disabled': {
+    WebkitTextFillColor: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(12 10 9)'
+  },
+}));
+
+export default function FormInputText ({ frmRequest, campo, className }) {
+    const { request } = useRequest();
+    const { filters } = useFilters(); 
+    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+
+    const disabled = () => {    
+        if(request.request.IdEditor === undefined || request.request.IdEditor === null)
+            return true
+        if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
+            return true    
+        if(campo.FDI_EditableSiempre === 1 || campo.FDI_Editable === 1)
+            return false
+        return true
     }
-  );
-
-  const StyledLabel = styled('label')(({ theme }) => ({
-    position: 'absolute',
-    lineHeight: 1,
-    top: 'calc((var(--Input-minHeight) - 1em) / 2)',
-    color: theme.vars.palette.text.tertiary,
-    fontWeight: theme.vars.fontWeight.md,
-    transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1)',
-  }));
-
-const TextArea = forwardRef(function InnerInput(props, ref) {
-    const id = useId();
-    return (
-        <>
-        <StyledInput {...props} ref={ref} id={id} />
-        <StyledLabel htmlFor={id} className='!font-thin'>{props.label}</StyledLabel>
-        </>
+    const prefersDarkMode = filters.darkMode
+    //const darkmode = prefersDarkMode ? 'si' : 'no'
+    const theme = useMemo(
+      () =>
+        createTheme({
+          palette: {
+            mode: prefersDarkMode ? 'dark' : 'light',
+          },
+          typography: {
+            allVariants: {
+              fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
+              textTransform: 'none',              
+              fontWeight:300,
+              fontSize: "1rem",
+              lineHeight: "1.5rem"
+            },
+          },                    
+        },
+      esES),
+      [prefersDarkMode],
     );
-  });
 
-export default function FormInputTextArea ({ frmRequest, campo, className }) {
-  const { request } = useRequest();
-  const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-
-  const disabled = () => {    
-      if(request.request.IdEditor === undefined || request.request.IdEditor === null)
-          return true
-      if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
-          return true    
-      if(campo.FDI_EditableSiempre === 1 || campo.FDI_Editable === 1)
-          return false
-      return true
-  }
-  return (
-    <Controller
-        control={frmRequest.control}
-        name={campo.FDI_NombreHTML}
-        rules={required}        
-        render={({ field: { onChange, onBlur, value } }) => (
-            <FormControl
-                id={campo.FDI_NombreHTML}
-                size='sm'
-                className={className}>
-                <Input                                
-                    placeholder={campo.FDI_Descripcion}
-                    name={campo.FDI_NombreHTML}                    
-                    disabled={disabled()}                    
-                    autoComplete='on'
-                    autoFocus={false}
-                    error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}                                        
-                    value={value || ''}
-                    variant="outlined"                    
-                    slots={{ input: TextArea }}
-                    onChange={onChange}
-                    onBlur={onBlur}                    
-                    slotProps={{ 
-                            input: { placeholder: campo.FDI_Placeholder, label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
-                            root : { className : "dark:!bg-transparent dark:!border-[#575757]"}}}
-                    sx={{
-                        '--Input-minHeight': '56px',
-                        '--Input-radius': '6px',
-                    }}                                
-                />
-                <FormHelperText className="!text-red-600">
-                    {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
-                </FormHelperText>
-            </FormControl>
-        )}
-    />
-  );
+    return (
+      <ThemeProvider theme={theme}>
+        <Controller
+            control={frmRequest.control}
+            name={campo.FDI_NombreHTML}
+            rules={required}        
+            render={({ field: { onChange, onBlur, value } }) => (
+                <FormControl
+                    id={campo.FDI_NombreHTML}                    
+                    className={className}>
+                    <CssTextField
+                        prefersdarkmode={prefersDarkMode}
+                        placeholder={campo.FDI_Placeholder}
+                        name={campo.FDI_NombreHTML}                    
+                        disabled={disabled()}                    
+                        autoComplete='on'
+                        autoFocus={false}
+                        error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}                                        
+                        value={value || ''}
+                        variant="outlined"                        
+                        onChange={onChange}
+                        onBlur={onBlur}   
+                        label={campo.FDI_Descripcion}
+                        multiline                        
+                    />
+                    <FormHelperText className="!text-red-600 !text-xs !font-normal">
+                        {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+                    </FormHelperText>                       
+                </FormControl>
+            )}
+        />
+      </ThemeProvider>
+    );
 }

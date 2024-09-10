@@ -380,7 +380,7 @@
         {
             "FOR_Id": 8,
             "FDI_Id": 109,
-            "FDI_TipoCampo": "N",
+            "FDI_TipoCampo": "G",
             "FDI_Descripcion": "Monto Total Documento",
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
