@@ -8,6 +8,8 @@ import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useAttach } from '../../../hooks/useAttach.jsx';
 import { user } from '../../../mocks/usuario.json'
+import dayjs from "dayjs";
+
 
 export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest, setFilesList, filesList}) {
     const { request } = useRequest()
@@ -87,7 +89,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
         setFilesList([])        
         campos.map(campo => {
             if(campo.FDI_TipoCampo.trim().toUpperCase() === 'F' || campo.FDI_TipoCampo.trim().toUpperCase() === 'V')
-                frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : new Date())
+                frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? new dayjs(campo.DFO_Dato?.trim()) : null)
             else
                 frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : null)            
         })        

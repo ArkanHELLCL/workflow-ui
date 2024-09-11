@@ -246,7 +246,7 @@
             "DFO_Id": 0,
             "DFO_Dato": "",
             "FDI_Editable": 1,
-            "FDI_ErrorMessage": "Debes la fecha de descarga del documento",
+            "FDI_ErrorMessage": "Debes ingresar la fecha de descarga del documento",
             "FDI_Placeholder": "2023-10-13"
         },
         {

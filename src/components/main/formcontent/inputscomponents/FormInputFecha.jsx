@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import FormHelperText from '@mui/material/FormHelperText';
+//import FormHelperText from '@mui/material/FormHelperText';
 import { Controller } from 'react-hook-form';
 //import { InnerInput } from './StyledComponent.jsx';
 import { useRequest } from '../../../../hooks/useRequest';
@@ -14,7 +14,6 @@ import { user } from '../../../../mocks/usuario.json'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { esES } from '@mui/x-data-grid/locales';
 import { useMemo } from 'react';
-import TextField from "@mui/material/TextField";
 
 export default function FormInputFecha ({ frmRequest, campo, className }) {
     const { request } = useRequest();  
@@ -55,8 +54,18 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
             <Controller
                 control={frmRequest.control}
                 name={campo.FDI_NombreHTML}            
-                rules={required}
-                render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+                //rules={required}
+                rules={{
+                    validate: {
+                      required: (value) => {
+                        console.log(value);
+                        if (!value?.$y && value) return 'Debes ingresar una fecha válida';
+                        if (!value && required) return campo.FDI_ErrorMessage;
+                      }
+                    },
+                    maxLength: 13
+                  }}
+                render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <FormControl                    
                             size='sm'
@@ -65,29 +74,24 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
                                     name={campo.FDI_NombreHTML}                    
                                     disabled={disabled()}
                                     label={campo.FDI_Descripcion}
-                                    value={value?.$d?.toLocaleDateString("es-CL") || null}
-                                    onChange={(date) =>{
-                                        onChange(date?.$d.toLocaleDateString("es-CL"));
-                                    }}
+                                    value={value || null}
+                                    inputRef={ref}
+                                    onChange={(date) => {
+                                        onChange(date);
+                                    }}                                    
                                     onBlur={onBlur}
-                                    /*renderInput={(params) => (
-                                        <TextField
-                                        {...params}
-                                        error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
-                                        helperText={
-                                            !!!!frmRequest.formState.errors[campo?.FDI_NombreHTML] ? "My error message" : params?.inputProps?.placeholder
-                                        }
-                                        />
-                                    )}*/
-                                   slotProps={{
+                                    slotProps={{
                                         textField: {
                                             error:!!error,
-                                        },
-                                   }}                                    
+                                            helperText: error?.message,
+                                            "&  .MuiFormHelperText-root": { 
+                                                fontSize: '0.75rem',
+                                                lineHeight: '1rem',
+                                            }
+                                        },                                        
+                                    }}
                                 />
-                            <FormHelperText className="!text-red-600 !text-xs !font-normal">
-                                {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
-                            </FormHelperText>                       
+                            
                         </FormControl>
                     </LocalizationProvider>
                 )}
