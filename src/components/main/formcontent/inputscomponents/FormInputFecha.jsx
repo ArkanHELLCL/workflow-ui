@@ -1,19 +1,18 @@
 /* eslint-disable no-extra-boolean-cast */
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/material/FormControl';
-//import Input from '@mui/joy/Input';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-//import FormHelperText from '@mui/material/FormHelperText';
 import { Controller } from 'react-hook-form';
-//import { InnerInput } from './StyledComponent.jsx';
 import { useRequest } from '../../../../hooks/useRequest';
 import { useFilters } from '../../../../hooks/useFilters';
 import { user } from '../../../../mocks/usuario.json'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { esES } from '@mui/x-data-grid/locales';
 import { useMemo } from 'react';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import EventIcon from '@mui/icons-material/Event';
 
 export default function FormInputFecha ({ frmRequest, campo, className }) {
     const { request } = useRequest();  
@@ -40,8 +39,8 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
               allVariants: {
                 fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
                 textTransform: 'none',              
-                fontWeight:300,
-                fontSize: "1rem",
+                //fontWeight:300,
+                //fontSize: "1rem",
                 lineHeight: "1.5rem"
               },
             },
@@ -83,12 +82,39 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
                                     slotProps={{
                                         textField: {
                                             error:!!error,
-                                            helperText: error?.message,
-                                            "&  .MuiFormHelperText-root": { 
-                                                fontSize: '0.75rem',
-                                                lineHeight: '1rem',
-                                            }
-                                        },                                        
+                                            helperText: error?.message,                                            
+                                            sx:{
+                                                svg : {
+                                                    color: error ? '#f44336': prefersDarkMode ? '#575757' : '#afafaf',
+                                                },
+                                                '& .MuiOutlinedInput-root': {                                                    
+                                                  /*'& fieldset': {
+                                                    borderColor: 'red',
+                                                  },
+                                                  '&:hover fieldset': {
+                                                    borderColor: 'green',
+                                                  },*/
+                                                  '&.Mui-focused fieldset': {
+                                                    borderColor: '#0b6bcb',                                                    
+                                                  },
+                                                  '& label': {
+                                                    color: '#0b6bcb',
+                                                  },
+                                                },
+                                                '& .MuiInputLabel-root': {                                                    
+                                                    color: error ? '#f44336': prefersDarkMode ? '#575757' : '#afafaf',
+                                                    '&.Mui-focused': {
+                                                        color: '#0b6bcb',
+                                                    },
+                                                },
+                                                '& .MuiInputBase-input.Mui-disabled': {
+                                                    WebkitTextFillColor: prefersDarkMode ? 'rgb(245 245 244)' : 'rgb(110 110 110)'
+                                                },
+                                              }
+                                        },
+                                    }}
+                                    slots={{
+                                        openPickerIcon: campo.FDI_TipoCampo.trim().toUpperCase() === 'V' ? NotificationsNoneIcon : EventIcon
                                     }}
                                 />
                             

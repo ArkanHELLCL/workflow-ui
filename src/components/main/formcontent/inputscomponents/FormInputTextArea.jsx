@@ -2,7 +2,6 @@
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import FormHelperText from '@mui/material/FormHelperText';
 import { Controller } from 'react-hook-form';
 import { useRequest } from '../../../../hooks/useRequest';
 import { useFilters } from '../../../../hooks/useFilters';
@@ -20,7 +19,7 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
     borderBottomColor: '#B2BAC2',
   },
   '& .MuiOutlinedInput-root': {
-      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(12 10 9)',
+      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',
       '& fieldset': {
         borderColor: prefersdarkmode ? '#575757' : '#E0E3E7',
       },
@@ -33,13 +32,13 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
       
   },
   '& label': {
-      color: prefersdarkmode ? '#575757' : '#afafaf',            
+      color: prefersdarkmode ? '#575757' : '#afafaf',
   },
   '& ::placeholder': {
       color: prefersdarkmode ? '#575757' : '#afafaf'
   },
   '& .MuiInputBase-input.Mui-disabled': {
-    WebkitTextFillColor: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(12 10 9)'
+    WebkitTextFillColor: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)'
   },
 }));
 
@@ -69,8 +68,8 @@ export default function FormInputText ({ frmRequest, campo, className }) {
             allVariants: {
               fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
               textTransform: 'none',              
-              fontWeight:300,
-              fontSize: "1rem",
+              //fontWeight:300,
+              //fontSize: "1rem",
               lineHeight: "1.5rem"
             },
           },                    
@@ -102,11 +101,9 @@ export default function FormInputText ({ frmRequest, campo, className }) {
                         onChange={onChange}
                         onBlur={onBlur}   
                         label={campo.FDI_Descripcion}
-                        multiline                        
+                        multiline
+                        helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
                     />
-                    <FormHelperText className="!text-red-600 !text-xs !font-normal">
-                        {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
-                    </FormHelperText>                       
                 </FormControl>
             )}
         />
