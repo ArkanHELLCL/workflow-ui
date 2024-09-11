@@ -3,7 +3,6 @@ import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/material/FormHelperText';
-import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 
 export default function InputEmail ({frmRecord, name, className, isRequired, placeholder, label, errorMessage}) {
     return(
@@ -37,7 +36,7 @@ export default function InputEmail ({frmRecord, name, className, isRequired, pla
                         error={!!frmRecord.formState.errors[name]}                    
                         value={value || ''}                        
                         variant="outlined"
-                        slots={{ input: InnerInput }}
+                        
                         onChange={onChange}
                         onBlur={onBlur}    
                         slotProps={{ 

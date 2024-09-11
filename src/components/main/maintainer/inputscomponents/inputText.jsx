@@ -3,7 +3,6 @@ import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/joy/Input';
 import FormHelperText from '@mui/material/FormHelperText';
-import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 
 export default function InputText ({frmRecord, name, className, isRequired, placeholder, label, errorMessage}) {
     return(
@@ -22,8 +21,7 @@ export default function InputText ({frmRecord, name, className, isRequired, plac
                         autoComplete='on'
                         autoFocus={false}
                         error={!!frmRecord.formState.errors[name]}                    
-                        variant="outlined"
-                        slots={{ input: InnerInput }}
+                        variant="outlined"                        
                         onChange={onChange}
                         onBlur={onBlur}
                         value={value || ''}

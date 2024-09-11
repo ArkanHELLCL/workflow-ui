@@ -1,5 +1,5 @@
 import { MaterialDesignContent } from 'notistack';
-import { styled } from '@mui/joy/styles';
+import { styled } from '@mui/material/styles';
 import { useFilters } from '../hooks/useFilters.jsx';
 
 const StyledMaterialDesignContent = styled(MaterialDesignContent)(() => {

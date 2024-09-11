@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/material/FormControl';
-import Autocomplete from '@mui/joy/Autocomplete';
-import FormHelperText from '@mui/material/FormHelperText';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import Box from "@mui/material/Paper";
 import { Controller } from 'react-hook-form';
-import { InnerInput } from './StyledComponent.jsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import meses  from "../../../../mocks/meses.json";
 import proveedores  from "../../../../mocks/proveedores.json";
 import tipodocumento from "../../../../mocks/tipodocumento.json";
@@ -18,11 +17,36 @@ import tipodepago from "../../../../mocks/tipodepago.json";
 import pagotesoreria from "../../../../mocks/pagotesoreria.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
 import { useRequest } from '../../../../hooks/useRequest';
+import { useFilters } from '../../../../hooks/useFilters';
 import { user } from '../../../../mocks/usuario.json'
+import InputAdornment from '@mui/material/InputAdornment';
 import ExternalMantainer from './ExternalMantainer.jsx'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { esES } from '@mui/x-data-grid/locales';
+import { styled } from '@mui/material/styles';
+
+const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkmode }) => ({
+  '& label.Mui-focused': {
+    color: '#0b6bcb',
+    fontWeight: 400
+  },
+  
+  '& .MuiOutlinedInput-root': {
+      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',      
+      '&:hover fieldset': {
+        borderColor: '#B2BAC2',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#0b6bcb',
+      },      
+  },
+  
+  
+}));
 
 export default function FormInputList ({ frmRequest, campo, className }) {  
   const { request } = useRequest();
+  const { filters } = useFilters(); 
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
 
   const [open, setOpen] = useState(false);
@@ -38,6 +62,26 @@ export default function FormInputList ({ frmRequest, campo, className }) {
       return false
     return true
   }
+  const prefersDarkMode = filters.darkMode
+    const theme = useMemo(
+      () =>
+        createTheme({
+          palette: {
+            mode: prefersDarkMode ? 'dark' : 'light',
+          },
+          typography: {
+            allVariants: {
+              fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
+              textTransform: 'none',              
+              //fontWeight:300,
+              //fontSize: "1rem",
+              lineHeight: "1.5rem"
+            },
+          },
+        },
+      esES),
+      [prefersDarkMode],
+    );
   
   let dataOptions = [];
   let buttonMantainer = false;
@@ -95,77 +139,73 @@ export default function FormInputList ({ frmRequest, campo, className }) {
     setValue(campo.FDI_NombreHTML,newValue);
   }*/
 
-  return (    
-      <Controller
-          control={frmRequest.control}
-          name={campo.FDI_NombreHTML}
-          rules={required}        
-          render={({ field }) => (
-              <FormControl                                
-                  size='sm'
-                  className={className}>
-                  <Autocomplete
-                      {...field}
-                      autoComplete={true}
-                      clearOnEscape={true}
-                      defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
-                      disabled={disabled()}
-                      placeholder={campo.FDI_Descripcion}
-                      error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}  
-                      variant="outlined"
-                      slots={{ input: InnerInput }}
-                      onChange={(event, newValue) => {                      
-                        frmRequest.setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
-                      }}                    
-                      onBlur={field.onBlur}                                      
-                      value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || field.value || ''}
-                      slotProps={{ 
-                              input: { placeholder: campo.FDI_Placeholder, label: campo.FDI_Descripcion, className: 'dark:!text-stone-100 !text-stone-950 !text-base !font-light placeholder:dark:!text-stone-600 placeholder:!text-stone-300'}, 
-                              root : { className : "dark:!bg-transparent dark:!border-[#575757]"},
-                              popupIndicator: { className: "dark:hover:!bg-[#444444]" },
-                              clearIndicator: { className: "dark:hover:!bg-[#444444]" },
-                              option: { className: "dark:!bg-[#575757] dark:hover:!bg-[#444444] hover:bg-[#cde6f7] dark:!text-stone-100 dark:hover:!text-stone-100 !text-base !font-light !pl-2" },
-                              listbox: { className: "dark:!bg-[#575757] dark:!border-[#575757] dark:!text-stone-100 !text-white"},
-                              inputRoot: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 dark:!shadow-none" },
-                              loadingIndicator: { className: "dark:!bg-transparent dark:!border-[#575757] dark:!text-stone-100 !text-white" },
-                      }}
-                      sx={{
-                          '--Input-minHeight': '56px',
-                          '--Input-radius': '6px',
-                      }}
-                      open={open}
-                      onOpen={() => {
-                          setOpen(true);
-                      }}
-                      onClose={() => {
-                          setOpen(false);
-                      }}
-                      isOptionEqualToValue={(option, value) => option.value === value.value}
-                      getOptionLabel={(option) => option.label || ''}
-                      options={options}
-                      loading={loading}
-                      endDecorator={
-                          /*loading ? (
-                              <CircularProgress size="sm" sx={{ bgcolor: 'transparent' }} />
-                          ) : null*/
-                          buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} /> ) : null
-                      }
-                      renderOption={(props, option) => 
-                        <Box component="li" {...props} key={option.id}>                        
-                            {option.label}
-                        </Box>                      
-                      }
-                      clearText={'Limpiar'}
-                      closeText={'Cerrar'}
-                      loadingText={'Cargando...'}
-                      noOptionsText={'No hay opciones'}
-                      openText={'Abrir'}
-                  />
-                  <FormHelperText className="!text-red-600">
-                      {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
-                  </FormHelperText>                       
-              </FormControl>
-          )}
-      />    
+  return (
+    <ThemeProvider theme={theme}>
+        <Controller
+            control={frmRequest.control}
+            name={campo.FDI_NombreHTML}
+            rules={required}        
+            render={({ field }) => (
+                <FormControl                  
+                    className={className}>
+                    <Autocomplete
+                        {...field}
+                        autoComplete={true}
+                        clearOnEscape={true}
+                        defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
+                        disabled={disabled()}
+                        placeholder={campo.FDI_Descripcion}
+                        variant="outlined"                      
+                        onChange={(event, newValue) => {                      
+                          frmRequest.setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
+                        }}                    
+                        onBlur={field.onBlur}                                      
+                        value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || field.value || ''}
+                        open={open}
+                        onOpen={() => {
+                            setOpen(true);
+                        }}
+                        onClose={() => {
+                            setOpen(false);
+                        }}
+                        isOptionEqualToValue={(option, value) => option.value === value.value}
+                        getOptionLabel={(option) => option.label || ''}
+                        options={options}
+                        loading={loading}
+                        
+                        renderOption={(props, option) => 
+                          <Box component="li" {...props} key={option.id}>                        
+                              {option.label}
+                          </Box>                      
+                        }
+                        clearText={'Limpiar'}
+                        closeText={'Cerrar'}
+                        loadingText={'Cargando...'}
+                        noOptionsText={'No hay opciones'}
+                        openText={'Abrir'}                      
+                        renderInput={(params) => 
+                          <CssTextField 
+                            {...params} 
+                            label={campo.FDI_Descripcion} 
+                            slotProps={{
+                              input: {
+                                ...params.InputProps,
+                                endAdornment: (
+                                  <>
+                                    <InputAdornment position="end">
+                                      {buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} /> ) : null}
+                                    </InputAdornment>
+                                    {params.InputProps.endAdornment}
+                                  </>
+                                ),
+                              },
+                            }}
+                            helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}/>}
+                            //error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
+                    />
+                </FormControl>
+            )}
+        />
+    </ThemeProvider>
   );
 }

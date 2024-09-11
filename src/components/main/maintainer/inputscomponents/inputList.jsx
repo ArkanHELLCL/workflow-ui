@@ -6,7 +6,6 @@ import FormControl from '@mui/material/FormControl';
 import Autocomplete from '@mui/joy/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 import FormHelperText from '@mui/material/FormHelperText';
-import { InnerInput } from '../../formcontent/inputscomponents/StyledComponent.jsx';
 import Box from "@mui/material/Paper";
 import Sleep  from "../../../../utils/Sleep.jsx";
 
@@ -58,7 +57,7 @@ export default function InputList ({frmRecord, name, dataOptions, className, isR
                       placeholder={placeholder}
                       error={!!frmRecord.formState.errors[name]}  
                       variant="outlined"
-                      slots={{ input: InnerInput }}
+                      
                       onChange={(event, newValue) => {
                           frmRecord.setValue(name,newValue);
                       }}
