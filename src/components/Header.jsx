@@ -76,7 +76,7 @@ export default function Header(){
         //console.log('useEffect-3 animacion :', animationEnd, 'scrolon : ' , scrollON)
         setScrollON(false)
         setScrollPosition(0)
-        ////calcScroll()
+        calcScroll()
     },[filters.itemIdSelected, request, record, formulario])
 
     const handleScrollX = (value) => {

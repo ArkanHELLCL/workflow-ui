@@ -499,7 +499,7 @@
             "DFO_Dato": "",
             "FDI_Editable": 1,
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
-            "FDI_Placeholder": "987-88"
+            "FDI_Placeholder": "98788"
         }
          ]
       },
@@ -868,7 +868,7 @@
             "DFO_Dato": "120",
             "FDI_Editable": 0,
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
-            "FDI_Placeholder": "987-88"
+            "FDI_Placeholder": "98788"
         }
     ]
       },
@@ -1569,7 +1569,7 @@
             "DFO_Dato": "294",
             "FDI_Editable": 0,
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
-            "FDI_Placeholder": "987-88"
+            "FDI_Placeholder": "98788"
         }
     ]
       },
@@ -2270,7 +2270,7 @@
             "DFO_Dato": "294",
             "FDI_Editable": 0,
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
-            "FDI_Placeholder": "987-88"
+            "FDI_Placeholder": "98788"
         }
     ]
       },
@@ -2842,7 +2842,7 @@
             "DFO_Dato": "414",
             "FDI_Editable": 1,
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
-            "FDI_Placeholder": "987-88"
+            "FDI_Placeholder": "98788"
         }
     ]
       },
@@ -3451,7 +3451,7 @@
             "DFO_Dato": "275",
             "FDI_Editable": 0,
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
-            "FDI_Placeholder": "987-88"
+            "FDI_Placeholder": "98788"
         }
     ]
       },

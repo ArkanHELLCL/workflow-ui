@@ -52,12 +52,10 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
         <ThemeProvider theme={theme}>
             <Controller
                 control={frmRequest.control}
-                name={campo.FDI_NombreHTML}            
-                //rules={required}
+                name={campo.FDI_NombreHTML}
                 rules={{
                     validate: {
-                      required: (value) => {
-                        console.log(value);
+                      required: (value) => {                        
                         if (!value?.$y && value) return 'Debes ingresar una fecha válida';
                         if (!value && required) return campo.FDI_ErrorMessage;
                       }

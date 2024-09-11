@@ -89,15 +89,15 @@ export default function FormInputText ({ frmRequest, campo, className }) {
                     <CssTextField
                         prefersdarkmode={prefersDarkMode}
                         placeholder={campo.FDI_Placeholder}
-                        name={campo.FDI_NombreHTML}                    
-                        disabled={disabled()}                    
+                        name={campo.FDI_NombreHTML}
+                        disabled={disabled()}
                         autoComplete='on'
                         autoFocus={false}
-                        error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}                                        
+                        error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
                         value={value || ''}
-                        variant="outlined"                        
+                        variant="outlined"
                         onChange={onChange}
-                        onBlur={onBlur}   
+                        onBlur={onBlur}
                         label={campo.FDI_Descripcion}
                         helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
                     />

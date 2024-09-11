@@ -1,5 +1,6 @@
-export default function FormatearRut(rutSinFormato) {
-    const caracteresValidos = rutSinFormato.replace(/[^0-9kK]+/g, '');
+export default function FormatearRut(rutSinFormato) {    
+    if(!rutSinFormato) return ''
+    const caracteresValidos = rutSinFormato?.replace(/[^0-9kK]+/g, '');
     const rutInvertido = caracteresValidos.slice(0,11).split('').reverse().join('');
     const lenRut = rutInvertido.length
     let rutFormateado
