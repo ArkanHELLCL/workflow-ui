@@ -5,7 +5,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ContentMenu from "./contentMenu"
 import { flujos } from "../../mocks/flujos.json";
 import { FlowIcon, FlowPlusIcon } from "../../utils/icons.jsx";
@@ -29,7 +30,9 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
             allVariants: {
               fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
               textTransform: 'none',
-              lineHeight: "1.5rem"
+              lineHeight: "1.5rem",
+              fontWeight: 100,
+              fontSize: '0.875rem'
             },
           },
           components: {            
@@ -59,6 +62,7 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
   
     function  hanldeOnClick(flujo){
         console.log('Click on ' + flujo.description)
+        handleClose();
     }
 
     return (
@@ -82,7 +86,7 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
-                        className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Crear un nuevo requerimiento"
+                        className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Crear un nuevo requerimiento"
                     >
                         <div className="flex flex-col items-center relative">
                             <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                         
@@ -100,9 +104,9 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
                         }}                        
                     >{
                         flujos.filter(fls => fls.id>0).map((item) =>
-                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 !py-0 mnuFlow flex gap-2`}  key={item.id} onClick={() => hanldeOnClick(item)}>
-                                <ListItemDecorator><FlowIcon id={item.id} /></ListItemDecorator>
-                                {item.description}                            
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 dark:!text-stone-100 !text-stone-500 !py-0`}  key={item.id} onClick={() => hanldeOnClick(item)}>
+                                <ListItemIcon><FlowIcon id={item.id} /></ListItemIcon>
+                                <ListItemText>{item.description}</ListItemText>
                             </MenuItem>
                         )}
                     </Menu>
