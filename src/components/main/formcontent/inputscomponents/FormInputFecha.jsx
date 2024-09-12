@@ -86,10 +86,10 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
                                                     color: error ? '#f44336': prefersDarkMode ? '#575757' : '#afafaf',
                                                 },
                                                 '& .MuiOutlinedInput-root': {                                                    
-                                                  /*'& fieldset': {
-                                                    borderColor: 'red',
+                                                  '& fieldset': {
+                                                    borderColor: prefersDarkMode ? '#575757' : '#E0E3E7',
                                                   },
-                                                  '&:hover fieldset': {
+                                                  /*'&:hover fieldset': {
                                                     borderColor: 'green',
                                                   },*/
                                                   '&.Mui-focused fieldset': {

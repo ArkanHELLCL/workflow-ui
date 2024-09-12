@@ -25,24 +25,35 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { esES } from '@mui/x-data-grid/locales';
 import { styled } from '@mui/material/styles';
 
-const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkmode }) => ({
+const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkmode, e }) => ({
   '& label.Mui-focused': {
     color: '#0b6bcb',
     fontWeight: 400
   },
   '& label': {
-    color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',
+    color: prefersdarkmode ? '#575757' : '#afafaf',
   },
   '& .MuiOutlinedInput-root': {
+      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',
+      '& fieldset': {
+        borderColor: prefersdarkmode ? '#575757' : '#E0E3E7',
+      },
       '&:hover fieldset': {
         borderColor: '#B2BAC2',
       },
       '&.Mui-focused fieldset': {
         borderColor: '#0b6bcb',
-      },      
+      },          
   },
-  
-  
+  "& .MuiAutocomplete-popupIndicator": {
+    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf',  
+  }, 
+  "& .MuiAutocomplete-clearIndicator": {
+    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf',  
+  }, 
+  '& .MuiInputBase-input.Mui-disabled': {
+    WebkitTextFillColor: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)'
+  },
 }));
 
 export default function FormInputList ({ frmRequest, campo, className }) {  
@@ -77,7 +88,7 @@ export default function FormInputList ({ frmRequest, campo, className }) {
               //fontWeight:300,
               //fontSize: "1rem",
               lineHeight: "1.5rem"
-            },
+            },            
           },
         },
       esES),
@@ -186,7 +197,9 @@ export default function FormInputList ({ frmRequest, campo, className }) {
                         openText={'Abrir'}                      
                         renderInput={(params) => 
                           <CssTextField 
-                            {...params} 
+                            {...params}
+                            prefersdarkmode={prefersDarkMode}
+                            e={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
                             error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
                             label={campo.FDI_Descripcion} 
                             slotProps={{
@@ -195,7 +208,7 @@ export default function FormInputList ({ frmRequest, campo, className }) {
                                 endAdornment: (
                                   <>
                                     <InputAdornment position="end">
-                                      {buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} /> ) : null}
+                                      {buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}/> ) : null}
                                     </InputAdornment>
                                     {params.InputProps.endAdornment}
                                   </>
