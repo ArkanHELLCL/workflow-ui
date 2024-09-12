@@ -75,7 +75,7 @@ export default function FormInputFecha ({ frmRequest, campo, className }) {
                                     inputRef={ref}
                                     onChange={(date) => {
                                         onChange(date);
-                                    }}                                    
+                                    }}
                                     onBlur={onBlur}
                                     slotProps={{
                                         textField: {
