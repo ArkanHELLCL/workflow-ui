@@ -30,9 +30,10 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
     color: '#0b6bcb',
     fontWeight: 400
   },
-  
+  '& label': {
+    color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',
+  },
   '& .MuiOutlinedInput-root': {
-      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',      
       '&:hover fieldset': {
         borderColor: '#B2BAC2',
       },
@@ -186,6 +187,7 @@ export default function FormInputList ({ frmRequest, campo, className }) {
                         renderInput={(params) => 
                           <CssTextField 
                             {...params} 
+                            error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
                             label={campo.FDI_Descripcion} 
                             slotProps={{
                               input: {
@@ -200,8 +202,9 @@ export default function FormInputList ({ frmRequest, campo, className }) {
                                 ),
                               },
                             }}
-                            helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}/>}
-                            //error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
+                            helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+                          />
+                        }
                     />
                 </FormControl>
             )}
