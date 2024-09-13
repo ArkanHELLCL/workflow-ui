@@ -31,8 +31,8 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
               fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
               textTransform: 'none',
               lineHeight: "1.5rem",
-              fontWeight: 100,
-              fontSize: '0.875rem'
+              fontWeight: 400,
+              fontSize: '0.75rem'
             },
           },
           components: {            
