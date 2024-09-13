@@ -46,10 +46,12 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
       },          
   },
   "& .MuiAutocomplete-popupIndicator": {
-    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf',  
+    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf', 
+    '&:hover': {borderRadius:'0'}
   }, 
   "& .MuiAutocomplete-clearIndicator": {
-    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf',  
+    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf',
+    '&:hover': {borderRadius:'0'}
   }, 
   '& .MuiInputBase-input.Mui-disabled': {
     WebkitTextFillColor: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)'
