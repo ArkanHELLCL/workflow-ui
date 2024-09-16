@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import FormHelperText from '@mui/material/FormHelperText';
-import Inputs from './Inputs.jsx';
+import Inputs from './inputs.jsx';
 import DropAttach from './DropAttach.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';

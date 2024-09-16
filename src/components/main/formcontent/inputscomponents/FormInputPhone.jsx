@@ -41,7 +41,7 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
   },
 }));
 
-export default function FormInputText ({ frmRequest, campo, className }) {
+export default function FormInputPhone ({ frmRequest, campo, className }) {
     const { request } = useRequest();
     const { filters } = useFilters(); 
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
@@ -82,7 +82,18 @@ export default function FormInputText ({ frmRequest, campo, className }) {
         <Controller
             control={frmRequest.control}
             name={campo.FDI_NombreHTML}
-            rules={required}        
+            rules={{
+                validate: {
+                  required: (value) => {
+                    if (!value && required) return campo.FDI_ErrorMessage;
+                  },
+                  validPhone: (value) => {
+                    if((value.length>=1 && value.length<9) || (value.length>9)){
+                        return 'El télefono ingresado no es válido';
+                    }
+                  },
+                }
+              }}
             render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl
                     id={campo.FDI_NombreHTML}                    

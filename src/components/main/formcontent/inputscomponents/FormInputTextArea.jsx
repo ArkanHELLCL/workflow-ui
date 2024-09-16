@@ -47,7 +47,8 @@ export default function FormInputText ({ frmRequest, campo, className }) {
     const { filters } = useFilters(); 
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
 
-    const disabled = () => {    
+    const disabled = () => {
+        if(!request) return false    
         if(request.request.IdEditor === undefined || request.request.IdEditor === null)
             return true
         if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))

@@ -95,7 +95,7 @@ export default function Buttons({formulario}){
                                             title={btns.nombre}
                                             id={btns.id} 
                                             type={btns.type}
-                                            form={'frmWorkFlowv4'}
+                                            form={formulario.name}
                                             >
                                                 <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{
                                                     btns.nombre &&

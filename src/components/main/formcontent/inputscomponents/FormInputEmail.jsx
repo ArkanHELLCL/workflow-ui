@@ -41,7 +41,7 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
   },
 }));
 
-export default function FormInputText ({ frmRequest, campo, className }) {
+export default function FormInputEmail ({ frmRequest, campo, className }) {
     const { request } = useRequest();
     const { filters } = useFilters(); 
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
@@ -82,7 +82,20 @@ export default function FormInputText ({ frmRequest, campo, className }) {
         <Controller
             control={frmRequest.control}
             name={campo.FDI_NombreHTML}
-            rules={required}        
+            rules={{
+                validate: {
+                  required: (value) => {
+                    if (!value && required) return campo.FDI_ErrorMessage;
+                  },
+                  validEmail: (value) => {
+                    let currentEmails = value
+                    let regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/i;
+                        if (!regex.test(currentEmails.replace(/\s/g, ''))) {
+                            return 'El Email ingresado no es válido';
+                        }
+                    }
+                },
+              }}
             render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl
                     id={campo.FDI_NombreHTML}                    

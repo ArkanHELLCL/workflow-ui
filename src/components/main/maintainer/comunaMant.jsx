@@ -1,19 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import InputList from './inputscomponents/inputList.jsx';
-import InputText from './inputscomponents/inputText.jsx';
-import InputNumbers from './inputscomponents/inputNumbers.jsx';
 import InputButtons from './inputscomponents/inputButtons.jsx';
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import { user } from '../../../mocks/usuario.json';
-
-import regiones from "../../../mocks/regiones.json";
+import Inputs from '../formcontent/inputs.jsx';
+import { formulario } from '../../../mocks/formularioMant.json';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
 export default function MCMant({frmRecord, mant, record, singleButton}) {
     const [field, setField] = useState(null)
+    const [campos, setCampos] = useState([])
     
     const date = new Date()
     let fecha = date.toISOString()
@@ -41,6 +39,11 @@ export default function MCMant({frmRecord, mant, record, singleButton}) {
         setField(reg)
     },[registros, record])
 
+    useEffect(() => {
+        const campos = formulario.filter(item => item.id === 'mc')[0]?.FOR_Campos
+        setCampos(campos)        
+    },[formulario])
+
     return (
         field ?
             <>
@@ -57,12 +60,8 @@ export default function MCMant({frmRecord, mant, record, singleButton}) {
                     <span className='text-[11px] leading-tight'>{field.COM_FechaEdit.slice(0,16).replace('T',' ')}</span>
                 </section>
                 <section id="InputsContent" className="py-3 w-full frmmantbody">                    
-                    <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">            
-                        <div className='grid grid-cols-12 gap-2 pb-3'>                    
-                            <InputList frmRecord ={frmRecord} name='REG_Id' dataOptions={regiones} className='col-span-5' isRequired={true} placeholder='Región metropolitana' label='Región' errorMessage='Debes seleccionar una región'/>
-                            <InputText frmRecord ={frmRecord} name='COM_Nombre' className='col-span-5' isRequired={true} placeholder='Maipú' label='Comuna' errorMessage='Debes ingresar un nombre de comuna'/>
-                            <InputNumbers frmRecord ={frmRecord} name='COM_OrdenGeografico' className='col-span-2' isRequired={true} placeholder='11201' label='Código' errorMessage='Debes ingresar un código geográfico'/>
-                        </div>
+                    <div className="w-full pr-0 flex flex-col overflow-y-auto h-full">            
+                        <Inputs frmRequest={frmRecord} campos={campos} />
                         <input type="hidden" {...frmRecord.register('COM_Id')} value={field?.COM_Id} />
 
                         <div className='grid grid-cols-12 gap-2'>

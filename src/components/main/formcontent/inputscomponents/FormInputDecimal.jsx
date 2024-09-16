@@ -99,6 +99,7 @@ export default function FormInpuDecimal ({ frmRequest, campo, className }) {
     );
 
     const disabled = () => {
+        if(!request) return false
         if(request.request.IdEditor === undefined || request.request.IdEditor === null)
             return true
         if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))

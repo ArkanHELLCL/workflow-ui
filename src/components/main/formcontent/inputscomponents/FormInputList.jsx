@@ -15,6 +15,9 @@ import periodos from "../../../../mocks/periodos.json";
 import tipodeservicio from "../../../../mocks/tipodeservicio.json";
 import tipodepago from "../../../../mocks/tipodepago.json";
 import pagotesoreria from "../../../../mocks/pagotesoreria.json";
+import regiones from "../../../../mocks/regiones.json";
+import bancos from "../../../../mocks/bancos.json";
+import tiposdecuenta from "../../../../mocks/tiposdecuenta.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
 import { useRequest } from '../../../../hooks/useRequest';
 import { useFilters } from '../../../../hooks/useFilters';
@@ -67,7 +70,8 @@ export default function FormInputList ({ frmRequest, campo, className }) {
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
 
-  const disabled = () => {    
+  const disabled = () => {
+    if(!request) return false    
     if(request.request.IdEditor === undefined || request.request.IdEditor === null)
       return true
     if(parseInt(request.request?.IdEditor) !== parseInt(user.USR_Id))
@@ -102,6 +106,18 @@ export default function FormInputList ({ frmRequest, campo, className }) {
   if(campo.FDI_TipoCampo==='X1'){
     dataOptions = structuredClone(proveedores)
     buttonMantainer = true;
+  }
+  if(campo.FDI_TipoCampo==='X2'){
+    dataOptions = structuredClone(regiones)
+    buttonMantainer = false;
+  }
+  if(campo.FDI_TipoCampo==='X3'){
+    dataOptions = structuredClone(bancos)
+    buttonMantainer = false;
+  }
+  if(campo.FDI_TipoCampo==='X4'){
+    dataOptions = structuredClone(tiposdecuenta)
+    buttonMantainer = false;
   }
   if(campo.FDI_TipoCampo==='U')
     dataOptions = structuredClone(usuarios)

@@ -28,15 +28,14 @@ const NumericFormatAdapter = forwardRef(
                 },
             });
             }}
-            decimalScale={2}
-            decimalSeparator=','
-            thousandSeparator='.'
+            decimalScale={0}            
             valueIsNumericString
-            prefix="$"
+            prefix="#"
         />
         );
     },
 );
+
 NumericFormatAdapter.propTypes = {
     //name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -72,7 +71,7 @@ const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkm
     },
 }));
 
-export default function FormInputMontoD ({ frmRequest, campo, className }) {
+export default function FormInputNumberS ({ frmRequest, campo, className }) {
     const { request } = useRequest();
     const { filters } = useFilters(); 
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
