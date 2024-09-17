@@ -18,6 +18,9 @@ import pagotesoreria from "../../../../mocks/pagotesoreria.json";
 import regiones from "../../../../mocks/regiones.json";
 import bancos from "../../../../mocks/bancos.json";
 import tiposdecuenta from "../../../../mocks/tiposdecuenta.json";
+import departamentos from "../../../../mocks/departamentos.json";
+import sexos from "../../../../mocks/sexos.json";
+import perfiles from "../../../../mocks/perfiles.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
 import { useRequest } from '../../../../hooks/useRequest';
 import { useFilters } from '../../../../hooks/useFilters';
@@ -117,6 +120,18 @@ export default function FormInputList ({ frmRequest, campo, className }) {
   }
   if(campo.FDI_TipoCampo==='X4'){
     dataOptions = structuredClone(tiposdecuenta)
+    buttonMantainer = false;
+  }
+  if(campo.FDI_TipoCampo==='X5'){
+    dataOptions = structuredClone(departamentos)
+    buttonMantainer = false;
+  }
+  if(campo.FDI_TipoCampo==='X6'){
+    dataOptions = structuredClone(sexos)
+    buttonMantainer = false;
+  }
+  if(campo.FDI_TipoCampo==='X7'){
+    dataOptions = structuredClone(perfiles)
     buttonMantainer = false;
   }
   if(campo.FDI_TipoCampo==='U')

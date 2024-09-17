@@ -136,7 +136,7 @@ export default function FormInputNumber ({ frmRequest, campo, className }) {
                             helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message} 
                             slotProps={{ input: { inputComponent: NumericFormatAdapter } }}
                             inputProps={{
-                              maxlength: campo.FDI_TamanoCampo
+                              maxLength: campo.FDI_TamanoCampo
                             }}
                         />
                     </FormControl>

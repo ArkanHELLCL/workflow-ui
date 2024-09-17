@@ -59,8 +59,8 @@ export default function MCMant({frmRecord, mant, record, singleButton}) {
                 <section className='justify-self-end pr-2 frmmantdate'>
                     <span className='text-[11px] leading-tight'>{field.COM_FechaEdit.slice(0,16).replace('T',' ')}</span>
                 </section>
-                <section id="InputsContent" className="py-3 w-full frmmantbody">                    
-                    <div className="w-full pr-0 flex flex-col overflow-y-auto h-full">            
+                <section className="py-3 w-full frmmantbody">
+                    <div className="w-full pr-2 flex flex-col overflow-y-auto">
                         <Inputs frmRequest={frmRecord} campos={campos} />
                         <input type="hidden" {...frmRecord.register('COM_Id')} value={field?.COM_Id} />
 

@@ -69,7 +69,7 @@ export default function MPMant({frmRecord, mant, record, singleButton }) {
                 <section className='justify-self-end pr-2 frmmantdate'>
                     <span className='text-[11px] leading-tight'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span>
                 </section>                
-                <section id="InputsContent" className="py-3 w-full frmmantbody">
+                <section className="py-3 w-full frmmantbody">
                     <div className="w-full pr-2 flex flex-col overflow-y-auto">
                         <Inputs frmRequest={frmRecord} campos={campos} />
                         <div className='grid grid-cols-12 gap-2 pb-3'>

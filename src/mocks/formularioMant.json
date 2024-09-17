@@ -334,6 +334,233 @@
           "FDI_Placeholder": "Cuenta Corriente"
       }
          ]
-    }
+    },
+    {
+      "id": "mu",
+      "name":"frmWFRecords",
+      "FOR_Botones":[
+    [
+          {
+                "id" : "grp_1",
+                "nombre" : "Creacion",
+                "descripcion" : "Creación",
+                "botones" : [
+                   {
+                      "id" : "btn_crear",
+                      "nombre" : "Nuevo",
+                      "descripcion" : ["Crear nuevo","Registro"],
+                      "type" : "submit",
+                      "dialogo":"confirm",
+                      "titulo":"Crear nuevo registro",
+                      "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
+                      "tooltiptext":"Creación de un nuevo registro"
+                   }
+                ]
+          }
+    ],
+    [
+       {
+             "id" : "grp_2",
+             "nombre" : "Actualizacion",
+             "descripcion" : "Actualizaciones sobre los rgistros",
+             "botones" : [
+                {
+                   "id":"btn_modififcar",
+                   "nombre":"Gurdar",
+                   "descripcion":["Guardar","cambios"],
+                   "type" : "submit",
+                   "action":"/guardar",
+                   "dialogo":"confirm",
+                   "titulo":"Guardar Cambios",
+                   "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
+                   "tooltiptext":"Guardar los cambios realizados en la base de datos."
+                },               
+                {
+                   "id":"btn_habilitar",
+                   "nombre":"Habilitar",
+                   "descripcion":["Habilitar","registro"],
+                   "type" : "submit",
+                   "action": "/habilitar",
+                   "dialogo":"confirm",
+                   "titulo":"Habilta Registro",
+                   "mensaje":"¿Estas seguro de querer habilitar este registro?",
+                   "tooltiptext":"Habilitar el registro bloqueado."
+                },
+                {
+                   "id":"btn_deshabilitar",
+                   "nombre":"Deshbilitar",
+                   "descripcion":["Deshabilitar","registro"],
+                   "type" : "submit",
+                   "action":"/deahabilitar",
+                   "dialogo":"confirm",
+                   "titulo":"Deshabilitar Registro",
+                   "mensaje":"¿Estas seguro de querer deshabililar este registro?",
+                   "tooltiptext":"Deshabilitar registro habilitado."
+                },
+                {
+                   "id":"btn_eliminar",
+                   "nombre":"Eliminar",
+                   "descripcion":["Eliminar","registro"],
+                   "type" : "submit",
+                   "action": "/elñimianr",
+                   "dialogo":"confirm",
+                   "titulo":"Elimimar Registro",
+                   "mensaje":"¿Estas seguro de querer eliminar este registro?",
+                   "tooltiptext":"Elminar el registro actual."
+                }
+             ]
+       }           
+    ],                  
+    [
+       {
+             "id" : "grp_3",
+             "nombre" :"Revisar",
+             "descripcion" : "Revisar",
+             "botones" : [
+                {
+                   "id":"btn_retroceder",
+                   "nombre":"",
+                   "descripcion":["Ir a Registro","Anterior"],
+                   "type" : "button",
+                   "tooltiptext":"Ir al registro anterior"
+                },               
+                {
+                   "id":"btn_avanzar",
+                   "nombre":"",
+                   "descripcion":["Ir a Registro","Siguiete"],
+                   "type" : "button",
+                   "tooltiptext":"Ir al registro siguiente"
+                }
+             ]
+       }           
+    ]         
+      ],
+      "FOR_Campos": [
+   {            
+       "FDI_TipoCampo": "C",
+       "FDI_TamanoCampo": 30,
+       "FDI_Descripcion": "Código de Usuario",
+       "FDI_CampoObligatorio": 1,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 4,
+       "FDI_Prioridad": 10,
+       "FDI_NombreHTML": "USR_Usuario",            
+       "FDI_ErrorMessage": "Debes ingresar un código de usuario",
+       "FDI_Placeholder": "jlopez"
+   },
+   {
+       "FDI_TipoCampo": "C",
+       "FDI_TamanoCampo": 30,
+       "FDI_Descripcion": "Nombre",
+       "FDI_CampoObligatorio": 1,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 4,
+       "FDI_Prioridad": 20,
+       "FDI_NombreHTML": "USR_Nombre",            
+       "FDI_ErrorMessage": "Debes ingresar un nombre de usuario",
+       "FDI_Placeholder": "Juan"
+   },
+   {
+       "FDI_TipoCampo": "C",
+       "FDI_TamanoCampo": 30,
+       "FDI_Descripcion": "Apellido",
+       "FDI_CampoObligatorio": 1,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 4,
+       "FDI_Prioridad": 30,
+       "FDI_NombreHTML": "USR_Apellido",          
+       "FDI_Placeholder": "Lopez Perez",
+       "FDI_ErrorMessage": "Debes ingresar un apellido de usuario"
+   },
+   {
+       "FDI_TipoCampo": "R",
+       "FDI_TamanoCampo": 13,
+       "FDI_Descripcion": "Rut",       
+       "FDI_CampoObligatorio": 1,
+       "FDI_NuevaLineaDiseno": 1,
+       "FDI_TamanoDiseno": 2,
+       "FDI_Prioridad": 40,
+       "FDI_NombreHTML": "USR_Rut",
+       "FDI_ErrorMessage": "Debes ingresar el RUT del usuario",
+       "FDI_Placeholder": "123456789k"
+   },
+   {
+       "FDI_TipoCampo": "M",
+       "FDI_Descripcion": "Correo",
+       "FDI_TamanoCampo": 50,
+       "FDI_CampoObligatorio": 0,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 5,
+       "FDI_Prioridad": 50,
+       "FDI_NombreHTML": "USR_Mail",
+       "FDI_ErrorMessage": "Debes ingresar el email del usuario",
+       "FDI_Placeholder": "jlopez@mintrab.gob.cl"
+   },
+   {
+       "FDI_TipoCampo": "X5",
+       "FDI_Descripcion": "Departamento",
+       "FDI_CampoObligatorio": 1,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 5,
+       "FDI_Prioridad": 60,
+       "FDI_NombreHTML": "DEP_Id",
+       "FDI_ErrorMessage": "Debes ingresar el departamento del usuario",
+       "FDI_Placeholder": "Departamento de Tecnologías de Información"
+   },
+   {
+       "FDI_TipoCampo": "P",
+       "FDI_Descripcion": "Teléfono",
+       "FDI_TamanoCampo": 17,
+       "FDI_CampoObligatorio": 0,
+       "FDI_NuevaLineaDiseno": 1,
+       "FDI_TamanoDiseno": 2,
+       "FDI_Prioridad": 70,
+       "FDI_NombreHTML": "USR_Telefono",
+       "FDI_ErrorMessage": "Debes ingresar el teléfono del usuario",
+       "FDI_Placeholder": "123456788"
+   },
+   {
+       "FDI_TipoCampo": "X6",
+       "FDI_Descripcion": "Sexo",
+       "FDI_CampoObligatorio": 0,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 3,
+       "FDI_Prioridad": 80,
+       "FDI_NombreHTML": "SEX_Id",
+       "FDI_ErrorMessage": "Debes seleccionar un sexo",
+       "FDI_Placeholder": "Masculino"
+   },
+   {
+       "FDI_TipoCampo": "X7",
+       "FDI_Descripcion": "Perfil",
+       "FDI_CampoObligatorio": 1,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 3,
+       "FDI_Prioridad": 90,
+       "FDI_NombreHTML": "PER_Id",
+       "FDI_ErrorMessage": "Debes ingresar el perfil del usuario",
+       "FDI_Placeholder": "Revisor"
+   },
+   {
+       "FDI_TipoCampo": "B",
+       "FDI_Descripcion": "Firma",
+       "FDI_CampoObligatorio": 0,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 2,
+       "FDI_Prioridad": 100,
+       "FDI_NombreHTML": "USR_Firma",
+       "FDI_ErrorMessage": "Debes ingresar una imagen"       
+   },
+   {
+       "FDI_TipoCampo": "S",
+       "FDI_Descripcion": "Jefatura?",
+       "FDI_CampoObligatorio": 0,
+       "FDI_NuevaLineaDiseno": 0,
+       "FDI_TamanoDiseno": 2,
+       "FDI_Prioridad": 110,
+       "FDI_NombreHTML": "USR_Jefatura"       
+   }
+      ]
+ }
     ]
 }

@@ -3,12 +3,12 @@ import { Controller } from 'react-hook-form';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
-export default function InputSwitch ({frmRecord, name, label, className}) {    
+export default function FormInputSwitch ({frmRequest, campo, className}) {    
     return(
-        <div className={className + ' flex max-h-14'}>
+        <div className={className + ' flex max-h-14 mx-auto'}>
             <Controller
-                control={frmRecord.control}
-                name={name}            
+                control={frmRequest.control}
+                name={campo.FDI_NombreHTML}            
                 render={({ field: { onChange, onBlur, value } }) => (                
                     <FormControlLabel 
                         control={
@@ -29,7 +29,7 @@ export default function InputSwitch ({frmRecord, name, label, className}) {
                                 }}
                             />
                         } 
-                        label={label} 
+                        label={campo.FDI_Descripcion} 
                         onChange={onChange} 
                         onBlur={onBlur}                    
                         className={'dark:!text-stone-100 !text-stone-950'} />                

@@ -11,10 +11,12 @@ import {
     InputRut,
     InputList,
     InputEmail,
-    InputPhone
+    InputPhone,
+    InputFile,
+    InputSwitch
 } from './inputscomponents'
 
-export default function InputsType({frmRequest, campo, className}){    
+export default function InputsType({frmRequest, campo, className, filesList, setFilesList}){    
     switch (campo.FDI_TipoCampo.trim().toUpperCase()) {
         case 'A':   //Archivo
             return
@@ -48,6 +50,12 @@ export default function InputsType({frmRequest, campo, className}){
             return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         case 'X4':  //Lista desplegable regiones
             return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
+        case 'X5':  //Lista desplegable departamentos
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
+        case 'X6':  //Lista desplegable sexo
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
+        case 'X7':  //Lista desplegable perfiles
+            return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         case 'U':   //Usuario destinatario
             return <InputList frmRequest={frmRequest} campo={campo} className={className}/>
         case 'PM':  //Periodos de pago
@@ -56,6 +64,10 @@ export default function InputsType({frmRequest, campo, className}){
             return <InputEmail frmRequest={frmRequest} campo={campo} className={className}/>
         case 'P':   //Telefono
             return <InputPhone frmRequest={frmRequest} campo={campo} className={className}/>
+        case 'S':   //Switch
+            return <InputSwitch frmRequest={frmRequest} campo={campo} className={className}/>
+        case 'B':   //Boton de adjunto
+            return <InputFile frmRequest={frmRequest} campo={campo} className={className} filesList={filesList} setFilesList={setFilesList}/>
         default:
             return <InputText frmRequest={frmRequest} campo={campo} className={className}/>
     }

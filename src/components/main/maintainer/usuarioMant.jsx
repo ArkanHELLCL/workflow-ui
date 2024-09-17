@@ -1,26 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import InputList from './inputscomponents/inputList.jsx';
-import InputText from './inputscomponents/inputText.jsx';
-import InputRut from './inputscomponents/inputRut.jsx';
-import InputEmail from './inputscomponents/inputEmail.jsx';
+import Inputs from '../formcontent/inputs.jsx';
 import InputButtons from './inputscomponents/inputButtons.jsx';
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
-import InputPhone from './inputscomponents/inputPhone.jsx';
-import InputSwitch from './inputscomponents/inputSwitch.jsx';
-import InputFile from './inputscomponents/inputFile.jsx';
 import FlujosTable from './usuariomant/flujosTable.jsx';
 import { user } from '../../../mocks/usuario.json';
-
-import departamentos from "../../../mocks/departamentos.json";
-import sexos from "../../../mocks/sexos.json";
-import perfiles from "../../../mocks/perfiles.json";
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
+import { formulario } from '../../../mocks/formularioMant.json';
 
 export default function MUMant({frmRecord, mant, record, filesList, setFilesList, singleButton}) {    
     const [field, setField] = useState(null)
+    const [campos, setCampos] = useState([])
     
     const date = new Date()
     let fecha = date.toISOString()
@@ -64,6 +56,11 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
         
         setField(reg)        
     },[registros, record])
+
+    useEffect(() => {
+        const campos = formulario.filter(item => item.id === 'mu')[0]?.FOR_Campos
+        setCampos(campos)        
+    },[formulario])
     
     return (
         field ?
@@ -80,28 +77,9 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
             <section className='justify-self-end pr-2 frmmantdate'>
                 <span className='text-[11px] leading-tight'>{field.USR_FechaEdit.slice(0,16).replace('T',' ')}</span>
             </section>
-            <section id="InputsContent" className="py-3 w-full frmmantbody">
-                <div className="w-full pr-2 flex flex-col overflow-y-auto h-full">
-                    <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <InputText frmRecord ={frmRecord} name='USR_Usuario' value={field.USR_Usuario} className='col-span-4' isRequired={true} placeholder='jlopez' label='Código' errorMessage='Debes ingresar un código de usuario'/>
-                        <InputText frmRecord ={frmRecord} name='USR_Nombre' value={field.USR_Nombre} className='col-span-4' isRequired={true} placeholder='Juan' label='Nombre' errorMessage='Debes ingresar un nombre de usuario'/>
-                        <InputText frmRecord ={frmRecord} name='USR_Apellido' value={field.USR_Apellido} className='col-span-4' isRequired={true} placeholder='Lopez Perez' label='Apellido' errorMessage='Debes ingresar un apellido de usuario'/>
-                    </div>
-                
-                    <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <InputRut frmRecord ={frmRecord} name='USR_Rut' value={field.USR_Rut} className='col-span-2' isRequired={true} placeholder='123456780' label='RUT' errorMessage='Debes ingresar el RUT del usuario'/>
-                        <InputEmail frmRecord ={frmRecord} name='USR_Mail' value={field.USR_Mail} className='col-span-4' isRequired={true} placeholder='jlopez@mintrab.gob.cl' label='Email' errorMessage='Debes ingresar el email del usuario'/>
-                        <InputList frmRecord ={frmRecord} name='DEP_Id' dataOptions={departamentos} className='col-span-6' isRequired={true} placeholder='Departamento de Tecnologías de Información' label='Departamento' errorMessage='Debes ingresar el departamento del usuario'/>
-                    </div>
-
-                    <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <InputPhone frmRecord ={frmRecord} name='USR_Telefono' value={field.USR_Telefono} className='col-span-2' isRequired={false} placeholder='123456788' label='Teléfono' errorMessage=''/>
-                        <InputList frmRecord ={frmRecord} name='SEX_Id' dataOptions={sexos} className='col-span-3' isRequired={true} placeholder='Femenino' label='Género' errorMessage='Debes seleccionar un sexo'/>
-                        <InputList frmRecord ={frmRecord} name='PER_Id' dataOptions={perfiles} className='col-span-3' isRequired={true} placeholder='Revisor' label='Perfil' errorMessage='Debes ingresar el perfil del usuario'/>
-                        <InputFile frmRecord ={frmRecord} name='USR_Firma' label='Firma' className='col-span-2' isRequired={true} filesList={filesList} setFilesList={setFilesList} errorMessage='Debes adjuntar un archivo'/>
-                        <InputSwitch frmRecord ={frmRecord} name='USR_Jefatura' value={parseInt(field.USR_Jefatura)===0 ? false : true} className='col-span-2 !items-center !justify-center' label='Jefatura'/>                    
-                    </div>                
-
+            <section className="py-3 w-full frmmantbody">
+                <div className="w-full pr-2 flex flex-col overflow-y-auto">
+                    <Inputs frmRequest={frmRecord} campos={campos} filesList={filesList} setFilesList={setFilesList}/>
                     <div className='grid grid-cols-12 gap-2'>
                         <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.USR_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.USR_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
                     </div>                
@@ -112,7 +90,7 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
                             filesList.length > 0 ? (
                                 <img className="h-auto w-full" src={URL.createObjectURL(filesList[0])} />
                             ) : (
-                                <div className="h-40 h-a w-full dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] rounded flex justify-center flex-col text-center font-light text-base">
+                                <div className="h-40 h-a w-full dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] rounded flex justify-center flex-col text-center font-light text-base mx-[1px]">
                                     <span className='truncate'>Sin firma cargada</span>
                                 </div>
                             )}
