@@ -86,12 +86,12 @@ export default function FormInputRut ({ frmRequest, campo, className }) {
                 name={campo.FDI_NombreHTML}
                 rules={{
                     validate: {
-                        required: (value) => {
-                        if (!Fn.validaRut(value)) return 'El RUT ingresado no es válido';
+                        required: (value) => {                          
+                        if (!Fn.validaRut(value) && value) return 'El RUT ingresado no es válido';
                         if (!value && campo.FDI_CampoObligatorio) return campo.FDI_ErrorMessage;
                         }
                     },
-                    maxLength: 13
+                    maxLength: campo.FDI_TamanoCampo
                     }}
                 render={({ field }) => (
                     <FormControl

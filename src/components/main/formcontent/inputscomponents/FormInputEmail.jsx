@@ -114,6 +114,9 @@ export default function FormInputEmail ({ frmRequest, campo, className }) {
                         onBlur={onBlur}
                         label={campo.FDI_Descripcion}
                         helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+                        inputProps={{
+                          maxlength: campo.FDI_TamanoCampo
+                        }}
                     />
                 </FormControl>
             )}

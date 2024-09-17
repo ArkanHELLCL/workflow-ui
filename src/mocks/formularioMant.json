@@ -239,6 +239,7 @@
       "FOR_Campos": [
       {            
           "FDI_TipoCampo": "C",
+          "FDI_TamanoCampo": 100,
           "FDI_Descripcion": "Razón Social",
           "FDI_CampoObligatorio": 1,
           "FDI_NuevaLineaDiseno": 0,
@@ -250,6 +251,7 @@
       },
       {
           "FDI_TipoCampo": "R",
+          "FDI_TamanoCampo": 13,
           "FDI_Descripcion": "Rut",
           "FDI_CampoObligatorio": 1,
           "FDI_NuevaLineaDiseno": 0,
@@ -261,6 +263,7 @@
       },
       {
           "FDI_TipoCampo": "C",
+          "FDI_TamanoCampo": 100,
           "FDI_Descripcion": "Dirección comercial",
           "FDI_CampoObligatorio": 0,
           "FDI_NuevaLineaDiseno": 1,
@@ -272,6 +275,7 @@
       {
           "FDI_TipoCampo": "M",
           "FDI_Descripcion": "Correo electrónico",
+          "FDI_TamanoCampo": 50,
           "FDI_CampoObligatorio": 1,
           "FDI_NuevaLineaDiseno": 1,
           "FDI_TamanoDiseno": 9,
@@ -283,6 +287,7 @@
       {
           "FDI_TipoCampo": "P",
           "FDI_Descripcion": "Teléfono",
+          "FDI_TamanoCampo": 9,
           "FDI_CampoObligatorio": 1,
           "FDI_NuevaLineaDiseno": 0,
           "FDI_TamanoDiseno": 3,
@@ -305,6 +310,7 @@
       {
           "FDI_TipoCampo": "C",
           "FDI_Descripcion": "Número de cuenta",
+          "FDI_TamanoCampo": 20,
           "FDI_CampoObligatorio": 1,
           "FDI_NuevaLineaDiseno": 0,
           "FDI_TamanoDiseno": 4,

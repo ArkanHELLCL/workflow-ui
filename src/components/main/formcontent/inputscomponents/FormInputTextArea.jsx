@@ -104,6 +104,9 @@ export default function FormInputText ({ frmRequest, campo, className }) {
                         label={campo.FDI_Descripcion}
                         multiline
                         helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+                        inputProps={{
+                          maxlength: campo.FDI_TamanoCampo
+                        }}
                     />
                 </FormControl>
             )}
