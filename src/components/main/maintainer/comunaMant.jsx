@@ -3,7 +3,7 @@
 import InputButtons from './inputscomponents/inputButtons.jsx';
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import { user } from '../../../mocks/usuario.json';
-import Inputs from '../formcontent/inputs.jsx';
+import Inputs from '../formcontent/Inputs.jsx';
 import { formulario } from '../../../mocks/formularioMant.json';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';

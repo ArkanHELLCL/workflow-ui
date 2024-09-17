@@ -2,8 +2,8 @@
     "formulario":[        
     {
          "id": "mc",
-        "name":"frmWFRecords",
-        "FOR_Botones":[
+         "name":"frmWFRecords",
+         "FOR_Botones":[
          [
                {
                      "id" : "grp_1",

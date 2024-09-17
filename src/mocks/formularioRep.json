@@ -1,0 +1,232 @@
+{
+    "formulario":[        
+    {
+         "id": "ru",
+         "name":"frmWFReports",
+         "FOR_Botones":[
+         [
+               {
+                     "id" : "grp_1",
+                     "nombre" : "Creacion",
+                     "descripcion" : "Creación",
+                     "botones" : [
+                        {
+                           "id" : "btn_crear",
+                           "nombre" : "Nuevo",
+                           "descripcion" : ["Crear nuevo","Registro"],
+                           "type" : "submit",
+                           "dialogo":"confirm",
+                           "titulo":"Crear nuevo registro",
+                           "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
+                           "tooltiptext":"Creación de un nuevo registro"
+                        }
+                     ]
+               }
+         ],
+         [
+            {
+                  "id" : "grp_2",
+                  "nombre" : "Actualizacion",
+                  "descripcion" : "Actualizaciones sobre los rgistros",
+                  "botones" : [
+                     {
+                        "id":"btn_modififcar",
+                        "nombre":"Gurdar",
+                        "descripcion":["Guardar","cambios"],
+                        "type" : "submit",
+                        "action":"/guardar",
+                        "dialogo":"confirm",
+                        "titulo":"Guardar Cambios",
+                        "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
+                        "tooltiptext":"Guardar los cambios realizados en la base de datos."
+                     },               
+                     {
+                        "id":"btn_habilitar",
+                        "nombre":"Habilitar",
+                        "descripcion":["Habilitar","registro"],
+                        "type" : "submit",
+                        "action": "/habilitar",
+                        "dialogo":"confirm",
+                        "titulo":"Habilta Registro",
+                        "mensaje":"¿Estas seguro de querer habilitar este registro?",
+                        "tooltiptext":"Habilitar el registro bloqueado."
+                     },
+                     {
+                        "id":"btn_deshabilitar",
+                        "nombre":"Deshbilitar",
+                        "descripcion":["Deshabilitar","registro"],
+                        "type" : "submit",
+                        "action":"/deahabilitar",
+                        "dialogo":"confirm",
+                        "titulo":"Deshabilitar Registro",
+                        "mensaje":"¿Estas seguro de querer deshabililar este registro?",
+                        "tooltiptext":"Deshabilitar registro habilitado."
+                     },
+                     {
+                        "id":"btn_eliminar",
+                        "nombre":"Eliminar",
+                        "descripcion":["Eliminar","registro"],
+                        "type" : "submit",
+                        "action": "/elñimianr",
+                        "dialogo":"confirm",
+                        "titulo":"Elimimar Registro",
+                        "mensaje":"¿Estas seguro de querer eliminar este registro?",
+                        "tooltiptext":"Elminar el registro actual."
+                     }
+                  ]
+            }           
+         ],                  
+         [
+            {
+                  "id" : "grp_3",
+                  "nombre" :"Revisar",
+                  "descripcion" : "Revisar",
+                  "botones" : [
+                     {
+                        "id":"btn_retroceder",
+                        "nombre":"",
+                        "descripcion":["Ir a Registro","Anterior"],
+                        "type" : "button",
+                        "tooltiptext":"Ir al registro anterior"
+                     },               
+                     {
+                        "id":"btn_avanzar",
+                        "nombre":"",
+                        "descripcion":["Ir a Registro","Siguiete"],
+                        "type" : "button",
+                        "tooltiptext":"Ir al registro siguiente"
+                     }
+                  ]
+            }           
+         ]         
+        ],
+        "FOR_Campos": [
+        {            
+            "FDI_TipoCampo": "U",
+            "FDI_Descripcion": "Creador",
+            "FDI_CampoObligatorio": 1,
+            "FDI_NuevaLineaDiseno": 0,
+            "FDI_TamanoDiseno": 12,            
+            "FDI_Prioridad": 10,
+            "FDI_NombreHTML": "USR_Id",            
+            "FDI_ErrorMessage": "Debes ingresar un usuario",
+            "FDI_Placeholder": "Camilo Araya"
+        }        
+        ]
+    },
+    {
+        "id": "ro",
+        "name":"frmWFReports",
+        "FOR_Botones":[
+        [
+              {
+                    "id" : "grp_1",
+                    "nombre" : "Creacion",
+                    "descripcion" : "Creación",
+                    "botones" : [
+                       {
+                          "id" : "btn_crear",
+                          "nombre" : "Nuevo",
+                          "descripcion" : ["Crear nuevo","Registro"],
+                          "type" : "submit",
+                          "dialogo":"confirm",
+                          "titulo":"Crear nuevo registro",
+                          "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
+                          "tooltiptext":"Creación de un nuevo registro"
+                       }
+                    ]
+              }
+        ],
+        [
+           {
+                 "id" : "grp_2",
+                 "nombre" : "Actualizacion",
+                 "descripcion" : "Actualizaciones sobre los rgistros",
+                 "botones" : [
+                    {
+                       "id":"btn_modififcar",
+                       "nombre":"Gurdar",
+                       "descripcion":["Guardar","cambios"],
+                       "type" : "submit",
+                       "action":"/guardar",
+                       "dialogo":"confirm",
+                       "titulo":"Guardar Cambios",
+                       "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
+                       "tooltiptext":"Guardar los cambios realizados en la base de datos."
+                    },               
+                    {
+                       "id":"btn_habilitar",
+                       "nombre":"Habilitar",
+                       "descripcion":["Habilitar","registro"],
+                       "type" : "submit",
+                       "action": "/habilitar",
+                       "dialogo":"confirm",
+                       "titulo":"Habilta Registro",
+                       "mensaje":"¿Estas seguro de querer habilitar este registro?",
+                       "tooltiptext":"Habilitar el registro bloqueado."
+                    },
+                    {
+                       "id":"btn_deshabilitar",
+                       "nombre":"Deshbilitar",
+                       "descripcion":["Deshabilitar","registro"],
+                       "type" : "submit",
+                       "action":"/deahabilitar",
+                       "dialogo":"confirm",
+                       "titulo":"Deshabilitar Registro",
+                       "mensaje":"¿Estas seguro de querer deshabililar este registro?",
+                       "tooltiptext":"Deshabilitar registro habilitado."
+                    },
+                    {
+                       "id":"btn_eliminar",
+                       "nombre":"Eliminar",
+                       "descripcion":["Eliminar","registro"],
+                       "type" : "submit",
+                       "action": "/elñimianr",
+                       "dialogo":"confirm",
+                       "titulo":"Elimimar Registro",
+                       "mensaje":"¿Estas seguro de querer eliminar este registro?",
+                       "tooltiptext":"Elminar el registro actual."
+                    }
+                 ]
+           }           
+        ],                  
+        [
+           {
+                 "id" : "grp_3",
+                 "nombre" :"Revisar",
+                 "descripcion" : "Revisar",
+                 "botones" : [
+                    {
+                       "id":"btn_retroceder",
+                       "nombre":"",
+                       "descripcion":["Ir a Registro","Anterior"],
+                       "type" : "button",
+                       "tooltiptext":"Ir al registro anterior"
+                    },               
+                    {
+                       "id":"btn_avanzar",
+                       "nombre":"",
+                       "descripcion":["Ir a Registro","Siguiete"],
+                       "type" : "button",
+                       "tooltiptext":"Ir al registro siguiente"
+                    }
+                 ]
+           }           
+        ]         
+       ],
+       "FOR_Campos": [
+       {            
+           "FDI_TipoCampo": "U",
+           "FDI_Descripcion": "Creador",
+           "FDI_CampoObligatorio": 1,
+           "FDI_NuevaLineaDiseno": 0,
+           "FDI_TamanoDiseno": 12,            
+           "FDI_Prioridad": 10,
+           "FDI_NombreHTML": "USR_Id",            
+           "FDI_ErrorMessage": "Debes ingresar un usuario",
+           "FDI_Placeholder": "Camilo Araya"
+       }        
+       ]
+    }
+    ]
+}

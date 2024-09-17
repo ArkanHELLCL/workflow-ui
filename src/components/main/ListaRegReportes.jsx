@@ -1,18 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useFilters } from "../../hooks/useFilters.jsx";
-import InputList from "./maintainer/inputscomponents/inputList.jsx";
-import usuarios from "../../mocks/usuarios.json";
 import Slide from '@mui/material/Slide';
+import Inputs from './formcontent/Inputs.jsx';
+import { formulario } from '../../mocks/formularioRep.json';
 import InputReportButton from "./reports/InputReportButton.jsx";
 import ReportFilters from "./ReportFilters.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ListaRegReportes({frmReport}) {
     const { filters } = useFilters()
+    const [campos, setCampos] = useState([])
+    
     useEffect(() => {
         frmReport.reset()
     }, [filters.itemIdSelected])
+
+    useEffect(() => {
+        const campos = formulario.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos
+        setCampos(campos)    
+    },[formulario, filters.itemIdSelected])
 
     return (
         <>
@@ -20,9 +27,9 @@ export default function ListaRegReportes({frmReport}) {
                 filters.itemIdSelected?.toUpperCase() === 'RU' ? (
                     <>
                         <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
-                        <div>
-                            <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='w-full !px-2 !py-2' isRequired={true} label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
-                        </div>
+                            <div className="pl-3">
+                                <Inputs frmRequest={frmReport} campos={campos} />
+                            </div>
                         </Slide>
                         <InputReportButton />
                     </>
@@ -30,9 +37,9 @@ export default function ListaRegReportes({frmReport}) {
                 : filters.itemIdSelected?.toUpperCase() === 'RO' ? ( 
                     <>
                         <Slide in={true} timeout={300} mountOnEnter unmountOnExit direction='up'>
-                        <div>
-                            <InputList frmRecord={frmReport} name='USR_Id' dataOptions={usuarios} className='w-full !px-2 !py-2' isRequired={true} label='Usuario Creador' errorMessage='Debes ingresar un usuario'/>
-                        </div>
+                            <div className="pl-3">
+                                <Inputs frmRequest={frmReport} campos={campos} />
+                            </div>
                         </Slide>
                         <InputReportButton />
                     </>

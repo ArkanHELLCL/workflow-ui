@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
@@ -10,7 +11,8 @@ import { esES } from '@mui/x-date-pickers/locales';
 import Slide from '@mui/material/Slide';
 import { useFilters } from '../../hooks/useFilters';
 import { useMemo } from 'react';
-//import dayjs from 'dayjs'; 
+import dayjs from 'dayjs'; 
+
 
 export default function ReportFilters({frmRecord, name, isRequired, label, errorMessage, className}) {
     const { filters } = useFilters()
@@ -127,6 +129,8 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
     const nameHasta = name + 'Hasta'
     const errorMessageDesde = errorMessage + 'desde'
     const errorMessageHasta = errorMessage + 'hasta'
+    const hoy = dayjs(new Date())
+    
     return (
         <ThemeProvider theme={theme}>
             <LocalizationProvider
@@ -141,7 +145,7 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                         name={nameDesde}
                         rules={isRequired ? {required : errorMessageDesde} : {required : false}}
                         //value={dayjs(new Date())}
-                        render={({ field: { onBlur, onChange } }) => (
+                        render={({ field: { onBlur, onChange, value } }) => (
                             <FormControl                  
                                 size='sm'
                                 className={className}>                                
@@ -154,10 +158,12 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                                           },
                                       }}                                      
                                       onBlur={onBlur}                                      
-                                      onChange={(date) =>{
+                                      /*onChange={(date) =>{
                                         onChange(date?.$d.toLocaleDateString("es-CL"));
                                       }}
-                                      //value={value}
+                                      value={value?.$d.toLocaleDateString("es-CL") || ''}*/
+                                      onChange={onChange}
+                                      value={value || hoy}
                                   />
                                 </Slide>
                                 <FormHelperText className="!text-red-600">
@@ -172,7 +178,7 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                         control={frmRecord.control}
                         name={nameHasta}
                         rules={isRequired ? {required : errorMessageHasta} : {required : false}}                        
-                        render={({ field: { onBlur, onChange } }) => (
+                        render={({ field: { onBlur, onChange, value } }) => (
                             <FormControl                  
                                 size='sm'
                                 className={className}>                                
@@ -185,9 +191,11 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                                           },
                                       }}                                      
                                       onBlur={onBlur}                                      
-                                      onChange={(date) => {                                        
+                                      /*onChange={(date) => {                                        
                                         onChange(date?.$d.toLocaleDateString("es-CL"));
-                                      }}                               
+                                      }}*/
+                                      onChange={onChange}
+                                      value={value || hoy}
                                   />
                                 </Slide>
                                 <FormHelperText className="!text-red-600">
@@ -197,9 +205,7 @@ export default function ReportFilters({frmRecord, name, isRequired, label, error
                         )}
                       />
                     </div>
-                </div>
-                
-                
+                </div>                              
             </LocalizationProvider>
         </ThemeProvider>
     )
