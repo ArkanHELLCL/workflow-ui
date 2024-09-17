@@ -92,7 +92,7 @@ export default function FormInputRut ({ frmRequest, campo, className }) {
                         }
                     },
                     maxLength: campo.FDI_TamanoCampo
-                    }}
+                }}
                 render={({ field }) => (
                     <FormControl
                         {...field}

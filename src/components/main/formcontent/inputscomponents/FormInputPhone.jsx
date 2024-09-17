@@ -21,19 +21,18 @@ const NumericFormatAdapter = forwardRef(
             {...other}            
             getInputRef={ref}
             onValueChange={(values) => {
-            onChange({
-                target: {
-                //name: props.name,
-                value: values.value,
-                },
-            });
+              onChange({
+                  target: {
+                  //name: props.name,
+                  value: values.value,
+                  },
+              });
             }}
             //decimalScale={0}            
-            valueIsNumericString
+            valueIsNumericString={true}
             //prefix="(+56) "
             format="(+56) # #### ####"
             mask="_"
-            allowEmptyFormatting
         />
         );
     },
@@ -115,7 +114,15 @@ export default function FormInputPhone ({ frmRequest, campo, className }) {
             <Controller
                 control={frmRequest.control}
                 name={campo.FDI_NombreHTML}
-                rules={required}                
+                rules={{
+                  validate: {
+                      required: (value) => {                          
+                        if (value.length<9) return 'Debes ingresar un número de teléfono válido';
+                        if (!value && required) return campo.FDI_ErrorMessage;
+                      }
+                  },
+                  maxLength: campo.FDI_TamanoCampo
+              }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <FormControl
                         id={campo.FDI_NombreHTML}
@@ -134,11 +141,8 @@ export default function FormInputPhone ({ frmRequest, campo, className }) {
                             onChange={onChange}
                             onBlur={onBlur}
                             label={campo.FDI_Descripcion}
-                            helperText={`${disabled() ? '' : frmRequest.formState.errors[campo.FDI_NombreHTML]?.message ? frmRequest.formState.errors[campo.FDI_NombreHTML]?.message : value?.length ? value?.length + '/'+ campo.FDI_TamanoCampo : '0/'+ campo.FDI_TamanoCampo}`} 
-                            slotProps={{ input: { inputComponent: NumericFormatAdapter } }}
-                            inputProps={{
-                                maxlength: campo.FDI_TamanoCampo
-                            }}
+                            helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message } 
+                            slotProps={{ input: { inputComponent: NumericFormatAdapter } }}                            
                         />
                     </FormControl>
                 )}

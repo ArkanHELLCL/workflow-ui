@@ -289,7 +289,7 @@
       {
           "FDI_TipoCampo": "P",
           "FDI_Descripcion": "Teléfono",
-          "FDI_TamanoCampo": 9,
+          "FDI_TamanoCampo": 17,
           "FDI_CampoObligatorio": 1,
           "FDI_NuevaLineaDiseno": 0,
           "FDI_TamanoDiseno": 3,

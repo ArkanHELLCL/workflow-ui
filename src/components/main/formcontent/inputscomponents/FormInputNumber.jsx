@@ -133,7 +133,7 @@ export default function FormInputNumber ({ frmRequest, campo, className }) {
                             onChange={onChange}
                             onBlur={onBlur}
                             label={campo.FDI_Descripcion}
-                            helperText={`${disabled() ? '' : frmRequest.formState.errors[campo.FDI_NombreHTML]?.message ? frmRequest.formState.errors[campo.FDI_NombreHTML]?.message : value?.length ? value?.length + 1 + '/'+ campo.FDI_TamanoCampo : '0/'+ campo.FDI_TamanoCampo}`} 
+                            helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message} 
                             slotProps={{ input: { inputComponent: NumericFormatAdapter } }}
                             inputProps={{
                               maxlength: campo.FDI_TamanoCampo
