@@ -100,7 +100,7 @@ export default function FormInputText ({ frmRequest, campo, className }) {
                         onChange={onChange}
                         onBlur={onBlur}
                         label={campo.FDI_Descripcion}
-                        helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+                        helperText={`${disabled() ? '' : frmRequest.formState.errors[campo.FDI_NombreHTML]?.message ? frmRequest.formState.errors[campo.FDI_NombreHTML]?.message : value?.length ? value?.length + '/'+ campo.FDI_TamanoCampo : '0/'+ campo.FDI_TamanoCampo}`} 
                         inputProps={{
                           maxlength: campo.FDI_TamanoCampo
                         }}

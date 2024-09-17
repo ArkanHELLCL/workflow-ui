@@ -87,8 +87,8 @@ export default function FormInputRut ({ frmRequest, campo, className }) {
                 rules={{
                     validate: {
                         required: (value) => {                          
-                        if (!Fn.validaRut(value) && value) return 'El RUT ingresado no es válido';
-                        if (!value && campo.FDI_CampoObligatorio) return campo.FDI_ErrorMessage;
+                          if (!Fn.validaRut(value) && value) return 'El RUT ingresado no es válido';
+                          if (!value && campo.FDI_CampoObligatorio) return campo.FDI_ErrorMessage;
                         }
                     },
                     maxLength: campo.FDI_TamanoCampo

@@ -202,6 +202,7 @@
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 12,
+            "FDI_TamanoCampo": 3000,
             "FDI_Prioridad": 10,
             "FDI_NombreHTML": "PagDescripcion",
             "FDI_EditableSiempre": 0,
@@ -246,7 +247,7 @@
             "DFO_Id": 0,
             "DFO_Dato": "",
             "FDI_Editable": 1,
-            "FDI_ErrorMessage": "Debes ingresar la fecha de descarga del documento",
+            "FDI_ErrorMessage": "Debes la fecha de descarga del documento",
             "FDI_Placeholder": "2023-10-13"
         },
         {
@@ -293,6 +294,7 @@
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 4,
+            "FDI_TamanoCampo": 10,
             "FDI_Prioridad": 60,
             "FDI_NombreHTML": "PagNumDocumento",
             "FDI_EditableSiempre": 0,
@@ -348,6 +350,7 @@
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 3,
+            "FDI_TamanoCampo": 20,
             "FDI_Prioridad": 90,
             "FDI_NombreHTML": "PagOrdendeCompra",
             "FDI_EditableSiempre": 0,
@@ -380,11 +383,12 @@
         {
             "FOR_Id": 8,
             "FDI_Id": 109,
-            "FDI_TipoCampo": "G",
+            "FDI_TipoCampo": "N",
             "FDI_Descripcion": "Monto Total Documento",
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 2,
+            "FDI_TamanoCampo": 20,
             "FDI_Prioridad": 110,
             "FDI_NombreHTML": "PagMontoTotal",
             "FDI_EditableSiempre": 0,
@@ -421,6 +425,7 @@
             "FDI_CampoObligatorio": 0,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 6,
+            "FDI_TamanoCampo": 100,
             "FDI_Prioridad": 130,
             "FDI_NombreHTML": "PagArchivoDigital",
             "FDI_EditableSiempre": 0,
@@ -439,6 +444,7 @@
             "FDI_CampoObligatorio": 0,
             "FDI_NuevaLineaDiseno": 1,
             "FDI_TamanoDiseno": 12,
+            "FDI_TamanoCampo": 3000,
             "FDI_Prioridad": 140,
             "FDI_NombreHTML": "PagObservaciones",
             "FDI_EditableSiempre": 0,
@@ -491,6 +497,7 @@
             "FDI_CampoObligatorio": 0,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 3,
+            "FDI_TamanoCampo": 10,
             "FDI_Prioridad": 65,
             "FDI_NombreHTML": "PagFolioCompromiso",
             "FDI_EditableSiempre": 0,
@@ -501,7 +508,7 @@
             "FDI_ErrorMessage": "Debes ingresar el folio de compromido",
             "FDI_Placeholder": "98788"
         }
-         ]
+    ]
       },
       {
          "name":"frmWorkFlowv4",

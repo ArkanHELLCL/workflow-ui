@@ -1,7 +1,7 @@
 {
     "formulario":[        
     {
-        "id": "mc",
+         "id": "mc",
         "name":"frmWFRecords",
         "FOR_Botones":[
          [
@@ -106,7 +106,7 @@
             "FDI_Descripcion": "Regón",
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
-            "FDI_TamanoDiseno": 5,
+            "FDI_TamanoDiseno": 5,            
             "FDI_Prioridad": 10,
             "FDI_NombreHTML": "REG_Id",            
             "FDI_ErrorMessage": "Debes ingresar una regón",
@@ -118,6 +118,7 @@
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 5,
+            "FDI_TamanoCampo": 100,
             "FDI_Prioridad": 20,
             "FDI_NombreHTML": "COM_Nombre",            
             "FDI_ErrorMessage": "Debes ingresar una comuna",
@@ -129,6 +130,7 @@
             "FDI_CampoObligatorio": 1,
             "FDI_NuevaLineaDiseno": 0,
             "FDI_TamanoDiseno": 2,
+            "FDI_TamanoCampo": 5,
             "FDI_Prioridad": 30,
             "FDI_NombreHTML": "COM_OrdenGeografico",            
             "FDI_ErrorMessage": "Debes ingresar una código geográfico",
@@ -137,9 +139,9 @@
         ]
     },
     {
-      "id": "mp",
-      "name":"frmWFRecords",
-      "FOR_Botones":[
+         "id": "mp",
+         "name":"frmWFRecords",
+         "FOR_Botones":[
        [
              {
                    "id" : "grp_1",
@@ -235,8 +237,8 @@
                 ]
           }           
        ]         
-      ],
-      "FOR_Campos": [
+         ],
+         "FOR_Campos": [
       {            
           "FDI_TipoCampo": "C",
           "FDI_TamanoCampo": 100,
@@ -331,7 +333,7 @@
           "FDI_ErrorMessage": "Debes seleccionar un tipo de cuenta",
           "FDI_Placeholder": "Cuenta Corriente"
       }
-      ]
+         ]
     }
     ]
 }
