@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { usePreview } from '../../hooks/usePreview.jsx';
+import { useFilters } from '../../hooks/useFilters.jsx';
 import { useAttach } from '../../hooks/useAttach.jsx';
 import {    NoData, 
             Header,
@@ -11,7 +12,7 @@ import {    NoData,
             Preview
         } from './formcontent';
 import { formulario } from'../../mocks/formulario.json'
-
+import { formulario as formularioMant } from '../../mocks/formularioMant.json';
 import MPMant from './maintainer/proveedorMant.jsx'
 import Dropdown from '@mui/joy/Dropdown';
 import MenuButton from '@mui/joy/MenuButton';
@@ -19,10 +20,12 @@ import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 
 export default function Formcomponent({frmRequest, frmRecord, filesList, setFilesList}){    
     const { request } = useRequest()
+    const { filters } = useFilters()
     const { preview, setPreview } = usePreview()
     const { setAdjuntos } = useAttach()    
     const [dropEnter, setDropEnter] = useState(false);
     const [form, setForm] = useState()
+    const [campos, setCampos] = useState([])
 
     useEffect(() => {        
         let frm
@@ -37,6 +40,12 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         setForm(frm[0])
         
     },[formulario, request])
+
+    useEffect(() => {
+        const campos = formularioMant.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos
+        setCampos(campos)        
+    },[filters.itemIdSelected])
+
 
     const handleOnClick = () => {
         setPreview({
@@ -71,7 +80,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                                         <h2 className="font-thin text-xl">Mantenedor de proveedores</h2>
                                         <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario de {request?.request?.FLU_Descripcion}</h2>
                                     </div>
-                                    <MPMant frmRecord={frmRecord} singleButton={true} />   
+                                    <MPMant frmRecord={frmRecord} record={null} mant={filters.itemIdSelected} campos={campos} singleButton={true} />   
                                 </>
                         }{
                             preview.state && preview?.selected!==null &&

@@ -110,7 +110,8 @@
             "FDI_Prioridad": 10,
             "FDI_NombreHTML": "REG_Id",            
             "FDI_ErrorMessage": "Debes ingresar una regón",
-            "FDI_Placeholder": "Regíon Metropolitana"
+            "FDI_Placeholder": "Regíon Metropolitana",
+            "FDI_Editable": 1
         },
         {
             "FDI_TipoCampo": "T",
@@ -122,7 +123,8 @@
             "FDI_Prioridad": 20,
             "FDI_NombreHTML": "COM_Nombre",            
             "FDI_ErrorMessage": "Debes ingresar una comuna",
-            "FDI_Placeholder": "Maipú"
+            "FDI_Placeholder": "Maipú",
+            "FDI_Editable": 1
         },
         {
             "FDI_TipoCampo": "I",
@@ -134,7 +136,8 @@
             "FDI_Prioridad": 30,
             "FDI_NombreHTML": "COM_OrdenGeografico",            
             "FDI_ErrorMessage": "Debes ingresar una código geográfico",
-            "FDI_Placeholder": "1101"
+            "FDI_Placeholder": "1101",
+            "FDI_Editable": 1
         }
         ]
     },
@@ -249,7 +252,8 @@
           "FDI_Prioridad": 10,
           "FDI_NombreHTML": "PRO_RazonSocial",            
           "FDI_ErrorMessage": "Debes ingresar una razón social",
-          "FDI_Placeholder": "Empresa de aseo y limpieza"
+          "FDI_Placeholder": "Empresa de aseo y limpieza",
+          "FDI_Editable": 1
       },
       {
           "FDI_TipoCampo": "R",
@@ -261,7 +265,8 @@
           "FDI_Prioridad": 20,
           "FDI_NombreHTML": "PRO_Rut",            
           "FDI_ErrorMessage": "Debes ingresar un RUT válido",
-          "FDI_Placeholder": "12345678K"
+          "FDI_Placeholder": "12345678K",
+          "FDI_Editable": 1
       },
       {
           "FDI_TipoCampo": "C",
@@ -272,7 +277,8 @@
           "FDI_TamanoDiseno": 12,
           "FDI_Prioridad": 30,
           "FDI_NombreHTML": "PRO_Direccion",          
-          "FDI_Placeholder": "Calle 35, Providencia"
+          "FDI_Placeholder": "Calle 35, Providencia",
+          "FDI_Editable": 1
       },
       {
           "FDI_TipoCampo": "M",
@@ -284,7 +290,8 @@
           "FDI_Prioridad": 40,
           "FDI_NombreHTML": "PRO_Mail",
           "FDI_ErrorMessage": "Debes ingresar el Email del proveedor",
-          "FDI_Placeholder": "miempresa@correo.cl"
+          "FDI_Placeholder": "miempresa@correo.cl",
+          "FDI_Editable": 1
       },
       {
           "FDI_TipoCampo": "P",
@@ -296,7 +303,8 @@
           "FDI_Prioridad": 50,
           "FDI_NombreHTML": "PRO_Telefono",
           "FDI_ErrorMessage": "Debes ingresar un télefono válido",
-          "FDI_Placeholder": "912345678"
+          "FDI_Placeholder": "912345678",
+          "FDI_Editable": 1
       },
       {
           "FDI_TipoCampo": "X3",
@@ -307,7 +315,8 @@
           "FDI_Prioridad": 60,
           "FDI_NombreHTML": "PRO_Banco_ILD",
           "FDI_ErrorMessage": "Debes seleccionar un banco",
-          "FDI_Placeholder": "Seleccione un banco"
+          "FDI_Placeholder": "Seleccione un banco",
+          "FDI_Editable": 1
       },
       {
           "FDI_TipoCampo": "C",
@@ -319,7 +328,8 @@
           "FDI_Prioridad": 70,
           "FDI_NombreHTML": "PRO_NumCuentaBancaria",
           "FDI_ErrorMessage": "Debes ingresar el número de cuenta bancaria",
-          "FDI_Placeholder": "1234567890"
+          "FDI_Placeholder": "1234567890",
+          "FDI_Editable": 1
       }
       ,
       {
@@ -331,7 +341,8 @@
           "FDI_Prioridad": 80,
           "FDI_NombreHTML": "TCU_Id",
           "FDI_ErrorMessage": "Debes seleccionar un tipo de cuenta",
-          "FDI_Placeholder": "Cuenta Corriente"
+          "FDI_Placeholder": "Cuenta Corriente",
+          "FDI_Editable": 1
       }
          ]
     },
@@ -446,7 +457,8 @@
        "FDI_Prioridad": 10,
        "FDI_NombreHTML": "USR_Usuario",            
        "FDI_ErrorMessage": "Debes ingresar un código de usuario",
-       "FDI_Placeholder": "jlopez"
+       "FDI_Placeholder": "jlopez",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "C",
@@ -458,7 +470,8 @@
        "FDI_Prioridad": 20,
        "FDI_NombreHTML": "USR_Nombre",            
        "FDI_ErrorMessage": "Debes ingresar un nombre de usuario",
-       "FDI_Placeholder": "Juan"
+       "FDI_Placeholder": "Juan",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "C",
@@ -470,7 +483,8 @@
        "FDI_Prioridad": 30,
        "FDI_NombreHTML": "USR_Apellido",          
        "FDI_Placeholder": "Lopez Perez",
-       "FDI_ErrorMessage": "Debes ingresar un apellido de usuario"
+       "FDI_ErrorMessage": "Debes ingresar un apellido de usuario",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "R",
@@ -482,7 +496,8 @@
        "FDI_Prioridad": 40,
        "FDI_NombreHTML": "USR_Rut",
        "FDI_ErrorMessage": "Debes ingresar el RUT del usuario",
-       "FDI_Placeholder": "123456789k"
+       "FDI_Placeholder": "123456789k",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "M",
@@ -494,7 +509,8 @@
        "FDI_Prioridad": 50,
        "FDI_NombreHTML": "USR_Mail",
        "FDI_ErrorMessage": "Debes ingresar el email del usuario",
-       "FDI_Placeholder": "jlopez@mintrab.gob.cl"
+       "FDI_Placeholder": "jlopez@mintrab.gob.cl",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "X5",
@@ -505,7 +521,8 @@
        "FDI_Prioridad": 60,
        "FDI_NombreHTML": "DEP_Id",
        "FDI_ErrorMessage": "Debes ingresar el departamento del usuario",
-       "FDI_Placeholder": "Departamento de Tecnologías de Información"
+       "FDI_Placeholder": "Departamento de Tecnologías de Información",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "P",
@@ -517,7 +534,8 @@
        "FDI_Prioridad": 70,
        "FDI_NombreHTML": "USR_Telefono",
        "FDI_ErrorMessage": "Debes ingresar el teléfono del usuario",
-       "FDI_Placeholder": "123456788"
+       "FDI_Placeholder": "123456788",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "X6",
@@ -528,7 +546,8 @@
        "FDI_Prioridad": 80,
        "FDI_NombreHTML": "SEX_Id",
        "FDI_ErrorMessage": "Debes seleccionar un sexo",
-       "FDI_Placeholder": "Masculino"
+       "FDI_Placeholder": "Masculino",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "X7",
@@ -539,7 +558,8 @@
        "FDI_Prioridad": 90,
        "FDI_NombreHTML": "PER_Id",
        "FDI_ErrorMessage": "Debes ingresar el perfil del usuario",
-       "FDI_Placeholder": "Revisor"
+       "FDI_Placeholder": "Revisor",
+       "FDI_Editable": 1
    },
    {
        "FDI_TipoCampo": "B",
@@ -549,7 +569,8 @@
        "FDI_TamanoDiseno": 2,
        "FDI_Prioridad": 100,
        "FDI_NombreHTML": "USR_Firma",
-       "FDI_ErrorMessage": "Debes ingresar una imagen"       
+       "FDI_ErrorMessage": "Debes ingresar una imagen",
+       "FDI_Editable": 1       
    },
    {
        "FDI_TipoCampo": "S",
@@ -558,7 +579,8 @@
        "FDI_NuevaLineaDiseno": 0,
        "FDI_TamanoDiseno": 2,
        "FDI_Prioridad": 110,
-       "FDI_NombreHTML": "USR_Jefatura"       
+       "FDI_NombreHTML": "USR_Jefatura",
+       "FDI_Editable": 1       
    }
       ]
  }
