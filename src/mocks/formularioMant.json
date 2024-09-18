@@ -26,12 +26,12 @@
          [
             {
                   "id" : "grp_2",
-                  "nombre" : "Actualizacion",
-                  "descripcion" : "Actualizaciones sobre los rgistros",
+                  "nombre" : "Acciones",
+                  "descripcion" : "Acciones sobre los registros",
                   "botones" : [
                      {
-                        "id":"btn_modififcar",
-                        "nombre":"Gurdar",
+                        "id":"btn_modificar",
+                        "nombre":"Guardar",
                         "descripcion":["Guardar","cambios"],
                         "type" : "submit",
                         "action":"/guardar",
@@ -52,8 +52,8 @@
                         "tooltiptext":"Habilitar el registro bloqueado."
                      },
                      {
-                        "id":"btn_deshabilitar",
-                        "nombre":"Deshbilitar",
+                        "id":"btn_bloquear",
+                        "nombre":"Deshabilitar",
                         "descripcion":["Deshabilitar","registro"],
                         "type" : "submit",
                         "action":"/deahabilitar",
@@ -83,14 +83,14 @@
                   "descripcion" : "Revisar",
                   "botones" : [
                      {
-                        "id":"btn_retroceder",
+                        "id":"btn:manorev",
                         "nombre":"",
                         "descripcion":["Ir a Registro","Anterior"],
                         "type" : "button",
                         "tooltiptext":"Ir al registro anterior"
                      },               
                      {
-                        "id":"btn_avanzar",
+                        "id":"btn_mannext",
                         "nombre":"",
                         "descripcion":["Ir a Registro","Siguiete"],
                         "type" : "button",
@@ -167,12 +167,12 @@
        [
           {
                 "id" : "grp_2",
-                "nombre" : "Actualizacion",
-                "descripcion" : "Actualizaciones sobre los rgistros",
+                "nombre" : "Acciones",
+                "descripcion" : "Acciones sobre los registros",
                 "botones" : [
                    {
-                      "id":"btn_modififcar",
-                      "nombre":"Gurdar",
+                      "id":"btn_modificar",
+                      "nombre":"Guardar",
                       "descripcion":["Guardar","cambios"],
                       "type" : "submit",
                       "action":"/guardar",
@@ -193,8 +193,8 @@
                       "tooltiptext":"Habilitar el registro bloqueado."
                    },
                    {
-                      "id":"btn_deshabilitar",
-                      "nombre":"Deshbilitar",
+                      "id":"btn_bloquear",
+                      "nombre":"Deshabilitar",
                       "descripcion":["Deshabilitar","registro"],
                       "type" : "submit",
                       "action":"/deahabilitar",
@@ -224,14 +224,14 @@
                 "descripcion" : "Revisar",
                 "botones" : [
                    {
-                      "id":"btn_retroceder",
+                      "id":"btn_manprev",
                       "nombre":"",
                       "descripcion":["Ir a Registro","Anterior"],
                       "type" : "button",
                       "tooltiptext":"Ir al registro anterior"
                    },               
                    {
-                      "id":"btn_avanzar",
+                      "id":"btn_mannext",
                       "nombre":"",
                       "descripcion":["Ir a Registro","Siguiete"],
                       "type" : "button",
@@ -372,12 +372,12 @@
     [
        {
              "id" : "grp_2",
-             "nombre" : "Actualizacion",
-             "descripcion" : "Actualizaciones sobre los rgistros",
+             "nombre" : "Acciones",
+             "descripcion" : "Acciones sobre los registros",
              "botones" : [
                 {
-                   "id":"btn_modififcar",
-                   "nombre":"Gurdar",
+                   "id":"btn_modificar",
+                   "nombre":"Guardar",
                    "descripcion":["Guardar","cambios"],
                    "type" : "submit",
                    "action":"/guardar",
@@ -393,13 +393,13 @@
                    "type" : "submit",
                    "action": "/habilitar",
                    "dialogo":"confirm",
-                   "titulo":"Habilta Registro",
+                   "titulo":"Habiltar Registro",
                    "mensaje":"¿Estas seguro de querer habilitar este registro?",
                    "tooltiptext":"Habilitar el registro bloqueado."
                 },
                 {
-                   "id":"btn_deshabilitar",
-                   "nombre":"Deshbilitar",
+                   "id":"btn_bloquear",
+                   "nombre":"Deshabilitar",
                    "descripcion":["Deshabilitar","registro"],
                    "type" : "submit",
                    "action":"/deahabilitar",
@@ -429,14 +429,14 @@
              "descripcion" : "Revisar",
              "botones" : [
                 {
-                   "id":"btn_retroceder",
+                   "id":"btn_manprev",
                    "nombre":"",
                    "descripcion":["Ir a Registro","Anterior"],
                    "type" : "button",
                    "tooltiptext":"Ir al registro anterior"
                 },               
                 {
-                   "id":"btn_avanzar",
+                   "id":"btn_mannext",
                    "nombre":"",
                    "descripcion":["Ir a Registro","Siguiete"],
                    "type" : "button",

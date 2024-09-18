@@ -30,7 +30,7 @@ export default function Header({formulario}) {
                 <>                    
                     <ReqTitle handleNotDragOver={handleNotDragOver}/>                   
                     <FrmHeader handleNotDragOver={handleNotDragOver}/>
-                    <Buttons formulario={formulario}/>
+                    <Buttons formulario={formulario} className={'frmbuttonsact'}/>
                     <SenderData formulario={formulario} />
                     <UpdateDate />
                 </>

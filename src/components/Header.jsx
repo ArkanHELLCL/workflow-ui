@@ -6,6 +6,7 @@ import { useRequest } from "../hooks/useRequest.jsx";
 import { useRecords } from "../hooks/useRecords.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
 import { formulario } from '../mocks/formulario.json'
+import { formulario as formmant } from '../mocks/formularioMant.json'
 import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
@@ -95,9 +96,12 @@ export default function Header(){
                 FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id) && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
             else
                 FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === 0 && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
+
+        if(filters.itemIdSelected.charAt(0) === "m")
+            FOR_Botones = formmant.filter((item) => item.id === filters.itemIdSelected)[0]?.FOR_Botones
         
         setGrupos(FOR_Botones?.map(grupo => grupo))
-    },[formulario,request])
+    },[formulario,request,filters.itemIdSelected,record])
 
     const handleNotDragOver = (event) => {
         event.preventDefault();
@@ -137,7 +141,7 @@ export default function Header(){
                         <>
                             <MantenedoresMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>{
                             record &&
-                                <RegistroMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>
+                                <RegistroMenu styles={'z-40'} grupos={grupos} delay={550} setAnimationEnd={setAnimationEnd}/>
                             }
                         </>
                 }

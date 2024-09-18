@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import InputButtons from './inputscomponents/inputButtons.jsx';
+import Buttons from "../formcontent/header/ButtonsAction.jsx";
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { user } from '../../../mocks/usuario.json';
 import { registros } from '../../../mocks/registrosM.json';
 import Inputs from '../formcontent/inputs.jsx';
-import { formulario } from '../../../mocks/formularioMant.json';
+import { formulario as formant } from '../../../mocks/formularioMant.json';
 import { useEffect, useState } from 'react';
 
 export default function MPMant({frmRecord, mant, record, singleButton }) {
@@ -49,8 +49,9 @@ export default function MPMant({frmRecord, mant, record, singleButton }) {
         setField(reg)        
     },[registros, record])
 
+    const [formulario] = formant.filter(item => item.id === 'mp')
     useEffect(() => {
-        const campos = formulario.filter(item => item.id === 'mp')[0]?.FOR_Campos
+        const campos = formulario?.FOR_Campos
         setCampos(campos)        
     },[formulario])
 
@@ -64,7 +65,7 @@ export default function MPMant({frmRecord, mant, record, singleButton }) {
                     singleButton ?
                         <InputSaveButtons />
                     :   
-                        <InputButtons isAllowed={parseInt(field.PRO_Estado)===1 ? true : false}/>
+                        <Buttons formulario={formulario} className={'frmmantbuttonsact pt-2'}/>
                 }
                 <section className='justify-self-end pr-2 frmmantdate'>
                     <span className='text-[11px] leading-tight'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span>

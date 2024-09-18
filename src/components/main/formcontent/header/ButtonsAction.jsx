@@ -7,7 +7,7 @@ import { ButtonIcon } from '../../../../utils/icons.jsx';
 import { useState } from 'react';
 import { Button } from '@mui/material';
 
-export default function Buttons({formulario}){
+export default function Buttons({formulario, className}){
     //const { request } = useRequest()
     //const { filters } = useFilters()
     const { FOR_Botones } = formulario;
@@ -65,7 +65,7 @@ export default function Buttons({formulario}){
     },[filters.itemIdSelected, request])*/
     
     return(
-        <div id="buttonsRequest" className='frmbuttonsact w-full h-full'>
+        <div id="buttonsRequest" className={`${className} ' w-full h-full' `}>
             <div className='relative leading-tight flex justify-end w-fit ml-auto'>
                 {scrollON && scrollPosition > 0 &&
                     <Button className="!sticky left-[1px] !min-h-full !h-[36px] flex !align-middle !items-center !content-center !w-5 !min-w-5 dark:!bg-[#666666] !bg-[#d4d4d4] opacity-90 !p-0 !rounded-none z-50 hover:!bg-[#eff6fc] dark:hover:!bg-[#666666] !outline !outline-1 !outline-[#b8b5b2] dark:!outline-[#575757] hover:!outline-[#0078d4] hover:dark:!outline-[#b1b1b1] !mt-[1px]" onClick={()=>handleScrollX(-1)}>
