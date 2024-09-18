@@ -219,7 +219,7 @@ export default function FormInputList ({ frmRequest, campo, className }) {
                         loading={loading}
                         
                         renderOption={(props, option) => 
-                          <Box component="li" {...props} key={option.id}>                        
+                          <Box component="li" {...props} key={option.id} className='dark:bg-black bg-white px-3 !border-0 !rounded-none'>                        
                               {option.label}
                           </Box>                      
                         }
