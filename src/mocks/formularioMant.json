@@ -26,8 +26,8 @@
          [
             {
                   "id" : "grp_2",
-                  "nombre" : "Acciones",
-                  "descripcion" : "Acciones sobre los registros",
+                  "nombre" : "Registro",
+                  "descripcion" : "Registro",
                   "botones" : [
                      {
                         "id":"btn_modificar",
@@ -167,8 +167,8 @@
        [
           {
                 "id" : "grp_2",
-                "nombre" : "Acciones",
-                "descripcion" : "Acciones sobre los registros",
+                "nombre" : "Registro",
+                "descripcion" : "Registro",
                 "botones" : [
                    {
                       "id":"btn_modificar",
@@ -372,8 +372,8 @@
     [
        {
              "id" : "grp_2",
-             "nombre" : "Acciones",
-             "descripcion" : "Acciones sobre los registros",
+             "nombre" : "Registro",
+             "descripcion" : "Registro",
              "botones" : [
                 {
                    "id":"btn_modificar",

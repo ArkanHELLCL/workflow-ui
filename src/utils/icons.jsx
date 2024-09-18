@@ -513,6 +513,18 @@ export function MailIcon({styles, strokeWidth}){
 
 export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
     if(typeIcon===1){
+        if(typeButton==='btn_mannext')
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            )
+        if(typeButton==='btn_manprev')
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            )
         if(typeButton==='btn_eliminar')
         return(
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + " text-[#dc2626]"}>
@@ -710,9 +722,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
     if(typeIcon===2){
         if(typeButton==='btn_mannext')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
@@ -730,9 +742,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_manprev')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
@@ -750,9 +762,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_eliminar')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
@@ -770,9 +782,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_habilitar')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
@@ -790,9 +802,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_bloquear')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
@@ -810,9 +822,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_modificar')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
@@ -830,9 +842,9 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_crear')
             return(
-                <div className="relative pt-4 w-10 h-auto">
+                <div className="relative flex my-auto">
                     <span>
-                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles}>
+                        <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
                                 <g>
                                     <path d="M503.467,0H8.533C3.823,0,0,3.823,0,8.533v494.933C0,508.177,3.823,512,8.533,512h494.933c4.71,0,8.533-3.823,8.533-8.533    V8.533C512,3.823,508.177,0,503.467,0z M162.133,494.933H17.067V384h145.067V494.933z M162.133,366.933H17.067V256h145.067    V366.933z M162.133,238.933H17.067V128h145.067V238.933z M332.8,494.933H179.2V384h153.6V494.933z M332.8,366.933H179.2V256h153.6    V366.933z M332.8,238.933H179.2V128h153.6V238.933z M494.933,494.933H349.867V384h145.067V494.933z M494.933,366.933H349.867V256    h145.067V366.933z M494.933,238.933H349.867V128h145.067V238.933z M494.933,110.933H17.067V17.067h477.867V110.933z"/>
