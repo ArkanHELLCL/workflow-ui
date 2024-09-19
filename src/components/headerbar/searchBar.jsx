@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { IconButton } from "@mui/material";
+import { style } from "@mui/system";
 
 export default function SearchBar({openSearch, setOpenSearch}) {    
     const menuSearch = useId();
@@ -123,20 +124,18 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                                     style: {
                                         maxHeight: ITEM_HEIGHT * 4.5,
                                         width: 'auto',
-                                        fontSize: '0.75rem',
-                                        lineHeight: '1rem'
                                     },
-                                    className: "dark:!bg-[#323130] !bg-[#ffffff] !border dark:!border-[#8a8886] !border-[#e1dfdd] !rounded-none !leading-6 !font-normal dark:!text-stone-100 !text-stone-500 !py-0 !m-h-min"
+                                    className: "!border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
                                 }
                             }}
                         >
-                            <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] dark:!text-stone-100 !text-stone-500 !pr-12 mnuFlow !leading-0 !text-xs`}>
+                            <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`}                             >
                                 <ListItemIcon>{filters.filterSearch === 2 ? <Check className='text-green-500'/> : null}</ListItemIcon>
-                                <ListItemText>Todas las bandejas</ListItemText>
+                                Todas las bandejas
                             </MenuItem>
-                            <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] dark:!text-stone-100 !text-stone-500 !pr-12 mnuFlow !leading-0`}>
+                            <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`}>
                                 <ListItemIcon>{filters.filterSearch === 1 ? <Check className='text-green-500'/> : null}</ListItemIcon>
-                                <ListItemText>Bandeja actual</ListItemText>
+                                Bandeja actual
                             </MenuItem>
                         </Menu>
                     </div>
