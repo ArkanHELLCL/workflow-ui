@@ -9,10 +9,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useFilters } from "../../hooks/useFilters.jsx";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { IconButton } from "@mui/material";
-import { style } from "@mui/system";
 
 export default function SearchBar({openSearch, setOpenSearch}) {    
     const menuSearch = useId();
@@ -103,7 +101,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                             aria-expanded={open ? 'true' : undefined}
                             aria-haspopup="true"
                             onClick={handleClick}
-                            className={`dark:!bg-[#323130] !bg-[#ffffff] hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !border-0 dark:!text-stone-100 !text-stone-500 !rounded-none !min-h-[30px] !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-0 text-xs !w-[${widthMenuSearch}px] !font-light !border-0`}
+                            className={`dark:!bg-[#323130] !bg-[#ffffff] hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !border-0 dark:!text-stone-100 !text-stone-500 !rounded-none !min-h-[30px] !m-0 !ps-2.5 !pe-2.5 !pl-3 !py-0 text-sm !w-[${widthMenuSearch}px] !font-light !border-0`}
                             style={{border: '2px solid transparent'}}
                         >
                             <div className="!w-auto !truncate !font-normal !text-sm">
@@ -129,11 +127,11 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                                 }
                             }}
                         >
-                            <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`}                             >
+                            <MenuItem  onClick={() => HandleFilterSearch(2)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-sm !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`}                             >
                                 <ListItemIcon>{filters.filterSearch === 2 ? <Check className='text-green-500'/> : null}</ListItemIcon>
                                 Todas las bandejas
                             </MenuItem>
-                            <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-xs !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`}>
+                            <MenuItem  onClick={() => HandleFilterSearch(1)} className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !text-sm !leading-0 !font-normal dark:!text-stone-100 !text-stone-500 mnuFlow`}>
                                 <ListItemIcon>{filters.filterSearch === 1 ? <Check className='text-green-500'/> : null}</ListItemIcon>
                                 Bandeja actual
                             </MenuItem>
