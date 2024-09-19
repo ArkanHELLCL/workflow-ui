@@ -40,7 +40,7 @@ function LstRegiones(){
                 <span className="min-w-[50px]">Región : </span>
                 <IconButton
                     aria-label="more"
-                    id="long-button"
+                    id="lstDepMen-button"
                     aria-controls={open ? 'lstDepMen' : undefined}
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
@@ -56,17 +56,19 @@ function LstRegiones(){
                 <Menu
                     id="lstDepMen"                    
                     MenuListProps={{
-                        'aria-labelledby': 'long-button',
+                        'aria-labelledby': 'lstDepMen-button',
                     }}
                     anchorEl={anchorEl}
                     open={open}
-                    onClose={handleClose}
-                    PaperProps={{
-                        style: {
-                            maxHeight: ITEM_HEIGHT * 4.5,
-                            width: 'auto',                            
-                        },
-                        className: "!border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
+                    onClose={handleClose}                    
+                    slotProps={{
+                        paper:{
+                            style: {
+                                maxHeight: ITEM_HEIGHT * 4.5,
+                                width: 'auto',
+                            },
+                            className: "!border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
+                        }
                     }}
                 >
                     {Region.records.map((item) => (

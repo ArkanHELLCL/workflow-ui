@@ -60,13 +60,15 @@ function LstListaDesplegable(){
                     }}
                     anchorEl={anchorEl}
                     open={open}
-                    onClose={handleClose}
-                    PaperProps={{
-                        style: {
-                            maxHeight: ITEM_HEIGHT * 4.5,
-                            width: 'auto',                            
-                        },
-                        className: "!border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
+                    onClose={handleClose}                    
+                    slotProps={{
+                        paper:{
+                            style: {
+                                maxHeight: ITEM_HEIGHT * 4.5,
+                                width: 'auto',
+                            },
+                            className: "!border-[#e1dfdd] dark:!border-[#8a8886] !bg-[#ffffff] dark:!bg-[#323130] !border !rounded-none dark:!text-stone-100 !text-stone-500"
+                        }
                     }}
                 >
                     {ListasDesplegable.records.map((item) => (
