@@ -88,18 +88,18 @@ const Adjuntos = ({file, preview, setPreview, setAdjuntos, setFilesList}) => {
                         'aria-labelledby': 'attach-button-' + file.id,
                     }}>{
                     (file.extension !== 'docx' && file.extension !== 'pptx' &&  file.extension !== 'xlsx') &&       
-                        <>                                                    
-                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-10 dark:!text-stone-100 !text-stone-500 !py-0`} onClick={() => handlePreview(file)} >                                
+                        <div>                                                    
+                            <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !px-10 dark:!text-stone-100 !text-stone-500 !py-0`} onClick={() => handlePreview(file)} >
                                 <ListItemText>Vista Previa</ListItemText>                   
                             </MenuItem>
-                            <Divider className='!ml-10 !my-1'/>
-                        </>
+                            <Divider className='!ml-10 !mr-1 !my-1'/>
+                        </div>
                     }
                     <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 dark:!text-stone-100 !text-stone-500 !py-0`} onClick={() => console.log('abrir ' + file.id)} >                        
                         <ListItemIcon className='!min-w-7'><OpenFolderIcon styles='w-[18px] h-[18px]'/></ListItemIcon>
                         <ListItemText>Abrir</ListItemText>
                     </MenuItem>
-                    <Divider className='!ml-10 !my-1'/>
+                    <Divider className='!ml-10 !mr-1 !my-1'/>
                     <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={() => console.log('Impresión rápida ' + file.id)} >                        
                         <ListItemIcon className='!min-w-7'><PrinterIcon styles="w-[24px] h-[24px] !-ml-1" strokeWidth='2.75'/></ListItemIcon>
                         <ListItemText>Impresión rápida</ListItemText>
