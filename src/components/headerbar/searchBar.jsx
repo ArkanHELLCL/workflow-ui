@@ -144,7 +144,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                     
                     <form className="flex relative w-full border-0 border-b dark:border-b-[#0a0a0a] border-b-sky-600 focus:!border-b-0" onSubmit={HandleSubmit}>
                         <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
-                            <SearchIcon className="!w-5 !h-5 !-mt-1"/>
+                            <SearchIcon className="!w-5 !h-5"/>
                         </span>                
                         <InputDebounce 
                             type="text" 
