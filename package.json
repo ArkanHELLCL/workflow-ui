@@ -13,7 +13,6 @@
   "dependencies": {
     "@cyntler/react-doc-viewer": "1.17.0",
     "@mui/icons-material": "6.0.2",
-    "@mui/joy": "5.0.0-beta.46",
     "@mui/material": "6.0.2",
     "@mui/system": "6.0.2",
     "@mui/x-data-grid": "7.15.0",
