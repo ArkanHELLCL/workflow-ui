@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import Inputs from '../formcontent/inputs.jsx';
+import Inputs from '../formcontent/Inputs.jsx';
 import Buttons from "../formcontent/header/ButtonsAction.jsx";
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import FlujosTable from './usuariomant/flujosTable.jsx';
