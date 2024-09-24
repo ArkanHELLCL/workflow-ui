@@ -94,8 +94,8 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
                 <span className="text-green-600 dark:text-green-800 hover:text-green-400 dark:hover:text-green-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Abrir Requerimiento" ><CloseRequest/></span>
             }
           </p>
-          <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : showYear ? diaName(req.DRE_FechaEdit).slice(0,3) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) + '-' + req.DRE_FechaEdit.slice(0,4) : req.DRE_FechaEdit.slice(11,16)}</p>
-          <p className="dark:text-gray-100 text-gray-900 truncate text-xs text-end">N°{req.VRE_Id}</p>
+          <p className="dark:text-stone-400 text-stone-500 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : showYear ? diaName(req.DRE_FechaEdit).slice(0,3) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) + '-' + req.DRE_FechaEdit.slice(0,4) : req.DRE_FechaEdit.slice(11,16)}</p>
+          <p className="dark:text-stone-400 text-stone-500 truncate text-xs text-end">N°{req.VRE_Id}</p>
         </div>
       </article>
     )
