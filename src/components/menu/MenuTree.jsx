@@ -52,23 +52,26 @@ export function MenuTree({ menu, frmRecord, frmRequest }) {
         <RichTreeView 
             items={menu} 
             defaultExpandedItems={getAllItemsWithChildrenItemIds(menu)}            
-            sx={{'& .MuiTreeItem-content .MuiTreeItem-label' :{
-                    fontSize:'13px',
-                    fontWeight: 'lighter',
-                    paddingLeft:'0px',
-                    lineHeight: '1',
-                    fontFamily: 'inherit'
-                },
-                '& .MuiTreeItem-content:hover' : {
-                    backgroundColor: filters.darkMode ? 'rgba(56, 56, 56, 255)!important' : ''
-                },
-                '& .MuiTreeItem-content' : {
-                    gap:'0px'
-                },
-                '& .MuiTreeItem-content.Mui-selected' : {
-                    backgroundColor: 'rgb(25 118 210 / 26%)!important'                    
-                }
-            }}
+            sx={[
+                (theme) => (
+                        {'& .MuiTreeItem-content .MuiTreeItem-label' :{
+                            fontSize:'13px',
+                            fontWeight: 'lighter',
+                            paddingLeft:'0px',
+                            lineHeight: '1',
+                            fontFamily: 'inherit'
+                        },
+                        '& .MuiTreeItem-content:hover' : {
+                            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(56, 56, 56, 255)!important' : ''
+                        },
+                        '& .MuiTreeItem-content' : {
+                            gap:'0px'
+                        },
+                        '& .MuiTreeItem-content.Mui-selected' : {
+                            backgroundColor: 'rgb(25 118 210 / 26%)!important'                    
+                        }
+                    })
+            ]}
             className={'dark:border-[#353535] px-1 border-[#d4d4d4] border-b-2 !pb-2 !mb-1 !text-stone-950 dark:!text-stone-100'}
             onItemExpansionToggle={handleItemExpansionToggle}
             onItemFocus={handleItemExpansionToggle}

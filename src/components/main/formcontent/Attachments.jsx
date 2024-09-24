@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useAttach } from '../../../hooks/useAttach.jsx';
 import { usePreview } from '../../../hooks/usePreview.jsx';
-import { useFilters } from '../../../hooks/useFilters.jsx';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -10,9 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import { DeleteFileIcon, OpenFolderIcon, PrinterIcon, SaveAllIcon, SaveAsIcon, TypeDoc } from '../../../utils/icons.jsx';
-import { useMemo, useState } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { esES } from '@mui/x-data-grid/locales';
+import { useState } from 'react';
 
 const Adjuntos = ({file, preview, setPreview, setAdjuntos, setFilesList}) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -135,58 +132,21 @@ const handleNotDragOver = (event) => {
     return false;
 }
 
-export default function Attachments({setFilesList, filesList}){
-    const { filters } = useFilters(); 
-    const prefersDarkMode = filters.darkMode
-    const theme = useMemo(
-      () =>
-        createTheme({
-          palette: {
-            mode: prefersDarkMode ? 'dark' : 'light',
-          },
-          typography: {
-            allVariants: {
-              fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
-              textTransform: 'none',
-              lineHeight: "1.5rem",
-              fontWeight: 400,
-              fontSize: '0.75rem'
-            },
-          },
-          components: {            
-            MuiMenu: {
-              styleOverrides: {
-                paper: {
-                  //backgroundColor: prefersDarkMode ? '#333333' : '#ffffff',
-                  color: prefersDarkMode ? '#c5c5c5' : '#333333',
-                  //boxShadow: prefersDarkMode ? '0 0 10px 0px #000000' : '0 0 10px 0px #000000',
-                  borderRadius: '0px',
-                  border: prefersDarkMode ? '1px solid #8a8886' : '1px solid #e1dfdd',
-                },
-              },
-            }
-          }
-        },
-      esES),
-      [prefersDarkMode],
-    );
+export default function Attachments({setFilesList, filesList}){    
     const {adjuntos, setAdjuntos} = useAttach()
     const {preview, setPreview} = usePreview()
-    
-   
-    return(
-        <ThemeProvider theme={theme}>
-            <div className='max-h-28 overflow-y-auto py-0 pr-2 relative z-10 frmatachment' onDragOver = {handleNotDragOver}>
-                <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-1">
-                {
-                    adjuntos?.map((file, index) => {
-                        return (                        
-                            <Adjuntos file={file} key={index} preview={preview} setPreview={setPreview} setAdjuntos={setAdjuntos} setFilesList={setFilesList} filesList={filesList}/>
-                        )}
-                    )
-                }
-                </div>
+       
+    return(    
+        <div className='max-h-28 overflow-y-auto py-0 pr-2 relative z-10 frmatachment' onDragOver = {handleNotDragOver}>
+            <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-1">
+            {
+                adjuntos?.map((file, index) => {
+                    return (                        
+                        <Adjuntos file={file} key={index} preview={preview} setPreview={setPreview} setAdjuntos={setAdjuntos} setFilesList={setFilesList} filesList={filesList}/>
+                    )}
+                )
+            }
             </div>
-        </ThemeProvider>
+        </div>    
     )
 }

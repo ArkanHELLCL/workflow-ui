@@ -1,119 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useFilters } from '../../../hooks/useFilters.jsx';
-import { DataGrid, GridToolbarFilterButton , GridToolbarContainer, GridToolbarExport, useGridApiContext, useGridSelector, gridPageCountSelector, gridPageSelector } from '@mui/x-data-grid';
+import { GridToolbarFilterButton , GridToolbarContainer, GridToolbarExport, useGridApiContext, useGridSelector, gridPageCountSelector, gridPageSelector } from '@mui/x-data-grid';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { styled } from '@mui/material/styles';
-import { esES } from '@mui/x-data-grid/locales';
-import { useMemo } from 'react';
 import { Box } from '@mui/system';
+import { StyledDataGrid, StyledGridOverlay } from '../formcontent/inputscomponents/StyledDataGrid.jsx';
 
 export default function ExportDefaultToolbar({dataReport, loading}) {
-  const { filters } = useFilters()
-  const prefersDarkMode = filters.darkMode
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: prefersDarkMode ? 'dark' : 'light',
-        },
-      },
-    esES),
-    [prefersDarkMode],
-    );
-
-  const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
-    border: 0,
-    color:
-      theme.palette.mode === 'light' ? 'rgba(0,0,0,.85)' : 'rgba(255,255,255,0.85)',
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    WebkitFontSmoothing: 'auto',
-    letterSpacing: 'normal',
-    '& .MuiDataGrid-columnsContainer': {
-      backgroundColor: theme.palette.mode === 'light' ? '#fafafa' : '#1d1d1d',
-    },
-    '& .MuiDataGrid-iconSeparator': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
-      borderRight: `1px solid ${
-        theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-      }`,
-    },
-    '& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell': {
-      borderBottom: `1px solid ${
-        theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-      }`,
-    },
-    '& .MuiDataGrid-cell': {
-        color:
-            theme.palette.mode === 'light' ? 'rgba(0,0,0,.85)' : 'rgba(255,255,255,0.65)',
-        borderRight:0,
-        fontWeight: 300,
-        fontSize: '0.9rem',
-        lineHeight: '2rem'
-    },
-    '& .MuiPaginationItem-root': {
-      borderRadius: 0,
-    },
-    
-    '& .MuiDataGrid-row:hover': {
-        backgroundColor: `${
-          theme.palette.mode === 'light' ? '#e6f2fa' : '#383838'
-        }`,
-      },
-      '& .MuiDataGrid-columnHeader':{
-        border:0,
-        backgroundColor: `${
-          theme.palette.mode === 'light' ? '#faf9f8' : '#1d1d1d'
-        }`,      
-      },
-      '& .MuiDataGrid-columnHeaderTitle':{
-        fontWeight: 350,
-        fontSize: '1rem',
-        lineHeight: '1.5rem',
-        color: `${
-          theme.palette.mode === 'light' ? '#0c0a09' : '#f5f5f4'
-        }`,
-      },
-      '& .MuiDataGrid-toolbarContainer':{
-        padding: '10px 4px 0px',
-      }
-  }));
-
-  const StyledGridOverlay = styled('div')(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    '& .no-rows-primary': {
-      fill: '#3D4751',
-      ...theme.applyStyles('light', {
-        fill: '#AEB8C2',
-      }),
-    },
-    '& .no-rows-secondary': {
-      fill: '#1D2126',
-      ...theme.applyStyles('light', {
-        fill: '#E8EAED',
-      }),
-    },
-  }));
-
   function CustomNoRowsOverlay() {
     return (
       <StyledGridOverlay>
@@ -179,35 +72,33 @@ export default function ExportDefaultToolbar({dataReport, loading}) {
     );
   }
   
-  return (
-    <ThemeProvider theme={theme}>
-        <div className='h-full w-full flex self-center flex-col pr-2 py-1'>
-          <StyledDataGrid 
-            {...dataReport}            
-            loading={loading}
-            density={'compact'}
-            slots={{
-              toolbar: CustomToolbar,
-              pagination: CustomPagination,
-              noRowsOverlay: CustomNoRowsOverlay,
-            }}
-            slotProps={{
-              loadingOverlay: {
-                variant: 'skeleton',
-                noRowsVariant: 'skeleton',
-              },
-            }}            
-            //autoheight
-            autoPageSize
-            initialState={{              
-              columns: {
-                columnVisibilityModel: {
-                  id: false
-                }                      
-              }
-          }}
-          />
-        </div>
-    </ThemeProvider>
-  );
+  return (    
+    <div className='h-full w-full flex self-center flex-col pr-2 py-1'>
+      <StyledDataGrid 
+        {...dataReport}            
+        loading={loading}
+        density={'compact'}
+        slots={{
+          toolbar: CustomToolbar,
+          pagination: CustomPagination,
+          noRowsOverlay: CustomNoRowsOverlay,
+        }}
+        slotProps={{
+          loadingOverlay: {
+            variant: 'skeleton',
+            noRowsVariant: 'skeleton',
+          },
+        }}            
+        //autoheight
+        autoPageSize
+        initialState={{              
+          columns: {
+            columnVisibilityModel: {
+              id: false
+            }                      
+          }
+      }}
+      />
+    </div>
+  )
 }

@@ -1,24 +1,20 @@
 import { MaterialDesignContent } from 'notistack';
 import { styled } from '@mui/material/styles';
-import { useFilters } from '../hooks/useFilters.jsx';
 
-const StyledMaterialDesignContent = styled(MaterialDesignContent)(() => {
-    const { filters } = useFilters();
-    const bgDark = filters?.darkMode ? '#262626' : '#ffffff';
-
+const StyledMaterialDesignContent = styled(MaterialDesignContent)(({theme}) => {
     return ({
     '&.notistack-MuiContent-success': {      
-      backgroundColor: bgDark,
+      backgroundColor: theme.palette.mode === 'dark' ? '#262626' : '#ffffff',
       border: '1px solid rgb(22 163 74)',
       color: 'inherit'
     },
     '&.notistack-MuiContent-error': {      
-      backgroundColor: bgDark,
+      backgroundColor: theme.palette.mode === 'dark' ? '#262626' : '#ffffff',
       border: '1px solid rgb(220 38 38)',
       color: 'inherit'
     },
     '&.notistack-MuiContent-warning': {      
-      backgroundColor: bgDark,
+      backgroundColor: theme.palette.mode === 'dark' ? '#262626' : '#ffffff',
       border: '1px solid #ff9800',
       color: 'inherit'
     },

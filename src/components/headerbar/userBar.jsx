@@ -8,44 +8,11 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { IconButton } from "@mui/material";
 import { MailIcon } from '../../utils/icons.jsx';
-import { useMemo, useState } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useFilters } from '../../hooks/useFilters.jsx';
-import { esES } from '@mui/x-data-grid/locales';
+import { useState } from 'react';
 
-export default function UserBar() {
+export default function UserBar({darkmode, setDarkMode}) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const { filters } = useFilters(); 
-    const prefersDarkMode = filters.darkMode
-    const theme = useMemo(
-      () =>
-        createTheme({
-          palette: {
-            mode: prefersDarkMode ? 'dark' : 'light',
-          },
-          typography: {
-            allVariants: {
-              fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
-              textTransform: 'none',
-              lineHeight: "1.5rem",
-              fontWeight: 400,
-              fontSize: '0.75rem'
-            },
-          },
-          components: {            
-            MuiList: {
-              styleOverrides: {
-                root: {
-                  paddingBottom: '0px',
-                },
-              },
-            },
-          }
-        },
-      esES),
-      [prefersDarkMode],
-    );
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -80,7 +47,7 @@ export default function UserBar() {
     }   
     
     return(
-        <ThemeProvider theme={theme}>
+        <>
             <IconButton
                 aria-label="more"
                 id="profile-button"
@@ -107,9 +74,7 @@ export default function UserBar() {
                     }
                 }}
             >
-                <List className='!pb-0'
-                    
-                >
+                <List className='!py-0'>
                     <ListItemButton 
                         sx={{'border':'2px solid','paddingRight': '0px','marginRight':'-5px','marginTop':'10px'}} 
                         className="!border dark:!border-white !border-black !w-fit dark:!text-white !text-black !text-xs dark:hover:!bg-[#363636] hover:!bg-[#d2d2d2] !py-[13px] !px-6 !absolute !-top-[18px] !right-[5px] z-50" 
@@ -120,10 +85,10 @@ export default function UserBar() {
                     <ListItem>
                         <UserDetail/>
                     </ListItem>                    
-                    <ListItem className='dark:!bg-[#363636] dark:!border-[#737373] !bg-[#f3f3f3] !border-t !border-[#d9d9d9]'
+                    <ListItem className='dark:!bg-[#363636] dark:!border-[#737373] !bg-[#f3f3f3] !border-t !border-[#d9d9d9] !-mb-2'
                     secondaryAction={
-                        <DarkModeToggle />
-                      }>
+                        <DarkModeToggle darkmode={darkmode} setDarkMode={setDarkMode}/>
+                        }>
                         <ListItemIcon className="dark:!text-white !text-black relative cursor-pointer" onClick={()=>console.log("ver mensajes")}>
                             <MailIcon/>
                             <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
@@ -132,6 +97,6 @@ export default function UserBar() {
                     </ListItem>
                 </List>
             </Menu>
-        </ThemeProvider>        
+        </>
     )
 }

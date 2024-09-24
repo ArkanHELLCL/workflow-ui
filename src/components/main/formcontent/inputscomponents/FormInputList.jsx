@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from "@mui/material/Paper";
 import { Controller } from 'react-hook-form';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import meses  from "../../../../mocks/meses.json";
 import proveedores  from "../../../../mocks/proveedores.json";
 import tipodocumento from "../../../../mocks/tipodocumento.json";
@@ -23,50 +22,13 @@ import sexos from "../../../../mocks/sexos.json";
 import perfiles from "../../../../mocks/perfiles.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
 import { useRequest } from '../../../../hooks/useRequest';
-import { useFilters } from '../../../../hooks/useFilters';
 import { user } from '../../../../mocks/usuario.json'
 import InputAdornment from '@mui/material/InputAdornment';
 import ExternalMantainer from './ExternalMantainer.jsx'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { esES } from '@mui/x-data-grid/locales';
-import { styled } from '@mui/material/styles';
-
-const CssTextField = styled((props) => <TextField {...props} />)(({ prefersdarkmode, e }) => ({
-  '& label.Mui-focused': {
-    color: '#0b6bcb',
-    fontWeight: 400
-  },
-  '& label': {
-    color: prefersdarkmode ? '#575757' : '#afafaf',
-  },
-  '& .MuiOutlinedInput-root': {
-      color: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)',
-      '& fieldset': {
-        borderColor: prefersdarkmode ? '#575757' : '#E0E3E7',
-      },
-      '&:hover fieldset': {
-        borderColor: '#B2BAC2',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#0b6bcb',
-      },          
-  },
-  "& .MuiAutocomplete-popupIndicator": {
-    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf', 
-    '&:hover': {borderRadius:'0'}
-  }, 
-  "& .MuiAutocomplete-clearIndicator": {
-    color: e ? '#f44336': prefersdarkmode ? '#575757' : '#afafaf',
-    '&:hover': {borderRadius:'0'}
-  }, 
-  '& .MuiInputBase-input.Mui-disabled': {
-    WebkitTextFillColor: prefersdarkmode ? 'rgb(245 245 244)' : 'rgb(110 110 110)'
-  },
-}));
+import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputList ({ frmRequest, campo, className }) {  
-  const { request } = useRequest();
-  const { filters } = useFilters(); 
+  const { request } = useRequest();  
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
 
   const [open, setOpen] = useState(false);
@@ -83,26 +45,6 @@ export default function FormInputList ({ frmRequest, campo, className }) {
       return false
     return true
   }
-  const prefersDarkMode = filters.darkMode
-    const theme = useMemo(
-      () =>
-        createTheme({
-          palette: {
-            mode: prefersDarkMode ? 'dark' : 'light',
-          },
-          typography: {
-            allVariants: {
-              fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
-              textTransform: 'none',              
-              //fontWeight:300,
-              //fontSize: "1rem",
-              lineHeight: "1.5rem"
-            },            
-          },
-        },
-      esES),
-      [prefersDarkMode],
-    );
   
   let dataOptions = [];
   let buttonMantainer = false;
@@ -184,77 +126,74 @@ export default function FormInputList ({ frmRequest, campo, className }) {
     setValue(campo.FDI_NombreHTML,newValue);
   }*/
 
-  return (
-    <ThemeProvider theme={theme}>
-        <Controller
-            control={frmRequest.control}
-            name={campo.FDI_NombreHTML}
-            rules={required}        
-            render={({ field }) => (
-                <FormControl                  
-                    className={className}>
-                    <Autocomplete
-                        {...field}
-                        autoComplete={true}
-                        clearOnEscape={true}
-                        defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
-                        disabled={disabled()}
-                        placeholder={campo.FDI_Descripcion}
-                        variant="outlined"                      
-                        onChange={(event, newValue) => {                      
-                          frmRequest.setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
-                        }}                    
-                        onBlur={field.onBlur}                                      
-                        value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || field.value || ''}
-                        open={open}
-                        onOpen={() => {
-                            setOpen(true);
+  return (    
+    <Controller
+        control={frmRequest.control}
+        name={campo.FDI_NombreHTML}
+        rules={required}        
+        render={({ field }) => (
+            <FormControl                  
+                className={className}>
+                <Autocomplete
+                    {...field}
+                    autoComplete={true}
+                    clearOnEscape={true}
+                    defaultValue={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || ''}
+                    disabled={disabled()}
+                    placeholder={campo.FDI_Descripcion}
+                    variant="outlined"                      
+                    onChange={(event, newValue) => {                      
+                      frmRequest.setValue(campo.FDI_NombreHTML,newValue,{ shouldDirty: false });
+                    }}                    
+                    onBlur={field.onBlur}                                      
+                    value={dataOptions.records?.find((option) => option.id == parseInt(field.value)) || field.value || ''}
+                    open={open}
+                    onOpen={() => {
+                        setOpen(true);
+                    }}
+                    onClose={() => {
+                        setOpen(false);
+                    }}
+                    isOptionEqualToValue={(option, value) => option.value === value.value}
+                    getOptionLabel={(option) => option.label || ''}
+                    options={options}
+                    loading={loading}
+                    
+                    renderOption={(props, option) => 
+                      <Box component="li" {...props} key={option.id} className='dark:bg-black bg-white px-3 !border-0 !rounded-none'>                        
+                          {option.label}
+                      </Box>                      
+                    }
+                    clearText={'Limpiar'}
+                    closeText={'Cerrar'}
+                    loadingText={'Cargando...'}
+                    noOptionsText={'No hay opciones'}
+                    openText={'Abrir'}                      
+                    renderInput={(params) => 
+                      <CssTextField 
+                        {...params}                            
+                        e={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
+                        error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
+                        label={campo.FDI_Descripcion} 
+                        slotProps={{
+                          input: {
+                            ...params.InputProps,
+                            endAdornment: (
+                              <>
+                                <InputAdornment position="end">
+                                  {buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}/> ) : null}
+                                </InputAdornment>
+                                {params.InputProps.endAdornment}
+                              </>
+                            ),
+                          },
                         }}
-                        onClose={() => {
-                            setOpen(false);
-                        }}
-                        isOptionEqualToValue={(option, value) => option.value === value.value}
-                        getOptionLabel={(option) => option.label || ''}
-                        options={options}
-                        loading={loading}
-                        
-                        renderOption={(props, option) => 
-                          <Box component="li" {...props} key={option.id} className='dark:bg-black bg-white px-3 !border-0 !rounded-none'>                        
-                              {option.label}
-                          </Box>                      
-                        }
-                        clearText={'Limpiar'}
-                        closeText={'Cerrar'}
-                        loadingText={'Cargando...'}
-                        noOptionsText={'No hay opciones'}
-                        openText={'Abrir'}                      
-                        renderInput={(params) => 
-                          <CssTextField 
-                            {...params}
-                            prefersdarkmode={prefersDarkMode}
-                            e={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
-                            error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
-                            label={campo.FDI_Descripcion} 
-                            slotProps={{
-                              input: {
-                                ...params.InputProps,
-                                endAdornment: (
-                                  <>
-                                    <InputAdornment position="end">
-                                      {buttonMantainer ? ( <ExternalMantainer titleMessage={'Agregar un nuevo proveedor'} tipo={campo.FDI_TipoCampo} error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}/> ) : null}
-                                    </InputAdornment>
-                                    {params.InputProps.endAdornment}
-                                  </>
-                                ),
-                              },
-                            }}
-                            helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
-                          />
-                        }
-                    />
-                </FormControl>
-            )}
-        />
-    </ThemeProvider>
-  );
+                        helperText={frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+                      />
+                    }
+                />
+            </FormControl>
+        )}
+    />
+  )
 }

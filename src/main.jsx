@@ -8,23 +8,17 @@ import { AttachProvider } from './context/attach.jsx'
 import { PreviewProvider } from './context/preview.jsx'
 import { ReportsProvider } from './context/reports.jsx'
 import { SnackbarProvider } from 'notistack';
-import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
+//import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 
 createRoot(document.getElementById('root')).render(
   <FiltersProvider>
     <RequestProvider>
       <RecordsProvider>
         <ReportsProvider>
-          <SnackbarProvider maxSnack={5} Components={{
-              success: StyledMaterialDesignContent,
-              error: StyledMaterialDesignContent,
-              warning: StyledMaterialDesignContent,
-            }}>
+          <SnackbarProvider maxSnack={5} >
               <AttachProvider>
                   <PreviewProvider>
-                      
-                          <App />
-                      
+                    <App />
                   </PreviewProvider>              
               </AttachProvider>
           </SnackbarProvider>

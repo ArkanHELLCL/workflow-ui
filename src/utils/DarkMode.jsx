@@ -1,51 +1,28 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useFilters } from '../hooks/useFilters.jsx';
+import { useColorScheme } from '@mui/material/styles';
 
-function storageEvent(setFilters){
-  window.addEventListener('storage', (event) => {
-      if (event.key === 'DarkMode') {          
-          setFilters((prevState) => ({...prevState, darkMode:event.newValue}))
-          event.newValue ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
-      }
-  })
-}
-function initialState(darkModeStorage){
-  darkModeStorage ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
-}
-const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;
-
-initialState(darkModeStorage)
-
-export function DarkModeToggle() {
-    const { filters, setFilters } = useFilters()
-    //setFilters((prevState) => ({...prevState, darkMode:darkModeStorage}))
-
+export function DarkModeToggle({darkmode, setDarkMode}) {
+    const { setMode } = useColorScheme();
+    //const [darkModeStorage, setDarkModeStorage] = useState(window.localStorage.getItem('DarkMode') === 'false' ? false : true)
     useEffect(() => {
-      setFilters((prevState) => ({...prevState, darkMode:darkModeStorage}))
-    }, [darkModeStorage])
-
-    storageEvent(setFilters)
+      setDarkMode(window.localStorage.getItem('DarkMode') === 'false' ? false : true)
+    }, [])
 
     function toggle() {      
-      setFilters((prevState) => ({
-        ...prevState,
-        darkMode: !filters.darkMode
-      }))
       document.getElementsByTagName('html')[0].classList.toggle('dark')
-      window.localStorage.setItem('DarkMode', !filters.darkMode);
+      window.localStorage.setItem('DarkMode', !darkmode);
+      setDarkMode(!darkmode)
+      setMode(!darkmode ? 'dark' : 'light')
     }
   
     function handleClick() {      
       toggle();
     }
-  
-    function handleKeyDown({ key }) {
-      if (key === 'Enter') toggle();
-    }
+      
     return (
-      <button        
-        onKeyDown={handleKeyDown}
+      <button
         onClick={handleClick} 
         className={`z-20 top-4 right-5 inline-flex items-center py-1.5 px-2 rounded-full transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:outline-none ${`dark:bg-[#262626] dark:text-stone-400 dark:focus-visible:ring-slate-500 bg-sky-500 text-sky-200 focus-visible:ring-sky-600`}`} 
         id="headlessui-switch-:rb:" 
@@ -53,9 +30,9 @@ export function DarkModeToggle() {
         type="button" 
         tabIndex="0" 
         aria-checked="false" 
-        data-headlessui-state={`${filters.darkMode ? `checked` : ``}`}
-        title={`${filters.darkMode ? `Desactivar modo orcuro` : `Activar modo oscuro`}`}>
-        <span className="sr-only">{`${filters.darkMode ? `Desactivar modo orcuro` : `Activar modo oscuro`}`}</span>
+        data-headlessui-state={`${darkmode ? `checked` : ``}`}
+        title={`${darkmode ? `Desactivar modo orcuro` : `Activar modo oscuro`}`}>
+        <span className="sr-only">{`${darkmode ? `Desactivar modo orcuro` : `Activar modo oscuro`}`}</span>
         <svg 
             width="24" 
             height="24" 

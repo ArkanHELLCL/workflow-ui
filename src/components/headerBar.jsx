@@ -4,7 +4,7 @@ import HeaderBarLeft from "./headerbar/HeaderBarLeft.jsx";
 import SearchBar from "./headerbar/searchBar.jsx";
 import HeaderBarRight from "./headerbar/HeaderBarRight.jsx";
 
-export default function HeaderBar({openSearch, setOpenSearch, handleNotDragOver}) {
+export default function HeaderBar({openSearch, setOpenSearch, handleNotDragOver, darkmode, setDarkMode}) {
     return (
         <>
             <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full z-[60] transition-color delay-75" onDragOver={handleNotDragOver} id="headerbarleft">
@@ -14,7 +14,7 @@ export default function HeaderBar({openSearch, setOpenSearch, handleNotDragOver}
                 <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} />
             </section>
             <section className="dark:bg-[#0a0a0a] bg-sky-600 w-full z-[60] transition-color delay-75" onDragOver={handleNotDragOver} id="headerbarright">
-                <HeaderBarRight />
+                <HeaderBarRight darkmode={darkmode} setDarkMode={setDarkMode}/>
             </section>
         </>
     )

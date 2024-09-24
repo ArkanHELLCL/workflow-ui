@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { usePreview } from '../../hooks/usePreview.jsx';
 import { useFilters } from '../../hooks/useFilters.jsx';
@@ -16,8 +16,6 @@ import { formulario as formularioMant } from '../../mocks/formularioMant.json';
 import MPMant from './maintainer/proveedorMant.jsx'
 import Button from '@mui/material/Button';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { esES } from '@mui/x-data-grid/locales';
 
 function PreviewObj({preview, filters, request, frmRecord, campos}){
     return(
@@ -40,38 +38,6 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     const [dropEnter, setDropEnter] = useState(false);
     const [form, setForm] = useState()
     const [campos, setCampos] = useState([])
-    const prefersDarkMode = filters.darkMode
-    const theme = useMemo(
-      () =>
-        createTheme({
-          palette: {
-            mode: prefersDarkMode ? 'dark' : 'light',
-          },
-          typography: {
-            allVariants: {
-              fontFamily: "Segoe UI Web (West European) ,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif",
-              textTransform: 'none',
-              lineHeight: "1.5rem",
-              fontWeight: 400,
-              fontSize: '0.75rem'
-            },
-          },
-          components: {
-            MuiButton: {
-              defaultProps: {
-                palette: "palette"
-              },
-              styleOverrides: {
-                root: {
-                  padding: ".5rem 1.5rem"
-                }
-              }
-            }
-          }
-        },
-      esES),
-      [prefersDarkMode],
-    );
 
     useEffect(() => {
         let frm
@@ -110,7 +76,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     }
 
     return(
-        <ThemeProvider theme={theme}>
+        <>
             {
                 request && form &&
                 <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? ' dark:bg-[#1c1c1c]' : ''}`}>
@@ -138,6 +104,6 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
             }{  !form &&
                     <NoData />
             }
-        </ThemeProvider>
+        </>
     )
 }
