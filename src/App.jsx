@@ -12,7 +12,6 @@ import Menu from './components/Menu.jsx'
 import { useForm } from "react-hook-form"
 import List from "./components/list.jsx";
 import DataForm from "./components/dataform.jsx";
-import { useSnackbar } from 'notistack';
 import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
@@ -24,6 +23,7 @@ import { theme } from './utils/CustomTheme.jsx';
 import { esES } from '@mui/x-date-pickers/locales';
 import { SnackbarProvider } from 'notistack';
 import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
+import { ToastMessages } from "./utils/toastMessages.jsx";
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -56,26 +56,26 @@ function App() {
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
-  const formRepRef = useRef(null)
-  const { enqueueSnackbar } = useSnackbar();
+  const formRepRef = useRef(null)  
   const [filesList, setFilesList] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {    
-    if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRequest.formState.isValidating){
-      enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRequest.formState.isValidating){      
+      setError({variant: "error", message: 'Debes corregir los errores antes de grabar!'})
     }
   },[frmRequest.formState.submitCount])
 
   useEffect(() => {
     if(!frmRecord.formState.isSubmitSuccessful && frmRecord.formState.submitCount > 0 && !frmRecord.formState.isValidating){
-      enqueueSnackbar('Debes corregir los errores antes de grabar!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+      setError({variant: "error", message: 'Debes corregir los errores antes de grabar!'})      
     }
   },[frmRecord.formState.submitCount])
 
   useEffect(() => {
     if(!frmReport.formState.isSubmitSuccessful && frmReport.formState.submitCount > 0 && !frmReport.formState.isValidating){
-      enqueueSnackbar('Debes corregir los errores antes de proceder!', { variant : "error", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+      setError({variant: "error", message: 'Debes corregir los errores antes de grabar!'})
     }
   },[frmReport.formState.submitCount])
 
@@ -141,8 +141,8 @@ function App() {
   };
 
   useEffect(() => {
-    if(openDialog.option){
-      enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+    if(openDialog.option){      
+      setError({variant: "success", message: 'Los datos han sido grabados exitosamente!'})
       console.log('formcomponent',openDialog.data, openDialog.formAction);      
       setLoading(true)      
       setReport(data)
@@ -208,6 +208,7 @@ function App() {
               ref={formRepRef}  
               onSubmit={frmReport.handleSubmit(onSubmitReport)}>
             </form>
+            <ToastMessages error={error} setError={setError}/>
           </main>
         </SnackbarProvider>
       </LocalizationProvider>
