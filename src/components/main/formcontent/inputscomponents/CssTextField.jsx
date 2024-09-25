@@ -15,7 +15,7 @@ export const CssTextField = styled((props) =>
           borderBottomColor: '#B2BAC2',
         },
         '& .MuiOutlinedInput-root': {
-            color: theme.palette.mode === 'dark' ? 'rgb(245 245 244)' : 'rgb(110 110 110)',
+            color: theme.palette.mode === 'dark' ? '#f5f5f4' : '#6e6e6e',
             fontSize: '1rem',
             '& fieldset': {
               borderColor: theme.palette.mode === 'dark' ? '#575757' : '#E0E3E7',
@@ -36,7 +36,7 @@ export const CssTextField = styled((props) =>
             color: theme.palette.mode === 'dark' ? '#575757' : '#afafaf'
         },
         '& .MuiInputBase-input.Mui-disabled': {
-          WebkitTextFillColor: theme.palette.mode === 'dark' ? 'rgb(245 245 244)' : 'rgb(110 110 110)'
+          WebkitTextFillColor: theme.palette.mode === 'dark' ? '#f5f5f4' : '#6e6e6e'
         }
     }
 ));

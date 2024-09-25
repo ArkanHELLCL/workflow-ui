@@ -19,7 +19,7 @@ export const theme = (darkMode) =>
           fontSize: '0.75rem'
         },
       },
-      components: {            
+      components: {
         MuiList: {
           styleOverrides: {
             root: {
