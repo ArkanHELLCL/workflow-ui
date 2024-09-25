@@ -58,7 +58,7 @@ export default function FormInputFile({frmRequest, campo, className, setFilesLis
                         className={className}
                         >
                         <Button
-                            component="textField"
+                            component="label"
                             role={undefined}
                             variant="outlined"
                             tabIndex={-1}
