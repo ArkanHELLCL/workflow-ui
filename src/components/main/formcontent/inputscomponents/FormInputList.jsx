@@ -172,7 +172,6 @@ export default function FormInputList ({ frmRequest, campo, className }) {
                     renderInput={(params) => 
                       <CssTextField 
                         {...params}                            
-                        e={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
                         error={!!frmRequest.formState.errors[campo?.FDI_NombreHTML]}
                         label={campo.FDI_Descripcion} 
                         slotProps={{
