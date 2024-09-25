@@ -49,9 +49,9 @@ export default function RegistroItem ({registro, frmRecord, ...props}){
         registro &&
         <article className={` regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={()=>handleRegClick(regId)} {...props} id={regId}>
             <div className="w-3/4">
-            <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
+            <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-950'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
             <p className={`truncate text-base font-thin uppercase leading-snug dark:text-stone-400 text-stone-500`}>{registro.titulo}</p>
-            <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{registro.detalle}</p>
+            <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-400 text-stone-400' : 'dark:text-stone-500 text-stone-400'} truncate text-[11px] font-base uppercase leading-snug`}>{registro.detalle}</p>
             </div>
             <div className="w-1/4">
             <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">
@@ -63,10 +63,10 @@ export default function RegistroItem ({registro, frmRecord, ...props}){
                 }                                
             </p>{
                 registro.modificacion && (
-                    <p className="dark:text-stone-400 text-stone-500 truncate text-xs text-end">{diaName(registro.modificacion)?.slice(0,3) + ' ' + registro.modificacion?.slice(8,10) + '-' + registro.modificacion?.slice(5,7) + '-' + registro.modificacion?.slice(0,4)}</p>
+                    <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">{diaName(registro.modificacion)?.slice(0,3) + ' ' + registro.modificacion?.slice(8,10) + '-' + registro.modificacion?.slice(5,7) + '-' + registro.modificacion?.slice(0,4)}</p>
                     )
                 }
-                <p className="dark:text-stone-400 text-stone-500 truncate text-xs text-end">Id:{registro.Id}</p>                                    
+                <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">Id:{registro.Id}</p>                                    
             </div>
         </article>
     )

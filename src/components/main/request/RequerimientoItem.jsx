@@ -70,9 +70,9 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
     return (
       <article className={` reqitem  ${req.IdEditor ? 'reqtomado' : req.Bandeja === 'be' ? 'reqnotomado' : ''} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento(regId)} id={regId}>
         <div className="w-3/4">
-          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-500'} truncate text-base font-thin capitalize leading-snug`}>{req.Bandeja === 'be' ? req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt : req.NombreCreador + ' ' + req.ApellidoCreador : req.NombreEditor ? req.NombreEditor + ' ' + req.ApellidoEditor : req.DepDescripcionActual}</p>
+          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-950'} truncate text-base font-thin capitalize leading-snug`}>{req.Bandeja === 'be' ? req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt : req.NombreCreador + ' ' + req.ApellidoCreador : req.NombreEditor ? req.NombreEditor + ' ' + req.ApellidoEditor : req.DepDescripcionActual}</p>
           <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : req.Bandeja === 'be' ? 'text-sky-600 font-bold' : 'dark:text-stone-400 text-stone-500'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>
-          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-400 text-stone-700' : 'dark:text-stone-500 text-stone-600'} truncate text-[11px] font-base uppercase leading-snug`}>{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
+          <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-400 text-stone-400' : 'dark:text-stone-500 text-stone-400'} truncate text-[11px] font-base uppercase leading-snug`}>{req.VFO_Id ? req.DFO_Descripcion : 'Sin formulario creado'}</p>
         </div>
         <div className="w-1/4">
           <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">{
@@ -94,8 +94,8 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
                 <span className="text-green-600 dark:text-green-800 hover:text-green-400 dark:hover:text-green-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Abrir Requerimiento" ><CloseRequest/></span>
             }
           </p>
-          <p className="dark:text-stone-400 text-stone-500 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : showYear ? diaName(req.DRE_FechaEdit).slice(0,3) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) + '-' + req.DRE_FechaEdit.slice(0,4) : req.DRE_FechaEdit.slice(11,16)}</p>
-          <p className="dark:text-stone-400 text-stone-500 truncate text-xs text-end">N°{req.VRE_Id}</p>
+          <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : showYear ? diaName(req.DRE_FechaEdit).slice(0,3) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) + '-' + req.DRE_FechaEdit.slice(0,4) : req.DRE_FechaEdit.slice(11,16)}</p>
+          <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">N°{req.VRE_Id}</p>
         </div>
       </article>
     )
