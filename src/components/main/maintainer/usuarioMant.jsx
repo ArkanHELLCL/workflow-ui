@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import Inputs from '../formcontent/Inputs.jsx';
 import Buttons from "../formcontent/header/ButtonsAction.jsx";
+import IconButton from '@mui/material/IconButton';
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import FlujosTable from './usuariomant/flujosTable.jsx';
 import { user } from '../../../mocks/usuario.json';
@@ -9,6 +10,7 @@ import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 import { formulario as formant} from '../../../mocks/formularioMant.json';
+import { DelIcon } from "../../../utils/icons.jsx"
 
 export default function MUMant({frmRecord, mant, record, filesList, setFilesList, singleButton}) {    
     const [field, setField] = useState(null)
@@ -17,6 +19,10 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
     const date = new Date()
     let fecha = date.toISOString()
     fecha = fecha.slice(0,16)?.replace('T',' ')
+
+    const handleDelFile = () => {
+        setFilesList([])
+    }
 
     useEffect(() => {
         let reg
@@ -86,15 +92,25 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
                     </div>                
                     
                     <div className='grid grid-cols-12 gap-2 pb-3'>
-                        <div className='col-span-3 w-full min-w-36'>
-                            <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950 pb-2 truncate'>Previsualizción de firma</h2>{
+                        <div className='col-span-3 w-full min-w-36 relative'>
+                            <h2 className='!text-lg font-light dark:!text-stone-100 !text-stone-950 pb-2 truncate'>Previsualizción de firma</h2>
+                            <div className="h-40 h-a w-full dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] rounded flex justify-center flex-col text-center font-light text-base mx-[1px]">{
                             filesList.length > 0 ? (
-                                <img className="h-auto w-full" src={URL.createObjectURL(filesList[0])} />
-                            ) : (
-                                <div className="h-40 h-a w-full dark:bg-[#444444] bg-white outline outline-[1px] dark:outline-[#575757] outline-[#b8b5b2] rounded flex justify-center flex-col text-center font-light text-base mx-[1px]">
-                                    <span className='truncate'>Sin firma cargada</span>
-                                </div>
+                                <>
+                                    <IconButton aria-label="delete" className='!absolute !-top-1 !right-0'
+                                        onClick={handleDelFile} title="Eliminar imagen"
+                                    >
+                                        <span className="text-red-600 dark:text-red-800 hover:text-red-400 dark:hover:text-red-500 leading-snug cursor-pointer">
+                                            <DelIcon/>
+                                        </span>
+                                    </IconButton>
+                                    <img className="h-auto w-full max-h-40" src={URL.createObjectURL(filesList[0])} />
+                                </>                                
+                            ) : (                                
+                                
+                                    <span className='truncate'>Sin firma cargada</span>                                
                             )}
+                            </div>
                         </div>
                         <div className='col-span-9 flex justify-center flex-col gap-2 pr-2'>
                             <FlujosTable title="Flujos asignados" pageSize={5}/>

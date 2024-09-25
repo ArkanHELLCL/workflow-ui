@@ -11,7 +11,8 @@ import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputFecha ({ frmRequest, campo, className }) {
     const { request } = useRequest();      
-    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const required = campo.FDI_CampoObligatorio === 1 ? true : false
     
     const disabled = () => {
         if(!request) return false

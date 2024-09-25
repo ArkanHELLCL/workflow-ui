@@ -41,7 +41,8 @@ NumericFormatAdapter.propTypes = {
 
 export default function FormInputPhone ({ frmRequest, campo, className }) {
     const { request } = useRequest();    
-    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const required = campo.FDI_CampoObligatorio === 1 ? true : false
 
     const disabled = () => {
         if(!request) return false
@@ -59,9 +60,8 @@ export default function FormInputPhone ({ frmRequest, campo, className }) {
           name={campo.FDI_NombreHTML}
           rules={{
             validate: {
-                required: (value) => {                          
-                  if (value.length<9) return 'Debes ingresar un número de teléfono válido';
-                  if (!value && required) return campo.FDI_ErrorMessage;
+                required: (value) => {                    
+                  if (value.length<9 && required) return 'Debes ingresar un número de teléfono válido';                  
                 }
             },
             maxLength: campo.FDI_TamanoCampo

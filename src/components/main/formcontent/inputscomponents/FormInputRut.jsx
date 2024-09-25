@@ -8,7 +8,8 @@ import FormatearRut from '../../../../utils/FormatearRut.jsx';
 import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputRut ({ frmRequest, campo, className }) {
-    const { request } = useRequest();    
+    const { request } = useRequest();
+    const required = campo.FDI_CampoObligatorio === 1 ? true : false    
 
     const disabled = () => {
       if(!request) return false
@@ -29,7 +30,7 @@ export default function FormInputRut ({ frmRequest, campo, className }) {
               validate: {
                   required: (value) => {                          
                     if (!Fn.validaRut(value) && value) return 'El RUT ingresado no es válido';
-                    if (!value && campo.FDI_CampoObligatorio) return campo.FDI_ErrorMessage;
+                    if (!value && required) return campo.FDI_ErrorMessage;
                   }
               },
               maxLength: campo.FDI_TamanoCampo

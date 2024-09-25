@@ -22,10 +22,10 @@ const VisuallyHiddenInput = styled('input')({
   });
 
 export default function FormInputFile({frmRequest, campo, className, setFilesList, filesList}) {
-    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-    console.log(required)
-    const onChangeHandler = (event) => {
-        console.log(event)
+    //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const required = campo.FDI_CampoObligatorio === 1 ? true : false
+
+    const onChangeHandler = (event) => {        
         let files = [];                
         if(event.type==='change'){
             files = Array.from(event.target.files)            
@@ -48,16 +48,14 @@ export default function FormInputFile({frmRequest, campo, className, setFilesLis
                 name={campo.FDI_NombreHTML}
                 rules={{
                     validate: {
-                        required: (value) => {
-                            console.log(value, filesList.length)
-                            if (required && filesList.length === 0) return campo.FDI_ErrorMessage;
-                        }
-                    }                
-                }}            
+                      required: (value) => {                        
+                        if (value.length === 0 && required) return campo.FDI_ErrorMessage;
+                      }
+                    }                      
+                  }}
                 render={({ field: { onChange, onBlur } }) => (                
                     <FormControl                        
-                        className={className}
-                        >
+                        className={className}>
                         <Button
                             component="label"
                             role={undefined}

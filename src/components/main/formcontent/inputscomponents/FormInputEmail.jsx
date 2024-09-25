@@ -7,7 +7,8 @@ import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputEmail ({ frmRequest, campo, className }) {
     const { request } = useRequest();    
-    const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const required = campo.FDI_CampoObligatorio === 1 ? true : false
 
     const disabled = () => {
         if(!request) return false
@@ -30,11 +31,13 @@ export default function FormInputEmail ({ frmRequest, campo, className }) {
                   if (!value && required) return campo.FDI_ErrorMessage;
                 },
                 validEmail: (value) => {
-                  let currentEmails = value
-                  let regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/i;
-                      if (!regex.test(currentEmails.replace(/\s/g, ''))) {
-                          return 'El Email ingresado no es válido';
-                      }
+                    if(required){
+                        let currentEmails = value
+                        let regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/i;
+                            if (!regex.test(currentEmails.replace(/\s/g, ''))) {
+                                return 'El Email ingresado no es válido';
+                            }
+                    }
                   }
               },
             }}
