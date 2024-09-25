@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useColorScheme } from '@mui/material/styles';
 
-export function DarkModeToggle({darkmode, setDarkMode}) {
-    const { setMode } = useColorScheme();
-    //const [darkModeStorage, setDarkModeStorage] = useState(window.localStorage.getItem('DarkMode') === 'false' ? false : true)
+export function DarkModeToggle({darkmode, setDarkMode}) {    
     useEffect(() => {
       setDarkMode(window.localStorage.getItem('DarkMode') === 'false' ? false : true)
     }, [])
@@ -13,8 +10,7 @@ export function DarkModeToggle({darkmode, setDarkMode}) {
     function toggle() {      
       document.getElementsByTagName('html')[0].classList.toggle('dark')
       window.localStorage.setItem('DarkMode', !darkmode);
-      setDarkMode(!darkmode)
-      setMode(!darkmode ? 'dark' : 'light')
+      setDarkMode(!darkmode)      
     }
   
     function handleClick() {      

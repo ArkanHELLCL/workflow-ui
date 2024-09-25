@@ -26,13 +26,16 @@ export default function FormInputSwitch ({frmRequest, campo, className}) {
                                         "&.MuiSwitch-root .MuiSwitch-track": {
                                             backgroundColor: "#575757"                                    
                                         },
+                                        "&.MuiFormControlLabel-root .MuiFormControlLabel-label": {
+                                            fontSize: '1rem !important'
+                                        }
                                 }}
                             />
                         } 
                         label={campo.FDI_Descripcion} 
                         onChange={onChange} 
                         onBlur={onBlur}                    
-                        className={'dark:!text-stone-100 !text-stone-950'} />                
+                        className={'dark:!text-stone-100 !text-stone-950 !text-base'} />                
                 )}
             />
         </div>

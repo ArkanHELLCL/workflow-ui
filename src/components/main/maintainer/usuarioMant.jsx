@@ -79,9 +79,9 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
                 <span className='text-[11px] leading-tight'>{field.USR_FechaEdit.slice(0,16).replace('T',' ')}</span>
             </section>
             <section className="py-3 w-full frmmantbody">
-                <div className="w-full pr-2 flex flex-col overflow-y-auto">
+                <div className="w-full flex flex-col overflow-y-auto">
                     <Inputs frmRequest={frmRecord} campos={campos} filesList={filesList} setFilesList={setFilesList}/>
-                    <div className='grid grid-cols-12 gap-2'>
+                    <div className='grid grid-cols-12 gap-2 pr-2'>
                         <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.USR_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.USR_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
                     </div>                
                     
@@ -96,7 +96,7 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
                                 </div>
                             )}
                         </div>
-                        <div className='col-span-9 flex justify-center flex-col gap-2'>
+                        <div className='col-span-9 flex justify-center flex-col gap-2 pr-2'>
                             <FlujosTable title="Flujos asignados" pageSize={5}/>
                         </div>                    
                     </div>

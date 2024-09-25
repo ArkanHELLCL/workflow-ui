@@ -81,7 +81,7 @@ export default function RequerimientoMenu ({styles, delay, setAnimationEnd}) {
                                 aria-haspopup="true"
                                 aria-expanded={openGen ? 'true' : undefined}
                                 onClick={handleClickGen}
-                                className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Generar Informe del paso actual del requerimiento"
+                                className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Generar Informe"
                             >
                                 <div className="flex flex-col items-center relative">
                                     <GenReportIcon styles='w-10 h-10' strokeWidth='2' />
@@ -114,7 +114,7 @@ export default function RequerimientoMenu ({styles, delay, setAnimationEnd}) {
                                 aria-haspopup="true"
                                 aria-expanded={openDes ? 'true' : undefined}
                                 onClick={handleClickDes}
-                                className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Descargar informes generados"
+                                className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Descargar informe"
                             >
                                 <div className="flex flex-col items-center relative">
                                     <DownReportIcon styles='w-10 h-10' strokeWidth='2' />                         

@@ -17,6 +17,13 @@ import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
 import { data} from './mocks/datadiasusuario.json'
+import { ThemeProvider } from '@mui/material/styles';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { theme } from './utils/CustomTheme.jsx';
+import { esES } from '@mui/x-date-pickers/locales';
+import { SnackbarProvider } from 'notistack';
+import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -27,6 +34,7 @@ const handleNotDragOver = (event) => {
 function App() {  
   const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
   const [darkMode, setDarkMode] = useState(darkModeStorage)
+  
   
   const frmRequest = useForm({
     mode: "onBlur",
@@ -77,8 +85,7 @@ function App() {
             event.newValue ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
         }
     })    
-    darkModeStorage ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')
-    //setMode(darkModeStorage ? 'dark' : 'light')
+    darkModeStorage ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')    
   },[])
 
   const onSubmitRequest = (data, event) => {
@@ -135,11 +142,11 @@ function App() {
 
   useEffect(() => {
     if(openDialog.option){
+      enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
       console.log('formcomponent',openDialog.data, openDialog.formAction);      
       setLoading(true)      
       setReport(data)
-      setLoading(false)
-      enqueueSnackbar('Los datos han sido grabados exitosamente!', { variant : "success", anchorOrigin : { horizontal: "right", vertical: "bottom"} })
+      setLoading(false)      
       openDialog.frmobj.clearErrors()
       if(openDialog.reset)
         openDialog.frmobj.reset()
@@ -159,38 +166,52 @@ function App() {
   },[openDialog.option])
 
   return (
-    
-        <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
-          <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>      
-          <SideBar />            
-          <Header />      
-          <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
-          <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-          <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>      
-          <Footer />{
-          openDialog?.open &&
-            <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+    <ThemeProvider theme={theme(darkMode)}>
+      <LocalizationProvider
+          dateAdapter={AdapterDayjs} 
+          localeText={esES.components.MuiLocalizationProvider.defaultProps.localeText}
+          adapterLocale="es"
+      >
+        <SnackbarProvider maxSnack={5} Components={{
+            warning: StyledMaterialDesignContent, 
+            error: StyledMaterialDesignContent, 
+            info: StyledMaterialDesignContent, 
+            success: StyledMaterialDesignContent
           }
-          <form 
-            id={'frmWorkFlowv4'} 
-            noValidate 
-            ref={formReqRef}  
-            onSubmit={frmRequest.handleSubmit(onSubmitRequest)}>
-          </form>
-          <form 
-            id={'frmWFRecords'} 
-            noValidate 
-            ref={formRegRef}  
-            onSubmit={frmRecord.handleSubmit(onSubmitRecord)}>
-          </form>
-          <form 
-            id={'frmWFReports'} 
-            noValidate 
-            ref={formRepRef}  
-            onSubmit={frmReport.handleSubmit(onSubmitReport)}>
-          </form>
-        </main>
-      
+        }>
+          <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
+            <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>      
+            <SideBar />            
+            <Header />      
+            <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
+            <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
+            <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>      
+            <Footer />{
+            openDialog?.open &&
+              <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+            }
+            <form 
+              id={'frmWorkFlowv4'} 
+              noValidate 
+              ref={formReqRef}  
+              onSubmit={frmRequest.handleSubmit(onSubmitRequest)}>
+            </form>
+            <form 
+              id={'frmWFRecords'} 
+              noValidate 
+              ref={formRegRef}  
+              onSubmit={frmRecord.handleSubmit(onSubmitRecord)}>
+            </form>
+            <form 
+              id={'frmWFReports'} 
+              noValidate 
+              ref={formRepRef}  
+              onSubmit={frmReport.handleSubmit(onSubmitReport)}>
+            </form>
+          </main>
+        </SnackbarProvider>
+      </LocalizationProvider>
+    </ThemeProvider>
   )
 }
 

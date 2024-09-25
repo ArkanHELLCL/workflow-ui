@@ -1,14 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { Controller } from 'react-hook-form';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import arrayFilesToFileList from '../../../../utils/arrayFilesToFileList';
 import { useEffect } from 'react';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+
+const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+  });
 
 export default function FormInputFile({frmRequest, campo, className, setFilesList, filesList}) {
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
-    const onChange = (event) => {
+    const onChangeHandler = (event) => {
+        console.log(event)
         let files = [];                
         if(event.type==='change'){
             files = Array.from(event.target.files)            
@@ -25,26 +41,44 @@ export default function FormInputFile({frmRequest, campo, className, setFilesLis
     },[filesList])
 
     return (
-        <FormControl
-            size='sm'
-            className={className + ' pb-2'}
-            >
-            <label htmlFor={campo.FDI_NombreHTML} className={`flex items-center justify-center min-h-[56px] w-full cursor-pointer gap-2 dark:text-stone-100 text-stone-450 !text-base !font-light hover:text-[#2c87d2] ${frmRequest.formState.errors[campo.FDI_NombreHTML] ? '!text-red-600' : '' } border dark:border-[#575757] border-[#E0E3E7] hover:border-[#0078d4] hover:dark:border-[#b1b1b1] hover:bg-[#eff6fc] dark:hover:bg-[#666666] rounded-[3px]`}>
-                <CloudUploadIcon /> <span className='dark:text-stone-100 text-stone-900'>{campo.FDI_Descripcion}</span>
-            </label>
-            <input 
-                type="file"
-                hidden
-                {...frmRequest.register(campo.FDI_NombreHTML, {validate: () => {                    
-                    if(required && filesList.length === 0) return !!frmRequest.formState.errors[campo?.FDI_NombreHTML]
-                }})}
+        <div className={className + ' flex flex-col h-full w-full'}>
+            <Controller
+                control={frmRequest.control}
                 name={campo.FDI_NombreHTML}
-                id={campo.FDI_NombreHTML}            
-                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview"
-                onChange={() => onChange(event, frmRequest, campo.FDI_NombreHTML)}/>
-                <FormHelperText className="!text-red-600">
-                    {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
-                </FormHelperText>
-        </FormControl>
-    );
+                rules={{
+                    validate: {
+                        required: () => {                      
+                        if (required && filesList.length === 0) return campo.FDI_ErrorMessage;
+                        }
+                    }                
+                }}            
+                render={({ field: { onChange, onBlur } }) => (                
+                    <FormControl
+                        //size='sm'
+                        className={className}
+                        >
+                        <Button
+                            component="textField"
+                            role={undefined}
+                            variant="outlined"
+                            tabIndex={-1}
+                            startIcon={<CloudUploadIcon className='text-blue-600'/>}
+                            className={`!h-full !min-h-14 !rounded ${frmRequest.formState.errors[campo.FDI_NombreHTML] ? '!border-red-600':'dark:!border-[#575757] !border-[#E0E3E7] hover:!border-[#B2BAC2]'}`}
+                            >
+                            <span className={`${frmRequest.formState.errors[campo.FDI_NombreHTML] ? 'text-red-600' : 'dark:text-stone-100 text-stone-900'} !text-base`}>{campo.FDI_Descripcion}</span>
+                            <VisuallyHiddenInput
+                                type="file"
+                                onChange={(value) => {onChange(value); onChangeHandler(value)}}
+                                onBlur={onBlur}                            
+                                accept="image/png,image/x-png,image/jpg,image/jpeg,image/gif,application/x-msmediaview"                            
+                            />
+                        </Button>
+                    </FormControl>
+                )}     
+            />
+            <FormHelperText className="!text-red-600">
+                {frmRequest.formState.errors[campo.FDI_NombreHTML]?.message}
+            </FormHelperText>
+        </div>
+    )
 }

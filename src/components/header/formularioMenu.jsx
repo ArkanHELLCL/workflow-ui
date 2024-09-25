@@ -25,7 +25,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
                     grp[0].botones.map(btns =>
                         <button 
                             key={btns.id} 
-                            className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start cursor-pointer`} title={btns.tooltiptext} id={btns.id} 
+                            className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !bg-transparent !rounded-none !m-0 !ps-2.5 !pe-2.5 dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start cursor-pointer`} title={btns.nombre} id={btns.id} 
                             type={btns.type}
                             form={'frmWorkFlowv4'}>
                                 <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
