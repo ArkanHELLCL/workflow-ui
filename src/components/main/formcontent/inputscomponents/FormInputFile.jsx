@@ -23,6 +23,7 @@ const VisuallyHiddenInput = styled('input')({
 
 export default function FormInputFile({frmRequest, campo, className, setFilesList, filesList}) {
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    console.log(required)
     const onChangeHandler = (event) => {
         console.log(event)
         let files = [];                
@@ -47,14 +48,14 @@ export default function FormInputFile({frmRequest, campo, className, setFilesLis
                 name={campo.FDI_NombreHTML}
                 rules={{
                     validate: {
-                        required: () => {                      
-                        if (required && filesList.length === 0) return campo.FDI_ErrorMessage;
+                        required: (value) => {
+                            console.log(value, filesList.length)
+                            if (required && filesList.length === 0) return campo.FDI_ErrorMessage;
                         }
                     }                
                 }}            
                 render={({ field: { onChange, onBlur } }) => (                
-                    <FormControl
-                        //size='sm'
+                    <FormControl                        
                         className={className}
                         >
                         <Button
@@ -64,7 +65,7 @@ export default function FormInputFile({frmRequest, campo, className, setFilesLis
                             tabIndex={-1}
                             startIcon={<CloudUploadIcon className='text-blue-600'/>}
                             className={`!h-full !min-h-14 !rounded ${frmRequest.formState.errors[campo.FDI_NombreHTML] ? '!border-red-600':'dark:!border-[#575757] !border-[#E0E3E7] hover:!border-[#B2BAC2]'}`}
-                            >
+                        >
                             <span className={`${frmRequest.formState.errors[campo.FDI_NombreHTML] ? 'text-red-600' : 'dark:text-stone-100 text-stone-900'} !text-base`}>{campo.FDI_Descripcion}</span>
                             <VisuallyHiddenInput
                                 type="file"
