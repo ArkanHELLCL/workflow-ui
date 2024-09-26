@@ -86,7 +86,7 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
     useEffect(() => {        
         setFilesList([])        
         campos.map(campo => {   // || frmRequest.formState.isSubmitSuccessful  || frmRequest.formState.submitCount === 0
-            console.log(campo.DFO_Dato, frmRequest.formState.isSubmitSuccessful)
+            //console.log(campo.DFO_Dato, frmRequest.formState.isSubmitSuccessful)
             if(campo.DFO_Dato){
                 if(campo.FDI_TipoCampo.trim().toUpperCase() === 'F' || campo.FDI_TipoCampo.trim().toUpperCase() === 'V')
                     frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? new dayjs(campo.DFO_Dato?.trim()) : null)
