@@ -52,7 +52,7 @@ function App() {
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
   const { report, setReport } = useReports()
-  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true})
+  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
@@ -75,7 +75,7 @@ function App() {
 
   useEffect(() => {
     if(!frmReport.formState.isSubmitSuccessful && frmReport.formState.submitCount > 0 && !frmReport.formState.isValidating){
-      setError({variant: "error", message: 'Debes corregir los errores antes de grabar!'})
+      setError({variant: "error", message: 'Debes corregir los errores antes de enviar los datos!'})
     }
   },[frmReport.formState.submitCount])
 
@@ -101,7 +101,8 @@ function App() {
       frmobj:frmRequest,
       titulo,
       mensaje:ConfirmationMessage(id),
-      id
+      id,
+      formid:'frmWorkFlowv4'
     })
   };
 
@@ -118,7 +119,8 @@ function App() {
       frmobj:frmRecord,
       titulo,
       mensaje:ConfirmationMessage(id),
-      id
+      id,
+      formid:'frmWFRecords'
     })
   };
 
@@ -136,13 +138,19 @@ function App() {
       titulo,
       mensaje:ConfirmationMessage(id),
       id,
-      reset:false
+      reset:false,
+      formid:'frmWFReports'
     })
   };
 
   useEffect(() => {
-    if(openDialog.option){      
-      setError({variant: "success", message: 'Los datos han sido grabados exitosamente!'})
+    let mensaje = ''
+    if(openDialog.option){   
+      if(openDialog.formid === 'frmWFReports') 
+          mensaje = 'Los datos han sido enviados exitosamente!'
+      else
+          mensaje = 'Los datos han sido grabados exitosamente!'
+      setError({variant: "success", message: mensaje})
       console.log('formcomponent',openDialog.data, openDialog.formAction);      
       setLoading(true)      
       setReport(data)

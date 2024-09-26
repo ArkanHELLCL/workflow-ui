@@ -98,7 +98,7 @@ export const theme = (darkMode) =>
             styleOverrides: {
                 overline: {                                
                     lineHeight: '.75rem',
-                    fontSize: '.65rem',
+                    fontSize: '.75rem',
                     color: '#bbdefb',
                     fontFamily: 'inherit'
                 },
