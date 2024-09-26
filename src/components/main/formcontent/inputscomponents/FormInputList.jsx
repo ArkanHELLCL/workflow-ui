@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { useMantainer } from '../../../../hooks/useMantainer.jsx';
 import FormControl from '@mui/material/FormControl';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from "@mui/material/Paper";
@@ -28,11 +29,14 @@ import ExternalMantainer from './ExternalMantainer.jsx'
 import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputList ({ frmRequest, campo, className }) {  
-  const { request } = useRequest();  
+  const { request } = useRequest();
+  const { mantainer } = useMantainer();
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
+  const [dataOptions, setDataOptions] = useState([]);
+  const [buttonMantainer, setButtonMantainer] = useState(false);
   const loading = open && options.length === 0;
 
   const disabled = () => {
@@ -45,55 +49,90 @@ export default function FormInputList ({ frmRequest, campo, className }) {
       return false
     return true
   }
-  
-  let dataOptions = [];
-  let buttonMantainer = false;
-  if(campo.FDI_TipoCampo==='X1'){
-    dataOptions = structuredClone(proveedores)
-    buttonMantainer = true;
-  }
-  if(campo.FDI_TipoCampo==='X2'){
-    dataOptions = structuredClone(regiones)
-    buttonMantainer = false;
-  }
-  if(campo.FDI_TipoCampo==='X3'){
-    dataOptions = structuredClone(bancos)
-    buttonMantainer = false;
-  }
-  if(campo.FDI_TipoCampo==='X4'){
-    dataOptions = structuredClone(tiposdecuenta)
-    buttonMantainer = false;
-  }
-  if(campo.FDI_TipoCampo==='X5'){
-    dataOptions = structuredClone(departamentos)
-    buttonMantainer = false;
-  }
-  if(campo.FDI_TipoCampo==='X6'){
-    dataOptions = structuredClone(sexos)
-    buttonMantainer = false;
-  }
-  if(campo.FDI_TipoCampo==='X7'){
-    dataOptions = structuredClone(perfiles)
-    buttonMantainer = false;
-  }
-  if(campo.FDI_TipoCampo==='U')
-    dataOptions = structuredClone(usuarios)
-  if(campo.FDI_TipoCampo==='PM')
-    dataOptions = structuredClone(periodos)
-  if(campo.FDI_TipoCampo==='L'){
-    if(campo.LID_Id===16)
-      dataOptions = structuredClone(meses)
-    if(campo.LID_Id===17)
-      dataOptions = structuredClone(tipodocumento)
-    if(campo.LID_Id===4)
-      dataOptions = structuredClone(moneda)
-    if(campo.LID_Id===20)
-      dataOptions = structuredClone(tipodeservicio)
-    if(campo.LID_Id===13)
-      dataOptions = structuredClone(tipodepago)
-    if(campo.LID_Id===18)
-      dataOptions = structuredClone(pagotesoreria)
-  }  
+
+  useEffect(() => {
+    if(campo.FDI_TipoCampo==='X1'){
+      console.log('mantainer',mantainer)
+      if(mantainer?.id === 'mpmant'){
+        proveedores.records.push(mantainer?.record)
+      }
+    }
+  },[mantainer])  
+
+  useEffect(() => {
+    if(campo.FDI_TipoCampo==='X1'){      
+      setDataOptions(proveedores)
+      setButtonMantainer(true);
+      return
+    }
+    if(campo.FDI_TipoCampo==='X2'){      
+      setDataOptions(regiones)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='X3'){
+      setDataOptions(bancos)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='X4'){
+      setDataOptions(tiposdecuenta)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='X5'){      
+      setDataOptions(departamentos)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='X6'){
+      setDataOptions(sexos)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='X7'){      
+      setDataOptions(perfiles)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='U'){
+      setDataOptions(usuarios)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='PM'){
+      setDataOptions(periodos)
+      setButtonMantainer(false);
+      return
+    }
+    if(campo.FDI_TipoCampo==='L'){
+      setButtonMantainer(false);
+      if(campo.LID_Id===16){
+        setDataOptions(meses)
+        return
+      }
+      if(campo.LID_Id===17){
+        setDataOptions(tipodocumento)
+        return
+      }
+      if(campo.LID_Id===4){
+        setDataOptions(moneda)
+        return
+      }
+      if(campo.LID_Id===20){
+        setDataOptions(tipodeservicio)
+        return
+      }
+      if(campo.LID_Id===13){
+        setDataOptions(tipodepago)
+        return
+      }
+      if(campo.LID_Id===18){
+        setDataOptions(pagotesoreria)
+        return
+      }
+    }  
+  },[proveedores,regiones,bancos,tiposdecuenta,departamentos,sexos,perfiles,usuarios,periodos,meses,tipodocumento,moneda,tipodeservicio,tipodepago,pagotesoreria])
 
   useEffect(() => {
     let active = true;

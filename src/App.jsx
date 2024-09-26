@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
 import { useReports } from "./hooks/useReports.jsx";
+import { useMantainer } from "./hooks/useMantainer.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
@@ -34,8 +35,19 @@ const handleNotDragOver = (event) => {
 function App() {  
   const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
   const [darkMode, setDarkMode] = useState(darkModeStorage)
-  
-  
+  const { setMantainer } = useMantainer()
+  const { setPreview } = usePreview()
+  const { setAdjuntos } = useAttach()
+  const { report, setReport } = useReports()
+  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
+  const [openSearch, setOpenSearch] = useState(false);
+  const formReqRef = useRef(null)
+  const formRegRef = useRef(null)
+  const formRepRef = useRef(null)  
+  const [filesList, setFilesList] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
   const frmRequest = useForm({
     mode: "onBlur",
     //mode: "all"
@@ -48,18 +60,6 @@ function App() {
     //mode: "all"
     mode : "onBlur"
   })
-
-  const { setPreview } = usePreview()
-  const { setAdjuntos } = useAttach()
-  const { report, setReport } = useReports()
-  const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
-  const [openSearch, setOpenSearch] = useState(false);
-  const formReqRef = useRef(null)
-  const formRegRef = useRef(null)
-  const formRepRef = useRef(null)  
-  const [filesList, setFilesList] = useState([]);
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
 
   useEffect(() => {    
     if(!frmRequest.formState.isSubmitSuccessful && frmRequest.formState.submitCount > 0 && !frmRequest.formState.isValidating){      
@@ -154,6 +154,14 @@ function App() {
       }
       else
           mensaje = 'Los datos han sido grabados exitosamente!'
+
+      //fecth a la base de datos, recupera el id y lo setea en el formulario
+      const newRecorId = 99999      
+      if(openDialog.formid === 'frmWFRecords' && openDialog.formAction.split('/')[3] === 'mpmant'){
+        console.log('openDialog.data',openDialog.data)
+        setMantainer({id:'mpmant',record:{id:newRecorId, label:openDialog.data.PRO_RazonSocial},fieldid:'PagIdProveedor'})
+      }
+
       setError({variant: "success", message: mensaje})
       console.log('formcomponent',openDialog.data, openDialog.formAction);       
       openDialog.frmobj.clearErrors()

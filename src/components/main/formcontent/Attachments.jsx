@@ -112,13 +112,13 @@ const Adjuntos = ({file, preview, setPreview, setAdjuntos, setFilesList}) => {
                         <ListItemText>Guardar todos los adjuntos</ListItemText>
                     </MenuItem>{
                     file?.upload  &&
-                        <>
+                        <div>
                             <Divider className='!ml-10 !my-1'/>
                             <MenuItem  className={`hover:!bg-[#c5c5c5] dark:hover:!bg-[#505050] !pr-10 dark:!text-stone-100 !text-stone-500 !gap-0 !py-0 mnuFlow`} onClick={()=>handleEliminarClick(file)} >                            
                                 <ListItemIcon className='!min-w-7'><DeleteFileIcon styles='h-5 w-5 text-red-600' strokeWidth={2} /></ListItemIcon>
                                 <ListItemText>Quitar todos los adjuntos</ListItemText>                  
                             </MenuItem>
-                        </>
+                        </div>
                     }
                 </Menu>                
             </div>                  

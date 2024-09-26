@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
+import { useMantainer } from '../../../hooks/useMantainer.jsx';
 import FormHelperText from '@mui/material/FormHelperText';
-import Inputs from './Inputs.jsx';
+import Inputs from './inputs.jsx';
 import DropAttach from './DropAttach.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';
@@ -10,10 +11,10 @@ import { useAttach } from '../../../hooks/useAttach.jsx';
 import { user } from '../../../mocks/usuario.json'
 import dayjs from "dayjs";
 
-
 export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest, setFilesList, filesList}) {
     const { request } = useRequest()
     const { setAdjuntos } = useAttach()
+    const { mantainer, setMantainer } = useMantainer()
     const handleDragEnter = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -37,15 +38,14 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
     const handleDragOver = (event) => {
         event.preventDefault();
         event.stopPropagation();
-    };
-
+    };    
     
     const onChange = (event) => {
         let files = [];                
         if(event.type==='change'){
             files = Array.from(event.target.files)            
         }else{
-            files = Array.from(event.dataTransfer.files)            
+            files = Array.from(event.dataTransfer.files)
         }                
         setFilesList([...filesList, ...files]);
         const validFiles = files.filter((file) => {
@@ -83,17 +83,22 @@ export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest,
         frmRequest.clearErrors('frmWFInputFile')
     },[filesList])
 
-    useEffect(() => {
-        //frmRequest.clearErrors()
-        //frmRequest.reset({keepIsSubmitted : false, keepSubmitCount: false})        
+    useEffect(() => {        
         setFilesList([])        
-        campos.map(campo => {
-            if(campo.FDI_TipoCampo.trim().toUpperCase() === 'F' || campo.FDI_TipoCampo.trim().toUpperCase() === 'V')
-                frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? new dayjs(campo.DFO_Dato?.trim()) : null)
-            else
-                frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : null)            
-        })        
-    },[campos, request])
+        campos.map(campo => {   // || frmRequest.formState.isSubmitSuccessful  || frmRequest.formState.submitCount === 0
+            console.log(campo.DFO_Dato, frmRequest.formState.isSubmitSuccessful)
+            if(campo.DFO_Dato){
+                if(campo.FDI_TipoCampo.trim().toUpperCase() === 'F' || campo.FDI_TipoCampo.trim().toUpperCase() === 'V')
+                    frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? new dayjs(campo.DFO_Dato?.trim()) : null)
+                else
+                    frmRequest.setValue(campo.FDI_NombreHTML, campo.DFO_Dato ? campo.DFO_Dato?.trim() : null)                
+            }
+        })
+        if(mantainer?.id === 'mpmant'){        
+            frmRequest.setValue(mantainer?.fieldid, mantainer?.record?.id.toString())
+            setMantainer({"id":null,"record":null})
+        } 
+    },[campos, request, mantainer])
 
     const required = campos.find(campo => campo.FDI_CampoObligatorio === 1 && campo.FDI_TipoCampo.trim().toUpperCase() === 'A') ? true : false;    
 
