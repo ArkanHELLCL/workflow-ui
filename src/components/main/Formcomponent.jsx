@@ -25,7 +25,7 @@ function PreviewObj({preview, filters, request, frmRecord, campos}){
                 <h2 className="font-thin text-xl">Mantenedor de proveedores</h2>
                 <h2 className="font-thin text-base border border-b border-t-0 border-r-0 border-l-0 dark:border-stone-700 pb-2">Ingreso unitario para formulario de {request?.request?.FLU_Descripcion}</h2>
             </div>
-            <MPMant frmRecord={frmRecord} record={null} mant={filters.itemIdSelected} campos={campos} singleButton={true} />   
+            <MPMant frmRecord={frmRecord} record={null} mant={filters.itemIdSelected} campos={campos} singleButton={true} formaction={'/mpmant/'}/>   
         </>
     )
 }

@@ -146,15 +146,16 @@ function App() {
   useEffect(() => {
     let mensaje = ''
     if(openDialog.option){   
-      if(openDialog.formid === 'frmWFReports') 
+      if(openDialog.formid === 'frmWFReports'){
           mensaje = 'Los datos han sido enviados exitosamente!'
+          setLoading(true)      
+          setReport(data)
+          setLoading(false)     
+      }
       else
           mensaje = 'Los datos han sido grabados exitosamente!'
       setError({variant: "success", message: mensaje})
-      console.log('formcomponent',openDialog.data, openDialog.formAction);      
-      setLoading(true)      
-      setReport(data)
-      setLoading(false)      
+      console.log('formcomponent',openDialog.data, openDialog.formAction);       
       openDialog.frmobj.clearErrors()
       if(openDialog.reset)
         openDialog.frmobj.reset()

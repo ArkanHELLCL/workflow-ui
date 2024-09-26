@@ -61,11 +61,11 @@ export default function MCMant({frmRecord, mant, record, singleButton}) {
                     <span className='text-[11px] leading-tight'>{field.COM_FechaEdit.slice(0,16).replace('T',' ')}</span>
                 </section>
                 <section className="py-3 w-full frmmantbody">
-                    <div className="w-full pr-2 flex flex-col overflow-y-auto">
+                    <div className="w-full flex flex-col overflow-y-auto">
                         <Inputs frmRequest={frmRecord} campos={campos} />
                         <input type="hidden" {...frmRecord.register('COM_Id')} value={field?.COM_Id} />
 
-                        <div className='grid grid-cols-12 gap-2'>
+                        <div className='grid grid-cols-12 gap-2 pr-2'>
                             <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field?.COM_Estado) === 1 && field?.COM_Estado !== undefined ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : parseInt(field?.COM_Estado) === 1 && field?.COM_Estado !== undefined ?<ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : null}{parseInt(field?.COM_Estado) === 1  && field?.COM_Estado !== undefined ? ' Habilitado' : parseInt(field?.COM_Estado) !== 1  && field?.COM_Estado !== undefined ? ' Deshabilitado' : null}</span>
                         </div>                                                
                     </div>            

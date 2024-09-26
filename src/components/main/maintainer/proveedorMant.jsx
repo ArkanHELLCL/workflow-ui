@@ -9,7 +9,7 @@ import Inputs from '../formcontent/inputs.jsx';
 import { formulario as formant } from '../../../mocks/formularioMant.json';
 import { useEffect, useState } from 'react';
 
-export default function MPMant({frmRecord, mant, record, singleButton }) {
+export default function MPMant({frmRecord, mant, record, singleButton, formaction }) {
     const [field, setField] = useState(null)
     const [campos, setCampos] = useState([])
     
@@ -63,7 +63,7 @@ export default function MPMant({frmRecord, mant, record, singleButton }) {
                     <h2 className='font-sm text-base -mb-1'>{field.PRO_Id === 0 ? 'Creador: ' : 'Último editor: '} <span className='text-[#2c87d2]'>{field.PRO_UsuarioEdit}</span></h2>
                 </section>{
                     singleButton ?
-                        <InputSaveButtons />
+                        <InputSaveButtons formaction={formaction}/>
                     :   
                         <Buttons formulario={formulario} className={'frmmantbuttonsact pt-2'}/>
                 }
@@ -71,9 +71,9 @@ export default function MPMant({frmRecord, mant, record, singleButton }) {
                     <span className='text-[11px] leading-tight'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span>
                 </section>                
                 <section className="py-3 w-full frmmantbody">
-                    <div className="w-full pr-2 flex flex-col overflow-y-auto">
+                    <div className="w-full flex flex-col overflow-y-auto">
                         <Inputs frmRequest={frmRecord} campos={campos} />
-                        <div className='grid grid-cols-12 gap-2 pb-3'>
+                        <div className='grid grid-cols-12 gap-2 pb-3 pr-2'>
                             <span className='text-[#2c87d2] !text-base !font-normal col-span-12 flex gap-2 items-center uppercase !justify-end'>{parseInt(field.PRO_Estado) === 1 ?  <ButtonIcon typeButton="btn_habilitar" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/> : <ButtonIcon typeButton="btn_bloquear" styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>}{parseInt(field.PRO_Estado) === 1 ? ' Habilitado' : ' Deshabilitado'}</span>
                         </div>
                     </div>
