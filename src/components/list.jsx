@@ -13,8 +13,6 @@ import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
 import ListaRegReportes from "./main/ListaRegReportes.jsx";
-import Loading from "../utils/Loading.jsx"; 
-import { Suspense } from "react";
 
 export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
@@ -33,11 +31,9 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                           <MenuFilters />
                         </div>
                     </div>
-                    <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">
-                      <Suspense fallback={<Loading />}>
+                    <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">                      
                         <DetalleRequerimiento />
-                        <ListaRequerimientos frmRequest={frmRequest}/>
-                      </Suspense>
+                        <ListaRequerimientos frmRequest={frmRequest}/>                      
                     </div>
                   </>
               }{
@@ -82,10 +78,8 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                         )
                       }
                     </div>
-                    <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">
-                      <Suspense fallback={<Loading />}>
-                        <ListaRegMantenedores frmRecord={frmRecord}/>
-                      </Suspense>
+                    <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">                      
+                        <ListaRegMantenedores frmRecord={frmRecord}/>                      
                     </div>
                   </>
               }{
