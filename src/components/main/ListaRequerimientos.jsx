@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import { Suspense, useEffect, useState } from "react";
 import { useFilters } from '../../hooks/useFilters.jsx';
-//import { useFetch } from '../../hooks/useFetch.jsx';
 import { fetchData } from "../../utils/fectData.js";
 //import { bandejas } from "../../mocks/requerimientos.json";
 import { Accordions } from './request/accordions.jsx'
@@ -42,18 +41,11 @@ export default function ListaRequerimientos({frmRequest}){
     //const { filteredRequest } = filterRequest(bandejas)
     const { filteredRequest } = filterRequest(data)
     
-    /*const { data, loading, error, handleCancelRequest } = useFetch('http://localhost:3100/api/bandeja-de-entrada?PageNumber=1&RowsOfPage=1000', { 
-            method: 'GET', 
-            headers: {Accept: 'application/json','Content-Type': 'application/json'}            
-      })*/
-    
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)
     const [acc, setAcc] = useState([])
 
     const moreItems = filteredRequest.length === 1000 ? true : false
 
-    //console.log(data, loading, error)
-    
     useEffect(() => {
         setAcc(requerimientoAccordion)
     }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
