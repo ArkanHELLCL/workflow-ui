@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import io from 'socket.io-client';
 import { useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
@@ -25,6 +26,8 @@ import { esES } from '@mui/x-date-pickers/locales';
 import { SnackbarProvider } from 'notistack';
 import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 import { ToastMessages } from "./utils/toastMessages.jsx";
+
+const socket = io('http://localhost:3100');
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -155,6 +158,7 @@ function App() {
       else
           mensaje = 'Los datos han sido grabados exitosamente!'
 
+      socket.emit('mensaje', openDialog.data)
       //fecth a la base de datos, recupera el id y lo setea en el formulario
       const newRecorId = 99999      
       if(openDialog.formid === 'frmWFRecords' && openDialog.formAction.split('/')[3] === 'mpmant'){
@@ -181,6 +185,16 @@ function App() {
       })
     }
   },[openDialog.option])
+
+  useEffect(() => {
+    socket.on('mensaje', (data) => {
+      console.log('mensaje recibido', data)
+    })
+
+    return () => {
+      socket.off('mensaje')
+    }
+  },[])
 
   return (
     <ThemeProvider theme={theme(darkMode)}>

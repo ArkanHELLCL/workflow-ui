@@ -730,7 +730,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
     if(typeIcon===2){
         if(typeButton==='btn_mannext')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
@@ -750,7 +750,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_manprev')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
@@ -770,7 +770,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_eliminar')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
@@ -790,7 +790,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_habilitar')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
@@ -810,7 +810,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_bloquear')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
@@ -830,7 +830,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_modificar')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
@@ -850,7 +850,7 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
         if(typeButton==='btn_crear')
             return(
-                <div className="relative flex my-auto">
+                <div className="relative flex">
                     <span>
                         <svg fill="currentColor" viewBox="0 0 512 512" className={styles + ' !w-10 !h-10'}>
                             <g>
