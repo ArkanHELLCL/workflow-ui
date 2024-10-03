@@ -32,8 +32,7 @@ const Accordion = ({acc, moreItems, frmRequest}) => {
     )
 }
 
-export default function ListaRequerimientos({frmRequest, data}){
-    console.log('ListaRequerimientos', data)
+export default function ListaRequerimientos({frmRequest, data}){    
     const { filters, filterRequest } = useFilters() 
     //const { filteredRequest } = filterRequest(bandejas)
     const { filteredRequest } = filterRequest(data)

@@ -4,8 +4,7 @@ import { FiltersContext } from '../context/filters.jsx'
 export function useFilters() {
     const { filters, setFilters } = useContext(FiltersContext)
 
-    const filterRequest = (request) => {
-        console.log('filterRequest',request)
+    const filterRequest = (request) => {        
         if(request?.registros?.lenght===0) return {filteredRequest: []}
         
         let filteredRequest = []
