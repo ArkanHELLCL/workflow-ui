@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import { Suspense, useEffect, useState } from "react";
 import { useFilters } from '../../hooks/useFilters.jsx';
-import { fetchData } from "../../utils/fectData.js";
 //import { bandejas } from "../../mocks/requerimientos.json";
 import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";
@@ -32,11 +31,9 @@ const Accordion = ({acc, moreItems, frmRequest}) => {
         </>
     )
 }
-const apiData = fetchData('http://localhost:3100/api/bandeja-de-entrada?PageNumber=1&RowsOfPage=1000', {method: 'GET', headers: {Accept: 'application/json','Content-Type': 'application/json'}})
 
-export default function ListaRequerimientos({frmRequest}){
-    const data = apiData.read()
-    console.log(data)
+export default function ListaRequerimientos({frmRequest, data}){
+    console.log('ListaRequerimientos', data)
     const { filters, filterRequest } = useFilters() 
     //const { filteredRequest } = filterRequest(bandejas)
     const { filteredRequest } = filterRequest(data)
@@ -50,9 +47,7 @@ export default function ListaRequerimientos({frmRequest}){
         setAcc(requerimientoAccordion)
     }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
     
-    return (
-        <Suspense fallback={<Loading />}>                           
-            <Accordion acc={acc} moreItems={moreItems} frmRequest={frmRequest}/>                     
-        </Suspense>            
+    return (        
+        <Accordion acc={acc} moreItems={moreItems} frmRequest={frmRequest}/>        
     )
 }

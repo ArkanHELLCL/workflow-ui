@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import io from 'socket.io-client';
+import { fetchData } from "./utils/fectData.js";
 import { useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
@@ -17,7 +18,6 @@ import DataForm from "./components/dataform.jsx";
 import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
-import { data} from './mocks/datadiasusuario.json'
 import { ThemeProvider } from '@mui/material/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -26,8 +26,16 @@ import { esES } from '@mui/x-date-pickers/locales';
 import { SnackbarProvider } from 'notistack';
 import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 import { ToastMessages } from "./utils/toastMessages.jsx";
+import { data} from './mocks/datadiasusuario.json'
 
 const socket = io('http://localhost:3100');
+const param = {usrCod:'lcastillo', usrClave:'123456'}
+const apiData = fetchData('http://localhost:3100/api/login', {
+    method: 'POST', 
+    headers: {Accept: 'application/json','Content-Type': 'application/json'}, 
+    body: JSON.stringify(param),
+    credentials: 'include'
+})
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -49,7 +57,13 @@ function App() {
   const formRepRef = useRef(null)  
   const [filesList, setFilesList] = useState([]);
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null)  
+  
+  useEffect(() => {
+    const data = apiData.read()
+    console.log(data)
+  },[])
+  //console.log(data)
 
   const frmRequest = useForm({
     mode: "onBlur",

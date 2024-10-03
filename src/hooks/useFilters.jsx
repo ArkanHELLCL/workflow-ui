@@ -5,6 +5,9 @@ export function useFilters() {
     const { filters, setFilters } = useContext(FiltersContext)
 
     const filterRequest = (request) => {
+        console.log('filterRequest',request)
+        if(request?.registros?.lenght===0) return {filteredRequest: []}
+        
         let filteredRequest = []
         filters.totalFiltrados = 0
         //Search request        
