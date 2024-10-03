@@ -28,6 +28,7 @@ import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 import { ToastMessages } from "./utils/toastMessages.jsx";
 import { data} from './mocks/datadiasusuario.json'
 
+//socket.io
 const socket = io('http://localhost:3100');
 const param = {usrCod:'lcastillo', usrClave:'123456'}
 const apiData = fetchData('http://localhost:3100/api/login', {

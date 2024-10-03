@@ -25,7 +25,8 @@ const apiData = fetchData('http://localhost:3100/api/bandeja-de-entrada?PageNumb
 
 export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
-    const data = apiData.read()    
+    const data = apiData.read()
+    console.log('list',data)
 
     return (
       <section id="list">
