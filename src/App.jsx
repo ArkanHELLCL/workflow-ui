@@ -1,13 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import io from 'socket.io-client';
-import { fetchData } from "./utils/fectData.js";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
 import { useReports } from "./hooks/useReports.jsx";
 import { useMantainer } from "./hooks/useMantainer.jsx";
-import { useUserData } from "./hooks/useUserData.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
@@ -32,13 +30,6 @@ import Loading from "./utils/Loading.jsx";
 
 //socket.io
 const socket = io('http://localhost:3100');
-const param = {usrCod:'lcastillo', usrClave:'123456'}
-const apiData = fetchData('http://localhost:3100/api/login', {
-    method: 'POST', 
-    headers: {Accept: 'application/json','Content-Type': 'application/json'}, 
-    body: JSON.stringify(param),
-    credentials: 'include'
-})
 
 const handleNotDragOver = (event) => {
   event.preventDefault();
@@ -60,14 +51,7 @@ function App() {
   const formRepRef = useRef(null)  
   const [filesList, setFilesList] = useState([]);
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)  
-  const {setUserdata} = useUserData({})
-
-  const userdata = apiData.read()
-  
-  useEffect(() => {    
-    setUserdata(userdata)    
-  },[userdata])  
+  const [error, setError] = useState(null)
 
   const frmRequest = useForm({
     mode: "onBlur",

@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import Login from './Login.jsx'
 import './index.css'
 import { FiltersProvider } from './context/filters.jsx'
 import { RequestProvider } from './context/request.jsx'
@@ -9,7 +9,6 @@ import { PreviewProvider } from './context/preview.jsx'
 import { ReportsProvider } from './context/reports.jsx'
 import { MantainerProvider } from './context/mantainer.jsx'
 import { UserDataProvider } from './context/userdata.jsx'
-import 'dayjs/locale/es';
 
 createRoot(document.getElementById('root')).render(
   <FiltersProvider>
@@ -20,7 +19,7 @@ createRoot(document.getElementById('root')).render(
               <PreviewProvider>
                 <MantainerProvider>
                   <UserDataProvider>
-                    <App />
+                    <Login />
                   </UserDataProvider>
                 </MantainerProvider>
               </PreviewProvider>              
