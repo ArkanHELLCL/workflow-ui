@@ -23,13 +23,13 @@ import {
   randomId,
 } from '@mui/x-data-grid-generator';
 import { flujos, asignados } from '../../../../mocks/flujosTable.json';
-import { user } from '../../../../mocks/usuario.json';
+import { useUserData } from '../../../../hooks/useUserData.jsx';
 import { useEffect, useState } from 'react';
 import { useRecords } from '../../../../hooks/useRecords.jsx';
 import { StyledDataGrid } from '../../formcontent/inputscomponents/StyledDataGrid.jsx';
 
 function EditToolbar(props) {
-  const { setRows, setRowModesModel } = props;
+  const { setRows, setRowModesModel, user } = props;
 
   const handleClick = () => {
     const id = randomId();
@@ -68,6 +68,7 @@ function CustomPagination() {
 }
 
 export default function FlujosTable({title, pageSize}) {
+  const { userdata : user } = useUserData();
   const [rows, setRows] = useState([]);
   const [rowModesModel, setRowModesModel] = useState({});
   const { record } = useRecords();
@@ -211,7 +212,7 @@ export default function FlujosTable({title, pageSize}) {
                 pagination: CustomPagination,
             }}
             slotProps={{
-                toolbar: { setRows, setRowModesModel },
+                toolbar: { setRows, setRowModesModel, user },
             }}
             initialState={{
                 pagination: {

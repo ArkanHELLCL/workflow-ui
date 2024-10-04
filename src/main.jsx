@@ -8,6 +8,7 @@ import { AttachProvider } from './context/attach.jsx'
 import { PreviewProvider } from './context/preview.jsx'
 import { ReportsProvider } from './context/reports.jsx'
 import { MantainerProvider } from './context/mantainer.jsx'
+import { UserDataProvider } from './context/userdata.jsx'
 import 'dayjs/locale/es';
 
 createRoot(document.getElementById('root')).render(
@@ -18,7 +19,9 @@ createRoot(document.getElementById('root')).render(
           <AttachProvider>
               <PreviewProvider>
                 <MantainerProvider>
-                  <App />
+                  <UserDataProvider>
+                    <App />
+                  </UserDataProvider>
                 </MantainerProvider>
               </PreviewProvider>              
           </AttachProvider>

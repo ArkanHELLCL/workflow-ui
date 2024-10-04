@@ -5,7 +5,7 @@ import { NumericFormat } from 'react-number-format';
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { useRequest } from '../../../../hooks/useRequest';
-import { user } from '../../../../mocks/usuario.json'
+import { useUserData } from '../../../../hooks/useUserData.jsx';
 import { CssTextField } from './CssTextField.jsx'
 
 const NumericFormatAdapter = forwardRef(
@@ -40,6 +40,7 @@ NumericFormatAdapter.propTypes = {
 
 export default function FormInputMonto ({ frmRequest, campo, className }) {
     const { request } = useRequest();
+    const { userdata : user } = useUserData();
     const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
 
     const disabled = () => {

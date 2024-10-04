@@ -4,7 +4,7 @@ import Slide from '@mui/material/Slide';
 import ContentMenu from "./contentMenu.jsx"
 import { useRequest } from "../../hooks/useRequest.jsx";
 import { useFilters } from "../../hooks/useFilters.jsx";
-import { user } from "../../mocks/usuario.json";
+import { useUserData } from '../../hooks/useUserData.jsx';
 import { ButtonIcon } from "../../utils/icons.jsx";
 
 const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {        
@@ -44,6 +44,7 @@ const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
 export default function FormularioMenu ({styles, grupos, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const { filters } = useFilters()
+    const { userdata : user } = useUserData();
 
     return(
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 

@@ -3,13 +3,14 @@
 import Slide from '@mui/material/Slide';
 import { useFilters } from '../../hooks/useFilters.jsx';
 import { useRequest } from "../../hooks/useRequest.jsx";
+import { useUserData } from '../../hooks/useUserData.jsx';
 import ContentMenu from "./contentMenu"
 import { AttachIcon } from "../../utils/icons.jsx";
-import { user } from "../../mocks/usuario.json";
 
 export default function Adjuntar ({styles, delay, setAnimationEnd}) {
-    const { request } = useRequest()
-    const { filters } = useFilters(); 
+    const { request } = useRequest();
+    const { filters } = useFilters();
+    const { userdata : user } = useUserData();
     
     return (
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' &&

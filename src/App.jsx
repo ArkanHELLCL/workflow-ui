@@ -2,11 +2,12 @@
 /* eslint-disable react/prop-types */
 import io from 'socket.io-client';
 import { fetchData } from "./utils/fectData.js";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
 import { useReports } from "./hooks/useReports.jsx";
 import { useMantainer } from "./hooks/useMantainer.jsx";
+import { useUserData } from "./hooks/useUserData.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
@@ -26,7 +27,8 @@ import { esES } from '@mui/x-date-pickers/locales';
 import { SnackbarProvider } from 'notistack';
 import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 import { ToastMessages } from "./utils/toastMessages.jsx";
-import { data} from './mocks/datadiasusuario.json'
+import { data } from './mocks/datadiasusuario.json'
+import Loading from "./utils/Loading.jsx";
 
 //socket.io
 const socket = io('http://localhost:3100');
@@ -59,12 +61,13 @@ function App() {
   const [filesList, setFilesList] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)  
+  const {setUserdata} = useUserData({})
+
+  const userdata = apiData.read()
   
-  useEffect(() => {
-    const data = apiData.read()
-    console.log(data)
-  },[])
-  //console.log(data)
+  useEffect(() => {    
+    setUserdata(userdata)    
+  },[userdata])  
 
   const frmRequest = useForm({
     mode: "onBlur",
@@ -226,12 +229,15 @@ function App() {
           }
         }>
           <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
-            <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>      
-            <SideBar />            
-            <Header />      
-            <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
-            <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-            <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>      
+            <Suspense fallback={<Loading />}>
+              <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>
+            </Suspense>
+              <SideBar />            
+              <Header />      
+              <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
+              <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
+              <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
+            
             <Footer />{
             openDialog?.open &&
               <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />

@@ -3,16 +3,17 @@
 import { useEffect } from 'react';
 import { useMantainer } from '../../../hooks/useMantainer.jsx';
 import FormHelperText from '@mui/material/FormHelperText';
-import Inputs from './inputs.jsx';
+import Inputs from './Inputs.jsx';
 import DropAttach from './DropAttach.jsx';
 import arrayFilesToFileList from '../../../utils/arrayFilesToFileList.jsx';
 import { useRequest } from '../../../hooks/useRequest.jsx';
 import { useAttach } from '../../../hooks/useAttach.jsx';
-import { user } from '../../../mocks/usuario.json'
+import { useUserData } from '../../../hooks/useUserData.jsx';
 import dayjs from "dayjs";
 
 export default function InputsForm({setDropEnter, dropEnter, campos, frmRequest, setFilesList, filesList}) {
     const { request } = useRequest()
+    const { userdata : user } = useUserData();
     const { setAdjuntos } = useAttach()
     const { mantainer, setMantainer } = useMantainer()
     const handleDragEnter = (event) => {

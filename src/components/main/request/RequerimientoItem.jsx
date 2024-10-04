@@ -7,9 +7,10 @@ import { usePreview } from "../../../hooks/usePreview.jsx";
 import { ArchiveIcon, UnArchiveIcon, EditIcon, UserIcon, CloseRequest } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
-import { user } from '../../../mocks/usuario.json'
+import { useUserData } from "../../../hooks/useUserData.jsx";
 
 export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {    
+    const { userdata : user } = useUserData();
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
     const { setAdjuntos } = useAttach()

@@ -4,14 +4,14 @@ import FormControl from '@mui/material/FormControl';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Controller } from 'react-hook-form';
 import { useRequest } from '../../../../hooks/useRequest';
-import { user } from '../../../../mocks/usuario.json'
+import { useUserData } from '../../../../hooks/useUserData.jsx';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import EventIcon from '@mui/icons-material/Event';
 import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputFecha ({ frmRequest, campo, className }) {
-    const { request } = useRequest();      
-    //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const { request } = useRequest();
+    const { userdata : user } = useUserData();
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
     
     const disabled = () => {

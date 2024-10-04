@@ -2,12 +2,12 @@
 import FormControl from '@mui/material/FormControl';
 import { Controller } from 'react-hook-form';
 import { useRequest } from '../../../../hooks/useRequest';
-import { user } from '../../../../mocks/usuario.json'
+import { useUserData } from '../../../../hooks/useUserData.jsx';
 import { CssTextField } from './CssTextField.jsx'
 
 export default function FormInputEmail ({ frmRequest, campo, className }) {
-    const { request } = useRequest();    
-    //const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}
+    const { request } = useRequest();
+    const { userdata : user } = useUserData();
     const required = campo.FDI_CampoObligatorio === 1 ? true : false
 
     const disabled = () => {

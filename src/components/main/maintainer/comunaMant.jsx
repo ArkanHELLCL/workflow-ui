@@ -2,14 +2,15 @@
 /* eslint-disable react/prop-types */
 import Buttons from "../formcontent/header/ButtonsAction.jsx";
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
-import { user } from '../../../mocks/usuario.json';
-import Inputs from '../formcontent/inputs.jsx';
+import { useUserData } from "../../../hooks/useUserData.jsx";
+import Inputs from '../formcontent/Inputs.jsx';
 import { formulario as formant } from '../../../mocks/formularioMant.json';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 
 export default function MCMant({frmRecord, mant, record, singleButton}) {
+    const { userdata : user } = useUserData();
     const [field, setField] = useState(null)
     const [campos, setCampos] = useState([])
     

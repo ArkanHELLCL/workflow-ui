@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { user } from '../../mocks/usuario.json';
+import { useUserData } from '../../hooks/useUserData.jsx';
 import { DarkModeToggle } from '../../utils/DarkMode.jsx';
 import { ListItemButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
@@ -11,6 +11,7 @@ import { MailIcon } from '../../utils/icons.jsx';
 import { useState } from 'react';
 
 export default function UserBar({darkmode, setDarkMode}) {
+    const { userdata : user } = useUserData();    
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -24,7 +25,7 @@ export default function UserBar({darkmode, setDarkMode}) {
     const ButtonUsrProfile = () => {
         return (
             <>
-                <span className={`w-[25px] h-[25px] hover:cursor-pointer imgSender overflow-hidden flex items-center p-0 mx-0 my-1 `}><img src={user.USR_Photo}/></span>
+                <span className={`w-[25px] h-[25px] hover:cursor-pointer imgSender overflow-hidden flex items-center p-0 mx-0 my-1 `}><img src={user?.USR_Photo}/></span>
                 <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-red-600 bg-red-500 rounded-full top-[2px] right-0"></span>
             </>
         )
@@ -91,7 +92,7 @@ export default function UserBar({darkmode, setDarkMode}) {
                         }>
                         <ListItemIcon className="dark:!text-white !text-black relative cursor-pointer" onClick={()=>console.log("ver mensajes")}>
                             <MailIcon/>
-                            <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user.USR_MsgSinLeer}</span>
+                            <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user?.USR_MsgSinLeer ? user.USR_MsgSinLeer : ''}</span>
                         </ListItemIcon>
                         <span className="text-sm dark:!text-white !text-[#262626] pl-2">Ver mensajes</span>
                     </ListItem>

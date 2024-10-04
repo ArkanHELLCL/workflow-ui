@@ -5,14 +5,15 @@ import Buttons from "../formcontent/header/ButtonsAction.jsx";
 import IconButton from '@mui/material/IconButton';
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import FlujosTable from './usuariomant/flujosTable.jsx';
-import { user } from '../../../mocks/usuario.json';
+import { useUserData } from '../../../hooks/useUserData.jsx';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 import { formulario as formant} from '../../../mocks/formularioMant.json';
 import { DelIcon } from "../../../utils/icons.jsx"
 
-export default function MUMant({frmRecord, mant, record, filesList, setFilesList, singleButton}) {    
+export default function MUMant({frmRecord, mant, record, filesList, setFilesList, singleButton}) {
+    const { userdata : user } = useUserData();    
     const [field, setField] = useState(null)
     const [campos, setCampos] = useState([])
     

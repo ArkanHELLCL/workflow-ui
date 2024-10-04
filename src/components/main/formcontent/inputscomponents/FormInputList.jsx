@@ -23,7 +23,7 @@ import sexos from "../../../../mocks/sexos.json";
 import perfiles from "../../../../mocks/perfiles.json";
 import  Sleep  from "../../../../utils/Sleep.jsx";
 import { useRequest } from '../../../../hooks/useRequest';
-import { user } from '../../../../mocks/usuario.json'
+import { useUserData } from '../../../../hooks/useUserData.jsx';
 import InputAdornment from '@mui/material/InputAdornment';
 import ExternalMantainer from './ExternalMantainer.jsx'
 import { CssTextField } from './CssTextField.jsx'
@@ -31,6 +31,7 @@ import { CssTextField } from './CssTextField.jsx'
 export default function FormInputList ({ frmRequest, campo, className }) {  
   const { request } = useRequest();
   const { mantainer } = useMantainer();
+  const { userdata : user } = useUserData();
   const required = campo.FDI_CampoObligatorio === 1 ? {required : campo.FDI_ErrorMessage} : {required : false}  
 
   const [open, setOpen] = useState(false);
