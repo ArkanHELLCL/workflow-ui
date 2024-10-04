@@ -29,7 +29,10 @@ function getSuspender(promise){
 export function fetchData(url, options){
     const promise = fetch(url, options)
         .then((response) => response.json())
-        .then((data) => data);
+        .then((data) => data)
+        .catch((error) => {
+            return {status: "error", message: error.message};
+        });
 
     return getSuspender(promise)
 }
