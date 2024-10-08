@@ -30,7 +30,7 @@ const params = {
   
 export default function Loading({darkMode, setDarkMode}) {
     const { userdata } = useUserData()
-    const { bandejas, setBandejas } = useInboxs()
+    const { setBandejas } = useInboxs()
     const [loadingBE, setLoadingBE] = useState(false)
     const [loadingBS, setLoadingBS] = useState(false)
     const [loadingBF, setLoadingBF] = useState(false)
