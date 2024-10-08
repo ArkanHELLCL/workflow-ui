@@ -35,7 +35,9 @@ export default function Loading({darkMode, setDarkMode}) {
     const [loadingBS, setLoadingBS] = useState(false)
     const [loadingBF, setLoadingBF] = useState(false)
     const [loadingBA, setLoadingBA] = useState(false)
-    const [loadingBO, setLoadingBO] = useState(false)    
+    const [loadingBO, setLoadingBO] = useState(false)
+    const [loadingBNC, setLoadingBNC] = useState(false)
+    const [loadingBNW, setLoadingBNW] = useState(false)
 
     useEffect(() => {
         setLoadingBE(false)
@@ -43,6 +45,8 @@ export default function Loading({darkMode, setDarkMode}) {
         setLoadingBF(false)
         setLoadingBA(false)
         setLoadingBO(false)
+        setLoadingBNC(false)
+        setLoadingBNW(false)
 
         userdata?.bandejas.map(item => {
             const api = host + item.url + '?PageNumber=1&RowsOfPage=1000'
@@ -68,6 +72,12 @@ export default function Loading({darkMode, setDarkMode}) {
                     if(item.id === 'bo') {
                         setLoadingBO(true)                        
                     }
+                    if(item.id === 'bnc') {
+                        setLoadingBNC(true)                        
+                    }
+                    if(item.id === 'bnw') {
+                        setLoadingBNW(true)                        
+                    }
                 })
                 
                 .catch((error) => {
@@ -87,13 +97,19 @@ export default function Loading({darkMode, setDarkMode}) {
                     if(item.id === 'bo') {
                         setLoadingBO(null)                  
                     }
+                    if(item.id === 'bnc') {
+                        setLoadingBNC(null)                  
+                    }
+                    if(item.id === 'bnw') {
+                        setLoadingBNW(null)                  
+                    }
                 });
         })
     }, [userdata])
 
 
     return (   
-        (loadingBE === false || loadingBS === false || loadingBF === false || loadingBA === false || loadingBO === false) ?     
+        (loadingBE === false || loadingBS === false || loadingBF === false || loadingBA === false || loadingBO === false || loadingBNC === false || loadingBNW === false) ?     
         <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative items-center content-center">
             <Box sx={{ flexGrow: 1, maxWidth: 400, margin: "auto" }}>
                 <Grid2 item="true" xs={12} md={6}>
