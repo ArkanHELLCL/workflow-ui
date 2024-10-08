@@ -13,19 +13,12 @@ import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
 import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
 import ListaRegReportes from "./main/ListaRegReportes.jsx";
-import { fetchData } from "../utils/fectData.js";
 import Loading from "../utils/Loading.jsx";
 import { Suspense } from "react";
 
-const apiData = fetchData('http://localhost:3100/api/bandeja-de-entrada?PageNumber=1&RowsOfPage=1000', {
-  method: 'GET', 
-  headers: {Accept: 'application/json','Content-Type': 'application/json'},
-  credentials: 'include'
-})
 
 export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
-    const data = apiData.read()    
 
     return (
       <section id="list">
@@ -42,17 +35,12 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                         </div>
                     </div>
                     <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">                      
-                        {                    
-                          parseInt(data.error) !== 200 ?
+                        
                             <Suspense fallback={<Loading />}>
                               <DetalleRequerimiento />
-                              <ListaRequerimientos frmRequest={frmRequest} data={data}/>
+                              <ListaRequerimientos frmRequest={frmRequest}/>
                             </Suspense>
-                          :
-                          <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-[70vh] w-full !overflow-hidden">
-                              <span className='text-[#2c87d2] text-xl w-full'>{data.message}</span>
-                          </div>
-                        }
+                        
                     </div>
                   </>
               }{

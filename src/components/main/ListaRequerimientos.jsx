@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, useEffect, useState } from "react";
 import { useFilters } from '../../hooks/useFilters.jsx';
+import { useInboxs } from '../../hooks/useInboxs.jsx';
+//import { useInboxLoading } from '../../hooks/useInboxLoading.jsx';
+import { Suspense, useEffect, useState } from "react";
 //import { bandejas } from "../../mocks/requerimientos.json";
 import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";
@@ -32,10 +34,12 @@ const Accordion = ({acc, moreItems, frmRequest}) => {
     )
 }
 
-export default function ListaRequerimientos({frmRequest, data}){    
+export default function ListaRequerimientos({frmRequest}){    
+    const { bandejas } = useInboxs()
+    console.log(bandejas)
     const { filters, filterRequest } = useFilters() 
-    //const { filteredRequest } = filterRequest(bandejas)
-    const { filteredRequest } = filterRequest(data)
+    const { filteredRequest } = filterRequest(bandejas)
+    //const { filteredRequest } = filterRequest(data)
     
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)
     const [acc, setAcc] = useState([])

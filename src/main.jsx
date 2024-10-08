@@ -9,6 +9,7 @@ import { PreviewProvider } from './context/preview.jsx'
 import { ReportsProvider } from './context/reports.jsx'
 import { MantainerProvider } from './context/mantainer.jsx'
 import { UserDataProvider } from './context/userdata.jsx'
+import { InboxsProvider } from './context/inboxs.jsx'
 
 createRoot(document.getElementById('root')).render(
   <FiltersProvider>
@@ -19,7 +20,11 @@ createRoot(document.getElementById('root')).render(
               <PreviewProvider>
                 <MantainerProvider>
                   <UserDataProvider>
-                    <Login />
+                    <InboxsProvider>
+                      
+                        <Login />
+                      
+                    </InboxsProvider>
                   </UserDataProvider>
                 </MantainerProvider>
               </PreviewProvider>              
