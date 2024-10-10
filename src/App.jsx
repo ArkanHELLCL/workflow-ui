@@ -9,7 +9,6 @@ import { useMantainer } from "./hooks/useMantainer.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
-import treeMmenu  from "./mocks/treeMenu.json";
 import Menu from './components/Menu.jsx'
 import { useForm } from "react-hook-form"
 import List from "./components/list.jsx";
@@ -33,7 +32,7 @@ const handleNotDragOver = (event) => {
 function App({darkMode, setDarkMode}) {    
   const { setMantainer } = useMantainer()
   const { setPreview } = usePreview()
-  const { setAdjuntos } = useAttach()
+  const { setAdjuntos } = useAttach()  
   const { report, setReport } = useReports()
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
   const [openSearch, setOpenSearch] = useState(false);
@@ -187,7 +186,7 @@ function App({darkMode, setDarkMode}) {
       </Suspense>
         <SideBar />            
         <Header />      
-        <Menu menu={treeMmenu} frmRecord={frmRecord} frmRequest={frmRequest}/>      
+        <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
         <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
         <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
       

@@ -402,31 +402,31 @@
          "description":"Mensajes personales",
          "url":"/mensajes",
          "children":[
-               {
-                  "id":"jr",
-                  "label":"Recibidos",
-                  "description":"Mensajes Recibidos",
-                  "url":"/mensajes/recibidos"
-               },
-               {
-                  "id":"je",
-                  "label":"Enviados",
-                  "description":"Mensajes Enviados",
-                  "url":"/mensajes/enviados"
-               },
-               {
-                  "id":"jb",
-                  "label":"Borradores",
-                  "description":"Mensajes Borradores",
-                  "url":"/mensajes/borradores"
-               },
-               {
-                  "id":"jl",
-                  "label":"Eliminados",
-                  "description":"Mensajes Eliminados",
-                  "url":"/mensajes/eliminados"
-               }
-         ]
+            {
+               "id":"jr",
+               "label":"Recibidos",
+               "description":"Mensajes Recibidos",
+               "url":"/mensajes/recibidos"
+            },
+            {
+               "id":"je",
+               "label":"Enviados",
+               "description":"Mensajes Enviados",
+               "url":"/mensajes/enviados"
+            },
+            {
+               "id":"jb",
+               "label":"Borradores",
+               "description":"Mensajes Borradores",
+               "url":"/mensajes/borradores"
+            },
+            {
+               "id":"jl",
+               "label":"Eliminados",
+               "description":"Mensajes Eliminados",
+               "url":"/mensajes/eliminados"
+            }
+         ]         
       }
    ]
 }

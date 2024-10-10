@@ -15,7 +15,7 @@ const getAllItemsWithChildrenItemIds = (menu) => {
         //item.children.forEach(registerItemId);            //Para mas de un nivel
       }
     };
-    menu.forEach(registerItemId);
+    menu?.forEach(registerItemId);
     return itemIds;
 };
 

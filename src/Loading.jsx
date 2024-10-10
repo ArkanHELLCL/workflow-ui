@@ -30,7 +30,7 @@ const params = {
   
 export default function Loading({darkMode, setDarkMode}) {
     const { userdata } = useUserData()
-    const { setBandejas } = useInboxs()
+    const { bandejas, setBandejas } = useInboxs()
     const [loadingBE, setLoadingBE] = useState(false)
     const [loadingBS, setLoadingBS] = useState(false)
     const [loadingBF, setLoadingBF] = useState(false)
@@ -39,7 +39,7 @@ export default function Loading({darkMode, setDarkMode}) {
     const [loadingBNC, setLoadingBNC] = useState(false)
     const [loadingBNW, setLoadingBNW] = useState(false)
 
-    useEffect(() => {
+    /*useEffect(() => {
         setLoadingBE(false)
         setLoadingBS(false)
         setLoadingBF(false)
@@ -49,16 +49,14 @@ export default function Loading({darkMode, setDarkMode}) {
         setLoadingBNW(false)
 
         userdata?.bandejas.map(item => {
-            const api = host + item.url + '?PageNumber=1&RowsOfPage=1000'
+            const api = host + item.url + '?PageNumber=1&RowsOfPage=500'
             
             fetch(api, params)
                 .then((response) => response.json())
-                .then((data) => {                                        
-                    //setBandejas(bandejas.push(data))
+                .then((data) => {                    
                     setBandejas(prevstate => [...prevstate, data[0]])
                     if(item.id === 'be') {
-                        setLoadingBE(true)
-                        //setBandejas(prevstate => [...prevstate, data[0]])
+                        setLoadingBE(true)                        
                     }
                     if(item.id === 'bs') {
                         setLoadingBS(true)
@@ -105,11 +103,48 @@ export default function Loading({darkMode, setDarkMode}) {
                     }
                 });
         })
+    }, [userdata])*/
+
+    useEffect(() => {
+        if(userdata){
+            const promises = userdata?.bandejas?.map((item) => (
+                fetch(host + item.url + '?PageNumber=1&RowsOfPage=500', params))
+                .then((response) => response.json())
+                .then((data) => {
+                    if(!data.id)
+                        data.id = item.id
+                    return Promise.resolve(data)
+                })
+                .catch((error) => {
+                    console.log('Error:', error)
+                    return Promise.reject(error)
+                })
+            )
+
+            /*Promise.allSettled(userdata?.bandejas?.map((item) => (                           
+                fetch(host + item.url + '?PageNumber=1&RowsOfPage=500', params)
+            )))*/
+
+            Promise.allSettled(promises)
+            //all si una falla se detiene
+            //allSettled {status: "fulfilled", value: Response}, {status: "rejected", reason: 'Failed to fetch'}, todas aunque fallen
+            //race la primera que resuelva y se detiene, ok o no ok
+            //any la primera que resuelva ok y se detiene independiente si hay alguna con error, cuando todas son rechazadas devuelve un array de errores
+            //.then((responses) => Promise.all(responses.map((r) => r.json())))
+            .then((responses) => responses.map((r) => r.value))
+            //.then((jsons) => jsons.forEach((json) => setBandejas(prevstate => [...prevstate, json[0]])))
+            //.then((jsons) => console.log(jsons))
+            //.then((jsons) => setBandejas(jsons))
+            .then((jsons) => console.log(jsons))
+            .catch((error) =>  console.log('Error 2:', error))        
+        }
     }, [userdata])
 
+    
 
     return (   
-        (loadingBE === false || loadingBS === false || loadingBF === false || loadingBA === false || loadingBO === false || loadingBNC === false || loadingBNW === false) ?     
+        //(loadingBE === false || loadingBS === false || loadingBF === false || loadingBA === false || loadingBO === false || loadingBNC === false || loadingBNW === false) ?     
+        bandejas.length === 0 ?
         <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative items-center content-center">
             <Box sx={{ flexGrow: 1, maxWidth: 400, margin: "auto" }}>
                 <Grid2 item="true" xs={12} md={6}>
@@ -199,6 +234,8 @@ export default function Loading({darkMode, setDarkMode}) {
             </Box>
         </div>
         :
-        <App darkMode={darkMode} setDarkMode={setDarkMode}/>        
+        null
     )
 }
+
+//<App darkMode={darkMode} setDarkMode={setDarkMode}/>        

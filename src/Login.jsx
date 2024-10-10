@@ -10,6 +10,7 @@ import { fetchData } from "./utils/fectData.js";
 import { useUserData } from "./hooks/useUserData.jsx";
 import { useEffect, useState } from 'react';
 import Loading from './Loading.jsx';
+import App from './App.jsx';
 
 //fetch data Login
 const param = {usrCod:'lcastillo', usrClave:'123456'}
@@ -28,7 +29,7 @@ export default function Login(){
 
     useEffect(() => {
         setUserdata(userdata)
-        console.log('userdata',userdata)
+        //console.log('userdata',userdata)
     },[userdata])
 
     useEffect(() => {
@@ -66,3 +67,5 @@ export default function Login(){
         </ThemeProvider>        
     )    
 }
+//<App darkMode={darkMode} setDarkMode={setDarkMode}/>
+//

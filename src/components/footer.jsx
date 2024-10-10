@@ -1,20 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useUserData } from "../hooks/useUserData.jsx";
 import { useReports } from "../hooks/useReports.jsx";
 import Collapse from '@mui/material/Collapse';
 import { useFilters } from "../hooks/useFilters.jsx";
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
-import * as menu from "../mocks/treeMenu.json"
 import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 
 export default function Footer() {
-    const {report} = useReports()
+    const { report } = useReports()
+    const { userdata } = useUserData()    
+    const { filters } = useFilters()   
     const [clickPorVencer, setClickPorVencer] = useState(false);
     const [clickVencidos, setClickVencidos] = useState(false);
     const [clickSinTomar, setClickSinTomar] = useState(false);
 
-    const { filters } = useFilters()   
-
+    const menu = userdata?.treeMenu
+    
     function handleClickPorVencer(){
         setClickPorVencer(!clickPorVencer)
 
@@ -45,12 +47,12 @@ export default function Footer() {
 
 
     if(tipoABuscar === "bandejas" || tipoABuscar === "reportes"){
-        obj = menu.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
+        obj = menu?.flujos.filter(item => parseInt(item.id) === filters.flujo)[0][tipoABuscar][0]
     }else{
         obj = menu[tipoABuscar][0]
     }
 
-    const descripcion = EncontrarDescripcionPorId(filters.itemIdSelected, obj).description;
+    const descripcion = EncontrarDescripcionPorId(filters.itemIdSelected, obj)?.description;
 
     const handleNotDragOver = (event) => {
         event.preventDefault();

@@ -2,9 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useFilters } from '../../hooks/useFilters.jsx';
 import { useInboxs } from '../../hooks/useInboxs.jsx';
-//import { useInboxLoading } from '../../hooks/useInboxLoading.jsx';
 import { Suspense, useEffect, useState } from "react";
-//import { bandejas } from "../../mocks/requerimientos.json";
 import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";
 import Loading from "../../utils/Loading.jsx";

@@ -1,7 +1,7 @@
 function encontrarDescripcionPorId(id, objeto) {        
     // Verificar si el objeto tiene el atributo "id" y si coincide con el ID buscado
     if (objeto?.id === id) {
-        return {"description": objeto.description, "url": objeto.url};
+        return {"description": objeto?.description, "url": objeto.url};
     }
     
     // Verificar si el objeto tiene hijos
@@ -24,6 +24,6 @@ function encontrarDescripcionPorId(id, objeto) {
 
 export default function EncontrarDescripcionPorId(id, objJson){   
     if(!objJson || objJson===undefined) return null 
-    if(id.length===1) return {"description": objJson.description, "url": objJson.url};
+    if(id.length===1) return {"description": objJson?.description, "url": objJson.url};
     return encontrarDescripcionPorId(id, objJson)
 }
