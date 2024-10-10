@@ -59,7 +59,7 @@ export default function Login(){
                         <Loading darkMode={darkMode} setDarkMode={setDarkMode}/>
                     :
                         <div className="text-center flex justify-center align-middle items-center h-full w-full !overflow-hidden">
-                            <span className='text-[#2c87d2] text-xl w-full'>{userdata.message}</span>
+                            <span className='text-[#2c87d2] text-xl w-full'>{userdata?.message ? userdata?.message : 'Host no disponible'}</span>
                         </div>
                     }
                 </SnackbarProvider>

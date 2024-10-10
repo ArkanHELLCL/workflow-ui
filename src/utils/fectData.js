@@ -9,7 +9,7 @@ function getSuspender(promise){
         },
         err => {
             status = "error";
-            response = err;
+            response = 'Api no disponible : ' + err;
         }
     );
 

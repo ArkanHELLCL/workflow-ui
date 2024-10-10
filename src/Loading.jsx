@@ -56,7 +56,7 @@ export default function Loading({darkMode, setDarkMode}) {
                 .then((data) => {                    
                     setBandejas(prevstate => [...prevstate, data[0]])
                     if(item.id === 'be') {
-                        setLoadingBE(true)                        
+                        setLoadingBE(true)
                     }
                     if(item.id === 'bs') {
                         setLoadingBS(true)
@@ -107,35 +107,53 @@ export default function Loading({darkMode, setDarkMode}) {
 
     useEffect(() => {
         if(userdata){
+            setLoadingBE(false)
+            setLoadingBS(false)
+            setLoadingBF(false)
+            setLoadingBA(false)
+            setLoadingBO(false)
+            setLoadingBNC(false)
+            setLoadingBNW(false)
+
             const promises = userdata?.bandejas?.map((item) => (
                 fetch(host + item.url + '?PageNumber=1&RowsOfPage=500', params))
                 .then((response) => response.json())
                 .then((data) => {
                     if(!data.id)
                         data.id = item.id
+                    if(data.id === 'be')
+                        setLoadingBE(true)                    
+                    if(data.id === 'bs')
+                        setLoadingBS(true)
+                    if(data.id === 'bf')
+                        setLoadingBF(true)
+                    if(data.id === 'ba')
+                        setLoadingBA(true)
+                    if(data.id === 'bo')
+                        setLoadingBO(true)
+                    if(data.id === 'bnc')
+                        setLoadingBNC(true)
+                    if(data.id === 'bnw')
+                        setLoadingBNW(true)                        
+
                     return Promise.resolve(data)
                 })
                 .catch((error) => {
                     console.log('Error:', error)
                     return Promise.reject(error)
                 })
-            )
-
-            /*Promise.allSettled(userdata?.bandejas?.map((item) => (                           
-                fetch(host + item.url + '?PageNumber=1&RowsOfPage=500', params)
-            )))*/
+            )            
 
             Promise.allSettled(promises)
             //all si una falla se detiene
             //allSettled {status: "fulfilled", value: Response}, {status: "rejected", reason: 'Failed to fetch'}, todas aunque fallen
             //race la primera que resuelva y se detiene, ok o no ok
-            //any la primera que resuelva ok y se detiene independiente si hay alguna con error, cuando todas son rechazadas devuelve un array de errores
-            //.then((responses) => Promise.all(responses.map((r) => r.json())))
+            //any la primera que resuelva ok y se detiene independiente si hay alguna con error, cuando todas son rechazadas devuelve un array de errores            
             .then((responses) => responses.map((r) => r.value))
             //.then((jsons) => jsons.forEach((json) => setBandejas(prevstate => [...prevstate, json[0]])))
             //.then((jsons) => console.log(jsons))
-            //.then((jsons) => setBandejas(jsons))
-            .then((jsons) => console.log(jsons))
+            .then((jsons) => setBandejas(jsons))
+            //.then((jsons) => console.log(jsons))
             .catch((error) =>  console.log('Error 2:', error))        
         }
     }, [userdata])
@@ -180,6 +198,16 @@ export default function Loading({darkMode, setDarkMode}) {
                                             <CheckCircleOutlineOutlinedIcon className="text-green-500 !w-8 !h-8"/>
                                         </IconButton>
                                     :
+                                    item.id === 'bnc' && loadingBNC ?
+                                        <IconButton edge="end" aria-label="cancel">
+                                            <CheckCircleOutlineOutlinedIcon className="text-green-500 !w-8 !h-8"/>
+                                        </IconButton>
+                                    :
+                                    item.id === 'bnw' && loadingBNW ?
+                                        <IconButton edge="end" aria-label="cancel">
+                                            <CheckCircleOutlineOutlinedIcon className="text-green-500 !w-8 !h-8"/>
+                                        </IconButton>
+                                    :
                                     item.id === 'be' && loadingBE === null ?
                                         <IconButton edge="end" aria-label="cancel">
                                             <ErrorOutlineOutlinedIcon className="text-red-500 !w-8 !h-8"/>
@@ -201,6 +229,16 @@ export default function Loading({darkMode, setDarkMode}) {
                                         </IconButton>
                                     :
                                     item.id === 'bo' && loadingBO === null ?
+                                        <IconButton edge="end" aria-label="cancel">
+                                            <ErrorOutlineOutlinedIcon className="text-red-500 !w-8 !h-8"/>
+                                        </IconButton>
+                                    :
+                                    item.id === 'bnc' && loadingBNC === null ?
+                                        <IconButton edge="end" aria-label="cancel">
+                                            <ErrorOutlineOutlinedIcon className="text-red-500 !w-8 !h-8"/>
+                                        </IconButton>
+                                    :
+                                    item.id === 'bnw' && loadingBNW === null ?
                                         <IconButton edge="end" aria-label="cancel">
                                             <ErrorOutlineOutlinedIcon className="text-red-500 !w-8 !h-8"/>
                                         </IconButton>
@@ -234,7 +272,7 @@ export default function Loading({darkMode, setDarkMode}) {
             </Box>
         </div>
         :
-        null
+        <App darkMode={darkMode} setDarkMode={setDarkMode}/>
     )
 }
 
