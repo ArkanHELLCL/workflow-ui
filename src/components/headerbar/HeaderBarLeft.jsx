@@ -29,6 +29,7 @@ export default function HeaderBarLeft() {
 
     const HandleReload = () => {
         let url = ''
+        let msgfinal = ''
         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
         if(filters?.itemIdSelected === 'be') {
             url = '/api/bandeja-de-entrada'
@@ -38,6 +39,73 @@ export default function HeaderBarLeft() {
                 loadingBE: false,
                 messages: [...inboxstate.messages, date + ' - Actualizando bandeja de entrada...']
             })) 
+            msgfinal = 'Bandeja de entrada actualizada'
+        }
+
+        if(filters?.itemIdSelected === 'bs') {
+            url = '/api/bandeja-de-salida'
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBS: false,
+                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de salida...']
+            })) 
+            msgfinal = 'Bandeja de salida actualizada'
+        }
+
+        if(filters?.itemIdSelected === 'bf') {
+            url = '/api/bandeja-de-finalizados'
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBF: false,
+                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de finalizados...']
+            })) 
+            msgfinal = 'Bandeja de finalizados actualizada'
+        }
+
+        if(filters?.itemIdSelected === 'bo') {
+            url = '/api/bandeja-de-otros'
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBO: false,
+                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de otros...']
+            })) 
+            msgfinal = 'Bandeja de otros actualizada'
+        }
+
+        if(filters?.itemIdSelected === 'ba') {
+            url = '/api/bandeja-de-archivados'
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBA: false,
+                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de archivados...']
+            })) 
+            msgfinal = 'Bandeja de archivados actualizada'
+        }
+
+        if(filters?.itemIdSelected === 'bnc') {
+            url = '/api/bandeja-antiguos-compra'
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBNC: false,
+                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de antiguos compra...']
+            })) 
+            msgfinal = 'Bandeja de antiguos compra actualizada'
+        }
+
+        if(filters?.itemIdSelected === 'bnw') {
+            url = '/api/bandeja-antiguos-compra'
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBNW: false,
+                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de antiguos WorkFlowv1...']
+            })) 
+            msgfinal = 'Bandeja de antiguos WorkFlowv1 actualizada'
         }
 
         fetch(host + url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params)
@@ -49,7 +117,6 @@ export default function HeaderBarLeft() {
                 return item
             })            
             setBandejas(newBandejas)            
-            //return data
         })
         .finally(() => {
             const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
@@ -58,9 +125,51 @@ export default function HeaderBarLeft() {
                     ...prevState,
                     loadingInboxs: false,
                     loadingBE: true,
-                    messages: [...inboxstate.messages, date + ' - Bandeja de entrada actualizada']
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
                 }))
-        })
+            if(filters?.itemIdSelected === 'bs')
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    loadingBS: true,
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                }))
+            if(filters?.itemIdSelected === 'bf')
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    loadingBF: true,
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                }))
+            if(filters?.itemIdSelected === 'bo')
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    loadingBO: true,
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                }))                
+            if(filters?.itemIdSelected === 'ba')
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    loadingBA: true,
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                })) 
+            if(filters?.itemIdSelected === 'bnc')
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    loadingBNC: true,
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                }))
+            if(filters?.itemIdSelected === 'bnw')
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    loadingBNW: true,
+                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                }))
+        })            
         
     }
 
