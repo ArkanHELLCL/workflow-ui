@@ -240,7 +240,7 @@ export default function Footer() {
                         'aria-labelledby': 'logList-button',
                     }}
                 >
-                        <ul>{
+                    <ul>{
                         inboxstate.messages.map((item, index) => (
                             <li key={index} className="px-6 pt-1 text-xs font-semibold truncate">{item}</li>
                         ))                        
