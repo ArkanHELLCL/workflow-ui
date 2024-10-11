@@ -24,7 +24,7 @@ const options = {
 
 export default function HeaderBarLeft() {
     const { filters } = useFilters()
-    const { inboxstate, setInboxState } = useInboxState()
+    const { setInboxState } = useInboxState()
     const { bandejas, setBandejas } = useInboxs()
 
     const HandleReload = () => {
@@ -37,7 +37,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBE: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de entrada...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de entrada...']
             })) 
             msgfinal = 'Bandeja de entrada actualizada'
         }
@@ -48,7 +48,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBS: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de salida...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de salida...']
             })) 
             msgfinal = 'Bandeja de salida actualizada'
         }
@@ -59,7 +59,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBF: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de finalizados...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de finalizados...']
             })) 
             msgfinal = 'Bandeja de finalizados actualizada'
         }
@@ -70,7 +70,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBO: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de otros...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de otros...']
             })) 
             msgfinal = 'Bandeja de otros actualizada'
         }
@@ -81,7 +81,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBA: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de archivados...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de archivados...']
             })) 
             msgfinal = 'Bandeja de archivados actualizada'
         }
@@ -92,7 +92,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBNC: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de antiguos compra...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de antiguos compra...']
             })) 
             msgfinal = 'Bandeja de antiguos compra actualizada'
         }
@@ -103,7 +103,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBNW: false,
-                messages: [...inboxstate.messages, date + ' - Actualizando bandeja de antiguos WorkFlowv1...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de antiguos WorkFlowv1...']
             })) 
             msgfinal = 'Bandeja de antiguos WorkFlowv1 actualizada'
         }
@@ -125,49 +125,49 @@ export default function HeaderBarLeft() {
                     ...prevState,
                     loadingInboxs: false,
                     loadingBE: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 }))
             if(filters?.itemIdSelected === 'bs')
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
                     loadingBS: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 }))
             if(filters?.itemIdSelected === 'bf')
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
                     loadingBF: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 }))
             if(filters?.itemIdSelected === 'bo')
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
                     loadingBO: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 }))                
             if(filters?.itemIdSelected === 'ba')
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
                     loadingBA: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 })) 
             if(filters?.itemIdSelected === 'bnc')
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
                     loadingBNC: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 }))
             if(filters?.itemIdSelected === 'bnw')
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
                     loadingBNW: true,
-                    messages: [...inboxstate.messages, date + ' - ' + msgfinal]
+                    messages: [...prevState.messages, date + ' - ' + msgfinal]
                 }))
         })            
         

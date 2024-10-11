@@ -31,7 +31,7 @@ const params = {
 }
 
 export default function Login(){
-    const { inboxstate, setInboxState } = useInboxState()
+    const { setInboxState } = useInboxState()
     const { setUserdata } = useUserData({})
     const { filters } = useFilters()
     const { setBandejas } = useInboxs()    
@@ -62,7 +62,7 @@ export default function Login(){
                 loadingBO: false,
                 loadingBNC: false,
                 loadingBNW: false,
-                messages: [...inboxstate.messages, Inidate + ' - Actualizando todas las bandejas...']
+                messages: [...prevState.messages, Inidate + ' - Actualizando todas las bandejas...']
             }))
 
             const promises = userdata?.bandejas?.map((item) => (
@@ -76,7 +76,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBE: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de entrada actualizada']
+                            messages: [...prevState.messages, date + ' - Bandeja de entrada actualizada']
                         }))
                     }
                     if(data.id === 'bs'){
@@ -84,7 +84,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBS: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de salida actualizada']
+                            messages: [...prevState.messages, date + ' - Bandeja de salida actualizada']
                         }))
                     }
                     if(data.id === 'bf'){
@@ -92,7 +92,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBF: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de finalizados actualizada']
+                            messages: [...prevState.messages, date + ' - Bandeja de finalizados actualizada']
                         }))
                     }
                     if(data.id === 'ba'){
@@ -100,7 +100,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBA: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de archivados actualizada']
+                            messages: [...prevState.messages, date + ' - Bandeja de archivados actualizada']
                         }))
                     }
                     if(data.id === 'bo'){
@@ -108,7 +108,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBO: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de otros actualizada']
+                            messages: [...prevState.messages, date + ' - Bandeja de otros actualizada']
                         }))
                     }
                     if(data.id === 'bnc'){
@@ -116,7 +116,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBNC: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de antiguos compras actualizada'],
+                            messages: [...prevState.messages, date + ' - Bandeja de antiguos compras actualizada'],
                         }))
                     }
                     if(data.id === 'bnw'){
@@ -124,7 +124,7 @@ export default function Login(){
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBNW: true,
-                            messages: [...inboxstate.messages, date + ' - Bandeja de antiguos WorkFlowv1 actualizada'],
+                            messages: [...prevState.messages, date + ' - Bandeja de antiguos WorkFlowv1 actualizada'],
                         }))
                     }
                     setBandejas(prevstate => [...prevstate, data])
@@ -149,7 +149,7 @@ export default function Login(){
                 setInboxState(prevState => ({
                     ...prevState,
                     loadingInboxs: false,
-                    messages: [...inboxstate.messages, Enddate + ' - Todas las bandejas actualizadas.'],
+                    messages: [...prevState.messages, Enddate + ' - Todas las bandejas actualizadas.'],
                 }))
             })
             .catch((error) =>  console.log('Error 2:', error))        

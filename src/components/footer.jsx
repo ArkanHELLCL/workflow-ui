@@ -11,6 +11,7 @@ import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutli
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 import Loading from "../utils/Loading.jsx";
+import { Button, Menu } from "@mui/material";
 
 export default function Footer() {
     const { report } = useReports()
@@ -65,6 +66,15 @@ export default function Footer() {
         event.dataTransfer.dropEffect = "none";
         return false;
     }
+
+    const [anchorEl, setAnchorEl] = useState(null);
+        const open = Boolean(anchorEl);
+        const handleClick = (event) => {
+            setAnchorEl(event.currentTarget);
+        };
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
     
     return (
         <>
@@ -204,12 +214,38 @@ export default function Footer() {
                     }
             </footer>
             <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center justify-end p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerright">
-                <span>{inboxstate?.messages?.slice(-1)[0]?.split(' - ')[1]}</span>{
-                    inboxstate?.loadingInboxs ?
-                        <span className="text-blue-500 h-4 w-4"><Loading /> </span>
-                    :
-                    <CheckCircleOutlineOutlinedIcon className="!h-4 !w-4 text-green-500"/>
-                }                                
+                <Button className={`!bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-xs !min-h-full !px-2`}
+                        id="logList-button"
+                        aria-controls={open ? "logList" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        title="Mensajes de soliciutes de actualización de registros"
+                >
+                    <span className="pr-1">
+                        {inboxstate?.messages?.slice(-1)[0]?.split(' - ')[1]}
+                    </span>{
+                        inboxstate?.loadingInboxs ?
+                            <span className="text-blue-500 h-4 w-4"><Loading /> </span>
+                        :
+                            <CheckCircleOutlineOutlinedIcon className="!h-4 !w-4 text-green-500"/>                
+                    }
+                </Button>
+                <Menu
+                    id="logList"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                        'aria-labelledby': 'logList-button',
+                    }}>
+                        <ul>{
+                        inboxstate.messages.map((item, index) => (
+                            <li key={index} className="px-6 pt-1 text-xs font-semibold truncate">{item}</li>
+                        ))                        
+                    }</ul>
+                    
+                </Menu>
             </footer>
         </>
     )
