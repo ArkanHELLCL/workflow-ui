@@ -2,7 +2,8 @@
 import { createContext, useState } from "react";
 
 export const FiltersContext = createContext();
-
+const date = new Date().toISOString().slice(0, 10);
+console.log(date);
 export function FiltersProvider({ children }) {    
     const [filters, setFilters] = useState({
         flujo: 0,
@@ -15,10 +16,8 @@ export function FiltersProvider({ children }) {
         totalSintomar: 0,
         totalVencidos: 0,
         totalPorVencer: 0,
-        totalFiltrados: 0,
-        //hoy : new Date('2024-08-05T23:00:00'),
-        hoy: new Date(),
-        //hoy:'2024-08-14T00:00:00',
+        totalFiltrados: 0,        
+        hoy: date,
         minReq : null,
         maxReq : null,
         maxStep : null,

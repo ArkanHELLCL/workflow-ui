@@ -47,7 +47,7 @@ export default function Login(){
         minute: "numeric",
         second: "numeric",
         hour12: false        
-    };    
+    };
 
     useEffect(() => {        
         if(userdata){

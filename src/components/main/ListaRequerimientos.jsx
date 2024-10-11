@@ -41,8 +41,8 @@ export default function ListaRequerimientos({frmRequest}){
     const [acc, setAcc] = useState([])
 
     const moreItems = filteredRequest.length === 1000 ? true : false
-
-    useEffect(() => {
+    
+    useEffect(() => {        
         setAcc(requerimientoAccordion)
     }, [filters, bandejas])
     

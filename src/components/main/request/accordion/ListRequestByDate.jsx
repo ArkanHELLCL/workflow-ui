@@ -17,8 +17,8 @@ function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
     let anterior = new Date(hoy); 
     let maxdias  = new Date(hoy); 
 
-    anterior.setHours(-4,0,0,0);
-    maxdias.setHours(-4,0,0,0);
+    //anterior.setHours(-4,0,0,0);
+    //maxdias.setHours(-4,0,0,0);
 
     anterior.setDate(anterior.getDate() - diasDesde);
     if(diasDesde === diasHasta)
@@ -29,8 +29,8 @@ function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
     return filteredRequest?.filter(
       (item) =>        
         maxdias !== null ?
-            new Date(item.DRE_FechaEdit.slice(0,10)).getTime() <= new Date(anterior).getTime() &&
-            new Date(item.DRE_FechaEdit.slice(0,10)).getTime() >= new Date(maxdias).getTime()
+            new Date(item.DRE_FechaEdit.slice(0,10)).getTime() <= anterior.getTime() &&
+            new Date(item.DRE_FechaEdit.slice(0,10)).getTime() >= maxdias.getTime()
         :
         new Date(item.DRE_FechaEdit.slice(0,10)).getTime() <= new Date(anterior).getTime()
     );
@@ -40,7 +40,6 @@ function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
 
 export function ListRequestByDate(hoy, maxAccordions, filteredRequest){    
     let requerimientoAccordion = []    
-
     for (let index = 1; index <= maxAccordions; index++) {      
         requerimientoAccordion.push({
                 id:index, 
