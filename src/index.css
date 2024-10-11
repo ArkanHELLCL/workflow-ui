@@ -90,7 +90,7 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
     "headerbarleft headerbarleft searchbar headerbarright"
     "sidebar header header header"
     "sidebar menu list formwf"
-    "footer footer footer footer";
+    "footerleft footerleft footerleft footerright";
     grid-template-rows: 30px 145px 1fr 25px;
     grid-template-columns: 50px minmax(70px, 250px) minmax(100px, 450px) 1fr;
 }
@@ -107,8 +107,12 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
   grid-area: header;
 }
 
-#footer{
-  grid-area: footer;
+#footerleft{
+  grid-area: footerleft;
+}
+
+#footerright{
+  grid-area: footerright;
 }
 
 #menu{

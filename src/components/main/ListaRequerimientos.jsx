@@ -46,7 +46,7 @@ export default function ListaRequerimientos({frmRequest}){
 
     useEffect(() => {
         setAcc(requerimientoAccordion)
-    }, [filters.flujo, filters.orderDes, filters.filter, filters.itemIdSelected, filters.stringSearch, filters.hoy, filters.filterSearch])
+    }, [filters, bandejas])
     
     return (        
         <Accordion acc={acc} moreItems={moreItems} frmRequest={frmRequest}/>        

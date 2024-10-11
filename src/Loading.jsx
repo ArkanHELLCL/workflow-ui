@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useUserData } from "./hooks/useUserData.jsx";
 import { useInboxs } from "./hooks/useInboxs.jsx";
+import { useFilters } from "./hooks/useFilters.jsx";
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import { Avatar, Box, Grid2, IconButton, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import LoadingIcon from "./utils//Loading.jsx";
@@ -10,17 +11,6 @@ import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutli
 import { useEffect, useState } from "react";
 import App from "./App.jsx";
 
-/*const apiDataBE = fetchData('http://localhost:3100/api/bandeja-de-entrada?PageNumber=1&RowsOfPage=1000', {
-    method: 'GET', 
-    headers: {Accept: 'application/json','Content-Type': 'application/json'},
-    credentials: 'include'
-})
-
-const apiDataBS = fetchData('http://localhost:3100/api/bandeja-de-salida?PageNumber=1&RowsOfPage=1000', {
-    method: 'GET', 
-    headers: {Accept: 'application/json','Content-Type': 'application/json'},
-    credentials: 'include'
-})*/
 const host = 'http://localhost:3100'
 const params = {
     method: 'GET', 
@@ -31,79 +21,14 @@ const params = {
 export default function Loading({darkMode, setDarkMode}) {
     const { userdata } = useUserData()
     const { bandejas, setBandejas } = useInboxs()
+    const { filters } = useFilters()
     const [loadingBE, setLoadingBE] = useState(false)
     const [loadingBS, setLoadingBS] = useState(false)
     const [loadingBF, setLoadingBF] = useState(false)
     const [loadingBA, setLoadingBA] = useState(false)
     const [loadingBO, setLoadingBO] = useState(false)
     const [loadingBNC, setLoadingBNC] = useState(false)
-    const [loadingBNW, setLoadingBNW] = useState(false)
-
-    /*useEffect(() => {
-        setLoadingBE(false)
-        setLoadingBS(false)
-        setLoadingBF(false)
-        setLoadingBA(false)
-        setLoadingBO(false)
-        setLoadingBNC(false)
-        setLoadingBNW(false)
-
-        userdata?.bandejas.map(item => {
-            const api = host + item.url + '?PageNumber=1&RowsOfPage=500'
-            
-            fetch(api, params)
-                .then((response) => response.json())
-                .then((data) => {                    
-                    setBandejas(prevstate => [...prevstate, data[0]])
-                    if(item.id === 'be') {
-                        setLoadingBE(true)
-                    }
-                    if(item.id === 'bs') {
-                        setLoadingBS(true)
-                    }
-                    if(item.id === 'bf') {
-                        setLoadingBF(true)                        
-                    }
-                    if(item.id === 'ba') {
-                        setLoadingBA(true)                        
-                    }
-                    if(item.id === 'bo') {
-                        setLoadingBO(true)                        
-                    }
-                    if(item.id === 'bnc') {
-                        setLoadingBNC(true)                        
-                    }
-                    if(item.id === 'bnw') {
-                        setLoadingBNW(true)                        
-                    }
-                })
-                
-                .catch((error) => {
-                    console.error('Error:', error);
-                    if(item.id === 'be') {
-                        setLoadingBE(null)                  
-                    }
-                    if(item.id === 'bs') {
-                        setLoadingBS(null)                  
-                    }
-                    if(item.id === 'bf') {
-                        setLoadingBF(null)                  
-                    }
-                    if(item.id === 'ba') {
-                        setLoadingBA(null)                  
-                    }
-                    if(item.id === 'bo') {
-                        setLoadingBO(null)                  
-                    }
-                    if(item.id === 'bnc') {
-                        setLoadingBNC(null)                  
-                    }
-                    if(item.id === 'bnw') {
-                        setLoadingBNW(null)                  
-                    }
-                });
-        })
-    }, [userdata])*/
+    const [loadingBNW, setLoadingBNW] = useState(false)    
 
     useEffect(() => {
         if(userdata){
@@ -116,7 +41,7 @@ export default function Loading({darkMode, setDarkMode}) {
             setLoadingBNW(false)
 
             const promises = userdata?.bandejas?.map((item) => (
-                fetch(host + item.url + '?PageNumber=1&RowsOfPage=500', params))
+                fetch(host + item.url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params))
                 .then((response) => response.json())
                 .then((data) => {
                     if(!data.id)
@@ -149,19 +74,14 @@ export default function Loading({darkMode, setDarkMode}) {
             //allSettled {status: "fulfilled", value: Response}, {status: "rejected", reason: 'Failed to fetch'}, todas aunque fallen
             //race la primera que resuelva y se detiene, ok o no ok
             //any la primera que resuelva ok y se detiene independiente si hay alguna con error, cuando todas son rechazadas devuelve un array de errores            
-            .then((responses) => responses.map((r) => r.value))
             //.then((jsons) => jsons.forEach((json) => setBandejas(prevstate => [...prevstate, json[0]])))
-            //.then((jsons) => console.log(jsons))
-            .then((jsons) => setBandejas(jsons))
-            //.then((jsons) => console.log(jsons))
+            .then((responses) => responses.map((r) => r.value))            
+            .then((jsons) => setBandejas(jsons))            
             .catch((error) =>  console.log('Error 2:', error))        
         }
     }, [userdata])
-
     
-
-    return (   
-        //(loadingBE === false || loadingBS === false || loadingBF === false || loadingBA === false || loadingBO === false || loadingBNC === false || loadingBNW === false) ?     
+    return (        
         bandejas.length === 0 ?
         <div className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative items-center content-center">
             <Box sx={{ flexGrow: 1, maxWidth: 400, margin: "auto" }}>
