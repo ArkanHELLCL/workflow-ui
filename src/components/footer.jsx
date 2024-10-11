@@ -238,13 +238,13 @@ export default function Footer() {
                     onClose={handleClose}
                     MenuListProps={{
                         'aria-labelledby': 'logList-button',
-                    }}>
+                    }}
+                >
                         <ul>{
                         inboxstate.messages.map((item, index) => (
                             <li key={index} className="px-6 pt-1 text-xs font-semibold truncate">{item}</li>
                         ))                        
-                    }</ul>
-                    
+                    }</ul>    
                 </Menu>
             </footer>
         </>
