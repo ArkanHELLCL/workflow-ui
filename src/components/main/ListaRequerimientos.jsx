@@ -33,11 +33,9 @@ const Accordion = ({acc, moreItems, frmRequest}) => {
 }
 
 export default function ListaRequerimientos({frmRequest}){    
-    const { bandejas } = useInboxs()
-    
+    const { bandejas } = useInboxs()    
     const { filters, filterRequest } = useFilters() 
-    const { filteredRequest } = filterRequest(bandejas)
-    //const { filteredRequest } = filterRequest(data)
+    const { filteredRequest } = filterRequest(bandejas)    
     
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)
     const [acc, setAcc] = useState([])

@@ -9,9 +9,9 @@ import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 import { fetchData } from "./utils/fectData.js";
 import { useUserData } from "./hooks/useUserData.jsx";
 import { useEffect, useState } from 'react';
-//import Loading from './Loading.jsx';
 import { useInboxs } from './hooks/useInboxs.jsx';
 import { useFilters } from './hooks/useFilters.jsx';
+import { useInboxState } from './hooks/useInboxState.jsx';
 import App from './App.jsx';
 
 //fetch data Login
@@ -31,57 +31,106 @@ const params = {
 }
 
 export default function Login(){
-    const {setUserdata} = useUserData({})
+    const { inboxstate, setInboxState } = useInboxState()
+    const { setUserdata } = useUserData({})
+    const { filters } = useFilters()
+    const { setBandejas } = useInboxs()    
     const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
     const [darkMode, setDarkMode] = useState(darkModeStorage)
     const userdata = apiData.read()
 
-    
-    const { bandejas, setBandejas } = useInboxs()
-    const { filters } = useFilters()
-    const [loadingBE, setLoadingBE] = useState(false)
-    const [loadingBS, setLoadingBS] = useState(false)
-    const [loadingBF, setLoadingBF] = useState(false)
-    const [loadingBA, setLoadingBA] = useState(false)
-    const [loadingBO, setLoadingBO] = useState(false)
-    const [loadingBNC, setLoadingBNC] = useState(false)
-    const [loadingBNW, setLoadingBNW] = useState(false)    
+    const options = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: false        
+    };    
 
-    useEffect(() => {
+    useEffect(() => {        
         if(userdata){
-            setLoadingBE(false)
-            setLoadingBS(false)
-            setLoadingBF(false)
-            setLoadingBA(false)
-            setLoadingBO(false)
-            setLoadingBNC(false)
-            setLoadingBNW(false)
+            const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: true,
+                loadingBE: false,
+                loadingBS: false,
+                loadingBF: false,
+                loadingBA: false,
+                loadingBO: false,
+                loadingBNC: false,
+                loadingBNW: false,
+                messages: [...inboxstate.messages, Inidate + ' - Actualizando todas las bandejas...']
+            }))
 
             const promises = userdata?.bandejas?.map((item) => (
                 fetch(host + item.url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params))
                 .then((response) => response.json())
                 .then((data) => {
                     if(!data.id)
-                        data.id = item.id
-                    if(data.id === 'be')
-                        setLoadingBE(true)                    
-                    if(data.id === 'bs')
-                        setLoadingBS(true)
-                    if(data.id === 'bf')
-                        setLoadingBF(true)
-                    if(data.id === 'ba')
-                        setLoadingBA(true)
-                    if(data.id === 'bo')
-                        setLoadingBO(true)
-                    if(data.id === 'bnc')
-                        setLoadingBNC(true)
-                    if(data.id === 'bnw')
-                        setLoadingBNW(true)                        
-
+                        data.id = item.id                    
+                    if(data.id === 'be'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBE: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de entrada actualizada']
+                        }))
+                    }
+                    if(data.id === 'bs'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBS: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de salida actualizada']
+                        }))
+                    }
+                    if(data.id === 'bf'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBF: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de finalizados actualizada']
+                        }))
+                    }
+                    if(data.id === 'ba'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBA: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de archivados actualizada']
+                        }))
+                    }
+                    if(data.id === 'bo'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBO: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de otros actualizada']
+                        }))
+                    }
+                    if(data.id === 'bnc'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBNC: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de antiguos compras actualizada'],
+                        }))
+                    }
+                    if(data.id === 'bnw'){
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        setInboxState(prevState => ({
+                            ...prevState,                            
+                            loadingBNW: true,
+                            messages: [...inboxstate.messages, date + ' - Bandeja de antiguos WorkFlowv1 actualizada'],
+                        }))
+                    }
+                    setBandejas(prevstate => [...prevstate, data])
                     return Promise.resolve(data)
-                })
-                .catch((error) => {
-                    console.log('Error:', error)
+                })                
+                .catch((error) => {                    
                     return Promise.reject(error)
                 })
             )            
@@ -93,14 +142,22 @@ export default function Login(){
             //any la primera que resuelva ok y se detiene independiente si hay alguna con error, cuando todas son rechazadas devuelve un array de errores            
             //.then((jsons) => jsons.forEach((json) => setBandejas(prevstate => [...prevstate, json[0]])))
             .then((responses) => responses.map((r) => r.value))            
-            .then((jsons) => setBandejas(jsons))            
+            //.then((jsons) => setBandejas(jsons))
+            .then((jsons) => jsons)
+            .finally(() => {
+                const Enddate = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                setInboxState(prevState => ({
+                    ...prevState,
+                    loadingInboxs: false,
+                    messages: [...inboxstate.messages, Enddate + ' - Todas las bandejas actualizadas.'],
+                }))
+            })
             .catch((error) =>  console.log('Error 2:', error))        
         }
     }, [userdata])
 
     useEffect(() => {
-        setUserdata(userdata)
-        //console.log('userdata',userdata)
+        setUserdata(userdata)        
     },[userdata])
 
     useEffect(() => {
@@ -136,6 +193,5 @@ export default function Login(){
                 </SnackbarProvider>
             </LocalizationProvider>
         </ThemeProvider>        
-    )    
+    )
 }
-//<Loading darkMode={darkMode} setDarkMode={setDarkMode}/>

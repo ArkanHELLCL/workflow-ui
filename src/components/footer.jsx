@@ -2,18 +2,21 @@
 import { useState } from "react";
 import { useUserData } from "../hooks/useUserData.jsx";
 import { useReports } from "../hooks/useReports.jsx";
+import { useInboxState } from '../hooks/useInboxState.jsx';
 import Collapse from '@mui/material/Collapse';
 import { useFilters } from "../hooks/useFilters.jsx";
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
-import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+//import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
+//import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
+import Loading from "../utils/Loading.jsx";
 
 export default function Footer() {
     const { report } = useReports()
     const { userdata } = useUserData()
-    const { filters } = useFilters()   
+    const { filters } = useFilters()
+    const { inboxstate } = useInboxState()
     const [clickPorVencer, setClickPorVencer] = useState(false);
     const [clickVencidos, setClickVencidos] = useState(false);
     const [clickSinTomar, setClickSinTomar] = useState(false);
@@ -201,11 +204,18 @@ export default function Footer() {
                     }
             </footer>
             <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center justify-end p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerright">
-                <span>Listo</span>
-                <CancelOutlinedIcon className="!h-4 !w-4 text-red-500"/>
-                <WarningAmberOutlinedIcon className="!h-4 !w-4 text-orange-300"/>
-                <CheckCircleOutlineOutlinedIcon className="!h-4 !w-4 text-green-500"/>
+                <span>{inboxstate?.messages?.slice(-1)[0]?.split(' - ')[1]}</span>{
+                    inboxstate?.loadingInboxs ?
+                        <span className="text-blue-500 h-4 w-4"><Loading /> </span>
+                    :
+                    <CheckCircleOutlineOutlinedIcon className="!h-4 !w-4 text-green-500"/>
+                }                                
             </footer>
         </>
     )
 }
+
+/*
+<CancelOutlinedIcon className="!h-4 !w-4 text-red-500"/>
+                <WarningAmberOutlinedIcon className="!h-4 !w-4 text-orange-300"/>
+*/

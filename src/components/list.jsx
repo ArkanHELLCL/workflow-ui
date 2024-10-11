@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useFilters } from "../hooks/useFilters.jsx";
+import { useInboxState } from '../hooks/useInboxState.jsx';
 import MenuFilters from "./main/menuFilters.jsx";
 import Flujos from "./main/flujos.jsx";
 import Departamentos from "./main/maintainer/usuariomant/filtroDepartamento.jsx";
@@ -14,12 +15,10 @@ import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
 import ListaRegReportes from "./main/ListaRegReportes.jsx";
 import Loading from "../utils/Loading.jsx";
-import { Suspense } from "react";
-
 
 export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
-
+    const { inboxstate } = useInboxState()
     return (
       <section id="list">
         <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full grid border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1 content-baseline'>
@@ -34,13 +33,17 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                           <MenuFilters />
                         </div>
                     </div>
-                    <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">                      
-                        
-                            <Suspense fallback={<Loading />}>
-                              <DetalleRequerimiento />
-                              <ListaRequerimientos frmRequest={frmRequest}/>
-                            </Suspense>
-                        
+                    <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">{
+                      (filters?.itemIdSelected === 'be' && !inboxstate.loadingBE) || (filters?.itemIdSelected === 'bs' && !inboxstate.loadingBS ) || (filters?.itemIdSelected === 'bf' && !inboxstate.loadingBF) || (filters?.itemIdSelected === 'bo' && !inboxstate.loadingBO) || (filters?.itemIdSelected === 'bnc' && !inboxstate.loadingBNC) || (filters?.itemIdSelected === 'bnw' && !inboxstate.loadingBNW) || (filters?.itemIdSelected === 'ba' && !inboxstate.loadingBA) ? 
+                        <div className='min-h-full overflow-hidden'>
+                            <Loading /> 
+                        </div>
+                      :
+                        <>
+                          <DetalleRequerimiento />
+                          <ListaRequerimientos frmRequest={frmRequest}/>
+                        </>
+                      }                        
                     </div>
                   </>
               }{
