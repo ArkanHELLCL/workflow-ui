@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { Suspense, useEffect, useState } from "react";
-import Loading from "../utils/Loading.jsx";
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useRecords } from "../hooks/useRecords.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { formulario } from '../mocks/formulario.json'
-import { formulario as formmant } from '../mocks/formularioMant.json'
+import { useButtonsGroup } from "../hooks/useButtonsGroup.jsx";
+import { Suspense, useEffect, useState } from "react";
+import Loading from "../utils/Loading.jsx";
 import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
@@ -15,7 +14,7 @@ export default function Header(){
     const { request } = useRequest()
     const { record } = useRecords()
     const { filters } = useFilters()
-    const [grupos, setGrupos] = useState(null);
+    const { grupos } = useButtonsGroup()    
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);
     const [animationEnd, setAnimationEnd] = useState(true);
@@ -78,7 +77,7 @@ export default function Header(){
         setScrollON(false)
         setScrollPosition(0)
         calcScroll()
-    },[filters.itemIdSelected, request, record, formulario])
+    },[filters.itemIdSelected, request, record, grupos])
 
     const handleScrollX = (value) => {
         const $header = document.querySelector('header');
@@ -88,20 +87,6 @@ export default function Header(){
         //console.log('handleScrollX', scrollPosition)
         calcScroll();        
     }
-    
-    useEffect(() => {
-        let FOR_Botones = null
-        if(filters.itemIdSelected.charAt(0) === "b")
-            if(request?.request?.VFO_Id)
-                FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id) && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
-            else
-                FOR_Botones = formulario.filter((item) => parseInt(item.VFO_Id) === 0 && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
-
-        if(filters.itemIdSelected.charAt(0) === "m")
-            FOR_Botones = formmant.filter((item) => item.id === filters.itemIdSelected)[0]?.FOR_Botones
-        
-        setGrupos(FOR_Botones?.map(grupo => grupo))
-    },[formulario,request,filters.itemIdSelected,record])
 
     const handleNotDragOver = (event) => {
         event.preventDefault();

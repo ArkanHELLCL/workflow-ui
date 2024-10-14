@@ -5,6 +5,7 @@ import { useRequest } from '../../hooks/useRequest.jsx';
 import { usePreview } from '../../hooks/usePreview.jsx';
 import { useFilters } from '../../hooks/useFilters.jsx';
 import { useAttach } from '../../hooks/useAttach.jsx';
+import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
 import {    NoData, 
             Header,
             Files,
@@ -37,9 +38,13 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     const { setAdjuntos } = useAttach()    
     const [dropEnter, setDropEnter] = useState(false);
     const [form, setForm] = useState()
-    const [campos, setCampos] = useState([])
+    const [campos, setCampos] = useState([])    
+    const { grupos, setGrupos } = useButtonsGroup()
 
     useEffect(() => {
+        const campos = formularioMant.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos
+        setCampos(campos)
+
         let frm
         if(request?.request?.VFO_Id){
             frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id && item.Bandeja === request?.request?.Bandeja)
@@ -50,13 +55,19 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         frmRequest.clearErrors()
         setAdjuntos(adjuntos)
         setForm(frm[0])
-        
-    },[formulario, request])
 
-    useEffect(() => {
-        const campos = formularioMant.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos
-        setCampos(campos)        
-    },[filters.itemIdSelected])
+        let FOR_Botones = null
+        if(filters.itemIdSelected.charAt(0) === "b")
+            if(request?.request?.VFO_Id)
+                FOR_Botones = formulario?.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id) && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
+            else
+                FOR_Botones = formulario?.filter((item) => parseInt(item.VFO_Id) === 0 && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
+
+        if(filters.itemIdSelected.charAt(0) === "m")
+            FOR_Botones = formularioMant.filter((item) => item.id === filters.itemIdSelected)[0]?.FOR_Botones
+        
+        setGrupos(FOR_Botones?.map(grupo => grupo))
+    },[filters.itemIdSelected, formularioMant, request, formulario])
 
 
     const handleOnClick = () => {
@@ -84,7 +95,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                         {
                             !preview.state &&
                                 <>
-                                    <Header formulario={form} />
+                                    <Header grupos={grupos} />
                                     <Files setFilesList={setFilesList} filesList={filesList}/>
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 </>

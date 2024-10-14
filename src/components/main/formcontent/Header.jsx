@@ -10,13 +10,13 @@ const handleNotDragOver = (event) => {
     event.dataTransfer.dropEffect = "none";
     return false;
 }
-export default function Header({formulario}) {
+export default function Header({grupos}) {
     return (            
         <>                    
             <ReqTitle handleNotDragOver={handleNotDragOver}/>                   
             <FrmHeader handleNotDragOver={handleNotDragOver}/>
-            <Buttons formulario={formulario} className={'frmbuttonsact'}/>
-            <SenderData formulario={formulario} />
+            <Buttons grupos={grupos} className={'frmbuttonsact'}/>
+            <SenderData />
             <UpdateDate />
         </>                
     )

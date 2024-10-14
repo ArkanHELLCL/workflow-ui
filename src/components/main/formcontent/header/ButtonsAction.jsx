@@ -7,11 +7,11 @@ import { ButtonIcon } from '../../../../utils/icons.jsx';
 import { useState } from 'react';
 import { Button } from '@mui/material';
 
-export default function Buttons({formulario, className}){
+export default function Buttons({grupos, className}){
     //const { request } = useRequest()
     //const { filters } = useFilters()
-    const { FOR_Botones } = formulario;
-    const grupos = FOR_Botones?.map(grupo => grupo)
+    //const { FOR_Botones } = formulario;
+    //const grupos = FOR_Botones?.map(grupo => grupo)
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);    
     let $container = document.getElementById('buttonsRequest');
@@ -95,7 +95,7 @@ export default function Buttons({formulario, className}){
                                             title={btns.nombre}
                                             id={btns.id} 
                                             type={btns.type}
-                                            form={formulario.name}
+                                            form={btns.formulario}
                                             >
                                                 <ButtonIcon typeButton={btns.id} styles='w-5 h-5'strokeWidth='1.3' typeIcon={1}/>{
                                                     btns.nombre &&

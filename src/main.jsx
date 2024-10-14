@@ -11,6 +11,7 @@ import { MantainerProvider } from './context/mantainer.jsx'
 import { UserDataProvider } from './context/userdata.jsx'
 import { InboxsProvider } from './context/inboxs.jsx'
 import { InboxStateProvider } from './context/inboxstate.jsx'
+import { ButtonsGroupProvider } from './context/buttonsgroup.jsx'
 
 createRoot(document.getElementById('root')).render(
   <FiltersProvider>
@@ -23,7 +24,9 @@ createRoot(document.getElementById('root')).render(
                   <UserDataProvider>
                     <InboxsProvider>
                       <InboxStateProvider>
-                        <Login />
+                        <ButtonsGroupProvider>
+                          <Login />
+                        </ButtonsGroupProvider>
                       </InboxStateProvider>
                     </InboxsProvider>
                   </UserDataProvider>

@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 
 export const FiltersContext = createContext();
 const date = new Date().toISOString().slice(0, 10);
-console.log(date);
+
 export function FiltersProvider({ children }) {    
     const [filters, setFilters] = useState({
         flujo: 0,
