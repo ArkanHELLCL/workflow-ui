@@ -12,8 +12,7 @@ export default function SenderData() {
         credentials: 'include'
     }
 
-    useEffect(() => {
-        console.log('SenderData', request?.request?.DRE_UsuarioEditAntCod, request?.request?.DRE_UsuarioEditAnt)
+    useEffect(() => {        
         const sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.DRE_UsuarioEdit
         if(sender)
         fetch(host + '/api/photo/' + sender, params)
