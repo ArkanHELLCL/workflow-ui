@@ -2,15 +2,12 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useRequest } from '../../../../hooks/useRequest.jsx';
+import { Constants } from "../../../../utils/const.jsx";
+
 export default function SenderData() {
     const { request } = useRequest()    
-    const [senderPhoto, setSenderPhoto] = useState()
-    const host = 'http://localhost:3100'
-    const params = {
-        method: 'GET', 
-        headers: {Accept: 'application/json','Content-Type': 'application/json'},
-        credentials: 'include'
-    }
+    const [senderPhoto, setSenderPhoto] = useState('/user.png')
+    const { host, fecthParams : params } = Constants()    
 
     useEffect(() => {        
         const sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.DRE_UsuarioEdit

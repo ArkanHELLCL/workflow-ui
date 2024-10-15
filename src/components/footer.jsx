@@ -68,13 +68,13 @@ export default function Footer() {
     }
 
     const [anchorEl, setAnchorEl] = useState(null);
-        const open = Boolean(anchorEl);
-        const handleClick = (event) => {
-            setAnchorEl(event.currentTarget);
-        };
-        const handleClose = () => {
-            setAnchorEl(null);
-        };
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     
     return (
         <>
@@ -83,7 +83,7 @@ export default function Footer() {
                 {
                     tipoABuscar === "bandejas" && filters.itemIdSelected.length > 1 ? 
                         <>{                        
-                            filters.itemIdSelected.slice(0,2) !== 'ba' &&
+                            filters.itemIdSelected.slice(0,2) !== 'bn' && filters.itemIdSelected.slice(0,2) !== 'ba' &&
                                 <>
                                     <div className="dark:text-orange-300 text-orange-400 flex z-20">
                                         <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickPorVencer()}>
@@ -94,7 +94,7 @@ export default function Footer() {
                                                 <span className="z-10 truncate pt-1">Total de requerimientos por vencer : </span> 
                                             </div>
                                         </Collapse >
-                                        <span className="pt-[1px]">{filters.totalPorVencer}</span>  
+                                        <span className="pt-[1px]">{filters.totalPorVencer}</span>
                                     </div>                    
                                     <div className="text-red-500 flex z-20">
                                         <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickVencidos()}>
@@ -106,21 +106,19 @@ export default function Footer() {
                                             </div>
                                         </Collapse>
                                         <span className="pt-[1px]">{filters.totalVencidos}</span>  
+                                    </div>                               
+                                    <div className="text-sky-500 flex z-20">
+                                        <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickSinTomar()}>
+                                            <QuestionIcon />
+                                        </span>
+                                        <Collapse in={clickSinTomar} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
+                                            <div className='overflow-hidden pt-[1px] pr-1'>
+                                                <span className="z-10 truncate pt-1">Total de requerimientos sin tomar :</span> 
+                                            </div>
+                                        </Collapse>
+                                        <span className="pt-[1px]">{filters.totalSintomar}</span>  
                                     </div>
                                 </>
-                        }{
-                            filters.itemIdSelected.slice(0,2) !== 'bn' && filters.itemIdSelected.slice(0,2) !== 'ba' &&
-                                <div className="text-sky-500 flex z-20">
-                                    <span className="pt-[3px] pr-1 cursor-pointer" onClick={() => handleClickSinTomar()}>
-                                        <QuestionIcon />
-                                    </span>
-                                    <Collapse in={clickSinTomar} direction='left' mountOnEnter unmountOnExit timeout={900} orientation="horizontal">
-                                        <div className='overflow-hidden pt-[1px] pr-1'>
-                                            <span className="z-10 truncate pt-1">Total de requerimientos sin tomar :</span> 
-                                        </div>
-                                    </Collapse>
-                                    <span className="pt-[1px]">{filters.totalSintomar}</span>  
-                                </div>
                             }{
                                 filters.totalFiltrados > 0 &&
                                     <div>
@@ -256,8 +254,3 @@ export default function Footer() {
         </>
     )
 }
-
-/*
-<CancelOutlinedIcon className="!h-4 !w-4 text-red-500"/>
-                <WarningAmberOutlinedIcon className="!h-4 !w-4 text-orange-300"/>
-*/

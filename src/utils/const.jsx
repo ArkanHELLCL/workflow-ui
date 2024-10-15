@@ -7,6 +7,21 @@ export function Constants(){
     const maxAccByNumber = 5
     const maxAccByStep = 5
     const maxAccSearch = 7
+    const host = 'http://localhost:3100'
+    const fecthParams = {
+        method: 'GET', 
+        headers: {Accept: 'application/json','Content-Type': 'application/json'},
+        credentials: 'include'
+    }
+    const dateOptions = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: false        
+    };
 
-    return {meses, dias, diasAbrev, mesesAbrev, maxAccByDate, maxAccByNumber, maxAccByStep, maxAccSearch}
+    return {meses, dias, diasAbrev, mesesAbrev, maxAccByDate, maxAccByNumber, maxAccByStep, maxAccSearch, host, fecthParams, dateOptions}
 }

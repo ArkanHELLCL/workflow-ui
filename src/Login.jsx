@@ -14,6 +14,7 @@ import { useFilters } from './hooks/useFilters.jsx';
 import { useInboxState } from './hooks/useInboxState.jsx';
 import { useAuth } from './hooks/useAuth.jsx';
 import App from './App.jsx';
+import { Constants } from "./utils/const.jsx";
 
 //fetch data Login
 const param = {usrCod:'lcastillo', usrClave:'123456'}
@@ -24,13 +25,6 @@ const apiData = fetchData('http://localhost:3100/api/login', {
     credentials: 'include'
 })
 
-const host = 'http://localhost:3100'
-const params = {
-    method: 'GET', 
-    headers: {Accept: 'application/json','Content-Type': 'application/json'},
-    credentials: 'include'
-}
-
 export default function Login(){
     const { setInboxState } = useInboxState()
     const { setUserdata } = useUserData({})
@@ -40,16 +34,7 @@ export default function Login(){
     const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
     const [darkMode, setDarkMode] = useState(darkModeStorage)
     const userdata = apiData.read()
-
-    const options = {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-        hour12: false        
-    };
+    const { host, fecthParams : params, dateOptions : options } = Constants()    
 
     useEffect(() => {
         if(userdata){

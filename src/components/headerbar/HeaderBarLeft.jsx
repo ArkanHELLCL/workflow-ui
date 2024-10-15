@@ -6,22 +6,7 @@ import { useInboxs } from "../../hooks/useInboxs";
 import { useAuth } from "../../hooks/useAuth";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CachedIcon from '@mui/icons-material/Cached';
-
-const host = 'http://localhost:3100'
-const params = {
-    method: 'GET', 
-    headers: {Accept: 'application/json','Content-Type': 'application/json'},
-    credentials: 'include'
-}
-const options = {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: false        
-};
+import { Constants } from "../../utils/const";
 
 function errroMessages(id, setInboxState, message){
     setInboxState(prevState => ({
@@ -52,6 +37,7 @@ export default function HeaderBarLeft() {
     const { setInboxState } = useInboxState()
     const { bandejas, setBandejas } = useInboxs()
     const { setAuth } = useAuth()
+    const { host, fecthParams : params, dateOptions : options } = Constants()
 
     const HandleReload = () => {
         let url = ''

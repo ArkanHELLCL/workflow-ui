@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useUserData } from '../../hooks/useUserData.jsx';
+import { useAuth } from '../../hooks/useAuth.jsx';
 import { DarkModeToggle } from '../../utils/DarkMode.jsx';
 import { ListItemButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
@@ -8,12 +10,45 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { IconButton } from "@mui/material";
 import { MailIcon } from '../../utils/icons.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Constants } from "../../utils/const.jsx";
 
 export default function UserBar({darkmode, setDarkMode}) {
-    const { userdata : user } = useUserData();    
+    const { userdata : user } = useUserData();
+    const { setAuth } = useAuth();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [userPhoto, setUserPhoto] = useState('/user.png');
     const open = Boolean(anchorEl);
+    const { host, fecthParams : params } = Constants()
+
+    useEffect(() => {            
+        if(user)
+            fetch(host + '/api/photo/' + user.USR_Usuario, params)
+            .then(response => {
+                if(response.ok){                
+                    return response.blob()
+                }else{
+                    return false
+                }
+            })
+            .then(imgBlob => {                        
+                var reader = new FileReader();            
+                if(imgBlob.size>0){
+                    reader.readAsDataURL(imgBlob); 
+                    reader.onloadend = function() {                
+                        var base64data = reader.result;                    
+                        setUserPhoto(base64data)
+                    }
+                }else{
+                    setUserPhoto('/user.png')
+                }
+            })
+            .catch((err)=> {
+                console.log(err)
+            })
+        else
+            setUserPhoto('/user.png')
+    }, [user])
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -25,7 +60,7 @@ export default function UserBar({darkmode, setDarkMode}) {
     const ButtonUsrProfile = () => {
         return (
             <>
-                <span className={`w-[25px] h-[25px] hover:cursor-pointer imgSender overflow-hidden flex items-center p-0 mx-0 my-1 `}><img src={user?.USR_Photo}/></span>
+                <span className={`w-[25px] h-[25px] hover:cursor-pointer imgSender overflow-hidden flex items-center p-0 mx-0 my-1 `}><img src={userPhoto}/></span>
                 <span className="absolute inline-flex items-center justify-center w-2 h-2 text-xs font-bold !text-white dark:bg-red-600 bg-red-500 rounded-full top-[2px] right-0"></span>
             </>
         )
@@ -45,7 +80,14 @@ export default function UserBar({darkmode, setDarkMode}) {
                     </div>
                 </div>
         )
-    }   
+    }
+
+    const handleCloseSession = () => {
+        fetch(host + '/api/logout', {...params, method: 'POST'})
+        .catch(err => console.log(err))
+        handleClose();
+        setAuth(false)        
+    }
     
     return(
         <>
@@ -79,7 +121,7 @@ export default function UserBar({darkmode, setDarkMode}) {
                     <ListItemButton 
                         sx={{'border':'2px solid','paddingRight': '0px','marginRight':'-5px','marginTop':'10px'}} 
                         className="!border dark:!border-white !border-black !w-fit dark:!text-white !text-black !text-xs dark:hover:!bg-[#363636] hover:!bg-[#d2d2d2] !py-[13px] !px-6 !absolute !-top-[18px] !right-[5px] z-50" 
-                        onClick={()=>console.log("cerrar sesión")}
+                        onClick={handleCloseSession}
                     >
                         Cerrar Sesión
                     </ListItemButton>
