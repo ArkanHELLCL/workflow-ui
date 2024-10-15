@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { useInboxs } from './hooks/useInboxs.jsx';
 import { useFilters } from './hooks/useFilters.jsx';
 import { useInboxState } from './hooks/useInboxState.jsx';
+import { useAuth } from './hooks/useAuth.jsx';
 import App from './App.jsx';
 
 //fetch data Login
@@ -34,7 +35,8 @@ export default function Login(){
     const { setInboxState } = useInboxState()
     const { setUserdata } = useUserData({})
     const { filters } = useFilters()
-    const { setBandejas } = useInboxs()    
+    const { setBandejas } = useInboxs()
+    const { setAuth } = useAuth()
     const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
     const [darkMode, setDarkMode] = useState(darkModeStorage)
     const userdata = apiData.read()
@@ -49,8 +51,9 @@ export default function Login(){
         hour12: false        
     };
 
-    useEffect(() => {        
+    useEffect(() => {
         if(userdata){
+            setAuth(true)
             const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())
             setInboxState(prevState => ({
                 ...prevState,
@@ -73,64 +76,107 @@ export default function Login(){
                         data.id = item.id                    
                     if(data.id === 'be'){
                         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de entrada ' + data.message
+                        else
+                            message = date + ' - Bandeja de entrada actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBE: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de entrada actualizada']
+                            messages: [...prevState.messages, message],
+                            error: data.error ? true : false
                         }))
                     }
                     if(data.id === 'bs'){
                         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de salida ' + data.message
+                        else
+                            message = date + ' - Bandeja de salida actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBS: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de salida actualizada']
+                            messages: [...prevState.messages, message]
                         }))
                     }
                     if(data.id === 'bf'){
                         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de finalizados ' + data.message
+                        else
+                            message = date + ' - Bandeja de finalizados actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBF: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de finalizados actualizada']
+                            messages: [...prevState.messages, message]
                         }))
                     }
                     if(data.id === 'ba'){
                         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de archivados ' + data.message
+                        else
+                            message = date + ' - Bandeja de archivados actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBA: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de archivados actualizada']
+                            messages: [...prevState.messages, message]
                         }))
                     }
                     if(data.id === 'bo'){
                         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de otros ' + data.message
+                        else
+                            message = date + ' - Bandeja de otros actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBO: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de otros actualizada']
+                            messages: [...prevState.messages, message]
                         }))
                     }
                     if(data.id === 'bnc'){
                         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de antiguos compras ' + data.message
+                        else
+                            message = date + ' - Bandeja de antiguos compras actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBNC: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de antiguos compras actualizada'],
+                            messages: [...prevState.messages, message],
                         }))
                     }
                     if(data.id === 'bnw'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())                        
+                        let message = ''
+                        if(data.error)                            
+                            message = date + ' - Error: Bandeja de antiguos WorkFlowv1 ' + data.message
+                        else
+                            message = date + ' - Bandeja de antiguos WorkFlowv1 actualizada';
+
                         setInboxState(prevState => ({
                             ...prevState,                            
                             loadingBNW: true,
-                            messages: [...prevState.messages, date + ' - Bandeja de antiguos WorkFlowv1 actualizada'],
+                            messages: [...prevState.messages, message],
                         }))
                     }
                     setBandejas(prevstate => [...prevstate, data])
                     return Promise.resolve(data)
                 })                
-                .catch((error) => {                    
+                .catch((error) => {
                     return Promise.reject(error)
                 })
             )            
@@ -183,7 +229,7 @@ export default function Login(){
                     success: StyledMaterialDesignContent
                     }
                 }>{
-                    userdata?.error === 200 ?
+                    userdata?.error === 200 ?                        
                         <App darkMode={darkMode} setDarkMode={setDarkMode}/>                        
                     :
                         <div className="text-center flex justify-center align-middle items-center h-full w-full !overflow-hidden">

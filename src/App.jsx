@@ -6,6 +6,7 @@ import { usePreview } from "./hooks/usePreview.jsx";
 import { useAttach } from "./hooks/useAttach.jsx";
 import { useReports } from "./hooks/useReports.jsx";
 import { useMantainer } from "./hooks/useMantainer.jsx";
+import { useAuth } from "./hooks/useAuth.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
@@ -32,7 +33,8 @@ const handleNotDragOver = (event) => {
 function App({darkMode, setDarkMode}) {    
   const { setMantainer } = useMantainer()
   const { setPreview } = usePreview()
-  const { setAdjuntos } = useAttach()  
+  const { setAdjuntos } = useAttach()
+  const { auth } = useAuth()
   const { report, setReport } = useReports()
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
   const [openSearch, setOpenSearch] = useState(false);
@@ -179,41 +181,46 @@ function App({darkMode, setDarkMode}) {
     }
   },[])
 
-  return (    
-    <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
-      <Suspense fallback={<Loading />}>
-        <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>
-      </Suspense>
-        <SideBar />            
-        <Header />      
-        <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
-        <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-        <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
-      
-      <Footer />{
-      openDialog?.open &&
-        <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
-      }
-      <form 
-        id={'frmWorkFlowv4'} 
-        noValidate 
-        ref={formReqRef}  
-        onSubmit={frmRequest.handleSubmit(onSubmitRequest)}>
-      </form>
-      <form 
-        id={'frmWFRecords'} 
-        noValidate 
-        ref={formRegRef}  
-        onSubmit={frmRecord.handleSubmit(onSubmitRecord)}>
-      </form>
-      <form 
-        id={'frmWFReports'} 
-        noValidate 
-        ref={formRepRef}  
-        onSubmit={frmReport.handleSubmit(onSubmitReport)}>
-      </form>
-      <ToastMessages error={error} setError={setError}/>
-    </main>
+  return (
+    auth ?
+      <main className="dark:bg-[#262626] bg-[#ffffff] z-0 min-h-screen text-sm h-screen w-screen overflow-hidden relative" id="container">
+        <Suspense fallback={<Loading />}>
+          <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>
+        </Suspense>
+          <SideBar />            
+          <Header />      
+          <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
+          <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
+          <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
+        
+        <Footer />{
+        openDialog?.open &&
+          <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+        }
+        <form 
+          id={'frmWorkFlowv4'} 
+          noValidate 
+          ref={formReqRef}  
+          onSubmit={frmRequest.handleSubmit(onSubmitRequest)}>
+        </form>
+        <form 
+          id={'frmWFRecords'} 
+          noValidate 
+          ref={formRegRef}  
+          onSubmit={frmRecord.handleSubmit(onSubmitRecord)}>
+        </form>
+        <form 
+          id={'frmWFReports'} 
+          noValidate 
+          ref={formRepRef}  
+          onSubmit={frmReport.handleSubmit(onSubmitReport)}>
+        </form>
+        <ToastMessages error={error} setError={setError}/>
+      </main>
+    :
+    <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-[100vh] w-full !overflow-hidden">
+      <span className='text-[#2c87d2] text-xl w-full'>No autorizado</span>
+    </div>
   )
 }
 

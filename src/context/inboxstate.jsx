@@ -13,7 +13,9 @@ export function InboxStateProvider({ children }) {
         loadingBO: false,
         loadingBNC: false,
         loadingBNW: false,
-        messages: []
+        messages: [],
+        error: false,
+        warnign: false
     })
     
     return (

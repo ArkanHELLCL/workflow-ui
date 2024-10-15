@@ -3,6 +3,7 @@
 import { useFilters } from "../../hooks/useFilters";
 import { useInboxState } from '../../hooks/useInboxState';
 import { useInboxs } from "../../hooks/useInboxs";
+import { useAuth } from "../../hooks/useAuth";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CachedIcon from '@mui/icons-material/Cached';
 
@@ -22,10 +23,35 @@ const options = {
     hour12: false        
 };
 
+function errroMessages(id, setInboxState, message){
+    setInboxState(prevState => ({
+        ...prevState,
+        error: true,                    
+    })) 
+    let msgfinal = ''
+    if(id === 'be')
+        msgfinal = 'Error: Bandeja de entrada ' + message
+    if(id === 'bs')
+        msgfinal = 'Error: Bandeja de salida ' + message
+    if(id === 'bf')
+        msgfinal = 'Error: Bandeja de finalizados ' + message
+    if(id === 'bo')
+        msgfinal = 'Error: Bandeja de otros ' + message
+    if(id === 'ba')
+        msgfinal = 'Error: Bandeja de archivados ' + message
+    if(id === 'bnc')
+        msgfinal = 'Error: Bandeja de antiguos compra ' + message
+    if(id === 'bnw')
+        msgfinal = 'Error: Bandeja de antiguos WorkFlowv1 ' + message
+
+    return msgfinal
+}
+
 export default function HeaderBarLeft() {
     const { filters } = useFilters()
     const { setInboxState } = useInboxState()
     const { bandejas, setBandejas } = useInboxs()
+    const { setAuth } = useAuth()
 
     const HandleReload = () => {
         let url = ''
@@ -37,7 +63,9 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBE: false,
-                messages: [...prevState.messages, date + ' - Actualizando bandeja de entrada...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de entrada...'],
+                error: false,
+                Warning: false
             })) 
             msgfinal = 'Bandeja de entrada actualizada'
         }
@@ -59,7 +87,7 @@ export default function HeaderBarLeft() {
                 ...prevState,
                 loadingInboxs: true,
                 loadingBF: false,
-                messages: [...prevState.messages, date + ' - Actualizando bandeja de finalizados...']
+                messages: [...prevState.messages, date + ' - Actualizando bandeja de finalizados...'],                
             })) 
             msgfinal = 'Bandeja de finalizados actualizada'
         }
@@ -98,7 +126,7 @@ export default function HeaderBarLeft() {
         }
 
         if(filters?.itemIdSelected === 'bnw') {
-            url = '/api/bandeja-antiguos-compra'
+            url = '/api/bandeja-antiguos-workflowv1'
             setInboxState(prevState => ({
                 ...prevState,
                 loadingInboxs: true,
@@ -111,12 +139,21 @@ export default function HeaderBarLeft() {
         fetch(host + url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params)
         .then((response) => response.json())
         .then((data) => {
+            if(data.error){
+                if(parseInt(data.error) === 401){
+                    setAuth(false)
+                }
+                msgfinal = errroMessages(filters.itemIdSelected, setInboxState, data.message)
+            }
             const newBandejas = bandejas.map(item => {
                 if(item.id === filters.itemIdSelected)
                     item.registros = data.registros
                 return item
             })            
             setBandejas(newBandejas)            
+        })
+        .catch((error) => {
+            msgfinal = errroMessages(filters.itemIdSelected, setInboxState, error.message)
         })
         .finally(() => {
             const date = new Intl.DateTimeFormat(undefined, options).format(new Date())

@@ -6,8 +6,8 @@ import { useInboxState } from '../hooks/useInboxState.jsx';
 import Collapse from '@mui/material/Collapse';
 import { useFilters } from "../hooks/useFilters.jsx";
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
-//import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
-//import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { BlockIcon, CheckIcon, QuestionIcon, WarningIcon } from "../utils/icons.jsx";
 import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 import Loading from "../utils/Loading.jsx";
@@ -79,7 +79,7 @@ export default function Footer() {
     return (
         <>
             <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerleft">
-                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">{descripcion !== null ? descripcion : 'Sin menú'}</span>
+                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px] truncate">{descripcion !== null ? descripcion : 'Sin menú'}</span>
                 {
                     tipoABuscar === "bandejas" && filters.itemIdSelected.length > 1 ? 
                         <>{                        
@@ -144,7 +144,7 @@ export default function Footer() {
                                         )
                                     }
                                     <div>
-                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px] truncate">Total : </span>
                                         <span className="text-green-500">{obj.children.length}</span>                
                                     </div>
                                 </>
@@ -183,7 +183,7 @@ export default function Footer() {
                                         )
                                     }
                                     <div>
-                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px] truncate">Total : </span>
                                         <span className="text-blue-500">{filters.totalRequerimientos === 1000 ? '1000+' : filters.totalRequerimientos}</span>                
                                     </div> 
                                 </>
@@ -198,12 +198,12 @@ export default function Footer() {
                                 }{
                                     report ? (
                                         <div>
-                                            <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                            <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px] truncate">Total : </span>
                                             <span className="text-green-500">{report?.rows?.length}</span>                
                                         </div>    
                                     ): (
                                     <div>
-                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
+                                        <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px] truncate">Total : </span>
                                         <span className="text-green-500">{filters.itemIdSelected === "r" || filters.itemIdSelected === "b" ? obj.children.length : obj.children.filter((item) => item === filters.itemIdSelected)[0]?.children?.length || filters.itemIdSelected.charAt(0) === "j" ? filters.totalMensajes : 0}</span>                
                                     </div>
                                     )
@@ -214,7 +214,7 @@ export default function Footer() {
                     }
             </footer>
             <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center justify-end p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerright">
-                <Button className={`!bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-xs !min-h-full !px-2`}
+                <Button className={`!bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-xs !min-h-full !px-2 overflow-auto`}
                         id="logList-button"
                         aria-controls={open ? "logList" : undefined}
                         aria-haspopup="true"
@@ -222,13 +222,19 @@ export default function Footer() {
                         onClick={handleClick}
                         title="Mensajes de soliciutes de actualización de registros"
                 >
-                    <span className="pr-1">
+                    <span className="pr-1 truncate">
                         {inboxstate?.messages?.slice(-1)[0]?.split(' - ')[1]}
                     </span>{
-                        inboxstate?.loadingInboxs ?
-                            <span className="text-blue-500 h-4 w-4"><Loading /> </span>
+                        inboxstate?.loadingInboxs ?                            
+                            <span className="text-blue-500 h-4 w-4 truncate"><Loading /> </span>
                         :
-                            <CheckCircleOutlineOutlinedIcon className="!h-4 !w-4 text-green-500"/>                
+                            inboxstate?.error ?
+                                <CancelOutlinedIcon className="!h-4 !w-4 text-red-500"/>
+                            :
+                                inboxstate?.warning ?
+                                    <WarningAmberOutlinedIcon className="!h-4 !w-4 dark:text-orange-300 text-orange-400"/>
+                                :
+                                    <CheckCircleOutlineOutlinedIcon className="!h-4 !w-4 text-green-500"/>
                     }
                 </Button>
                 <Menu
@@ -238,11 +244,11 @@ export default function Footer() {
                     onClose={handleClose}
                     MenuListProps={{
                         'aria-labelledby': 'logList-button',
-                    }}
+                    }}                    
                 >
-                    <ul>{
-                        inboxstate.messages.map((item, index) => (
-                            <li key={index} className="px-6 pt-1 text-xs font-semibold truncate">{item}</li>
+                    <ul className="h-36">{
+                        inboxstate?.messages?.map((item, index) => (
+                            <li key={index} className={`px-6 pt-1 text-xs font-semibold ${item.includes('Error') ? 'text-red-600': item.includes('Warning') ? 'dark:text-orange-300 text-orange-400': ''}`}>{item}</li>
                         ))                        
                     }</ul>    
                 </Menu>
