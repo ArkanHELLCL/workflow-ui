@@ -176,13 +176,13 @@ export default function Footer() {
                                         filters.totalFiltrados > 0 && (
                                             <div>
                                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
-                                                <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
+                                                <span className="text-green-500">{filters.totalFiltrados === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalFiltrados}</span>                
                                             </div> 
                                         )
                                     }
                                     <div className="truncate">
                                         <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px] truncate">Total : </span>
-                                        <span className="text-blue-500">{filters.totalRequerimientos === 1000 ? '1000+' : filters.totalRequerimientos}</span>                
+                                        <span className="text-blue-500">{filters.totalRequerimientos === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalRequerimientos}</span>                
                                     </div> 
                                 </>
                             ) : (
@@ -190,7 +190,7 @@ export default function Footer() {
                                     filters.totalFiltrados > 0 && (
                                         <div>
                                             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
-                                            <span className="text-green-500">{filters.totalFiltrados === 1000 ? '1000+' : filters.totalFiltrados}</span>                
+                                            <span className="text-green-500">{filters.totalFiltrados === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalFiltrados}</span>                
                                         </div> 
                                     )
                                 }{

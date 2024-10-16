@@ -13,6 +13,7 @@ import { InboxsProvider } from './context/inboxs.jsx'
 import { InboxStateProvider } from './context/inboxstate.jsx'
 import { ButtonsGroupProvider } from './context/buttonsgroup.jsx'
 import { AuthProvider } from './context/auth.jsx'
+import { MantainersProvider } from './context/mantainers.jsx'
 
 createRoot(document.getElementById('root')).render(
   <FiltersProvider>
@@ -27,7 +28,9 @@ createRoot(document.getElementById('root')).render(
                       <InboxStateProvider>
                         <ButtonsGroupProvider>
                           <AuthProvider>
-                            <Login />
+                            <MantainersProvider>
+                              <Login />
+                            </MantainersProvider>
                           </AuthProvider>
                         </ButtonsGroupProvider>
                       </InboxStateProvider>

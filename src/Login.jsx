@@ -34,7 +34,7 @@ export default function Login(){
     const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
     const [darkMode, setDarkMode] = useState(darkModeStorage)
     const userdata = apiData.read()
-    const { host, fecthParams : params, dateOptions : options } = Constants()    
+    const { host, fecthParams : params, dateOptions : options } = Constants()
 
     useEffect(() => {
         if(userdata){
@@ -50,7 +50,9 @@ export default function Login(){
                 loadingBO: false,
                 loadingBNC: false,
                 loadingBNW: false,
-                messages: [...prevState.messages, Inidate + ' - Actualizando todas las bandejas...']
+                messages: [...prevState.messages, Inidate + ' - Actualizando todas las bandejas...'],
+                error: false,
+                Warning: false
             }))
 
             const promises = userdata?.bandejas?.map((item) => (

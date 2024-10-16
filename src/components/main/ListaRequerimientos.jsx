@@ -40,7 +40,7 @@ export default function ListaRequerimientos({frmRequest}){
     const { requerimientoAccordion } = Accordions(filteredRequest, filters)
     const [acc, setAcc] = useState([])
 
-    const moreItems = filteredRequest.length === 1000 ? true : false
+    const moreItems = filteredRequest.length === filters.maxRecordLoaded ? true : false
     
     useEffect(() => {        
         setAcc(requerimientoAccordion)
