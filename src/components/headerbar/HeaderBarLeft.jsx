@@ -121,79 +121,78 @@ export default function HeaderBarLeft() {
             })) 
             msgfinal = 'Bandeja de antiguos WorkFlowv1 actualizada'
         }
-
-        fetch(host + url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params)
-        .then((response) => response.json())
-        .then((data) => {
-            if(data.error){
-                if(parseInt(data.error) === 401){
-                    setAuth(false)
+        if(url)
+            fetch(host + url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params)
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.error){
+                    if(parseInt(data.error) === 401){
+                        setAuth(false)
+                    }
+                    msgfinal = errroMessages(filters.itemIdSelected, setInboxState, data.message)
                 }
-                msgfinal = errroMessages(filters.itemIdSelected, setInboxState, data.message)
-            }
-            const newBandejas = bandejas.map(item => {
-                if(item.id === filters.itemIdSelected)
-                    item.registros = data.registros
-                return item
-            })            
-            setBandejas(newBandejas)            
-        })
-        .catch((error) => {
-            msgfinal = errroMessages(filters.itemIdSelected, setInboxState, error.message)
-        })
-        .finally(() => {
-            const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-            if(filters?.itemIdSelected === 'be')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBE: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                }))
-            if(filters?.itemIdSelected === 'bs')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBS: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                }))
-            if(filters?.itemIdSelected === 'bf')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBF: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                }))
-            if(filters?.itemIdSelected === 'bo')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBO: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                }))                
-            if(filters?.itemIdSelected === 'ba')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBA: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                })) 
-            if(filters?.itemIdSelected === 'bnc')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBNC: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                }))
-            if(filters?.itemIdSelected === 'bnw')
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingBNW: true,
-                    messages: [...prevState.messages, date + ' - ' + msgfinal]
-                }))
-        })            
-        
+                const newBandejas = bandejas.map(item => {
+                    if(item.id === filters.itemIdSelected)
+                        item.registros = data.registros
+                    return item
+                })            
+                setBandejas(newBandejas)            
+            })
+            .catch((error) => {
+                msgfinal = errroMessages(filters.itemIdSelected, setInboxState, error.message)
+            })
+            .finally(() => {
+                const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                if(filters?.itemIdSelected === 'be')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBE: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    }))
+                if(filters?.itemIdSelected === 'bs')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBS: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    }))
+                if(filters?.itemIdSelected === 'bf')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBF: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    }))
+                if(filters?.itemIdSelected === 'bo')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBO: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    }))                
+                if(filters?.itemIdSelected === 'ba')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBA: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    })) 
+                if(filters?.itemIdSelected === 'bnc')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBNC: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    }))
+                if(filters?.itemIdSelected === 'bnw')
+                    setInboxState(prevState => ({
+                        ...prevState,
+                        loadingInboxs: false,
+                        loadingBNW: true,
+                        messages: [...prevState.messages, date + ' - ' + msgfinal]
+                    }))
+            })        
     }
 
     return(

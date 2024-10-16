@@ -26,40 +26,45 @@ export default function ListaRegMantenedores({frmRecord}){
         let name = ''
         let error = true
 
-        if(mantenedores.filter(item => item.id === filters.itemIdSelected).length > 0){
+        /*if(mantenedores.filter(item => item.id === filters.itemIdSelected).length > 0){
             message = date + ' - Registros de mantenedor id: ' + filters.itemIdSelected + ' cargados'
             error = false
-        }
+        }*/
 
-        if(filters.itemIdSelected === 'mu' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        //if(filters.itemIdSelected === 'mu' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        if(filters.itemIdSelected === 'mu'){
             url = host + '/api/mantenedores/usuarios?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
             message = date + ' - Actualizando registros de mantenedor de usuarios...'
             msgfinal = date + ' - Mantenedor de usuarios actualizado'
             name = 'usuarios'
             error = false
         }
-        if(filters.itemIdSelected === 'ml' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        //if(filters.itemIdSelected === 'ml' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        if(filters.itemIdSelected === 'ml'){
             url = host + '/api/mantenedores/listas-desplegable?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
             message = date + ' - Actualizando registros de mantenedor de listas desplegable...'
             msgfinal = date + ' - Mantenedor de listas desplegable actualizado'
             name = 'listas desplegable'
             error = false
         }
-        if(filters.itemIdSelected === 'mi' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        //if(filters.itemIdSelected === 'mi' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        if(filters.itemIdSelected === 'mi'){
             url = host + '/api/mantenedores/items-lista-desplegable?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
             message = date + ' - Actualizando registros de mantenedor de items de listas desplegable...'
             msgfinal = date + ' - Mantenedor de items de listas desplegable actualizado'
             name = 'items de listas desplegable'
             error = false
         }
-        if(filters.itemIdSelected === 'mp' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        //if(filters.itemIdSelected === 'mp' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        if(filters.itemIdSelected === 'mp'){
             url = host + '/api/mantenedores/proveedores?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
             message = date + ' - Actualizando registros de mantenedor de proveedores...'
             msgfinal = date + ' - Mantenedor de proveedores actualizado'
             name = 'proveedores'
             error = false
         }
-        if(filters.itemIdSelected === 'mc' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        //if(filters.itemIdSelected === 'mc' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+        if(filters.itemIdSelected === 'mc'){
             url = host + '/api/mantenedores/comunas?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
             message = date + ' - Actualizando registros de mantenedor de comunas...'
             msgfinal = date + ' - Mantenedor de comunas actualizado'

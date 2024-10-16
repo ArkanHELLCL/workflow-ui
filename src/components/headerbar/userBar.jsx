@@ -70,7 +70,7 @@ export default function UserBar({darkmode, setDarkMode}) {
         return (
             <div className="flex justify-center items-center gap-5 h-fit p-4">
                     <div className={`w-[100px] h-[100px] imgSender overflow-hidden flex items-center p-0 m-0 `}>
-                        <img src={user.USR_Photo} className='w-28 h-auto'/>
+                        <img src={userPhoto} className='w-28 h-auto'/>
                     </div>
                     <div className="flex flex-col h-fit max-w-[260px]">
                         <span className="text-xl font-semibold truncate dark:!text-white !text-[#262626]">{user.USR_Nombre}</span>
