@@ -80,19 +80,19 @@
                         "id":"ru",
                         "label":"Dias por Usuario",
                         "description":"Reporte de Dias por Usuario",
-                        "url":"/reportes/dias-por-usuario"
+                        "url":"/api/reportes/dias-por-usuario"
                      },
                      {
                         "id":"ro",
                         "label":"Ordenes de Compras",
                         "description":"Reporte de Ordenes de Compras",
-                        "url":"/reportes/ordenes-de-compras"
+                        "url":"/api/reportes/ordenes-de-compras"
                      },
                      {
                         "id":"rp",
                         "label":"Seguimiento de Pagos",
                         "description":"Reporte de Seguimiento de Pagos",
-                        "url":"/reportes/seguimiento-de-pagos"
+                        "url":"/api/reportes/seguimiento-de-pagos"
                      }
                ]
             }
@@ -172,19 +172,19 @@
                         "id":"ru",
                         "label":"Dias por Usuario",
                         "description":"Reporte de Dias por Usuario",
-                        "url":"/reportes/dias-por-usuario"
+                        "url":"/api/reportes/dias-por-usuario"
                      },
                      {
                         "id":"ro",
                         "label":"Ordenes de Compras",
                         "description":"Reporte de Ordenes de Compras",
-                        "url":"/reportes/ordenes-de-compras"
+                        "url":"/api/reportes/ordenes-de-compras"
                      },
                      {
                         "id":"rp",
                         "label":"Seguimiento de Pagos",
                         "description":"Reporte de Seguimiento de Pagos",
-                        "url":"/reportes/seguimiento-de-pagos"
+                        "url":"/api/reportes/seguimiento-de-pagos"
                      }
                ]
             }
@@ -264,19 +264,19 @@
                         "id":"ru",
                         "label":"Dias por Usuario",
                         "description":"Reporte de Dias por Usuario",
-                        "url":"/reportes/dias-por-usuario"
+                        "url":"/api/reportes/dias-por-usuario"
                      },
                      {
                         "id":"ro",
                         "label":"Ordenes de Compras",
                         "description":"Reporte de Ordenes de Compras",
-                        "url":"/reportes/ordenes-de-compras"
+                        "url":"/api/reportes/ordenes-de-compras"
                      },
                      {
                         "id":"rp",
                         "label":"Seguimiento de Pagos",
                         "description":"Reporte de Seguimiento de Pagos",
-                        "url":"/reportes/seguimiento-de-pagos"
+                        "url":"/api/reportes/seguimiento-de-pagos"
                      }
                ]
             }
@@ -336,19 +336,19 @@
                         "id":"ru",
                         "label":"Dias por Usuario",
                         "description":"Reporte de Dias por Usuario",
-                        "url":"/reportes/dias-por-usuario"
+                        "url":"/api/reportes/dias-por-usuario"
                      },
                      {
                         "id":"ro",
                         "label":"Ordenes de Compras",
                         "description":"Reporte de Ordenes de Compras",
-                        "url":"/reportes/ordenes-de-compras"
+                        "url":"/api/reportes/ordenes-de-compras"
                      },
                      {
                         "id":"rp",
                         "label":"Seguimiento de Pagos",
                         "description":"Reporte de Seguimiento de Pagos",
-                        "url":"/reportes/seguimiento-de-pagos"
+                        "url":"/api/reportes/seguimiento-de-pagos"
                      }
                ]
             }

@@ -212,7 +212,7 @@ export default function Footer() {
                     }
             </footer>
             <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center justify-end p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerright">
-                <Button className={`!bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-xs !min-h-full !px-2 overflow-auto`}
+                <Button className={`!bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-xs !min-h-full !px-2 overflow-auto !max-w-xs`}
                         id="logList-button"
                         aria-controls={open ? "logList" : undefined}
                         aria-haspopup="true"
@@ -244,7 +244,7 @@ export default function Footer() {
                         'aria-labelledby': 'logList-button',
                     }}                    
                 >
-                    <ul className="h-36">{
+                    <ul className="h-36 !max-w-lg">{
                         inboxstate?.messages?.map((item, index) => (
                             <li key={index} className={`px-6 pt-1 text-xs font-semibold ${item.includes('Error') ? 'text-red-600': item.includes('Warning') ? 'dark:text-orange-300 text-orange-400': ''}`}>{item}</li>
                         ))                        

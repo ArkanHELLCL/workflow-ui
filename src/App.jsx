@@ -7,6 +7,7 @@ import { useAttach } from "./hooks/useAttach.jsx";
 import { useReports } from "./hooks/useReports.jsx";
 import { useMantainer } from "./hooks/useMantainer.jsx";
 import { useAuth } from "./hooks/useAuth.jsx";
+import { useFilters } from "./hooks/useFilters.jsx";
 import Header from './components/Header.jsx'
 import Footer from './components/footer.jsx'
 import SideBar from './components/SideBar.jsx'
@@ -18,8 +19,10 @@ import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
 import { ToastMessages } from "./utils/toastMessages.jsx";
-import { data } from './mocks/datadiasusuario.json'
+//import { data } from './mocks/datadiasusuario.json'
 import Loading from "./utils/Loading.jsx";
+import { Constants } from "./utils/const.jsx";
+import { useInboxState } from './hooks/useInboxState.jsx';
 
 //socket.io
 const socket = io('http://localhost:3100');
@@ -34,6 +37,9 @@ function App({darkMode, setDarkMode}) {
   const { setMantainer } = useMantainer()
   const { setPreview } = usePreview()
   const { setAdjuntos } = useAttach()
+  const { setInboxState } = useInboxState()
+  const { setAuth } = useAuth()
+  const { filters } = useFilters()
   const { auth } = useAuth()
   const { report, setReport } = useReports()
   const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
@@ -44,6 +50,7 @@ function App({darkMode, setDarkMode}) {
   const [filesList, setFilesList] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const { host, fecthParams : params, dateOptions : options } = Constants()
 
   const frmRequest = useForm({
     mode: "onBlur",
@@ -135,15 +142,65 @@ function App({darkMode, setDarkMode}) {
     let mensaje = ''
     if(openDialog.option){   
       if(openDialog.formid === 'frmWFReports'){
-          mensaje = 'Los datos han sido enviados exitosamente!'
-          setLoading(true)      
-          setReport(data)
+          //mensaje = 'Los datos han sido enviados exitosamente!'
+          setLoading(true)
+          //setReport(data)
+          const date = new Intl.DateTimeFormat(undefined, options).format(new Date())        
+          let url = ''
+          let message = date + ' - Error: Registros solicitado id: ' + filters.itemIdSelected + ' no encontrado'
+          let msgfinal = ''
+          let name = ''
+          let error = true
+          
+          if(filters.itemIdSelected === 'ru'){
+            url = host + '/api/reportes/dias-por-usuario/?repUsrId=' + openDialog.data.USR_Id.id + '&repFechaDesde=' + openDialog.data.REP_FechaDesde.$d + '&repFechaHasta=' + openDialog.data.REP_FechaHasta.$d
+            message = date + ' - Generando informe de Dias por usuario...'
+            msgfinal = date + ' - Informe de Dias por usuarios generado'
+            name = 'dias por usuario'
+            error = false
+          }
+          setInboxState(prevState => ({
+              ...prevState,            
+              messages: [...prevState.messages, message],
+              error: error
+          }))
+          console.log('url',url)
+          if(url){
+              fetch(url, params)
+              .then((response) => response.json())
+              .then((data) => {
+                  if(data.error){
+                      if(parseInt(data.error) === 401){
+                          setAuth(false)
+                      }
+                      message = date + ' - Error: Mantenedor de ' + name + ' ' +data.message
+                  }
+                  else{
+                      message = msgfinal;
+                      mensaje = 'Reporte generado exitosamente!'
+                      setReport(prevState => ([...prevState, data]))
+                  }
+                                    
+                  setInboxState(prevState => ({
+                      ...prevState,                    
+                      messages: [...prevState.messages, message],
+                      error: data.error ? true : false
+                  }))
+              })
+              .catch((error) => {                  
+                  setInboxState(prevState => ({
+                      ...prevState,                    
+                      messages: [...prevState.messages, date + ' - Error: ' + error.message],
+                      error: true
+                  }))
+              })
+          }
           setLoading(false)     
       }
       else
           mensaje = 'Los datos han sido grabados exitosamente!'
 
-      socket.emit('mensaje', openDialog.data)
+      //socket.emit('mensaje', openDialog.data)
       //fecth a la base de datos, recupera el id y lo setea en el formulario
       const newRecorId = 99999      
       if(openDialog.formid === 'frmWFRecords' && openDialog.formAction.split('/')[3] === 'mpmant'){

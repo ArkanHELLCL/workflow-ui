@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 export const ReportsContext = createContext();
 
 export function ReportsProvider({ children }) {    
-    const [report, setReport] = useState(null)
+    const [report, setReport] = useState([])
     
     return (
         <ReportsContext.Provider value={{
