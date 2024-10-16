@@ -21,16 +21,51 @@ export default function ListaRegMantenedores({frmRecord}){
     useEffect(() => {
         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())        
         let url = ''
-        let message = date + ' - Error: Mantenedor soliiitado no encontrado id: ' + filters.itemIdSelected
+        let message = date + ' - Error: Registros solicitado id: ' + filters.itemIdSelected + ' no encontrado'
         let msgfinal = ''
+        let name = ''
         let error = true
+
+        if(mantenedores.filter(item => item.id === filters.itemIdSelected).length > 0){
+            message = date + ' - Registros de mantenedor id: ' + filters.itemIdSelected + ' cargados'
+            error = false
+        }
 
         if(filters.itemIdSelected === 'mu' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
             url = host + '/api/mantenedores/usuarios?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
             message = date + ' - Actualizando registros de mantenedor de usuarios...'
             msgfinal = date + ' - Mantenedor de usuarios actualizado'
+            name = 'usuarios'
             error = false
-        }        
+        }
+        if(filters.itemIdSelected === 'ml' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+            url = host + '/api/mantenedores/listas-desplegable?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
+            message = date + ' - Actualizando registros de mantenedor de listas desplegable...'
+            msgfinal = date + ' - Mantenedor de listas desplegable actualizado'
+            name = 'listas desplegable'
+            error = false
+        }
+        if(filters.itemIdSelected === 'mi' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+            url = host + '/api/mantenedores/items-lista-desplegable?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
+            message = date + ' - Actualizando registros de mantenedor de items de listas desplegable...'
+            msgfinal = date + ' - Mantenedor de items de listas desplegable actualizado'
+            name = 'items de listas desplegable'
+            error = false
+        }
+        if(filters.itemIdSelected === 'mp' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+            url = host + '/api/mantenedores/proveedores?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
+            message = date + ' - Actualizando registros de mantenedor de proveedores...'
+            msgfinal = date + ' - Mantenedor de proveedores actualizado'
+            name = 'proveedores'
+            error = false
+        }
+        if(filters.itemIdSelected === 'mc' && mantenedores.filter(item => item.id === filters.itemIdSelected).length === 0){
+            url = host + '/api/mantenedores/comunas?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
+            message = date + ' - Actualizando registros de mantenedor de comunas...'
+            msgfinal = date + ' - Mantenedor de comunas actualizado'
+            name = 'comunas'
+            error = false
+        }
         setInboxState(prevState => ({
             ...prevState,            
             messages: [...prevState.messages, message],
@@ -44,7 +79,7 @@ export default function ListaRegMantenedores({frmRecord}){
                     if(parseInt(data.error) === 401){
                         setAuth(false)
                     }
-                    message = date + ' - Error: Mantenedor de usuarios ' + data.message
+                    message = date + ' - Error: Mantenedor de ' + name + ' ' +data.message
                 }
                 else
                     message = msgfinal;
@@ -57,9 +92,6 @@ export default function ListaRegMantenedores({frmRecord}){
                 }))
             })
         }
-        if(mantenedores)
-            setMantenedores(prevstate => [...prevstate, mantenedores])
-        //setBandejas(prevstate => [...prevstate, data])
     }, [filters.itemIdSelected])
 
     return (       

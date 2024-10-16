@@ -94,7 +94,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
         
     return(
         <ClickAwayListener onClickAway={handleClickAway}>
-            <div className="h-full flex z-50 w-full" id={menuSearch} onDragOver={handleNotDragOver}>                    
+            <search aria-label="search" className="h-full flex z-50 w-full" id={menuSearch} onDragOver={handleNotDragOver}>                    
                 <div className={`absolute transition-all duration-400 ${openSearch && filters.filterSearch === 2 ? ' -translate-x-[142px]' : openSearch && filters.filterSearch === 1 ? ' -translate-x-[121px]' : ' translate-x-0'}`} id="mnuSearchBandejas">
                     <IconButton
                         aria-label="more"
@@ -163,7 +163,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                         readonly={inboxstate.loadingInboxs}
                     />
                 </form>
-            </div>
+            </search>
         </ClickAwayListener>
     )
 }
