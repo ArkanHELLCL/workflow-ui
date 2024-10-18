@@ -134,9 +134,7 @@ export const theme = (darkMode) =>
               }
             }
         },
-        MuiSnackbar: {            
-          
-            
+        MuiSnackbar: {
               variants: [
                 {
                   props: { variant: 'error' },

@@ -15,6 +15,7 @@ import { useInboxState } from './hooks/useInboxState.jsx';
 import { useAuth } from './hooks/useAuth.jsx';
 import App from './App.jsx';
 import { Constants } from "./utils/const.jsx";
+import "dayjs/locale/es";
 
 //fetch data Login
 const param = {usrCod:'lcastillo', usrClave:'123456'}

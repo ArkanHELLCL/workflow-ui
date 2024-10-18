@@ -6,7 +6,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import { Box } from '@mui/system';
 import { StyledDataGrid, StyledGridOverlay } from '../formcontent/inputscomponents/StyledDataGrid.jsx';
 
-export default function ExportDefaultToolbar({dataReport, loading}) {
+export default function ExportDefaultToolbar({dataReport, loading}) {  
   function CustomNoRowsOverlay() {
     return (
       <StyledGridOverlay>

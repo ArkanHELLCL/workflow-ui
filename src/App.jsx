@@ -19,7 +19,6 @@ import HeaderBar from "./components/headerBar.jsx";
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
 import { ToastMessages } from "./utils/toastMessages.jsx";
-//import { data } from './mocks/datadiasusuario.json'
 import Loading from "./utils/Loading.jsx";
 import { Constants } from "./utils/const.jsx";
 import { useInboxState } from './hooks/useInboxState.jsx';
@@ -141,11 +140,9 @@ function App({darkMode, setDarkMode}) {
   useEffect(() => {
     let mensaje = ''
     if(openDialog.option){   
-      if(openDialog.formid === 'frmWFReports'){
-          //mensaje = 'Los datos han sido enviados exitosamente!'
+      if(openDialog.formid === 'frmWFReports'){          
           setLoading(true)
-          //setReport(data)
-          const date = new Intl.DateTimeFormat(undefined, options).format(new Date())        
+          const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
           let url = ''
           let message = date + ' - Error: Registros solicitado id: ' + filters.itemIdSelected + ' no encontrado'
           let msgfinal = ''
@@ -153,7 +150,10 @@ function App({darkMode, setDarkMode}) {
           let error = true
           
           if(filters.itemIdSelected === 'ru'){
-            url = host + '/api/reportes/dias-por-usuario/?repUsrId=' + openDialog.data.USR_Id.id + '&repFechaDesde=' + openDialog.data.REP_FechaDesde.$d + '&repFechaHasta=' + openDialog.data.REP_FechaHasta.$d
+            const fechaDesde = openDialog.data.REP_FechaDesde.$y + '-' + (openDialog.data.REP_FechaDesde.$M + 1) + '-' + openDialog.data.REP_FechaDesde.$D
+            const fechaHasta = openDialog.data.REP_FechaHasta.$y + '-' + (openDialog.data.REP_FechaHasta.$M + 1) + '-' + openDialog.data.REP_FechaHasta.$D
+
+            url = host + '/api/reportes/dias-por-usuario?repUsrId=' + openDialog.data.USR_Id.id + '&repFechaDesde=' +fechaDesde + '&repFechaHasta=' + fechaHasta
             message = date + ' - Generando informe de Dias por usuario...'
             msgfinal = date + ' - Informe de Dias por usuarios generado'
             name = 'dias por usuario'
@@ -173,12 +173,14 @@ function App({darkMode, setDarkMode}) {
                       if(parseInt(data.error) === 401){
                           setAuth(false)
                       }
-                      message = date + ' - Error: Mantenedor de ' + name + ' ' +data.message
+                      message = date + ' - Error: Reporte de ' + name + ' ' +data.message
+                      mensaje = 'El reporte no ha podido ser generado'
                   }
                   else{
                       message = msgfinal;
                       mensaje = 'Reporte generado exitosamente!'
-                      setReport(prevState => ([...prevState, data]))
+                      //setReport(prevState => ([...prevState, data]))
+                      setReport(data)
                   }
                                     
                   setInboxState(prevState => ({
@@ -244,12 +246,11 @@ function App({darkMode, setDarkMode}) {
         <Suspense fallback={<Loading />}>
           <HeaderBar openSearch={openSearch} setOpenSearch={setOpenSearch} onDragOver={handleNotDragOver} darkmode={darkMode} setDarkMode={setDarkMode}/>
         </Suspense>
-          <SideBar />            
-          <Header />      
-          <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
-          <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-          <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
-        
+        <SideBar />            
+        <Header />      
+        <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
+        <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
+        <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
         <Footer />{
         openDialog?.open &&
           <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
