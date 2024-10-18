@@ -43,128 +43,44 @@ export default function Login(){
             const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())
             setInboxState(prevState => ({
                 ...prevState,
-                loadingInboxs: true,
-                loadingBE: false,
-                loadingBS: false,
-                loadingBF: false,
-                loadingBA: false,
-                loadingBO: false,
-                loadingBNC: false,
-                loadingBNW: false,
+                loadingInboxs: true,                                
                 messages: [...prevState.messages, Inidate + ' - Actualizando todas las bandejas...'],
                 error: false,
                 Warning: false
             }))
 
-            const promises = userdata?.bandejas?.map((item) => (
+            const promises = userdata?.bandejas?.filter(item => item.load).map((item) => (
                 fetch(host + item.url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params))
                 .then((response) => response.json())
                 .then((data) => {
                     if(!data.id)
-                        data.id = item.id                    
-                    if(data.id === 'be'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de entrada ' + data.message
-                        else
-                            message = date + ' - Bandeja de entrada actualizada';
+                        data.id = item.id
 
+                    const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+                    let message = ''                   
+                    if(data.error){                        
+                        message = date + ' - Error: ' + item.description + ' ' + data.message
                         setInboxState(prevState => ({
                             ...prevState,                            
-                            loadingBE: true,
+                            loadingInbox: {...prevState.loadingInbox, [item.id]: true},
                             messages: [...prevState.messages, message],
-                            error: data.error ? true : false
+                            error: true
                         }))
-                    }
-                    if(data.id === 'bs'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de salida ' + data.message
-                        else
-                            message = date + ' - Bandeja de salida actualizada';
-
+                        return Promise.reject(data)
+                    }else{
+                        message = date + ' - ' + item.description + ' actualizada';
                         setInboxState(prevState => ({
-                            ...prevState,                            
-                            loadingBS: true,
+                            ...prevState,
+                            loadingInbox: {...prevState.loadingInbox, [item.id]: true},
                             messages: [...prevState.messages, message]
                         }))
                     }
-                    if(data.id === 'bf'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de finalizados ' + data.message
-                        else
-                            message = date + ' - Bandeja de finalizados actualizada';
-
-                        setInboxState(prevState => ({
-                            ...prevState,                            
-                            loadingBF: true,
-                            messages: [...prevState.messages, message]
-                        }))
-                    }
-                    if(data.id === 'ba'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de archivados ' + data.message
-                        else
-                            message = date + ' - Bandeja de archivados actualizada';
-
-                        setInboxState(prevState => ({
-                            ...prevState,                            
-                            loadingBA: true,
-                            messages: [...prevState.messages, message]
-                        }))
-                    }
-                    if(data.id === 'bo'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de otros ' + data.message
-                        else
-                            message = date + ' - Bandeja de otros actualizada';
-
-                        setInboxState(prevState => ({
-                            ...prevState,                            
-                            loadingBO: true,
-                            messages: [...prevState.messages, message]
-                        }))
-                    }
-                    if(data.id === 'bnc'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de antiguos compras ' + data.message
-                        else
-                            message = date + ' - Bandeja de antiguos compras actualizada';
-
-                        setInboxState(prevState => ({
-                            ...prevState,                            
-                            loadingBNC: true,
-                            messages: [...prevState.messages, message],
-                        }))
-                    }
-                    if(data.id === 'bnw'){
-                        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())                        
-                        let message = ''
-                        if(data.error)                            
-                            message = date + ' - Error: Bandeja de antiguos WorkFlowv1 ' + data.message
-                        else
-                            message = date + ' - Bandeja de antiguos WorkFlowv1 actualizada';
-
-                        setInboxState(prevState => ({
-                            ...prevState,                            
-                            loadingBNW: true,
-                            messages: [...prevState.messages, message],
-                        }))
-                    }
+                    
                     setBandejas(prevstate => [...prevstate, data])
                     return Promise.resolve(data)
                 })                
                 .catch((error) => {
+                    console.log('Error 1:', error)
                     return Promise.reject(error)
                 })
             )            

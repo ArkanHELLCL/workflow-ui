@@ -5,14 +5,17 @@ export const InboxStateContext = createContext();
 
 export function InboxStateProvider({ children }) {    
     const [inboxstate, setInboxState] = useState({
-        loadingInboxs: false,
-        loadingBE: false,
-        loadingBS: false,
-        loadingBF: false,
-        loadingBA: false,
-        loadingBO: false,
-        loadingBNC: false,
-        loadingBNW: false,
+        loadingInboxs: false,        
+        loadingInbox:{
+            be: false,
+            bs: false,
+            bf: false,
+            ba: false,
+            bo: false,
+            bnc: false,
+            bnw: false,
+            jr: false
+        },
         messages: [],
         error: false,
         warnign: false

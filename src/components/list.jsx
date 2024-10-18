@@ -20,8 +20,8 @@ export default function List({frmRequest, frmRecord, frmReport}) {
     const { filters } = useFilters()
     const { inboxstate } = useInboxState()
     return (
-      <section id="list">{
-        (filters?.itemIdSelected === 'be' && !inboxstate.loadingBE) || (filters?.itemIdSelected === 'bs' && !inboxstate.loadingBS ) || (filters?.itemIdSelected === 'bf' && !inboxstate.loadingBF) || (filters?.itemIdSelected === 'bo' && !inboxstate.loadingBO) || (filters?.itemIdSelected === 'bnc' && !inboxstate.loadingBNC) || (filters?.itemIdSelected === 'bnw' && !inboxstate.loadingBNW) || (filters?.itemIdSelected === 'ba' && !inboxstate.loadingBA) ? 
+      <section id="list">{        
+        (filters?.itemIdSelected === inboxstate.loadingInbox.id && !inboxstate.loadingInbox.id) ?
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full grid border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1 content-center'>
               <Loading /> 
           </div>
