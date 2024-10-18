@@ -15,6 +15,8 @@ import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
 import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
 import ListaRegReportes from "./main/ListaRegReportes.jsx";
 import Loading from "../utils/Loading.jsx";
+import ListaRegMensajes from "./main/ListaRegMensajes.jsx";
+import MenuFiltersMen from "./main/reports/menuFiltersMen.jsx";
 
 export default function List({frmRequest, frmRecord, frmReport}) {    
     const { filters } = useFilters()
@@ -87,13 +89,25 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                           )
                         }
                       </div>
-                      <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">                      
+                      <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">                    
                           <ListaRegMantenedores frmRecord={frmRecord}/>                      
                       </div>
                     </>
                 }{
                   filters.itemIdSelected?.charAt(0).toUpperCase() === 'R' && filters.itemIdSelected.length > 1 &&
                     <ListaRegReportes frmReport={frmReport} />
+                }{
+                  filters.itemIdSelected?.charAt(0).toUpperCase() === 'J' && filters.itemIdSelected.length > 1 &&
+                    <>
+                    <div className="pl-7 h-[30px] flex items-end justify-between leading-8 w-full z-40 dark:border-[#353535] border-[#d4d4d4] border-b">
+                      <div className="flex gap-2 font-semibold z-50 transition-color delay-75 h-full items-center">
+                      </div>
+                      <div className="flex justify-end align-bottom pr-6 z-50 transition-color delay-75 h-full !pb-[2px]">
+                          <MenuFiltersMen />
+                      </div>
+                    </div>
+                    <ListaRegMensajes />
+                    </>
                 }
           </div>
       }

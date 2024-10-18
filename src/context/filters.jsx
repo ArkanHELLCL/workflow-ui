@@ -32,7 +32,9 @@ export function FiltersProvider({ children }) {
         listadesplegable:0,
         orderDesMant: true,
         filterMant: 1,
-        maxRecordLoaded: 500
+        maxRecordLoaded: 500,
+        filterMen: 1,
+        orderDesMen: true,
     });
     
     return (
