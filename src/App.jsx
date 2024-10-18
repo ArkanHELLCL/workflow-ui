@@ -175,10 +175,12 @@ function App({darkMode, setDarkMode}) {
                       }
                       message = date + ' - Error: Reporte de ' + name + ' ' +data.message
                       mensaje = 'El reporte no ha podido ser generado'
+                      setError({variant: "error", message: mensaje})
                   }
                   else{
                       message = msgfinal;
                       mensaje = 'Reporte generado exitosamente!'
+                      setError({variant: "success", message: mensaje})
                       //setReport(prevState => ([...prevState, data]))
                       setReport(data)
                   }
@@ -195,12 +197,15 @@ function App({darkMode, setDarkMode}) {
                       messages: [...prevState.messages, date + ' - Error: ' + error.message],
                       error: true
                   }))
+                  setError({variant: "error", message: 'Error al intentar generar el reporte!'})
               })
           }
           setLoading(false)     
       }
-      else
+      else{
           mensaje = 'Los datos han sido grabados exitosamente!'
+          setError({variant: "success", message: mensaje})
+      }
 
       //socket.emit('mensaje', openDialog.data)
       //fecth a la base de datos, recupera el id y lo setea en el formulario
@@ -209,8 +214,7 @@ function App({darkMode, setDarkMode}) {
         console.log('openDialog.data',openDialog.data)
         setMantainer({id:'mpmant',record:{id:newRecorId, label:openDialog.data.PRO_RazonSocial},fieldid:'PagIdProveedor'})
       }
-
-      setError({variant: "success", message: mensaje})
+      
       console.log('formcomponent',openDialog.data, openDialog.formAction);       
       openDialog.frmobj.clearErrors()
       if(openDialog.reset)
