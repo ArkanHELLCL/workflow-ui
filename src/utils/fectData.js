@@ -31,7 +31,7 @@ export function fetchData(url, options){
         .then((response) => response.json())
         .then((data) => data)
         .catch((error) => {
-            return {status: "error", message: error.message};
+            return {status: "error", message: 'Api no disponible : ' + error};
         });
 
     return getSuspender(promise)

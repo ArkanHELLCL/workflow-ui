@@ -26,6 +26,16 @@ import { useInboxState } from './hooks/useInboxState.jsx';
 //socket.io
 const socket = io('http://localhost:3100');
 
+socket.on("connect_error", (error) => {
+  if (socket.active) {
+    // temporary failure, the socket will automatically try to reconnect
+  } else {
+    // the connection was denied by the server
+    // in that case, `socket.connect()` must be manually called in order to reconnect
+    console.log('io', error.message);
+  }
+});
+
 const handleNotDragOver = (event) => {
   event.preventDefault();
   event.dataTransfer.dropEffect = "none";
