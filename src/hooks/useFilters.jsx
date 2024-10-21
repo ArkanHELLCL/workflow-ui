@@ -169,8 +169,8 @@ export function useFilters() {
                     filters.maxReq = filteredRequest[filteredRequest.length - 1]?.VRE_Id
                 }
             }
-            if(filters.filterMen === 3){  //Titulo
-                filteredRequest = filters.orderDesMen ? filteredRequest.sort((a, b) => a.titulo.toUpperCase() > b.titulo.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.titulo.toUpperCase() < b.titulo.toUpperCase() ? -1 : 1)
+            if(filters.filterMen === 3){  //Remitente
+                filteredRequest = filters.orderDesMen ? filteredRequest.sort((a, b) => a.USR_Apellido?.toUpperCase() > b.USR_Apellido?.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.USR_Apellido?.toUpperCase() < b.USR_Apellido?.toUpperCase() ? -1 : 1)
             }
         }
         return {filteredRequest}

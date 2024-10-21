@@ -55,7 +55,8 @@ function App({darkMode, setDarkMode}) {
   const [openSearch, setOpenSearch] = useState(false);
   const formReqRef = useRef(null)
   const formRegRef = useRef(null)
-  const formRepRef = useRef(null)  
+  const formRepRef = useRef(null)
+  const formMenRef = useRef(null)
   const [filesList, setFilesList] = useState([]);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -70,6 +71,10 @@ function App({darkMode, setDarkMode}) {
     mode : "onBlur"
   })
   const frmReport = useForm({
+    //mode: "all"
+    mode : "onBlur"
+  })
+  const frmMessages = useForm({
     //mode: "all"
     mode : "onBlur"
   })
@@ -91,6 +96,13 @@ function App({darkMode, setDarkMode}) {
       setError({variant: "error", message: 'Debes corregir los errores antes de enviar los datos!'})
     }
   },[frmReport.formState.submitCount])
+
+
+  useEffect(() => {
+    if(!frmMessages.formState.isSubmitSuccessful && frmMessages.formState.submitCount > 0 && !frmMessages.formState.isValidating){
+      setError({variant: "error", message: 'Debes corregir los errores antes de enviar el mensaje!'})
+    }
+  },[frmMessages.formState.submitCount])
 
   const onSubmitRequest = (data, event) => {
     const id = event.nativeEvent.submitter.id
@@ -144,6 +156,25 @@ function App({darkMode, setDarkMode}) {
       id,
       reset:false,
       formid:'frmWFReports'
+    })
+  };
+
+  const onSubmitMessages = (data, event) => {
+    const id = event.nativeEvent.submitter.id
+    const titulo = event.nativeEvent.submitter.title
+    const formAction = event.nativeEvent.submitter.formAction
+        
+    setOpenDialog({
+      ...openDialog,
+      open:true,
+      data,
+      formAction,
+      frmobj:frmMessages,
+      titulo,
+      mensaje:ConfirmationMessage(id),
+      id,
+      reset:false,
+      formid:'frmWFMessages'
     })
   };
 
@@ -225,7 +256,7 @@ function App({darkMode, setDarkMode}) {
         setMantainer({id:'mpmant',record:{id:newRecorId, label:openDialog.data.PRO_RazonSocial},fieldid:'PagIdProveedor'})
       }
       
-      console.log('formcomponent',openDialog.data, openDialog.formAction);       
+      console.log('formcomponent',openDialog.formid, openDialog.data, openDialog.formAction);       
       openDialog.frmobj.clearErrors()
       if(openDialog.reset)
         openDialog.frmobj.reset()
@@ -263,8 +294,8 @@ function App({darkMode, setDarkMode}) {
         <SideBar />            
         <Header />      
         <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
-        <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport}/>      
-        <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
+        <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages}/>      
+        <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
         <Footer />{
         openDialog?.open &&
           <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
@@ -286,6 +317,12 @@ function App({darkMode, setDarkMode}) {
           noValidate 
           ref={formRepRef}  
           onSubmit={frmReport.handleSubmit(onSubmitReport)}>
+        </form>
+        <form 
+          id={'frmWFMessages'} 
+          noValidate 
+          ref={formMenRef}  
+          onSubmit={frmReport.handleSubmit(onSubmitMessages)}>
         </form>
         <ToastMessages error={error} setError={setError}/>
       </main>

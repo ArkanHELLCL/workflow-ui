@@ -12,29 +12,29 @@ export default function SenderData() {
     useEffect(() => {        
         const sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.DRE_UsuarioEdit
         if(sender)
-        fetch(host + '/api/photo/' + sender, params)
-        .then(response => {
-            if(response.ok){                
-                 return response.blob()
-            }else{
-                return false
-            }
-        })
-        .then(imgBlob => {                        
-            var reader = new FileReader();            
-            if(imgBlob.size>0){
-                reader.readAsDataURL(imgBlob); 
-                reader.onloadend = function() {                
-                    var base64data = reader.result;                    
-                    setSenderPhoto(base64data)
+            fetch(host + '/api/usuario/photo/' + sender, params)
+            .then(response => {
+                if(response.ok){                
+                    return response.blob()
+                }else{
+                    return false
                 }
-            }else{
-                setSenderPhoto('/user.png')
-            }
-        })
-        .catch((err)=> {
-            console.log(err)
-        })
+            })
+            .then(imgBlob => {                        
+                var reader = new FileReader();            
+                if(imgBlob.size>0){
+                    reader.readAsDataURL(imgBlob); 
+                    reader.onloadend = function() {                
+                        var base64data = reader.result;                    
+                        setSenderPhoto(base64data)
+                    }
+                }else{
+                    setSenderPhoto('/user.png')
+                }
+            })
+            .catch((err)=> {
+                console.log(err)
+            })
         else
             setSenderPhoto('/user.png')
     }, [request])

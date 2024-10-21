@@ -7,7 +7,7 @@ import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";
 import Loading from "../../utils/Loading.jsx";
 
-const Accordion = ({acc, moreItems, frmRequest}) => {    
+const Accordion = ({acc, moreItems, frmRequest, frmMessages}) => {    
     return(
         <>  
             {acc.length===0 && 
@@ -17,7 +17,7 @@ const Accordion = ({acc, moreItems, frmRequest}) => {
             }
             {acc.map((item, index) => (
                 <Suspense key={index} fallback={<Loading />}>
-                    <AccordionItem key={index} item={item} frmRequest={frmRequest}/>
+                    <AccordionItem key={index} item={item} frmRequest={frmRequest} frmMessages={frmMessages}/>
                 </Suspense>
             ))}{
                 moreItems ? 
@@ -32,7 +32,7 @@ const Accordion = ({acc, moreItems, frmRequest}) => {
     )
 }
 
-export default function ListaRequerimientos({frmRequest}){    
+export default function ListaRequerimientos({frmRequest, frmMessages}){    
     const { bandejas } = useInboxs()    
     const { filters, filterRequest } = useFilters() 
     const { filteredRequest } = filterRequest(bandejas)    
@@ -47,6 +47,6 @@ export default function ListaRequerimientos({frmRequest}){
     }, [filters, bandejas])
     
     return (        
-        <Accordion acc={acc} moreItems={moreItems} frmRequest={frmRequest}/>        
+        <Accordion acc={acc} moreItems={moreItems} frmRequest={frmRequest} frmMessages={frmMessages}/>        
     )
 }

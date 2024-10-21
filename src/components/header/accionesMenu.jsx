@@ -24,21 +24,21 @@ export default function Acciones ({styles, delay, setAnimationEnd}) {
       onEnter={() =>  setAnimationEnd(false)}>
           <div className={styles + ' flex-col h-full relative'}>
               <ContentMenu title={'Acciones'}>
-                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={()=> console.log('abrir doc')} title='Abrir documento adjunto'>
+                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('abrir doc')} title='Abrir documento adjunto'>
                           <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                               <OpenFolderIcon styles='h-11 w-11'/>
                               <span>Abrir</span>
                           </div>
                                       
                   </Button>
-                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={()=> console.log('imprimir doc')} title='Enviar adjunto a la impresora'>
+                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('imprimir doc')} title='Enviar adjunto a la impresora'>
                           <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                               <PrinterIcon styles='h-12 w-12' strokeWidth="2"/>
                               <span>Impresión</span>
                               <span>rápida</span>
                           </div>
                   </Button>
-                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={()=> console.log('eliminar adj')} title='Eliminar adjunto del listado'>
+                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('eliminar adj')} title='Eliminar adjunto del listado'>
                           <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                               <DeleteFileIcon styles='text-red-500 h-10 w-10' strokeWidth={1} />
                               <span>Quitar archivo</span>

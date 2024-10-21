@@ -9,7 +9,7 @@ import { Constants } from "../../../utils/const.jsx";
 import { useFilters } from "../../../hooks/useFilters.jsx";
 import { useUserData } from "../../../hooks/useUserData.jsx";
 
-export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {    
+export const RequerimientoItem = ({ req, showDia, showYear, frmRequest, frmMessages }) => {    
     const { userdata : user } = useUserData();
     const { dias } = Constants()
     const { request, setRequest } = useRequest()
@@ -66,6 +66,9 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
       })
       frmRequest.reset()
       frmRequest.clearErrors()
+
+      frmMessages.reset()
+      frmMessages.clearErrors()
     }
   
     return (
@@ -80,7 +83,7 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
             parseInt(req.IdEditor) ===  parseInt(user?.USR_Id) && !req.VFO_Id ?
               <span className="text-yellow-600 hover:text-yellow-400 leading-snug cursor-pointer" onClick={handleEditClick} title="Cambiar título del Requerimiento"><EditIcon/></span>
             : null}{
-              (parseInt(user?.PER_Id) === 1 || parseInt(user?.PER_Id) === 2) && (req?.Bandeja !== 'bf' && req?.Bandeja.slice(0,2) !== 'bn' && req?.Bandeja.slice(0,2) !== 'ba') ?
+              (parseInt(user?.PER_Id) === 1 || parseInt(user?.PER_Id) === 2) && (req?.Bandeja !== 'bf' && req?.Bandeja?.slice(0,2) !== 'bn' && req?.Bandeja?.slice(0,2) !== 'ba') ?
                 <span className="text-green-600 dark:hover:text-green-800 hover:text-green-400 leading-snug cursor-pointer" onClick={handleUserClick} title="Cambiar Editor actual"><UserIcon/></span>
             : null}{
               req?.Bandeja === 'be' ?            
@@ -88,7 +91,7 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
             : req?.Bandeja === 'ba' ?
                 <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Desarchivar Requerimiento"><UnArchiveIcon/></span>
             : null}{
-              req?.Bandeja !== 'bf' && req?.Bandeja.slice(0,2) !== 'bn' && req?.Bandeja.slice(0,2) !== 'ba' ?            
+              req?.Bandeja !== 'bf' && req?.Bandeja?.slice(0,2) !== 'bn' && req?.Bandeja?.slice(0,2) !== 'ba' ?            
                 <span className={`${(req?.FLD_DiasLimites - req?.DRE_DifDias < 0) ? 'text-red-500 visible' : (req?.FLD_DiasLimites - req?.DRE_DifDias <= 5) && (req?.FLD_DiasLimites - req?.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold `} title={`${(req?.FLD_DiasLimites - req?.DRE_DifDias < 0) ? 'Requerimiento atrasado' : (req?.FLD_DiasLimites - req?.DRE_DifDias <= 5) && (req?.FLD_DiasLimites - req?.DRE_DifDias >= 0) ? 'Requerimiento a punto de vencer' : '' } `}>!</span>
             : null}{
               req.Bandeja === 'bf' &&

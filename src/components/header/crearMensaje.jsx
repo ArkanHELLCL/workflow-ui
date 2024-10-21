@@ -9,10 +9,10 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ContentMenu from "./contentMenu"
 import { flujos } from "../../mocks/flujos.json";
-import { FlowIcon, FlowPlusIcon } from "../../utils/icons.jsx";
+import { FlowIcon, MenssagePlusIcon } from "../../utils/icons.jsx";
 import { useState } from 'react';
 
-export default function CrearMenu ({styles, delay, setAnimationEnd}) {    
+export default function CrearMensaje ({styles, delay, setAnimationEnd}) {    
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -41,19 +41,19 @@ export default function CrearMenu ({styles, delay, setAnimationEnd}) {
       }
       onEnter={() =>  setAnimationEnd(false)}>   
           <div className="h-full relative">
-              <ContentMenu title={'Crear'} styles={styles} className="flex-col h-full">
+              <ContentMenu title={'Mensaje'} styles={styles} className="flex-col h-full">
                 <Button
-                    id="create-menu"
-                    aria-controls={open ? 'create-menu' : undefined}
+                    id="create-mensaje"
+                    aria-controls={open ? 'create-mensaje' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
-                    className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} title="Crear un nuevo requerimiento"
+                    className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} title="Crear un nuevo mensaje"
                 >
                     <div className="flex flex-col items-center relative">
-                        <FlowPlusIcon styles='w-10 h-10' strokeWidth='2' />                         
+                        <MenssagePlusIcon styles='w-10 h-10' strokeWidth='1' />                         
                         <span className='!leading-tight !text-xs !text-nowrap !font-thin !capitalize'>Crear nuevo</span>
-                        <span className='!leading-tight !text-xs !text-nowrap !font-thin !capitalize'>requerimiento</span>
+                        <span className='!leading-tight !text-xs !text-nowrap !font-thin !capitalize'>mensaje</span>
                         <KeyboardArrowDownIcon />
                     </div>
                 </Button>

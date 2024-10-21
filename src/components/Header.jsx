@@ -9,6 +9,67 @@ import Loading from "../utils/Loading.jsx";
 import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
+import CrearMensaje from "./header/crearMensaje.jsx";
+import MensajesMenu from "./header/mensajesMenu.jsx";
+
+const gruposMensaje = [
+    [
+        {
+              "id" : "grp_1",
+              "nombre" : "Responder/Reenviar",
+              "descripcion" : "Responder/Reenviar",
+              "botones" : [
+                 {
+                    "id" : "btn_responder",
+                    "nombre" : "Responder",
+                    "descripcion" : ["Responder","Mensaje"],
+                    "type" : "submit",
+                    "dialogo":"confirm",
+                    "titulo":"Responder mensaje",
+                    "mensaje":"¿Estas seguro de querer responder este mensaje?",
+                    "tooltiptext":"Responder este mensaje al remitente.",
+                    "btns.formulario":"frmWFMessages"
+                 },
+                 {
+                    "id" : "btn_reenviar",
+                    "nombre" : "Reenviar",
+                    "descripcion" : ["Reenviar","Mensaje"],
+                    "type" : "submit",
+                    "dialogo":"confirm",
+                    "titulo":"Reenviar Mensaje",
+                    "mensaje":"¿Estas seguro de querer reenviar este mensaje a otro destinatario?",
+                    "tooltiptext":"Reenviar este mensaje a otro destinatario.",
+                    "btns.formulario":"frmWFMessages"
+                 }
+              ]
+        }
+    ],
+    [
+        {
+              "id" : "grp_2",
+              "nombre" :"Revisar",
+              "descripcion" : "Revisar",
+              "botones" : [
+                 {
+                    "id":"btn_menretroceder",
+                    "nombre":"",
+                    "descripcion":["Ir al Mensaje","Anterior"],
+                    "type" : "button",
+                    "tooltiptext":"Ir al mensaje anterior",
+                    "btns.formulario":"frmWFMessages"
+                 },               
+                 {
+                    "id":"btn_menavanzar",
+                    "nombre":"",
+                    "descripcion":["Ir al Mensaje","Siguiete"],
+                    "type" : "button",
+                    "tooltiptext":"Ir al mmmensaje siguiente",
+                    "btns.formulario":"frmWFMessages"
+                 }
+              ]
+        }           
+    ]
+]
 
 export default function Header(){
     const { request } = useRequest()
@@ -97,7 +158,7 @@ export default function Header(){
     const banSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "b")
     const mantSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "m")    
     const repoSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "r")
-    //const mensSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "j")
+    const mensSelected = filters.itemIdSelected.length>=2 && (filters.itemIdSelected.charAt(0) === "j")
     
     return (
         <header className='dark:bg-[#323130] bg-[#f3f2f1] flex items-start justify-start px-2 py-2 transition-all delay-75 drop-shadow-md drop dark:shadow-[#191919] shadow-[#d2d0ce] relative dark:border-[#191919] border-[#d2d0ce] border-[3px] border-t-0 border-l-0 border-r-0 z-10 dark:text-gray-100 text-stone-500 fill-stone-500 dark:fill-stone-100 h-full overflow-x-auto'
@@ -133,7 +194,14 @@ export default function Header(){
                 {
                     repoSelected &&         
                         <InformesMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>                    
-                }                
+                }
+                {
+                    mensSelected &&         
+                        <>
+                            <CrearMensaje styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>
+                            <MensajesMenu styles={'z-40'} grupos={gruposMensaje} delay={550} setAnimationEnd={setAnimationEnd}/>                            
+                        </>
+                }
             </Suspense>{
                 scrollON && scrollPosition < 100 &&
                 <>

@@ -81,7 +81,7 @@ export default function RequerimientoMenu ({styles, delay, setAnimationEnd}) {
                                 aria-haspopup="true"
                                 aria-expanded={openGen ? 'true' : undefined}
                                 onClick={handleClickGen}
-                                className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} title="Generar Informe"
+                                className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} title="Generar Informe"
                             >
                                 <div className="flex flex-col items-center relative">
                                     <GenReportIcon styles='w-10 h-10' strokeWidth='2' />

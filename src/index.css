@@ -63,11 +63,11 @@
   min-block-size: 26px !important;
 }
 
-header, #buttonsRequest, #buttonsRecord, #containerHeader{
+header, #buttonsRequest, #buttonsRecord, #buttonsMessages, #containerHeader{
   scroll-behavior: smooth;
 }
 
-header::-webkit-scrollbar, #buttonsRequest::-webkit-scrollbar, #buttonsRecord::-webkit-scrollbar, #containerHeader::-webkit-scrollbar{
+header::-webkit-scrollbar, #buttonsRequest::-webkit-scrollbar, #buttonsRecord::-webkit-scrollbar, #containerHeader::-webkit-scrollbar, #buttonsMessages::-webkit-scrollbar{
   display: none;
 }
 
@@ -149,6 +149,17 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 
 #containerRef{
   scrollbar-gutter: stable;
+}
+
+.dataMessages{
+  display: grid;
+  grid-template-areas:     
+    "frmdate frmdate"    
+    "frmheaderto frmbuttonsact"    
+    "frmbody frmbody"
+    "frmfooter frmfooter";
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 20px 55px auto 3fr;
 }
 
 .dataform{

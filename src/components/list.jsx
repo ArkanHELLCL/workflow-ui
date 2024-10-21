@@ -18,7 +18,7 @@ import Loading from "../utils/Loading.jsx";
 //import ListaRegMensajes from "./main/ListaRegMensajes.jsx";
 import MenuFiltersMen from "./main/reports/menuFiltersMen.jsx";
 
-export default function List({frmRequest, frmRecord, frmReport}) {    
+export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {    
     const { filters } = useFilters()
     const { inboxstate } = useInboxState()
     return (
@@ -43,7 +43,7 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                       <div className="overflow-auto h-full relative pr-2 w-full" id="containerRef">
                           <>
                             <DetalleRequerimiento />
-                            <ListaRequerimientos frmRequest={frmRequest}/>
+                            <ListaRequerimientos frmRequest={frmRequest} frmMessages={frmMessages}/>
                           </>                      
                       </div>
                     </>
@@ -106,7 +106,7 @@ export default function List({frmRequest, frmRecord, frmReport}) {
                             <MenuFiltersMen />
                         </div>
                       </div>
-                      <ListaRequerimientos frmRequest={frmRequest}/>
+                      <ListaRequerimientos frmRequest={frmRequest} frmMessages={frmMessages}/>
                     </>
                 }
           </div>

@@ -1,5 +1,6 @@
 export default function ConfirmationMessage(id) {
     let mensaje = 'Sin mensaje'
+    console.log('id', id)
     if(id === 'btn_crear'){
         mensaje = '¿Estas seguro de querer crear un nuevo registro?'
       }
@@ -50,6 +51,12 @@ export default function ConfirmationMessage(id) {
       }
       if(id === 'btn_descargar'){
         mensaje = 'Estas seguro de querer descargar el informe?'
+      } 
+      if(id === 'btn_responder'){
+        mensaje = 'Estas seguro de querer responder este mensaje al destinatario?'
+      } 
+      if(id === 'btn_reenviar'){
+        mensaje = 'Estas seguro de querer reenviar este mensaje a otro destinatario?'
       } 
 
       return mensaje

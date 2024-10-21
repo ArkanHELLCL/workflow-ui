@@ -27,7 +27,7 @@ export default function Adjuntar ({styles, delay, setAnimationEnd}) {
         onEnter={() =>  setAnimationEnd(false)}>
             <div className={styles + ' flex-col h-full relative'}>
                 <ContentMenu title={'Adjuntar'} styles={styles}>
-                  <label htmlFor="frmWFInputFile" className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1 cursor-pointer`} title='Adjuntar nuevo archivo o documento al requerimiento'>
+                  <label htmlFor="frmWFInputFile" className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start cursor-pointer`} title='Adjuntar nuevo archivo o documento al requerimiento'>
                       <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap">
                           <AttachIcon styles='w-10 h-10'/>                       
                           <span>Adjuntar</span>

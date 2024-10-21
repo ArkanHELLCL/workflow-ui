@@ -21,7 +21,7 @@ export default function MantenedoresMenu ({styles, delay, setAnimationEnd}) {
       onEnter={() => {setAnimationEnd(false)}}>
           <div className={styles + ' flex-col h-full relative'}>
               <ContentMenu title={'Informe'}>                    
-                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={()=> console.log('descargar inf')} title="Generar y descargar informe con los registros actuales">
+                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('descargar inf')} title="Generar y descargar informe con los registros actuales">
                           <div className="flex flex-col leading-tight text-xs items-center relative text-nowrap h-full">
                               <DownReportIcon styles='w-10 h-10' />
                               <span className="!pt-2">Descargar reporte</span>

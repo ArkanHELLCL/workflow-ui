@@ -67,8 +67,8 @@ export function InBoxIcon({styles, strokeWidth}){
 export function MyMessageIcon({styles, strokeWidth}){
     return(      
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-      </svg>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+        </svg>
       
     )
 }
@@ -521,6 +521,20 @@ export function MailIcon({styles, strokeWidth}){
 
 export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
     if(typeIcon===1){
+        if(typeButton==='btn_responder')
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={styles + ' text-green-600'}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" />
+                </svg>
+            )
+
+        if(typeButton==='btn_reenviar')
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={styles + ' text-green-600'}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+                </svg>
+            )
+
         if(typeButton==='btn_mannext')
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
@@ -583,6 +597,18 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             </svg>
         )
         if(typeButton==='btn_retroceder')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+        )
+        if(typeButton==='btn_menavanzar')
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+        )
+        if(typeButton==='btn_menretroceder')
         return (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles + ' text-[#bf6ac3]'}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -728,6 +754,39 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
             )
     }
     if(typeIcon===2){
+        if(typeButton==='btn_responder')
+            return(
+                <div className="relative flex">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className={'h-10 w-10'}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                        </svg>
+                    </span>
+                    <span className="absolute -bottom-1 left-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={styles + ' text-green-600'}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" />
+                        </svg>
+                    </span>
+                </div>
+            )
+
+
+        if(typeButton==='btn_reenviar')
+            return(
+                <div className="relative flex">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className={'h-10 w-10'}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                        </svg>
+                    </span>
+                    <span className="absolute -bottom-1 left-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={styles + ' text-green-600'}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+                        </svg>
+                    </span>
+                </div>
+            )
+
         if(typeButton==='btn_mannext')
             return(
                 <div className="relative flex">
@@ -746,7 +805,6 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
                         </svg>
                     </span>
                 </div>
-                        
             )
         if(typeButton==='btn_manprev')
             return(
@@ -914,6 +972,21 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
                 </span>
             </div>
         )
+        if(typeButton==='btn_menavanzar')
+        return (
+            <div className="relative">                
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className={'h-10 w-10'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                    </svg>            
+                </span>            
+                <span className="absolute top-1 left-8">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className={'h7 w-7 text-[#bf6ac3]'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </span>
+            </div>
+        )
         if(typeButton==='btn_retroceder')
         return (
             <div className="relative">
@@ -923,6 +996,22 @@ export function ButtonIcon({typeButton, styles, strokeWidth, typeIcon}){
                     </svg>
                 </span>            
                 <span className="absolute -top-1 -left-4">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className={'h7 w-7 text-[#bf6ac3]'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </span>
+            </div>
+            
+        )
+        if(typeButton==='btn_menretroceder')
+        return (
+            <div className="relative">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className={'h-10 w-10'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                    </svg> 
+                </span>            
+                <span className="absolute top-1 -left-5">
                     <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.35} stroke="currentColor" className={'h7 w-7 text-[#bf6ac3]'}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
@@ -1330,6 +1419,24 @@ export function FlowPlusIcon({styles, strokeWidth}){
             <svg viewBox="0 0 32 32" className={styles} strokeWidth={strokeWidth}>
                 <path fill="currentColor" d="M29,21h-3v-3.427c0-0.827-0.673-1.5-1.5-1.5h-0.839c-0.089-0.19-0.234-0.359-0.45-0.467l-5.87-2.935  c-0.268-0.134-0.553-0.21-0.842-0.259V11H20c1.657,0,3-1.343,3-3V7c0-1.657-1.343-3-3-3h-8c-1.657,0-3,1.343-3,3v1  c0,1.657,1.343,3,3,3h3.5v1.412c-0.289,0.049-0.573,0.125-0.842,0.259l-5.87,2.935c-0.216,0.108-0.36,0.277-0.45,0.467H7.5  c-0.827,0-1.5,0.673-1.5,1.5V21H3c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1c0-1.657-1.343-3-3-3H7  v-3.427c0-0.276,0.225-0.5,0.5-0.5h0.924c0.09,0.128,0.207,0.243,0.365,0.322l5.87,2.935c0.422,0.211,0.882,0.317,1.342,0.317  c0.46,0,0.919-0.106,1.342-0.317l5.87-2.935c0.158-0.079,0.275-0.193,0.365-0.322H24.5c0.275,0,0.5,0.224,0.5,0.5V21h-3  c-1.657,0-3,1.343-3,3v1c0,1.657,1.343,3,3,3h7c1.657,0,3-1.343,3-3v-1C32,22.343,30.657,21,29,21z M10,8V7c0-1.103,0.897-2,2-2h8  c1.103,0,2,0.897,2,2v1c0,1.103-0.897,2-2,2h-8C10.897,10,10,9.103,10,8z M12,24v1c0,1.103-0.897,2-2,2H3c-1.103,0-2-0.897-2-2v-1  c0-1.103,0.897-2,2-2h7C11.103,22,12,22.897,12,24z M16.894,19.435c-0.276,0.138-0.586,0.211-0.894,0.211  c-0.309,0-0.618-0.073-0.894-0.211L9.236,16.5l5.87-2.935c0.276-0.138,0.586-0.211,0.894-0.211s0.618,0.073,0.894,0.211l5.87,2.935  L16.894,19.435z M31,25c0,1.103-0.897,2-2,2h-7c-1.103,0-2-0.897-2-2v-1c0-1.103,0.897-2,2-2h7c1.103,0,2,0.897,2,2V25z"/>
             </svg>
+            </span>
+            <span className="absolute -top-1 -left-5">
+                <svg viewBox="0 0 24 24" fill="none" className="h-9 w-9" strokeWidth="2">
+                    <path d="M12 6V18" stroke="#16A34A" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 12H18" stroke="#16A34A" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </span>
+        </div>
+    )
+}
+
+export function MenssagePlusIcon({styles, strokeWidth}){
+    return(
+        <div className="relative">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className={styles}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                </svg>
             </span>
             <span className="absolute -top-1 -left-5">
                 <svg viewBox="0 0 24 24" fill="none" className="h-9 w-9" strokeWidth="2">

@@ -24,14 +24,14 @@ export default function GuardarMenu ({styles, delay, setAnimationEnd}) {
       onEnter={() =>  setAnimationEnd(false)}>
           <div className={styles + 'flex-col h-full relative'}>
               <ContentMenu title={'Guardar en el equipo'}>
-                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={()=> console.log('guardar adj')}>
+                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar adj')}>
                           <div className="flex flex-col leading-tight text-xs items-center text-nowrap h-full">
                               <SaveAsIconBig styles='h-9 w-9 !mt-2'/>
                               <span className="!pt-2">Guardar</span>
                               <span>como</span>
                           </div>
                   </Button>
-                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start !pt-1`} onClick={()=> console.log('guardar todos')}>
+                  <Button className={`dark:hover:!bg-[#444444] hover:!bg-[#fefffe] !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !py-0 !my-0 !items-start`} onClick={()=> console.log('guardar todos')}>
                           <div className="flex flex-col leading-tight text-xs items-center text-nowrap h-full">
                               <SaveAllIconBig styles='h-10 w-10 !mt-2'/>
                               <span className="!pt-2">Guardar todos</span>
