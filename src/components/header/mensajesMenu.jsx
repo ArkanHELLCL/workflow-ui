@@ -6,6 +6,7 @@ import { useRequest } from "../../hooks/useRequest.jsx";
 //import { useFilters } from "../../hooks/useFilters.jsx";
 //import { useUserData } from '../../hooks/useUserData.jsx';
 import { ButtonIcon } from "../../utils/icons.jsx";
+import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
 
 const BtsMensajes = ({styles, keygrp, delay, grp, setAnimationEnd}) => {        
     return (
@@ -41,8 +42,9 @@ const BtsMensajes = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
     )
 }
 
-export default function MensajesMenu ({styles, grupos, delay, setAnimationEnd}) {
+export default function MensajesMenu ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest()
+    const { grupos } = useButtonsGroup()
     //const { filters } = useFilters()
     //const { userdata : user } = useUserData();
 

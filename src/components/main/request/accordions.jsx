@@ -14,21 +14,25 @@ export function Accordions(filteredRequest, filters){
             requerimientoAccordion = ListRequestSearchResult(maxAccSearch, filteredRequest)
             return { requerimientoAccordion }
         }
-        if(filters.filter === 1){   //Fecha nueva logica
+        if(filters.itemIdSelected.charAt(0).toUpperCase() === 'B'){
+            if(filters.filter === 1){   //Fecha nueva logica
+                requerimientoAccordion = ListRequestByDate(filters.hoy, maxAccByDate, filteredRequest)
+            }
+            if(filters.filter === 2){   //Numero del requerimiento nueva logica          
+                requerimientoAccordion = ListRequestByNumber(filters.minReq, filters.maxReq, maxAccByNumber, filters.orderDes, filteredRequest)
+            }
+            if(filters.filter === 3){   //Requerimientos atrazados
+                requerimientoAccordion = ListRequestByPending(filters.orderDes, filteredRequest)
+            }
+            if(filters.filter === 4){   //Por Paso
+                requerimientoAccordion = ListRequestByStep(filters.minStep, filters.maxStep, maxAccByStep, filters.orderDes, filteredRequest)
+            }
+            if(!filters.orderDes){
+                requerimientoAccordion.reverse()
+            }
+        }else{
             requerimientoAccordion = ListRequestByDate(filters.hoy, maxAccByDate, filteredRequest)
         }
-        if(filters.filter === 2){   //Numero del requerimiento nueva logica          
-            requerimientoAccordion = ListRequestByNumber(filters.minReq, filters.maxReq, maxAccByNumber, filters.orderDes, filteredRequest)
-        }
-        if(filters.filter === 3){   //Requerimientos atrazados
-            requerimientoAccordion = ListRequestByPending(filters.orderDes, filteredRequest)
-        }
-        if(filters.filter === 4){   //Por Paso
-            requerimientoAccordion = ListRequestByStep(filters.minStep, filters.maxStep, maxAccByStep, filters.orderDes, filteredRequest)
-        }
-        if(!filters.orderDes){
-            requerimientoAccordion.reverse()
-        }        
     }
 
     return { requerimientoAccordion }

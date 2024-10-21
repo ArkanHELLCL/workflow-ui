@@ -1,6 +1,6 @@
 export default function ConfirmationMessage(id) {
     let mensaje = 'Sin mensaje'
-    console.log('id', id)
+
     if(id === 'btn_crear'){
         mensaje = '¿Estas seguro de querer crear un nuevo registro?'
       }

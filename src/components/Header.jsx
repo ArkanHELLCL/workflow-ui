@@ -3,7 +3,6 @@
 import { useRequest } from "../hooks/useRequest.jsx";
 import { useRecords } from "../hooks/useRecords.jsx";
 import { useFilters } from "../hooks/useFilters.jsx";
-import { useButtonsGroup } from "../hooks/useButtonsGroup.jsx";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "../utils/Loading.jsx";
 import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
@@ -12,70 +11,10 @@ import { Button } from "@mui/material";
 import CrearMensaje from "./header/crearMensaje.jsx";
 import MensajesMenu from "./header/mensajesMenu.jsx";
 
-const gruposMensaje = [
-    [
-        {
-              "id" : "grp_1",
-              "nombre" : "Responder/Reenviar",
-              "descripcion" : "Responder/Reenviar",
-              "botones" : [
-                 {
-                    "id" : "btn_responder",
-                    "nombre" : "Responder",
-                    "descripcion" : ["Responder","Mensaje"],
-                    "type" : "submit",
-                    "dialogo":"confirm",
-                    "titulo":"Responder mensaje",
-                    "mensaje":"¿Estas seguro de querer responder este mensaje?",
-                    "tooltiptext":"Responder este mensaje al remitente.",
-                    "btns.formulario":"frmWFMessages"
-                 },
-                 {
-                    "id" : "btn_reenviar",
-                    "nombre" : "Reenviar",
-                    "descripcion" : ["Reenviar","Mensaje"],
-                    "type" : "submit",
-                    "dialogo":"confirm",
-                    "titulo":"Reenviar Mensaje",
-                    "mensaje":"¿Estas seguro de querer reenviar este mensaje a otro destinatario?",
-                    "tooltiptext":"Reenviar este mensaje a otro destinatario.",
-                    "btns.formulario":"frmWFMessages"
-                 }
-              ]
-        }
-    ],
-    [
-        {
-              "id" : "grp_2",
-              "nombre" :"Revisar",
-              "descripcion" : "Revisar",
-              "botones" : [
-                 {
-                    "id":"btn_menretroceder",
-                    "nombre":"",
-                    "descripcion":["Ir al Mensaje","Anterior"],
-                    "type" : "button",
-                    "tooltiptext":"Ir al mensaje anterior",
-                    "btns.formulario":"frmWFMessages"
-                 },               
-                 {
-                    "id":"btn_menavanzar",
-                    "nombre":"",
-                    "descripcion":["Ir al Mensaje","Siguiete"],
-                    "type" : "button",
-                    "tooltiptext":"Ir al mmmensaje siguiente",
-                    "btns.formulario":"frmWFMessages"
-                 }
-              ]
-        }           
-    ]
-]
-
 export default function Header(){
     const { request } = useRequest()
     const { record } = useRecords()
-    const { filters } = useFilters()
-    const { grupos } = useButtonsGroup()    
+    const { filters } = useFilters()    
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);
     const [animationEnd, setAnimationEnd] = useState(true);
@@ -138,7 +77,7 @@ export default function Header(){
         setScrollON(false)
         setScrollPosition(0)
         calcScroll()
-    },[filters.itemIdSelected, request, record, grupos])
+    },[filters.itemIdSelected, request, record])
 
     const handleScrollX = (value) => {
         const $header = document.querySelector('header');
@@ -179,7 +118,7 @@ export default function Header(){
                         <AccionesMenu  styles={'z-30'} delay={500} setAnimationEnd={setAnimationEnd}/>
                         <GuardarMenu  styles={'z-20'} delay={600} setAnimationEnd={setAnimationEnd}/>
                         <AdjuntarMenu styles={'z-10'} delay={600} setAnimationEnd={setAnimationEnd}/>
-                        <FormularioMenu styles={'z-10'} grupos={grupos} delay={700} setAnimationEnd={setAnimationEnd}/>
+                        <FormularioMenu styles={'z-10'} delay={700} setAnimationEnd={setAnimationEnd}/>
                     </>
                 }
                 {
@@ -187,7 +126,7 @@ export default function Header(){
                         <>
                             <MantenedoresMenu styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>{
                             record &&
-                                <RegistroMenu styles={'z-40'} grupos={grupos} delay={550} setAnimationEnd={setAnimationEnd}/>
+                                <RegistroMenu styles={'z-40'} delay={550} setAnimationEnd={setAnimationEnd}/>
                             }
                         </>
                 }
@@ -199,7 +138,7 @@ export default function Header(){
                     mensSelected &&         
                         <>
                             <CrearMensaje styles={'z-40'} delay={500} setAnimationEnd={setAnimationEnd}/>
-                            <MensajesMenu styles={'z-40'} grupos={gruposMensaje} delay={550} setAnimationEnd={setAnimationEnd}/>                            
+                            <MensajesMenu styles={'z-40'} delay={550} setAnimationEnd={setAnimationEnd}/>                            
                         </>
                 }
             </Suspense>{

@@ -1,19 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-//import { useFilters } from '../../../../hooks/useFilters.jsx';
-//import { useRequest } from '../../../../hooks/useRequest.jsx';
 import Slide from '@mui/material/Slide';
 import { ButtonIcon } from '../../../../utils/icons.jsx';
 import { useState } from 'react';
 import { Button } from '@mui/material';
+import { useButtonsGroup } from '../../../../hooks/useButtonsGroup.jsx';
 
-export default function Buttons({grupos, className}){
-    //const { request } = useRequest()
-    //const { filters } = useFilters()
-    //const { FOR_Botones } = formulario;
-    //const grupos = FOR_Botones?.map(grupo => grupo)
+export default function Buttons({ className}){    
     const [scrollPosition, setScrollPosition] = useState(0);
-    const [scrollON, setScrollON] = useState(false);    
+    const [scrollON, setScrollON] = useState(false);
+    const { grupos } = useButtonsGroup()
     let $container = document.getElementById('buttonsRequest');
 
     const handleScroll = () => {        

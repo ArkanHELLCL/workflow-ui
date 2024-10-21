@@ -8,11 +8,13 @@ import { registros } from '../../../mocks/registrosM.json';
 import Inputs from '../formcontent/Inputs.jsx';
 import { formulario as formant } from '../../../mocks/formularioMant.json';
 import { useEffect, useState } from 'react';
+import { useButtonsGroup } from "../../../hooks/useButtonsGroup.jsx";
 
 export default function MPMant({frmRecord, mant, record, singleButton, formaction }) {
     const { userdata : user } = useUserData();
     const [field, setField] = useState(null)
     const [campos, setCampos] = useState([])
+    const { grupos, setGrupos } = useButtonsGroup()
     
     const date = new Date()
     let fecha = date.toISOString()
@@ -53,7 +55,9 @@ export default function MPMant({frmRecord, mant, record, singleButton, formactio
     const [formulario] = formant.filter(item => item.id === 'mp')
     useEffect(() => {
         const campos = formulario?.FOR_Campos
-        setCampos(campos)        
+        const grp = formulario?.FOR_Botones
+        setCampos(campos)
+        setGrupos(grp)        
     },[formulario])
 
     return ( 
@@ -66,7 +70,7 @@ export default function MPMant({frmRecord, mant, record, singleButton, formactio
                     singleButton ?
                         <InputSaveButtons formaction={formaction}/>
                     :   
-                        <Buttons formulario={formulario} className={'frmmantbuttonsact pt-2'}/>
+                        <Buttons grupos={grupos} className={'frmmantbuttonsact pt-2'}/>
                 }
                 <section className='justify-self-end pr-2 frmmantdate'>
                     <span className='text-[11px] leading-tight'>{field.PRO_FechaEdit.slice(0,16).replace('T',' ')}</span>

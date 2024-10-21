@@ -180,8 +180,9 @@ function App({darkMode, setDarkMode}) {
 
   useEffect(() => {
     let mensaje = ''
-    if(openDialog.option){   
-      if(openDialog.formid === 'frmWFReports'){          
+    if(openDialog.option){
+      console.log('openDialog',openDialog.formid)
+      if(openDialog.formid === 'frmWFReports'){
           setLoading(true)
           const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
           let url = ''
@@ -243,7 +244,11 @@ function App({darkMode, setDarkMode}) {
           }
           setLoading(false)     
       }
-      else{
+      if(openDialog.formid === 'frmWFMessages'){
+        mensaje = 'Los datos han sido enviados exitosamente!'
+        setError({variant: "success", message: mensaje})
+      }
+      if(openDialog.formid === 'frmWFRecords' || openDialog.formid === 'frmWorkFlowv4'){      
           mensaje = 'Los datos han sido grabados exitosamente!'
           setError({variant: "success", message: mensaje})
       }

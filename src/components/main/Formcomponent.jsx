@@ -38,8 +38,8 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     const { setAdjuntos } = useAttach()    
     const [dropEnter, setDropEnter] = useState(false);
     const [form, setForm] = useState()
-    const [campos, setCampos] = useState([])    
-    const { grupos, setGrupos } = useButtonsGroup()
+    const [campos, setCampos] = useState([])
+    const { setGrupos } = useButtonsGroup()
 
     useEffect(() => {
         const campos = formularioMant.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos
@@ -95,7 +95,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                         {
                             !preview.state &&
                                 <>
-                                    <Header grupos={grupos} />
+                                    <Header />
                                     <Files setFilesList={setFilesList} filesList={filesList}/>
                                     <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 </>

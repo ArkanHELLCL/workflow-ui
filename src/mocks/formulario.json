@@ -22,7 +22,7 @@
                            "titulo":"Tomar Requerimiento",
                            "mensaje":"¿Estas seguro de querer tomar este requerimiento?",
                            "tooltiptext":"Tomar Requerimiento para realizar acciones sobre el mismo.",
-                           "btns.formulario":"frmWorkFlowv4"
+                           "formulario":"frmWorkFlowv4"
                         },
                         {
                            "id" : "btn_liberar",
@@ -33,7 +33,7 @@
                            "titulo":"Liberar Requerimiento",
                            "mensaje":"¿Estas seguro de querer liberar este requerimiento?",
                            "tooltiptext":"Liberar Requerimiento para que otro usuario pueda tomarlo.",
-                           "btns.formulario":"frmWorkFlowv4"
+                           "formulario":"frmWorkFlowv4"
                         }
                      ]
                }
@@ -54,7 +54,7 @@
                         "titulo":"Enviar Requerimiento",
                         "mensaje":"¿Estas seguro de querer enviar al siguiente paso este requerimiento?",
                         "tooltiptext":"Enviar Requerimiento al siguiente paso.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      },               
                      {
                         "id":"btn_enviardes",
@@ -66,7 +66,7 @@
                         "titulo":"Enviar a Destinatario",
                         "mensaje":"¿Estas seguro de querer enviar al Destinatario agregado en este formulario?",
                         "tooltiptext":"Enviar Requerimiento al destinatario seleccionado.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      },
                      {
                         "id":"btn_devolver",
@@ -78,7 +78,7 @@
                         "titulo":"Devolver Requerimiento",
                         "mensaje":"¿Estas seguro de querer devolver este requerimiento?",
                         "tooltiptext":"Devolver Requerimiento al paso anterior.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      },
                      {
                         "id":"btn_conforme",
@@ -90,7 +90,7 @@
                         "titulo":"Requerimiento Conforme",
                         "mensaje":"¿Estas seguro de querer dejar conforme este requerimiento?",
                         "tooltiptext":"Dejar Requerimiento en estado Conforme.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      },
                      {
                         "id":"btn_disconforme",
@@ -102,7 +102,7 @@
                         "titulo":"Requerimiento Disconforme",
                         "mensaje":"¿Estas seguro de querer dejar disconforme este requerimiento?",
                         "tooltiptext":"Dejar Requerimiento en estado Disconforme.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      }
                   ]
             }           
@@ -123,7 +123,7 @@
                         "titulo":"Finalizar Requerimiento",
                         "mensaje":"¿Estas seguro de querer finalizar este requerimiento?",
                         "tooltiptext":"Finalizar Requerimiento para que no se puedan realizar más acciones.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      },               
                      {
                         "id":"btn_rechazar",
@@ -135,7 +135,7 @@
                         "titulo":"Rechazar Requerimiento",
                         "mensaje":"¿Estas seguro de querer rechazar este requerimiento?",
                         "tooltiptext":"Rechazar Requerimiento para que no se puedan realizar más acciones.",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      }
                   ]
                }           
@@ -156,7 +156,7 @@
                         "titulo":"Abrir Requerimiento",
                         "mensaje":"¿Estas seguro de querer abrir este requerimiento?",
                         "tooltiptext":"Abrir Requerimiento archivado",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      }
                   ]
             }           
@@ -173,7 +173,7 @@
                         "descripcion":["Ir a Paso","Anterior"],
                         "type" : "button",
                         "tooltiptext":"Ir al paso anterior",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      },               
                      {
                         "id":"btn_avanzar",
@@ -181,7 +181,7 @@
                         "descripcion":["Ir a Paso","Siguiete"],
                         "type" : "button",
                         "tooltiptext":"Ir al paso siguiente",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      }
                   ]
             }           
@@ -200,7 +200,7 @@
                         "dialogo":"message",
                         "titulo":"Ver Observaciones",
                         "tooltiptext":"Observaciones del Requerimiento",
-                        "btns.formulario":"frmWorkFlowv4"
+                        "formulario":"frmWorkFlowv4"
                      }
                   ]
             }           

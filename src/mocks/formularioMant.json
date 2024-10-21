@@ -1,9 +1,9 @@
 {
     "formulario":[        
     {
-         "id": "mc",
-         "name":"frmWFRecords",
-         "FOR_Botones":[
+      "id": "mc",
+      "name":"frmWFRecords",
+      "FOR_Botones":[
          [
                {
                      "id" : "grp_1",
@@ -18,7 +18,8 @@
                            "dialogo":"confirm",
                            "titulo":"Crear nuevo registro",
                            "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
-                           "tooltiptext":"Creación de un nuevo registro"
+                           "tooltiptext":"Creación de un nuevo registro",
+                           "formulario":"frmWFRecords"
                         }
                      ]
                }
@@ -38,7 +39,8 @@
                         "dialogo":"confirm",
                         "titulo":"Guardar Cambios",
                         "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
-                        "tooltiptext":"Guardar los cambios realizados en la base de datos."
+                        "tooltiptext":"Guardar los cambios realizados en la base de datos.",
+                        "formulario":"frmWFRecords"
                      },               
                      {
                         "id":"btn_habilitar",
@@ -49,7 +51,8 @@
                         "dialogo":"confirm",
                         "titulo":"Habilta Registro",
                         "mensaje":"¿Estas seguro de querer habilitar este registro?",
-                        "tooltiptext":"Habilitar el registro bloqueado."
+                        "tooltiptext":"Habilitar el registro bloqueado.",
+                        "formulario":"frmWFRecords"
                      },
                      {
                         "id":"btn_bloquear",
@@ -60,7 +63,8 @@
                         "dialogo":"confirm",
                         "titulo":"Deshabilitar Registro",
                         "mensaje":"¿Estas seguro de querer deshabililar este registro?",
-                        "tooltiptext":"Deshabilitar registro habilitado."
+                        "tooltiptext":"Deshabilitar registro habilitado.",
+                        "formulario":"frmWFRecords"
                      },
                      {
                         "id":"btn_eliminar",
@@ -71,7 +75,8 @@
                         "dialogo":"confirm",
                         "titulo":"Elimimar Registro",
                         "mensaje":"¿Estas seguro de querer eliminar este registro?",
-                        "tooltiptext":"Elminar el registro actual."
+                        "tooltiptext":"Elminar el registro actual.",
+                        "formulario":"frmWFRecords"
                      }
                   ]
             }           
@@ -87,264 +92,269 @@
                         "nombre":"",
                         "descripcion":["Ir a Registro","Anterior"],
                         "type" : "button",
-                        "tooltiptext":"Ir al registro anterior"
+                        "tooltiptext":"Ir al registro anterior",
+                        "formulario":"frmWFRecords"
                      },               
                      {
                         "id":"btn_mannext",
                         "nombre":"",
                         "descripcion":["Ir a Registro","Siguiete"],
                         "type" : "button",
-                        "tooltiptext":"Ir al registro siguiente"
+                        "tooltiptext":"Ir al registro siguiente",
+                        "formulario":"frmWFRecords"
                      }
                   ]
             }           
          ]         
-        ],
-        "FOR_Campos": [
-        {            
-            "FDI_TipoCampo": "X2",
-            "FDI_Descripcion": "Regón",
-            "FDI_CampoObligatorio": 1,
-            "FDI_NuevaLineaDiseno": 0,
-            "FDI_TamanoDiseno": 5,            
-            "FDI_Prioridad": 10,
-            "FDI_NombreHTML": "REG_Id",            
-            "FDI_ErrorMessage": "Debes ingresar una regón",
-            "FDI_Placeholder": "Regíon Metropolitana",
-            "FDI_Editable": 1
-        },
-        {
-            "FDI_TipoCampo": "T",
-            "FDI_Descripcion": "Comuna",
-            "FDI_CampoObligatorio": 1,
-            "FDI_NuevaLineaDiseno": 0,
-            "FDI_TamanoDiseno": 5,
-            "FDI_TamanoCampo": 100,
-            "FDI_Prioridad": 20,
-            "FDI_NombreHTML": "COM_Nombre",            
-            "FDI_ErrorMessage": "Debes ingresar una comuna",
-            "FDI_Placeholder": "Maipú",
-            "FDI_Editable": 1
-        },
-        {
-            "FDI_TipoCampo": "I",
-            "FDI_Descripcion": "Código Geográfico",
-            "FDI_CampoObligatorio": 1,
-            "FDI_NuevaLineaDiseno": 0,
-            "FDI_TamanoDiseno": 2,
-            "FDI_TamanoCampo": 5,
-            "FDI_Prioridad": 30,
-            "FDI_NombreHTML": "COM_OrdenGeografico",            
-            "FDI_ErrorMessage": "Debes ingresar una código geográfico",
-            "FDI_Placeholder": "1101",
-            "FDI_Editable": 1
-        }
-        ]
+      ],
+      "FOR_Campos": [
+      {            
+         "FDI_TipoCampo": "X2",
+         "FDI_Descripcion": "Regón",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 5,            
+         "FDI_Prioridad": 10,
+         "FDI_NombreHTML": "REG_Id",            
+         "FDI_ErrorMessage": "Debes ingresar una regón",
+         "FDI_Placeholder": "Regíon Metropolitana",
+         "FDI_Editable": 1
+      },
+      {
+         "FDI_TipoCampo": "T",
+         "FDI_Descripcion": "Comuna",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 5,
+         "FDI_TamanoCampo": 100,
+         "FDI_Prioridad": 20,
+         "FDI_NombreHTML": "COM_Nombre",            
+         "FDI_ErrorMessage": "Debes ingresar una comuna",
+         "FDI_Placeholder": "Maipú",
+         "FDI_Editable": 1
+      },
+      {
+         "FDI_TipoCampo": "I",
+         "FDI_Descripcion": "Código Geográfico",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 2,
+         "FDI_TamanoCampo": 5,
+         "FDI_Prioridad": 30,
+         "FDI_NombreHTML": "COM_OrdenGeografico",            
+         "FDI_ErrorMessage": "Debes ingresar una código geográfico",
+         "FDI_Placeholder": "1101",
+         "FDI_Editable": 1
+      }
+      ]
     },
     {
-         "id": "mp",
-         "name":"frmWFRecords",
-         "FOR_Botones":[
-       [
-             {
-                   "id" : "grp_1",
-                   "nombre" : "Creacion",
-                   "descripcion" : "Creación",
-                   "botones" : [
-                      {
-                         "id" : "btn_crear",
-                         "nombre" : "Nuevo",
-                         "descripcion" : ["Crear nuevo","Registro"],
-                         "type" : "submit",
-                         "dialogo":"confirm",
-                         "titulo":"Crear nuevo registro",
-                         "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
-                         "tooltiptext":"Creación de un nuevo registro"
-                      }
-                   ]
-             }
-       ],
-       [
-          {
-                "id" : "grp_2",
-                "nombre" : "Registro",
-                "descripcion" : "Registro",
-                "botones" : [
-                   {
-                      "id":"btn_modificar",
-                      "nombre":"Guardar",
-                      "descripcion":["Guardar","cambios"],
-                      "type" : "submit",
-                      "action":"/guardar",
-                      "dialogo":"confirm",
-                      "titulo":"Guardar Cambios",
-                      "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
-                      "tooltiptext":"Guardar los cambios realizados en la base de datos."
-                   },               
-                   {
-                      "id":"btn_habilitar",
-                      "nombre":"Habilitar",
-                      "descripcion":["Habilitar","registro"],
-                      "type" : "submit",
-                      "action": "/habilitar",
-                      "dialogo":"confirm",
-                      "titulo":"Habilta Registro",
-                      "mensaje":"¿Estas seguro de querer habilitar este registro?",
-                      "tooltiptext":"Habilitar el registro bloqueado."
-                   },
-                   {
-                      "id":"btn_bloquear",
-                      "nombre":"Deshabilitar",
-                      "descripcion":["Deshabilitar","registro"],
-                      "type" : "submit",
-                      "action":"/deahabilitar",
-                      "dialogo":"confirm",
-                      "titulo":"Deshabilitar Registro",
-                      "mensaje":"¿Estas seguro de querer deshabililar este registro?",
-                      "tooltiptext":"Deshabilitar registro habilitado."
-                   },
-                   {
-                      "id":"btn_eliminar",
-                      "nombre":"Eliminar",
-                      "descripcion":["Eliminar","registro"],
-                      "type" : "submit",
-                      "action": "/elñimianr",
-                      "dialogo":"confirm",
-                      "titulo":"Elimimar Registro",
-                      "mensaje":"¿Estas seguro de querer eliminar este registro?",
-                      "tooltiptext":"Elminar el registro actual."
-                   }
-                ]
-          }           
-       ],                  
-       [
-          {
-                "id" : "grp_3",
-                "nombre" :"Revisar",
-                "descripcion" : "Revisar",
-                "botones" : [
-                   {
-                      "id":"btn_manprev",
-                      "nombre":"",
-                      "descripcion":["Ir a Registro","Anterior"],
-                      "type" : "button",
-                      "tooltiptext":"Ir al registro anterior"
-                   },               
-                   {
-                      "id":"btn_mannext",
-                      "nombre":"",
-                      "descripcion":["Ir a Registro","Siguiete"],
-                      "type" : "button",
-                      "tooltiptext":"Ir al registro siguiente"
-                   }
-                ]
-          }           
-       ]         
-         ],
-         "FOR_Campos": [
-      {            
-          "FDI_TipoCampo": "C",
-          "FDI_TamanoCampo": 100,
-          "FDI_Descripcion": "Razón Social",
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 0,
-          "FDI_TamanoDiseno": 10,
-          "FDI_Prioridad": 10,
-          "FDI_NombreHTML": "PRO_RazonSocial",            
-          "FDI_ErrorMessage": "Debes ingresar una razón social",
-          "FDI_Placeholder": "Empresa de aseo y limpieza",
-          "FDI_Editable": 1
-      },
-      {
-          "FDI_TipoCampo": "R",
-          "FDI_TamanoCampo": 13,
-          "FDI_Descripcion": "Rut",
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 0,
-          "FDI_TamanoDiseno": 2,
-          "FDI_Prioridad": 20,
-          "FDI_NombreHTML": "PRO_Rut",            
-          "FDI_ErrorMessage": "Debes ingresar un RUT válido",
-          "FDI_Placeholder": "12345678K",
-          "FDI_Editable": 1
-      },
-      {
-          "FDI_TipoCampo": "C",
-          "FDI_TamanoCampo": 100,
-          "FDI_Descripcion": "Dirección comercial",
-          "FDI_CampoObligatorio": 0,
-          "FDI_NuevaLineaDiseno": 1,
-          "FDI_TamanoDiseno": 12,
-          "FDI_Prioridad": 30,
-          "FDI_NombreHTML": "PRO_Direccion",          
-          "FDI_Placeholder": "Calle 35, Providencia",
-          "FDI_Editable": 1
-      },
-      {
-          "FDI_TipoCampo": "M",
-          "FDI_Descripcion": "Correo electrónico",
-          "FDI_TamanoCampo": 50,
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 1,
-          "FDI_TamanoDiseno": 9,
-          "FDI_Prioridad": 40,
-          "FDI_NombreHTML": "PRO_Mail",
-          "FDI_ErrorMessage": "Debes ingresar el Email del proveedor",
-          "FDI_Placeholder": "miempresa@correo.cl",
-          "FDI_Editable": 1
-      },
-      {
-          "FDI_TipoCampo": "P",
-          "FDI_Descripcion": "Teléfono",
-          "FDI_TamanoCampo": 17,
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 0,
-          "FDI_TamanoDiseno": 3,
-          "FDI_Prioridad": 50,
-          "FDI_NombreHTML": "PRO_Telefono",
-          "FDI_ErrorMessage": "Debes ingresar un télefono válido",
-          "FDI_Placeholder": "912345678",
-          "FDI_Editable": 1
-      },
-      {
-          "FDI_TipoCampo": "X3",
-          "FDI_Descripcion": "Banco",
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 1,
-          "FDI_TamanoDiseno": 4,
-          "FDI_Prioridad": 60,
-          "FDI_NombreHTML": "PRO_Banco_ILD",
-          "FDI_ErrorMessage": "Debes seleccionar un banco",
-          "FDI_Placeholder": "Seleccione un banco",
-          "FDI_Editable": 1
-      },
-      {
-          "FDI_TipoCampo": "C",
-          "FDI_Descripcion": "Número de cuenta",
-          "FDI_TamanoCampo": 20,
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 0,
-          "FDI_TamanoDiseno": 4,
-          "FDI_Prioridad": 70,
-          "FDI_NombreHTML": "PRO_NumCuentaBancaria",
-          "FDI_ErrorMessage": "Debes ingresar el número de cuenta bancaria",
-          "FDI_Placeholder": "1234567890",
-          "FDI_Editable": 1
-      }
-      ,
-      {
-          "FDI_TipoCampo": "X4",
-          "FDI_Descripcion": "Tipo de cuenta",
-          "FDI_CampoObligatorio": 1,
-          "FDI_NuevaLineaDiseno": 0,
-          "FDI_TamanoDiseno": 4,
-          "FDI_Prioridad": 80,
-          "FDI_NombreHTML": "TCU_Id",
-          "FDI_ErrorMessage": "Debes seleccionar un tipo de cuenta",
-          "FDI_Placeholder": "Cuenta Corriente",
-          "FDI_Editable": 1
-      }
-         ]
+      "id": "mp",
+      "name":"frmWFRecords",
+      "FOR_Botones":[
+      [
+            {
+                  "id" : "grp_1",
+                  "nombre" : "Creacion",
+                  "descripcion" : "Creación",
+                  "botones" : [
+                     {
+                        "id" : "btn_crear",
+                        "nombre" : "Nuevo",
+                        "descripcion" : ["Crear nuevo","Registro"],
+                        "type" : "submit",
+                        "dialogo":"confirm",
+                        "titulo":"Crear nuevo registro",
+                        "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
+                        "tooltiptext":"Creación de un nuevo registro",
+                        "formulario":"frmWFRecords"
+                     }
+                  ]
+            }
+      ],
+      [
+         {
+               "id" : "grp_2",
+               "nombre" : "Registro",
+               "descripcion" : "Registro",
+               "botones" : [
+                  {
+                     "id":"btn_modificar",
+                     "nombre":"Guardar",
+                     "descripcion":["Guardar","cambios"],
+                     "type" : "submit",
+                     "action":"/guardar",
+                     "dialogo":"confirm",
+                     "titulo":"Guardar Cambios",
+                     "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
+                     "tooltiptext":"Guardar los cambios realizados en la base de datos."
+                  },               
+                  {
+                     "id":"btn_habilitar",
+                     "nombre":"Habilitar",
+                     "descripcion":["Habilitar","registro"],
+                     "type" : "submit",
+                     "action": "/habilitar",
+                     "dialogo":"confirm",
+                     "titulo":"Habilta Registro",
+                     "mensaje":"¿Estas seguro de querer habilitar este registro?",
+                     "tooltiptext":"Habilitar el registro bloqueado."
+                  },
+                  {
+                     "id":"btn_bloquear",
+                     "nombre":"Deshabilitar",
+                     "descripcion":["Deshabilitar","registro"],
+                     "type" : "submit",
+                     "action":"/deahabilitar",
+                     "dialogo":"confirm",
+                     "titulo":"Deshabilitar Registro",
+                     "mensaje":"¿Estas seguro de querer deshabililar este registro?",
+                     "tooltiptext":"Deshabilitar registro habilitado."
+                  },
+                  {
+                     "id":"btn_eliminar",
+                     "nombre":"Eliminar",
+                     "descripcion":["Eliminar","registro"],
+                     "type" : "submit",
+                     "action": "/elñimianr",
+                     "dialogo":"confirm",
+                     "titulo":"Elimimar Registro",
+                     "mensaje":"¿Estas seguro de querer eliminar este registro?",
+                     "tooltiptext":"Elminar el registro actual."
+                  }
+               ]
+         }           
+      ],                  
+      [
+         {
+               "id" : "grp_3",
+               "nombre" :"Revisar",
+               "descripcion" : "Revisar",
+               "botones" : [
+                  {
+                     "id":"btn_manprev",
+                     "nombre":"",
+                     "descripcion":["Ir a Registro","Anterior"],
+                     "type" : "button",
+                     "tooltiptext":"Ir al registro anterior",
+                     "formulario":"frmWFRecords"
+                  },               
+                  {
+                     "id":"btn_mannext",
+                     "nombre":"",
+                     "descripcion":["Ir a Registro","Siguiete"],
+                     "type" : "button",
+                     "tooltiptext":"Ir al registro siguiente",
+                     "formulario":"frmWFRecords"
+                  }
+               ]
+         }           
+      ]         
+      ],
+      "FOR_Campos": [
+   {            
+         "FDI_TipoCampo": "C",
+         "FDI_TamanoCampo": 100,
+         "FDI_Descripcion": "Razón Social",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 10,
+         "FDI_Prioridad": 10,
+         "FDI_NombreHTML": "PRO_RazonSocial",            
+         "FDI_ErrorMessage": "Debes ingresar una razón social",
+         "FDI_Placeholder": "Empresa de aseo y limpieza",
+         "FDI_Editable": 1
+   },
+   {
+         "FDI_TipoCampo": "R",
+         "FDI_TamanoCampo": 13,
+         "FDI_Descripcion": "Rut",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 2,
+         "FDI_Prioridad": 20,
+         "FDI_NombreHTML": "PRO_Rut",            
+         "FDI_ErrorMessage": "Debes ingresar un RUT válido",
+         "FDI_Placeholder": "12345678K",
+         "FDI_Editable": 1
+   },
+   {
+         "FDI_TipoCampo": "C",
+         "FDI_TamanoCampo": 100,
+         "FDI_Descripcion": "Dirección comercial",
+         "FDI_CampoObligatorio": 0,
+         "FDI_NuevaLineaDiseno": 1,
+         "FDI_TamanoDiseno": 12,
+         "FDI_Prioridad": 30,
+         "FDI_NombreHTML": "PRO_Direccion",          
+         "FDI_Placeholder": "Calle 35, Providencia",
+         "FDI_Editable": 1
+   },
+   {
+         "FDI_TipoCampo": "M",
+         "FDI_Descripcion": "Correo electrónico",
+         "FDI_TamanoCampo": 50,
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 1,
+         "FDI_TamanoDiseno": 9,
+         "FDI_Prioridad": 40,
+         "FDI_NombreHTML": "PRO_Mail",
+         "FDI_ErrorMessage": "Debes ingresar el Email del proveedor",
+         "FDI_Placeholder": "miempresa@correo.cl",
+         "FDI_Editable": 1
+   },
+   {
+         "FDI_TipoCampo": "P",
+         "FDI_Descripcion": "Teléfono",
+         "FDI_TamanoCampo": 17,
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 3,
+         "FDI_Prioridad": 50,
+         "FDI_NombreHTML": "PRO_Telefono",
+         "FDI_ErrorMessage": "Debes ingresar un télefono válido",
+         "FDI_Placeholder": "912345678",
+         "FDI_Editable": 1
+   },
+   {
+         "FDI_TipoCampo": "X3",
+         "FDI_Descripcion": "Banco",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 1,
+         "FDI_TamanoDiseno": 4,
+         "FDI_Prioridad": 60,
+         "FDI_NombreHTML": "PRO_Banco_ILD",
+         "FDI_ErrorMessage": "Debes seleccionar un banco",
+         "FDI_Placeholder": "Seleccione un banco",
+         "FDI_Editable": 1
+   },
+   {
+         "FDI_TipoCampo": "C",
+         "FDI_Descripcion": "Número de cuenta",
+         "FDI_TamanoCampo": 20,
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 4,
+         "FDI_Prioridad": 70,
+         "FDI_NombreHTML": "PRO_NumCuentaBancaria",
+         "FDI_ErrorMessage": "Debes ingresar el número de cuenta bancaria",
+         "FDI_Placeholder": "1234567890",
+         "FDI_Editable": 1
+   }
+   ,
+   {
+         "FDI_TipoCampo": "X4",
+         "FDI_Descripcion": "Tipo de cuenta",
+         "FDI_CampoObligatorio": 1,
+         "FDI_NuevaLineaDiseno": 0,
+         "FDI_TamanoDiseno": 4,
+         "FDI_Prioridad": 80,
+         "FDI_NombreHTML": "TCU_Id",
+         "FDI_ErrorMessage": "Debes seleccionar un tipo de cuenta",
+         "FDI_Placeholder": "Cuenta Corriente",
+         "FDI_Editable": 1
+   }
+      ]
     },
     {
       "id": "mu",
@@ -364,7 +374,8 @@
                       "dialogo":"confirm",
                       "titulo":"Crear nuevo registro",
                       "mensaje":"¿Estas seguro de querer crear un nuevo registros?",
-                      "tooltiptext":"Creación de un nuevo registro"
+                      "tooltiptext":"Creación de un nuevo registro",
+                      "formulario":"frmWFRecords"
                    }
                 ]
           }
@@ -384,7 +395,8 @@
                    "dialogo":"confirm",
                    "titulo":"Guardar Cambios",
                    "mensaje":"¿Estas seguro de querer guardar los cambios actuales?",
-                   "tooltiptext":"Guardar los cambios realizados en la base de datos."
+                   "tooltiptext":"Guardar los cambios realizados en la base de datos.",
+                   "formulario":"frmWFRecords"
                 },               
                 {
                    "id":"btn_habilitar",
@@ -395,7 +407,8 @@
                    "dialogo":"confirm",
                    "titulo":"Habiltar Registro",
                    "mensaje":"¿Estas seguro de querer habilitar este registro?",
-                   "tooltiptext":"Habilitar el registro bloqueado."
+                   "tooltiptext":"Habilitar el registro bloqueado.",
+                   "formulario":"frmWFRecords"
                 },
                 {
                    "id":"btn_bloquear",
@@ -406,7 +419,8 @@
                    "dialogo":"confirm",
                    "titulo":"Deshabilitar Registro",
                    "mensaje":"¿Estas seguro de querer deshabililar este registro?",
-                   "tooltiptext":"Deshabilitar registro habilitado."
+                   "tooltiptext":"Deshabilitar registro habilitado.",
+                   "formulario":"frmWFRecords"
                 },
                 {
                    "id":"btn_eliminar",
@@ -417,7 +431,8 @@
                    "dialogo":"confirm",
                    "titulo":"Elimimar Registro",
                    "mensaje":"¿Estas seguro de querer eliminar este registro?",
-                   "tooltiptext":"Elminar el registro actual."
+                   "tooltiptext":"Elminar el registro actual.",
+                   "formulario":"frmWFRecords"
                 }
              ]
        }           
@@ -433,14 +448,16 @@
                    "nombre":"",
                    "descripcion":["Ir a Registro","Anterior"],
                    "type" : "button",
-                   "tooltiptext":"Ir al registro anterior"
+                   "tooltiptext":"Ir al registro anterior",
+                   "formulario":"frmWFRecords"
                 },               
                 {
                    "id":"btn_mannext",
                    "nombre":"",
                    "descripcion":["Ir a Registro","Siguiete"],
                    "type" : "button",
-                   "tooltiptext":"Ir al registro siguiente"
+                   "tooltiptext":"Ir al registro siguiente",
+                   "formulario":"frmWFRecords"
                 }
              ]
        }           
@@ -583,6 +600,68 @@
        "FDI_Editable": 1       
    }
       ]
- }
-    ]
+    },
+   {
+      "id": "jr",
+      "name":"frmWFMessages",
+      "FOR_Botones":[
+         [
+             {
+                   "id" : "grp_1",
+                   "nombre" : "Responder/Reenviar",
+                   "descripcion" : "Responder/Reenviar",
+                   "botones" : [
+                      {
+                         "id" : "btn_responder",
+                         "nombre" : "Responder",
+                         "descripcion" : ["Responder","Mensaje"],
+                         "type" : "submit",
+                         "dialogo":"confirm",
+                         "titulo":"Responder mensaje",
+                         "mensaje":"¿Estas seguro de querer responder este mensaje?",
+                         "tooltiptext":"Responder este mensaje al remitente.",
+                         "formulario":"frmWFMessages"
+                      },
+                      {
+                         "id" : "btn_reenviar",
+                         "nombre" : "Reenviar",
+                         "descripcion" : ["Reenviar","Mensaje"],
+                         "type" : "submit",
+                         "dialogo":"confirm",
+                         "titulo":"Reenviar Mensaje",
+                         "mensaje":"¿Estas seguro de querer reenviar este mensaje a otro destinatario?",
+                         "tooltiptext":"Reenviar este mensaje a otro destinatario.",
+                         "formulario":"frmWFMessages"
+                      }
+                   ]
+             }
+         ],
+         [
+             {
+                   "id" : "grp_2",
+                   "nombre" :"Revisar",
+                   "descripcion" : "Revisar",
+                   "botones" : [
+                      {
+                         "id":"btn_menretroceder",
+                         "nombre":"",
+                         "descripcion":["Ir al Mensaje","Anterior"],
+                         "type" : "button",
+                         "tooltiptext":"Ir al mensaje anterior",
+                         "formulario":"frmWFMessages"
+                      },               
+                      {
+                         "id":"btn_menavanzar",
+                         "nombre":"",
+                         "descripcion":["Ir al Mensaje","Siguiete"],
+                         "type" : "button",
+                         "tooltiptext":"Ir al mmmensaje siguiente",
+                         "formulario":"frmWFMessages"
+                      }
+                   ]
+             }           
+         ]
+     ],
+      "FOR_Campos": null
+   }]
 }

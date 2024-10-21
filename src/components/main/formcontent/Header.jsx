@@ -10,12 +10,12 @@ const handleNotDragOver = (event) => {
     event.dataTransfer.dropEffect = "none";
     return false;
 }
-export default function Header({grupos}) {
+export default function Header() {
     return (            
         <>                    
             <ReqTitle handleNotDragOver={handleNotDragOver}/>                   
             <FrmHeader handleNotDragOver={handleNotDragOver}/>
-            <Buttons grupos={grupos} className={'frmbuttonsact'}/>
+            <Buttons className={'frmbuttonsact'}/>
             <SenderData />
             <UpdateDate />
         </>                

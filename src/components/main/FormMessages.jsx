@@ -1,73 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-//import { useFilters } from '../../hooks/useFilters.jsx';
+import { useFilters } from '../../hooks/useFilters.jsx';
 import { useRequest } from '../../hooks/useRequest.jsx';
 import { useEffect, useState } from 'react';
 import SenderData from './formcontent/header/SenderData.jsx';
 import UpdateDate from './formcontent/header/UpdateDate.jsx';
 import { Button, Slide } from '@mui/material';
 import { ButtonIcon } from '../../utils/icons.jsx';
+import { formulario as formularioMant } from '../../mocks/formularioMant.json';
+import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
 
-const grupos = [
-    [
-        {
-              "id" : "grp_1",
-              "nombre" : "Responder/Reenviar",
-              "descripcion" : "Responder/Reenviar",
-              "botones" : [
-                 {
-                    "id" : "btn_responder",
-                    "nombre" : "Responder",
-                    "descripcion" : ["Responder","Mensaje"],
-                    "type" : "submit",
-                    "dialogo":"confirm",
-                    "titulo":"Responder mensaje",
-                    "mensaje":"¿Estas seguro de querer responder este mensaje?",
-                    "tooltiptext":"Responder este mensaje al remitente.",
-                    "btns.formulario":"frmWFMessages"
-                 },
-                 {
-                    "id" : "btn_reenviar",
-                    "nombre" : "Reenviar",
-                    "descripcion" : ["Reenviar","Mensaje"],
-                    "type" : "submit",
-                    "dialogo":"confirm",
-                    "titulo":"Reenviar Mensaje",
-                    "mensaje":"¿Estas seguro de querer reenviar este mensaje a otro destinatario?",
-                    "tooltiptext":"Reenviar este mensaje a otro destinatario.",
-                    "btns.formulario":"frmWFMessages"
-                 }
-              ]
-        }
-    ],
-    [
-        {
-              "id" : "grp_2",
-              "nombre" :"Revisar",
-              "descripcion" : "Revisar",
-              "botones" : [
-                 {
-                    "id":"btn_menretroceder",
-                    "nombre":"",
-                    "descripcion":["Ir al Mensaje","Anterior"],
-                    "type" : "button",
-                    "tooltiptext":"Ir al mensaje anterior",
-                    "btns.formulario":"frmWFMessages"
-                 },               
-                 {
-                    "id":"btn_menavanzar",
-                    "nombre":"",
-                    "descripcion":["Ir al Mensaje","Siguiete"],
-                    "type" : "button",
-                    "tooltiptext":"Ir al mmmensaje siguiente",
-                    "btns.formulario":"frmWFMessages"
-                 }
-              ]
-        }           
-     ]
-]
-
-function ButtonsActions() {
+function ButtonsActions({grupos}) {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollON, setScrollON] = useState(false);    
     let $container = document.getElementById('buttonsMessages');
@@ -181,7 +124,18 @@ function MessageBody({body}) {
 
 export default function FormMessages({frmMessages}){
     const { request } = useRequest()    
-    //const { filters } = useFilters()
+    const { filters } = useFilters()
+    const [campos, setCampos] = useState([])
+    const { grupos, setGrupos } = useButtonsGroup()
+
+    useEffect(() => {
+        const campos = formularioMant.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos        
+        const grp = formularioMant.filter((item) => item.id === filters.itemIdSelected)[0]?.FOR_Botones                
+        setGrupos(grp)
+        setCampos(campos)
+
+        frmMessages.clearErrors()
+    },[filters.itemIdSelected, formularioMant, request])
 
     useEffect(() => {
         frmMessages.clearErrors()
@@ -193,7 +147,7 @@ export default function FormMessages({frmMessages}){
             <div className="h-full w-full dataMessages">
                 <SenderData />
                 <UpdateDate />
-                <ButtonsActions />
+                <ButtonsActions grupos={grupos}/>
                 <MessageBody body={request?.request?.REQ_Descripcion} frmMessages={frmMessages}/>
             </div>
         </section>        

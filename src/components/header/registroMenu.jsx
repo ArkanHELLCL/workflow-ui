@@ -3,6 +3,7 @@
 import Slide from '@mui/material/Slide';
 import ContentMenu from "./contentMenu.jsx"
 import { ButtonIcon } from "../../utils/icons.jsx";
+import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
 
 const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {        
     return (
@@ -38,7 +39,8 @@ const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
     )
 }
 
-export default function RegistroMenu ({styles, grupos, delay, setAnimationEnd}) {
+export default function RegistroMenu ({styles, delay, setAnimationEnd}) {
+    const { grupos } = useButtonsGroup()
     return(
         grupos?.map((grp, index) => 
             (

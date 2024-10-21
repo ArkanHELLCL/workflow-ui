@@ -11,11 +11,13 @@ import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 import { formulario as formant} from '../../../mocks/formularioMant.json';
 import { DelIcon } from "../../../utils/icons.jsx"
+import { useButtonsGroup } from '../../../hooks/useButtonsGroup.jsx';
 
 export default function MUMant({frmRecord, mant, record, filesList, setFilesList, singleButton}) {
     const { userdata : user } = useUserData();    
     const [field, setField] = useState(null)
-    const [campos, setCampos] = useState([])
+    const [campos, setCampos] = useState([])    
+    const { grupos, setGrupos } = useButtonsGroup()
     
     const date = new Date()
     let fecha = date.toISOString()
@@ -65,9 +67,11 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
     },[registros, record])
 
     const [formulario] = formant.filter(item => item.id === 'mu')
-    useEffect(() => {
+    useEffect(() => {        
         const campos = formulario?.FOR_Campos
-        setCampos(campos)        
+        const grp = formulario?.FOR_Botones
+        setCampos(campos)
+        setGrupos(grp)        
     },[formulario])
     
     return (
@@ -80,7 +84,7 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
                 singleButton ?
                     <InputSaveButtons />
                 :   
-                    <Buttons formulario={formulario} className={'frmmantbuttonsact pt-2'}/>
+                    <Buttons grupos={grupos} className={'frmmantbuttonsact pt-2'}/>
             }
             <section className='justify-self-end pr-2 frmmantdate'>
                 <span className='text-[11px] leading-tight'>{field.USR_FechaEdit.slice(0,16).replace('T',' ')}</span>

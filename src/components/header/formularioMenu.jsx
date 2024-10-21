@@ -6,6 +6,7 @@ import { useRequest } from "../../hooks/useRequest.jsx";
 import { useFilters } from "../../hooks/useFilters.jsx";
 import { useUserData } from '../../hooks/useUserData.jsx';
 import { ButtonIcon } from "../../utils/icons.jsx";
+import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
 
 const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {        
     return (
@@ -41,10 +42,11 @@ const BtsFormulario = ({styles, keygrp, delay, grp, setAnimationEnd}) => {
     )
 }
 
-export default function FormularioMenu ({styles, grupos, delay, setAnimationEnd}) {
+export default function FormularioMenu ({styles, delay, setAnimationEnd}) {
     const { request } = useRequest()
     const { filters } = useFilters()
     const { userdata : user } = useUserData();
+    const { grupos } = useButtonsGroup()
 
     return(
         request && parseInt(request?.request?.IdEditor) === parseInt(user.USR_Id) && filters.itemIdSelected === 'be' && 
