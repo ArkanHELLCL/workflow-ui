@@ -19,7 +19,7 @@ const getAllItemsWithChildrenItemIds = (menu) => {
     return itemIds;
 };
 
-export function MenuTree({ menu, frmRecord, frmRequest }) { 
+export function MenuTree({ menu, frmRecord, frmRequest }) {    
     const { filters, setFilters } = useFilters()
     const { setRecord } = useRecords()
     const { setRequest } = useRequest()    

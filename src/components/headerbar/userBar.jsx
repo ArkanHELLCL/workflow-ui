@@ -13,17 +13,17 @@ import { MailIcon } from '../../utils/icons.jsx';
 import { useEffect, useState } from 'react';
 import { Constants } from "../../utils/const.jsx";
 
-export default function UserBar({darkmode, setDarkMode}) {
+export default function UserBar({darkmode, setDarkMode}) {    
     const { userdata : user } = useUserData();
     const { setAuth } = useAuth();
     const [anchorEl, setAnchorEl] = useState(null);
     const [userPhoto, setUserPhoto] = useState('/user.png');
     const open = Boolean(anchorEl);
-    const { host, fecthParams : params } = Constants()
+    const { host, fecthParams : params } = Constants()    
 
     useEffect(() => {            
         if(user)
-            fetch(host + '/api/photo/' + user.USR_Usuario, params)
+            fetch(host + '/api/usuario/photo/' + user?.USR_Usuario, params)
             .then(response => {
                 if(response.ok){                
                     return response.blob()
@@ -73,10 +73,10 @@ export default function UserBar({darkmode, setDarkMode}) {
                         <img src={userPhoto} className='w-28 h-auto'/>
                     </div>
                     <div className="flex flex-col h-fit max-w-[260px]">
-                        <span className="text-xl font-semibold truncate dark:!text-white !text-[#262626]">{user.USR_Nombre}</span>
-                        <span className="text-xs truncate pb-2 dark:!text-white !text-[#262626]">{user.USR_Mail}</span>
-                        <span className="text-xs truncate !text-sky-600">{user.PER_Nombre}</span>
-                        <span className="text-xs truncate !text-sky-600">{user.DEP_Descripcion}</span>
+                        <span className="text-xl font-semibold truncate dark:!text-white !text-[#262626]">{user?.USR_Nombre}</span>
+                        <span className="text-xs truncate pb-2 dark:!text-white !text-[#262626]">{user?.USR_Mail}</span>
+                        <span className="text-xs truncate !text-sky-600">{user?.PER_Nombre}</span>
+                        <span className="text-xs truncate !text-sky-600">{user?.DEP_Descripcion}</span>
                     </div>
                 </div>
         )

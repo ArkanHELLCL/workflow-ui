@@ -22,7 +22,7 @@ const App = lazy(() => import('./App.jsx'));
 
 //fetch data Login
 const param = {usrCod:'lcastillo', usrClave:'123456'}
-const apiData = fetchData('http://localhost:3100/api/login', {
+const apiData = fetchData('http://localhost:3100/api/usuario/login', {
     method: 'POST', 
     headers: {Accept: 'application/json','Content-Type': 'application/json'}, 
     body: JSON.stringify(param),
@@ -34,7 +34,7 @@ export default function Login(){
     const { setUserdata } = useUserData({})
     const { filters } = useFilters()
     const { setBandejas } = useInboxs()
-    const { auth, setAuth } = useAuth()
+    const { setAuth } = useAuth()
     const darkModeStorage = window.localStorage.getItem('DarkMode') === 'false' ? false : true;  
     const [darkMode, setDarkMode] = useState(darkModeStorage)
     const userdata = apiData.read()
@@ -84,7 +84,7 @@ export default function Login(){
                     return Promise.resolve(data)
                 })                
                 .catch((error) => {
-                    console.log('Error 1:', error)
+                    //console.log('Error 1:', error)
                     return Promise.reject(error)
                 })
             )            
@@ -111,10 +111,8 @@ export default function Login(){
             setAuth(false)
     }, [userdata])
 
-    useEffect(() => {
-        //console.log('userdata:', userdata)
-        if(userdata.status === 'success')
-            setUserdata(userdata)
+    useEffect(() => {        
+        setUserdata(userdata)
     },[userdata])
 
     useEffect(() => {
@@ -140,7 +138,7 @@ export default function Login(){
                     success: StyledMaterialDesignContent
                     }
                 }>{
-                    auth ?                        
+                    userdata?.error === 200 ?                        
                         <App darkMode={darkMode} setDarkMode={setDarkMode}/>
                     :
                         <div className="text-center flex justify-center align-middle items-center h-full w-full !overflow-hidden">

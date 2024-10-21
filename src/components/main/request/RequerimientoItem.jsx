@@ -77,26 +77,26 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest }) => {
         </div>
         <div className="w-1/4">
           <p className="dark:text-stone-100 text-stone-900 mt-0 flex align-middle justify-end">{
-            parseInt(req.IdEditor) ===  parseInt(user.USR_Id) && !req.VFO_Id ?
+            parseInt(req.IdEditor) ===  parseInt(user?.USR_Id) && !req.VFO_Id ?
               <span className="text-yellow-600 hover:text-yellow-400 leading-snug cursor-pointer" onClick={handleEditClick} title="Cambiar título del Requerimiento"><EditIcon/></span>
             : null}{
-              (parseInt(user.PER_Id) === 1 || parseInt(user.PER_Id) === 2) && (req?.Bandeja !== 'bf' && req?.Bandeja.slice(0,2) !== 'bn' && req?.Bandeja.slice(0,2) !== 'ba') ?
+              (parseInt(user?.PER_Id) === 1 || parseInt(user?.PER_Id) === 2) && (req?.Bandeja !== 'bf' && req?.Bandeja.slice(0,2) !== 'bn' && req?.Bandeja.slice(0,2) !== 'ba') ?
                 <span className="text-green-600 dark:hover:text-green-800 hover:text-green-400 leading-snug cursor-pointer" onClick={handleUserClick} title="Cambiar Editor actual"><UserIcon/></span>
             : null}{
-              req.Bandeja === 'be' ?            
+              req?.Bandeja === 'be' ?            
                 <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Archivar Requerimiento"><ArchiveIcon/></span>
-            : req.Bandeja === 'ba' ?
+            : req?.Bandeja === 'ba' ?
                 <span className="text-purple-600 dark:text-purple-800 hover:text-purple-400 dark:hover:text-purple-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Desarchivar Requerimiento"><UnArchiveIcon/></span>
             : null}{
-              req.Bandeja !== 'bf' && req.Bandeja.slice(0,2) !== 'bn' && req?.Bandeja.slice(0,2) !== 'ba' ?            
-                <span className={`${(req.FLD_DiasLimites - req.DRE_DifDias < 0) ? 'text-red-500 visible' : (req.FLD_DiasLimites - req.DRE_DifDias <= 5) && (req.FLD_DiasLimites - req.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold `} title={`${(req.FLD_DiasLimites - req.DRE_DifDias < 0) ? 'Requerimiento atrasado' : (req.FLD_DiasLimites - req.DRE_DifDias <= 5) && (req.FLD_DiasLimites - req.DRE_DifDias >= 0) ? 'Requerimiento a punto de vencer' : '' } `}>!</span>
+              req?.Bandeja !== 'bf' && req?.Bandeja.slice(0,2) !== 'bn' && req?.Bandeja.slice(0,2) !== 'ba' ?            
+                <span className={`${(req?.FLD_DiasLimites - req?.DRE_DifDias < 0) ? 'text-red-500 visible' : (req?.FLD_DiasLimites - req?.DRE_DifDias <= 5) && (req?.FLD_DiasLimites - req?.DRE_DifDias >= 0) ? 'text-orange-300 visible' : 'hidden'} text-2xl leading-4 pl-1 font-semibold `} title={`${(req?.FLD_DiasLimites - req?.DRE_DifDias < 0) ? 'Requerimiento atrasado' : (req?.FLD_DiasLimites - req?.DRE_DifDias <= 5) && (req?.FLD_DiasLimites - req?.DRE_DifDias >= 0) ? 'Requerimiento a punto de vencer' : '' } `}>!</span>
             : null}{
               req.Bandeja === 'bf' &&
                 <span className="text-green-600 dark:text-green-800 hover:text-green-400 dark:hover:text-green-300 leading-snug cursor-pointer" onClick={handleArchiveClick} title="Abrir Requerimiento" ><CloseRequest/></span>
             }
           </p>
-          <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">{showDia ? diaName(req.DRE_FechaEdit) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) : showYear ? diaName(req.DRE_FechaEdit).slice(0,3) + ' ' + req.DRE_FechaEdit.slice(8,10) + '-' + req.DRE_FechaEdit.slice(5,7) + '-' + req.DRE_FechaEdit.slice(0,4) : req.DRE_FechaEdit.slice(11,16)}</p>
-          <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">N°{req.VRE_Id}</p>
+          <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">{showDia ? diaName(req?.DRE_FechaEdit) + ' ' + req?.DRE_FechaEdit.slice(8,10) + '-' + req?.DRE_FechaEdit?.slice(5,7) : showYear ? diaName(req?.DRE_FechaEdit).slice(0,3) + ' ' + req?.DRE_FechaEdit?.slice(8,10) + '-' + req?.DRE_FechaEdit?.slice(5,7) + '-' + req?.DRE_FechaEdit?.slice(0,4) : req?.DRE_FechaEdit?.slice(11,16)}</p>
+          <p className="dark:text-stone-400 text-stone-400 truncate text-xs text-end">N°{req?.VRE_Id}</p>
         </div>
       </article>
     )

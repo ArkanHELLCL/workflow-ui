@@ -29,7 +29,7 @@ export function useFilters() {
         const registros = bandeja.length > 0 ? bandeja?.map(item => item?.registros != undefined ? item?.registros : [])[0] : []
         
         //Solo para bandejas
-        if(filters.itemIdSelected.charAt(0).toUpperCase() === 'B'){            
+        if(filters.itemIdSelected.charAt(0).toUpperCase() === 'B'){
             filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : (
                 filters.stringSearch.slice(0,2).toUpperCase() === '@N' ? Number(item.VRE_Id) === Number(filters.stringSearch.slice(2, filters.stringSearch.length)) :
 
@@ -83,7 +83,8 @@ export function useFilters() {
                     filters.maxStep = filteredRequest[filteredRequest.length - 1]?.FLD_CodigoPaso
                 }
             }
-        }else{
+        }
+        if(filters.itemIdSelected.charAt(0).toUpperCase() === 'M'){
             //Solo para mantenedores
             filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : null)
 
@@ -135,6 +136,42 @@ export function useFilters() {
             }
 
             PrevfilteredRequest === filters.totalFiltrados ? filters.totalFiltrados = 0 : filters.totalFiltrados
+        }
+        if(filters.itemIdSelected.charAt(0).toUpperCase() === 'J'){
+            //Solo para mensajes
+            filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : null)
+
+            //Estadisticas        
+            filters.totalRequerimientos = filteredRequest?.length ? filteredRequest?.length : 0
+            //filters.totalVencidos = filteredRequest.filter((item) => item.estado === 0).length      //Bloqueados
+            //filters.totalPorVencer = filteredRequest.filter((item) => item.estado === 1 || item.estado === undefined).length     //Habilitados
+
+            filteredRequest = registros?.filter((item) => filters.stringSearch === "" ? item : (
+                item.titulo?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+                item.subtitulo?.toUpperCase().match(filters.stringSearch.toUpperCase()) || 
+                item.detalle?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+                item.creador?.toUpperCase().match(filters.stringSearch.toUpperCase()) ||
+                Number(item.Id) === Number(filters.stringSearch)
+            ))
+
+            //Orden de los registros
+            if(filters.filterMant === 1){   //Fecha creación
+                filteredRequest = filters.orderDesMen ? filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() > new Date(b.DRE_FechaEdit).getTime() ? -1 : 1) : filteredRequest.sort((a, b) => new Date(a.DRE_FechaEdit).getTime() < new Date(b.DRE_FechaEdit).getTime() ? -1 : 1)
+            }
+            if(filters.filterMant === 2){   //Id del mensaje
+                filteredRequest = filters.orderDesMen ? filteredRequest.sort((a, b) => parseInt(a.VRE_Id) > parseInt(b.VRE_Id) ? -1 : 1) : filteredRequest.sort((a, b) => parseInt(a.VRE_Id) < parseInt(b.VRE_Id) ? -1 : 1)
+                
+                if(filters.orderDesMen){
+                    filters.maxReq = filteredRequest[0]?.VRE_Id
+                    filters.minReq = filteredRequest[filteredRequest.length - 1]?.VRE_Id
+                }else{
+                    filters.minReq = filteredRequest[0]?.VRE_Id
+                    filters.maxReq = filteredRequest[filteredRequest.length - 1]?.VRE_Id
+                }
+            }
+            if(filters.filterMen === 3){  //Titulo
+                filteredRequest = filters.orderDesMen ? filteredRequest.sort((a, b) => a.titulo.toUpperCase() > b.titulo.toUpperCase() ? -1 : 1) : filteredRequest.sort((a, b) => a.titulo.toUpperCase() < b.titulo.toUpperCase() ? -1 : 1)
+            }
         }
         return {filteredRequest}
     }

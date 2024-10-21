@@ -29,10 +29,10 @@ function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
     return filteredRequest?.filter(
       (item) =>        
         maxdias !== null ?
-            new Date(item.DRE_FechaEdit.slice(0,10)).getTime() <= anterior.getTime() &&
-            new Date(item.DRE_FechaEdit.slice(0,10)).getTime() >= maxdias.getTime()
+            new Date(item?.DRE_FechaEdit?.slice(0,10)).getTime() <= anterior.getTime() &&
+            new Date(item?.DRE_FechaEdit?.slice(0,10)).getTime() >= maxdias.getTime()
         :
-        new Date(item.DRE_FechaEdit.slice(0,10)).getTime() <= new Date(anterior).getTime()
+        new Date(item?.DRE_FechaEdit?.slice(0,10)).getTime() <= new Date(anterior).getTime()
     );
 }
 
