@@ -17,13 +17,27 @@ import ListaRegReportes from "./main/ListaRegReportes.jsx";
 import Loading from "../utils/Loading.jsx";
 //import ListaRegMensajes from "./main/ListaRegMensajes.jsx";
 import MenuFiltersMen from "./main/reports/menuFiltersMen.jsx";
+import { forEach } from "lodash";
+import { useEffect, useState } from "react";
 
 export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {    
     const { filters } = useFilters()
     const { inboxstate } = useInboxState()
+    const [stateInbox, setStateInbox] = useState(false)    
+
+    useEffect(() => {
+
+      forEach(inboxstate.loadingInbox, (value, key) => {
+        if(key === filters.itemIdSelected) {
+          setStateInbox(value)
+        }
+      })
+    }
+    , [inboxstate.loadingInbox, filters.itemIdSelected])
+    
     return (
       <section id="list">{        
-        (filters?.itemIdSelected === inboxstate.loadingInbox.id && !inboxstate.loadingInbox.id) ?
+        !stateInbox ?
           <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] h-full grid border-r z-50 bg-[#ffffff] dark:bg-transparent pr-1 content-center'>
               <Loading /> 
           </div>
