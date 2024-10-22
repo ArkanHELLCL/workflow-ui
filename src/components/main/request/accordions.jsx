@@ -6,7 +6,8 @@ import { ListRequestByStep } from './accordion/LisRequestByStep.jsx';
 import { ListRequestSearchResult } from './accordion/ListRequestSearchResult.jsx';
 
 export function Accordions(filteredRequest, filters){
-    const { maxAccSearch, maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()    
+    const { maxAccSearch, maxAccByDate, maxAccByNumber, maxAccByStep } = Constants()
+    
     //Accordion
     let requerimientoAccordion = []
     if(filteredRequest.length > 0){

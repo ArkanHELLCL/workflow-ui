@@ -95,7 +95,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
     return(
         <ClickAwayListener onClickAway={handleClickAway}>
             <search aria-label="search" className="h-full flex z-50 w-full" id={menuSearch} onDragOver={handleNotDragOver}>                    
-                <div className={`absolute transition-all duration-400 ${openSearch && filters.filterSearch === 2 ? ' -translate-x-[142px]' : openSearch && filters.filterSearch === 1 ? ' -translate-x-[121px]' : ' translate-x-0'}`} id="mnuSearchBandejas">
+                <div className={`absolute transition-all duration-400 ${openSearch && filters.filterSearch === 2 ? ' -translate-x-[142px]' : openSearch && filters.filterSearch === 1 ? ' -translate-x-[121px]' : ' translate-x-0'} ${filters.itemIdSelected.charAt(0).toUpperCase() !== 'B' ? 'hidden':''}`} id="mnuSearchBandejas">
                     <IconButton
                         aria-label="more"
                         id="search-button"
@@ -155,7 +155,7 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                         placehold="Buscar"
                         onfocus={(e) => e.target.placeholder = ""}
                         onblur={(e) => HandleOnBlur(e)} 
-                        onclick={() => setOpenSearch(!inboxstate.loadingInboxs)}
+                        onclick={() => setOpenSearch(!inboxstate.loadingInboxs && filters.itemIdSelected.charAt(0).toUpperCase() === 'B')}
                         _id={inputId}
                         setFilters={setFilters}
                         value={value}

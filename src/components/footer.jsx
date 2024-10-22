@@ -120,7 +120,7 @@ export default function Footer() {
                                     </div>
                                 </>
                             }{
-                                filters.totalFiltrados > 0 &&
+                                (filters.totalFiltrados > 0 || filters.stringSearch !== '') &&
                                     <div>
                                         <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
                                         <span className="text-green-500">{filters.totalFiltrados === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalFiltrados}</span>                
@@ -134,7 +134,7 @@ export default function Footer() {
                         : 
                             filters.itemIdSelected === 'm' || filters.itemIdSelected === 'j' ? (
                                 <> {
-                                        filters.totalFiltrados > 0 && (
+                                        (filters.totalFiltrados > 0 || filters.stringSearch !== '') && (
                                             <div>
                                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
                                                 <span className="text-green-500">{filters.totalFiltrados === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalFiltrados}</span>                
@@ -173,7 +173,7 @@ export default function Footer() {
                                         <span className="pt-[1px]">{filters.totalVencidos}</span>  
                                     </div>
                                     {
-                                        filters.totalFiltrados > 0 && (
+                                        (filters.totalFiltrados > 0 || filters.stringSearch !== '') && (
                                             <div>
                                                 <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
                                                 <span className="text-green-500">{filters.totalFiltrados === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalFiltrados}</span>                
@@ -187,7 +187,7 @@ export default function Footer() {
                                 </>
                             ) : (
                                 <>{
-                                    filters.totalFiltrados > 0 && (
+                                    (filters.totalFiltrados > 0 || filters.stringSearch !== '') && (
                                         <div>
                                             <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total Filtrados : </span>
                                             <span className="text-green-500">{filters.totalFiltrados === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalFiltrados}</span>                

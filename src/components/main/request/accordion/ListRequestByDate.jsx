@@ -38,7 +38,8 @@ function FiltroRequerimientos( hoy, filteredRequest, diasDesde, diasHasta ) {
 
 //new Date(a.DRE_FechaEdit).getTime() < new Date(b.DRE_FechaEdit).getTime()
 
-export function ListRequestByDate(hoy, maxAccordions, filteredRequest){    
+export function ListRequestByDate(hoy, maxAccordions, filteredRequest){
+    
     let requerimientoAccordion = []    
     for (let index = 1; index <= maxAccordions; index++) {      
         requerimientoAccordion.push({
