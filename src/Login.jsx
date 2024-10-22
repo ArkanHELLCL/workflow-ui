@@ -40,8 +40,7 @@ export default function Login(){
     const userdata = apiData.read()
     const { host, fecthParams : params, dateOptions : options } = Constants()
 
-    useEffect(() => {
-        //console.log('userdata:', userdata)
+    useEffect(() => {        
         if(userdata.error === 200){
             setAuth(true)
             const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())

@@ -26,9 +26,9 @@ export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {
     const [stateInbox, setStateInbox] = useState(false)    
 
     useEffect(() => {
-
       forEach(inboxstate.loadingInbox, (value, key) => {
         if(key === filters.itemIdSelected) {
+          console.log('list', key, value)
           setStateInbox(value)
         }
       })
