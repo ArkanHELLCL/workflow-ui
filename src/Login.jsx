@@ -40,19 +40,46 @@ export default function Login(){
     const userdata = apiData.read()
     const { host, fecthParams : params, dateOptions : options } = Constants()
 
+    function getItemsWithUrl(obj, flujo) {
+        const result = [];
+        
+        function findItems(items) {
+            items.forEach(item => {
+            if (item.url) {
+                result.push(item);
+            }
+            if (item.children) {
+                findItems(item.children);
+            }
+            });
+        }
+        const bandejas = obj.flujos.filter(item => item.id===flujo.toString())[0].bandejas
+        const reportes = obj.flujos.filter(item => item.id===flujo.toString())[0].reportes
+        findItems(bandejas);
+        findItems(reportes);
+        findItems(obj.mantenedores);
+        findItems(obj.mensajes);
+        
+        return result;
+    }
+
     useEffect(() => {        
         if(userdata.error === 200){
+            const itemsWithUrl = getItemsWithUrl(userdata.treeMenu,filters.flujo);
+            const ban = itemsWithUrl.map(item => '"' + item.id + '":' + !item.load ).join(', ')            
+            
             setAuth(true)
             const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())
             setInboxState(prevState => ({
                 ...prevState,
-                loadingInboxs: true,                                
+                loadingInboxs: true,
+                loadingInbox: JSON.parse("{" + ban + "}"),
                 messages: [...prevState.messages, Inidate + ' - Actualizando todas las bandejas...'],
                 error: false,
                 Warning: false
             }))
-
-            const promises = userdata?.bandejas?.filter(item => item.load).map((item) => (
+            
+            const promises = itemsWithUrl?.filter(item => item.load).map((item) => (
                 fetch(host + item.url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params))
                 .then((response) => response.json())
                 .then((data) => {
