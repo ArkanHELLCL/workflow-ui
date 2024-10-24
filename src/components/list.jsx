@@ -36,17 +36,7 @@ export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {
         if(key === filters.itemIdSelected) {          
           setStateInbox(value)
         }
-      })
-      /*for (const [key, value] of Object.entries(inboxstate.loadingInbox)) {
-        if(key === filters.itemIdSelected) {          
-          setStateInbox(value)
-        }
-      }*/
-      /*console.log('loadingInbox:', inboxstate.loadingInbox[filters.itemIdSelected])
-      if(inboxstate.loadingInbox[filters.itemIdSelected] === undefined){        
-        setStateInbox(true)
-      }*/
-    },[inboxstate.loadingInbox, filters.itemIdSelected])
+    })},[inboxstate.loadingInbox, filters.itemIdSelected])
 
     useEffect(() => {
       const date = new Intl.DateTimeFormat(undefined, options).format(new Date())        

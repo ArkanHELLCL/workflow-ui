@@ -13,10 +13,10 @@ import { useInboxs } from './hooks/useInboxs.jsx';
 import { useFilters } from './hooks/useFilters.jsx';
 import { useInboxState } from './hooks/useInboxState.jsx';
 import { useAuth } from './hooks/useAuth.jsx';
-//import App from './App.jsx';
 import { Constants } from "./utils/const.jsx";
 import "dayjs/locale/es";
 import { lazy } from 'react';
+import getobjItems from './utils/getObjItems.jsx';
 
 const App = lazy(() => import('./App.jsx'));
 
@@ -40,34 +40,12 @@ export default function Login(){
     const userdata = apiData.read()
     const { host, fecthParams : params, dateOptions : options } = Constants()
 
-    function getItemsWithUrl(obj, flujo) {
-        const result = [];
-        
-        function findItems(items) {
-            items.forEach(item => {
-            if (item.url) {
-                result.push(item);
-            }
-            if (item.children) {
-                findItems(item.children);
-            }
-            });
-        }
-        const bandejas = obj.flujos.filter(item => item.id===flujo.toString())[0].bandejas
-        const reportes = obj.flujos.filter(item => item.id===flujo.toString())[0].reportes
-        findItems(bandejas);
-        findItems(reportes);
-        findItems(obj.mantenedores);
-        findItems(obj.mensajes);
-        
-        return result;
-    }
-
+    
     useEffect(() => {        
         if(userdata.error === 200){
-            const itemsWithUrl = getItemsWithUrl(userdata.treeMenu,filters.flujo);
-            const ban = itemsWithUrl.map(item => '"' + item.id + '":' + !item.load ).join(', ')            
-            
+            const objBandejas = getobjItems(userdata.treeMenu,filters.flujo);
+            const ban = objBandejas.map(item => '"' + item.id + '":' + !item.load ).join(', ')            
+            console.log('objBandejas:', objBandejas.filter(item => item.id==="be")[0])
             setAuth(true)
             const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())
             setInboxState(prevState => ({
@@ -79,7 +57,7 @@ export default function Login(){
                 Warning: false
             }))
             
-            const promises = itemsWithUrl?.filter(item => item.load).map((item) => (
+            const promises = objBandejas?.filter(item => item.load).map((item) => (
                 fetch(host + item.url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params))
                 .then((response) => response.json())
                 .then((data) => {
