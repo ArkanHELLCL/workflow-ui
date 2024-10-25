@@ -22,6 +22,9 @@ import { useEffect, useState } from "react";
 import { Constants } from "../utils/const.jsx";
 import { useAuth } from "../hooks/useAuth.jsx";
 import { useMantainers } from "../hooks/useMantainers.jsx";
+import { useUserData } from "../hooks/useUserData.jsx";
+import getobjItems from '../utils/getObjItems.jsx';
+import { useInboxs } from "../hooks/useInboxs.jsx";
 
 export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {    
     const { filters } = useFilters()
@@ -29,7 +32,9 @@ export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {
     const [stateInbox, setStateInbox] = useState(false)
     const { host, fecthParams : params, dateOptions : options } = Constants()
     const { setAuth } = useAuth()
-    const { setMantenedores } = useMantainers()
+    const { mantenedores, setMantenedores } = useMantainers()
+    const { userdata } = useUserData({})
+    const { bandejas, setBandejas } = useInboxs()
 
     useEffect(() => {
       forEach(inboxstate.loadingInbox, (value, key) => {
@@ -38,99 +43,90 @@ export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {
         }
     })},[inboxstate.loadingInbox, filters.itemIdSelected])
 
-    useEffect(() => {
-      const date = new Intl.DateTimeFormat(undefined, options).format(new Date())        
-      let url = ''      
+    useEffect(() => {      
+      const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+      const objBandeja = getobjItems(userdata.treeMenu,filters.flujo);
+      const { description, url, load } = objBandeja.filter(item => item.id===filters.itemIdSelected)[0] ? objBandeja.filter(item => item.id===filters.itemIdSelected)[0] : {description:'', url:'', load:true}
+      const endpoint = host + url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
+
       let message = ''      
-      let msgfinal = ''
-      let name = ''
       let error
+      let isData = false
 
       if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'M'){
         message = date + ' - Actualizando registros...'
+        isData = mantenedores.filter(item => item.id === filters.itemIdSelected).length > 0 ? true : false
+      }
+      if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'B'){
+        message = date + ' - Actualizando requerimientos...'
+        isData = bandejas.filter(item => item.id === filters.itemIdSelected).length > 0 ? true : false
+      }
+      if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'R')
+        message = date + ' - Actualizando reportes...'
+      if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'J'){
+        message = date + ' - Actualizando mensajes...'      
+        isData = bandejas.filter(item => item.id === filters.itemIdSelected).length > 0 ? true : false
+      }
+      
+      if(!load && !isData){
+        //Inicio de carga de datos
+        const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
         setInboxState(prevState => ({
-            ...prevState,
-            loadingInboxs: true,          
-            messages: [...prevState.messages, message],
-            error: false
+          ...prevState,
+          loadingInboxs: true,          
+          messages: [...prevState.messages, message],
+          error: false
         }))
 
-        if(filters.itemIdSelected === 'mu'){
-            url = host + '/api/mantenedores/usuarios?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
-            message = date + ' - Actualizando registros de mantenedor de usuarios...'
-            msgfinal = date + ' - Mantenedor de usuarios actualizado'
-            name = 'usuarios'
-            error = false
-        }        
-        if(filters.itemIdSelected === 'ml'){
-            url = host + '/api/mantenedores/listas-desplegable?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
-            message = date + ' - Actualizando registros de mantenedor de listas desplegable...'
-            msgfinal = date + ' - Mantenedor de listas desplegable actualizado'
-            name = 'listas desplegable'
-            error = false
-        }        
-        if(filters.itemIdSelected === 'mi'){
-            url = host + '/api/mantenedores/items-lista-desplegable?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
-            message = date + ' - Actualizando registros de mantenedor de items de listas desplegable...'
-            msgfinal = date + ' - Mantenedor de items de listas desplegable actualizado'
-            name = 'items de listas desplegable'
-            error = false
-        }        
-        if(filters.itemIdSelected === 'mp'){
-            url = host + '/api/mantenedores/proveedores?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
-            message = date + ' - Actualizando registros de mantenedor de proveedores...'
-            msgfinal = date + ' - Mantenedor de proveedores actualizado'
-            name = 'proveedores'
-            error = false
-        }        
-        if(filters.itemIdSelected === 'mc'){
-            url = host + '/api/mantenedores/comunas?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded
-            message = date + ' - Actualizando registros de mantenedor de comunas...'
-            msgfinal = date + ' - Mantenedor de comunas actualizado'
-            name = 'comunas'
-            error = false
-        }
+        message = date + ' - Actualizando ' + description + '...'
         setInboxState(prevState => ({
-            ...prevState,
-            loadingInboxs: true,
-            loadingInbox: {...prevState.loadingInbox, [filters.itemIdSelected]: false},
-            messages: [...prevState.messages, message],
-            error: error
+          ...prevState,
+          loadingInboxs: true,
+          loadingInbox: {...prevState.loadingInbox, [filters.itemIdSelected]: false},
+          messages: [...prevState.messages, message],
+          error: error
         }))
-        if(url){
-            fetch(url, params)
-            .then((response) => response.json())
-            .then((data) => {
-                if(data.error){
-                    if(parseInt(data.error) === 401){
-                        setAuth(false)
-                    }
-                    message = date + ' - Error: Mantenedor de ' + name + ' ' + data.message
+
+        fetch(endpoint, params)
+        .then((response) => response.json())
+        .then((data) => {
+            const date = new Intl.DateTimeFormat(undefined, options).format(new Date())
+            if(data.error){                
+                if(parseInt(data.error) === 401){
+                    setAuth(false)
                 }
-                else
-                    message = msgfinal;
-                
-                setMantenedores(prevState => ([...prevState, data]))
-                setInboxState(prevState => ({
-                    ...prevState,                    
-                    messages: [...prevState.messages, message],
-                    error: data.error ? true : false,
-                    loadingInboxs: false,
-                    loadingInbox: {...prevState.loadingInbox, [filters.itemIdSelected]: true},                    
-                }))
-            })
-            .catch((error) => {
-                console.log('Error 1:', error)
-                setInboxState(prevState => ({
-                    ...prevState,
-                    loadingInboxs: false,
-                    loadingInbox: {...prevState.loadingInbox, [filters.itemIdSelected]: true},
-                    messages: [...prevState.messages, date + ' - Error: ' + name + ' ' + error],
-                    error: true
-                }))
-            })
-        }
+                message = date + ' - Error: ' + description + ' ' + data.message
+            }
+            else
+                message = date + ' - ' + description + ' actualizado';
+
+            if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'M')
+              setMantenedores(prevState => ([...prevState, data]))
+
+            if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'B' || filters.itemIdSelected?.charAt(0).toUpperCase() === 'J')
+              setBandejas(prevstate => [...prevstate, data])
+
+            setInboxState(prevState => ({
+                ...prevState,                    
+                messages: [...prevState.messages, message],
+                error: data.error ? true : false,
+                loadingInboxs: false,
+                loadingInbox: {...prevState.loadingInbox, [filters.itemIdSelected]: true},                    
+            }))
+        })
+        .catch((error) => {
+            const date = new Intl.DateTimeFormat(undefined, options).format(new Date())            
+            setInboxState(prevState => ({
+                ...prevState,
+                loadingInboxs: false,
+                loadingInbox: {...prevState.loadingInbox, [filters.itemIdSelected]: true},
+                messages: [...prevState.messages, date + ' - Error: ' + description + ' ' + error],
+                error: true
+            }))
+        })
       }
+
+      
   }, [filters.itemIdSelected])
     
     return (
