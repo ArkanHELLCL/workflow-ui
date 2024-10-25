@@ -8,6 +8,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CachedIcon from '@mui/icons-material/Cached';
 import { Constants } from "../../utils/const";
 import { useUserData } from "../../hooks/useUserData.jsx";
+import getobjItems from '../../utils/getObjItems.jsx';
 
 export default function HeaderBarLeft() {
     const { filters } = useFilters()
@@ -17,10 +18,12 @@ export default function HeaderBarLeft() {
     const { userdata } = useUserData({})
     const { host, fecthParams : params, dateOptions : options } = Constants()
 
+    const objBandeja = getobjItems(userdata.treeMenu,filters.flujo);    
+
     const HandleReload = () => {        
         let msgfinal = ''
         const date = new Intl.DateTimeFormat(undefined, options).format(new Date())        
-        const { description, url } = userdata.bandejas.filter(item => item.id === filters.itemIdSelected)[0]
+        const { description, url } = objBandeja.filter(item => item.id===filters.itemIdSelected)[0]
 
         setInboxState(prevState => ({
             ...prevState,

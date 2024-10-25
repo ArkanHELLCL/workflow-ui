@@ -9,9 +9,9 @@ function FiltroRequerimientos( filteredRequest, cod ) {
     );
 }
 
-export function ListRequestSearchResult(maxAccordions, filteredRequest){    
-    const { userdata } = useUserData() 
-    const { filters } = useFilters()
+export function ListRequestSearchResult(filteredRequest){    
+    const { userdata } = useUserData()     
+    const { filters } = useFilters()    
     const objBandejas = getobjItems(userdata.treeMenu,filters.flujo);
 
     const requerimientoAccordion = objBandejas.map((item, index) => {        

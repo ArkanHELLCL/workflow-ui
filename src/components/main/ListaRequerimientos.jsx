@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useFilters } from '../../hooks/useFilters.jsx';
 import { useInboxs } from '../../hooks/useInboxs.jsx';
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";
 import Loading from "../../utils/Loading.jsx";
@@ -35,18 +35,12 @@ const Accordion = ({acc, moreItems, frmRequest, frmMessages}) => {
 export default function ListaRequerimientos({frmRequest, frmMessages}){    
     const { bandejas } = useInboxs()    
     const { filters, filterRequest } = useFilters() 
-    const { filteredRequest } = filterRequest(bandejas)    
-    
-    const { requerimientoAccordion } = Accordions(filteredRequest, filters)
-    const [acc, setAcc] = useState([])
+    const { filteredRequest } = filterRequest(bandejas)
+    const { requerimientoAccordion } = Accordions(filteredRequest)    
 
     const moreItems = filteredRequest.length === filters.maxRecordLoaded ? true : false
     
-    useEffect(() => {        
-        setAcc(requerimientoAccordion)
-    }, [filters, bandejas])
-    
     return (        
-        <Accordion acc={acc} moreItems={moreItems} frmRequest={frmRequest} frmMessages={frmMessages}/>        
+        <Accordion acc={requerimientoAccordion} moreItems={moreItems} frmRequest={frmRequest} frmMessages={frmMessages}/>
     )
 }
