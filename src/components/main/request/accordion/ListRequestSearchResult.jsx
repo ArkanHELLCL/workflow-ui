@@ -10,12 +10,12 @@ function FiltroRequerimientos( filteredRequest, cod ) {
 }
 
 export function ListRequestSearchResult(filteredRequest){    
-    const { userdata } = useUserData()     
+    const { userdata } = useUserData()
     const { filters } = useFilters()    
     const objBandejas = getobjItems(userdata.treeMenu,filters.flujo);
 
     const requerimientoAccordion = objBandejas.map((item, index) => {        
         return {id:index, title:item.description, open: true, requerimientos: FiltroRequerimientos(filteredRequest,item.id), showyear:item.showyear}
-    })    
+    })
     return requerimientoAccordion
 }

@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useFilters } from '../../hooks/useFilters.jsx';
-import { useRequest } from '../../hooks/useRequest.jsx';
 import { useEffect, useState } from 'react';
+import { useFilters, useRequest, useButtonsGroup } from '../../hooks';
 import SenderData from './formcontent/header/SenderData.jsx';
 import UpdateDate from './formcontent/header/UpdateDate.jsx';
-import { formulario as formularioMant } from '../../mocks/formularioMant.json';
-import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
 import ButtonsActions from './messages/ButtonsActions.jsx';
 import MessageBody from './messages/MessageBody.jsx';
+import { formulario as formularioMant } from '../../mocks/formularioMant.json';
 
 export default function FormMessages({frmMessages}){
     const { request } = useRequest()    

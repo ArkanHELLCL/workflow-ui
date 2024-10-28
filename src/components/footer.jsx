@@ -211,7 +211,7 @@ export default function Footer() {
                         
                     }
             </footer>
-            <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center justify-end p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerright">
+            <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center justify-end pl-3 pr-1 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerright">
                 <Button className={`!bg-transparent !rounded-none dark:!text-stone-100 !text-stone-500 !font-thin !border-none !text-xs !min-h-full !px-2 overflow-auto !max-w-xs`}
                         id="logList-button"
                         aria-controls={open ? "logList" : undefined}
