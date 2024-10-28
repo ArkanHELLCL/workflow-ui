@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useMantainers } from '../../hooks/useMantainers.jsx';
-import { useFilters } from '../../hooks/useFilters.jsx';
+import { useMantainers, useFilters } from '../../hooks';
 import RegistroItem from "./maintainer/registroItem.jsx";
 
 export default function ListaRegMantenedores({frmRecord}){

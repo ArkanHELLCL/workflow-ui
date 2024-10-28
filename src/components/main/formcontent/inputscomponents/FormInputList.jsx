@@ -52,8 +52,7 @@ export default function FormInputList ({ frmRequest, campo, className }) {
   }
 
   useEffect(() => {
-    if(campo.FDI_TipoCampo==='X1'){
-      console.log('mantainer',mantainer)
+    if(campo.FDI_TipoCampo==='X1'){      
       if(mantainer?.id === 'mpmant'){
         proveedores.records.push(mantainer?.record)
       }

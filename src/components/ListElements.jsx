@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useFilters } from "../hooks/useFilters.jsx";
-import { useInboxState } from '../hooks/useInboxState.jsx';
-import MenuFilters from "./main/menuFilters.jsx";
-import Flujos from "./main/flujos.jsx";
+import { useEffect, useState } from "react";
+import { useFilters, useInboxState, useAuth, useMantainers, useUserData, useInboxs } from "../hooks/index.js";
+import { Flujos, MenuFilters, DetalleRequerimiento, ListaRequerimientos, ListaRegMantenedores, ListaRegReportes } from "./main/index.js";
 import Departamentos from "./main/maintainer/usuariomant/filtroDepartamento.jsx";
 import MenuFiltersUsr from "./main/maintainer/usuariomant/menuFiltersUsr.jsx";
 import MenuFiltersMan from "./main/maintainer/menuFiltersMan.jsx";
@@ -11,22 +10,13 @@ import MenuFiltersCom from "./main/maintainer/comunamant/menuFiltersCom.jsx";
 import MenuFiltersListaDes from "./main/maintainer/itemslistaMant/menuFiltersListaDes.jsx";
 import Regiones from "./main/maintainer/comunamant/filtroRegion.jsx";
 import ListaDesplegable from "./main/maintainer/itemslistaMant/filtroListaDesplegable.jsx";
-import DetalleRequerimiento from "./main/DetalleRequerimiento.jsx";
-import ListaRequerimientos from "./main/ListaRequerimientos.jsx";
-import ListaRegMantenedores from "./main/ListaRegMantenedores.jsx";
-import ListaRegReportes from "./main/ListaRegReportes.jsx";
-import Loading from "../utils/Loading.jsx";
 import MenuFiltersMen from "./main/reports/menuFiltersMen.jsx";
+import Loading from "../utils/Loading.jsx";
 import { forEach } from "lodash";
-import { useEffect, useState } from "react";
 import { Constants } from "../utils/const.jsx";
-import { useAuth } from "../hooks/useAuth.jsx";
-import { useMantainers } from "../hooks/useMantainers.jsx";
-import { useUserData } from "../hooks/useUserData.jsx";
 import getobjItems from '../utils/getObjItems.jsx';
-import { useInboxs } from "../hooks/useInboxs.jsx";
 
-export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {    
+export default function ListElements({frmRequest, frmRecord, frmReport, frmMessages}) {    
     const { filters } = useFilters()
     const { inboxstate, setInboxState } = useInboxState()
     const [stateInbox, setStateInbox] = useState(false)
@@ -61,8 +51,9 @@ export default function List({frmRequest, frmRecord, frmReport, frmMessages}) {
         message = date + ' - Actualizando requerimientos...'
         isData = bandejas.filter(item => item.id === filters.itemIdSelected).length > 0 ? true : false
       }
-      if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'R')
-        message = date + ' - Actualizando reportes...'
+      if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'R'){
+        isData = true
+      }
       if(filters.itemIdSelected?.charAt(0).toUpperCase() === 'J'){
         message = date + ' - Actualizando mensajes...'      
         isData = bandejas.filter(item => item.id === filters.itemIdSelected).length > 0 ? true : false

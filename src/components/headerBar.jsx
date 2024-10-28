@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import HeaderBarLeft from "./headerbar/HeaderBarLeft.jsx";
-import SearchBar from "./headerbar/searchBar.jsx";
-import HeaderBarRight from "./headerbar/HeaderBarRight.jsx";
+import { HeaderBarLeft, SearchBar, HeaderBarRight } from "./headerbarComp";
 
 export default function HeaderBar({openSearch, setOpenSearch, handleNotDragOver, darkmode, setDarkMode}) {
     return (

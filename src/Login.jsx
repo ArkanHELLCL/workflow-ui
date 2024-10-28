@@ -1,4 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
+import { RequestProvider, RecordsProvider, AttachProvider, PreviewProvider, ReportsProvider, MantainerProvider, ButtonsGroupProvider, MantainersProvider } from './context'
+import { useUserData, useInboxs, useFilters, useInboxState, useAuth } from "./hooks";
 import { ThemeProvider } from '@mui/material/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -7,18 +10,10 @@ import { esES } from '@mui/x-date-pickers/locales';
 import { SnackbarProvider } from 'notistack';
 import StyledMaterialDesignContent from './utils/styledSnackbar.jsx'
 import { fetchData } from "./utils/fectData.js";
-import { useUserData } from "./hooks/useUserData.jsx";
-import { useEffect, useState } from 'react';
-import { useInboxs } from './hooks/useInboxs.jsx';
-import { useFilters } from './hooks/useFilters.jsx';
-import { useInboxState } from './hooks/useInboxState.jsx';
-import { useAuth } from './hooks/useAuth.jsx';
 import { Constants } from "./utils/const.jsx";
 import "dayjs/locale/es";
-import { lazy } from 'react';
+import App from './App.jsx';
 import getobjItems from './utils/getObjItems.jsx';
-
-const App = lazy(() => import('./App.jsx'));
 
 //fetch data Login
 const param = {usrCod:'lcastillo', usrClave:'123456'}
@@ -45,7 +40,7 @@ export default function Login(){
         if(userdata.error === 200){
             const objBandejas = getobjItems(userdata.treeMenu,filters.flujo);
             const ban = objBandejas.map(item => '"' + item.id + '":' + !item.load ).join(', ')            
-            console.log('objBandejas:', objBandejas.filter(item => item.id==="be")[0])
+            
             setAuth(true)
             const Inidate = new Intl.DateTimeFormat(undefined, options).format(new Date())
             setInboxState(prevState => ({
@@ -128,29 +123,45 @@ export default function Login(){
         darkModeStorage ? document.getElementsByTagName('html')[0].classList.add('dark') : document.getElementsByTagName('html')[0].classList.remove('dark')    
       },[])
 
-    return(        
-        <ThemeProvider theme={theme(darkMode)}>
-            <LocalizationProvider
-                dateAdapter={AdapterDayjs} 
-                localeText={esES.components.MuiLocalizationProvider.defaultProps.localeText}
-                adapterLocale="es"
-            >
-                <SnackbarProvider maxSnack={5} Components={{
-                    warning: StyledMaterialDesignContent, 
-                    error: StyledMaterialDesignContent, 
-                    info: StyledMaterialDesignContent, 
-                    success: StyledMaterialDesignContent
-                    }
-                }>{
-                    userdata?.error === 200 ?                        
-                        <App darkMode={darkMode} setDarkMode={setDarkMode}/>
-                    :
-                        <div className="text-center flex justify-center align-middle items-center h-full w-full !overflow-hidden">
-                            <span className='text-[#2c87d2] text-xl w-full'>{userdata?.message ? userdata?.message : 'Host no disponible'}</span>
-                        </div>
-                    }
-                </SnackbarProvider>
-            </LocalizationProvider>
-        </ThemeProvider>        
+    return(
+        <RequestProvider>
+            <RecordsProvider>
+                <ReportsProvider>
+                    <AttachProvider>
+                        <PreviewProvider>
+                            <MantainerProvider>
+                                <ButtonsGroupProvider>
+                                    <MantainersProvider>
+                                        <ThemeProvider theme={theme(darkMode)}>
+                                            <LocalizationProvider
+                                                dateAdapter={AdapterDayjs} 
+                                                localeText={esES.components.MuiLocalizationProvider.defaultProps.localeText}
+                                                adapterLocale="es"
+                                            >
+                                                <SnackbarProvider maxSnack={5} Components={{
+                                                    warning: StyledMaterialDesignContent, 
+                                                    error: StyledMaterialDesignContent, 
+                                                    info: StyledMaterialDesignContent, 
+                                                    success: StyledMaterialDesignContent
+                                                    }
+                                                }>{
+                                                    userdata?.error === 200 ?                        
+                                                        <App darkMode={darkMode} setDarkMode={setDarkMode}/>
+                                                    :
+                                                        <div className="text-center flex justify-center align-middle items-center h-full w-full !overflow-hidden">
+                                                            <span className='text-[#2c87d2] text-xl w-full'>{userdata?.message ? userdata?.message : 'Host no disponible'}</span>
+                                                        </div>
+                                                    }
+                                                </SnackbarProvider>
+                                            </LocalizationProvider>
+                                        </ThemeProvider>
+                                    </MantainersProvider>
+                                </ButtonsGroupProvider>
+                            </MantainerProvider>
+                        </PreviewProvider>
+                    </AttachProvider>
+                </ReportsProvider>
+            </RecordsProvider>
+        </RequestProvider>        
     )
 }

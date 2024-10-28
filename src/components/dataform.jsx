@@ -1,11 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useFilters } from "../hooks/useFilters.jsx";
-import { useRequest } from "../hooks/useRequest.jsx";
-import { useRecords } from "../hooks/useRecords.jsx";
-import FormRecord from "./main/FormRecord.jsx";
-import Formcomponent from "./main/Formcomponent.jsx";
-import FormReport from "./main/FormReport.jsx";
-import FormMessages from "./main/FormMessages.jsx";
+import { useFilters, useRequest, useRecords } from "../hooks";
+import { FormRecord, Formcomponent, FormReport, FormMessages} from "./main";
 
 export default function DataForm({frmRequest, frmRecord, frmMessages, filesList, setFilesList, dataReport, loading}) {
     const { filters } = useFilters()

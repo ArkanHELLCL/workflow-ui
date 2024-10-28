@@ -1,15 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useRequest } from "../hooks/useRequest.jsx";
-import { useRecords } from "../hooks/useRecords.jsx";
-import { useFilters } from "../hooks/useFilters.jsx";
 import { Suspense, useEffect, useState } from "react";
+import { useRequest, useRecords, useFilters } from "../hooks";
+import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu, CrearMensaje, MensajesMenu } from "./headerComp";
 import Loading from "../utils/Loading.jsx";
-import { CrearMenu, RequerimientoMenu, AdjuntarMenu, AccionesMenu, FormularioMenu, GuardarMenu, MantenedoresMenu, InformesMenu, BandejaMenu, RegistroMenu } from "./header/index.jsx";
 import { ButtonIcon } from "../utils/icons.jsx";
 import { Button } from "@mui/material";
-import CrearMensaje from "./header/crearMensaje.jsx";
-import MensajesMenu from "./header/mensajesMenu.jsx";
 
 export default function Header(){
     const { request } = useRequest()

@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useFilters } from "../../hooks/useFilters.jsx";
+import { useEffect, useState } from "react";
+import { useFilters } from "../../hooks";
+import { ReportFilters } from "./ReportFilters.jsx";
 import Slide from '@mui/material/Slide';
 import Inputs from './formcontent/Inputs.jsx';
-import { formulario } from '../../mocks/formularioRep.json';
 import InputReportButton from "./reports/InputReportButton.jsx";
-import ReportFilters from "./ReportFilters.jsx";
-import { useEffect, useState } from "react";
+import { formulario } from '../../mocks/formularioRep.json';
 
 export default function ListaRegReportes({frmReport}) {
     const { filters } = useFilters()

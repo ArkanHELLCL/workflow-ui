@@ -2,26 +2,14 @@
 /* eslint-disable react/prop-types */
 import io from 'socket.io-client';
 import { Suspense, useEffect, useRef, useState } from "react";
-import { usePreview } from "./hooks/usePreview.jsx";
-import { useAttach } from "./hooks/useAttach.jsx";
-import { useReports } from "./hooks/useReports.jsx";
-import { useMantainer } from "./hooks/useMantainer.jsx";
-import { useAuth } from "./hooks/useAuth.jsx";
-import { useFilters } from "./hooks/useFilters.jsx";
-import Header from './components/Header.jsx'
-import Footer from './components/footer.jsx'
-import SideBar from './components/SideBar.jsx'
-import Menu from './components/Menu.jsx'
-import { useForm } from "react-hook-form"
-import List from "./components/list.jsx";
-import DataForm from "./components/dataform.jsx";
-import HeaderBar from "./components/headerBar.jsx";
+import { usePreview, useAttach, useReports, useMantainer, useAuth, useFilters, useInboxState } from "./hooks";
+import { Header, Footer, SideBar, Menu, ListElements, DataForm, HeaderBar} from './components'
 import ConfirmationDialog from './utils/ConfirmationDialog.jsx';
 import ConfirmationMessage from './utils/confirmationMessage.jsx';
 import { ToastMessages } from "./utils/toastMessages.jsx";
 import Loading from "./utils/Loading.jsx";
 import { Constants } from "./utils/const.jsx";
-import { useInboxState } from './hooks/useInboxState.jsx';
+import { useForm } from "react-hook-form"
 
 //socket.io
 const socket = io('http://localhost:3100');
@@ -299,7 +287,7 @@ function App({darkMode, setDarkMode}) {
         <SideBar />            
         <Header />      
         <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
-        <List frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages}/>      
+        <ListElements frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages}/>      
         <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
         <Footer />{
         openDialog?.open &&

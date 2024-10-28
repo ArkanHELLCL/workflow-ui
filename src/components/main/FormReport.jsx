@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useFilters } from '../../hooks/useFilters.jsx';
+import { useFilters } from '../../hooks';
 //import { useState } from 'react';
 //import MPMant from './maintainer/proveedorMant.jsx';
 import RUReport from './reports/diasusuarioReporte.jsx'

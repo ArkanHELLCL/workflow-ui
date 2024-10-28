@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useUserData } from "../hooks/useUserData.jsx";
-import { useFilters } from "../hooks/useFilters.jsx";
-import { MenuTree } from "./menu/MenuTree.jsx"
 import { Suspense } from "react";
+import { useUserData, useFilters } from "../hooks";
+import { MenuTree } from "./menu/MenuTree.jsx"
 import Loading from "../utils/Loading.jsx";
 import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 

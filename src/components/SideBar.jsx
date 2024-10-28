@@ -1,12 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import { useFilters } from "../hooks/useFilters.jsx";
-import { useRequest } from '../hooks/useRequest.jsx';
-import { useRecords } from '../hooks/useRecords.jsx';
-import { useReports } from '../hooks/useReports.jsx';
-import { usePreview } from "../hooks/usePreview.jsx";
-import { useUserData } from "../hooks/useUserData.jsx";
+import { useFilters, useRequest, useRecords, useReports, usePreview, useUserData } from "../hooks";
 import { InBoxIcon, ReportIcon, TableIcon, MyMessageIcon } from "../utils/icons.jsx";
 
 export default function SideBar(){

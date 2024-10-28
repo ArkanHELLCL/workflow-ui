@@ -1,10 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useFilters } from "../../hooks/useFilters.jsx";
-import { useRequest } from "../../hooks/useRequest.jsx";
-import { flujos } from "../../mocks/flujos.json";
-import { flujosv0 } from "../../mocks/flujos.json";
-import { flujosv1 } from "../../mocks/flujos.json";
+import { useState } from "react";
+import { useFilters, useRequest } from "../../hooks";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -13,7 +10,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Check from '@mui/icons-material/Check'
 import StraightIcon from '@mui/icons-material/Straight';
-import { useState } from "react";
+import { flujos } from "../../mocks/flujos.json";
+import { flujosv0 } from "../../mocks/flujos.json";
+import { flujosv1 } from "../../mocks/flujos.json";
+
 
 export default function MenuFilters() {
     const { filters, setFilters } = useFilters()

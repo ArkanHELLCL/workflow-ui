@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import UserBar from './userBar.jsx';
+import UserBar from './UserBar.jsx';
 
 export default function HeaderBarRight({darkmode, setDarkMode}) {    
     return(

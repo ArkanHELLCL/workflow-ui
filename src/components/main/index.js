@@ -1,0 +1,11 @@
+export { default as DetalleRequerimiento } from './DetalleRequerimiento.jsx';
+export { default as Flujos } from './Flujos.jsx';
+export { default as Formcomponent } from './Formcomponent.jsx';
+export { default as FormMessages } from './FormMessages.jsx';
+export { default as FormRecord } from './FormRecord.jsx';
+export { default as FormReport } from './FormReport.jsx';
+export { default as ListaRegMantenedores } from './ListaRegMantenedores.jsx';
+export { default as ListaRegReportes } from './ListaRegReportes.jsx';
+export { default as ListaRequerimientos } from './ListaRequerimientos.jsx';
+export { default as MenuFilters } from './MenuFilters.jsx';
+export { default as ReportFilters } from './ReportFilters.jsx';

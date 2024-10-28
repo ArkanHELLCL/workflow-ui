@@ -11,7 +11,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
 import { IconButton } from "@mui/material";
 
-function Flujos(){
+export default function Flujos(){
     const { filters, setFilters } = useFilters()
     const { setRequest } = useRequest()
     const [anchorEl, setAnchorEl] = useState(null);
@@ -152,10 +152,4 @@ function Flujos(){
             </div>
         </div>
     );
-}
-
-export default function Regiones(){
-    return (        
-        <Flujos />        
-    )     
 }

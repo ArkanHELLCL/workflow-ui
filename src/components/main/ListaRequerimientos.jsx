@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useFilters } from '../../hooks/useFilters.jsx';
-import { useInboxs } from '../../hooks/useInboxs.jsx';
+import { useFilters, useInboxs } from '../../hooks';
 import { Suspense } from "react";
 import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";

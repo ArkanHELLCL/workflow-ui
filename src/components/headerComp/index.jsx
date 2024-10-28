@@ -8,3 +8,5 @@ export { default as MantenedoresMenu } from "./mantenedoresMenu.jsx";
 export { default as InformesMenu } from "./informesMenu.jsx";
 export { default as BandejaMenu } from "./bandejaMenu.jsx";
 export { default as RegistroMenu } from "./registroMenu.jsx";
+export { default as CrearMensaje } from "./crearMensaje.jsx";
+export { default as MensajesMenu } from "./mensajesMenu.jsx";
