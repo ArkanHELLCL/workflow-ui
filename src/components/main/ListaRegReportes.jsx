@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useFilters } from "../../hooks";
-import { ReportFilters } from "./ReportFilters.jsx";
+import ReportFilters from "./ReportFilters.jsx";
 import Slide from '@mui/material/Slide';
 import Inputs from './formcontent/Inputs.jsx';
 import InputReportButton from "./reports/InputReportButton.jsx";
