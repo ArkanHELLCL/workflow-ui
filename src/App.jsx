@@ -85,7 +85,6 @@ function App({darkMode, setDarkMode}) {
     }
   },[frmReport.formState.submitCount])
 
-
   useEffect(() => {
     if(!frmMessages.formState.isSubmitSuccessful && frmMessages.formState.submitCount > 0 && !frmMessages.formState.isValidating){
       setError({variant: "error", message: 'Debes corregir los errores antes de enviar el mensaje!'})
