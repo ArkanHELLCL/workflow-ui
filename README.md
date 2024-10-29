@@ -2,6 +2,71 @@
 
 Refactor de la interfaz grafica del sistema de flujos.
 
+## Instalación
+
+Para instalar y configurar el proyecto, sigue estos pasos:
+
+1. Clona el repositorio:
+    ```sh
+    git clone https://github.com/ArkanHELLCL/workflow-ui.git
+    ```
+2. Navega al directorio del proyecto:
+    ```sh
+    cd tu-repositorio
+    ```
+3. Instala las dependencias:
+    ```sh
+    npm install
+    ```
+
+## Uso
+
+1. Inicia la aplicación:
+    ```sh
+    npm start
+    ```
+2. Abre tu navegador y navega a `http://localhost:5173`.
+
+### Ejemplo de Validación
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const fetchBandejas = async () => {
+    const response = await fetch('https://api.example.com/bandejas', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        },
+    });
+    const data = await response.json();
+    return data;
+};
+
+const BandejasComponent = () => {
+    const [bandejas, setBandejas] = useState([]);
+
+    useEffect(() => {
+        const getBandejas = async () => {
+            const data = await fetchBandejas();
+            setBandejas(data);
+        };
+        getBandejas();
+    }, []);
+
+    return (
+        <div>
+            {bandejas.map(bandeja => (
+                <div key={bandeja.id}>{bandeja.nombre}</div>
+            ))}
+        </div>
+    );
+};
+
+export default BandejasComponent;
+```
+
 ### 2024
 ### **Octubre**
 **05/10**
