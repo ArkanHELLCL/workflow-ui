@@ -1,22 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { useRequest } from '../../hooks/useRequest.jsx';
-import { usePreview } from '../../hooks/usePreview.jsx';
-import { useFilters } from '../../hooks/useFilters.jsx';
-import { useAttach } from '../../hooks/useAttach.jsx';
-import { useButtonsGroup } from '../../hooks/useButtonsGroup.jsx';
-import {    NoData, 
-            Header,
-            Files,
-            Inputs,
-            Preview
-        } from './formcontent';
-import { formulario } from'../../mocks/formulario.json'
-import { formulario as formularioMant } from '../../mocks/formularioMant.json';
+import { useRequest, usePreview, useFilters, useAttach, useButtonsGroup, useAuth } from '../../hooks';
+import { NoData, Header, Files, Inputs, Preview } from './formcontent';
 import MPMant from './maintainer/proveedorMant.jsx'
 import Button from '@mui/material/Button';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
+//import { formulario } from'../../mocks/formulario.json'
+import { formulario as formularioMant } from '../../mocks/formularioMant.json';
+import { Constants } from "../../utils/const.jsx";
 
 function PreviewObj({preview, filters, request, frmRecord, campos}){
     return(
@@ -36,39 +28,39 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     const { filters } = useFilters()
     const { preview, setPreview } = usePreview()
     const { setAdjuntos } = useAttach()    
-    const [dropEnter, setDropEnter] = useState(false);
-    const [form, setForm] = useState()
+    const { setAuth } = useAuth()
+    const [dropEnter, setDropEnter] = useState(false);    
     const [campos, setCampos] = useState([])
     const { setGrupos } = useButtonsGroup()
+    const [formulario, setFormulario] = useState([])
+    const { host, fecthParams : params } = Constants()    
 
     useEffect(() => {
-        const campos = formularioMant.filter(item => item.id === filters.itemIdSelected)[0]?.FOR_Campos
-        setCampos(campos)
+        const endpoint = host + '/api/bandejas/entrada/' + request?.request?.DRE_Id        
 
-        let frm
-        if(request?.request?.VFO_Id){
-            frm = formulario.filter(item => item.VFO_Id === request?.request?.VFO_Id && item.Bandeja === request?.request?.Bandeja)
-        }else{
-            frm = formulario.filter(item => (item.VFO_Id === 0 && item.FLU_Id === request?.request?.FLU_Id && item.Bandeja === request?.request?.Bandeja))   
-        }        
-        const adjuntos = frm[0]?.REQ_Adjuntos ? frm[0]?.REQ_Adjuntos : []
-        frmRequest.clearErrors()
-        setAdjuntos(adjuntos)
-        setForm(frm[0])
+        fetch(endpoint, params)
+        .then((response) => response.json())
+        .then((data) => {            
+            if(data.error){                
+                if(parseInt(data.error) === 401){
+                    setAuth(false)
+                }                
+                throw new Error(data.message)
+            }
+            else{
+                frmRequest.clearErrors()
+                setFormulario(data)                
+                setAdjuntos(data.adjuntos)
+                setGrupos(data.botones)
+                setCampos(data.campos)                
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 
-        let FOR_Botones = null
-        if(filters.itemIdSelected.charAt(0) === "b")
-            if(request?.request?.VFO_Id)
-                FOR_Botones = formulario?.filter((item) => parseInt(item.VFO_Id) === parseInt(request?.request?.VFO_Id) && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
-            else
-                FOR_Botones = formulario?.filter((item) => parseInt(item.VFO_Id) === 0 && item.Bandeja === request?.request?.Bandeja)[0]?.FOR_Botones
-
-        if(filters.itemIdSelected.charAt(0) === "m")
-            FOR_Botones = formularioMant.filter((item) => item.id === filters.itemIdSelected)[0]?.FOR_Botones
         
-        setGrupos(FOR_Botones?.map(grupo => grupo))
-    },[filters.itemIdSelected, formularioMant, request, formulario])
-
+    },[filters.itemIdSelected, formularioMant, request])    
 
     const handleOnClick = () => {
         setPreview({
@@ -89,7 +81,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     return(
         <>
             {
-                request && form &&
+                request && formulario &&
                 <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? ' dark:bg-[#1c1c1c]' : ''}`}>
                     <div className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}>
                         {
@@ -97,7 +89,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                                 <>
                                     <Header />
                                     <Files setFilesList={setFilesList} filesList={filesList}/>
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={form.FOR_Campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
+                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
                                 </>
                         }{
                             preview.state &&
@@ -112,7 +104,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                         }
                     </div>
                 </section>
-            }{  !form &&
+            }{  !formulario &&
                     <NoData />
             }
         </>

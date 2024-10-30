@@ -9,7 +9,8 @@ export default function SenderData() {
     const [senderPhoto, setSenderPhoto] = useState('/user.png')
     const { host, fecthParams : params } = Constants()    
 
-    useEffect(() => {        
+    useEffect(() => {
+        setSenderPhoto('/user.png')
         const sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.DRE_UsuarioEdit
         if(sender)
             fetch(host + '/api/usuario/photo/' + sender, params)
