@@ -33,10 +33,27 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
     const [campos, setCampos] = useState([])
     const { setGrupos } = useButtonsGroup()
     const [formulario, setFormulario] = useState([])
-    const { host, fecthParams : params } = Constants()    
+    const { host, fecthParams : params } = Constants()
+    const [error, setError] = useState(null)
 
     useEffect(() => {
-        const endpoint = host + '/api/bandejas/entrada/' + request?.request?.DRE_Id        
+        let url = ''
+        if(filters.itemIdSelected=== 'be')
+            url = '/api/bandejas/entrada/'
+        if(filters.itemIdSelected=== 'bs')
+            url = '/api/bandejas/salida/'
+        if(filters.itemIdSelected=== 'bo')
+            url = '/api/bandejas/otros/'
+        if(filters.itemIdSelected=== 'ba')
+            url = '/api/bandejas/archivados/'
+        if(filters.itemIdSelected=== 'bf')
+            url = '/api/bandejas/finalizados/'
+        if(filters.itemIdSelected=== 'bnc')
+            url = '/api/bandejas/antiguos/compras/'
+        if(filters.itemIdSelected=== 'bnw')
+            url = '/api/bandejas/antiguos/workflowv1'
+            
+        const endpoint = host + url + request?.request?.DRE_Id        
 
         fetch(endpoint, params)
         .then((response) => response.json())
@@ -57,6 +74,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         })
         .catch((error) => {
             console.log(error)
+            setError(error)
         })
 
         
@@ -88,8 +106,14 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                             !preview.state &&
                                 <>
                                     <Header />
-                                    <Files setFilesList={setFilesList} filesList={filesList}/>
-                                    <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
+                                    <Files setFilesList={setFilesList} filesList={filesList}/>{
+                                        campos ?
+                                            <Inputs dropEnter={dropEnter} setDropEnter={setDropEnter} campos={campos} frmRequest={frmRequest} filesList={filesList} setFilesList={setFilesList}/>
+                                        :
+                                        <div className="text-center flex justify-center lstRequestEmpty align-middle items-center h-full w-full !overflow-hidden">
+                                            <span className='text-[#2c87d2] text-xl w-full'>Error : {error ? error : 'Sin informacón'}</span>
+                                        </div>
+                                    }
                                 </>
                         }{
                             preview.state &&
