@@ -35,6 +35,7 @@ export function FiltersProvider({ children }) {
         maxRecordLoaded: 500,
         filterMen: 1,
         orderDesMen: true,
+        path: '/bandejas/entrada',
     });
     
     return (

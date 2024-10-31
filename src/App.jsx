@@ -50,6 +50,8 @@ function App({darkMode, setDarkMode}) {
   const [error, setError] = useState(null)
   const { host, fecthParams : params, dateOptions : options } = Constants()
 
+  window.history.pushState({},'', filters.path)
+
   const frmRequest = useForm({
     mode: "onBlur",
     //mode: "all"

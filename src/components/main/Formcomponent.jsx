@@ -25,7 +25,7 @@ function PreviewObj({preview, filters, request, frmRecord, campos}){
 
 export default function Formcomponent({frmRequest, frmRecord, filesList, setFilesList}){    
     const { request } = useRequest()
-    const { filters } = useFilters()
+    const { filters, setFilters } = useFilters()
     const { preview, setPreview } = usePreview()
     const { setAdjuntos } = useAttach()    
     const { setAuth } = useAuth()
@@ -76,8 +76,11 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
             console.log(error)
             setError(error)
         })
-
         
+        setFilters(prevState => ({
+            ...prevState,
+            path: url?.replace('/api','')  + request?.request?.DRE_Id
+        }))
     },[filters.itemIdSelected, formularioMant, request])    
 
     const handleOnClick = () => {
