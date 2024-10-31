@@ -4,24 +4,8 @@ import { Suspense } from "react";
 import { useUserData, useFilters } from "../hooks";
 import { MenuTree } from "./menu/MenuTree.jsx"
 import Loading from "../utils/Loading.jsx";
-import EncontrarDescripcionPorId from "../utils/EncontrarDescripcionPorId.jsx";
 
-const MenuArbol = ({itemIdSelected, mnuBandejas, mnuMantenedores, mnuReportes, mnuMensajes, frmRecord, frmRequest}) => {
-    /*let url = ''
-    itemIdSelected.charAt(0) === "b" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuBandejas[0])?.url :
-    itemIdSelected.charAt(0) === "m" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuMantenedores[0])?.url :
-    itemIdSelected.charAt(0) === "r" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuReportes[0])?.url : 
-    itemIdSelected.charAt(0) === "j" ? url = EncontrarDescripcionPorId(itemIdSelected, mnuMensajes[0])?.url : url = EncontrarDescripcionPorId('be', mnuBandejas[0])?.url  
-    
-    if(!url) {
-        if(itemIdSelected === 'b') url = '/bandejas'
-        if(itemIdSelected === 'm') url = '/mantenedores'
-        if(itemIdSelected === 'r') url = '/reportes'
-        if(itemIdSelected === 'j') url = '/mensajes'
-    }
-    useReports    
-    */
-    
+const MenuArbol = ({mnuBandejas, mnuMantenedores, mnuReportes, mnuMensajes, frmRecord, frmRequest}) => {    
     return(
         <>  {
                 mnuBandejas &&
@@ -55,7 +39,7 @@ export default function Menu({frmRecord, frmRequest}){
             <div className="px-4 h-full relative">{
                 menu ?
                 <Suspense fallback={<Loading />}>
-                    <MenuArbol itemIdSelected={filters.itemIdSelected} mnuBandejas={bandejas} mnuMantenedores={mantenedores} mnuReportes={reportes} mnuMensajes={mensajes} frmRecord={frmRecord} frmRequest={frmRequest}/>
+                    <MenuArbol mnuBandejas={bandejas} mnuMantenedores={mantenedores} mnuReportes={reportes} mnuMensajes={mensajes} frmRecord={frmRecord} frmRequest={frmRequest}/>
                 </Suspense>
                 : null
                 }
