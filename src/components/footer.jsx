@@ -75,7 +75,6 @@ export default function Footer() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    
     return (
         <>
             <footer className='dark:bg-[#323130] bg-[#f3f2f1] w-full h-[25px] transition-color delay-75 flex items-center p-3 space-x-2 text-xs z-20' onDragOver={handleNotDragOver} id="footerleft">
@@ -127,8 +126,12 @@ export default function Footer() {
                                     </div> 
                             }
                             <div className="truncate">
-                                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>
-                                <span className="text-green-500">{filters.totalRequerimientos === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalRequerimientos}</span>                
+                                <span className="text-center dark:text-stone-100 text-stone-500 pb-[1px]">Total : </span>{
+                                    filters.itemIdSelected === 'bn' ?
+                                        <span className="text-green-500">{obj.children.filter(item => item.id === 'bn')[0].children.length}</span>                
+                                    :
+                                        <span className="text-green-500">{filters.totalRequerimientos === filters.maxRecordLoaded ? filters.maxRecordLoaded + '+' : filters.totalRequerimientos}</span>
+                                }                                                
                             </div> 
                         </>
                         : 
