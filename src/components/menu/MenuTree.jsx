@@ -42,7 +42,6 @@ export function MenuTree({ menu, frmRecord, frmRequest }) {
             if(itemId === 'bn') path = '/bandejas/antiguos'
         }
 
-        console.log('path: ',path, obj, objBandeja, itemId)
         setFilters((prevState) => ({
             ...prevState,         
             itemIdSelected: itemId,            
