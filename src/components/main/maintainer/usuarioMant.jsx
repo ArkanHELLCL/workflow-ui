@@ -5,16 +5,16 @@ import Buttons from "../formcontent/header/ButtonsAction.jsx";
 import IconButton from '@mui/material/IconButton';
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import FlujosTable from './usuariomant/flujosTable.jsx';
-import { useUserData } from '../../../hooks/useUserData.jsx';
+import { useUserData, useButtonsGroup, useFilters } from '../../../hooks';
 import { ButtonIcon } from '../../../utils/icons.jsx';
 import { registros } from '../../../mocks/registrosM.json';
 import { useEffect, useState } from 'react';
 import { formulario as formant} from '../../../mocks/formularioMant.json';
 import { DelIcon } from "../../../utils/icons.jsx"
-import { useButtonsGroup } from '../../../hooks/useButtonsGroup.jsx';
 
 export default function MUMant({frmRecord, mant, record, filesList, setFilesList, singleButton}) {
-    const { userdata : user } = useUserData();    
+    const { userdata : user } = useUserData();
+    const { setFilters } = useFilters()
     const [field, setField] = useState(null)
     const [campos, setCampos] = useState([])    
     const { grupos, setGrupos } = useButtonsGroup()
@@ -64,6 +64,11 @@ export default function MUMant({frmRecord, mant, record, filesList, setFilesList
         frmRecord.setValue('USR_Jefatura', reg?.USR_Jefatura === 1 ? true : false)        
         
         setField(reg)        
+
+        setFilters(prevState => ({
+            ...prevState,
+            path: '/mantenedores/usuarios/' + record?.record?.Id
+        }))
     },[registros, record])
 
     const [formulario] = formant.filter(item => item.id === 'mu')

@@ -51,7 +51,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         if(filters.itemIdSelected=== 'bnc')
             url = '/api/bandejas/antiguos/compras/'
         if(filters.itemIdSelected=== 'bnw')
-            url = '/api/bandejas/antiguos/workflowv1'
+            url = '/api/bandejas/antiguos/workflowv1/'
             
         const endpoint = host + url + request?.request?.DRE_Id        
 
@@ -79,7 +79,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
         
         setFilters(prevState => ({
             ...prevState,
-            path: url?.replace('/api','')  + request?.request?.DRE_Id
+            path: url?.replace('/api','')  + request?.request?.VRE_Id
         }))
     },[filters.itemIdSelected, formularioMant, request])    
 

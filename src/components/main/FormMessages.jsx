@@ -10,7 +10,7 @@ import { formulario as formularioMant } from '../../mocks/formularioMant.json';
 
 export default function FormMessages({frmMessages}){
     const { request } = useRequest()    
-    const { filters } = useFilters()
+    const { filters, setFilters } = useFilters()
     const [campos, setCampos] = useState([])
     const { grupos, setGrupos } = useButtonsGroup()
 
@@ -19,6 +19,21 @@ export default function FormMessages({frmMessages}){
         const grp = formularioMant.filter((item) => item.id === filters.itemIdSelected)[0]?.FOR_Botones                
         setGrupos(grp)
         setCampos(campos)
+
+        let url = ''
+        if(filters.itemIdSelected=== 'jr')
+            url = '/mensajes/entrada/'
+        if(filters.itemIdSelected=== 'je')
+            url = '/mensajes/enviados/'
+        if(filters.itemIdSelected=== 'jb')
+            url = '/mensajes/borradoes/'
+        if(filters.itemIdSelected=== 'jl')
+            url = '/mensajes/eliminados/'
+    
+        setFilters(prevState => ({
+            ...prevState,
+            path: url  + request?.request?.DRE_Id
+        }))
 
         frmMessages.clearErrors()
     },[filters.itemIdSelected, formularioMant, request])

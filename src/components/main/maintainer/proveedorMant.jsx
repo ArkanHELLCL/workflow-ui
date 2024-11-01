@@ -3,15 +3,15 @@
 import Buttons from "../formcontent/header/ButtonsAction.jsx";
 import InputSaveButtons from './inputscomponents/inputSaveButtons.jsx';
 import { ButtonIcon } from '../../../utils/icons.jsx';
-import { useUserData } from "../../../hooks/useUserData.jsx";
+import { useUserData, useButtonsGroup, useFilters } from "../../../hooks";
 import { registros } from '../../../mocks/registrosM.json';
 import Inputs from '../formcontent/Inputs.jsx';
 import { formulario as formant } from '../../../mocks/formularioMant.json';
 import { useEffect, useState } from 'react';
-import { useButtonsGroup } from "../../../hooks/useButtonsGroup.jsx";
 
 export default function MPMant({frmRecord, mant, record, singleButton, formaction }) {
     const { userdata : user } = useUserData();
+    const { setFilters } = useFilters()
     const [field, setField] = useState(null)
     const [campos, setCampos] = useState([])
     const { grupos, setGrupos } = useButtonsGroup()
@@ -49,7 +49,12 @@ export default function MPMant({frmRecord, mant, record, singleButton, formactio
         frmRecord.setValue('PRO_Banco_ILD', reg?.PRO_Banco_ILD)
         frmRecord.setValue('PRO_NumCuentaBancaria', reg?.PRO_NumCuentaBancaria)
         frmRecord.setValue('TCU_Id', reg?.TCU_Id)
-        setField(reg)        
+        setField(reg)
+
+        setFilters(prevState => ({
+            ...prevState,
+            path: '/mantenedores/proveedores/' + record?.record?.Id
+        }))
     },[registros, record])
 
     const [formulario] = formant.filter(item => item.id === 'mp')

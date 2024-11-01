@@ -1,15 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useFilters } from '../../hooks/useFilters.jsx';
-import { useRecords } from '../../hooks/useRecords.jsx';
+import { useFilters, useRecords } from '../../hooks';
 import { useState } from 'react';
-import MPMant from './maintainer/proveedorMant.jsx';
-import MUMant from './maintainer/usuarioMant.jsx';
-import MCMant from './maintainer/comunaMant.jsx';
+import { MPMant, MUMant, MCMant} from './maintainer';
 
 function FormMatainer ({frmRecord, record, filters, filesList, setFilesList, setRecord}){
     switch (filters.itemIdSelected) {
-        case 'mp':  //Proveedores
+        case 'mp':  //Proveedores            
             return <MPMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} />
         case 'mu':  //Usuarios
             return <MUMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
