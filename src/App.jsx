@@ -288,7 +288,7 @@ function App({darkMode, setDarkMode}) {
         <SideBar />            
         <Header />      
         <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
-        <ListElements frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages}/>      
+        <ListElements frmReport={frmReport}/>      
         <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
         <Footer />{
         openDialog?.open &&

@@ -3,7 +3,7 @@
 import { useMantainers, useFilters } from '../../hooks';
 import RegistroItem from "./maintainer/registroItem.jsx";
 
-export default function ListaRegMantenedores({frmRecord}){
+export default function ListaRegMantenedores(){
     const { filters, filterRequest } = useFilters()
     const { mantenedores } = useMantainers()
     const { filteredRequest } = filterRequest(mantenedores)
@@ -17,7 +17,7 @@ export default function ListaRegMantenedores({frmRecord}){
                     </div>            
                 )}
                 {filteredRequest.map((item, index) => (
-                    <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : 'unde-' + index} frmRecord={frmRecord}/>
+                    <RegistroItem registro={item} key={item.id ? 'list-' + item?.id : 'unde-' + index}/>
                 ))}        
             {
                 filteredRequest.length === filters.maxRecordLoaded ? 

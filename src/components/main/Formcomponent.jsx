@@ -104,9 +104,9 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
             {
                 request && formulario &&
                 <section id="contentForm" className={`pl-4 pt-1 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1${dropEnter ? ' dark:bg-[#1c1c1c]' : ''}`}>
-                    <div className={`h-full w-full ${preview.state && preview?.selected!==null ? 'datapreview' : preview.state && preview.obj ? 'dataMantform' : 'dataform'} `}>
+                    <div className={`h-full w-full ${preview?.state && preview?.selected!==null ? 'datapreview' : preview?.state && preview?.obj ? 'dataMantform' : 'dataform'} `}>
                         {
-                            !preview.state &&
+                            !preview?.state &&
                                 <>
                                     <Header />
                                     <Files setFilesList={setFilesList} filesList={filesList}/>{
@@ -119,14 +119,14 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
                                     }
                                 </>
                         }{
-                            preview.state &&
+                            preview?.state &&
                                 <PreviewButtonBack />
                         }
                         {
-                            preview.state && preview.obj &&
+                            preview?.state && preview?.obj &&
                                 <PreviewObj preview={preview} filters={filters} request={request} frmRecord={frmRecord} campos={campos}/>
                         }{
-                            preview.state && !preview.obj &&
+                            preview?.state && !preview?.obj &&
                                 <Preview />
                         }
                     </div>

@@ -1,27 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-//import { useMemo, useCallback } from "react";
-import { useRequest } from "../../../hooks/useRequest.jsx";
-import { useAttach } from "../../../hooks/useAttach.jsx";
-import { usePreview } from "../../../hooks/usePreview.jsx";
+import { useRequest,  useUserData } from "../../../hooks";
 import { ArchiveIcon, UnArchiveIcon, EditIcon, UserIcon, CloseRequest, DelIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
-import { useFilters } from "../../../hooks/useFilters.jsx";
-import { useUserData } from "../../../hooks/useUserData.jsx";
 
-export const RequerimientoItem = ({ req, showDia, showYear, frmRequest, frmMessages }) => {    
+export const RequerimientoItem = ({ req, showDia, showYear }) => {    
     const { userdata : user } = useUserData();
     const { dias } = Constants()
-    const { request, setRequest } = useRequest()
-    const { setAdjuntos } = useAttach()
-    const { setPreview } = usePreview()
-    const { filters } = useFilters()
-    const regId = req.Bandeja + '-' + req.VRE_Id        
-
+    const { request, setRequest } = useRequest()    
+    const regId = req.Bandeja + '-' + req.VRE_Id 
     const diaName = (fecha) => {
       const newDate = new Date(fecha)
       return dias[newDate.getDay()]
-    }    
+    }
   
     const handleEditClick = (e) => {
       e.stopPropagation()
@@ -50,29 +41,14 @@ export const RequerimientoItem = ({ req, showDia, showYear, frmRequest, frmMessa
       })
     }, [req])*/
 
-    const handleRequerimiento = (id) => {
-      const elToRemove = document.getElementById(filters.itemIdSelected + '-' + request?.request?.VRE_Id)      
-      elToRemove?.classList.remove('reqselected')
-      const elToAdd = document.getElementById(id)
-      elToAdd.classList.add('reqselected')
-+      setRequest({
+    const handleRequerimiento = () => {      
+      setRequest({
         request: req
-      })
-      setAdjuntos(null)
-      setPreview({
-        status: false,
-        selected: null,
-        obj: null
-      })
-      frmRequest.reset()
-      frmRequest.clearErrors()
-
-      frmMessages.reset()
-      frmMessages.clearErrors()
+      })      
     }
     
     return (
-      <article className={`reqitem ${req.IdEditor || req.Nuevo === 0 ? 'reqtomado' : req.Bandeja === 'be' || req.Nuevo === 1 ? 'reqnotomado' : ''} relative dark:border-[#353535] border-[#d4d4d4] border-b`} key={req.DRE_Id} onClick={() => handleRequerimiento(regId)} id={regId}>
+      <article className={`reqitem ${req.IdEditor || req.Nuevo === 0 ? 'reqtomado' : req.Bandeja === 'be' || req.Nuevo === 1 ? 'reqnotomado' : ''} relative dark:border-[#353535] border-[#d4d4d4] border-b ${req?.VRE_Id === request?.request?.VRE_Id ? 'reqselected' : ''}`} key={req.DRE_Id} onClick={() => handleRequerimiento()} id={regId}>
         <div className="w-3/4">
           <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-950'} truncate text-base font-thin capitalize leading-snug`}>{req.Bandeja === 'be' ? req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt : req.NombreCreador + ' ' + req.ApellidoCreador : req.NombreEditor ? req.NombreEditor + ' ' + req.ApellidoEditor : req.DepDescripcionActual}</p>
           <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : req.Bandeja === 'be' ? 'text-sky-600 font-bold' : 'dark:text-stone-400 text-stone-500'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>

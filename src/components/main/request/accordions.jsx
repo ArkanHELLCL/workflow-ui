@@ -10,7 +10,7 @@ export function Accordions(filteredRequest){
     
     //Accordion
     let requerimientoAccordion = []
-    if(filteredRequest.length > 0){
+    if(filteredRequest?.length > 0){
         if(filters.filterSearchResult){
             requerimientoAccordion = ListRequestSearchResult(filteredRequest)
             return { requerimientoAccordion }

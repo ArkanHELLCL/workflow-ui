@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useFilters, useInboxs } from '../../hooks';
 import { Suspense } from "react";
 import { Accordions } from './request/accordions.jsx'
 import { AccordionItem } from "./request/AccordioItem.jsx";
 import Loading from "../../utils/Loading.jsx";
 
-const Accordion = ({acc, moreItems, frmRequest, frmMessages}) => {    
+const Accordion = ({acc, moreItems}) => {    
     return(
         <>  
             {acc.length===0 && 
@@ -16,7 +15,7 @@ const Accordion = ({acc, moreItems, frmRequest, frmMessages}) => {
             }
             {acc.map((item, index) => (
                 <Suspense key={index} fallback={<Loading />}>
-                    <AccordionItem key={index} item={item} frmRequest={frmRequest} frmMessages={frmMessages}/>
+                    <AccordionItem key={index} item={item}/>
                 </Suspense>
             ))}{
                 moreItems ? 
@@ -31,15 +30,11 @@ const Accordion = ({acc, moreItems, frmRequest, frmMessages}) => {
     )
 }
 
-export default function ListaRequerimientos({frmRequest, frmMessages}){    
-    const { bandejas } = useInboxs()    
-    const { filters, filterRequest } = useFilters() 
-    const { filteredRequest } = filterRequest(bandejas)
+export default function ListaRequerimientos({filteredRequest, maxRecordLoaded}){    
     const { requerimientoAccordion } = Accordions(filteredRequest)    
-
-    const moreItems = filteredRequest.length === filters.maxRecordLoaded ? true : false
+    const moreItems = filteredRequest?.length === maxRecordLoaded ? true : false
     
     return (        
-        <Accordion acc={requerimientoAccordion} moreItems={moreItems} frmRequest={frmRequest} frmMessages={frmMessages}/>
+        <Accordion acc={requerimientoAccordion} moreItems={moreItems}/>
     )
 }
