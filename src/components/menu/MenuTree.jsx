@@ -4,7 +4,6 @@ import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useFilters, useRequest, useRecords, usePreview, useReports, useUserData } from "../../hooks";
 import getobjItems from '../../utils/getObjItems.jsx';
 
-
 const getAllItemsWithChildrenItemIds = (menu) => {
     const itemIds = [];
     const registerItemId = (item) => {

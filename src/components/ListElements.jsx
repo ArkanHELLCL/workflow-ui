@@ -207,7 +207,29 @@ export default function ListElements({frmReport}) {
       </>
     )
   }
-    
+
+  const StatBan = () => {
+    return (
+      bandejas.filter(item => item.id.charAt(0).toUpperCase() === 'B' && item.id.length === 2).map((item, index) => (
+        <article key={index} className="flex flex-col col-2 gap-3">
+          <div><span key={index}>{item.id === 'be' ? 'Bandeja de entrada : ' : item.id === 'bs' ? 'Bandeja de salida : ' : item.id === 'bf' ? 'Bandeja de finalizados : ' : item.id === 'bo' ? 'Bandeja de otros : ' : item.id === 'ba' ? 'Bandeja de archivados : ' : '' }</span>
+          <span>{item.registros.length}</span></div>
+        </article>
+      ))
+    )
+  }
+
+  const StatMen = () => {
+    return (
+      bandejas.filter(item => item.id.charAt(0).toUpperCase() === 'J' && item.id.length === 2).map((item, index) => (
+        <article key={index} className="flex flex-col col-2 gap-3">
+          <div><span key={index}>{item.id === 'jr' ? 'Mensajes recibidos : ' : item.id === 'je' ? 'mensajes enviados : ' : item.id === 'jb' ? 'mensajes borrador : ' : item.id === 'jl' ? 'Mensajes eleminados : ' : item.id === 'ba' ? 'Bandeja de archivados : ' : '' }</span>
+          <span>{item.registros.length}</span></div>
+        </article>
+      ))
+    )
+  }
+
   return (
     <section id="list">{
       !stateInbox ?
@@ -228,7 +250,19 @@ export default function ListElements({frmReport}) {
               }{
                 filters.itemIdSelected?.charAt(0).toUpperCase() === 'J' && filters.itemIdSelected.length > 1 &&
                   <Mensajes />
-              }
+              }{
+                filters.itemIdSelected === 'b' && 
+                  <StatBan />
+              }{
+                filters.itemIdSelected === 'm' &&
+                  <span>mantenedores</span>
+              }{
+                filters.itemIdSelected === 'r' &&
+                  <span>reportes</span>
+              }{
+                filters.itemIdSelected === 'j' &&
+                  <StatMen />
+              }              
         </div>
     }
     </section>
