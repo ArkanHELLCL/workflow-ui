@@ -66,6 +66,7 @@ export default function Formcomponent({frmRequest, frmRecord, filesList, setFile
             }
             else{
                 frmRequest.clearErrors()
+                frmRequest.reset()
                 setFormulario(data)                
                 setAdjuntos(data.adjuntos)
                 setGrupos(data.botones)

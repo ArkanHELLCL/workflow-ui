@@ -4,12 +4,12 @@ import { useFilters, useRecords } from '../../hooks';
 import { useState } from 'react';
 import { MPMant, MUMant, MCMant} from './maintainer';
 
-function FormMatainer ({frmRecord, record, filters, filesList, setFilesList, setRecord}){
+function FormMatainer ({frmRecord, record, filters, filesList, setFilesList }){
     switch (filters.itemIdSelected) {
         case 'mp':  //Proveedores            
             return <MPMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} />
         case 'mu':  //Usuarios
-            return <MUMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
+            return <MUMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} filesList={filesList} setFilesList={setFilesList} />
         case 'mc':  //Comunas
             return <MCMant frmRecord={frmRecord} mant={filters.itemIdSelected} record={record} />
         default:
@@ -23,8 +23,7 @@ function FormMatainer ({frmRecord, record, filters, filesList, setFilesList, set
 }
 
 export default function FormRecord({frmRecord}){
-    const { record, setRecord } = useRecords()
-    //const { setPreview } = usePreview()
+    const { record } = useRecords()
     const { filters } = useFilters()
     const [filesList, setFilesList] = useState([]);
 
@@ -32,7 +31,7 @@ export default function FormRecord({frmRecord}){
         record  &&
         <section id="contentForm" className={`pl-4 h-full w-full relative overflow-hidden flex flex-col z-50 columns-1`}>                    
             <div className="h-full w-full mantform">
-                <FormMatainer frmRecord={frmRecord} record={record} filters={filters} filesList={filesList} setFilesList={setFilesList} setRecord={setRecord}/>
+                <FormMatainer frmRecord={frmRecord} record={record} filters={filters} filesList={filesList} setFilesList={setFilesList} />
             </div>
         </section>        
     )

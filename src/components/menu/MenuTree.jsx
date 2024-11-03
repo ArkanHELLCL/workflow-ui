@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import { useFilters, useRequest, useRecords, usePreview, useReports, useUserData } from "../../hooks";
+import { useFilters, useUserData } from "../../hooks";
 import getobjItems from '../../utils/getObjItems.jsx';
 
 const getAllItemsWithChildrenItemIds = (menu) => {
@@ -16,15 +16,10 @@ const getAllItemsWithChildrenItemIds = (menu) => {
     return itemIds;
 };
 
-export function MenuTree({ menu, frmRecord, frmRequest }) {    
-    const { filters, setFilters } = useFilters()
-    const { setRecord } = useRecords()
-    const { setRequest } = useRequest()    
-    const { setPreview } = usePreview()
-    const { setReport } = useReports()
+export function MenuTree({ menu }) {    
+    const { filters, setFilters } = useFilters()   
     const { userdata } = useUserData()    
     
-    //const handleItemExpansionToggle = (event, itemId, isExpanded) => {
     const handleItemExpansionToggle = (event, itemId) => {
         const objBandeja = getobjItems(userdata.treeMenu,filters.flujo);    
         let path = ''
@@ -33,7 +28,6 @@ export function MenuTree({ menu, frmRecord, frmRequest }) {
         if(obj)
             path = objBandeja.filter(item => item.id === itemId)[0].url.replace('/api','')
         else{
-            //path = objBandeja.filter(item => item.id === itemId)[0]?.label.toLowerCase()
             if(itemId === 'b') path = '/bandejas'
             if(itemId === 'm') path = '/mantenedores'
             if(itemId === 'r') path = '/reportes'
@@ -50,16 +44,6 @@ export function MenuTree({ menu, frmRecord, frmRequest }) {
             flujo : itemId.slice(0,1) === 'b' && itemId.slice(0,2)!=='bn' ? filters.flujo : 0,
             path: path
         }))    
-        setRequest(null)
-        setRecord(null)
-        setReport(null)
-        setPreview({
-            statur: false,
-            slected: null,
-            obj: null
-        })
-        frmRecord?.unregister()
-        frmRequest?.unregister()
     };
     return (        
         <RichTreeView 

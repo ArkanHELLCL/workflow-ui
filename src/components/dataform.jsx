@@ -6,8 +6,6 @@ export default function DataForm({frmRequest, frmRecord, frmMessages, filesList,
     const { filters } = useFilters()
     const { request } = useRequest()
     const { record } = useRecords()
-    
-    //const report = true
     return(
       <section id="formwf" className="bg-[#ffffff] dark:bg-transparent">
         <div className='dark:text-stone-100 text-stone-500 dark:border-[#353535] border-[#d4d4d4] w-full border-r h-full overflow-auto relative'>{

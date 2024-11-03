@@ -36,11 +36,12 @@ export default function FormMessages({frmMessages}){
         }))
 
         frmMessages.clearErrors()
+        frmMessages.reset()
     },[filters.itemIdSelected, formularioMant, request])
 
-    useEffect(() => {
+    /*useEffect(() => {
         frmMessages.clearErrors()
-    }, [])
+    }, [])*/
     
     return(        
         request  &&

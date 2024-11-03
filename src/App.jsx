@@ -287,7 +287,7 @@ function App({darkMode, setDarkMode}) {
         </Suspense>
         <SideBar />            
         <Header />      
-        <Menu frmRecord={frmRecord} frmRequest={frmRequest}/>      
+        <Menu />      
         <ListElements frmReport={frmReport}/>      
         <DataForm frmRequest={frmRequest} frmRecord={frmRecord} frmReport={frmReport} frmMessages={frmMessages} filesList={filesList} setFilesList={setFilesList} dataReport={report} loading={loading}/>
         <Footer />{

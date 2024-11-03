@@ -8,7 +8,6 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
     const { userdata : user } = useUserData();
     const { dias } = Constants()
     const { request, setRequest } = useRequest()    
-    const regId = req.Bandeja + '-' + req.VRE_Id 
     const diaName = (fecha) => {
       const newDate = new Date(fecha)
       return dias[newDate.getDay()]
@@ -27,19 +26,7 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
     const handleArchiveClick = (e) => {
       e.stopPropagation()
       // handle archive click
-    }
-  
-    /*const handleRequerimiento = useCallback((req) => {
-      setRequest(req)
-    }, [req])*/
-
-    /*const handleRequerimiento = useCallback(() => {
-      //setRequest(memoizedReq)
-      setRequest({
-        "request": req,
-        "adjuntos": null,
-      })
-    }, [req])*/
+    }    
 
     const handleRequerimiento = () => {      
       setRequest({
@@ -48,7 +35,7 @@ export const RequerimientoItem = ({ req, showDia, showYear }) => {
     }
     
     return (
-      <article className={`reqitem ${req.IdEditor || req.Nuevo === 0 ? 'reqtomado' : req.Bandeja === 'be' || req.Nuevo === 1 ? 'reqnotomado' : ''} relative dark:border-[#353535] border-[#d4d4d4] border-b ${req?.VRE_Id === request?.request?.VRE_Id ? 'reqselected' : ''}`} key={req.DRE_Id} onClick={() => handleRequerimiento()} id={regId}>
+      <article className={`reqitem ${req.IdEditor || req.Nuevo === 0 ? 'reqtomado' : req.Bandeja === 'be' || req.Nuevo === 1 ? 'reqnotomado' : ''} relative dark:border-[#353535] border-[#d4d4d4] border-b ${req?.VRE_Id === request?.request?.VRE_Id ? 'reqselected' : ''}`} key={req.DRE_Id} onClick={() => handleRequerimiento()}>
         <div className="w-3/4">
           <p className={`${request?.request.DRE_Id === req.DRE_Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-950'} truncate text-base font-thin capitalize leading-snug`}>{req.Bandeja === 'be' ? req.DRE_UsuarioEditAnt ? req.DRE_UsuarioEditAnt : req.NombreCreador + ' ' + req.ApellidoCreador : req.NombreEditor ? req.NombreEditor + ' ' + req.ApellidoEditor : req.DepDescripcionActual}</p>
           <p className={`${req.IdEditor ? 'dark:text-stone-400 text-stone-500' : req.Bandeja === 'be' ? 'text-sky-600 font-bold' : 'dark:text-stone-400 text-stone-500'} truncate text-base font-thin uppercase leading-snug`}>{req.REQ_Descripcion}</p>

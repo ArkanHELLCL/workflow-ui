@@ -3,8 +3,6 @@
 import { useRecords } from "../../../hooks/useRecords.jsx";
 import { BlockIcon, CheckIcon, DelIcon, EditIcon } from "../../../utils/icons.jsx"
 import { Constants } from "../../../utils/const.jsx";
-import { useFilters } from "../../../hooks/useFilters.jsx";
-import { useEffect } from "react";
 
 const { dias } = Constants()
 const diaName = (fecha) => {
@@ -14,20 +12,8 @@ const diaName = (fecha) => {
 
 export default function RegistroItem ({registro, ...props}){
     const { record, setRecord } = useRecords()    
-    const { filters } = useFilters()
-    const regId = filters.itemIdSelected + '-' + registro.Id
-
-    useEffect(() => {
-        const el = document.getElementsByClassName('reqselected')[0]
-        el?.classList.remove('reqselected')
-        setRecord(null)
-    },[filters.itemIdSelected])
     
-    const handleRegClick = (id) => {        
-        const elToRemove = document.getElementById(filters.itemIdSelected + '-' + record?.record.Id)
-        elToRemove?.classList.remove('reqselected')
-        const elToAdd = document.getElementById(id)
-        elToAdd.classList.add('reqselected')
+    const handleRegClick = () => {        
         setRecord({            
             record: registro,
         })         
@@ -35,7 +21,7 @@ export default function RegistroItem ({registro, ...props}){
 
     return(
         registro &&
-        <article className={` regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer`} onClick={()=>handleRegClick(regId)} {...props} id={regId}>
+        <article className={` regitem flex relative dark:border-[#353535] border-[#d4d4d4] border-b pl-6 pr-3 py-2 dark:hover:bg-[#383838] hover:bg-[#e6f2fa] cursor-pointer ${registro?.Id === record?.record?.Id ? 'reqselected' : ''}`} onClick={()=>handleRegClick()} {...props}>
             <div className="w-3/4">
             <p className={`${record?.record?.Id === registro.Id ? 'dark:text-stone-100 text-stone-700' : 'dark:text-stone-200 text-stone-950'} truncate text-base font-thin capitalize leading-snug`}>{registro.subtitulo}</p>
             <p className={`truncate text-base font-thin uppercase leading-snug dark:text-stone-400 text-stone-500`}>{registro.titulo}</p>

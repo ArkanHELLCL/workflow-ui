@@ -11,7 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Check from '@mui/icons-material/Check'
 import StraightIcon from '@mui/icons-material/Straight';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function MenuFiltersUsr() {
     const { filters, setFilters } = useFilters()
@@ -36,12 +36,6 @@ export default function MenuFiltersUsr() {
             orderDesMant: orderDes,
         }))
     }
-
-    useEffect(() => {
-        const el = document.getElementsByClassName('reqselected')[0]
-        el?.classList.remove('reqselected')
-        setRecord(null)
-    },[filters.departamento])
 
     function desOrder(orderDes){   
         //Fecha de creación     
