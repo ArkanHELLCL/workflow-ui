@@ -1,17 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import { useRequest } from '../../../../hooks/useRequest.jsx';
+import { useRequest, useFilters } from '../../../../hooks';
 import { Constants } from "../../../../utils/const.jsx";
 
 export default function SenderData() {
-    const { request } = useRequest()    
+    const { request } = useRequest()
+    const { filters } = useFilters()
     const [senderPhoto, setSenderPhoto] = useState('/user.png')
     const { host, fecthParams : params } = Constants()    
 
     useEffect(() => {
         setSenderPhoto('/user.png')
-        const sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.UsuarioCreador
+        let sender
+        if(filters.itemIdSelected !== 'bnc')
+            sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.UsuarioCreador
         if(sender)
             fetch(host + '/api/usuario/photo/' + sender, params)
             .then(response => {
@@ -35,6 +38,7 @@ export default function SenderData() {
             })
             .catch((err)=> {
                 console.log(err)
+                setSenderPhoto('/user.png')
             })
         else
             setSenderPhoto('/user.png')
