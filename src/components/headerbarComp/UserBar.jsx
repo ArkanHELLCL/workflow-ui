@@ -12,6 +12,7 @@ import { IconButton } from "@mui/material";
 import { MailIcon } from '../../utils/icons.jsx';
 import { useEffect, useState } from 'react';
 import { Constants } from "../../utils/const.jsx";
+import ConfirmationDialog from '../../utils/ConfirmationDialog.jsx';
 
 export default function UserBar({darkmode, setDarkMode}) {    
     const { userdata : user } = useUserData();
@@ -19,9 +20,10 @@ export default function UserBar({darkmode, setDarkMode}) {
     const [anchorEl, setAnchorEl] = useState(null);
     const [userPhoto, setUserPhoto] = useState('/user.png');
     const open = Boolean(anchorEl);
-    const { host, fecthParams : params } = Constants()    
+    const { host, fecthParams : params } = Constants()
+    const [openDialog, setOpenDialog] = useState({"open":false,"titulo":"","mensaje":"","id":"", "data":null, "formAction":null, "frmobj":null, "reset":true, "formid":null})
 
-    useEffect(() => {        
+    useEffect(() => {
         if(user){
             const senderPhoto = window.localStorage.getItem(user?.USR_Usuario)
             if(!senderPhoto){
@@ -61,7 +63,6 @@ export default function UserBar({darkmode, setDarkMode}) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const ButtonUsrProfile = () => {
         return (
             <>
@@ -70,7 +71,6 @@ export default function UserBar({darkmode, setDarkMode}) {
             </>
         )
     }
-
     const UserDetail = () => {
         return (
             <div className="flex justify-center items-center gap-5 h-fit p-4">
@@ -86,13 +86,32 @@ export default function UserBar({darkmode, setDarkMode}) {
                 </div>
         )
     }
-
-    const handleCloseSession = () => {
+    const logout = () => {
         fetch(host + '/api/logout', {...params, method: 'POST'})
         .catch(err => console.log(err))
         handleClose();
-        setAuth(false)        
+        setAuth(false)
     }
+    const handleCloseSession = () => {
+        setOpenDialog({
+            ...openDialog,
+            open:true,
+            /*data,
+            formAction,
+            frmobj:frmRequest,*/
+            titulo:'Cerrar Sesión',
+            mensaje:'¿Estas seguro de que deseas cerrar la sesión?',
+            /*id,
+            formid:'frmWorkFlowv4'*/
+          })        
+    }
+    
+    useEffect(() => {
+        if(openDialog.option){
+            logout()
+        }
+        handleClose()
+    }, [openDialog])
     
     return(
         <>
@@ -118,7 +137,7 @@ export default function UserBar({darkmode, setDarkMode}) {
                 onClose={handleClose}
                 slotProps={{
                     paper:{                        
-                        className:'dark:!bg-[#262626] !bg-[#ffffff] dark:!border-[#737373] !border-[#949494] !border !rounded-none !h-auto !py-0 !right-2'
+                        className:'dark:!bg-[#262626] !bg-[#ffffff] dark:!border-[#737373] !border-[#949494] !border !rounded-none !h-auto !py-0 !right-2 !w-[450px] truncate'
                     }
                 }}
             >
@@ -134,9 +153,10 @@ export default function UserBar({darkmode, setDarkMode}) {
                         <UserDetail/>
                     </ListItem>                    
                     <ListItem className='dark:!bg-[#363636] dark:!border-[#737373] !bg-[#f3f3f3] !border-t !border-[#d9d9d9] !-mb-2'
-                    secondaryAction={
-                        <DarkModeToggle darkmode={darkmode} setDarkMode={setDarkMode}/>
-                        }>
+                        secondaryAction={
+                            <DarkModeToggle darkmode={darkmode} setDarkMode={setDarkMode}/>
+                        }
+                    >
                         <ListItemIcon className="dark:!text-white !text-black relative cursor-pointer" onClick={()=>console.log("ver mensajes")}>
                             <MailIcon/>
                             <span className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full top-0 -right-2">{user?.USR_MsgSinLeer ? user.USR_MsgSinLeer : ''}</span>
@@ -144,7 +164,10 @@ export default function UserBar({darkmode, setDarkMode}) {
                         <span className="text-sm dark:!text-white !text-[#262626] pl-2">Ver mensajes</span>
                     </ListItem>
                 </List>
-            </Menu>
+            </Menu>{
+                openDialog?.open &&
+                    <ConfirmationDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+            }
         </>
     )
 }
