@@ -21,32 +21,37 @@ export default function UserBar({darkmode, setDarkMode}) {
     const open = Boolean(anchorEl);
     const { host, fecthParams : params } = Constants()    
 
-    useEffect(() => {            
-        if(user)
-            fetch(host + '/api/usuario/photo/' + user?.USR_Usuario, params)
-            .then(response => {
-                if(response.ok){                
-                    return response.blob()
-                }else{
-                    return false
-                }
-            })
-            .then(imgBlob => {                        
-                var reader = new FileReader();            
-                if(imgBlob.size>0){
-                    reader.readAsDataURL(imgBlob); 
-                    reader.onloadend = function() {                
-                        var base64data = reader.result;                    
-                        setUserPhoto(base64data)
+    useEffect(() => {        
+        if(user){
+            const senderPhoto = window.localStorage.getItem(user?.USR_Usuario)
+            if(!senderPhoto){
+                fetch(host + '/api/usuario/photo/' + user?.USR_Usuario, params)
+                .then(response => {
+                    if(response.ok){                
+                        return response.blob()
+                    }else{
+                        return false
                     }
-                }else{
-                    setUserPhoto('/user.png')
-                }
-            })
-            .catch((err)=> {
-                console.log(err)
-            })
-        else
+                })
+                .then(imgBlob => {                        
+                    var reader = new FileReader();            
+                    if(imgBlob.size>0){
+                        reader.readAsDataURL(imgBlob); 
+                        reader.onloadend = function() {                
+                            var base64data = reader.result;                    
+                            setUserPhoto(base64data)
+                        }
+                    }else{
+                        setUserPhoto('/user.png')
+                    }
+                })
+                .catch((err)=> {
+                    console.log(err)
+                })
+            }else{
+                setUserPhoto(senderPhoto)
+            }            
+        }else
             setUserPhoto('/user.png')
     }, [user])
 

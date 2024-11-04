@@ -11,36 +11,41 @@ export default function SenderData() {
     const { host, fecthParams : params } = Constants()    
 
     useEffect(() => {
-        setSenderPhoto('/user.png')
+        setSenderPhoto('/user.png')        
         let sender
         if(filters.itemIdSelected !== 'bnc')
             sender = request?.request?.DRE_UsuarioEditAntCod ? request?.request?.DRE_UsuarioEditAntCod : request?.request?.UsuarioCreador
-        if(sender)
-            fetch(host + '/api/usuario/photo/' + sender, params)
-            .then(response => {
-                if(response.ok){                
-                    return response.blob()
-                }else{
-                    return false
-                }
-            })
-            .then(imgBlob => {                        
-                var reader = new FileReader();            
-                if(imgBlob.size>0){
-                    reader.readAsDataURL(imgBlob); 
-                    reader.onloadend = function() {                
-                        var base64data = reader.result;                    
-                        setSenderPhoto(base64data)
+        if(sender){
+            const senderPhoto = window.localStorage.getItem(sender)
+            if(!senderPhoto){
+                fetch(host + '/api/usuario/photo/' + sender, params)
+                .then(response => {
+                    if(response.ok){                
+                        return response.blob()
+                    }else{
+                        return false
                     }
-                }else{
+                })
+                .then(imgBlob => {                        
+                    var reader = new FileReader();            
+                    if(imgBlob.size>0){
+                        reader.readAsDataURL(imgBlob); 
+                        reader.onloadend = function() {                
+                            var base64data = reader.result;                    
+                            setSenderPhoto(base64data)
+                            window.localStorage.setItem(sender, base64data);
+                        }
+                    }else{
+                        setSenderPhoto('/user.png')
+                    }
+                })
+                .catch((err)=> {
+                    console.log(err)
                     setSenderPhoto('/user.png')
-                }
-            })
-            .catch((err)=> {
-                console.log(err)
-                setSenderPhoto('/user.png')
-            })
-        else
+                })
+            }else
+                setSenderPhoto(senderPhoto)
+        }else
             setSenderPhoto('/user.png')
     }, [request])
     
