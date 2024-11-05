@@ -1,8 +1,10 @@
 import { useContext } from 'react'
 import { FiltersContext } from '../context/filters.jsx'
+import { useInboxs } from './useInboxs.jsx'
 
 export function useFilters() {
     const { filters, setFilters } = useContext(FiltersContext)
+    const { bandejas } = useInboxs()
 
     const filterRequest = (request) => {        
         if(request?.registros?.lenght===0) return {filteredRequest: []}
@@ -15,14 +17,14 @@ export function useFilters() {
             bandeja = request?.filter(item => item?.id === filters.itemIdSelected)
         }        
         if(filters.stringSearch!=='' && filters.filterSearch===2){            
-            // Recorremos cada elemento en el objeto "bandejas"
-            request?.forEach(item => {                
+            // Recorremos cada elemento en el objeto "bandejas"            
+            bandejas?.forEach(item => {                
                 // Recorremos cada requerimiento en la bandeja actual y lo agregamos al array de requerimientos
                 item.registros?.forEach(item => {
                     bandeja.push(item);
                 });
             });
-            bandeja = bandeja[0].registros = bandeja
+            bandeja = bandeja[0].registros = bandeja            
         }
         
         filters.stringSearch==='' ? bandeja = request.filter(item => item?.id === filters.itemIdSelected) : null

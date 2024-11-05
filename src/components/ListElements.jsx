@@ -12,7 +12,6 @@ import Regiones from "./main/maintainer/comunamant/filtroRegion.jsx";
 import ListaDesplegable from "./main/maintainer/itemslistaMant/filtroListaDesplegable.jsx";
 import MenuFiltersMen from "./main/reports/menuFiltersMen.jsx";
 import Loading from "../utils/Loading.jsx";
-import { forEach } from "lodash";
 import { Constants } from "../utils/const.jsx";
 import getobjItems from '../utils/getObjItems.jsx';
 
@@ -26,12 +25,13 @@ export default function ListElements({frmReport}) {
   const { userdata } = useUserData({})
   const { bandejas, setBandejas } = useInboxs()
 
-  useEffect(() => {
-    forEach(inboxstate.loadingInbox, (value, key) => {
+  useEffect(() => {    
+    for (const [key, value] of Object.entries(inboxstate.loadingInbox)) {
       if(key === filters.itemIdSelected) {          
         setStateInbox(value)
       }
-  })},[inboxstate.loadingInbox, filters.itemIdSelected])
+    }
+  },[inboxstate.loadingInbox, filters.itemIdSelected])
 
   useEffect(() => {
     const date = new Intl.DateTimeFormat(undefined, options).format(new Date())

@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useId, useState } from "react";
-import { InputDebounce } from "../../utils/InputDebounce.jsx";
 import { ClickAwayListener } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Check from '@mui/icons-material/Check'
@@ -91,6 +90,15 @@ export default function SearchBar({openSearch, setOpenSearch}) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const onChanges = (e) => {
+        setValue(e.target.value)
+        setFilters(prevState => ({
+            ...prevState,
+            stringSearch: e.target.value,
+            filterSearchResult:true
+        }))
+    }
         
     return(
         <ClickAwayListener onClickAway={handleClickAway}>
@@ -148,19 +156,17 @@ export default function SearchBar({openSearch, setOpenSearch}) {
                     <span className="absolute top-1 left-4 dark:text-[#ababab] text-sky-600">
                         <SearchIcon className="!w-5 !h-5"/>
                     </span>                
-                    <InputDebounce 
+                    <input
                         type="text" 
                         name="search" 
-                        classname="w-full h-full pl-12 focus:border dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none dark:focus:border-white focus:border-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
-                        placehold="Buscar"
-                        onfocus={(e) => e.target.placeholder = ""}
-                        onblur={(e) => HandleOnBlur(e)} 
-                        onclick={() => setOpenSearch(!inboxstate.loadingInboxs && filters.itemIdSelected.charAt(0).toUpperCase() === 'B')}
-                        _id={inputId}
-                        setFilters={setFilters}
-                        value={value}
-                        setValue={setValue}
-                        readonly={inboxstate.loadingInboxs}
+                        className="w-full h-full pl-12 focus:border dark:bg-[#262626] dark:focus:bg-[#505050] focus:outline-none dark:focus:border-white focus:border-[#004578] focus:bg-white bg-[#deecf9] text-black dark:text-[#afafaf]" 
+                        placeholder="Buscar"
+                        onFocus={(e) => e.target.placeholder = ""}
+                        onBlur={(e) => HandleOnBlur(e)} 
+                        onClick={() => setOpenSearch(!inboxstate.loadingInboxs && filters.itemIdSelected.charAt(0).toUpperCase() === 'B')}
+                        id={inputId}                        
+                        onChange={onChanges}
+                        readOnly={inboxstate.loadingInboxs}
                     />
                 </form>
             </search>
