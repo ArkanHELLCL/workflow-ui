@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { usePreview } from '../../../hooks/usePreview.jsx';
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+//import { usePreview } from '../../../hooks/usePreview.jsx';
+//import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 export default function DocPreview() {
-    const { preview } = usePreview()
+    /*const { preview } = usePreview()
     const handleNotDragOver = (event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = "none";
@@ -44,5 +44,6 @@ export default function DocPreview() {
             }}
         />        
     </div>
-  )
+  )*/
+ return <h2>Preview</h2>
 }
