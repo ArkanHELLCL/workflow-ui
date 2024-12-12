@@ -50,8 +50,7 @@ export default function Login(){
                 messages: [...prevState.messages, Inidate + ' - Actualizando todas las bandejas...'],
                 error: false,
                 Warning: false
-            }))
-            
+            }))            
             const promises = objBandejas?.filter(item => item.load).map((item) => (
                 fetch(host + item.url + '?PageNumber=1&RowsOfPage=' + filters.maxRecordLoaded, params))
                 .then((response) => response.json())
@@ -84,6 +83,8 @@ export default function Login(){
                 })                
                 .catch((error) => {
                     //console.log('Error 1:', error)
+                    const data = {id: item.id, registros: []}
+                    setBandejas(prevstate => [...prevstate, data])
                     return Promise.reject(error)
                 })
             )            
