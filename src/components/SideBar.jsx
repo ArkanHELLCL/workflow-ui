@@ -70,6 +70,22 @@ export default function SideBar(){
                             <div className={`${filters.itemIdSelected.charAt(0).toLowerCase() === "m" ? 'dark:text-[#58b8fe] text-[#0173c6] ' : ''} dark:hover:text-white hover:text-black dark:hover:bg-[#0067b0] hover:bg-[#cde6f7] flex flex-col items-center py-2 cursor-pointer`} onClick={()=>handleClickItem("m")} title="Mantenedores">
                                 <TableIcon styles="w-6 h-6" strokeWidth=""/>
                             </div>
+                            <span>
+                                <i data-icon-name="ArrowReplyRegularLight" aria-hidden="true" className="icon-373">
+                                    <i className="s_cNr lightIcon--ArrowReplyRegular"></i>
+                                </i>
+                            </span>
+                            <span>
+                                <i data-icon-name="PersonFeedbackRegularLight" aria-hidden="true" className="icon-371">
+                                    <i className="s_cNr lightIcon--PersonFeedbackRegular"></i>
+                                </i>
+                            </span>
+
+                            <span>
+                                <i data-icon-name="InboxRegular" aria-hidden="true" className="icon-371">
+                                    <i className="s_cNr lightIcon--InboxRegular"></i>
+                                </i>
+                            </span>                            
                         </li>     
                     }
                 </ul>

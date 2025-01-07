@@ -13,7 +13,654 @@
     }
     .dark{
       color-scheme: dark;
-    }
+    }      
+}
+
+@font-face {
+  font-display: block;
+  font-family: LightRibbonIcons;
+  src: url(./fonts/light-icons-hash-95bc1dca.m.woff2) format("woff2"),url(./fonts/light-icons-hash-9a4a7c4d.m.woff) format("woff")
+}
+
+.s_cNr {
+    font-family: LightRibbonIcons,sans-serif;
+    font-style: normal
+}
+
+.lightIcon--EditorRegular:before {
+  content: ""
+}
+
+.lightIcon--ZoomOutRegular:before {
+  content: ""
+}
+
+.lightIcon--ZoomInRegular:before {
+  content: ""
+}
+
+.lightIcon--WrenchScrewdriverRegular:before {
+  content: ""
+}
+
+.lightIcon--WindowFilled:before {
+  content: ""
+}
+
+.lightIcon--VideoRegular:before {
+  content: ""
+}
+
+.lightIcon--TranslateRegular:before {
+  content: ""
+}
+
+.lightIcon--TextboxAlignTopLeftRegular:before {
+  content: ""
+}
+
+.lightIcon--TextRegular:before {
+  content: ""
+}
+
+.lightIcon--TextExpandRegular:before {
+  content: ""
+}
+
+.lightIcon--TextEditStyleRegular:before {
+  content: ""
+}
+
+.lightIcon--TextDensityRegular:before {
+  content: ""
+}
+
+.lightIcon--TextCollapseRegular:before {
+  content: ""
+}
+
+.lightIcon--TextClearFormattingRegular:before {
+  content: ""
+}
+
+.lightIcon--TagRegular:before {
+  content: ""
+}
+
+.lightIcon--TableSimpleRegular:before {
+  content: ""
+}
+
+.lightIcon--TableSettingsRegular:before {
+  content: ""
+}
+
+.lightIcon--TableRegular:before {
+  content: ""
+}
+
+.lightIcon--TableMoveRightRegular:before {
+  content: ""
+}
+
+.lightIcon--TableMoveLeftRegular:before {
+  content: ""
+}
+
+.lightIcon--TableMoveBelowRegular:before {
+  content: ""
+}
+
+.lightIcon--TableMoveAboveRegular:before {
+  content: ""
+}
+
+.lightIcon--TableDismissRegular:before {
+  content: ""
+}
+
+.lightIcon--TableCellsSplitRegular:before {
+  content: ""
+}
+
+.lightIcon--TableCellsMergeRegular:before {
+  content: ""
+}
+
+.lightIcon--StarArrowRightEndRegular:before {
+  content: ""
+}
+
+.lightIcon--StarAddRegular:before {
+  content: ""
+}
+
+.lightIcon--SquareArrowForwardRegular:before {
+  content: ""
+}
+
+.lightIcon--SignatureRegular:before {
+  content: ""
+}
+
+.lightIcon--ShieldErrorRegular:before {
+  content: ""
+}
+
+.lightIcon--ShareRegular:before {
+  content: ""
+}
+
+.lightIcon--SettingsRegular:before {
+  content: ""
+}
+
+.lightIcon--SendClockRegular:before {
+  content: ""
+}
+
+.lightIcon--SaveRegular:before {
+  content: ""
+}
+
+.lightIcon--RotateLeftRegular:before {
+  content: ""
+}
+
+.lightIcon--RectangleLandscapeRegular:before {
+  content: ""
+}
+
+.lightIcon--ReadAloudRegular:before {
+  content: ""
+}
+
+.lightIcon--QuestionRegular:before {
+  content: ""
+}
+
+.lightIcon--PrintRegular:before {
+  content: ""
+}
+
+.lightIcon--PollRegular:before {
+  content: ""
+}
+
+.lightIcon--PinRegular:before {
+  content: ""
+}
+
+.lightIcon--PinOffRegular:before {
+  content: ""
+}
+
+.lightIcon--PictureInPictureRegular:before {
+  content: ""
+}
+
+.lightIcon--PhoneRegular:before {
+  content: ""
+}
+
+.lightIcon--PersonProhibitedRegular:before {
+  content: ""
+}
+
+.lightIcon--PersonFeedbackRegular:before {
+  content: ""
+}
+
+.lightIcon--PersonAvailableRegular:before {
+  content: ""
+}
+
+.lightIcon--PersonAddRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleSyncRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleSettingsRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleListRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleCommunityRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleAddRegular:before {
+  content: ""
+}
+
+.lightIcon--PanelLeftFocusRightFilled:before {
+  content: ""
+}
+
+.lightIcon--PanelLeftFilled:before {
+  content: ""
+}
+
+.lightIcon--PaintBrushRegular:before {
+  content: ""
+}
+
+.lightIcon--OptionsRegular:before {
+  content: ""
+}
+
+.lightIcon--NoteRegular:before {
+  content: ""
+}
+
+.lightIcon--MicRegular:before {
+  content: ""
+}
+
+.lightIcon--MailUnreadRegular:before {
+  content: ""
+}
+
+.lightIcon--MailSettingsRegular:before {
+  content: ""
+}
+
+.lightIcon--MailRegular:before {
+  content: ""
+}
+
+.lightIcon--MailReadRegular:before {
+  content: ""
+}
+
+.lightIcon--MailMultipleRegular:before {
+  content: ""
+}
+
+.lightIcon--MailListRegular:before {
+  content: ""
+}
+
+.lightIcon--MailArrowDoubleBackRegular:before {
+  content: ""
+}
+
+.lightIcon--MailAlertRegular:before {
+  content: ""
+}
+
+.lightIcon--LockOpenRegular:before {
+  content: ""
+}
+
+.lightIcon--LockClosedRegular:before {
+  content: ""
+}
+
+.lightIcon--LinkRegular:before {
+  content: ""
+}
+
+.lightIcon--LassoRegular:before {
+  content: ""
+}
+
+.lightIcon--ImportantRegular:before {
+  content: ""
+}
+
+.lightIcon--ImmersiveReaderRegular:before {
+  content: ""
+}
+
+.lightIcon--ImageShadowRegular:before {
+  content: ""
+}
+
+.lightIcon--ImageReflectionRegular:before {
+  content: ""
+}
+
+.lightIcon--ImageCopyRegular:before {
+  content: ""
+}
+
+.lightIcon--ImageAltTextRegular:before {
+  content: ""
+}
+
+.lightIcon--ImageAddRegular:before {
+  content: ""
+}
+
+.lightIcon--HandDrawRegular:before {
+  content: ""
+}
+
+.lightIcon--FolderMailRegular:before {
+  content: ""
+}
+
+.lightIcon--FolderArrowRightRegular:before {
+  content: ""
+}
+
+.lightIcon--FlagRegular:before {
+  content: ""
+}
+
+.lightIcon--FlagOffRegular:before {
+  content: ""
+}
+
+.lightIcon--FilterRegular:before {
+  content: ""
+}
+
+.lightIcon--EmojiRegular:before {
+  content: ""
+}
+
+.lightIcon--EditRegular:before {
+  content: ""
+}
+
+.lightIcon--DoorArrowRightRegular:before {
+  content: ""
+}
+
+.lightIcon--DocumentLightningRegular:before {
+  content: ""
+}
+
+.lightIcon--DismissRegular:before {
+  content: ""
+}
+
+.lightIcon--DismissCircleRegular:before {
+  content: ""
+}
+
+.lightIcon--DeleteRegular:before {
+  content: ""
+}
+
+.lightIcon--CursorRegular:before {
+  content: ""
+}
+
+.lightIcon--CropRegular:before {
+  content: ""
+}
+
+.lightIcon--CopyRegular:before {
+  content: ""
+}
+
+.lightIcon--ComposeRegular:before {
+  content: ""
+}
+
+.lightIcon--ColorRegular:before {
+  content: ""
+}
+
+.lightIcon--ColorFillRegular:before {
+  content: ""
+}
+
+.lightIcon--ClockRegular:before {
+  content: ""
+}
+
+.lightIcon--ClockAlarmRegular:before {
+  content: ""
+}
+
+.lightIcon--ClipboardPasteRegular:before {
+  content: ""
+}
+
+.lightIcon--ClassificationRegular:before {
+  content: ""
+}
+
+.lightIcon--CheckmarkRegular:before {
+  content: ""
+}
+
+.lightIcon--CheckmarkCircleRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarWorkWeekRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarReplyRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarPatternRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarMultipleRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarLtrRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarEmptyRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarDayRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarDataBarRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarClockRegular:before {
+  content: ""
+}
+
+.lightIcon--Calendar3DayRegular:before {
+  content: ""
+}
+
+.lightIcon--BroomRegular:before {
+  content: ""
+}
+
+.lightIcon--AutocorrectRegular:before {
+  content: ""
+}
+
+.lightIcon--AutoFitHeightRegular:before {
+  content: ""
+}
+
+.lightIcon--AttachRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowUndoRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowReplyRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowReplyAllRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowRedoRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowHookUpLeftRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowForwardRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowDownRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowClockwiseRegular:before {
+  content: ""
+}
+
+.lightIcon--ArchiveSettingsRegular:before {
+  content: ""
+}
+
+.lightIcon--ArchiveRegular:before {
+  content: ""
+}
+
+.lightIcon--AppFolderRegular:before {
+  content: ""
+}
+
+.lightIcon--AddRegular:before {
+  content: ""
+}
+
+.lightIcon--AccessibilityCheckmarkRegular:before {
+  content: ""
+}
+
+.lightIcon--Loop:before {
+  content: ""
+}
+
+.lightIcon--VideoClipRegular:before {
+  content: ""
+}
+
+.lightIcon--PersonSupportRegular:before {
+  content: ""
+}
+
+.lightIcon--PenSparkleRegular:before {
+  content: ""
+}
+
+.lightIcon--MailRewindRegular:before {
+  content: ""
+}
+
+.lightIcon--MailArrowClockwiseRegular:before {
+  content: ""
+}
+
+.lightIcon--CommentAddRegular:before {
+  content: ""
+}
+
+.lightIcon--ChatRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarSparkleRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarTodoRegular:before {
+  content: ""
+}
+
+.lightIcon--ArrowDownloadRegular:before {
+  content: ""
+}
+
+.lightIcon--TeamsColor:before {
+  content: ""
+}
+
+.lightIcon--ToolboxRegular:before {
+  content: ""
+}
+
+.lightIcon--CalendarMonthRegular:before {
+  content: ""
+}
+
+.lightIcon--MoleculeRegular:before {
+  content: ""
+}
+
+.lightIcon--PersonMailRegular:before {
+  content: ""
+}
+
+.lightIcon--BreakoutRoomRegular:before {
+  content: ""
+}
+
+.lightIcon--PeopleEditRegular:before {
+  content: ""
+}
+
+.lightIcon--TabAddRegular:before {
+  content: ""
+}
+
+.lightIcon--MailReadMultipleRegular:before {
+  content: ""
+}
+
+.lightIcon--LightbulbRegular:before {
+  content: ""
+}
+
+.lightIcon--InboxRegular:before {
+  content: ""
+}
+
+.icon-371 {
+  display: inline-block;
+  text-decoration: inherit;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin: 0px;
+  fill: rgb(107, 160, 43);
+  font-size: 32px;
+  color: rgb(107, 160, 43);
+}
+
+.icon-373 {
+  display: inline-block;
+  text-decoration: inherit;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin: 0px;
+  fill: rgb(187, 104, 198);
+  font-size: 32px;
+  color: rgb(187, 104, 198);
 }
 
 .reqitem{
