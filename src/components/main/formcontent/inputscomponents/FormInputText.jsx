@@ -25,7 +25,7 @@ export default function FormInputText ({ frmRequest, campo, className }) {
         <Controller
             control={frmRequest.control}
             name={campo.FDI_NombreHTML}
-            rules={required}        
+            rules={required}
             render={({ field: { onChange, onBlur, value } }) => (
                 <FormControl
                     id={campo.FDI_NombreHTML}                    
