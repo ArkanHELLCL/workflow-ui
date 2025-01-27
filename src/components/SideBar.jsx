@@ -86,7 +86,7 @@ export default function SideBar(){
                                     <i className="s_cNr lightIcon--InboxRegular"></i>
                                 </i>
                             </span>
-                            <div className="___j5n0910 f16u1re feuyn0r"><i className="fui-Icon-font fui-Icon-filled jgnYx SuSxc ORnNd MgbmD ___1yriaci fjseox fne0op0 fg4l7m0 fmd4ok8 f303qgw f1sxfq9t" fill="currentColor" aria-hidden="true"></i><i className="fui-Icon-font fui-Icon-regular jgnYx SuSxc ORnNd MgbmD ___1sd6q6k f1w7gpdv fne0op0 fg4l7m0 fmd4ok8 f303qgw f1sxfq9t" fill="currentColor" aria-hidden="true"></i></div>
+                            <div className="___j5n0910 f16u1re feuyn0r"><i className="fui-Icon-font fui-Icon-filled jgnYx SuSxc ORnNd MgbmD ___1yriaci fjseox fne0op0 fg4l7m0 fmd4ok8 f303qgw f1sxfq9t" aria-hidden="true"></i><i className="fui-Icon-font fui-Icon-regular jgnYx SuSxc ORnNd MgbmD ___1sd6q6k f1w7gpdv fne0op0 fg4l7m0 fmd4ok8 f303qgw f1sxfq9t"  aria-hidden="true"></i></div>
                         </li>     
                     }
                 </ul>
